@@ -354,6 +354,44 @@ def test_fetch_statements_distinguishes_missing_from_empty():
         fetchers._post = orig
 
 
+def test_basis_distinguishes_undetermined_from_observed_zero():
+    """Kaikki luokitukset kesken EI ole sama kuin todettu nolla.
+
+    Molemmissa l == 0.0. Ensimmäisessä nolla on tiedon puute,
+    toisessa havainto. basis-teksti ja l_is_determined erottavat ne.
+    """
+    from rri import monthly_l_ir_from_events
+
+    # A) kaikki kesken — uptake None (lausunto ei voi todistaa uptakea)
+    kesken = validate_event(base_event(event_id="LK", type="L", impact_weight=None,
+        llm_classification={"intensity": .4, "targeting": .7,
+                            "policy_proximity": .4, "uptake": None}))
+    a = monthly_l_ir_from_events("2026-03", [kesken])
+    assert a.l == 0.0
+    assert a.l_source_event is None
+    assert a.l_events_incomplete == ("LK",)
+    assert a.l_is_determined is False
+    assert "MÄÄRITTÄMÄTÖN" in a.basis and "tiedon" in a.basis
+
+    # B) täysi luokitus jossa aito nolla
+    nolla = validate_event(base_event(event_id="LN", type="L", impact_weight=None,
+        llm_classification={"intensity": .4, "targeting": .7,
+                            "policy_proximity": .4, "uptake": 0.0}))
+    b = monthly_l_ir_from_events("2026-03", [nolla])
+    assert b.l == 0.0
+    assert b.l_source_event == "LN"
+    assert b.l_events_incomplete == ()
+    assert b.l_is_determined is True
+    assert "havaintona" in b.basis
+
+    # C) ei lainkaan L-tapahtumia
+    c = monthly_l_ir_from_events("2026-03", [])
+    assert c.l_is_determined is True and "tarkoituksella" in c.basis
+
+    # Kaikki kolme antavat l == 0.0 mutta ovat eri tiloja
+    assert a.basis != b.basis != c.basis
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0

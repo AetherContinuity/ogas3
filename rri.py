@@ -110,11 +110,33 @@ class MonthlyLIR:
     ir_events_seen: int
 
     @property
+    def l_is_determined(self) -> bool:
+        """Onko L todettu vai määrittämätön.
+
+        L on todettu jos vähintään yhdellä L-tapahtumalla oli TÄYSI
+        luokitus. Jos kaikki olivat kesken, l_best jäi alkuarvoonsa 0.0
+        eikä l_source_event koskaan asettunut — ja se tila on eri asia
+        kuin havaittu nolla.
+        """
+        return self.l_events_seen == 0 or self.l_source_event is not None
+
+    @property
     def basis(self) -> str:
+        # KORJATTU 2026-09-05: aiempi versio ei erottanut "kaikki
+        # luokitukset kesken" tapauksesta "todettu nolla". Molemmissa
+        # l == 0.0, mutta ensimmäisessä nolla on TIEDON PUUTE ja
+        # toisessa HAVAINTO. Tämä on sama ero jota l_events_incomplete
+        # -lista on olemassa säilyttämään — basis vain ei lukenut sitä.
         if self.l_events_seen == 0:
             return "ei L-tapahtumia — RRI = 0 tarkoituksella"
+        if self.l_source_event is None:
+            n = len(self.l_events_incomplete)
+            return (f"L MÄÄRITTÄMÄTÖN: {self.l_events_seen} L-tapahtumaa, "
+                    f"kaikkien {n} luokitus kesken. RRI:n nolla on tiedon "
+                    f"puute, EI havainto.")
         if self.l == 0.0:
-            return "L-tapahtumia oli, mutta max(L) = 0 (jokin komponentti nolla)"
+            return (f"L = 0 havaintona: tapahtuman {self.l_source_event} "
+                    "luokitus oli täysi ja jokin komponentti nolla")
         return f"L max tapahtumasta {self.l_source_event}"
 
 
@@ -126,7 +148,13 @@ def monthly_l_ir(events: Iterable[Event], month_events: Iterable[str]) -> Monthl
 def monthly_l_ir_from_events(month: str, events: Iterable[Event]) -> MonthlyLIR:
     evs = list(events)
 
-    l_best, l_src, l_incomplete, l_n = 0.0, None, [], 0
+    # KORJATTU 2026-09-05: l_src asetettiin vain jos val > l_best, ja
+    # l_best oli alkuarvoltaan 0.0 — joten AITO NOLLA ei koskaan
+    # ylittänyt sitä eikä lähdettä kirjattu. Täysin luokiteltu tapahtuma,
+    # jonka L on nolla, näytti identtiseltä luokittelemattomalta.
+    # Sama piilonolla-virhe kolmannessa kerroksessa. Nyt l_best on None
+    # kunnes ensimmäinen TÄYSI luokitus nähdään.
+    l_best, l_src, l_incomplete, l_n = None, None, [], 0
     for e in evs:
         if e.type != L_TYPE:
             continue
@@ -137,7 +165,7 @@ def monthly_l_ir_from_events(month: str, events: Iterable[Event]) -> MonthlyLIR:
             # kuin puuttuva impact_weight aggregaattorissa.
             l_incomplete.append(e.event_id)
             continue
-        if val > l_best:
+        if l_best is None or val > l_best:
             l_best, l_src = val, e.event_id
 
     ir_best, ir_src, ir_n = 0.0, None, 0
@@ -151,7 +179,8 @@ def monthly_l_ir_from_events(month: str, events: Iterable[Event]) -> MonthlyLIR:
             ir_best, ir_src = float(e.irreversibility), e.event_id
 
     return MonthlyLIR(
-        month=month, l=round(l_best, 6), l_source_event=l_src,
+        month=month, l=round(l_best if l_best is not None else 0.0, 6),
+        l_source_event=l_src,
         l_events_seen=l_n, l_events_incomplete=tuple(l_incomplete),
         ir=round(ir_best, 6), ir_source_event=ir_src, ir_events_seen=ir_n,
     )
