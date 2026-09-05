@@ -130,25 +130,58 @@ def canonical(name: str | None) -> str | None:
 #   `virasto\b`  osuu molempiin
 # Yhdyssanapäätteille sanaraja JÄLKEEN, erillisille sanoille (ry, Oyj)
 # sanaraja molemmin puolin.
-_RULES: list[tuple[re.Pattern, str]] = [
-    (re.compile(r'ministeriö\b', re.I), "viranomainen"),
+# role_confidence: onko pääte YKSIKÄSITTEINEN vai monitulkintainen.
+#
+# `role_source: "saanto"` kertoo että pääte tunnistettiin mekaanisesti.
+# Se EI kerro onko pääte luotettava. "Energiavirasto" ON virasto;
+# "Suomen ympäristökeskus" on sekä viranomainen ETTÄ tutkimuslaitos,
+# eikä `keskus` ratkaise kumpi. Sääntö antaa molemmille saman arvon ja
+# saman lähdemerkinnän — ilman tätä kenttää ero katoaa.
+#
+# Sama erottelu kuin actor_source: "laatija" | "nimeke": molemmat
+# tuottavat nimen, toinen on luettu ja toinen johdettu.
+#
+#   0.9   pääte on yksikäsitteinen (ministeriö, ry, Oyj, kaupunki)
+#   0.5   pääte osuu mutta rooli on tulkinnanvarainen
+#
+# Arvo EI ole ROE:n classification-confidence — se koskee Extractorin
+# luokitusta. Tämä koskee sääntöä, ja se on eri asia.
+
+_RULES: list[tuple[re.Pattern, str, float]] = [
+    (re.compile(r'ministeriö\b', re.I), "viranomainen", 0.9),
     # keskusliitto ENNEN keskus-sääntöä: "Elinkeinoelämän keskusliitto EK"
     # ei ole viranomainen. Yhdyssanassa ei ole sanarajaa keskus|liitto
     # välissä, joten keskus\b ei osuisi — mutta järjestys on silti
     # kirjattava, koska se on merkityksellinen jos sääntöjä lisätään.
-    (re.compile(r'keskusliitto\b', re.I), "etujarjesto"),
-    (re.compile(r'(virasto|laitos|keskus|lautakunta|hallitus)\b(?!.*\b(ry|oyj|oy)\b)', re.I),
-     "viranomainen"),
-    (re.compile(r'\b(ely-keskus|aluehallintovirasto|avi)\b', re.I), "viranomainen"),
-    (re.compile(r'\b(ry|r\.y\.|rf|r\.f\.)\b', re.I), "etujarjesto"),
-    (re.compile(r'(yhdistys|järjestö|kauppakamari)\b', re.I), "etujarjesto"),
-    (re.compile(r'\b(oyj|oy|ab|abp|ltd|plc)\b', re.I), "toimija"),
+    (re.compile(r'keskusliitto\b', re.I), "etujarjesto", 0.9),
+    # ELY-keskus ja AVI ENNEN yleistä keskus-sääntöä: niillä on
+    # yksikäsitteinen rooli, eikä niitä pidä merkitä monitulkintaisiksi.
+    # Järjestysvirhe löytyi mittaamalla: viisi ELY-keskusta sai 0.5.
+    (re.compile(r'\b(ely-keskus|aluehallintovirasto|avi)\b', re.I), "viranomainen", 0.9),
+
+    # MONITULKINTAINEN: `laitos` ja `keskus` osuvat sekä hallinto-
+    # virastoihin (Energiavirasto, Verohallinto) että VALTION
+    # TUTKIMUSLAITOKSIIN (SYKE 49, Luke 8, GTK, Ilmatieteen laitos,
+    # THL, VATT). Jälkimmäiset ovat sekä `viranomainen` että `tutkija`,
+    # ja ero on aito eikä nimellinen. Sääntö antaa `viranomainen` —
+    # se on OSA vastausta, ei koko vastaus. role_confidence 0.5
+    # säilyttää sen tiedon; poikkeus voi kumota sen myöhemmin.
+    # `hallinto\b(?!-)`: osuu "Verohallinto" muttei "hallinto-oikeus".
+    # Tuomioistuimet ovat tarkoituksella avoin kysymys, eikä yleinen
+    # hallinto-pääte saa luokitella niitä viranomaisiksi.
+    (re.compile(r'(virasto|lautakunta|hallitus|hallinto\b(?!-))\b(?!.*\b(ry|oyj|oy)\b)', re.I),
+     "viranomainen", 0.9),
+    (re.compile(r'(laitos|keskus)\b(?!.*\b(ry|oyj|oy)\b)', re.I),
+     "viranomainen", 0.5),
+    (re.compile(r'\b(ry|r\.y\.|rf|r\.f\.)\b', re.I), "etujarjesto", 0.9),
+    (re.compile(r'(yhdistys|järjestö|kauppakamari)\b', re.I), "etujarjesto", 0.9),
+    (re.compile(r'\b(oyj|oy|ab|abp|ltd|plc)\b', re.I), "toimija", 0.9),
     # kunta\b on turvallinen: "Satakuntaliitto" sisältää "kunta" mutta
     # ilman sanarajaa sen jälkeen, joten se EI osu — ja maakuntaliitot
     # jäävät tarkoituksella auki.
-    (re.compile(r'(kaupunki|kunta|kaupunginhallitus|kunnanhallitus)\b', re.I), "kunta"),
-    (re.compile(r'(yliopisto|korkeakoulu|ammattikorkeakoulu)\b', re.I), "tutkija"),
-    (re.compile(r'paneeli\b', re.I), "tutkija"),
+    (re.compile(r'(kaupunki|kunta|kaupunginhallitus|kunnanhallitus)\b', re.I), "kunta", 0.9),
+    (re.compile(r'(yliopisto|korkeakoulu|ammattikorkeakoulu)\b', re.I), "tutkija", 0.9),
+    (re.compile(r'paneeli\b', re.I), "tutkija", 0.9),
 ]
 
 # TARKOITUKSELLA RATKAISEMATTA — neljä avointa roolikysymystä, jotka
@@ -181,24 +214,33 @@ _RULES: list[tuple[re.Pattern, str]] = [
 #                         role_source olisi silloin "extractor".
 
 
-def actor_role(name: str | None) -> tuple[str | None, str | None, str | None]:
-    """Palauttaa (rooli, role_source, perustelu).
+def actor_role(name: str | None) -> tuple[str | None, str | None, float | None, str | None]:
+    """Palauttaa (rooli, role_source, role_confidence, perustelu).
 
-    Ei koskaan arvaa: ratkaisemattomat palauttavat (None, None, syy).
+    Ei koskaan arvaa: ratkaisemattomat palauttavat (None, None, None, syy).
     Sama periaate kuin muualla — merkitty puuttuva on parempi kuin
     väärä arvo.
+
+    role_confidence erottaa yksikäsitteisen päätteen tulkinnanvaraisesta.
+    Ilman sitä `role_source: "saanto"` väittäisi enemmän kuin on:
+    "Energiavirasto" ja "Suomen ympäristökeskus" saisivat saman
+    merkinnän, vaikka ensimmäinen on varma ja toinen ei.
     """
     c = canonical(name)
     if not c:
-        return None, None, "nimi puuttuu"
+        return None, None, None, "nimi puuttuu"
 
     if c in EXCEPTIONS:
         role, reason = EXCEPTIONS[c]
-        return role, "poikkeus", reason
+        return role, "poikkeus", 0.9, reason
 
-    for pat, role in _RULES:
+    for pat, role, conf in _RULES:
         if pat.search(c):
-            return role, "saanto", f"pääte tunnistettu: /{pat.pattern}/"
+            note = "" if conf >= 0.9 else (
+                " — MONITULKINTAINEN: pääte osuu myös valtion "
+                "tutkimuslaitoksiin, jotka ovat sekä viranomainen että "
+                "tutkija. Osa vastausta, ei koko vastaus.")
+            return role, "saanto", conf, f"pääte tunnistettu: /{pat.pattern}/{note}"
 
-    return None, None, ("sääntö ei tunnista — jätetään Extractorille tai "
-                        "käsin ratkaistavaksi. EI arvata.")
+    return None, None, None, ("sääntö ei tunnista — jätetään Extractorille "
+                              "tai käsin ratkaistavaksi. EI arvata.")

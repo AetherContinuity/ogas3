@@ -443,7 +443,6 @@ def test_actor_role_compound_suffix_anchor():
     cases = {
         "Energiavirasto": "viranomainen",                       # yhdyssana
         "Turvallisuus- ja kemikaalivirasto TUKES": "viranomainen",  # perässä lyhenne
-        "Suomen ympäristökeskus (Syke)": "viranomainen",
         "Työ- ja elinkeinoministeriö": "viranomainen",
         "Energiateollisuus ry": "etujarjesto",
         "Suomen Arkkitehtiliitto ry SAFA": "etujarjesto",       # ry keskellä
@@ -455,9 +454,9 @@ def test_actor_role_compound_suffix_anchor():
         "Suomen ilmastopaneeli": "tutkija",
     }
     for name, want in cases.items():
-        role, src, _ = actor_role(name)
+        role, src, conf, _ = actor_role(name)
         assert role == want, f"{name!r} -> {role!r}, odotettiin {want!r}"
-        assert src == "saanto"
+        assert src == "saanto" and conf == 0.9
 
 
 def test_actor_role_named_exceptions():
@@ -466,8 +465,8 @@ def test_actor_role_named_exceptions():
     for name, want in (("Suomen Kuntaliitto ry", "etujarjesto"),
                        ("Saamelaiskäräjät", "etujarjesto"),
                        ("Fingrid Oyj", "toimija")):
-        role, src, reason = actor_role(name)
-        assert role == want and src == "poikkeus"
+        role, src, conf, reason = actor_role(name)
+        assert role == want and src == "poikkeus" and conf == 0.9
         assert reason and len(reason) > 40, "poikkeukselta puuttuu perustelu"
 
 
@@ -480,8 +479,8 @@ def test_actor_role_never_guesses():
     from actors import actor_role
     for name in ("Korkein hallinto-oikeus", "Uudenmaan liitto - Nylands förbund",
                  "Erkki Hurtig", "WWF Suomi", "Keva"):
-        role, src, reason = actor_role(name)
-        assert role is None and src is None, f"{name!r} sai roolin {role!r}"
+        role, src, conf, reason = actor_role(name)
+        assert role is None and src is None and conf is None, f"{name!r} sai roolin {role!r}"
         assert reason and "arvata" in reason
 
 
@@ -515,8 +514,38 @@ def test_yksityishenkilo_role_exists_but_is_not_rule_derived():
     """
     from actors import ROLES, actor_role
     assert "yksityishenkilo" in ROLES
-    role, src, _ = actor_role("Erkki Hurtig")
-    assert role is None and src is None
+    role, src, conf, _ = actor_role("Erkki Hurtig")
+    assert role is None and src is None and conf is None
+
+
+def test_role_confidence_flags_ambiguous_suffixes():
+    """`laitos` ja `keskus` osuvat sekä virastoihin että tutkimuslaitoksiin.
+
+    role_source: "saanto" kertoo että pääte tunnistettiin, EI että se on
+    luotettava. Ilman role_confidencea "Energiavirasto" ja "Suomen
+    ympäristökeskus" saisivat identtisen merkinnän.
+    """
+    from actors import actor_role
+    # yksikäsitteinen
+    for name in ("Energiavirasto", "Verohallinto", "Työ- ja elinkeinoministeriö",
+                 "Varsinais-Suomen ELY-keskus"):
+        role, src, conf, _ = actor_role(name)
+        assert (role, src, conf) == ("viranomainen", "saanto", 0.9), \
+            f"{name!r} -> {(role, src, conf)}"
+    # monitulkintainen: valtion tutkimuslaitos
+    for name in ("Suomen ympäristökeskus (Syke)", "Luonnonvarakeskus (Luke)",
+                 "Ilmatieteen laitos", "Valtion taloudellinen tutkimuskeskus VATT"):
+        role, src, conf, reason = actor_role(name)
+        assert role == "viranomainen" and src == "saanto", f"{name!r}"
+        assert conf == 0.5, f"{name!r} sai luottamuksen {conf}, odotettiin 0.5"
+        assert "MONITULKINTAINEN" in reason
+
+
+def test_ely_rule_precedes_generic_keskus_rule():
+    """Järjestysvirhe löytyi mittaamalla: viisi ELY-keskusta sai 0.5."""
+    from actors import actor_role
+    for name in ("Varsinais-Suomen ELY-keskus", "Etelä-Pohjanmaan ELY-keskus"):
+        assert actor_role(name)[2] == 0.9, f"{name!r} merkittiin monitulkintaiseksi"
 
 
 if __name__ == "__main__":
