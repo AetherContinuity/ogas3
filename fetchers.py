@@ -45,6 +45,7 @@ from __future__ import annotations
 
 import json
 import urllib.request
+import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any
@@ -291,6 +292,10 @@ def statements_from_kohde(row: dict, ret: str) -> list[RawEvent]:
         occ = _date_iso(a.get("laatimispaiva"))
         kn = _date_iso(a.get("luotu"))
         laatija = (a.get("laatija") or {}).get("fi")
+        actor_src = "laatija" if laatija else None
+        if not laatija:
+            laatija = actor_from_title((a.get("nimi") or {}).get("fi"))
+            actor_src = "nimeke" if laatija else None
         nimi = (a.get("nimi") or {}).get("fi") or ""
         url = a.get("url")
 
@@ -301,6 +306,10 @@ def statements_from_kohde(row: dict, ret: str) -> list[RawEvent]:
             lag = (datetime.fromisoformat(kn) - datetime.fromisoformat(occ)).days
             anomaly = (f"known_at {abs(lag)} vrk ENNEN occurred_at — "
                        "ei korjattu automaattisesti")
+        if not laatija:
+            anomaly = ((anomaly + " · ") if anomaly else "") + \
+                      "laatija puuttuu sekä kentästä että nimekkeestä — " \
+                      "tapahtuma säilytetään, EI pudoteta ryhmittelystä"
         if not url:
             # nakyvyys: VIITETIEDOT — vain viitetiedot julkaistu, ei tiedostoa.
             # Tapahtuma on olemassa mutta Extractor ei voi luokitella sitä.
@@ -314,7 +323,10 @@ def statements_from_kohde(row: dict, ret: str) -> list[RawEvent]:
             source="Hankeikkuna/asiakirjat",
             source_url="https://api.hankeikkuna.fi/api/v2/kohteet/haku",
             subtype=STATEMENT_TYPE,
-            parameters={"hanke": tunnus, "actor": laatija,
+            parameters={"hanke": tunnus,
+                        "actor": laatija,
+                        "actor_normalized": normalize_actor(laatija),
+                        "actor_source": actor_src,
                         "nakyvyys": a.get("nakyvyys"),
                         "asiakirja_url": url,
                         "asiasanat": [x.get("uri") if isinstance(x, dict) else x
@@ -376,3 +388,78 @@ def fetch_statements(tunnukset: list[str],
             continue
         out.extend(statements_from_kohde(rows[0], ret))
     return out
+
+# ── Laatijan talteenotto ja normalisointi ────────────────────────────
+#
+# MITATTU 5.9.2026: 2 265 lausunnosta 29:ltä puuttuu `laatija`-kenttä.
+# Laatija on niissä NIMEKKEESSÄ, ei kadonnut:
+#   "Liikenne- ja viestintävirasto Traficomin lausunto"
+#   "Erkki Hurtig; lausunto"
+#   "Saamelaiskäräjät; lausunto"
+#   "LUT Yliopiston lausunto"
+#
+# Ne 29 ovat toimijoita joita kärkilistalla ei ole: yksityishenkilöitä,
+# yliopistoryhmiä, Saamelaiskäräjät. Pudottaminen olisi pyyhkinyt ne
+# näkymättömiin PYSYVÄSTI, ei vain yhdestä ajosta — sama piilonolla-
+# luokka kuin impact_weight, uptake ja l_best-alkuarvo.
+#
+# Sääntö: älä pudota, merkitse. actor_source kertoo mistä nimi tuli.
+
+_ACTOR_TAIL = re.compile(
+    r'\s*[;,]?\s*(lausunto|utlåtande|kommentteja.*|täydentävä lausunto|'
+    r'täydennys.*|ei lausuttavaa|lausuntonsa)\s*$', re.I)
+_ACTOR_GENITIVE = re.compile(r'(?:n|en|in|on|un|yn|än|ön)\s+lausunto\s*$', re.I)
+_ACTOR_INDEX = re.compile(r'\s*\(\d+\)\s*$')
+
+
+def actor_from_title(nimi: str | None) -> str | None:
+    """Poimii laatijan nimekkeestä kun `laatija`-kenttä puuttuu.
+
+    Konservatiivinen: palauttaa None jos nimessä on alaviiva
+    (tiedostonimi) tai tulos on liian lyhyt. Väärä nimi olisi huonompi
+    kuin merkitty puuttuva.
+
+    GENETIIVIÄ EI PURETA. Nimekkeestä poimittu nimi jää usein
+    genetiiviin ("Traficomin", "Energiaviraston", "Aalto-yliopiston
+    tutkijoiden"). Suomen genetiivin purkaminen luotettavasti vaatisi
+    morfologisen analyysin, ja väärä perusmuoto olisi huonompi kuin
+    genetiivi: se yhdistäisi eri toimijoita. Genetiivi on silti
+    johdonmukainen ryhmittelyavain — saman toimijan kaikki nimekkeet
+    tuottavat saman muodon. `actor_source: "nimeke"` erottaa nämä
+    tarkistettaviksi.
+    """
+    if not nimi or nimi.startswith("("):
+        return None
+    s = nimi.strip()
+    # Tiedostonimi: alaviiva JÄÄ tulokseen -> hylätään. Kattaa sekä
+    # "KL_Lausunto_vesilaki_..." että "LVV lausunto TEM VL_muutos ...",
+    # jossa on sekä välilyöntejä että alaviiva.
+    if "_" in s:
+        return None
+    s = _ACTOR_TAIL.sub("", s)
+    s = re.sub(r'\s*[;,]\s*$', "", s).strip()
+    if len(s) < 4 or s.lower() in ("lausunto", "utlåtande"):
+        return None
+    return s
+
+
+def normalize_actor(name: str | None) -> str | None:
+    """Normalisoi laatijanimen ryhmittelyä varten.
+
+    (n)-PÄÄTE: todennettu 5.9.2026 rakenteelliseksi tunnisteeksi, EI
+    erottimeksi. Todiste kaksiosainen: yksikään kantanimi ei esiinny
+    kahdessa eri numeroidussa muodossa (ei "EK (1)" ja "EK (2)"), ja
+    kantanimi ilman numeroa puuttuu 7/8 tapauksessa kokonaan. Numero on
+    siis osa tallennettua nimeä, ei aluejärjestön erotin.
+    Poikkeus: "Kiinteistönomistajat ja rakennuttajat Rakli ry" esiintyy
+    sekä (1)-päätteellä (13x) että ilman (1x) — eli normalisointi on
+    tarpeen, päinvastaisesta syystä kuin epäiltiin.
+
+    Ei poista oikeushenkilömuotoa (ry, Oyj) — se erottaa aidosti eri
+    toimijoita ja sen poistaminen olisi oletus, ei mittaus.
+    """
+    if not name:
+        return None
+    s = _ACTOR_INDEX.sub("", name).strip()
+    s = re.sub(r'\s{2,}', " ", s)
+    return s or None

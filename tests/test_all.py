@@ -392,6 +392,50 @@ def test_basis_distinguishes_undetermined_from_observed_zero():
     assert a.basis != b.basis != c.basis
 
 
+# ── Laatijan talteenotto ja normalisointi ────────────────────────────
+def test_actor_from_title_recovers_missing_actors():
+    """29/2265 lausunnolta puuttui laatija-kenttä; nimi oli nimekkeessä."""
+    from fetchers import actor_from_title
+    cases = {
+        "Erkki Hurtig; lausunto": "Erkki Hurtig",
+        "Saamelaiskäräjät; lausunto": "Saamelaiskäräjät",
+        "Korkein hallinto-oikeus; Ei lausuttavaa": "Korkein hallinto-oikeus",
+        "Ålands Landskapsregering; Utlåtande": "Ålands Landskapsregering",
+        "Matkailu- ja Ravintolapalvelut MaRa ry; täydentävä lausunto":
+            "Matkailu- ja Ravintolapalvelut MaRa ry",
+    }
+    for src, want in cases.items():
+        assert actor_from_title(src) == want, f"{src!r} -> {actor_from_title(src)!r}"
+
+
+def test_actor_from_title_rejects_filenames_and_empty():
+    """Väärä nimi on huonompi kuin merkitty puuttuva."""
+    from fetchers import actor_from_title
+    for bad in ("KL_Lausunto_vesilaki_merituulivoima_120826",
+                "Syken_lausunto_HE_laiksi_vesilainmuuttamisesta",
+                "LVV lausunto TEM VL_muutos merituulivoima",
+                "(nimeke puuttuu)", "", None, "lausunto"):
+        assert actor_from_title(bad) is None, f"{bad!r} hyväksyttiin"
+
+
+def test_normalize_actor_strips_index_suffix_only():
+    """(n) on rakenteellinen tunniste, EI aluejärjestön erotin.
+
+    Todennettu 5.9.2026: yksikään kantanimi ei esiinny kahdessa eri
+    numeroidussa muodossa, ja kantanimi ilman numeroa puuttuu 7/8
+    tapauksessa kokonaan.
+    """
+    from fetchers import normalize_actor
+    assert normalize_actor("Elinkeinoelämän keskusliitto EK (1)") == \
+           "Elinkeinoelämän keskusliitto EK"
+    assert normalize_actor("Varsinais-Suomen ELY-keskus (2)") == \
+           "Varsinais-Suomen ELY-keskus"
+    assert normalize_actor("Suomen Omakotiliitto ry ") == "Suomen Omakotiliitto ry"
+    # oikeushenkilömuotoa EI poisteta — se erottaa aidosti eri toimijoita
+    assert normalize_actor("Fingrid Oyj") == "Fingrid Oyj"
+    assert normalize_actor(None) is None
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0
