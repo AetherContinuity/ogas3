@@ -14,7 +14,12 @@ name: monthly-snapshot
 on:
   schedule:
     - cron: "0 6 1 * *"
-  workflow_dispatch:          # käsinajo, esim. nolla-pisteen kaappaamiseen
+  workflow_dispatch:          # savutesti oletuksena — ks. dry_run
+    inputs:
+      dry_run:
+        description: "Savutesti: hae ja tarkista, älä kirjoita eikä committoi. Pois päältä vain nolla-pisteen tms. tahallista käsinkaappausta varten."
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -26,6 +31,9 @@ concurrency:
 jobs:
   snapshot:
     runs-on: ubuntu-latest
+    env:
+      # Cronilla ei koskaan; käsinajolla inputin mukaan (oletus savutesti).
+      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == true }}
     steps:
       - uses: actions/checkout@v4
 
@@ -40,9 +48,15 @@ jobs:
         run: python3 tests/test_all.py
 
       - name: Kaappaus
-        run: python3 snapshot.py
+        run: |
+          if [ "$DRY_RUN" = "true" ]; then
+            python3 snapshot.py --dry-run
+          else
+            python3 snapshot.py
+          fi
 
       - name: Commit
+        if: env.DRY_RUN != 'true'
         run: |
           MONTH=$(date -u +%Y-%m)
           FILE="snapshots/${MONTH}.json"
@@ -67,7 +81,7 @@ jobs:
           fi
 
       - name: Yhteenveto
-        if: always()
+        if: always() && env.DRY_RUN != 'true'
         run: |
           MONTH=$(date -u +%Y-%m)
           FILE="snapshots/${MONTH}.json"

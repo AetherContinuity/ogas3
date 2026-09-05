@@ -69,7 +69,18 @@ def git_sha() -> str | None:
         return None
 
 
-def run(month: str | None = None) -> Path:
+def _existing_events(month: str) -> int | None:
+    """Kuukauden nykyisen (jo commitoidun) snapshotin tapahtumamäärä, jos tiedosto on olemassa."""
+    p = SNAPSHOT_DIR / f"{month}.json"
+    if not p.exists():
+        return None
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))["totals"]["events"]
+    except Exception:
+        return None
+
+
+def run(month: str | None = None, dry_run: bool = False) -> tuple[Path | None, dict]:
     now = datetime.now(timezone.utc).replace(microsecond=0)
     month = month or f"{now.year:04d}-{now.month:02d}"
 
@@ -132,17 +143,40 @@ def run(month: str | None = None) -> Path:
         "events": raw,
     }
 
+    if dry_run:
+        return None, snap
+
     SNAPSHOT_DIR.mkdir(exist_ok=True)
     out = SNAPSHOT_DIR / f"{month}.json"
     out.write_text(json.dumps(snap, ensure_ascii=False, indent=1), encoding="utf-8")
-    return out
+    return out, snap
 
 
 if __name__ == "__main__":
-    p = run(sys.argv[1] if len(sys.argv) > 1 else None)
-    d = json.loads(p.read_text(encoding="utf-8"))
-    print(f"{p.name}: {d['totals']['events']} tapahtumaa, "
+    import argparse
+
+    ap = argparse.ArgumentParser()
+    ap.add_argument("month", nargs="?", default=None)
+    ap.add_argument("--dry-run", action="store_true",
+                     help="hae ja tarkista, älä kirjoita snapshotia — savutesti käsinajolle")
+    args = ap.parse_args()
+
+    now = datetime.now(timezone.utc)
+    month = args.month or f"{now.year:04d}-{now.month:02d}"
+    prev_n = _existing_events(month)   # luetaan ENNEN mahdollista ylikirjoitusta
+
+    path, d = run(month, dry_run=args.dry_run)
+    label = path.name if path else f"{d['month']}.json (ei kirjoitettu — --dry-run)"
+    print(f"{label}: {d['totals']['events']} tapahtumaa, "
           f"{d['totals']['anomalies']} anomaliaa, lähteet {d['totals']['sources']}")
     for q in d["queries"]:
         if "error" in q:
             print(f"  VIRHE  {q.get('source')} {q.get('valmisteluvaihe') or q.get('tunnus')}: {q['error'][:90]}")
+
+    has_errors = any("error" in q for q in d["queries"])
+    if prev_n is not None and not has_errors:
+        delta = d["totals"]["events"] - prev_n
+        if delta != 0:
+            print(f"  HUOM  tapahtumamäärä muuttunut olemassa olevasta: "
+                  f"{prev_n} -> {d['totals']['events']} (Δ{delta:+d}) — "
+                  "hankkeita tullut tai kadonnut kesken kuukauden, ei rutiinia")
