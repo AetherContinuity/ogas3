@@ -310,6 +310,50 @@ def test_audit_trail_reaches_evidence():
     assert isinstance(format_explain(x), str)
 
 
+# ── fetch_statements: virhe ei saa kadota (korjattu 2026-09-05) ──────
+def test_fetch_statements_does_not_swallow_errors():
+    """Ainoa hakija joka aiemmin nielaisi poikkeuksen.
+
+    Rikkinäinen proxy tuotti tyhjän listan ilman virhettä, ja tulos
+    näytti siltä että lausuntoja ei ole.
+    """
+    import fetchers
+    orig = fetchers._post
+    fetchers._post = lambda *a, **k: (_ for _ in ()).throw(RuntimeError("proxy alhaalla"))
+    try:
+        # A) ilman errors-listaa poikkeus nousee läpi
+        try:
+            fetchers.fetch_statements(["X:1/2026"])
+        except RuntimeError as e:
+            assert "proxy alhaalla" in str(e)
+        else:
+            raise AssertionError("poikkeus nieltiin — tyhjä tulos ilman virhettä")
+
+        # B) errors-listan kanssa virhe kirjataan eikä katoa
+        errs = []
+        out = fetchers.fetch_statements(["X:1/2026", "Y:2/2026"], errors=errs)
+        assert out == [], "rikkinäinen haku tuotti tapahtumia"
+        assert len(errs) == 2, f"virheitä kirjattiin {len(errs)}, odotettiin 2"
+        assert all("proxy alhaalla" in e["error"] for e in errs)
+        assert all(e["tunnus"] for e in errs), "virheestä puuttuu tunnus"
+    finally:
+        fetchers._post = orig
+
+
+def test_fetch_statements_distinguishes_missing_from_empty():
+    """Hanketta ei löytynyt EI ole sama kuin nolla lausuntoa."""
+    import fetchers
+    orig = fetchers._post
+    fetchers._post = lambda *a, **k: {"data": {"result": []}}
+    try:
+        errs = []
+        out = fetchers.fetch_statements(["Z:9/2026"], errors=errs)
+        assert out == []
+        assert len(errs) == 1 and "ei löytynyt" in errs[0]["error"]
+    finally:
+        fetchers._post = orig
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0

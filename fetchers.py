@@ -331,12 +331,28 @@ def statements_from_kohde(row: dict, ret: str) -> list[RawEvent]:
     return out
 
 
-def fetch_statements(tunnukset: list[str]) -> list[RawEvent]:
+def fetch_statements(tunnukset: list[str],
+                     errors: list[dict] | None = None) -> list[RawEvent]:
     """Hakee lausunnot annetuille hanketunnuksille, PERÄKKÄIN.
 
     Hankeikkunan haku palauttaa asiakirjat vain kun kysely kohdistuu
-    yksittäiseen hankkeeseen — listahaussa kenttä on tyhjä. Siksi tämä
-    on N kutsua eikä yksi.
+    yksittäiseen hankkeeseen — listahaussa kenttä on tyhjä eikä se anna
+    virhettä. Siksi tämä on N kutsua eikä yksi.
+
+    VIRHEENKÄSITTELY (korjattu 2026-09-05):
+    Aiempi versio nielaisi poikkeuksen `except Exception: continue`.
+    Jos proxy oli alhaalla tai host estetty, funktio palautti tyhjän
+    listan ILMAN virhettä — ja tulos näytti siltä että lausuntoja ei
+    ole. Se on sama vikaluokka kuin muut tässä järjestelmässä todetut
+    hiljaiset viat, ja se oli ainoa hakija joka teki niin:
+    fetch_hankeikkuna ja fetch_eduskunta päästävät poikkeuksen läpi.
+
+    Kaksi tilaa, kutsujan valittavana:
+      errors is None   poikkeus nousee läpi kuten muissa hakijoissa
+      errors annettu   virhe kirjataan listaan ja haku jatkuu muihin
+                       tunnuksiin — kutsuja (esim. snapshot.py) raportoi
+
+    Kummassakaan tapauksessa virhe ei katoa.
     """
     url = f"{POLICY_PROXY}/?hi=kohteet/haku"
     ret = _now_iso()
@@ -344,9 +360,19 @@ def fetch_statements(tunnukset: list[str]) -> list[RawEvent]:
     for t in tunnukset:
         try:
             j = _post(url, {"tunnus": [t], "size": 1})
-        except Exception:
+        except Exception as exc:
+            if errors is None:
+                raise
+            errors.append({"source": "Hankeikkuna/asiakirjat", "tunnus": t,
+                           "error": str(exc)})
             continue
         rows = j.get("data", {}).get("result", [])
-        if rows:
-            out.extend(statements_from_kohde(rows[0], ret))
+        if not rows:
+            # Hanke ei löytynyt. EI virhe, mutta ei myöskään nolla
+            # lausuntoa — nämä ovat eri asioita ja pysyvät erillään.
+            if errors is not None:
+                errors.append({"source": "Hankeikkuna/asiakirjat", "tunnus": t,
+                               "error": "hanketta ei löytynyt (0 osumaa)"})
+            continue
+        out.extend(statements_from_kohde(rows[0], ret))
     return out
