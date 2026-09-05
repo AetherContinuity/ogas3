@@ -1,0 +1,1219 @@
+{
+ "events": [
+  {
+   "event_id": "E001",
+   "occurred_at": "2026-01-21T09:00:00+03:00",
+   "known_at": "2026-01-21T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Hankeikkuna",
+   "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.77,
+    "policy_proximity": 0.18,
+    "uptake": 0.35
+   },
+   "irreversibility": 0.83,
+   "impact_weight": 0.293,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E001.",
+     "location": "§ 1",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E002",
+   "occurred_at": "2026-01-03T09:00:00+03:00",
+   "known_at": "2026-01-17T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.25,
+    "policy_proximity": 0.17,
+    "uptake": 0.25
+   },
+   "irreversibility": 0.76,
+   "impact_weight": 0.211,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E002.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E003",
+   "occurred_at": "2026-01-08T09:00:00+03:00",
+   "known_at": "2026-02-28T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Finlex",
+   "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+   "type": "S",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.61,
+    "policy_proximity": 0.15,
+    "uptake": 0.35
+   },
+   "irreversibility": 0.14,
+   "impact_weight": 0.299,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E003.",
+     "location": "§ 1",
+     "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E004",
+   "occurred_at": "2026-02-14T09:00:00+03:00",
+   "known_at": "2026-02-14T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Finlex",
+   "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.28,
+    "policy_proximity": 0.35,
+    "uptake": 0.49
+   },
+   "irreversibility": 0.24,
+   "impact_weight": 0.623,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E004.",
+     "location": "§ 1",
+     "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E005",
+   "occurred_at": "2026-02-21T09:00:00+03:00",
+   "known_at": "2026-02-21T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.27,
+    "policy_proximity": 0.67,
+    "uptake": 0.34
+   },
+   "irreversibility": 0.6,
+   "impact_weight": 0.547,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E005.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E006",
+   "occurred_at": "2026-02-18T09:00:00+03:00",
+   "known_at": "2026-02-28T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.53,
+    "policy_proximity": 0.84,
+    "uptake": 0.22
+   },
+   "irreversibility": 0.3,
+   "impact_weight": 0.262,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E006.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E007",
+   "occurred_at": "2026-02-25T09:00:00+03:00",
+   "known_at": "2026-02-25T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Hankeikkuna",
+   "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+   "type": "S",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.6,
+    "policy_proximity": 0.52,
+    "uptake": 0.53
+   },
+   "irreversibility": 0.68,
+   "impact_weight": 0.359,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E007.",
+     "location": "§ 1",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E008",
+   "occurred_at": "2026-03-14T09:00:00+03:00",
+   "known_at": "2026-03-14T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.31,
+    "policy_proximity": 0.49,
+    "uptake": 0.02
+   },
+   "irreversibility": 0.63,
+   "impact_weight": 0.788,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E008.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E009",
+   "occurred_at": "2026-03-19T09:00:00+03:00",
+   "known_at": "2026-03-22T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "S",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.69,
+    "policy_proximity": 0.58,
+    "uptake": 0.35
+   },
+   "irreversibility": 0.46,
+   "impact_weight": 0.856,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E009.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E010",
+   "occurred_at": "2026-03-09T09:00:00+03:00",
+   "known_at": "2026-03-23T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Finlex",
+   "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+   "type": "S",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.66,
+    "policy_proximity": 0.15,
+    "uptake": 0.42
+   },
+   "irreversibility": 0.62,
+   "impact_weight": 0.994,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E010.",
+     "location": "§ 1",
+     "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E011",
+   "occurred_at": "2026-04-13T09:00:00+03:00",
+   "known_at": "2026-05-28T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.22,
+    "policy_proximity": 0.47,
+    "uptake": 0.1
+   },
+   "irreversibility": 0.19,
+   "impact_weight": 0.153,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E011.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E012",
+   "occurred_at": "2026-04-25T09:00:00+03:00",
+   "known_at": "2026-04-28T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Hankeikkuna",
+   "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.72,
+    "policy_proximity": 0.42,
+    "uptake": 0.55
+   },
+   "irreversibility": 0.5,
+   "impact_weight": 0.25,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E012.",
+     "location": "§ 1",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E013",
+   "occurred_at": "2026-04-13T09:00:00+03:00",
+   "known_at": "2026-05-28T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "O",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.82,
+    "policy_proximity": 0.76,
+    "uptake": 0.52
+   },
+   "irreversibility": 0.32,
+   "impact_weight": 0.474,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E013.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E014",
+   "occurred_at": "2026-04-12T09:00:00+03:00",
+   "known_at": "2026-05-28T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "S",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.87,
+    "policy_proximity": 0.22,
+    "uptake": 0.11
+   },
+   "irreversibility": 0.29,
+   "impact_weight": 0.31,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E014.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E015",
+   "occurred_at": "2026-04-16T09:00:00+03:00",
+   "known_at": "2026-05-28T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Hankeikkuna",
+   "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+   "type": "S",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.38,
+    "policy_proximity": 0.1,
+    "uptake": 0.25
+   },
+   "irreversibility": 0.4,
+   "impact_weight": 0.61,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E015.",
+     "location": "§ 1",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E016",
+   "occurred_at": "2026-05-20T09:00:00+03:00",
+   "known_at": "2026-06-28T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Finlex",
+   "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.72,
+    "policy_proximity": 0.47,
+    "uptake": 0.52
+   },
+   "irreversibility": 0.86,
+   "impact_weight": 0.713,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E016.",
+     "location": "§ 1",
+     "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E017",
+   "occurred_at": "2026-05-18T09:00:00+03:00",
+   "known_at": "2026-05-28T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "O",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.48,
+    "policy_proximity": 0.18,
+    "uptake": 0.38
+   },
+   "irreversibility": 0.15,
+   "impact_weight": null,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E017.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E018",
+   "occurred_at": "2026-05-03T09:00:00+03:00",
+   "known_at": "2026-05-03T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "O",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.31,
+    "policy_proximity": 0.37,
+    "uptake": 0.03
+   },
+   "irreversibility": 0.1,
+   "impact_weight": 0.236,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E018.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E019",
+   "occurred_at": "2026-05-04T09:00:00+03:00",
+   "known_at": "2026-05-07T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Finlex",
+   "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+   "type": "S",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.22,
+    "policy_proximity": 0.8,
+    "uptake": 0.37
+   },
+   "irreversibility": 0.22,
+   "impact_weight": 0.327,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E019.",
+     "location": "§ 1",
+     "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E020",
+   "occurred_at": "2026-05-12T09:00:00+03:00",
+   "known_at": "2026-06-27T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "S",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.53,
+    "policy_proximity": 0.19,
+    "uptake": 0.29
+   },
+   "irreversibility": 0.88,
+   "impact_weight": 0.532,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E020.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E021",
+   "occurred_at": "2026-06-04T09:00:00+03:00",
+   "known_at": "2026-07-24T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.72,
+    "policy_proximity": 0.48,
+    "uptake": 0.42
+   },
+   "irreversibility": 0.51,
+   "impact_weight": 0.285,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E021.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E022",
+   "occurred_at": "2026-06-17T09:00:00+03:00",
+   "known_at": "2026-06-20T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Hankeikkuna",
+   "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.68,
+    "policy_proximity": 0.83,
+    "uptake": 0.45
+   },
+   "irreversibility": 0.34,
+   "impact_weight": 0.679,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E022.",
+     "location": "§ 1",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E023",
+   "occurred_at": "2026-07-17T09:00:00+03:00",
+   "known_at": "2026-07-20T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Hankeikkuna",
+   "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.45,
+    "policy_proximity": 0.28,
+    "uptake": 0.32
+   },
+   "irreversibility": 0.5,
+   "impact_weight": 0.673,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E023.",
+     "location": "§ 1",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E024",
+   "occurred_at": "2026-07-20T09:00:00+03:00",
+   "known_at": "2026-07-20T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Hankeikkuna",
+   "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+   "type": "O",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.77,
+    "policy_proximity": 0.69,
+    "uptake": 0.14
+   },
+   "irreversibility": 0.51,
+   "impact_weight": 0.42,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E024.",
+     "location": "§ 1",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E025",
+   "occurred_at": "2026-07-01T09:00:00+03:00",
+   "known_at": "2026-07-01T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "O",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.53,
+    "policy_proximity": 0.25,
+    "uptake": 0.36
+   },
+   "irreversibility": 0.38,
+   "impact_weight": 0.828,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E025.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E026",
+   "occurred_at": "2026-07-24T09:00:00+03:00",
+   "known_at": "2026-07-27T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "S",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.26,
+    "policy_proximity": 0.18,
+    "uptake": 0.28
+   },
+   "irreversibility": 0.37,
+   "impact_weight": 0.534,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E026.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E027",
+   "occurred_at": "2026-08-21T09:00:00+03:00",
+   "known_at": "2026-08-24T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Finlex",
+   "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.26,
+    "policy_proximity": 0.63,
+    "uptake": 0.55
+   },
+   "irreversibility": 0.73,
+   "impact_weight": 0.775,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E027.",
+     "location": "§ 1",
+     "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E028",
+   "occurred_at": "2026-08-16T09:00:00+03:00",
+   "known_at": "2026-08-16T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.75,
+    "policy_proximity": 0.37,
+    "uptake": 0.48
+   },
+   "irreversibility": 0.88,
+   "impact_weight": 0.456,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E028.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E029",
+   "occurred_at": "2026-08-13T09:00:00+03:00",
+   "known_at": "2026-09-28T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Hankeikkuna",
+   "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.71,
+    "policy_proximity": 0.24,
+    "uptake": 0.08
+   },
+   "irreversibility": 0.22,
+   "impact_weight": 0.914,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E029.",
+     "location": "§ 1",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E030",
+   "occurred_at": "2026-08-26T09:00:00+03:00",
+   "known_at": "2026-09-28T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Hankeikkuna",
+   "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+   "type": "S",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.63,
+    "policy_proximity": 0.58,
+    "uptake": 0.28
+   },
+   "irreversibility": 0.85,
+   "impact_weight": 0.24,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E030.",
+     "location": "§ 1",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E031",
+   "occurred_at": "2026-09-01T09:00:00+03:00",
+   "known_at": "2026-10-21T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Finlex",
+   "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.27,
+    "policy_proximity": 0.7,
+    "uptake": 0.08
+   },
+   "irreversibility": 0.89,
+   "impact_weight": 0.275,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E031.",
+     "location": "§ 1",
+     "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E032",
+   "occurred_at": "2026-09-07T09:00:00+03:00",
+   "known_at": "2026-09-07T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.35,
+    "policy_proximity": 0.5,
+    "uptake": 0.46
+   },
+   "irreversibility": 0.36,
+   "impact_weight": 0.59,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E032.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E033",
+   "occurred_at": "2026-09-27T09:00:00+03:00",
+   "known_at": "2026-09-27T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Hankeikkuna",
+   "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.84,
+    "policy_proximity": 0.38,
+    "uptake": 0.27
+   },
+   "irreversibility": 0.57,
+   "impact_weight": 0.914,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E033.",
+     "location": "§ 1",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E034",
+   "occurred_at": "2026-10-18T09:00:00+03:00",
+   "known_at": "2026-10-18T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Finlex",
+   "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.56,
+    "policy_proximity": 0.8,
+    "uptake": 0.47
+   },
+   "irreversibility": 0.59,
+   "impact_weight": null,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E034.",
+     "location": "§ 1",
+     "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E035",
+   "occurred_at": "2026-10-25T09:00:00+03:00",
+   "known_at": "2026-10-25T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Hankeikkuna",
+   "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.3,
+    "policy_proximity": 0.6,
+    "uptake": 0.07
+   },
+   "irreversibility": 0.15,
+   "impact_weight": 0.714,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E035.",
+     "location": "§ 1",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E036",
+   "occurred_at": "2026-10-17T09:00:00+03:00",
+   "known_at": "2026-11-28T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "O",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.75,
+    "policy_proximity": 0.18,
+    "uptake": 0.34
+   },
+   "irreversibility": 0.3,
+   "impact_weight": 0.349,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E036.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E037",
+   "occurred_at": "2026-10-25T09:00:00+03:00",
+   "known_at": "2026-10-25T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Finlex",
+   "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+   "type": "O",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.52,
+    "policy_proximity": 0.12,
+    "uptake": 0.54
+   },
+   "irreversibility": 0.15,
+   "impact_weight": 0.393,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E037.",
+     "location": "§ 1",
+     "source_url": "https://opendata.finlex.fi/finlex/avoindata/v1",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E038",
+   "occurred_at": "2026-11-07T09:00:00+03:00",
+   "known_at": "2026-12-27T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.52,
+    "policy_proximity": 0.53,
+    "uptake": 0.29
+   },
+   "irreversibility": 0.85,
+   "impact_weight": 0.729,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E038.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E039",
+   "occurred_at": "2026-11-09T09:00:00+03:00",
+   "known_at": "2026-12-24T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Hankeikkuna",
+   "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.79,
+    "policy_proximity": 0.21,
+    "uptake": 0.07
+   },
+   "irreversibility": 0.45,
+   "impact_weight": 0.165,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E039.",
+     "location": "§ 1",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E040",
+   "occurred_at": "2026-11-08T09:00:00+03:00",
+   "known_at": "2026-11-22T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Hankeikkuna",
+   "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.35,
+    "policy_proximity": 0.34,
+    "uptake": 0.07
+   },
+   "irreversibility": 0.72,
+   "impact_weight": 0.946,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E040.",
+     "location": "§ 1",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E041",
+   "occurred_at": "2026-11-21T09:00:00+03:00",
+   "known_at": "2026-12-28T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "O",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.3,
+    "policy_proximity": 0.81,
+    "uptake": 0.58
+   },
+   "irreversibility": 0.28,
+   "impact_weight": 0.957,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E041.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E042",
+   "occurred_at": "2026-11-13T09:00:00+03:00",
+   "known_at": "2026-11-27T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Hankeikkuna",
+   "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+   "type": "O",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.89,
+    "policy_proximity": 0.77,
+    "uptake": 0.1
+   },
+   "irreversibility": 0.45,
+   "impact_weight": 0.564,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E042.",
+     "location": "§ 1",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E043",
+   "occurred_at": "2026-11-11T09:00:00+03:00",
+   "known_at": "2026-11-25T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Hankeikkuna",
+   "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+   "type": "S",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.45,
+    "policy_proximity": 0.17,
+    "uptake": 0.22
+   },
+   "irreversibility": 0.37,
+   "impact_weight": 0.513,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E043.",
+     "location": "§ 1",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E044",
+   "occurred_at": "2026-11-23T09:00:00+03:00",
+   "known_at": "2026-11-23T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Eduskunta",
+   "source_url": "https://api.eduskunta.fi/api/v1/search",
+   "type": "S",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.43,
+    "policy_proximity": 0.6,
+    "uptake": 0.31
+   },
+   "irreversibility": 0.15,
+   "impact_weight": 0.987,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E044.",
+     "location": "§ 1",
+     "source_url": "https://api.eduskunta.fi/api/v1/search",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  },
+  {
+   "event_id": "E045",
+   "occurred_at": "2026-12-09T09:00:00+03:00",
+   "known_at": "2026-12-12T09:00:00+03:00",
+   "retrieved_at": "2027-01-15T09:00:00+02:00",
+   "source": "Hankeikkuna",
+   "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+   "type": "D",
+   "subtype": null,
+   "parameters": {},
+   "llm_classification": {
+    "intensity": null,
+    "targeting": 0.83,
+    "policy_proximity": 0.25,
+    "uptake": 0.45
+   },
+   "irreversibility": 0.76,
+   "impact_weight": 0.865,
+   "evidence": [
+    {
+     "quote": "Synteettinen todiste tapahtumalle E045.",
+     "location": "§ 1",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2027-01-15T09:00:00+02:00"
+    }
+   ]
+  }
+ ]
+}

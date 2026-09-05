@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+
+# Kehitysajon välituloste. Varsinaiset kaappaukset ovat snapshots/
+# ja ne KUULUVAT versionhallintaan — ne ovat sarjan ainoa muisti.
+fetched_raw.json

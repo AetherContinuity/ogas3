@@ -1,0 +1,90 @@
+name: monthly-snapshot
+
+# Kuukausittainen tilannekaappaus. Ajetaan kuukauden 1. päivä klo 06 UTC.
+#
+# MIKSI CI EIKÄ PAIKALLINEN AJO
+# PRE-sarja väittää mittaavansa sitä, mitä olisi voitu tietää kyseisenä
+# kuukautena. Se väite on todennettavissa vain jos ajohetki on kolmannen
+# osapuolen kirjaama. Paikallisessa ajossa retrieved_at on ajajan koneen
+# kello; täällä se on ajolokissa yhdessä commit-SHA:n kanssa.
+#
+# Sivutuote: commitoitu snapshots/-hakemisto ON aikasarja. Erillistä
+# tietokantaa ei tarvita.
+
+on:
+  schedule:
+    - cron: "0 6 1 * *"
+  workflow_dispatch:          # käsinajo, esim. nolla-pisteen kaappaamiseen
+
+permissions:
+  contents: write
+
+concurrency:
+  group: monthly-snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Riippuvuuksia ei ole. Moottori käyttää pelkkää vakiokirjastoa —
+      # tämä on tarkoituksellista: jokainen riippuvuus on ylläpidettävä
+      # ja jokainen versionosto on mahdollinen hiljainen muutos.
+      - name: Testit
+        run: python3 tests/test_all.py
+
+      - name: Kaappaus
+        run: python3 snapshot.py
+
+      - name: Commit
+        run: |
+          MONTH=$(date -u +%Y-%m)
+          FILE="snapshots/${MONTH}.json"
+          if [ ! -f "$FILE" ]; then
+            echo "::error::$FILE puuttuu — kaappaus ei tuottanut tiedostoa"
+            exit 1
+          fi
+          N=$(python3 -c "import json;print(json.load(open('$FILE'))['totals']['events'])")
+          A=$(python3 -c "import json;print(json.load(open('$FILE'))['totals']['anomalies'])")
+          if [ "$N" -eq 0 ]; then
+            echo "::error::kaappaus tuotti 0 tapahtumaa — ylävirta todennäköisesti alhaalla"
+            exit 1
+          fi
+          git config user.name  "ogas3-snapshot"
+          git config user.email "actions@users.noreply.github.com"
+          git add "$FILE"
+          if git diff --cached --quiet; then
+            echo "ei muutoksia"
+          else
+            git commit -m "snapshot ${MONTH}: ${N} tapahtumaa, ${A} anomaliaa"
+            git push
+          fi
+
+      - name: Yhteenveto
+        if: always()
+        run: |
+          MONTH=$(date -u +%Y-%m)
+          FILE="snapshots/${MONTH}.json"
+          [ -f "$FILE" ] || exit 0
+          {
+            echo "### OGAS3 — kaappaus ${MONTH}"
+            python3 - "$FILE" <<'EOF'
+          import json, sys
+          d = json.load(open(sys.argv[1], encoding="utf-8"))
+          print(f"- tapahtumia: **{d['totals']['events']}**")
+          print(f"- anomalioita: **{d['totals']['anomalies']}**")
+          print(f"- lähteet: {', '.join(d['totals']['sources'])}")
+          print(f"- luokitus: `{d['status']['classification']}`")
+          errs = [q for q in d["queries"] if "error" in q]
+          if errs:
+              print(f"\n**Epäonnistuneet kyselyt ({len(errs)}):**\n")
+              for q in errs[:10]:
+                  print(f"- {q.get('source')} {q.get('valmisteluvaihe') or q.get('tunnus')}: {q['error'][:120]}")
+          EOF
+          } >> "$GITHUB_STEP_SUMMARY"
