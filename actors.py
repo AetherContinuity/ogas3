@@ -49,6 +49,43 @@ EXCEPTIONS: dict[str, tuple[str, str]] = {
         "neuvotteluvelvoite — sen lausunnon asema on eri kuin "
         "toimialaliiton. policy_proximity voi olla yli 0.40 ja se on "
         "tarkistettava tapauskohtaisesti, EI sääntönä."),
+    # ── Valtion virastot, joiden YDINTEHTÄVÄ ei ole tutkimus ─────────
+    # Sama käsittely kuin Fingrid sai: päätös funktion perusteella,
+    # ei rekisteristä. Valtiokonttorin kirjanpitoyksikköluettelo (62
+    # yksikköä, haettu 5.9.2026) todistaa että nämä ovat valtion
+    # virastoja — mutta se EI erottele tutkimuslaitosta hallinto-
+    # virastosta, koska kirjanpito ei jaottele toiminnan luonteen
+    # mukaan. SYKE ja Verohallinto ovat molemmat kirjanpitoyksiköitä.
+    # Siksi rajan vetää tehtävä, ei rekisteri.
+    "Tilastokeskus": ("viranomainen",
+        "Ydintehtävä on lakisääteinen tilastotuotanto ja tiedonkeruu, "
+        "ei tutkimus. Tilastoviranomainen."),
+    "Innovaatiorahoituskeskus Business Finland": ("viranomainen",
+        "Ydintehtävä on rahoitus ja viennin edistäminen, ei tutkimus."),
+    "Maanmittauslaitos": ("viranomainen",
+        "Kiinteistörekisteri ja maanmittaustoimitukset. Rekisteri- ja "
+        "toimitusviranomainen."),
+    "Säteilyturvakeskus": ("viranomainen",
+        "Valvontaviranomainen. Tutkimustoiminta on valvontaa tukevaa, "
+        "ei ydintehtävä."),
+    "Huoltovarmuuskeskus": ("viranomainen",
+        "Varmuusvarastointi ja huoltovarmuuden turvaaminen. Ei "
+        "kirjanpitoyksikköluettelossa (rahastotalous), mutta tehtävä "
+        "on yksikäsitteisesti viranomaistoimintaa."),
+    "Rajavartiolaitos": ("viranomainen",
+        "Rajavalvonta ja meripelastus. Valvonta- ja "
+        "turvallisuusviranomainen, ei tutkimuslaitos."),
+    "Oikeusrekisterikeskus": ("viranomainen",
+        "Oikeushallinnon rekisterien pito ja seuraamusten "
+        "täytäntöönpano. Rekisteriviranomainen."),
+    "Kansaneläkelaitos (Kela)": ("viranomainen",
+        "Etuuksien toimeenpano. Eduskunnan alainen itsenäinen "
+        "laitos, ei valtion kirjanpitoyksikkö — mutta tehtävä on "
+        "yksikäsitteinen."),
+    "Onnettomuustutkintakeskus": ("viranomainen",
+        "Lakisääteinen tutkintaviranomainen. 'Tutkinta' ei ole "
+        "tieteellistä tutkimusta vaan viranomaismenettely."),
+
     "Fingrid Oyj": (
         "toimija",
         "Kantaverkkoyhtiö: siirto on sen alaa, tuotantoon se ei "
@@ -158,6 +195,19 @@ _RULES: list[tuple[re.Pattern, str, float]] = [
     # yksikäsitteinen rooli, eikä niitä pidä merkitä monitulkintaisiksi.
     # Järjestysvirhe löytyi mittaamalla: viisi ELY-keskusta sai 0.5.
     (re.compile(r'\b(ely-keskus|aluehallintovirasto|avi)\b', re.I), "viranomainen", 0.9),
+    # ELY-keskus AUKI KIRJOITETTUNA — 11 nimeä jäi 0.5:een koska sääntö
+    # tunsi vain lyhenteen. `elinvoimakeskus` on vuoden 2026 uudistuksen
+    # uusi nimi samalle organisaatiolle (ELY/AVI yhdistettiin), ja vanhat
+    # nimet ovat aineistossa vaikka eivät enää rekisterissä.
+    (re.compile(r'elinkeino-,\s*liikenne-\s*ja\s*ympäristökeskus|elinvoimakeskus\b', re.I),
+     "viranomainen", 0.9),
+    # YLIOPISTON LAITOS ENNEN yleistä laitos-sääntöä: "Itä-Suomen
+    # yliopisto, oikeustieteiden laitos" luokittui viranomaiseksi,
+    # koska `laitos` osui ensin. Yliopiston yksikkö on tutkija.
+    (re.compile(r'\b(yliopisto|korkeakoulu)\b', re.I), "tutkija", 0.9),
+    # KUNNALLINEN LIIKELAITOS: "Oulun Vesi -liikelaitos" luokittui
+    # valtion viranomaiseksi. Liikelaitos on kunnan organisaatiomuoto.
+    (re.compile(r'liikelaitos\b', re.I), "kunta", 0.9),
 
     # MONITULKINTAINEN: `laitos` ja `keskus` osuvat sekä hallinto-
     # virastoihin (Energiavirasto, Verohallinto) että VALTION
@@ -199,11 +249,23 @@ _RULES: list[tuple[re.Pattern, str, float]] = [
 #                         luokittelisi ne etujärjestöiksi — siksi
 #                         `liitto` EI ole säännöissä lainkaan.
 #
-#   valtion tutkimus-     SYKE 49, Luke 8, GTK, Ilmatieteen laitos,
-#   laitokset             THL, VATT. Sekä `viranomainen` että
-#                         `tutkija`, ja ero on aito. `keskus\b`-sääntö
-#                         osuu näihin viranomaisena — se on tietoinen
-#                         valinta jonka voi kumota poikkeuksella.
+#   valtion tutkimus-     SYKE 49, Luke 8, Ilmatieteen laitos 7,
+#   laitokset             GTK 7, THL 6, VATT 4. Sekä `viranomainen`
+#                         että `tutkija`, ja ero on AITO.
+#                         `laitos|keskus`-sääntö antaa `viranomainen`
+#                         luottamuksella 0.5 — se on OSA vastausta.
+#                         Yksiarvoinen actor_role ei riitä; ratkaisu
+#                         vaatii joko toisen kentän tai listan.
+#                         PÄÄTÖS AUKI.
+#
+#                         RAJATTU 5.9.2026: alunperin 32 nimeä sai
+#                         0.5:n. Yhdeksän nimettiin poikkeuksina
+#                         (tehtävä ei ole tutkimus) ja 15 ratkesi
+#                         kolmella sääntökorjauksella. Aidosti
+#                         kaksoisluonteisia on kuusi.
+#
+#   hyvinvointialueet     Uusi hallinnon taso 2023 alkaen. Ei kunta,
+#                         ei valtion virasto. Ei roolia ROE:ssa.
 #
 #   yksityishenkilöt      430 laatijaa 752:sta esiintyy kerran.
 #                         Henkilönimeä EI voi tunnistaa säännöllä:

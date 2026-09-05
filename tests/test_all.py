@@ -548,6 +548,63 @@ def test_ely_rule_precedes_generic_keskus_rule():
         assert actor_role(name)[2] == 0.9, f"{name!r} merkittiin monitulkintaiseksi"
 
 
+def test_named_state_agencies_resolve_to_09():
+    """Yhdeksän virastoa nimetty poikkeuksina: tehtävä ei ole tutkimus.
+
+    Sama käsittely kuin Fingrid sai — päätös funktion perusteella, ei
+    rekisteristä. Valtiokonttorin kirjanpitoyksikköluettelo todistaa
+    että nämä ovat valtion virastoja, mutta EI erottele tutkimus-
+    laitosta hallintovirastosta.
+    """
+    from actors import actor_role
+    for name in ("Tilastokeskus", "Maanmittauslaitos", "Säteilyturvakeskus",
+                 "Huoltovarmuuskeskus", "Rajavartiolaitos",
+                 "Innovaatiorahoituskeskus Business Finland",
+                 "Oikeusrekisterikeskus", "Kansaneläkelaitos (Kela)",
+                 "Onnettomuustutkintakeskus"):
+        role, src, conf, reason = actor_role(name)
+        assert (role, src, conf) == ("viranomainen", "poikkeus", 0.9), \
+            f"{name!r} -> {(role, src, conf)}"
+        assert reason and len(reason) > 25
+
+
+def test_ely_written_out_and_2026_successor():
+    """11 nimeä jäi 0.5:een: sääntö tunsi vain lyhenteen ELY-keskus."""
+    from actors import actor_role
+    for name in ("Uudenmaan elinkeino-, liikenne- ja ympäristökeskus",
+                 "Etelä-Pohjanmaan elinkeino-, liikenne- ja ympäristökeskus",
+                 "Lounais-Suomen elinvoimakeskus",      # 2026-uudistuksen nimi
+                 "Sisä-Suomen elinvoimakeskus"):
+        role, src, conf, _ = actor_role(name)
+        assert (role, conf) == ("viranomainen", 0.9), f"{name!r} -> {(role, conf)}"
+
+
+def test_university_department_is_not_state_agency():
+    """`laitos` osui ennen `yliopisto`-sääntöä."""
+    from actors import actor_role
+    role, _, conf, _ = actor_role("Itä-Suomen yliopisto, oikeustieteiden laitos")
+    assert (role, conf) == ("tutkija", 0.9)
+
+
+def test_municipal_utility_is_kunta_not_state():
+    """`Oulun Vesi -liikelaitos` luokittui valtion viranomaiseksi."""
+    from actors import actor_role
+    role, _, conf, _ = actor_role("Oulun Vesi -liikelaitos")
+    assert (role, conf) == ("kunta", 0.9)
+
+
+def test_genuinely_dual_institutes_stay_ambiguous():
+    """Kuusi tutkimuslaitosta jää 0.5:een — päätös on auki, ei arvattu."""
+    from actors import actor_role
+    for name in ("Suomen ympäristökeskus (Syke)", "Luonnonvarakeskus (Luke)",
+                 "Ilmatieteen laitos", "Geologian tutkimuskeskus",
+                 "Terveyden ja hyvinvoinnin laitos THL",
+                 "Valtion taloudellinen tutkimuskeskus VATT"):
+        role, src, conf, reason = actor_role(name)
+        assert conf == 0.5, f"{name!r} sai luottamuksen {conf} — päätöstä ei ole tehty"
+        assert "MONITULKINTAINEN" in reason
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0
