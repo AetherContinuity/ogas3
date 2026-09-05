@@ -1,0 +1,9 @@
+[project]
+name = "ogas3"
+version = "0.1.0"
+description = "RRI-moottori: tapahtumien kaappaus, aggregointi ja auditointi. RRI-kaava tarkoituksella lukitsematta."
+requires-python = ">=3.11"
+dependencies = []          # vain vakiokirjasto — ks. workflow'n perustelu
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
