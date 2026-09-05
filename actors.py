@@ -31,6 +31,94 @@ ROLES = ("minister", "kansanedustaja", "puolue", "hallitus", "etujarjesto",
          "tutkija", "viranomainen", "kunta", "toimija", "yksityishenkilo")
 
 
+# ─────────────────────────────────────────────────────────────────────
+# RAKENTEELLINEN RAJOITE — paikannettu 5.9.2026
+#
+#   actor_role kuvaa TOIMIJAA, ei TEKOA. Se ei erota asiantuntija-
+#   lausuntoa edunvalvonnasta, ja ne saavat saman L:n RRI:ssä.
+#
+# Miten tämä paikannettiin:
+#
+# Kolme nimettyä poikkeusta (Kuntaliitto, Saamelaiskäräjät, Fingrid)
+# perusteltiin INTRESSILLÄ oikeudellisen muodon sijaan. Se toimi
+# näissä kolmessa. Sitten sitä yritettiin soveltaa hyvinvointialueeseen
+# ja päättely romahti kahdessa askeleessa:
+#
+#   1. "Hyvinvointialue toimeenpanee eikä aja omaa etuaan"
+#      -> väärin: yleiskatteellinen rahoitus ON intressi, ja
+#         voimakkaampi kuin kunnalla, koska verotusoikeutta ei ole.
+#
+#   2. "Kunnalla on verotusoikeus, siksi se on eri asemassa"
+#      -> väärin: kunnilla on MYÖS valtionosuudet. Ero on asteen
+#         ero, ei laadun.
+#
+# Yleistys: ministeriöillä on budjettikehys, virastoilla toiminta-
+# menomomentti, yliopistoilla perusrahoitus. **Jokaisella julkisella
+# toimijalla on rahoitusintressi.** "Intressi" ei siis erottele
+# mitään — se erotti Kuntaliiton vain siksi, että Kuntaliitto on
+# olemassa PELKÄSTÄÄN edunvalvontaa varten. Kaikilla muilla on
+# intressi JA tehtävä.
+#
+# SEURAUS ROE:LLE
+#
+# Ratkaiseva kysymys ei ole kuka lausuu vaan MITÄ LAUSUNTO KOSKEE.
+# Pelastuslaitoksen lausunto tuulivoimahankkeen paloturvallisuudesta
+# on viranomaistoimintaa. Saman toimijan lausunto omasta
+# rahoituksestaan olisi edunvalvontaa. Sama koskee ministeriöitä:
+# Valtiovarainministeriö antoi 33 lausuntoa, ja osa niistä on
+# toimialaviranomaisen lausuntoja, osa VM:n oman budjetti-intressin
+# puolustamista.
+#
+# ROE:ssa teon luonnetta mittaavat `targeting` (kohdistuvuus) ja
+# `policy_proximity` (etäisyys päätöksentekoon). Kumpikaan EI mittaa
+# ajoiko toimija omaa etuaan. RRI ei siis nykyisellään erota
+# asiantuntijalausuntoa edunvalvonnasta.
+#
+# Tämä on RAJOITE, ei bugi. Se on kirjattava ennen kuin sarjasta
+# sanotaan mitään vaikuttamisesta.
+#
+# TARKENNUS 5.9.2026 — miksi korjaus EI ole toimijakohtainen kenttä
+#
+# Ensin ajateltiin, että korjaus olisi uusi ulottuvuus `self_interest`
+# toimijataulukossa. Se ei toimi, ja syy selvisi kun tuomioistuimet
+# käytiin läpi.
+#
+# Tuomioistuimella on toimintaedellytysintressi lausunnoissaan, ja se
+# ulottuu rahoitusta pidemmälle. Menettelysäännös joka keventää
+# prosessia — esimerkiksi tunnustuksen vaikutus tuomioon — vähentää
+# tuomioistuimen omaa työtaakkaa. Se ei ole raha vaan toimintaedellytys,
+# ja se on juuri se mitä actor_role ei erota. Korkein hallinto-oikeus
+# antoi 10 lausuntoa energiahankkeisiin, ja valitusoikeus,
+# muutoksenhaku ja käsittelyajat ovat kohtia joissa tuomioistuimen oma
+# intressi ja lainsäädännön sisältö kytkeytyvät.
+#
+# Kun läpi käytiin Fingrid, Kuntaliitto, Saamelaiskäräjät,
+# hyvinvointialue, kunta, ministeriö, yliopisto ja tuomioistuin,
+# JOKAISELLA oli toimintaedellytysintressi. Yhtään lausunnonantajaa
+# ilman sellaista ei löytynyt.
+#
+# Siitä seuraa kaksi asiaa:
+#
+#   1. `self_interest` ei ole kaksiarvoinen lippu vaan jatkumo.
+#   2. Se ei ole TOIMIJAN ominaisuus vaan TOIMIJAN JA ASIAN VÄLINEN
+#      SUHDE. Sama tuomioistuin on asianosainen menettelysäännöksessä
+#      ja ulkopuolinen tuulivoiman sijoituskysymyksessä.
+#
+# Kohta 2 sulkee toimijakohtaisen tien lopullisesti: mikään
+# actors.py:n taulukko ei voi kantaa tätä, koska arvo vaihtuu
+# tapahtumittain saman toimijan sisällä.
+#
+# Jos se joskus mitataan, se on TAPAHTUMAKOHTAINEN luokitus samalla
+# tavalla kuin `targeting` ja `policy_proximity` — eli ROE:n
+# asteikko ja Extractorin työ, ei sääntötaulukko. GATE-tason päätös.
+#
+# HUOM tuomioistuimista: ne ovat samaan aikaan PUUTTUVA rooli
+# (vallan kolmijako — ei toimeenpane vaan ratkaisee, joten
+# `viranomainen` on perustuslaillisesti väärin) JA esimerkki tästä
+# rajoitteesta. Ne eivät ratkea samalla korjauksella.
+# ─────────────────────────────────────────────────────────────────────
+
+
 # ── Nimetyt poikkeukset ──────────────────────────────────────────────
 # Peruste on INTRESSI, ei oikeudellinen muoto. Sama periaate kuin
 # muualla: mitataan mitä tapahtuu, ei mitä paperissa lukee.
@@ -239,9 +327,26 @@ _RULES: list[tuple[re.Pattern, str, float]] = [
 #
 #   tuomioistuimet        Korkein hallinto-oikeus 10, Helsingin ha-o 9,
 #                         Markkinaoikeus, Vaasan/Turun ha-o.
-#                         ROE:ssa ei ole roolia. `viranomainen` on
-#                         lähin mutta väärä: tuomioistuin ei ole
-#                         hallintoviranomainen.
+#                         PUUTTUVA ROOLI, ei ambiguus: ROE:ssa ei ole
+#                         tuomioistuinroolia lainkaan. `viranomainen`
+#                         olisi perustuslaillisesti väärin — vallan
+#                         kolmijako. Tuomioistuin ei toimeenpane vaan
+#                         ratkaisee. Vaatii uuden roolin, ei valintaa
+#                         olemassa olevien väliltä.
+#
+# KOLME ERI LAJIA AUKI — nämä eivät ratkea samalla korjauksella:
+#
+#   AMBIGUUS     kaksi roolia pätee, valinta tai kaksiarvoisuus
+#                6 tutkimuslaitosta
+#
+#   PUUTTUVA     ei roolia lainkaan, vaatii lisäyksen ROLES-listalle
+#                tuomioistuin
+#                yksityishenkilo (lisätty listalle, mutta sääntö ei
+#                tuota sitä — vaatii Extractorin)
+#
+#   PÄÄTETTÄVÄ   olemassa oleva rooli kattaisi, päätöstä ei ole tehty
+#                maakuntaliitot (kunta?)
+#                hyvinvointialueet (viranomainen?)
 #
 #   maakuntaliitot        Uudenmaan liitto 10, Satakuntaliitto 8.
 #                         Kuntien omistamia lakisääteisiä elimiä.
@@ -264,8 +369,23 @@ _RULES: list[tuple[re.Pattern, str, float]] = [
 #                         kolmella sääntökorjauksella. Aidosti
 #                         kaksoisluonteisia on kuusi.
 #
-#   hyvinvointialueet     Uusi hallinnon taso 2023 alkaen. Ei kunta,
-#                         ei valtion virasto. Ei roolia ROE:ssa.
+#   hyvinvointialueet     21 aluetta, perustettu 2023. Terveys-,
+#                         sosiaali- ja pelastuspalvelut. Yleiskatteel-
+#                         linen valtion rahoitus, EI verotusoikeutta.
+#
+#                         EI ratkennut intressiperusteella — ks.
+#                         RAKENTEELLINEN RAJOITE yllä. Kaikki tehtävät
+#                         ovat viranomaistoimintaa (pelastus, sosiaali,
+#                         terveys, kuten poliisi ja lupaviranomaiset),
+#                         mutta rahoitusintressi on olemassa ja
+#                         voimakas. Sama pätee kuntiin ja ministeri-
+#                         öihin, joten se ei erottele.
+#
+#                         PÄÄTÖS AUKI. Yksi tapaus aineistossa
+#                         (Etelä-Pohjanmaan hyvinvointialue/
+#                         pelastuslaitos) — liian vähän päätökseksi.
+#                         Jos aihepiiri laajenee terveydenhuoltoon,
+#                         tapauksia tulee paljon.
 #
 #   yksityishenkilöt      430 laatijaa 752:sta esiintyy kerran.
 #                         Henkilönimeä EI voi tunnistaa säännöllä:

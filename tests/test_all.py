@@ -605,6 +605,42 @@ def test_genuinely_dual_institutes_stay_ambiguous():
         assert "MONITULKINTAINEN" in reason
 
 
+def test_structural_limitation_is_documented():
+    """actor_role kuvaa toimijaa, ei tekoa — rajoite on kirjattava.
+
+    Testi ei testaa logiikkaa vaan sitä, että rajoite pysyy koodissa.
+    Se paikannettiin 5.9.2026 kun intressiperuste romahti
+    hyvinvointialueeseen: jokaisella julkisella toimijalla on
+    rahoitusintressi, joten se ei erottele mitään.
+
+    Seuraus: RRI ei erota asiantuntijalausuntoa edunvalvonnasta.
+    Ne saavat saman L:n. Rajoite, ei bugi — mutta se on tiedettävä
+    ennen kuin sarjasta sanotaan mitään vaikuttamisesta.
+    """
+    import inspect
+    import actors
+    src = inspect.getsource(actors)
+    for marker in ("RAKENTEELLINEN RAJOITE",
+                   "kuvaa TOIMIJAA, ei TEKOA",
+                   "ei erota asiantuntija",
+                   "KOLME ERI LAJIA AUKI",
+                   # tarkennus: korjaus ei ole toimijakohtainen kenttä
+                   "TOIMIJAN JA ASIAN VÄLINEN",
+                   "TAPAHTUMAKOHTAINEN luokitus"):
+        assert marker in src, f"rajoitteen kirjaus puuttuu: {marker!r}"
+
+
+def test_open_cases_are_classified_by_kind():
+    """Kolme eri lajia auki — ne eivät ratkea samalla korjauksella."""
+    import inspect
+    import actors
+    src = inspect.getsource(actors)
+    for kind in ("AMBIGUUS", "PUUTTUVA", "PÄÄTETTÄVÄ"):
+        assert kind in src, f"luokitus puuttuu: {kind}"
+    # tuomioistuin on PUUTTUVA (perustuslaillinen), ei ambiguus
+    assert "vallan\n#                         kolmijako" in src or "kolmijako" in src
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0
