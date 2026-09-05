@@ -100,6 +100,19 @@ def validate_event(d: Any, index: int | None = None) -> Event:
     if subtype is not None and not isinstance(subtype, str):
         raise SchemaError(f"{where}.subtype: oltava merkkijono tai null")
 
+    iw = _unit_interval(d.get("impact_weight"), f"{where}.impact_weight")
+    irr = _unit_interval(d.get("irreversibility"), f"{where}.irreversibility")
+
+    # ROE v0.3: impact_weight koskee VAIN D/O/S (ne menevät SP:hen).
+    # intensity koskee VAIN L. Rajaukset valvotaan tässä, jotta väärässä
+    # paikassa oleva arvo ei pääse laskentaan hiljaisesti.
+    from schema import SP_TYPES
+    if etype not in SP_TYPES and iw is not None:
+        raise SchemaError(f"{where}.impact_weight: vain D/O/S saa painon, tyyppi on {etype}")
+    if etype != "L" and cls.get("intensity") is not None:
+        raise SchemaError(f"{where}.llm_classification.intensity: vain L-tapahtumalla "
+                          f"on intensity, tyyppi on {etype}")
+
     return Event(
         event_id=eid,
         occurred_at=occurred,
@@ -111,8 +124,8 @@ def validate_event(d: Any, index: int | None = None) -> Event:
         subtype=subtype,
         parameters=params,
         llm_classification=cls,
-        irreversibility=_unit_interval(d.get("irreversibility"), f"{where}.irreversibility"),
-        impact_weight=_unit_interval(d.get("impact_weight"), f"{where}.impact_weight"),
+        irreversibility=irr,
+        impact_weight=iw,
         evidence=evidence,
     )
 

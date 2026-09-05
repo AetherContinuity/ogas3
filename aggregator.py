@@ -23,7 +23,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Iterable, Literal
 
-from schema import EVENT_TYPES, Event
+from schema import EVENT_TYPES, SP_TYPES, Event
 
 Mode = Literal["PRE", "FULL"]
 
@@ -61,7 +61,7 @@ class MonthlyBucket:
     @property
     def sp_raw(self) -> float:
         """SP = D + O + S, raakayksiköissä. Skaalaus tehdään erikseen."""
-        return sum(self.raw[t] for t in EVENT_TYPES)
+        return sum(self.raw[t] for t in SP_TYPES)
 
 
 def months_in_range(start: str, end: str) -> list[str]:

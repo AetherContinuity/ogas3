@@ -26,7 +26,7 @@ from dataclasses import dataclass
 from typing import Literal
 
 from aggregator import MonthlyBucket
-from schema import EVENT_TYPES
+from schema import SP_TYPES as EVENT_TYPES  # skaalataan vain SP:n osat
 
 PreMode = Literal["expanding", "baseline"]
 

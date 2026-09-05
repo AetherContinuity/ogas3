@@ -11,7 +11,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from aggregator import aggregate, month_key, months_in_range, visibility_lag
-from audit import compute_l, compute_rri, explain_month, format_explain
+from audit import explain_month, format_explain
+from rri import (RRIError, compute_l, compute_rri_raw, monthly_l_ir_from_events,
+                 scale_rri)
 from scaler import ScalingError, scale_full, scale_pre
 from schema import SchemaError
 from validator import load_events, validate_event, validate_events
@@ -66,8 +68,9 @@ def test_missing_classification_key_raises_not_zero():
 
 
 def test_explicit_null_is_allowed_and_distinct_from_zero():
-    a = validate_event(base_event())                       # intensity None
-    b = validate_event(base_event(llm_classification={
+    # intensity on ROE v0.3:ssa vain L-tapahtumalla, joten testi käyttää L:ää
+    a = validate_event(base_event(type="L", impact_weight=None))     # intensity None
+    b = validate_event(base_event(type="L", impact_weight=None, llm_classification={
         "intensity": 0.0, "targeting": 0.7, "policy_proximity": 0.4, "uptake": 0.0}))
     assert a.llm_classification["intensity"] is None
     assert b.llm_classification["intensity"] == 0.0
@@ -205,14 +208,90 @@ def test_missing_weight_not_counted_as_zero():
 
 
 # ── Turvalukko 4: audit trail + tarkoituksellinen aukko ──────────────
-def test_rri_and_l_refuse_to_guess():
-    for fn in (compute_rri, compute_l):
+# ── GATE 2-4: RRI:n laskenta (lukittu 5.9.2026) ─────────────────────
+def test_compute_l_is_product_of_four():
+    c = {"intensity": 0.5, "targeting": 0.8, "policy_proximity": 0.5, "uptake": 0.4}
+    assert abs(compute_l(c) - 0.5*0.8*0.5*0.4) < 1e-9
+
+
+def test_compute_l_none_when_component_missing():
+    c = {"intensity": None, "targeting": 0.8, "policy_proximity": 0.5, "uptake": 0.4}
+    assert compute_l(c) is None, "puuttuva komponentti tuotti luvun — None ei ole nolla"
+
+
+def test_compute_l_rejects_out_of_range():
+    for bad in (-0.1, 1.5):
         try:
-            fn(None)
-        except NotImplementedError as e:
-            assert "specified" in str(e)
+            compute_l({"intensity": bad, "targeting": .5, "policy_proximity": .5, "uptake": .5})
+        except RRIError:
+            pass
         else:
-            raise AssertionError(f"{fn.__name__} palautti arvon vaikka kaavaa ei ole")
+            raise AssertionError(f"{bad} hyväksyttiin")
+
+
+def test_l_and_ir_aggregate_as_max_not_mean():
+    """Lukkiutuminen ei keskiarvoistu — yksi vahva ei laimennu heikoista."""
+    strong = validate_event(base_event(event_id="L1", type="L", impact_weight=None, llm_classification={
+        "intensity": 1.0, "targeting": 1.0, "policy_proximity": 1.0, "uptake": 1.0}))
+    weak = validate_event(base_event(event_id="L2", type="L", impact_weight=None, llm_classification={
+        "intensity": 0.2, "targeting": 0.2, "policy_proximity": 0.2, "uptake": 0.2}))
+    ir_hi = validate_event(base_event(event_id="R1", type="IR", impact_weight=None, irreversibility=1.0))
+    ir_lo = validate_event(base_event(event_id="R2", type="IR", impact_weight=None, irreversibility=0.2))
+    m = monthly_l_ir_from_events("2026-03", [strong, weak, ir_hi, ir_lo])
+    assert m.l == 1.0 and m.l_source_event == "L1"
+    assert m.ir == 1.0 and m.ir_source_event == "R1"
+    assert m.l_events_seen == 2 and m.ir_events_seen == 2
+
+
+def test_incomplete_l_classification_not_counted_as_zero():
+    part = validate_event(base_event(event_id="LX", type="L", impact_weight=None, llm_classification={
+        "intensity": None, "targeting": .9, "policy_proximity": .9, "uptake": .9}))
+    m = monthly_l_ir_from_events("2026-03", [part])
+    assert m.l_events_incomplete == ("LX",), "keskeneräistä luokitusta ei kirjattu"
+    assert m.l == 0.0 and m.l_source_event is None
+
+
+def test_empty_month_is_zero_by_design():
+    m = monthly_l_ir_from_events("2026-03", [])
+    assert m.l == 0.0 and m.ir == 0.0
+    assert "tarkoituksella" in m.basis
+    assert compute_rri_raw(150.0, m.l, m.ir) == 0.0
+
+
+def test_rri_formula():
+    assert abs(compute_rri_raw(100.0, 0.5, 0.5) - 75.0) < 1e-9      # 100*0.5*1.5
+    assert compute_rri_raw(300.0, 1.0, 1.0) == 600.0                # teoreettinen max
+    for bad in ((-1, .5, .5), (301, .5, .5), (100, 1.1, .5), (100, .5, 1.1)):
+        try:
+            compute_rri_raw(*bad)
+        except RRIError:
+            pass
+        else:
+            raise AssertionError(f"{bad} hyväksyttiin")
+
+
+def test_rri_scaling_expanding_has_no_look_ahead():
+    raw = {"2026-01": 10.0, "2026-02": 40.0, "2026-03": 20.0}
+    s = scale_rri(raw, "expanding")
+    assert s["2026-01"] == 100.0, "ensimmäinen kuukausi on oma maksiminsa"
+    assert s["2026-02"] == 100.0
+    assert s["2026-03"] == 50.0, "maaliskuu skaalattu helmikuun maksimiin"
+    f = scale_rri(raw, "full-window")
+    assert f["2026-01"] == 25.0, "full-window käyttää koko ikkunan maksimia"
+
+
+def test_rri_baseline_requires_explicit_max():
+    try:
+        scale_rri({"2026-01": 10.0}, "baseline")
+    except RRIError as e:
+        assert "baseline" in str(e)
+    else:
+        raise AssertionError("baseline hyväksyi puuttuvan rajan")
+
+
+def test_rri_all_zero_scales_to_zero_not_hundred():
+    s = scale_rri({"2026-01": 0.0, "2026-02": 0.0}, "expanding")
+    assert all(v == 0.0 for v in s.values()), "degeneroitunut tapaus ei saa antaa 100"
 
 
 def test_audit_trail_reaches_evidence():
@@ -221,11 +300,13 @@ def test_audit_trail_reaches_evidence():
     buckets = aggregate(evs, "FULL", months)
     scaled = scale_full(buckets)
     m = next(m for m in months if sum(buckets[m].counts.values()) > 0)
-    x = explain_month(m, buckets[m], scaled[m], evs)
+    lir = monthly_l_ir_from_events(m, evs)
+    x = explain_month(m, buckets[m], scaled[m], evs, lir=lir, rri_scaled=None)
     assert x["events"], "audit trail ei sisällä yhtään tapahtumaa"
     e0 = x["events"][0]
     assert e0["evidence"] and e0["evidence"][0]["retrieved_at"], "todisteesta puuttuu hakuhetki"
-    assert x["RRI"]["status"].startswith("NOT SPECIFIED")
+    assert x["RRI"]["formula"] == "SP x L x (1 + IR)"
+    assert x["RRI"]["raw"] is not None
     assert isinstance(format_explain(x), str)
 
 

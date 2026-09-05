@@ -19,10 +19,22 @@ from typing import Any
 # --------------------------------------------------------------------
 # Tapahtumatyypit
 # --------------------------------------------------------------------
-# D / O / S ovat Structural Pressure -komponentteja. SP = D + O + S on
-# ainoa kaava, joka on johdettavissa annetusta esimerkistä yksikäsitteisesti
-# (18.4 + 11.2 + 14.7 = 44.3) ja siksi ainoa, joka on tässä lukittu.
-EVENT_TYPES = ("D", "O", "S")
+# ROE v0.3 (5.9.2026) määrittelee viisi tapahtumatyyppiä.
+# KORJATTU 5.9.2026: aiemmin vain ("D","O","S"), koska schema kirjoitettiin
+# ennen kuin ROE oli saatavilla ja ainoa tunnettu kaava oli SP = D + O + S.
+# L- ja IR-tapahtumat hylättiin silloin skeemavirheenä. Aukko paljastui
+# vasta kun RRI-testit yrittivät luoda L-tapahtuman.
+#
+#   D   Structural Load Pressure       uusi kuorma
+#   O   Ownership Transition Pressure  omistusrakenteen muutos
+#   S   Flexibility/Capacity Erosion   säätökyvyn heikkeneminen
+#   L   Institutional Influence        vaikuttamisyritys
+#   IR  Irreversibility                peruuttamaton päätös
+EVENT_TYPES = ("D", "O", "S", "L", "IR")
+
+# Vain nämä kolme summautuvat Structural Pressureen. L ja IR ovat RRI:n
+# kertoimia, eivät SP:n osia — ks. rri.py.
+SP_TYPES = ("D", "O", "S")
 
 # L-komponentit. Alueet 0–1, nimet spesifikaatiosta.
 # I:n deterministinen laskenta EI ole spesifioitu -> intensity saa olla None

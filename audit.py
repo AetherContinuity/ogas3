@@ -13,51 +13,15 @@ from typing import Iterable
 
 from aggregator import MonthlyBucket
 from scaler import ScaledMonth
-from schema import EVENT_TYPES, Event
+from schema import EVENT_TYPES, SP_TYPES, Event
 
-RRI_SPEC_STATUS = "NOT SPECIFIED (2026-09-04)"
+# GATE 4 lukittu 5.9.2026. Laskenta on moduulissa rri.py; tässä vain
+# audit trail. Aiempi NotImplementedError poistettiin vasta kun kaikki
+# neljä porttia olivat kiinni — ei aiemmin.
+RRI_SPEC_STATUS = "LOCKED 2026-09-05 — SP x L x (1+IR), ks. rri.py"
 
-
-def compute_rri(*args, **kwargs):
-    """RRI-kaavaa EI ole spesifioitu — tätä ei saa arvata.
-
-    Annettu esimerkki:
-
-        SP  = 44.3
-        L   = 0.1039   (= I × T × P × U)
-        IR  = 0.61
-        RRI = 35.6
-
-    ei riitä johtamaan kaavaa yksikäsitteisesti. Esimerkiksi
-    SP × L × (1 + IR) = 7.4, mikä ei ole 35.6. Useita muitakin muotoja
-    voidaan sovittaa neljään lukuun, ja niiden valitseminen olisi uuden
-    metodologian keksimistä eikä sen toteuttamista.
-
-    Lisäksi I:n (Influence Intensity) deterministinen laskenta ei ole
-    spesifioitu, joten L:ää ei voi laskea tapahtumista edes silloin kun
-    RRI:n kaava tunnetaan.
-
-    Tämä NotImplementedError on tietoinen lukko, ei keskeneräisyys.
-    """
-    raise NotImplementedError(
-        "RRI formula is not yet formally specified. "
-        "SP = D + O + S and L = I x T x P x U are locked; the combination "
-        "of SP, L and IR into RRI is not derivable from the available example."
-    )
-
-
-def compute_l(_classification) -> float:
-    """L = I × T × P × U — kaava tunnetaan, mutta I:tä ei voi laskea.
-
-    Kolme neljästä komponentista tulee luokituksesta. I (Influence
-    Intensity) on merkitty spesifikaatiossa määrittelemättömäksi, joten
-    tulon laskeminen kolmesta ja I:n olettaminen ykköseksi olisi
-    hiljainen oletus — täsmälleen se, mitä turvalukko 1 kieltää.
-    """
-    raise NotImplementedError(
-        "L requires I (Influence Intensity); its deterministic computation "
-        "is not specified. Assuming I = 1.0 would silently change the result."
-    )
+from rri import (compute_l, compute_rri_raw, monthly_l_ir_from_events,  # noqa: E402
+                 scale_rri, MonthlyLIR)
 
 
 def explain_month(
@@ -65,6 +29,8 @@ def explain_month(
     bucket: MonthlyBucket,
     scaled: ScaledMonth,
     events: Iterable[Event],
+    lir: "MonthlyLIR | None" = None,
+    rri_scaled: float | None = None,
 ) -> dict:
     """Palauttaa täyden jäljen yhdelle kuukaudelle.
 
@@ -94,20 +60,37 @@ def explain_month(
                 ],
             })
 
+    if lir is None:
+        lir_block = {"status": "NOT COMPUTED", "reason": "lir-parametria ei annettu"}
+        ir_block = dict(lir_block)
+        rri_block = dict(lir_block)
+    else:
+        raw = compute_rri_raw(scaled.structural_pressure, lir.l, lir.ir)
+        lir_block = {"value": lir.l, "source_event": lir.l_source_event,
+                     "events_seen": lir.l_events_seen,
+                     "incomplete_classification": list(lir.l_events_incomplete),
+                     "aggregation": "max", "basis": lir.basis}
+        ir_block = {"value": lir.ir, "source_event": lir.ir_source_event,
+                    "events_seen": lir.ir_events_seen, "aggregation": "max"}
+        rri_block = {"formula": "SP x L x (1 + IR)",
+                     "SP": scaled.structural_pressure, "L": lir.l, "IR": lir.ir,
+                     "raw": raw, "scaled": rri_scaled,
+                     "status": RRI_SPEC_STATUS}
+
     return {
         "month": month,
         "mode": bucket.mode,
         "scaling": scaled.scaling,
         "n_months_in_basis": scaled.n_months_in_basis,
         "counts": dict(bucket.counts),
-        "raw": {t: round(bucket.raw[t], 4) for t in EVENT_TYPES},
-        "bounds": {t: [round(v, 4) for v in scaled.bounds[t]] for t in EVENT_TYPES},
-        "contribution": {t: scaled.scaled[t] for t in EVENT_TYPES},
+        "raw": {t: round(bucket.raw[t], 4) for t in SP_TYPES},
+        "bounds": {t: [round(v, 4) for v in scaled.bounds[t]] for t in SP_TYPES},
+        "contribution": {t: scaled.scaled[t] for t in SP_TYPES},
         "structural_pressure": scaled.structural_pressure,
-        "unweighted_events": {t: list(bucket.unweighted[t]) for t in EVENT_TYPES},
-        "L": {"status": "NOT COMPUTABLE", "reason": "I (Influence Intensity) not specified"},
-        "IR": {"status": "NOT AGGREGATED", "reason": "IR aggregation formula not locked"},
-        "RRI": {"status": RRI_SPEC_STATUS},
+        "unweighted_events": {t: list(bucket.unweighted[t]) for t in SP_TYPES},
+        "L": lir_block,
+        "IR": ir_block,
+        "RRI": rri_block,
         "events": contributions,
     }
 
@@ -115,7 +98,7 @@ def explain_month(
 def format_explain(x: dict) -> str:
     """Ihmisluettava audit trail — sama muoto kuin spesifikaation esimerkissä."""
     lines = [f"{x['month']}  [{x['mode']} / {x['scaling']}]"]
-    for t in EVENT_TYPES:
+    for t in SP_TYPES:
         lines.append(
             f"  {t} contribution: {x['contribution'][t]:>7.1f}"
             f"   (raaka {x['raw'][t]:.4f}, n={x['counts'][t]}, "
@@ -125,7 +108,19 @@ def format_explain(x: dict) -> str:
     miss = [e for lst in x["unweighted_events"].values() for e in lst]
     if miss:
         lines.append(f"  ! impact_weight puuttuu: {', '.join(miss)} (EI laskettu nollaksi)")
-    lines.append(f"  L:   {x['L']['status']} — {x['L']['reason']}")
-    lines.append(f"  IR:  {x['IR']['status']} — {x['IR']['reason']}")
-    lines.append(f"  RRI: {x['RRI']['status']}")
+    L, IR, R = x["L"], x["IR"], x["RRI"]
+    if "value" in L:
+        lines.append(f"  L  = {L['value']:.4f}  (max, {L['events_seen']} L-tapahtumaa"
+                     + (f", lähde {L['source_event']}" if L["source_event"] else "")+")")
+        if L["incomplete_classification"]:
+            lines.append(f"     ! luokitus kesken: {', '.join(L['incomplete_classification'])}"
+                         " (EI laskettu nollaksi)")
+        lines.append(f"  IR = {IR['value']:.4f}  (max, {IR['events_seen']} IR-tapahtumaa"
+                     + (f", lähde {IR['source_event']}" if IR["source_event"] else "")+")")
+        lines.append(f"  RRI_raw = {R['SP']:.1f} x {R['L']:.4f} x (1 + {R['IR']:.4f}) = {R['raw']:.4f}")
+        if R["scaled"] is not None:
+            lines.append(f"  RRI = {R['scaled']:.1f}")
+        lines.append(f"     {L['basis']}")
+    else:
+        lines.append(f"  L/IR/RRI: {L['status']}")
     return "\n".join(lines)
