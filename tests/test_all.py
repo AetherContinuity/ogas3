@@ -436,6 +436,89 @@ def test_normalize_actor_strips_index_suffix_only():
     assert normalize_actor(None) is None
 
 
+# ── actor_role: säännöt, poikkeukset, aliakset, provenienssi ─────────
+def test_actor_role_compound_suffix_anchor():
+    """Ankkuri on X\\b — ei \\bX (yhdyssana) eikä X$ (perässä lyhenne)."""
+    from actors import actor_role
+    cases = {
+        "Energiavirasto": "viranomainen",                       # yhdyssana
+        "Turvallisuus- ja kemikaalivirasto TUKES": "viranomainen",  # perässä lyhenne
+        "Suomen ympäristökeskus (Syke)": "viranomainen",
+        "Työ- ja elinkeinoministeriö": "viranomainen",
+        "Energiateollisuus ry": "etujarjesto",
+        "Suomen Arkkitehtiliitto ry SAFA": "etujarjesto",       # ry keskellä
+        "Elinkeinoelämän keskusliitto EK": "etujarjesto",       # keskusliitto != keskus
+        "Fortum Oyj": "toimija",
+        "Espoon kaupunki": "kunta",
+        "Nurmijärven kunta": "kunta",
+        "Aalto-yliopisto": "tutkija",
+        "Suomen ilmastopaneeli": "tutkija",
+    }
+    for name, want in cases.items():
+        role, src, _ = actor_role(name)
+        assert role == want, f"{name!r} -> {role!r}, odotettiin {want!r}"
+        assert src == "saanto"
+
+
+def test_actor_role_named_exceptions():
+    """Peruste on intressi, ei oikeudellinen muoto."""
+    from actors import actor_role
+    for name, want in (("Suomen Kuntaliitto ry", "etujarjesto"),
+                       ("Saamelaiskäräjät", "etujarjesto"),
+                       ("Fingrid Oyj", "toimija")):
+        role, src, reason = actor_role(name)
+        assert role == want and src == "poikkeus"
+        assert reason and len(reason) > 40, "poikkeukselta puuttuu perustelu"
+
+
+def test_actor_role_never_guesses():
+    """Ratkaisematon palauttaa None, ei arvausta.
+
+    Neljä avointa roolikysymystä: tuomioistuimet, maakuntaliitot,
+    valtion tutkimuslaitokset, yksityishenkilöt.
+    """
+    from actors import actor_role
+    for name in ("Korkein hallinto-oikeus", "Uudenmaan liitto - Nylands förbund",
+                 "Erkki Hurtig", "WWF Suomi", "Keva"):
+        role, src, reason = actor_role(name)
+        assert role is None and src is None, f"{name!r} sai roolin {role!r}"
+        assert reason and "arvata" in reason
+
+
+def test_canonical_merges_measured_aliases_only():
+    """Alias-taulukko on mitattu luettelo, ei kaava."""
+    from actors import canonical, NOT_ALIASES
+    # sama organisaatio
+    assert canonical("Suomen ympäristökeskus SYKE") == "Suomen ympäristökeskus (Syke)"
+    assert canonical("Elinkeinoelämän Keskusliitto EK") == "Elinkeinoelämän keskusliitto EK"
+    # organisaatiohierarkia: yksikkö -> emo
+    assert canonical("Suomen ympäristökeskuksen kv. YVA- ja SOVA -asiat") == \
+           "Suomen ympäristökeskus (Syke)"
+    # EI yhdistetä: piirijärjestö on eri toimija
+    for name in NOT_ALIASES:
+        assert canonical(name) == name, f"{name!r} yhdistettiin — sen ei pitäisi"
+
+
+def test_canonical_strips_zero_width_characters():
+    """U+200B nimen lopussa teki VTT:stä kaksi toimijaa. Ei näy silmällä."""
+    from actors import canonical
+    a = canonical("Teknologian tutkimuskeskus VTT Oy\u200b")
+    b = canonical("Teknologian tutkimuskeskus VTT Oy")
+    assert a == b == "Teknologian tutkimuskeskus VTT Oy"
+
+
+def test_yksityishenkilo_role_exists_but_is_not_rule_derived():
+    """430/752 laatijaa esiintyy kerran; osa on yksityishenkilöitä.
+
+    Rooli on ROLES-listalla, mutta sääntö EI tuota sitä — henkilönimeä
+    ei voi tunnistaa regexillä. role_source olisi "extractor".
+    """
+    from actors import ROLES, actor_role
+    assert "yksityishenkilo" in ROLES
+    role, src, _ = actor_role("Erkki Hurtig")
+    assert role is None and src is None
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0
