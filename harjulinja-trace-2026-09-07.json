@@ -1,0 +1,81 @@
+{
+ "_schema": "aci/decision-trace/v0.1",
+ "_locked_at": "2026-09-07",
+ "_lock_note": "LUKITTU SNAPSHOT. Ei muuteta jalkikateen; uudet havainnot seuraavaan snapshotiin.",
+ "subject": {
+  "nimi": "Harjulinja 2 x 400+110 kV voimajohtohanke, Pyhäjärvi–Kangasniemi",
+  "hankkeesta_vastaava": "Fingrid Oyj",
+  "konsultti": "FCG Rakennettu Ympäristö Oy",
+  "yhteysviranomainen_dokumentissa": "Pohjois-Savon ELY-keskus",
+  "yhteysviranomainen_nyt": "Lupa- ja valvontavirasto",
+  "_viranomaisen_muutos": "ELY-keskusten YVA-toimivalta siirtyi Lupa- ja valvontavirastolle 1.1.2026. Dokumentti on vuodelta 2025 ja nimeaa vanhan viranomaisen. Nimen muutos EI ole kirjoitusasuero vaan organisaatiomuutos — actors.py:n alias-taulukko ei saa yhdistaa niita.",
+  "mitat": {
+   "jannite_kv": "2 x 400 + 110",
+   "rakennettava_km": "181–196",
+   "tarkasteltavat_reitit_km": 413
+  }
+ },
+ "_scope_note": "TAMA ON ERI PROSESSI KUIN HANKEIKKUNA. YVA on hankekohtainen ymparistoarviointi (YVA-laki), Hankeikkuna on saadosvalmistelua. Lausunnot ja mielipiteet menevat yhteysviranomaiselle, EIVAT Lausuntopalveluun. OGAS3 ei nae tata kanavaa lainkaan — se on DEMO-001:n luvussa 6 kirjattu rajaus, ja tama tiedosto on ensimmainen havainto siita.",
+ "observed": [
+  {
+   "node_id": "yva-ohjelma-laadittu",
+   "kind": "observed",
+   "occurred_at": "2025-01-01T00:00:00+02:00",
+   "occurred_at_precision": "vuosi",
+   "known_at": null,
+   "retrieved_at": "2026-09-07T22:09:16+00:00",
+   "source": "Fingrid / FCG: Harjulinja 2x400+110 kV voimajohtohanke, YVA-arviointiohjelma 2025 (PDF, 275 s.)",
+   "note": "Dokumentin vuosiluku on 2025; tarkkaa paivaa ei ole PDF:ssa. known_at TUNTEMATON — julkisesti nahtavilleasettamispaivaa ei ole dokumentissa. EI paatelty.",
+   "evidence": [
+    {
+     "quote": "Harjulinja 2 x 400+110 kilovoltin voimajohtohanke — Ympäristövaikutusten arviointiohjelma 2025",
+     "location": "kansilehti",
+     "source_url": "https://www.fingrid.fi/harjulinja",
+     "retrieved_at": "2026-09-07T22:09:16+00:00"
+    }
+   ]
+  }
+ ],
+ "_expected_note": "Eivat ole tapahtumia. Ei aikaleimoja.",
+ "expected": [
+  {
+   "step": "arviointiohjelma nähtäville, mielipiteet ja lausunnot",
+   "status": "tila tuntematon 7.9.2026",
+   "note": "Yhteysviranomainen asettaa nahtaville; kunnat ja viranomaiset antavat lausunnot."
+  },
+  {
+   "step": "yhteysviranomaisen lausunto arviointiohjelmasta",
+   "status": "tuntematon"
+  },
+  {
+   "step": "arviointiselostus",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "perusteltu päätelmä",
+   "status": "ei tapahtunut",
+   "note": "Annetaan kahden kuukauden kuluessa nahtavillaolon paattymisesta."
+  },
+  {
+   "step": "lunastuslupa",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "maastotutkimukset ja yleissuunnittelu",
+   "estimate": "2028–2030",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "rakentaminen",
+   "estimate": "2030–2032",
+   "status": "ei tapahtunut"
+  }
+ ],
+ "_horizon_finding": "YVA 2025 -> rakentaminen 2030–2032. SEITSEMAN VUOTTA ohjelmasta valmiiseen johtoon. OGAS2:n ROI-taulukon ikkuna on 24 kk ja pidennettyna 60 kk. Tama hanke on kokonaan 60 kk:n ikkunan ulkopuolella. Se on sama horisonttiartefakti joka korjattiin SGFA 7-solmun kohdalla — mutta tassa se koskee hanketta joka ON JO KAYNNISSA, ei hypoteettista interventiota.",
+ "_ogas2_relevance": {
+  "S_ENERGY": "Fingridin oma perustelu on sama ilmio jota WEM mittaa: Etela-Suomen huippukulutus kaksinkertaistuu 2035 mennessa samalla kun tuotantoa poistuu. Se on FS-komponentin heikkeneminen, kirjattuna hankevastaavan omassa dokumentissa.",
+  "tuulivoima": "Kasvuennuste yli 2 000 MW/v vuoteen 2035. WEM:n WR-komponentti kasvaa vastaavasti.",
+  "_ei_kalibroitu": "Naita EI ole syotetty OGAS2:een. patch-arvoja ei johdeta tasta ilman erillista paatosta."
+ },
+ "_lex_resiliens": "A-LUOKAN VAITE hankevastaavan omin sanoin: 'Hankkeen toteuttamatta jattaminen ei ole mahdollista, koska sahkonsiirtoa ei voida hoitaa nykyisella kantaverkolla ja jo paatetyilla verkkoinvestoinneilla ilman haitallisia siirtokapasiteettirajoituksia tai vaarantamatta kayttovarmuutta.' — Tekninen pakko, ei arvovalinta. HUOM: tama on HANKEVASTAAVAN muotoilu YVA-ohjelmassa, jossa nollavaihtoehto on lain mukaan tarkasteltava. Se on osapuolen kanta, ei yhteysviranomaisen paatelma. Perusteltu paatelma antaa jalkimmaisen — ja se on viela antamatta."
+}

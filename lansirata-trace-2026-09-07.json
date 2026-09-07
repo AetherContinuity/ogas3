@@ -1,0 +1,226 @@
+{
+ "_schema": "aci/decision-trace/v0.1",
+ "_locked_at": "2026-09-07",
+ "_lock_note": "LUKITTU SNAPSHOT. Ei muuteta jalkikateen.",
+ "subject": {
+  "nimi": "Länsirata (Espoo–Salo-oikorata, ent. Turun tunnin juna)",
+  "hankeyhtio": "Länsirata Oy",
+  "omistus": "Suomen valtio 51 % + Espoo, Turku, Helsinki, Salo, Lohja, Vihti, Kirkkonummi 49 %",
+  "_omistus_huom": "Lansirata.fi listaa omistajiksi myos Helsingin; osakassopimuksen osakaskunniksi mainitaan Turku, Espoo, Salo, Lohja, Vihti ja Kirkkonummi. RISTIRIITA LAHTEIDEN VALILLA — ei ratkaistu, ei paatelty.",
+  "vaihe1_kustannus_mrd": 1.32,
+  "koko_hanke_kustannus_mrd": 3.0,
+  "rahoitusjako_vaihe1": {
+   "valtio_pct": 67,
+   "kunnat_pct": 33
+  },
+  "kuntien_sitoumus_vaihe1_meur": 400,
+  "kuntien_sitoumus_vaihe2_meur": 300,
+  "valtion_rahoitusvaltuus_meur": 400,
+  "vieras_paaoma_enintaan_meur": 500
+ },
+ "_why_tracked": "HANKEYHTIOMALLI on rahoituskanava joka EI kulje talousarvion menoina. Lansirata Oy:lle annettaisiin oikeus hankkia vierasta paaomaa enintaan 500 M EUR. Valtion vastuu on omistuksen ja mahdollisen takauksen kautta, ei menona. Sama rakenne kuin Garden Helsingissa: rahoitus kulkee muuta kanavaa kuin budjettia.\\n\\nTama on OGAS2:n R_PUBLIC-kerroksen kannalta olennaista: velkajarru- ja menokehysmittarit eivat nae takauksia eivatka hankeyhtioiden velkaa.",
+ "_measurement_gap": "VALTIONTAKAUSSARJA EI EROTTELE TATA. Valtiokonttorin central-government-guarantees -sarja (74,3 mrd, 30.6.2026) on seitsemassa luokassa: opintolainat, Finnvera, EFSF, Suomen Pankki, rahastot, covid, muut. Yksittaisia takauksia ei ole. Lansiradan 500 M EUR vieras paaoma on naisssa nakymattomana JOS takaus on myonnetty — sita ei ole varmistettu.\\n\\nANSA HAVAITTU 7.9.2026: sarjassa 23,3 mrd siirtyi luokasta 'rahastot' luokkaan 'muut' vuoden 2026 rivilla (23,4 -> 0,1 ja 0,6 -> 24,2). Kokonaissumma jatkuu sujuvasti, mutta luokkakohtainen aikasarja romahtaa. lastUpdated on KAIKILLA riveilla 2026-09-07, eli koko historia on kirjoitettu uusiksi. Uudelleenluokittelu ilman merkintaa — sama vikaluokka kuin DS 105:n vakionolla.",
+ "observed": [
+  {
+   "node_id": "nimenmuutos",
+   "kind": "observed",
+   "occurred_at": "2024-02-01T00:00:00+02:00",
+   "known_at": null,
+   "retrieved_at": "2026-09-07T22:31:31+00:00",
+   "source": "Wikipedia (sekundaarilahde)",
+   "evidence": [
+    {
+     "quote": "hankeyhtio Turun Tunnin Juna Oy:n nimi muuttui Länsirata Oy:ksi",
+     "location": "Espoo–Salo-oikorata",
+     "source_url": "https://fi.wikipedia.org/wiki/Espoo%E2%80%93Salo-oikorata",
+     "retrieved_at": "2026-09-07T22:31:31+00:00"
+    }
+   ],
+   "source_class": "secondary",
+   "note": "Tarkkaa paivaa ei ole; kuukausitarkkuus. Sekundaarilahde, ei varmennettu kaupparekisterista."
+  },
+  {
+   "node_id": "esisopimus",
+   "kind": "observed",
+   "occurred_at": "2024-06-01T00:00:00+03:00",
+   "known_at": null,
+   "retrieved_at": "2026-09-07T22:31:31+00:00",
+   "source": "Espoon kaupunki / Lohjan kaupunki",
+   "evidence": [
+    {
+     "quote": "Rakentamisvaiheeseen siirtymisestä hyväksyttiin esisopimus kuntien ja valtion välille kesäkuussa 2024",
+     "location": "tiedote 31.10.2025",
+     "source_url": "https://www.sttinfo.fi/tiedote/71574665/lansiradan-kunnat-ja-valtio-sopivat-ratahankkeen-etenemisesta-rakentamisvaiheeseen",
+     "retrieved_at": "2026-09-07T22:31:31+00:00"
+    }
+   ],
+   "note": "Kuukausitarkkuus. Rahoitusjako: kuntien osuus 30,7 %."
+  },
+  {
+   "node_id": "neuvottelutulos",
+   "kind": "observed",
+   "occurred_at": "2025-10-31T00:00:00+02:00",
+   "known_at": "2025-10-31T00:00:00+02:00",
+   "retrieved_at": "2026-09-07T22:31:31+00:00",
+   "source": "Lohjan kaupunki / STT Info",
+   "evidence": [
+    {
+     "quote": "Sopimuksen neuvottelutulos hyväksyttiin valtion ja kuntien välisessä neuvottelussa 31.10.2025",
+     "location": "tiedote",
+     "source_url": "https://www.sttinfo.fi/tiedote/71574665/lansiradan-kunnat-ja-valtio-sopivat-ratahankkeen-etenemisesta-rakentamisvaiheeseen",
+     "retrieved_at": "2026-09-07T22:31:31+00:00"
+    }
+   ],
+   "note": "Osakassopimusneuvotteluja kaytiin kaksi vuotta."
+  },
+  {
+   "node_id": "espoo-valtuusto",
+   "kind": "observed",
+   "occurred_at": "2025-11-17T00:00:00+02:00",
+   "known_at": "2025-11-17T00:00:00+02:00",
+   "retrieved_at": "2026-09-07T22:31:31+00:00",
+   "source": "Espoon kaupunki",
+   "evidence": [
+    {
+     "quote": "Päätös syntyi äänin 49-26",
+     "location": "valtuuston paatos",
+     "source_url": "https://www.espoo.fi/fi/uutiset/2025/11/espoon-valtuusto-hyvaksyi-lansiradan-osakassopimuksen",
+     "retrieved_at": "2026-09-07T22:31:31+00:00"
+    }
+   ],
+   "vote": {
+    "jaa": 49,
+    "ei": 26
+   },
+   "note": "AANESTYS. Kunnallinen, ei eduskunnan — uptake-asteikko ei kata tata. Espoon sitoumus 170 M EUR."
+  },
+  {
+   "node_id": "kirkkonummi-hylkasi",
+   "kind": "observed",
+   "occurred_at": "2025-12-08T00:00:00+02:00",
+   "known_at": "2025-12-08T00:00:00+02:00",
+   "retrieved_at": "2026-09-07T22:31:31+00:00",
+   "source": "Espoon kaupunki",
+   "evidence": [
+    {
+     "quote": "Kirkkonummen kunnanvaltuusto päätti 8.12.2025, ettei se hyväksy valtion ja kuntien neuvottelemaa Länsirata Oy:n osakassopimusta",
+     "location": "tiedote 11.12.2025",
+     "source_url": "https://www.espoo.fi/fi/uutiset/2025/12/lansirata-valtion-ja-mukana-olevien-kuntien-maksujen-euromaarat-pysyvat-ennallaan",
+     "retrieved_at": "2026-09-07T22:31:31+00:00"
+    }
+   ],
+   "note": "AINOA HYLKAAVA PAATOS. Osuus 15 M EUR = Veikkolan aseman kustannus. Ratkaisu: asema jaa pois, muiden rahoitusosuudet ennallaan."
+  },
+  {
+   "node_id": "lohja-salo-valtuustot",
+   "kind": "observed",
+   "occurred_at": "2025-12-15T00:00:00+02:00",
+   "known_at": "2025-12-15T00:00:00+02:00",
+   "retrieved_at": "2026-09-07T22:31:31+00:00",
+   "source": "Uutissuomalainen",
+   "evidence": [
+    {
+     "quote": "Lohjan ja Salon kaupunginvaltuustot hyväksyivät Länsiradan osakassopimuksen",
+     "location": "uutinen",
+     "source_url": "https://www.ksml.fi/uutissuomalainen/9078185",
+     "retrieved_at": "2026-09-07T22:31:31+00:00"
+    }
+   ]
+  }
+ ],
+ "_expected_note": "Eivat ole tapahtumia. Ei aikaleimoja.",
+ "expected": [
+  {
+   "step": "suunnitteluvaihe paattyy",
+   "estimate": "2027 loppu",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "rakentaminen alkaa",
+   "estimate": "2027 loppu – 2028",
+   "status": "ei tapahtunut",
+   "note": "Lahteet antavat kaksi eri arviota: 'vuoden 2027 lopulla' ja 'rakentamisen olisi tarkoitus alkaa vuonna 2028'. EI yhdistetty."
+  },
+  {
+   "step": "valtion toteutuspaatos vaiheesta 2",
+   "deadline": "2031-12-31",
+   "status": "ei tapahtunut",
+   "note": "Kunnat sitoutuneet 300 M EUR:iin EHDOLLA etta valtio paattaa vuoden 2031 loppuun mennessa. Ehdollinen sitoumus, ei vastuu."
+  },
+  {
+   "step": "CEF-rahoitushaku",
+   "estimate": "2027+",
+   "status": "ei tapahtunut"
+  }
+ ],
+ "_ogas3_state": {
+  "event_types": "O (omistusrakenne) ja D (rakenteellinen kuorma) — mutta EI energiajarjestelmassa. Lansirata on liikenneinfraa; OGAS3:n D/O/S on maaritelty energiajarjestelman kautta. TYYPPI ON AVOIN.",
+  "uptake": "Kunnallisia valtuustoaanestyksia on (Espoo 49-26, Kirkkonummi hylkasi), mutta ROE:n uptake-asteikko on maaritelty EDUSKUNNAN paatosten kautta. Kunnallinen aanestys ei ole asteikolla. AVOIN KYSYMYS.",
+  "actor_role": "Lansirata Oy on hankeyhtio jonka valtio omistaa enemmiston. Sama luokka kuin Fingrid: monopoliyhtio jolla on velvoitteita. EI RATKAISTU."
+ },
+ "_profitability_dispute": {
+  "_note": "NELJA ERI LUKUA SAMASTA HANKKEESTA. Yksikaan ei ole vaara omalla menetelmallaan — ne mittaavat eri asiaa. Tama on lukittu erimielisyys, EI ratkaistu tassa. ACI ei valitse.",
+  "_why_this_matters": "Hyoty-kustannussuhde nayttaa yhdelta luvulta, mutta se on menetelmasidonnainen. Ilman menetelman merkintaa luku on kayttokelvoton — sama vikaluokka kuin S_ENERGY joka nayttaa markkinatilaa mutta luetaan kestavyytena.",
+  "figures": [
+   {
+    "value": 0.44,
+    "actor": "Vaylavirasto",
+    "method": "yhteiskuntataloudellinen hyoty-kustannusanalyysi, Vaylaviraston oma ohje",
+    "scope": "koko hanke, Espoo–Salo-oikorata + Salo–Turku-kaksoisraide",
+    "class": "[M] viranomaisen laskelma",
+    "year": "2020 (vahvistettu 2024)",
+    "source_url": "https://yle.fi/a/3-11585066"
+   },
+   {
+    "value": 0.54,
+    "actor": "Vaylavirasto",
+    "method": "sama, mutta vaiheistettuna",
+    "scope": "pelkka Espoo–Salo-oikorata JOS Salo–Turku toteutettu erikseen ensin",
+    "class": "[M]",
+    "year": "2024",
+    "source_url": "https://puheenvuoro.uusisuomi.fi/kalevikamarainen/lansirata-ja-korruptio-osa-2/"
+   },
+   {
+    "value": 1.41,
+    "actor": "Lansirata Oy",
+    "method": "EU-tukikriteerien mukainen, 'optimoituihin ratkaisuihin' perustuva",
+    "scope": "hanke optimoituna",
+    "class": "[L] yhtion oma laskelma, eri menetelma",
+    "note": "Yhtion mukaan EU on taman laskennan mukaisesti todennut hankkeen yhteiskuntataloudellisesti kannattavaksi ja tukikelpoiseksi.",
+    "source_url": "https://www.kuntalehti.fi/liikenne/laensiradan-toimitusjohtaja-pekka-ottavainen-painottaa-ettae-taellaista-lukua-yhtioe-ei-ole-kaeyttaenyt-hankkeen-hyoedyistae-ja-kustannuksista-pallo-on-taeysin-kuntapaeaettaejillae-nyt/299659"
+   },
+   {
+    "value": 2.3,
+    "actor": "KIISTANALAINEN ATTRIBUUTIO",
+    "method": "artikkelin kirjoittajien BCG-selvityksesta johtama arvio",
+    "class": "[A] johdettu, ei alkuperaisen tekijan esittama",
+    "note": "Lansirata Oy:n toimitusjohtaja Ottavainen: yhtio EI ole missaan vaiheessa esittanyt tata lukua, eika BCG-selvitys ole hyotykustannuslaskelma. ATTRIBUUTIO ON KIISTETTY — merkitaan, ei kaytea.",
+    "source_url": "https://www.kuntalehti.fi/liikenne/laensiradan-toimitusjohtaja-pekka-ottavainen-painottaa-ettae-taellaista-lukua-yhtioe-ei-ole-kaeyttaenyt-hankkeen-hyoedyistae-ja-kustannuksista-pallo-on-taeysin-kuntapaeaettaejillae-nyt/299659"
+   }
+  ],
+  "_methodological_dispute": {
+   "claim": "Asiantuntijat (Kuntalehti 4.11.2025): hanke oli esitettavissa kannattavana sivuuttamalla kielto hyotyjen moninkertaisesta laskennasta.",
+   "vaylavirasto_ohje": "Laskelmiin EI pida kuulua kerrannaisvaikutuksia tyollisyyteen ja BKT:hen, heijastusvaikutuksia alueen kasvuedellytyksiin eika vaikutuksia maan arvonousuun.",
+   "yk_yleisohje": "Valillisten vaikutusten osuus arviolaskelman hyotypuolesta alle 10 %.",
+   "_aci_position": "EI RATKAISTA. Kyse on menetelmakiistasta jossa molemmilla on julkinen peruste. Kirjataan erimielisyys ja sen syy."
+  },
+  "_separate_claim": {
+   "value": "5–6 mrd EUR positiivinen BKT-vaikutus",
+   "actor": "Lansirata Oy",
+   "class": "[A] kokonaisvaikuttavuusarvio, EI h/k-suhde",
+   "components": {
+    "matka-aikasaastot_ja_lipputulot_meur": "750–810",
+    "taloudellinen_tehokkuus_meur": "160–310",
+    "tyovoiman_tarjonta_meur": "40–50",
+    "kiinteistoinvestoinnit_mrd": "3,8–4,5"
+   },
+   "note": "Kiinteistoinvestoinnit ovat 65–75 % koko luvusta. Ne ovat maankayton arvonnousua, joka on Vaylaviraston ohjeen mukaan NIMENOMAAN pois h/k-laskelmasta. Luku ei siis ole ristiriidassa 0,44:n kanssa — se mittaa eri asiaa. Rajattu neljaan alueeseen: Hista, Nummela, Lempola, Veikkola.",
+   "_veikkola_huom": "Veikkola on Kirkkonummella, joka hylkasi osakassopimuksen 8.12.2025 ja jonka asema jaa pois. Yksi neljasta maankaytto-alueesta poistui — vaikutusta 5–6 mrd arvioon EI ole julkaistu.",
+   "source_url": "https://lansirata.fi/turun-tunnin-junalla-5-6-miljardin-euron-positiivinen-vaikutus-suomen-bruttokansantuotteeseen/"
+  }
+ },
+ "_ogas2_relevance": {
+  "R_PUBLIC": "Hanke on 1,32 mrd (vaihe 1) / ~3 mrd (koko), valtion osuus 67 %. Rahoitus kulkee hankeyhtion kautta, ei suoraan talousarviosta.",
+  "_horisontti": "Rakentaminen 2027–2028 alkaen, vaihe 2 paatos viimeistaan 2031. OGAS2:n 60 kk ikkuna kattaa vaiheen 1 alun muttei hanketta."
+ }
+}

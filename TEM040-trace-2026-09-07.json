@@ -1,0 +1,129 @@
+{
+ "_schema": "aci/decision-trace/v0.1",
+ "_locked_at": "2026-09-07",
+ "_lock_note": "LUKITTU SNAPSHOT. Tata tiedostoa EI muuteta jalkikateen. Uudet havainnot menevat seuraavaan snapshotiin. Sama periaate kuin OGAS3:n snapshots/ — sarja on muisti, ei nykytilan kuvaus.",
+ "subject": {
+  "tunnus": "TEM040:00/2026",
+  "asianumero": "VN/23332/2026",
+  "nimi": "Hallituksen esitys eduskunnalle laiksi datakeskusrekisteristä",
+  "tila": "KAYNNISSA"
+ },
+ "_corpus_caveat": "OBSERVED PUBLIC CONSULTATION CORPUS != ALL SUBMITTED CONSULTATION EVIDENCE. TEM: kaikki Lausuntopalvelussa annetut lausunnot ovat automaattisesti nahtavissa, MUTTA kirjaamoon sahkopostilla tai postitse toimitettuja lausuntoja ministerio EI julkaise Lausuntopalvelussa. Havaittu lausuntojen maara on siis ALARAJA, ei kokonaismaara. Tama on sama vikaluokka kuin puuttuva vs. nolla muualla tassa jarjestelmassa, ja se on rakenteellinen eika korjattavissa hakemalla.",
+ "observed": [
+  {
+   "node_id": "hanke-asetettu",
+   "kind": "observed",
+   "occurred_at": "2026-08-10T00:00:00+03:00",
+   "known_at": "2026-08-10T12:24:10+03:00",
+   "retrieved_at": "2026-09-07T22:02:39+00:00",
+   "source": "Hankeikkuna kohteet/haku",
+   "evidence": [
+    {
+     "quote": "Hallituksen esitys eduskunnalle laiksi datakeskusrekisteristä",
+     "location": "kohde TEM040:00/2026",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2026-09-07T22:02:39+00:00"
+    }
+   ],
+   "note": "asettamisPaiva PUUTTUU. occurred_at on aloitusPaiva — eri kentta, eri semantiikka. Nakyvyysviive 0 vrk (julkaistu samana paivana).",
+   "occurred_at_source": "aloitusPaiva"
+  },
+  {
+   "node_id": "asiakirja-6745b69b",
+   "kind": "observed",
+   "occurred_at": "2026-09-03T00:00:00+03:00",
+   "known_at": "2026-09-03T13:42:02+03:00",
+   "retrieved_at": "2026-09-07T22:02:39+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "evidence": [
+    {
+     "quote": "20260903_Työ- ja elinkeinoministeriön lausuntopyyntö luonnoksesta hallituksen esitykseksi eduskunnalle laiksi datakeskusrekister",
+     "location": "asiakirjat · uuid 6745b69b-da62-4dea-a47d-e5c99ca83f80",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/6745b69b-da62-4dea-a47d-e5c99ca83f80/LAUSUNTOPYYNTO_20260903134202.PDF",
+     "retrieved_at": "2026-09-07T22:02:39+00:00"
+    }
+   ],
+   "doc_type": "LAUSUNTOPYYNTO",
+   "laatija": "Työ- ja elinkeinoministeriö"
+  },
+  {
+   "node_id": "asiakirja-aa4b9c70",
+   "kind": "observed",
+   "occurred_at": "2026-09-03T00:00:00+03:00",
+   "known_at": "2026-09-03T13:42:02+03:00",
+   "retrieved_at": "2026-09-07T22:02:39+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "evidence": [
+    {
+     "quote": "HE-luonnos datakeskusrekisteristä 3.9.2026",
+     "location": "asiakirjat · uuid aa4b9c70-e6fd-4271-bb78-3dd45e5d9edc",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/aa4b9c70-e6fd-4271-bb78-3dd45e5d9edc/KIRJE_20260903134202.PDF",
+     "retrieved_at": "2026-09-07T22:02:39+00:00"
+    }
+   ],
+   "doc_type": "KIRJE",
+   "laatija": "Työ- ja elinkeinoministeriö"
+  },
+  {
+   "node_id": "lausuntokierros-alkoi",
+   "kind": "observed",
+   "occurred_at": "2026-09-03T00:00:00+03:00",
+   "known_at": "2026-09-03T00:00:00+03:00",
+   "retrieved_at": "2026-09-07T22:02:39+00:00",
+   "source": "Hankeikkuna etapit",
+   "evidence": [
+    {
+     "quote": "LAUSUNTOMENETTELY 2026-09-03 – 2026-10-02",
+     "location": "etapit[0]",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2026-09-07T22:02:39+00:00"
+    }
+   ],
+   "ends": "2026-10-02"
+  }
+ ],
+ "_expected_note": "ALLA OLEVAT EIVAT OLE TAPAHTUMIA. Ne ovat odotettuja vaiheita ilman aikaleimoja. Niita EI saa kirjata occurred_at-arvolla ennen kuin ne ovat tapahtuneet — eteenpain katsova suunnitelma ei ole havainto.",
+ "expected": [
+  {
+   "step": "lausuntokierros paattyy",
+   "earliest": "2026-10-02",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "HE:n esittely valtioneuvostossa",
+   "estimate": "vko 44/2026",
+   "status": "ei tapahtunut",
+   "note": "TEM:n oma arvio, ei sitova"
+  },
+  {
+   "step": "lahetekeskustelu eduskunnassa",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "valiokuntakasittely + asiantuntijakuulemiset",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "mietinto",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "taysistuntoaanestys",
+   "status": "ei tapahtunut",
+   "note": "TASSA uptake muuttuu mitattavaksi. Ennen tata se on None, ei 0."
+  },
+  {
+   "step": "laki voimaan",
+   "estimate": "2027-01-01",
+   "status": "ei tapahtunut",
+   "note": "HE-luonnoksen mukainen tavoite. Ilmoitusvelvollisuus olemassa oleville keskuksille 30.6.2027 mennessa."
+  }
+ ],
+ "_ogas3_state": {
+  "L_events_observed": 0,
+  "L_events_note": "Lausuntoja ei viela nay Hankeikkunan asiakirjoissa (tyyppi LAUSUNTO). Lausuntopalvelu naytti 1 lausunnon 7.9.2026, mutta se ei ole viela siirtynyt hankesivulle. Kaksi lahdetta, eri viive.",
+  "uptake": null,
+  "uptake_note": "MAARITTAMATON, ei nolla. Aanestysta ei ole ollut.",
+  "policy_proximity_observed": "0.40 (lausuntomenettely). Avoimuusrekisterissa kaudella 5 oli 34 datakeskusaiheista kontaktia tasolla 0.70, mutta niita EI ole viela kytketty tahan hankkeeseen — contactTopicProject-kentta on tarkistamatta."
+ }
+}
