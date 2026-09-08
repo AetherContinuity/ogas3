@@ -647,6 +647,7 @@ def _mk_trace(tmp, **over):
     d = {
         "_schema": "aci/decision-trace/v0.1",
         "_locked_at": "2026-09-07",
+        "_revision": 1,
         "subject": {"nimi": "Testihanke"},
         "observed": [{
             "node_id": "n1", "kind": "observed",
@@ -762,6 +763,70 @@ def test_trace_requires_lock_date_and_known_domain():
                 assert marker in str(e), f"{over} -> {e}"
             else:
                 raise AssertionError(f"{over} meni lapi")
+
+
+def test_trace_revision_and_hash_detect_silent_overwrite():
+    """Sama _locked_at eri sisallolla ei saa mennä lapi huomaamatta.
+
+    VIKA JOKA TAMAN AIHEUTTI: lansirata-trace lahetettiin neljasti,
+    jokaisessa _locked_at 2026-09-07, tiedosto kasvoi 4 372 -> 14 961
+    tavuun. Vanhempi versio olisi korvannut uudemman jos vastaanottaja
+    ei olisi diffannut SISALTOA — polun tarkistus ei riittanyt.
+    """
+    import json, tempfile, os
+    from traces import load_trace, content_hash, TraceError
+    with tempfile.TemporaryDirectory() as tmp:
+        p = _mk_trace(tmp)
+        d = json.load(open(p, encoding="utf-8"))
+        d["_content_hash"] = content_hash(d)
+        open(p, "w", encoding="utf-8").write(json.dumps(d, ensure_ascii=False))
+
+        t = load_trace(p)
+        assert t.revision == 1
+        assert t.hash_matches is True
+
+        # muokkaus tiivisteen laskemisen jalkeen -> hylataan
+        d["subject"]["nimi"] = "muutettu"
+        open(p, "w", encoding="utf-8").write(json.dumps(d, ensure_ascii=False))
+        try:
+            load_trace(p)
+        except TraceError as e:
+            assert "_content_hash ei täsmää" in str(e)
+            assert "nosta _revision" in str(e)
+        else:
+            raise AssertionError("muokattu trace meni lapi")
+
+
+def test_trace_hash_none_is_not_mismatch():
+    """Tiivisteen puuttuminen != ristiriita. Vanhat tracet ovat ilman."""
+    import tempfile
+    from traces import load_trace
+    with tempfile.TemporaryDirectory() as tmp:
+        t = load_trace(_mk_trace(tmp))       # ei _content_hash-kenttaa
+        assert t.content_hash_stored is None
+        assert t.hash_matches is None, "puuttuva tiiviste luettiin ristiriidaksi"
+        assert t.content_hash_actual, "laskettu tiiviste puuttuu"
+
+
+def test_trace_rejects_bad_revision():
+    import tempfile
+    from traces import load_trace, TraceError
+    with tempfile.TemporaryDirectory() as tmp:
+        for bad in (0, -1, "1", 1.5):
+            try:
+                load_trace(_mk_trace(tmp, _revision=bad))
+            except TraceError as e:
+                assert "_revision" in str(e)
+            else:
+                raise AssertionError(f"_revision={bad!r} meni lapi")
+
+
+def test_trace_hash_stable_under_key_order():
+    """Tiiviste ei saa muuttua avainjarjestyksesta."""
+    from traces import content_hash
+    a = {"z": 1, "a": {"y": 2, "b": 3}, "_content_hash": "vanha"}
+    b = {"a": {"b": 3, "y": 2}, "z": 1}
+    assert content_hash(a) == content_hash(b)
 
 
 if __name__ == "__main__":

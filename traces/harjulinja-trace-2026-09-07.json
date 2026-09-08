@@ -1,6 +1,8 @@
 {
  "_schema": "aci/decision-trace/v0.1",
  "_locked_at": "2026-09-07",
+ "_revision": 1,
+ "_revision_note": "Sama _locked_at eri sisallolla vaatii uuden revision. _locked_at kertoo mihin hetkeen HAVAINNOT on rajattu; _revision kertoo mika VERSIO tiedostosta on kasilla. Ne ovat eri asioita.",
  "_lock_note": "LUKITTU SNAPSHOT. Ei muuteta jalkikateen; uudet havainnot seuraavaan snapshotiin.",
  "subject": {
   "nimi": "Harjulinja 2 x 400+110 kV voimajohtohanke, Pyhäjärvi–Kangasniemi",
@@ -77,5 +79,6 @@
   "tuulivoima": "Kasvuennuste yli 2 000 MW/v vuoteen 2035. WEM:n WR-komponentti kasvaa vastaavasti.",
   "_ei_kalibroitu": "Naita EI ole syotetty OGAS2:een. patch-arvoja ei johdeta tasta ilman erillista paatosta."
  },
- "_lex_resiliens": "A-LUOKAN VAITE hankevastaavan omin sanoin: 'Hankkeen toteuttamatta jattaminen ei ole mahdollista, koska sahkonsiirtoa ei voida hoitaa nykyisella kantaverkolla ja jo paatetyilla verkkoinvestoinneilla ilman haitallisia siirtokapasiteettirajoituksia tai vaarantamatta kayttovarmuutta.' — Tekninen pakko, ei arvovalinta. HUOM: tama on HANKEVASTAAVAN muotoilu YVA-ohjelmassa, jossa nollavaihtoehto on lain mukaan tarkasteltava. Se on osapuolen kanta, ei yhteysviranomaisen paatelma. Perusteltu paatelma antaa jalkimmaisen — ja se on viela antamatta."
+ "_lex_resiliens": "A-LUOKAN VAITE hankevastaavan omin sanoin: 'Hankkeen toteuttamatta jattaminen ei ole mahdollista, koska sahkonsiirtoa ei voida hoitaa nykyisella kantaverkolla ja jo paatetyilla verkkoinvestoinneilla ilman haitallisia siirtokapasiteettirajoituksia tai vaarantamatta kayttovarmuutta.' — Tekninen pakko, ei arvovalinta. HUOM: tama on HANKEVASTAAVAN muotoilu YVA-ohjelmassa, jossa nollavaihtoehto on lain mukaan tarkasteltava. Se on osapuolen kanta, ei yhteysviranomaisen paatelma. Perusteltu paatelma antaa jalkimmaisen — ja se on viela antamatta.",
+ "_content_hash": "bb03b206400b"
 }

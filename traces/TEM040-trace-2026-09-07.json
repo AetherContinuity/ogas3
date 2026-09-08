@@ -1,6 +1,8 @@
 {
  "_schema": "aci/decision-trace/v0.1",
  "_locked_at": "2026-09-07",
+ "_revision": 1,
+ "_revision_note": "Sama _locked_at eri sisallolla vaatii uuden revision. _locked_at kertoo mihin hetkeen HAVAINNOT on rajattu; _revision kertoo mika VERSIO tiedostosta on kasilla. Ne ovat eri asioita.",
  "_lock_note": "LUKITTU SNAPSHOT. Tata tiedostoa EI muuteta jalkikateen. Uudet havainnot menevat seuraavaan snapshotiin. Sama periaate kuin OGAS3:n snapshots/ — sarja on muisti, ei nykytilan kuvaus.",
  "subject": {
   "tunnus": "TEM040:00/2026",
@@ -125,5 +127,6 @@
   "uptake": null,
   "uptake_note": "MAARITTAMATON, ei nolla. Aanestysta ei ole ollut.",
   "policy_proximity_observed": "0.40 (lausuntomenettely). Avoimuusrekisterissa kaudella 5 oli 34 datakeskusaiheista kontaktia tasolla 0.70, mutta niita EI ole viela kytketty tahan hankkeeseen — contactTopicProject-kentta on tarkistamatta."
- }
+ },
+ "_content_hash": "948e9084a6f3"
 }

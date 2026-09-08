@@ -44,6 +44,35 @@ from schema import EVENT_TYPES, SchemaError, parse_ts
 
 TRACE_SCHEMA = "aci/decision-trace/v0.1"
 
+# ── REVISIO JA SISÄLTÖTIIVISTE (lisätty 2026-09-08) ──────────────────
+#
+# VIKA JOKA TÄMÄN AIHEUTTI: lansirata-trace lähetettiin NELJÄSTI, ja
+# jokaisessa luki `_locked_at: 2026-09-07`. Tiedosto kasvoi 4 372 ->
+# 14 961 tavuun, mutta lukituspäivä pysyi samana. Vanhempi versio olisi
+# hiljaisesti korvannut uudemman, jos vastaanottaja ei olisi diffannut
+# SISÄLTÖÄ — polun tarkistus ei olisi riittänyt.
+#
+# `_locked_at` kertoo MIHIN HETKEEN HAVAINNOT ON RAJATTU. Se ei kerro
+# MIKÄ VERSIO tiedostosta on käsillä. Ne ovat eri asioita, ja niiden
+# sekoittaminen teki "lukitusta" merkityksettömän.
+#
+# Sama kaava kuin OGAS2 v2.3:n versiolohkossa: revisio kertoo mitä
+# pitäisi olla, tiiviste mitä on. Jos revisio unohtuu, tiiviste muuttuu
+# silti.
+#
+# Tiiviste lasketaan KAIKESTA PAITSI _content_hash-kentästä itsestään,
+# avainjärjestys normalisoituna. Ei kryptografinen: tarkoitus on havaita
+# ero, ei estää väärennöstä.
+import hashlib
+
+
+def content_hash(d: dict) -> str:
+    """FNV-tyylinen sisältötiiviste, 12 merkkiä. Vakaa avainjärjestykselle."""
+    clean = {k: v for k, v in d.items() if k != "_content_hash"}
+    blob = json.dumps(clean, ensure_ascii=False, sort_keys=True,
+                      separators=(",", ":"))
+    return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:12]
+
 # Toimialueet. Lisätty koska ROE:n D/O/S on määritelty ENERGIAJÄRJESTELMÄN
 # kautta (kuorma megawatteina, omistus energiayhtiössä, säätökyvyn
 # poistuma) eivätkä ne yleisty sellaisenaan.
@@ -88,11 +117,22 @@ class TraceNode:
 class Trace:
     schema: str
     locked_at: str
+    revision: int
+    content_hash_stored: str | None
+    content_hash_actual: str
     subject: dict[str, Any]
     domain: str | None
     observed: list[TraceNode] = field(default_factory=list)
     expected: list[dict[str, Any]] = field(default_factory=list)
     caveats: dict[str, str] = field(default_factory=dict)
+
+    @property
+    def hash_matches(self) -> bool | None:
+        """None jos tiivistettä ei ole tallennettu — se on eri asia kuin
+        ristiriita. Vanhat tracet on kirjoitettu ennen tätä kenttää."""
+        if self.content_hash_stored is None:
+            return None
+        return self.content_hash_stored == self.content_hash_actual
 
     @property
     def n_observed(self) -> int:
@@ -115,6 +155,19 @@ def load_trace(path: str | Path) -> Trace:
         raise TraceError("_locked_at puuttuu. Trace on LUKITTU tilannekuva; "
                          "ilman lukituspäivää se on nykytilan kuvaus eikä sarjan "
                          "jäsen.")
+
+    rev = d.get("_revision", 1)
+    if not isinstance(rev, int) or rev < 1:
+        raise TraceError(f"_revision on {rev!r}, odotettu positiivinen kokonaisluku. "
+                         "Sama _locked_at eri sisällöllä vaatii uuden revision — "
+                         "muuten vanhempi tiedosto korvaa uudemman hiljaa.")
+    stored = d.get("_content_hash")
+    actual = content_hash(d)
+    if stored is not None and stored != actual:
+        raise TraceError(
+            f"_content_hash ei täsmää: tallennettu {stored}, laskettu {actual}. "
+            "Tiedostoa on muutettu tiivisteen laskemisen jälkeen. Laske tiiviste "
+            "uudelleen JA nosta _revision — älä vain päivitä tiivistettä.")
 
     domain = d.get("domain")
     if domain is not None and domain not in DOMAINS:
@@ -151,6 +204,7 @@ def load_trace(path: str | Path) -> Trace:
                if k.startswith("_") and isinstance(v, str)}
 
     return Trace(schema=schema, locked_at=d["_locked_at"],
+                 revision=rev, content_hash_stored=stored, content_hash_actual=actual,
                  subject=d.get("subject") or {}, domain=domain,
                  observed=obs, expected=exp, caveats=caveats)
 
@@ -235,6 +289,12 @@ def summarize(t: Trace) -> dict:
         "subject": t.subject.get("nimi") or t.subject.get("tunnus"),
         "domain": t.domain,
         "locked_at": t.locked_at,
+        "revision": t.revision,
+        "content_hash": t.content_hash_actual,
+        "hash_matches": t.hash_matches,
+        "_hash_note": "None = tiivistettä ei tallennettu tiedostoon. Se on eri "
+                      "asia kuin ristiriita; vanhat tracet on kirjoitettu ennen "
+                      "tätä kenttää.",
         "observed": t.n_observed,
         "expected": t.n_expected,
         "_expected_note": "EI muunneta tapahtumiksi. Ei koskaan.",

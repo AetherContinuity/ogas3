@@ -1,6 +1,8 @@
 {
  "_schema": "aci/decision-trace/v0.1",
  "_locked_at": "2026-09-07",
+ "_revision": 1,
+ "_revision_note": "Sama _locked_at eri sisallolla vaatii uuden revision. _locked_at kertoo mihin hetkeen HAVAINNOT on rajattu; _revision kertoo mika VERSIO tiedostosta on kasilla. Ne ovat eri asioita.",
  "_lock_note": "LUKITTU SNAPSHOT. Ei muuteta jalkikateen.",
  "subject": {
   "nimi": "Länsirata (Espoo–Salo-oikorata, ent. Turun tunnin juna)",
@@ -278,5 +280,6 @@
    },
    "_yhteenveto": "Kolme eri tapaa, joilla vastuu syntyy ilman etta se nakyy kehysdisipliinissa: finanssisijoitus on maaritelmallisesti ulkopuolella, investointiohjelmassa kehys joustaa ja rahoitus tulee omaisuudesta, ja tilausvaltuus siirtaa menon tuleville vuosille. Kaikki kolme ovat laillisia ja kirjattuja. Havainto EI ole etta jotain salataan — vaan etta kolme paallekkaista mekanismia tekee kokonaisvastuun lukemisen yhdesta luvusta mahdottomaksi."
   }
- }
+ },
+ "_content_hash": "a7484aa07c05"
 }
