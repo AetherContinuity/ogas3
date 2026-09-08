@@ -222,5 +222,61 @@
  "_ogas2_relevance": {
   "R_PUBLIC": "Hanke on 1,32 mrd (vaihe 1) / ~3 mrd (koko), valtion osuus 67 %. Rahoitus kulkee hankeyhtion kautta, ei suoraan talousarviosta.",
   "_horisontti": "Rakentaminen 2027–2028 alkaen, vaihe 2 paatos viimeistaan 2031. OGAS2:n 60 kk ikkuna kattaa vaiheen 1 alun muttei hanketta."
+ },
+ "domain": "fiskaali",
+ "_domain_note": "Kasitellaan FISKAALISENA, ei liikennehankkeena. Kysymys ei ole radan hyodyista vaan siita, miten valtio lisaa vastuitaan tilanteessa jossa sen fiskaalinen liikkumavara on paineessa. OGAS3:n D/O/S on maaritelty energiajarjestelman kautta eika sovellu tahan — domain-kentta erottaa nama eika anna maaritelman venya huomaamatta.",
+ "_fiscal_framing": {
+  "_critical_distinction": "H/K 0,44 EI OLE FISKAALINEN TUOTTO. Se on yhteiskuntataloudellinen hyoty-kustannussuhde: matka-aikasaastot, liikennointikustannukset, paastot. Valtion fiskaalinen tuotto olisi verotuloa syntyvasta toiminnasta, ja SITA EI OLE NAISSA LASKELMISSA LAINKAAN. Naiden sekoittaminen on virhe. Hanke voi olla H/K < 1 ja silti perusteltu poliittinen valinta — ja se voi olla H/K > 1 ja silti fiskaalisesti raskas.",
+  "valtion_vastuu": {
+   "vaihe1_kokonaiskustannus_mrd": 1.32,
+   "valtion_osuus_pct": 67,
+   "valtion_osuus_meur_laskettu": 884,
+   "_laskenta": "1320 * 0,67 = 884 M EUR [L]",
+   "rahoitusvaltuus_talousarviossa_meur": 400,
+   "vieras_paaoma_valtuutus_meur": 500,
+   "_huom": "Rahoitusvaltuus 400 M EUR < laskettu osuus 884 M EUR. Erotus katetaan ilmeisesti vieraalla paaomalla ja myohemmilla valtuuksilla — EI VARMISTETTU. Talousarvion valtuustaulukot ovat budjetti.vm.fi:ssa, eivat API:ssa.",
+   "vaihe2_ehdollinen": {
+    "kuntien_tarjous_meur": 300,
+    "ehto": "valtio tekee toteutuspaatoksen 31.12.2031 mennessa",
+    "valtion_osuus": "ei paatetty"
+   }
+  },
+  "_konteksti_mitattu_tassa_istunnossa": {
+   "valtiontakaukset_mrd": 74.3,
+   "valtiontakaukset_pvm": "2026-06-30",
+   "sopeutustarve_mrd": "8–11 vuoteen 2031 (velkajarrutyoryhma)",
+   "korkomenojen_kasvu_mrd_v": "3,0–4,5 vuoteen 2030",
+   "puolustuksen_vaje_mrd": 4.4,
+   "R_PUBLIC_stressi": 63.8,
+   "R_PUBLIC_puskuri": 39.1,
+   "_R_PUBLIC_lahde": "OGAS2 v2.8, laskettu Eurostat FI10Y + Valtiokonttorin korkomenototeumasta"
+  },
+  "_kysymys_1_miten_vastuu_lisataan": "HANKEYHTIOMALLI SIIRTAA VASTUUN POIS MENOISTA. Valtio paaomittaa yhtiota (omistus 51 %) ja yhtio hankkii vierasta paaomaa. Menokehys ja velkajarru mittaavat menoja ja velkaa, EIVAT omistuksen kautta syntyvaa vastuuta eivatka hankeyhtion velkaa.\n\nSama rakenne kolmessa tassa istunnossa havaitussa tapauksessa:\n  Garden Helsinki    35 M EUR ehdollinen tuki, 4,7 mrd ohjelma rahoitetaan 'valtion omaisuutta hyodyntamalla'\n  Vaylahankkeet      878 M EUR budjettiriihessa 2.9.2026: omaisuuden myynti + VER-rahastot\n  Lansirata          hankeyhtio, 500 M EUR vieras paaoma\n\nJa velkajarrutyoryhman yhteisymmarrysasiakirja SULKEE omaisuuden myynnin ensi vaalikaudeksi. Jos se toteutuu, hankeyhtio- ja takauskanava jaa ainoaksi.",
+  "_kysymys_2_palautuva_arvo": "EI MITATTAVISSA NYKYISILLA LAHTEILLA. Kolme eri suuretta sekoittuu:\n\n  H/K 0,44 (Vaylavirasto)   yhteiskuntataloudellinen hyoty, EI fiskaalinen\n  H/K 1,41 (Lansirata Oy)   eri menetelma, EU-kriteerit\n  5–6 mrd BKT (Lansirata)   kokonaisvaikuttavuus, 65–75 % kiinteisto-\n                            investointeja jotka Vaylaviraston ohjeen\n                            mukaan EIVAT kuulu h/k-laskelmaan\n\nYksikaan ei kerro paljonko valtio saa takaisin VEROTULOINA. Se olisi fiskaalinen tuotto, ja sita ei ole laskettu missaan naista.\n\nAVOIN: onko fiskaalista tuottolaskelmaa tehty? Jos ei, hankeyhtion kautta otettu vastuu on paatetty ilman sen mittarin laskentaa jonka kysymys 1 tekee olennaiseksi.",
+  "_ei_ratkaista": "ACI ei arvioi onko hanke tehtava. Kirjataan: (1) vastuu lisataan kanavaa joka ei nay menokehyksessa, (2) palautuvasta arvosta on kolme eri lukua eri menetelmilla, (3) fiskaalista tuottoa ei ole laskettu missaan niista. Nama kolme ovat havaintoja, eivat kannanotto.",
+  "_kehysmekanismit_talousarvion_omin_sanoin": {
+   "_source": "Valtion talousarvioesitys 2026, yleisperustelut luku 5 (Talousarvioesityksen määrärahat), VM",
+   "_class": "[M] suora lainaus talousarvioesityksestä",
+   "_note": "Nama EIVAT ole tulkintaa. Kolme mekanismia on nimetty talousarvion omassa tekstissa, ja ne vastaavat kysymykseen 'miten valtio lisaa vastuitaan tilanteessa jossa liikkumavara on paineessa'.",
+   "1_finanssisijoitukset_kehyksen_ulkopuolella": {
+    "quote": "Kehyksen ulkopuolelle jäävät myös mm. valtionvelan korkomenot, arvonlisäveromenot, FINANSSISIJOITUKSET sekä menot, joissa valtio toimii teknisenä ulkopuoliselta saatavan rahoitusosuuden välittäjänä.",
+    "kehyksen_ulkopuoliset_menot_mrd": 12.3,
+    "_relevance": "Hankeyhtion paaomitus on finanssisijoitus. Se EI kilpaile muun menon kanssa menokehyksessa. Tama on Lansiradan valtion osuuden kanava, ja se on maaritelmallisesti kehysdisipliinin ulkopuolella."
+   },
+   "2_investointiohjelma_kehys_joustaa": {
+    "quote_kehysmuutos": "31.10.77 Väyläverkon kehittämishankkeet. Hankkeet ovat osa hallitusohjelmaan sisältyvää investointiohjelmaa. Kehystasoa korotetaan menoja vastaavasti. (+8,1 M EUR)",
+    "quote_rahoitus": "Hallitus toteuttaa vaalikauden aikana määräaikaisen investointiohjelman, josta rahoitetaan kestävän kasvun edellytyksiä tukevia hankkeita yli 4 mrd. eurolla. Investointiohjelma rahoitetaan pääosin OMAISUUSTULOILLA.",
+    "valtuudet_ja_maararahat_yhteensa_mrd": 3.9,
+    "maararahat_2026_meur": 823,
+    "tuloja_budjetoitu_2026_mrd": 1.72,
+    "_relevance": "Kehysta EI ylitetä — sita korotetaan menoa vastaavasti. Ja rahoitus tulee omaisuustuloista, 1,72 mrd budjetoituna vuodelle 2026. Velkajarrutyoryhma sulkee taman kanavan ensi vaalikaudeksi.",
+    "_lansirata_ei_listalla": "Investointiohjelman rahoitettavat hankkeet on lueteltu: Paarata 100, Savon rata 40,8, Lieksanjoen silta 20, Atomitie 8,4, Inkoo 6,0, Joroinen 2,2 M EUR valtuuksina. LANSIRATA EI OLE LISTALLA. Sen valtion osuus on siis muualla — paaomasijoituksena, eli mekanismi 1."
+   },
+   "3_tilausvaltuudet_meno_siirtyy": {
+    "quote": "Vuoden 2026 talousarvioon ehdotetaan yhteensä 6 mrd. euron uusia tilausvaltuuksia puolustusmateriaalihankintoihin, joista aiheutuvat menot ajoittuvat suurimmalta osin 2030-luvulle. Uusista ja aiemmin myönnetyistä Puolustusvoimien tilausvaltuuksista aiheutuu menoja yhteensä lähes 3,0 mrd. euroa v. 2026 ja talousarviovuoden jälkeisinä vuosina 2027—2036 yhteensä n. 13,7 mrd. euroa mukaan lukien F-35- ja Laivue 2020 -hankkeet.",
+    "_relevance": "EI Lansirataa koskeva, mutta sama rakenne: valtuus sitoo tulevat vuodet ilman etta meno nakyy talla hetkella. Tama luku oli SM-021:n avoimena kohtana ('tilausvaltuuksien enimmaismaarat 2029-2036') ja se on nyt loydetty."
+   },
+   "_yhteenveto": "Kolme eri tapaa, joilla vastuu syntyy ilman etta se nakyy kehysdisipliinissa: finanssisijoitus on maaritelmallisesti ulkopuolella, investointiohjelmassa kehys joustaa ja rahoitus tulee omaisuudesta, ja tilausvaltuus siirtaa menon tuleville vuosille. Kaikki kolme ovat laillisia ja kirjattuja. Havainto EI ole etta jotain salataan — vaan etta kolme paallekkaista mekanismia tekee kokonaisvastuun lukemisen yhdesta luvusta mahdottomaksi."
+  }
  }
 }

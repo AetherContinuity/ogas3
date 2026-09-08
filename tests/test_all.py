@@ -641,6 +641,129 @@ def test_open_cases_are_classified_by_kind():
     assert "vallan\n#                         kolmijako" in src or "kolmijako" in src
 
 
+# ── Decision Trace (lisätty 2026-09-07) ─────────────────────────────
+def _mk_trace(tmp, **over):
+    import json, tempfile, os
+    d = {
+        "_schema": "aci/decision-trace/v0.1",
+        "_locked_at": "2026-09-07",
+        "subject": {"nimi": "Testihanke"},
+        "observed": [{
+            "node_id": "n1", "kind": "observed",
+            "occurred_at": "2026-08-10T00:00:00+03:00",
+            "known_at": "2026-08-10T12:00:00+03:00",
+            "retrieved_at": "2026-09-07T10:00:00+00:00",
+            "source": "testi",
+            "evidence": [{"quote": "q", "location": "l",
+                          "source_url": "https://x",
+                          "retrieved_at": "2026-09-07T10:00:00+00:00"}],
+        }],
+        "expected": [{"step": "seuraava vaihe", "status": "ei tapahtunut"}],
+    }
+    d.update(over)
+    p = os.path.join(tmp, "t.json")
+    open(p, "w", encoding="utf-8").write(json.dumps(d, ensure_ascii=False))
+    return p
+
+
+def test_trace_refuses_expected_with_timestamp():
+    """Odotettu vaihe EI saa olla aikaleimaa.
+
+    expected-solmuilla on usein `estimate`-kentta ("vko 44/2026",
+    "2030-2032"), ja se on houkutteleva lukea aikaleimana. Jos niin
+    tehdaan, sarja tayttyy tapahtumista joita ei ole tapahtunut ja
+    PRE/FULL-erottelu menettaa merkityksensa.
+    """
+    import tempfile
+    from traces import load_trace, TraceError
+    with tempfile.TemporaryDirectory() as tmp:
+        p = _mk_trace(tmp, expected=[{"step": "x",
+                                      "occurred_at": "2027-01-01T00:00:00+02:00"}])
+        try:
+            load_trace(p)
+        except TraceError as e:
+            assert "EI OLE TAPAHTUMA" in str(e)
+        else:
+            raise AssertionError("expected sai aikaleiman lapi")
+
+
+def test_trace_expected_never_converted():
+    import tempfile
+    from traces import load_trace, to_raw_events
+    with tempfile.TemporaryDirectory() as tmp:
+        t = load_trace(_mk_trace(tmp))
+        events, skipped = to_raw_events(t)
+        assert len(events) == 1, "observed ei muuntunut"
+        assert skipped == [], "turha ohitus"
+        assert t.n_expected == 1
+        # expected EI ole events-listalla eika skipped-listalla:
+        # se ei ole ehdokas.
+        assert not any("seuraava" in str(e) for e in events)
+
+
+def test_trace_does_not_infer_type():
+    """Luokitus on Extractorin tyo. Tyyppia ei pääpäätellä."""
+    import tempfile
+    from traces import load_trace, to_raw_events
+    with tempfile.TemporaryDirectory() as tmp:
+        t = load_trace(_mk_trace(tmp))
+        events, _ = to_raw_events(t)
+        assert events[0]["type"] is None
+        assert all(v is None for v in events[0]["llm_classification"].values())
+
+
+def test_trace_known_at_may_be_missing_but_is_flagged():
+    """known_at None = 'julkiseksitulohetkea ei tiedeta', ei nolla viivetta."""
+    import tempfile
+    from traces import load_trace, to_raw_events, summarize
+    with tempfile.TemporaryDirectory() as tmp:
+        p = _mk_trace(tmp, observed=[{
+            "node_id": "n1", "kind": "observed",
+            "occurred_at": "2025-01-01T00:00:00+02:00",
+            "known_at": None,
+            "retrieved_at": "2026-09-07T10:00:00+00:00", "source": "s",
+            "evidence": [{"quote": "q", "location": "l", "source_url": "https://x",
+                          "retrieved_at": "2026-09-07T10:00:00+00:00"}]}])
+        t = load_trace(p)
+        events, _ = to_raw_events(t)
+        assert events[0]["known_at"] is None
+        assert events[0]["_known_at_missing"] is True
+        assert summarize(t)["known_at_missing"] == 1
+
+
+def test_trace_causal_order_skips_not_fixes():
+    import tempfile
+    from traces import load_trace, to_raw_events
+    with tempfile.TemporaryDirectory() as tmp:
+        p = _mk_trace(tmp, observed=[{
+            "node_id": "bad", "kind": "observed",
+            "occurred_at": "2026-08-10T00:00:00+03:00",
+            "known_at": "2026-07-01T00:00:00+03:00",
+            "retrieved_at": "2026-09-07T10:00:00+00:00", "source": "s",
+            "evidence": [{"quote": "q", "location": "l", "source_url": "https://x",
+                          "retrieved_at": "2026-09-07T10:00:00+00:00"}]}])
+        t = load_trace(p)
+        events, skipped = to_raw_events(t)
+        assert events == [] and len(skipped) == 1
+        assert "kausaalijärjestys" in skipped[0]["reason"]
+
+
+def test_trace_requires_lock_date_and_known_domain():
+    import tempfile
+    from traces import load_trace, TraceError, DOMAINS, DECISION_BODIES
+    assert "fiskaali" in DOMAINS and "energia" in DOMAINS
+    assert "kunnanvaltuusto" in DECISION_BODIES
+    with tempfile.TemporaryDirectory() as tmp:
+        for over, marker in (({"_locked_at": None}, "LUKITTU"),
+                             ({"domain": "avaruus"}, "tuntematon domain")):
+            try:
+                load_trace(_mk_trace(tmp, **over))
+            except TraceError as e:
+                assert marker in str(e), f"{over} -> {e}"
+            else:
+                raise AssertionError(f"{over} meni lapi")
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0
