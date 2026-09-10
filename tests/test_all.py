@@ -829,6 +829,120 @@ def test_trace_hash_stable_under_key_order():
     assert content_hash(a) == content_hash(b)
 
 
+# ── Extractor (lisätty 2026-09-09) ──────────────────────────────────
+FI_FORM = """Lausunto
+Lausunnonantajan taho
+        Toimiala- tai etujärjestö
+Kasvihuonekaasujen vähentäminen (strategian luku 2.2)
+        -
+Avoin vastaus kasvihuonekaasuja koskien
+        Kannatamme tavoitetta mutta pidämme aikataulua liian tiukkana.
+Ydinenergian käyttö (strategian luku 2.7)
+        -
+Avoin vastaus ydinenergiaa koskien
+        -
+Muuta kommentoitavaa
+        Yleinen huomio lopuksi.
+                                Lausuntopalvelu.fi        1/3
+"""
+
+SV_FORM = """Utlåtande
+Utlåtandegivarens instans
+        Annan instans
+Minskning av växthusgasutsläpp (kapitel 2.2 i strategin)
+        -
+Fritt svar om minskning av växthusgasutsläpp
+        Vi stöder målet men tidtabellen är för snäv.
+Forskning och konkurrenskraft (kapitel 2. 9 i strategin)
+        -
+Fritt svar om forskning
+        Mera resurser behövs.
+"""
+
+
+def test_extractor_parses_both_languages():
+    """Lomake on kaksikielinen. Yksikielinen jäsennin luki
+    ruotsinkielisen lausunnon TYHJÄKSI ja se raportoitiin havaintona."""
+    from extractor import parse_form
+    fi = parse_form(FI_FORM)
+    sv = parse_form(SV_FORM)
+    assert fi.sections_answered == ["2.2"], fi.sections_answered
+    assert sv.sections_answered == ["2.2", "2.9"], sv.sections_answered
+    # "kapitel 2. 9" — välilyönti numerossa
+    assert not sv.is_empty
+
+
+def test_extractor_free_text_pairs_with_preceding_section():
+    """`Avoin vastaus` kuuluu EDELTÄVÄLLE luvulle, ei omakseen."""
+    from extractor import parse_form
+    f = parse_form(FI_FORM)
+    secs = {a.section for a in f.answers}
+    assert "2.2" in secs
+    # 2.7:n vapaa kenttä oli "-", joten sitä EI kirjata
+    assert "2.7" not in f.sections_answered
+    # yleinen kenttä on None-avaimella
+    assert None in secs
+
+
+def test_extractor_empty_differs_from_unparsed():
+    """is_empty ja parse_confidence: low ovat ERI ASIOITA.
+
+    Tyhjä lausunto = lomake jäsentyi, sisältöä ei ole.
+    Jäsentymätön    = lomaketta ei tunnistettu — voi olla mitä tahansa.
+    """
+    from extractor import parse_form
+    empty = parse_form("Otsikko (strategian luku 2.2)\n        -\n"
+                       "Avoin vastaus jotain\n        -\n")
+    assert empty.is_empty
+    assert empty.parse_confidence == "high", "jäsentyi kyllä"
+
+    junk = parse_form("Satunnaista tekstia ilman lomaketta.")
+    assert junk.parse_confidence == "low"
+    assert junk.n_questions_seen == 0
+
+
+def test_extractor_intensity_does_not_scale_with_coverage():
+    """MÄÄRÄ EI OLE VOIMAKKUUS.
+
+    Ilmastopaneeli vastasi 12/12 lukuun ja 17 494 merkkiin. Jos
+    intensity skaalattaisiin kattavuudella, se saisi automaattisesti
+    korkeimman arvon — mutta se on lakisaateinen asiantuntijaelin joka
+    lausuu kokonaisuudesta. Eri rooli, ei vahvempi vaikuttaminen.
+    """
+    from extractor import parse_form, roe_from_form
+    wide = parse_form(FI_FORM + "".join(
+        f"Luku (strategian luku 2.{i})\n        -\nAvoin vastaus {i}\n"
+        f"        Pitka vastaus {'x'*400}\n" for i in range(3, 12)))
+    narrow = parse_form(FI_FORM)
+    a = roe_from_form(wide, "tutkija")
+    b = roe_from_form(narrow, "etujarjesto")
+    assert a["intensity"] == b["intensity"] == 0.40, "kattavuus vaikutti intensityyn"
+    assert a["form"]["total_chars"] > b["form"]["total_chars"] * 3
+
+
+def test_extractor_empty_statement_has_no_intensity():
+    """Tyhjä lausunto ei ole intensity 0.40 vaan ei kantaa lainkaan."""
+    from extractor import parse_form, roe_from_form
+    f = parse_form("Otsikko (strategian luku 2.2)\n        -\n"
+                   "Avoin vastaus x\n        -\n")
+    r = roe_from_form(f, "toimija")
+    assert r["intensity"] is None
+    assert "TYHJÄ" in r["_intensity_note"]
+    assert r["targeting"] is None
+
+
+def test_extractor_never_invents_targeting_number():
+    """targeting luetaan lomakkeesta; numeroarvoa EI keksitä."""
+    from extractor import parse_form, roe_from_form
+    for txt, role in ((FI_FORM, "etujarjesto"), (SV_FORM, "toimija")):
+        r = roe_from_form(parse_form(txt), role)
+        assert r["targeting"] is None, "targeting-numero keksittiin"
+        assert r["form"]["sections_answered"], "kohde puuttuu lomakkeesta"
+        assert r["uptake"] is None
+        assert r["stance"] is None
+        assert r["policy_proximity"] == 0.40
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0
