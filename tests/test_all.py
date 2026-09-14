@@ -943,6 +943,140 @@ def test_extractor_never_invents_targeting_number():
         assert r["policy_proximity"] == 0.40
 
 
+# ── snapshot_trace (lisätty 2026-09-16) ─────────────────────────────
+_KOHDE = {
+    "tunnus": "XX001:00/2026", "asianumerot": ["VN/1/2026"],
+    "nimi": {"fi": "Testihanke"}, "tila": "KAYNNISSA",
+    "aloitusPaiva": "2026-08-10", "julkaisuaika": "2026-08-10T12:00:00",
+}
+_ETAPIT = [{"alku": "2026-09-03", "loppu": "2026-10-02",
+            "valmisteluvaihe": "LAUSUNTOMENETTELY", "vaihe": "KAYNNISSA"}]
+_ASIAK = [{"uuid": "aaaabbbb-cccc", "tyyppi": "LAUSUNTOPYYNTO",
+           "laatimispaiva": "2026-09-03", "luotu": "2026-09-03T08:00:00Z",
+           "nimi": {"fi": "Lausuntopyyntö"}, "laatija": {"fi": "TEM"}},
+          {"uuid": "ddddeeee-ffff", "tyyppi": "KIRJE",
+           "laatimispaiva": "2026-09-03", "luotu": "2026-09-03T08:00:00Z",
+           "nimi": None, "laatija": {"fi": "TEM"}}]
+
+
+def test_snapshot_ei_keksi_puuttuvaa_paivaa():
+    """occurred_at ei saa syntya tyhjasta."""
+    from snapshot_trace import nodes_from_kohde
+    assert nodes_from_kohde({}, "2026-09-16T00:00:00+00:00") == []
+    k = dict(_KOHDE); k.pop("aloitusPaiva")
+    assert nodes_from_kohde(k, "2026-09-16T00:00:00+00:00") == []
+
+
+def test_snapshot_merkitsee_asettamispaivan_puuttumisen():
+    """asettamisPaiva ja aloitusPaiva ovat ERI KENTTIA eri semantiikalla."""
+    from snapshot_trace import nodes_from_kohde
+    n = nodes_from_kohde(_KOHDE, "2026-09-16T00:00:00+00:00")[0]
+    assert n["occurred_at_source"] == "aloitusPaiva"
+    assert n["_derived"]["asettamisPaiva_puuttuu"] is True
+    k = dict(_KOHDE, asettamisPaiva="2026-08-01")
+    n2 = nodes_from_kohde(k, "2026-09-16T00:00:00+00:00")[0]
+    assert n2["occurred_at_source"] == "asettamisPaiva"
+    assert n2["occurred_at"].startswith("2026-08-01")
+
+
+def test_snapshot_ohittaa_nimettoman_asiakirjan():
+    """Hankeikkuna palauttaa duplikaatteja joilla nimi on None."""
+    from snapshot_trace import nodes_from_asiakirjat
+    n = nodes_from_asiakirjat(_ASIAK, "2026-09-16T00:00:00+00:00")
+    assert len(n) == 1, "nimeton duplikaatti paasi lapi"
+    assert n[0]["doc_type"] == "LAUSUNTOPYYNTO"
+
+
+def test_snapshot_laskettu_tila_ei_ole_proosaa():
+    """Jokainen arvo on funktio hakutuloksesta, ei tulkintaa."""
+    from snapshot_trace import derive_state
+    s = derive_state(_KOHDE, _ETAPIT, _ASIAK, "2026-09-16")
+    assert s["asiakirjat_yhteensa"] == 2
+    assert s["asiakirjat_tyypeittain"] == {"LAUSUNTOPYYNTO": 1, "KIRJE": 1}
+    assert s["lausuntoja_hankeikkunassa"] == 0
+    assert s["lausuntokierros_auki_vrk"] == 13
+    assert s["lausuntokierros_jaljella_vrk"] == 16
+    # uptake EI saa olla 0
+    assert s["uptake"] is None
+
+
+def test_snapshot_uptake_ei_koskaan_nolla():
+    from snapshot_trace import derive_state
+    for et in ([], _ETAPIT):
+        assert derive_state(_KOHDE, et, [], "2026-09-16")["uptake"] is None
+
+
+def test_snapshot_tuottaa_validin_tracen():
+    """Kirjoitettu tiedosto menee traces.py:n validoinnin lapi."""
+    import tempfile, json as _j
+    from pathlib import Path
+    from traces import load_trace
+    import snapshot_trace as st
+    orig = st.fetch_hankeikkuna
+    st.fetch_hankeikkuna = lambda t, tries=3: {
+        "kohde": _KOHDE, "etapit": _ETAPIT, "asiakirjat": _ASIAK}
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            p, s = st.make_snapshot("XX001:00/2026", tmp, today="2026-09-16")
+            t = load_trace(p)
+            assert t.hash_matches is True, "tiiviste ei tasmaa"
+            assert t.n_observed == 3          # kohde + etappi + 1 asiakirja
+            assert t.n_expected == 0
+            assert s["_diff"]["uusia_solmuja"] == 3
+    finally:
+        st.fetch_hankeikkuna = orig
+
+
+def test_snapshot_ei_muuta_edellista():
+    """EDELLISTA EI KOSKETA. Uusi tiedosto, _supersedes viittaa."""
+    import tempfile, json as _j
+    from pathlib import Path
+    import snapshot_trace as st
+    orig = st.fetch_hankeikkuna
+    st.fetch_hankeikkuna = lambda t, tries=3: {
+        "kohde": _KOHDE, "etapit": _ETAPIT, "asiakirjat": _ASIAK}
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            p1, s1 = st.make_snapshot("XX001:00/2026", tmp, today="2026-09-16")
+            ennen = p1.read_bytes()
+            p2, s2 = st.make_snapshot("XX001:00/2026", tmp, today="2026-09-20",
+                                      prev_path=p1)
+            assert p1.read_bytes() == ennen, "EDELLISTA MUUTETTIIN"
+            assert p1 != p2
+            assert s2["_supersedes"]["content_hash"] == s1["_content_hash"]
+            assert s2["_diff"]["uusia_solmuja"] == 0   # mikaan ei muuttunut
+    finally:
+        st.fetch_hankeikkuna = orig
+
+
+def test_snapshot_expected_kannetaan_eika_keksita():
+    """Automaatti EI lisaa expected-rivejä. Se kantaa ne edellisesta."""
+    import tempfile, json as _j
+    from pathlib import Path
+    import snapshot_trace as st
+    orig = st.fetch_hankeikkuna
+    st.fetch_hankeikkuna = lambda t, tries=3: {
+        "kohde": _KOHDE, "etapit": _ETAPIT, "asiakirjat": _ASIAK}
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            p1, _ = st.make_snapshot("XX001:00/2026", tmp, today="2026-09-16")
+            d = _j.loads(p1.read_text(encoding="utf-8"))
+            d["expected"] = [
+                {"step": "aanestys", "status": "ei tapahtunut"},
+                {"step": "asiakirja saapuu", "status": "ei tapahtunut",
+                 "_fulfilled_by": "asiakirja-aaaabbbb"},
+            ]
+            p1.write_text(_j.dumps(d, ensure_ascii=False), encoding="utf-8")
+            p2, s2 = st.make_snapshot("XX001:00/2026", tmp, today="2026-09-20",
+                                      prev_path=p1)
+            steps = [e["step"] for e in s2["expected"]]
+            assert "aanestys" in steps, "kantamaton"
+            assert "asiakirja saapuu" not in steps, "toteutunutta ei poistettu"
+            assert not any("occurred_at" in e for e in s2["expected"])
+    finally:
+        st.fetch_hankeikkuna = orig
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0
