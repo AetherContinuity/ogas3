@@ -1,0 +1,171 @@
+{
+ "_schema": "aci/decision-trace/v0.1",
+ "_locked_at": "2026-09-14",
+ "_revision": 1,
+ "_generator": "snapshot.py (automaattinen) — EI tulkintaa, vain laskettuja kenttia. Proosa kuuluu _commentary-kenttaan jonka ihminen lisaa ja joka EI vaikuta tiivisteeseen.",
+ "_lock_note": "LUKITTU. Ei muuteta jalkikateen; uudet havainnot seuraavaan snapshotiin.",
+ "subject": {
+  "tunnus": "TEM040:00/2026",
+  "asianumero": "VN/23332/2026",
+  "nimi": "Hallituksen esitys eduskunnalle laiksi datakeskusrekisteristä"
+ },
+ "_state": {
+  "tila": "KAYNNISSA",
+  "asiakirjat_yhteensa": 4,
+  "asiakirjat_tyypeittain": {
+   "LAUSUNTOPYYNTO": 2,
+   "KIRJE": 2
+  },
+  "lausuntoja_hankeikkunassa": 0,
+  "lausuntokierros_auki_vrk": 11,
+  "lausuntokierros_jaljella_vrk": 18,
+  "_lausuntoja_note": "Luku on Hankeikkunan asiakirjoista. TEM: Lausuntopalvelussa annetut nakyvat automaattisesti, kirjaamoon toimitettuja EI julkaista. Havaittu maara on siis ALARAJA, ei kokonaismaara.",
+  "uptake": null,
+  "_uptake_note": "MAARITTAMATON, ei nolla. Mitattavissa vasta taysistunnon aanestyksesta, ja aanestystyyppi on luokiteltava erikseen."
+ },
+ "_diff": {
+  "edellinen": "TEM040-trace-2026-09-14.json",
+  "uusia_solmuja": 1,
+  "uudet": [
+   "etappi-lausuntomenettely-2026-09-03"
+  ],
+  "kadonneita": 2,
+  "kadonneet": [
+   "lausunto-jatetty",
+   "lausuntokierros-alkoi"
+  ],
+  "_kadonneet_note": "Solmu joka oli edellisessa muttei tassa. EI poisteta hiljaa — lahde on muuttunut, ja se on oma havaintonsa.\nHUOM KAKSI VAARAA HALYTYSTA:\n(1) KASIN kirjatut solmut joita Hankeikkuna ei tunne (esim. oma lausunto ennen kuin se nakyy asiakirjoissa) nakyvat AINA kadonneina. Ne eivat ole kadonneet — automaatti ei vain nae niita.\n(2) NIMEAMISERO: kasin kirjatut kayttivat vapaita node_id-arvoja (esim. 'lausuntokierros-alkoi'), automaatti kayttaa kaavaa 'etappi-<vaihe>-<pvm>'. Sama tapahtuma, eri tunniste. Ensimmainen automaattiajo kasin kirjoitetun snapshotin paalle raportoi siksi kadonneita joita ei ole.\nKumpikin nakyy VAIN ensimmaisella ajolla; sen jalkeen tunnisteet ovat yhtenaiset."
+ },
+ "observed": [
+  {
+   "node_id": "hanke-asetettu",
+   "kind": "observed",
+   "occurred_at": "2026-08-10T00:00:00+03:00",
+   "occurred_at_source": "aloitusPaiva",
+   "known_at": "2026-08-10T00:00:00+03:00",
+   "retrieved_at": "2026-09-14T16:57:42+00:00",
+   "source": "Hankeikkuna kohteet/haku",
+   "evidence": [
+    {
+     "quote": "Hallituksen esitys eduskunnalle laiksi datakeskusrekisteristä",
+     "location": "kohde TEM040:00/2026",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2026-09-14T16:57:42+00:00"
+    }
+   ],
+   "_derived": {
+    "asettamisPaiva_puuttuu": true
+   }
+  },
+  {
+   "node_id": "etappi-lausuntomenettely-2026-09-03",
+   "kind": "observed",
+   "occurred_at": "2026-09-03T00:00:00+03:00",
+   "known_at": "2026-09-03T00:00:00+03:00",
+   "retrieved_at": "2026-09-14T16:57:42+00:00",
+   "source": "Hankeikkuna etapit",
+   "evidence": [
+    {
+     "quote": "LAUSUNTOMENETTELY 2026-09-03 – 2026-10-02",
+     "location": "etapit",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2026-09-14T16:57:42+00:00"
+    }
+   ],
+   "_derived": {
+    "vaihe": "KAYNNISSA",
+    "loppu": "2026-10-02",
+    "kesto_vrk": 11
+   }
+  },
+  {
+   "node_id": "asiakirja-6745b69b",
+   "kind": "observed",
+   "occurred_at": "2026-09-03T00:00:00+03:00",
+   "known_at": "2026-09-03T00:00:00+03:00",
+   "retrieved_at": "2026-09-14T16:57:42+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTOPYYNTO",
+   "evidence": [
+    {
+     "quote": "20260903_Työ- ja elinkeinoministeriön lausuntopyyntö luonnoksesta hallituksen esitykseksi eduskunnalle laiksi datakeskusrekister",
+     "location": "asiakirjat · uuid 6745b69b-da62-4dea-a47d-e5c99ca83f80",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/6745b69b-da62-4dea-a47d-e5c99ca83f80/LAUSUNTOPYYNTO_20260903134202.PDF",
+     "retrieved_at": "2026-09-14T16:57:42+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Työ- ja elinkeinoministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-aa4b9c70",
+   "kind": "observed",
+   "occurred_at": "2026-09-03T00:00:00+03:00",
+   "known_at": "2026-09-03T00:00:00+03:00",
+   "retrieved_at": "2026-09-14T16:57:42+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "KIRJE",
+   "evidence": [
+    {
+     "quote": "HE-luonnos datakeskusrekisteristä 3.9.2026",
+     "location": "asiakirjat · uuid aa4b9c70-e6fd-4271-bb78-3dd45e5d9edc",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/aa4b9c70-e6fd-4271-bb78-3dd45e5d9edc/KIRJE_20260903134202.PDF",
+     "retrieved_at": "2026-09-14T16:57:42+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Työ- ja elinkeinoministeriö"
+   }
+  }
+ ],
+ "_expected_note": "Eivat ole tapahtumia. Ei aikaleimoja. Automaatti EI lisaa naita — se vain kantaa ne edellisesta ja poistaa toteutuneet.",
+ "expected": [
+  {
+   "step": "lausuntokierros paattyy",
+   "date": "2026-10-02",
+   "status": "ei tapahtunut",
+   "_huom": "18 vrk jaljella snapshot-hetkella (2026-09-14)"
+  },
+  {
+   "step": "lausuntojen julkaisu Hankeikkunassa",
+   "status": "ei tapahtunut",
+   "_huom": "TEM: Lausuntopalvelussa annetut nakyvat automaattisesti, kirjaamoon toimitettuja EI julkaista. Havaittu maara on ALARAJA."
+  },
+  {
+   "step": "HE:n esittely valtioneuvostossa",
+   "estimate": "vko 44/2026",
+   "status": "ei tapahtunut",
+   "note": "TEM:n oma arvio, ei sitova"
+  },
+  {
+   "step": "lahetekeskustelu eduskunnassa",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "valiokuntakasittely + asiantuntijakuulemiset",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "mietinto",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "taysistuntoaanestys",
+   "status": "ei tapahtunut",
+   "note": "TASSA uptake muuttuu mitattavaksi. Ennen tata se on None, ei 0. Aanestystyyppi on luokiteltava: luottamusaanestys ei kelpaa."
+  },
+  {
+   "step": "laki voimaan",
+   "estimate": "2027-01-01",
+   "status": "ei tapahtunut",
+   "note": "Ilmoitusvelvollisuus olemassa oleville 30.6.2027 mennessa."
+  }
+ ],
+ "_supersedes": {
+  "file": "TEM040-trace-2026-09-14.json",
+  "content_hash": "4144764abbf8",
+  "locked_at": "2026-09-14"
+ },
+ "_content_hash": "accc762da836"
+}

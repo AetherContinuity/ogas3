@@ -1,6 +1,6 @@
 {
  "_schema": "aci/decision-trace/v0.1",
- "_locked_at": "2026-09-16",
+ "_locked_at": "2026-09-14",
  "_lock_note": "LUKITTU SNAPSHOT. Tata tiedostoa EI muuteta jalkikateen. Uudet havainnot menevat seuraavaan snapshotiin. Sama periaate kuin OGAS3:n snapshots/ — sarja on muisti, ei nykytilan kuvaus.",
  "subject": {
   "tunnus": "TEM040:00/2026",
@@ -84,10 +84,10 @@
   {
    "node_id": "lausunto-jatetty",
    "kind": "observed",
-   "occurred_at": "2026-09-16T00:00:00+03:00",
+   "occurred_at": "2026-09-14T00:00:00+03:00",
    "occurred_at_precision": "paiva",
-   "known_at": "2026-09-16T00:00:00+03:00",
-   "retrieved_at": "2026-09-14T16:33:10+00:00",
+   "known_at": "2026-09-14T00:00:00+03:00",
+   "retrieved_at": "2026-09-14T16:57:35+00:00",
    "source": "kayttajan oma ilmoitus (lausunto jatetty Lausuntopalveluun)",
    "actor": "yksityishenkilo",
    "decision_body": null,
@@ -99,7 +99,7 @@
      "retrieved_at": "2026-09-14T16:33:10+00:00"
     }
    ],
-   "note": "EI VIELA HANKEIKKUNASSA. Asiakirjoja 4 (LAUSUNTOPYYNTO 2, KIRJE 2), LAUSUNTO-tyyppisia 0. Kaksi lahdetta, eri viive — Lausuntopalvelu naytti lausunnon heti, Hankeikkuna ei viela.",
+   "note": "EI VIELA HANKEIKKUNASSA. Asiakirjoja 4 (LAUSUNTOPYYNTO 2, KIRJE 2), LAUSUNTO-tyyppisia 0. Kaksi lahdetta, eri viive — Lausuntopalvelu naytti lausunnon heti, Hankeikkuna ei viela. HUOM: occurred_at on se paiva jona kayttaja ILMOITTI lausunnon lahteneen, ei valttamatta jattamispaiva. Tarkka aikaleima on Lausuntopalvelussa.",
    "_sisalto": {
     "yhteenvedon_nelja_kohtaa": [
      "riittava toteutumisaste ennen kapasiteetin sitomista (Tanskan malli)",
@@ -117,7 +117,7 @@
    "step": "lausuntokierros paattyy",
    "date": "2026-10-02",
    "status": "ei tapahtunut",
-   "_huom": "16 vrk jaljella snapshot-hetkella"
+   "_huom": "18 vrk jaljella snapshot-hetkella (2026-09-14)"
   },
   {
    "step": "lausuntojen julkaisu Hankeikkunassa",
@@ -162,7 +162,7 @@
   "policy_proximity_observed": "0.40 (lausuntomenettely). Avoimuusrekisterissa kaudella 5 oli 34 datakeskusaiheista kontaktia tasolla 0.70, mutta niita EI ole viela kytketty tahan hankkeeseen — contactTopicProject-kentta on tarkistamatta.",
   "_actor_role_huom": "yksityishenkilo on OGAS3:n actors.py:ssa PUUTTUVA rooli — se on kirjattu rakenteelliseksi aukoksi eika saantopohjaisesti johdettavissa. Tama on ensimmainen konkreettinen tapaus."
  },
- "_revision": 1,
+ "_revision": 2,
  "_supersedes": {
   "file": "TEM040-trace-2026-09-07.json",
   "content_hash": null,
@@ -188,5 +188,6 @@
   ],
   "_huom": "Seuranta EI muuta tata snapshotia. Jokainen havainto on oma lukittu tiedostonsa samalla kaavalla."
  },
- "_content_hash": "4cd680c86597"
+ "_revision_note": "rev 1 oli paivatty 2026-09-16 eli KAKSI PAIVAA TULEVAISUUTEEN. Paivamaara oli keksitty: kayttaja kertoi lausunnon lahteneen muttei milloin, ja kirjoittaja oletti paivan tarkistamatta jarjestelmakelloa. Sama vikaluokka kuin l_best=0.0 tai tyhja 404 luettuna havainnoksi: uskottava arvo jota ei mitattu. Korjattu 2026-09-14.",
+ "_content_hash": "4144764abbf8"
 }
