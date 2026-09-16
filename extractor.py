@@ -84,8 +84,20 @@ from typing import Any
 # ruotsiksi "(kapitel 2.2 i strategin)" — numero on ERI KOHDASSA
 # sulkeiden sisällä. Ja numerossa voi olla välilyönti: "kapitel 2. 9".
 SECTION = re.compile(
-    r'\((?:strategian\s+)?(?:luku|kohta|kappale)\s+([\d.\s]+?)\)'      # fi
-    r'|\((?:kapitel|avsnitt|punkt)\s+([\d.\s]+?)(?:\s+i\s+strategin)?\)',  # sv
+    r'\((?:strategian\s+)?(?:luku|kohta|kappale)\s+([\d.\s]+?)\)'      # fi, sulkeissa
+    r'|\((?:kapitel|avsnitt|punkt)\s+([\d.\s]+?)(?:\s+i\s+strategin)?\)'  # sv
+    # PYKÄLÄKOHTAINEN LOMAKE — lisätty 2026-09-16.
+    #
+    # Havaittu ajamalla kuuden hankkeen lausuntoja: YM012:00/2024
+    # kysyy PYKÄLITTÄIN eikä luvuittain:
+    #   "Kommenttinne 1 §:ään – Soveltamisala"
+    #   "Kommenttinne 2–3 §:ään – Purkamisvelvollisuus..."
+    # Sulkeita ei ole, ja numero on ennen §-merkkiä.
+    #
+    # Tämä on KOKONAAN ERI LOMAKETYYPPI, ei muunnelma. Se jäi
+    # tunnistamatta kokonaan — 0 kysymystä 16:n sijaan.
+    r'|(?:kommenttinne|kommenttinsa|era kommentarer om)\s+'
+    r'([\d]+(?:\s*[–—-]\s*[\d]+)?)\s*(?:§|&sect;)',                    # fi §
     re.I)
 
 # Vapaa tekstikenttä. Muoto vaihtelee kielen ja hankkeen mukaan.
@@ -104,6 +116,34 @@ NOISE = re.compile(r'Lausuntopalvelu\.fi|^\d+/\d+$')
 # Tyhjä vastaus lomakkeessa.
 EMPTY = {"-", "–", "—", ""}
 
+# Lausuntopalvelun oma otsikko. Sen puuttuminen tarkoittaa ettei kyse
+# ole lomakkeesta lainkaan vaan vapaasta asiakirjasta.
+LP_MARKER = re.compile(r'Lausunnonantajan lausunto', re.I)
+
+# ── LOMAKETYYPIT (lisätty 2026-09-16) ───────────────────────────────
+#
+# Ajo kuuden hankkeen lausunnoilla osoitti ettei ole yhtä lomaketta
+# vaan vähintään NELJÄ eri tyyppiä. Aiempi jäsennin oletti yhden
+# (TEM005:n lukukohtaisen) ja merkitsi kaiken muun `low`:ksi — mikä
+# sekoitti kolme eri asiaa yhteen virhetilaan.
+#
+#   kysymyksittain   numeroidut luvut, "(strategian luku 2.2)"
+#                    TEM084, TEM005 — targeting LUETTAVISSA
+#   pykalittain      "Kommenttinne 1 §:ään – Soveltamisala"
+#                    YM012 — targeting LUETTAVISSA
+#   yksi_kentta      "Lausuntonne" tai yksi nimetty kenttä
+#                    YM002, YM004 — targeting EI luettavissa,
+#                    mutta se ei ole vika: lomakkeessa ei ole jakoa
+#   vapaa_asiakirja  ei Lausuntopalvelun lomaketta lainkaan
+#                    TEM061 — ministeriön kirje omalla lomakepohjalla
+#   tunnistamaton    ei osunut mihinkään — TÄMÄ on vika
+#
+# Ero on olennainen: `yksi_kentta` ja `vapaa_asiakirja` ovat
+# ODOTETTUJA tuloksia, `tunnistamaton` ei. Aiemmin ne kaikki olivat
+# `parse_confidence: low`.
+FORM_TYPES = ("kysymyksittain", "pykalittain", "yksi_kentta",
+              "vapaa_asiakirja", "tunnistamaton")
+
 
 @dataclass
 class Answer:
@@ -117,12 +157,25 @@ class StatementForm:
     answers: list[Answer] = field(default_factory=list)
     n_questions_seen: int = 0
     parse_confidence: str = "high"   # high | low
+    form_type: str = "tunnistamaton"
 
     @property
     def sections_answered(self) -> list[str]:
-        return sorted(
-            {a.section for a in self.answers if a.section},
-            key=lambda s: [int(x) for x in s.split(".")])
+        def avain(s):
+            """Lajitteluavain joka kestää sekä luvut että pykälävälit.
+
+            KORJATTU 2026-09-16: alkuperäinen oletti pisteellä
+            erotettuja kokonaislukuja ("2.2"). Pykäläkohtaisessa
+            lomakkeessa kysymys voi kattaa VÄLIN — "4–6 §" — ja
+            `int("4–6")` kaatuu.
+            """
+            osat = []
+            for x in re.split(r"[.\s]", s):
+                m = re.match(r"(\d+)", x)
+                osat.append(int(m.group(1)) if m else 0)
+            return osat or [0]
+        return sorted({a.section for a in self.answers if a.section},
+                      key=avain)
 
     @property
     def total_chars(self) -> int:
@@ -163,8 +216,43 @@ def parse_form(text: str) -> StatementForm:
             m = SECTION.search(s)
             if m:
                 # Kaksi ryhmää: fi ja sv. Vain toinen osuu.
-                num = (m.group(1) or m.group(2) or "").replace(" ", "")
+                num = (m.group(1) or m.group(2) or m.group(3) or "")
+                num = num.replace(" ", "")
                 marks.append((i, "section", num))
+
+    # YLEINEN RAKENNE — lisätty 2026-09-16.
+    #
+    # FREE- ja GENERAL-listat luettelevat kenttien NIMIÄ, ja se ei
+    # skaalaudu: YM004 käyttää otsikkoa "Lausuntonne" ja YM002
+    # "Lausuntopalaute lyhytvuokrausta koskeviin säännöksiin". Nimiä
+    # on yhtä monta kuin lausuntokierroksia.
+    #
+    # Lausuntopalvelun lomakkeella on aina sama RAKENNE:
+    #
+    #     Lausunnonantajan lausunto      <- LP_MARKER
+    #     Kentän otsikko                 <- sisentämätön rivi
+    #             vastaus                <- sisennetty
+    #     Toinen otsikko
+    #             vastaus
+    #
+    # Jos LP_MARKER löytyy muttei yhtään nimettyä kenttää, jokainen
+    # sen jälkeinen sisentämätön rivi jota seuraa sisennetty sisältö
+    # ON kenttä. Rakenne skaalautuu, nimilista ei.
+    if not marks:
+        m = LP_MARKER.search(text)
+        if m:
+            alku = text[:m.start()].count("\n")
+            for i in range(alku + 1, len(lines)):
+                s = lines[i].strip()
+                if not s or NOISE.search(s) or lines[i].startswith("  "):
+                    continue
+                # seuraava ei-tyhjä rivi sisennetty -> tämä on otsikko
+                for j in range(i + 1, min(i + 4, len(lines))):
+                    if not lines[j].strip():
+                        continue
+                    if lines[j].startswith("  "):
+                        marks.append((i, "general", None))
+                    break
 
     form = StatementForm()
     form.n_questions_seen = sum(1 for _, k, _ in marks if k == "section")
@@ -173,7 +261,32 @@ def parse_form(text: str) -> StatementForm:
     # Se EI tarkoita ettei vastattu mihinkään.
     if not marks:
         form.parse_confidence = "low"
+        # KORJATTU 2026-09-16: tämä paluu ohitti tyypityksen, jolloin
+        # ministeriön kirjeet (ei LP_MARKERia, ei kenttiä) jäivät
+        # oletusarvoon `tunnistamaton` vaikka ne ovat `vapaa_asiakirja`.
+        # Tyypitys on tehtävä ENNEN paluuta, muuten "vika" ja
+        # "odotettu tulos" menevät sekaisin.
+        form.form_type = _classify(text, form, marks)
         return form
+
+    # VÄÄRÄ POSITIIVINEN — korjattu 2026-09-16.
+    #
+    # parse_confidence oli "high" aina kun YKSI merkki löytyi, vaikka
+    # yhtään KYSYMYSTÄ ei tunnistettu. Ajo kuuden hankkeen
+    # lausunnoilla paljasti tapauksia joissa:
+    #
+    #   MCon Partners (YM012)     high · 0 kysymystä · 3 merkkiä
+    #   Varsinais-Suomen liitto   high · 0 kysymystä · 87 merkkiä
+    #
+    # Molemmissa löytyi "Lausunnonantajan taho" -kenttä muttei
+    # kysymysrakennetta. `high` antoi ymmärtää että targeting on
+    # luettavissa — se EI ollut.
+    #
+    # Sääntö: jos yhtään kysymystä ei tunnistettu, targeting ei ole
+    # luettavissa, ja se on määritelmällisesti `low`. Sisällön
+    # olemassaolo ei muuta sitä.
+    if form.n_questions_seen == 0:
+        form.parse_confidence = "low"
 
     current: str | None = None
     for k, (i, kind, num) in enumerate(marks):
@@ -196,7 +309,25 @@ def parse_form(text: str) -> StatementForm:
         if body and body not in EMPTY:
             form.answers.append(Answer(section=key, chars=len(body), text=body))
 
+    form.form_type = _classify(text, form, marks)
     return form
+
+
+def _classify(text: str, form: StatementForm, marks: list) -> str:
+    """Tunnistaa lomaketyypin. EI arvaa — jos mikään ei osu,
+    tulos on `tunnistamaton` ja se on vika eikä tulos."""
+    if form.n_questions_seen:
+        # pykäläkohtaisessa numerot ovat kokonaislukuja tai välejä
+        # ilman pistettä; lukukohtaisessa on piste ("2.2").
+        secs = [m[2] for m in marks if m[1] == "section" and m[2]]
+        if secs and not any("." in s for s in secs):
+            return "pykalittain"
+        return "kysymyksittain"
+    if not LP_MARKER.search(text):
+        return "vapaa_asiakirja"
+    if marks:
+        return "yksi_kentta"
+    return "tunnistamaton"
 
 
 def roe_from_form(form: StatementForm, actor_role: str | None,
@@ -235,10 +366,29 @@ def roe_from_form(form: StatementForm, actor_role: str | None,
     # ── targeting ───────────────────────────────────────────────────
     # LUETAAN LOMAKKEESTA. Ei päätellä tekstistä.
     secs = form.sections_answered
-    if form.parse_confidence == "low":
+    if form.form_type == "vapaa_asiakirja":
         targeting = None
-        t_note = ("lomake ei jäsentynyt — targeting EI ole luettavissa. "
-                  "Tämä on eri asia kuin 'ei vastattu mihinkään'.")
+        t_note = ("EI LAUSUNTOPALVELUN LOMAKE — vapaa asiakirja "
+                  "(esim. ministeriön kirje omalla lomakepohjallaan). "
+                  "Targeting ei ole luettavissa rakenteesta, ja sen "
+                  "lukeminen vaatisi kielimallin. ODOTETTU TULOS, ei vika.")
+    elif form.form_type == "yksi_kentta":
+        targeting = None
+        t_note = ("YHDEN KENTÄN LOMAKE — Lausuntopalvelun lomake ilman "
+                  "kysymysjakoa. Targeting ei ole luettavissa koska "
+                  "LOMAKKEESSA EI OLE JAKOA. ODOTETTU TULOS, ei vika — "
+                  "eri asia kuin 'ei vastattu mihinkään' ja eri asia "
+                  "kuin jäsentimen epäonnistuminen.")
+    elif form.form_type == "tunnistamaton":
+        targeting = None
+        t_note = ("LOMAKETTA EI TUNNISTETTU. Tämä on VIKA: rakenne ei "
+                  "osunut mihinkään tunnettuun tyyppiin. Tarkista "
+                  "jäsennin ennen kuin tulkitset tämän puuttuvaksi "
+                  "kannaksi.")
+    elif form.parse_confidence == "low":
+        targeting = None
+        t_note = ("lomake jäsentyi osittain — targeting EI ole "
+                  "luettavissa. Eri asia kuin 'ei vastattu mihinkään'.")
     elif form.is_empty:
         targeting = None
         t_note = "tyhjä lausunto, ei kohdetta"
@@ -271,6 +421,12 @@ def roe_from_form(form: StatementForm, actor_role: str | None,
                          "Se on ainoa suure jota rakenteesta ei saa."),
         # Rakenteesta luetut faktat, ei arvioita.
         "form": {
+            "form_type": form.form_type,
+            "_form_type_note": (
+                "kysymyksittain/pykalittain -> targeting luettavissa; "
+                "yksi_kentta/vapaa_asiakirja -> EI luettavissa, mutta se "
+                "on lomakkeen ominaisuus eika jasentimen vika; "
+                "tunnistamaton -> VIKA."),
             "sections_answered": secs,
             "n_questions": form.n_questions_seen,
             "total_chars": form.total_chars,

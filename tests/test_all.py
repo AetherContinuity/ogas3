@@ -1214,6 +1214,148 @@ def test_collect_tuntematon_proxy_nostaa_virheen():
         raise AssertionError("tuntematon proxy meni lapi")
 
 
+# ── extractor form_type (lisätty 2026-09-16) ────────────────────────
+PYKALA_FORM = """MCon Partners Oy
+Lausunto
+Asia: VN/7272/2024
+Lausunnonantajan lausunto
+Kommenttinne 1 §:ään – Soveltamisala
+        -
+Kommenttinne 2–3 §:ään – Purkamisvelvollisuus
+        Kannatamme ehdotusta.
+Kommenttinne 4–6 §:ään – Vakuutta koskevat säännökset
+        Vakuuden taso on liian matala.
+"""
+
+YKSI_KENTTA = """Paliskuntain yhdistys
+Lausunto
+Asia: VN/1872/2025
+Lausunnonantajan lausunto
+Lausuntonne
+        Esitys on kannatettava mutta poronhoitoalue tulee huomioida.
+"""
+
+NIMEAMATON_KENTTA = """Helsingin kaupunki
+Lausunto
+Lausunnonantajan lausunto
+Lausuntopalaute lyhytvuokrausta koskeviin säännöksiin
+        Kaupunki pitää sääntelyä tarpeellisena.
+"""
+
+VAPAA_ASIAKIRJA = """                        MMM lausunto
+                        5.6.2024        VN/19961/2023
+Suomen yhdennetyn energia- ja ilmastosuunnitelman päivitys
+Maa- ja metsätalousministeriö toteaa lausuntonaan seuraavaa.
+"""
+
+
+def test_extractor_tunnistaa_pykalakohtaisen_lomakkeen():
+    """KOKONAAN ERI LOMAKETYYPPI, ei muunnelma.
+
+    YM012:00/2024 kysyy pykalittain: "Kommenttinne 1 §:aan".
+    Sulkeita ei ole ja numero on ENNEN §-merkkia, joten
+    (luku X) -regex ei osu. Jai tunnistamatta kokonaan:
+    0 kysymysta 16:n sijaan.
+    """
+    from extractor import parse_form
+    f = parse_form(PYKALA_FORM)
+    assert f.form_type == "pykalittain", f.form_type
+    assert f.n_questions_seen == 3
+    assert f.parse_confidence == "high"
+    # kaksi vastattua, ensimmainen oli "-"
+    assert len(f.sections_answered) == 2
+
+
+def test_extractor_pykalavali_ei_kaada_lajittelua():
+    """Pykala voi kattaa VALIN: "4–6 §". int("4–6") kaatuu."""
+    from extractor import parse_form
+    f = parse_form(PYKALA_FORM)
+    s = f.sections_answered          # ei saa nostaa ValueErroria
+    assert "4–6" in s or "4-6" in s, s
+
+
+def test_extractor_parse_confidence_ei_saa_olla_vaara_positiivinen():
+    """high vaati aiemmin vain YHDEN merkin, ei kysymysrakennetta.
+
+    Ajo kuuden hankkeen lausunnoilla:
+      MCon Partners            high · 0 kysymysta · 3 merkkia
+      Varsinais-Suomen liitto  high · 0 kysymysta · 87 merkkia
+
+    `high` antoi ymmartaa etta targeting on luettavissa. EI ollut.
+    """
+    from extractor import parse_form
+    f = parse_form(YKSI_KENTTA)
+    assert f.n_questions_seen == 0
+    assert f.parse_confidence == "low", "vaara positiivinen"
+
+
+def test_extractor_form_type_erottaa_odotetun_viasta():
+    """KOLME ERI ASIAA oli yhdessa virhetilassa.
+
+      yksi_kentta      lomakkeessa EI OLE jakoa    -> odotettu
+      vapaa_asiakirja  ei ole lomake lainkaan      -> odotettu
+      tunnistamaton    rakenne ei osunut mihinkaan -> VIKA
+
+    Aiemmin kaikki kolme olivat parse_confidence: low.
+    """
+    from extractor import parse_form, FORM_TYPES
+    assert set(FORM_TYPES) >= {"kysymyksittain", "pykalittain",
+                               "yksi_kentta", "vapaa_asiakirja",
+                               "tunnistamaton"}
+    assert parse_form(YKSI_KENTTA).form_type == "yksi_kentta"
+    assert parse_form(VAPAA_ASIAKIRJA).form_type == "vapaa_asiakirja"
+    assert parse_form(FI_FORM).form_type == "kysymyksittain"
+
+
+def test_extractor_yleinen_rakenne_loytaa_nimeamattoman_kentan():
+    """Kenttien NIMILISTA ei skaalaudu.
+
+    YM004 kayttaa otsikkoa "Lausuntonne", YM002
+    "Lausuntopalaute lyhytvuokrausta koskeviin saannoksiin".
+    Nimia on yhta monta kuin lausuntokierroksia.
+
+    Rakenne on aina sama: LP_MARKERin jalkeen sisentamaton rivi
+    jota seuraa sisennetty sisalto ON kentta.
+    """
+    from extractor import parse_form
+    f = parse_form(NIMEAMATON_KENTTA)
+    assert f.form_type == "yksi_kentta"
+    assert f.total_chars > 0, "sisaltoa ei poimittu"
+
+
+def test_extractor_vapaa_asiakirja_ei_ole_vika():
+    """Ministerion kirje ei ole jasentimen epaonnistuminen."""
+    from extractor import parse_form, roe_from_form
+    f = parse_form(VAPAA_ASIAKIRJA)
+    r = roe_from_form(f, "viranomainen")
+    assert r["form"]["form_type"] == "vapaa_asiakirja"
+    assert r["targeting"] is None
+    assert "ODOTETTU TULOS" in r["_targeting_note"]
+    assert "vika" not in r["_targeting_note"].lower().split("ei vika")[0][:40]
+
+
+def test_extractor_tunnistamaton_on_kapea_tila():
+    """RAJOITE: luokitin ei erota ministerion kirjetta roskasta.
+
+    Kumpikin saa `vapaa_asiakirja`, koska ainoa kriteeri on
+    LP_MARKERin puuttuminen. `tunnistamaton` vaatii etta LP_MARKER
+    ON mutta yhtaan kenttaa ei loydy — se on kapea ja harvinainen.
+
+    Tama testi KIRJAA rajoitteen, ei vaadi sen korjaamista.
+    Korjaus vaatisi paatoksen siita mika erottaa asiakirjan
+    roskasta, eika sellaista ole tehty.
+    """
+    from extractor import parse_form, roe_from_form
+    # roska ja ministerion kirje saavat SAMAN tyypin
+    assert parse_form("Satunnaista tekstia.").form_type == "vapaa_asiakirja"
+    assert parse_form(VAPAA_ASIAKIRJA).form_type == "vapaa_asiakirja"
+    # tunnistamaton on saavutettavissa: LP_MARKER ilman kenttia
+    f = parse_form("Lausunnonantajan lausunto\n")
+    assert f.form_type == "tunnistamaton", f.form_type
+    r = roe_from_form(f, "toimija")
+    assert "VIKA" in r["_targeting_note"]
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0
