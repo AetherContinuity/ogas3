@@ -1,0 +1,522 @@
+{
+ "_schema": "aci/decision-trace/v0.1",
+ "_locked_at": "2026-09-16",
+ "_revision": 1,
+ "_lock_note": "LUKITTU. Caruna ja Uniper — paattyneet tapaukset.",
+ "domain": "fiskaali",
+ "subject": {
+  "nimi": "Caruna, Uniper ja GrowHow — paattyneet paatosketjut",
+  "tunnus": "KRONIKKA-PAATTYNEET"
+ },
+ "_miksi": "Paattyneilla tapauksilla on LOPPUTULOS. TEM040 on kesken ja sen uptake on None. Nama ovat ainoa aineisto jolla R2-mittaria (rekonstruoitavuus) voi testata — ja vanhalla tapauksella se on vahvempi testi: jos perusteita ei loydy NYTKAAN, kun aikaa on kulunut ja aineistot auenneet, havainto on vahvempi kuin tuoreesta.",
+ "_coverage": {
+  "osajoukko": true,
+  "tassa": 3,
+  "kronikan_tapahtumia": 9,
+  "ketjut": [
+   "Caruna 2013-2014",
+   "Uniper 2017-2022",
+   "GrowHow 2004-2008 (+ Sokli 2020)"
+  ],
+  "_syy": "Sonera, kriisipaketit ja datakeskusneuvottelut puuttuvat — ei todennettua paatospaivamaaraa."
+ },
+ "_seurausmittaus": {
+  "_yritetty": "Carunan myynnin seurauksia yritettiin mitata verkkopalvelumaksun kehityksesta (StatFin/ehi/13rb.px).",
+  "_tulos": "EI ONNISTU. Sarja on KANSALLINEN KESKIARVO joka sisaltaa kaikki jakeluverkkoyhtiot. Kansallinen nousu 2014M01 2,78 -> 2026M01 3,66 snt/kWh (+32 %) EI ole Carunan hinnoittelua eika sita voi attribuoida myyntiin.",
+  "_mita_tarvittaisiin": "Energiaviraston yhtiokohtaiset siirtohinnat (kaikkisiirtohinnat 2019_11 alkaen.xlsx, repossa). Sekin alkaa vasta 2019 eli viisi vuotta myynnin jalkeen — ennen/jalkeen-vertailua EI voi tehda."
+ },
+ "observed": [
+  {
+   "node_id": "uniper-hankinta",
+   "kind": "observed",
+   "occurred_at": "2017-09-26T00:00:00+03:00",
+   "known_at": null,
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "kronikka Osa II — LAHDE VARMENTAMATTA",
+   "evidence": [
+    {
+     "quote": "Fortum ilmoitti ostotarjouksesta Uniperista",
+     "location": "Osa II",
+     "source_url": null,
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "occurred_at_precision": "paiva",
+   "decision_body": "yhtion_hallitus",
+   "source_class": "secondary",
+   "_R1": "kylla",
+   "_R2": "ei",
+   "_puuttuu": "Paivamaara varmentamatta. Ostotarjouksen julkistus ja hallituksen paatos voivat olla eri paivia."
+  },
+  {
+   "node_id": "verkkomaksu-2008M01",
+   "kind": "observed",
+   "occurred_at": "2008-01-01T00:00:00+02:00",
+   "known_at": "2008-01-01T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "Tilastokeskus",
+   "evidence": [
+    {
+     "quote": "Verkkopalvelumaksu (veroton) 2.13 snt/kWh, kotitalous >15 000 kWh — KOKO MAAN KESKIARVO",
+     "location": "StatFin/ehi/13rb.px · komponentti B · kuluttajatyyppi E",
+     "source_url": "https://aci-pxweb-proxy.ruotsalainen-marko.workers.dev/?p=StatFin%2Fehi%2F13rb.px",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "_measured": {
+    "snt_kwh": 2.129
+   },
+   "occurred_at_precision": "kuukausi",
+   "source_class": "authoritative",
+   "_rajoite": "KANSALLINEN KESKIARVO, EI CARUNAN. Sisaltaa kaikki jakeluverkkoyhtiot. Talla EI voi mitata yhden yhtion hinnoittelua eika myynnin seurauksia."
+  },
+  {
+   "node_id": "verkkomaksu-2014M01",
+   "kind": "observed",
+   "occurred_at": "2014-01-01T00:00:00+02:00",
+   "known_at": "2014-01-01T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "Tilastokeskus",
+   "evidence": [
+    {
+     "quote": "Verkkopalvelumaksu (veroton) 2.78 snt/kWh, kotitalous >15 000 kWh — KOKO MAAN KESKIARVO",
+     "location": "StatFin/ehi/13rb.px · komponentti B · kuluttajatyyppi E",
+     "source_url": "https://aci-pxweb-proxy.ruotsalainen-marko.workers.dev/?p=StatFin%2Fehi%2F13rb.px",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "_measured": {
+    "snt_kwh": 2.776
+   },
+   "occurred_at_precision": "kuukausi",
+   "source_class": "authoritative",
+   "_rajoite": "KANSALLINEN KESKIARVO, EI CARUNAN. Sisaltaa kaikki jakeluverkkoyhtiot. Talla EI voi mitata yhden yhtion hinnoittelua eika myynnin seurauksia."
+  },
+  {
+   "node_id": "verkkomaksu-2018M01",
+   "kind": "observed",
+   "occurred_at": "2018-01-01T00:00:00+02:00",
+   "known_at": "2018-01-01T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "Tilastokeskus",
+   "evidence": [
+    {
+     "quote": "Verkkopalvelumaksu (veroton) 3.26 snt/kWh, kotitalous >15 000 kWh — KOKO MAAN KESKIARVO",
+     "location": "StatFin/ehi/13rb.px · komponentti B · kuluttajatyyppi E",
+     "source_url": "https://aci-pxweb-proxy.ruotsalainen-marko.workers.dev/?p=StatFin%2Fehi%2F13rb.px",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "_measured": {
+    "snt_kwh": 3.261
+   },
+   "occurred_at_precision": "kuukausi",
+   "source_class": "authoritative",
+   "_rajoite": "KANSALLINEN KESKIARVO, EI CARUNAN. Sisaltaa kaikki jakeluverkkoyhtiot. Talla EI voi mitata yhden yhtion hinnoittelua eika myynnin seurauksia."
+  },
+  {
+   "node_id": "verkkomaksu-2022M01",
+   "kind": "observed",
+   "occurred_at": "2022-01-01T00:00:00+02:00",
+   "known_at": "2022-01-01T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "Tilastokeskus",
+   "evidence": [
+    {
+     "quote": "Verkkopalvelumaksu (veroton) 3.69 snt/kWh, kotitalous >15 000 kWh — KOKO MAAN KESKIARVO",
+     "location": "StatFin/ehi/13rb.px · komponentti B · kuluttajatyyppi E",
+     "source_url": "https://aci-pxweb-proxy.ruotsalainen-marko.workers.dev/?p=StatFin%2Fehi%2F13rb.px",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "_measured": {
+    "snt_kwh": 3.69
+   },
+   "occurred_at_precision": "kuukausi",
+   "source_class": "authoritative",
+   "_rajoite": "KANSALLINEN KESKIARVO, EI CARUNAN. Sisaltaa kaikki jakeluverkkoyhtiot. Talla EI voi mitata yhden yhtion hinnoittelua eika myynnin seurauksia."
+  },
+  {
+   "node_id": "verkkomaksu-2026M01",
+   "kind": "observed",
+   "occurred_at": "2026-01-01T00:00:00+02:00",
+   "known_at": "2026-01-01T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "Tilastokeskus",
+   "evidence": [
+    {
+     "quote": "Verkkopalvelumaksu (veroton) 3.66 snt/kWh, kotitalous >15 000 kWh — KOKO MAAN KESKIARVO",
+     "location": "StatFin/ehi/13rb.px · komponentti B · kuluttajatyyppi E",
+     "source_url": "https://aci-pxweb-proxy.ruotsalainen-marko.workers.dev/?p=StatFin%2Fehi%2F13rb.px",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "_measured": {
+    "snt_kwh": 3.66
+   },
+   "occurred_at_precision": "kuukausi",
+   "source_class": "authoritative",
+   "_rajoite": "KANSALLINEN KESKIARVO, EI CARUNAN. Sisaltaa kaikki jakeluverkkoyhtiot. Talla EI voi mitata yhden yhtion hinnoittelua eika myynnin seurauksia."
+  },
+  {
+   "node_id": "uniper-vakautuspaketti-1",
+   "kind": "observed",
+   "occurred_at": "2022-07-22T00:00:00+03:00",
+   "known_at": "2022-07-22T00:00:00+03:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "Fortumin pörssitiedote",
+   "occurred_at_precision": "paiva",
+   "source_class": "authoritative",
+   "evidence": [
+    {
+     "quote": "Fortum, Uniper ja Saksan hallitus sopivat kattavasta vakautuspaketista taloudellisen avun antamiseksi Uniperille",
+     "location": "pörssitiedote",
+     "source_url": "https://www.fortum.com/fi/media/2022/10/fortum-julkaisee-oikaistut-vertailutiedot-uniper-divestoinnin-johdosta",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "decision_body": "sopimusosapuolet",
+   "_R1": "kylla",
+   "_R2": "kylla"
+  },
+  {
+   "node_id": "uniper-periaatesopimus",
+   "kind": "observed",
+   "occurred_at": "2022-09-21T00:00:00+03:00",
+   "known_at": "2022-09-21T00:00:00+03:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "Fortumin pörssitiedote",
+   "occurred_at_precision": "paiva",
+   "source_class": "authoritative",
+   "evidence": [
+    {
+     "quote": "Periaatesopimus: Fortum myy koko osakeomistuksensa Uniper SE:ssä Saksan valtiolle 0,5 mrd eurolla; 4 mrd osakaslaina maksetaan takaisin ja 4 mrd emoyhtiötakaus vapautuu",
+     "location": "pörssitiedote",
+     "source_url": "https://www.fortum.com/fi/media/2022/10/fortum-julkaisee-oikaistut-vertailutiedot-uniper-divestoinnin-johdosta",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "decision_body": "sopimusosapuolet",
+   "_R1": "kylla",
+   "_R2": "kylla",
+   "_measured": {
+    "kauppahinta_mrd": 0.5,
+    "osakaslaina_mrd": 4.0,
+    "takaus_mrd": 4.0
+   }
+  },
+  {
+   "node_id": "uniper-yhtiokokous",
+   "kind": "observed",
+   "occurred_at": "2022-12-19T00:00:00+02:00",
+   "known_at": "2022-12-19T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "Fortumin pörssitiedote",
+   "occurred_at_precision": "paiva",
+   "source_class": "authoritative",
+   "evidence": [
+    {
+     "quote": "Uniperin ylimääräinen yhtiökokous: osakepääoman korotus 1,70 EUR/osake, Saksan valtio ostaa Fortumin ~293 milj. osaketta ~0,5 mrd eurolla. Fortum enemmistöosakkaana ÄÄNESTI EHDOTUSTEN PUOLESTA.",
+     "location": "pörssitiedote",
+     "source_url": "https://www.fortum.com/fi/media/2022/12/fortum-uniper-ja-saksan-valtio-ovat-allekirjoittaneet-sopimukset-vakautuspaketin-lopullisista-ehdoista-fortum-myy-kaikki-uniper-osakkeensa-uniperin-ylimaaraisen-yhtiokokouksen-jalkeen",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "decision_body": "yhtiokokous",
+   "completed_at": "2022-12-31T00:00:00+02:00",
+   "_R1": "kylla",
+   "_R2": "kylla",
+   "_measured": {
+    "osakkeita_milj": 293,
+    "kauppahinta_mrd": 0.5,
+    "merkintahinta_eur_osake": 1.7
+   },
+   "_mekanismi": "NEUVOTELTU MYYNTI sovitulla hinnalla, EI pakkolunastus eika haltuunotto. Fortum aanesti itse jarjestelyn puolesta enemmistoosakkaana. Jarjestely edellytti Euroopan komission valtiontukihyvaksynnan."
+  },
+  {
+   "node_id": "uniper-tappio",
+   "kind": "observed",
+   "occurred_at": "2022-12-31T00:00:00+02:00",
+   "known_at": "2022-12-31T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "Fortumin pörssitiedote",
+   "occurred_at_precision": "vuosi",
+   "source_class": "authoritative",
+   "evidence": [
+    {
+     "quote": "Kokonaistappio Uniper-sijoituksesta hieman alle 6 mrd euroa: nettosijoitus ~7,2 mrd − kauppahinta 0,5 mrd − osingot ~0,9 mrd",
+     "location": "pörssitiedote",
+     "source_url": "https://www.fortum.com/fi/media/2022/10/fortum-julkaisee-oikaistut-vertailutiedot-uniper-divestoinnin-johdosta",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "decision_body": null,
+   "_measured": {
+    "nettosijoitus_mrd": 7.2,
+    "kauppahinta_mrd": 0.5,
+    "osingot_mrd": 0.9,
+    "tappio_mrd": 5.8
+   },
+   "_R1": "kylla",
+   "_R2": "kylla"
+  },
+  {
+   "node_id": "caruna-arviointi-alkoi",
+   "kind": "observed",
+   "occurred_at": "2013-01-01T00:00:00+02:00",
+   "known_at": "2013-01-01T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "Fortumin pörssitiedote",
+   "occurred_at_precision": "kuukausi",
+   "source_class": "authoritative",
+   "evidence": [
+    {
+     "quote": "Fortum käynnisti sähkönsiirtoliiketoiminnan strategisten tulevaisuuden vaihtoehtojen arviointiprosessin",
+     "location": "pörssitiedote",
+     "source_url": "https://www.fortum.com/fi/media/2013/12/fortum-myy-suomen-sahkonsiirtoliiketoimintansa-suomi-power-networks-oylle-255-miljardin-euron-kokonaiskauppahinnalla",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "_huom": "Tammikuu 2013; tarkkaa paivaa ei tiedotteessa."
+  },
+  {
+   "node_id": "talpo-strateginen-intressi",
+   "kind": "observed",
+   "occurred_at": "2013-12-01T00:00:00+02:00",
+   "known_at": "2013-12-01T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "vasemmisto.fi Yleä siteeraten — SEKUNDAARI",
+   "occurred_at_precision": "kuukausi",
+   "source_class": "secondary",
+   "evidence": [
+    {
+     "quote": "Talouspoliittinen ministerivaliokunta poisti Fortumilta strategisen tehtävän ylläpitää sähkönjakeluverkkoa",
+     "location": "pörssitiedote",
+     "source_url": "https://vasemmisto.fi/caruna-kaupan-salat-julki/",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "decision_body": "valtioneuvosto",
+   "_menettely": "talouspoliittinen ministerivaliokunta",
+   "_R1": "osin",
+   "_R2": "ei",
+   "_merkitys": "TAMA ON MAHDOLLISTAVA PAATOS. Ilman strategisen intressin poistoa myynti ulkomaille olisi ollut hankalampi. Valtio omisti 51 %, joten ilman sen suostumusta kauppaa ei olisi syntynyt.\nMENETTELY: ministerivaliokunta, EI eduskunta. Sama kevyen menettelyn ja suuren vaikutuksen epasuhta kuin muualla.\nVARMENTAMATTA: talpon poytakirja tai VNK:n tiedote vahvistaisi paivan ja muotoilun. Nykyinen lahde on sekundaari."
+  },
+  {
+   "node_id": "caruna-porssitiedote",
+   "kind": "observed",
+   "occurred_at": "2013-12-12T00:00:00+02:00",
+   "known_at": "2013-12-12T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "Fortumin pörssitiedote",
+   "occurred_at_precision": "paiva",
+   "source_class": "authoritative",
+   "evidence": [
+    {
+     "quote": "Fortum myy Suomen sähkönsiirtoliiketoimintansa Suomi Power Networks Oy:lle 2,55 mrd euron kokonaiskauppahinnalla; myyntivoitto 1,8–1,9 mrd",
+     "location": "pörssitiedote",
+     "source_url": "https://www.fortum.com/fi/media/2013/12/fortum-myy-suomen-sahkonsiirtoliiketoimintansa-suomi-power-networks-oylle-255-miljardin-euron-kokonaiskauppahinnalla",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "decision_body": "yhtion_hallitus",
+   "completed_at": "2014-03-12T00:00:00+02:00",
+   "_R1": "kylla",
+   "_R2": "kylla",
+   "_measured": {
+    "kauppahinta_mrd": 2.55,
+    "myyntivoitto_mrd_min": 1.8,
+    "myyntivoitto_mrd_max": 1.9,
+    "asiakkaita": 640000,
+    "verkkoa_km": 79000,
+    "siirto_twh": 12.6,
+    "tyontekijoita": 320
+   },
+   "_samana_paivana": "Eduskunnan kyselytunti 12.12.2013 kasitteli myyntia."
+  },
+  {
+   "node_id": "caruna-paatokseen",
+   "kind": "observed",
+   "occurred_at": "2014-03-12T00:00:00+02:00",
+   "known_at": "2014-03-12T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "Fortumin pörssitiedote",
+   "occurred_at_precision": "paiva",
+   "source_class": "authoritative",
+   "evidence": [
+    {
+     "quote": "Myynti päätökseen: kaikki viranomaishyväksynnät saatu, velaton kauppahinta 2,55 mrd euroa",
+     "location": "pörssitiedote",
+     "source_url": "https://www.fortum.com/fi/media/2014/03/fortumin-suomen-sahkonsiirtoliiketoiminnan-myynti-paatokseen",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "decision_body": null,
+   "_R1": "kylla",
+   "_R2": "kylla",
+   "_ostaja": "Suomi Power Networks Oy — First State Investments 40 %, Borealis Infrastructure 40 %, Keva 12,5 %, Elo 7,5 %",
+   "_lahderistiriita": "Fortumin tiedote sanoo Elo 7,5 %; Haaviston kirjoitus sanoo LahiTapiola 7,5 %. EI RATKAISTU."
+  },
+  {
+   "node_id": "growhow-listaus",
+   "kind": "observed",
+   "occurred_at": "2004-01-01T00:00:00+02:00",
+   "known_at": "2004-01-01T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "Yara Suomen historia — SEKUNDAARI",
+   "occurred_at_precision": "vuosi",
+   "source_class": "secondary",
+   "evidence": [
+    {
+     "quote": "Kemira Agro irtautui Kemira Oyj:stä, nimeksi Kemira GrowHow, listautui Helsingin pörssiin; valtio luopui enemmistöomistuksesta",
+     "location": "pörssitiedote",
+     "source_url": "https://www.yara.fi/tietoa-yarasta/yara-suomi/historia/",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "decision_body": "valtioneuvosto",
+   "_R1": "osin",
+   "_R2": "ei",
+   "_kiista": "JULKINEN RISTIRIITA KAHDEN MINISTERIN VALILLA. Hakamies (2007): 'Mina myin vain 30 prosenttia, mutta Pekkarinen myi 70 prosenttia.' Pekkarinen kiistaa: valtio luopui enemmistosta LISTAAMALLA porssiin 2004, ei myymalla Yaralle, ja se tapahtui Vanhanen I:n aikana ilman hanen osuuttaan.\nMOLEMMAT OVAT OSITTAIN OIKEASSA: 2004 oli listaus, 2007 oli myynti. Mutta R2:n kannalta olennaista on etta kaksi ministeria kiistelee JULKISESTI siita kumpi paatti mita — vuosia jalkeenpain."
+  },
+  {
+   "node_id": "growhow-yara-osto",
+   "kind": "observed",
+   "occurred_at": "2007-05-24T00:00:00+03:00",
+   "known_at": "2007-05-24T00:00:00+03:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "Yara/GlobeNewswire pörssitiedote",
+   "occurred_at_precision": "paiva",
+   "source_class": "authoritative",
+   "evidence": [
+    {
+     "quote": "Yara osti Suomen valtiolta 17 188 480 Kemira GrowHow'n osaketta hintaan 12,12 EUR/osake = 30,05 % osakkeista ja äänistä; laukaisi pakollisen ostotarjouksen, koko yhtiön arvo 671,8 MEUR",
+     "location": "pörssitiedote",
+     "source_url": "https://www.globenewswire.com/news-release/2007/05/24/96538/0/en/Yara-will-launch-offer-to-acquire-Kemira-GrowHow.html",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "decision_body": "valtioneuvosto",
+   "_menettely": "valtion omistajaohjaus",
+   "_R1": "kylla",
+   "_R2": "kylla",
+   "_measured": {
+    "osakkeita": 17188480,
+    "hinta_eur_osake": 12.12,
+    "osuus_pct": 30.05,
+    "kauppasumma_meur": 208.3,
+    "yhtion_arvo_meur": 671.8
+   }
+  },
+  {
+   "node_id": "growhow-paatokseen",
+   "kind": "observed",
+   "occurred_at": "2008-03-01T00:00:00+02:00",
+   "known_at": "2008-03-01T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "Yara/GlobeNewswire pörssitiedote",
+   "occurred_at_precision": "kuukausi",
+   "source_class": "authoritative",
+   "evidence": [
+    {
+     "quote": "EU-hyväksynnän jälkeen Kemira GrowHow'sta tuli Yara Suomi; mukana siirtyivät Siilinjärven fosfaattikaivos ja Soklin kaivosoikeudet",
+     "location": "pörssitiedote",
+     "source_url": "https://www.globenewswire.com/news-release/2007/09/21/1820363/0/en/Yara-set-to-complete-acquisition-of-Kemira-GrowHow-Oyj.html",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "decision_body": null,
+   "_R1": "kylla",
+   "_R2": "kylla",
+   "_merkitys": "Siilinjarvi on EU:n ainoa toiminnassa oleva fosfaattikaivos. Fosfori on EU:n kriittisten raaka-aineiden listalla. HUOM: tama on mittarin ulkopuolinen huomio — kriittisyysluokitus on myohempi kuin kauppa (2007)."
+  },
+  {
+   "node_id": "sokli-palautui",
+   "kind": "observed",
+   "occurred_at": "2020-12-01T00:00:00+02:00",
+   "known_at": "2020-12-01T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T12:18:44+00:00",
+   "source": "Uusi Suomi Puheenvuoro — SEKUNDAARI",
+   "occurred_at_precision": "kuukausi",
+   "source_class": "secondary",
+   "evidence": [
+    {
+     "quote": "Yara myi Soklin kaivosoikeudet Suomen Malmijalostus Oy:lle nimellisellä hinnalla päätettyään ettei kaivosta kannata rakentaa",
+     "location": "pörssitiedote",
+     "source_url": "https://puheenvuoro.uusisuomi.fi/tommiviinikka/kuka-viela-vaittaa-etta-suomen-valtio-ei-hallitse-bisnesta/",
+     "retrieved_at": "2026-09-16T12:18:44+00:00"
+    }
+   ],
+   "decision_body": "yhtion_hallitus",
+   "_R1": "osin",
+   "_R2": "ei",
+   "_merkitys": "AINOA TAPAUS KRONIKASSA JOSSA OMISTUS PALAUTUI. Valtio sai takaisin sen minka myi — ja mukana Yaran tekemat kannattavuusselvitykset ja lupaprosessi.\nVARMENTAMATTA: Suomen Malmijalostuksen tai Yaran oma tiedote vahvistaisi paivan ja ehdot. Nykyinen lahde on blogikirjoitus."
+  }
+ ],
+ "_expected_note": "Eivat ole tapahtumia.",
+ "expected": [
+  {
+   "step": "Carunan paatospaiva ja hinta varmennettu Fortumin porssitiedotteesta",
+   "status": "TEHTY 2026-09-16"
+  },
+  {
+   "step": "Uniper-paivamaarat varmennettu",
+   "status": "TEHTY 2026-09-16"
+  },
+  {
+   "step": "yhtiokohtainen siirtohintasarja",
+   "status": "ei tehty",
+   "_huom": "Ei ratkaise attribuutio-ongelmaa, alkaa 2019."
+  },
+  {
+   "step": "talpo-paatoksen varmennus VNK:n lahteesta",
+   "status": "ei tehty",
+   "_huom": "Ainoa valtion paatos ketjussa, huonoiten dokumentoitu."
+  }
+ ],
+ "_uniper_korjaus": {
+  "_mita_korjattiin": "Aiempi versio oli yksi solmu 'uniper-ratkaisu' paivalla 2022-09-21, source_class secondary, kuvaus 'Uniperin valtiollistaminen Saksassa'. Se oli EPATARKKA kahdesti.",
+  "1_mekanismi": "EI OLLUT PAKKOLUNASTUS. Neuvoteltu myynti sovitulla hinnalla (0,5 mrd EUR, ~293 milj. osaketta). Fortum aanesti ENEMMISTOOSAKKAANA jarjestelyn PUOLESTA yhtiokokouksessa 19.12.2022.",
+  "2_yksi_paiva_nelja_tapahtumaa": "21.9. oli PERIAATESOPIMUS, ei ratkaisu. Ketju on: 22.7. vakautuspaketti -> 21.9. periaatesopimus -> 19.12. yhtiokokous -> 12/2022 loppuun kauppa paatokseen.",
+  "_R2_muuttui": "ei -> kylla. Perusteet ovat julkisissa porssitiedotteissa paivamaarineen ja lukuineen. REKONSTRUOITAVUUS ON HYVA — se on eri tulos kuin oletettiin, ja se on kronikan R2-mittarin kannalta olennainen havainto: porssiyhtion paatokset ovat jaljitettavissa, koska tiedonantovelvollisuus pakottaa siihen."
+ },
+ "_caruna_korjaus": {
+  "_mita_korjattiin": "Aiempi solmu 'caruna-paatos' oli paivalla 2013-12-12, source_class secondary, ilman lukuja. Paiva oli OIKEIN, mutta lahde oli varmentamaton ja ketju puuttui.",
+  "_R2_muuttui": "ei -> kylla kaupan osalta. Porssitiedotteet ovat julkisia, paivattyja ja sisaltavat luvut.",
+  "_mutta": "MAHDOLLISTAVA PAATOS on yha R2: ei. Talouspoliittisen ministerivaliokunnan paatos poistaa strateginen intressi on tiedossa vain sekundaarilahteesta. Se on kaupan EDELLYTYS ja valtion ainoa paatos ketjussa — ja se on huonoimmin dokumentoitu.",
+  "_havainto": "YHTION paatokset ovat paremmin rekonstruoitavissa kuin VALTION. Syy on rakenteellinen: porssiyhtion tiedonantovelvollisuus pakottaa julkaisemaan paivamaaran ja luvut; ministerivaliokunnan poytakirja ei ole samalla tavalla saatavilla."
+ },
+ "_r2_yhteenveto": {
+  "_kysymys": "Onko paatoksen perusteet rekonstruoitavissa julkisista lahteista?",
+  "yhtion_paatokset": {
+   "kylla": 6,
+   "ei": 1,
+   "_kylla": [
+    "caruna-porssitiedote",
+    "caruna-paatokseen",
+    "uniper-vakautuspaketti-1",
+    "uniper-periaatesopimus",
+    "uniper-yhtiokokous",
+    "uniper-tappio"
+   ],
+   "_ei": [
+    "uniper-hankinta — paiva varmentamatta"
+   ]
+  },
+  "valtion_paatokset": {
+   "kylla": 1,
+   "ei": 3,
+   "_kylla": [
+    "growhow-yara-osto — porssitiedote antoi osakemaaran ja hinnan"
+   ],
+   "_ei": [
+    "talpo-strateginen-intressi — vain sekundaarilahde",
+    "growhow-listaus — kaksi ministeria kiistelee julkisesti",
+    "sokli-palautui — blogikirjoitus"
+   ]
+  },
+  "_havainto": "YHTION paatokset 6/7 rekonstruoitavissa, VALTION 1/4. Syy on rakenteellinen eika sattuma: porssiyhtion tiedonantovelvollisuus PAKOTTAA julkaisemaan paivamaaran ja luvut. Ministerivaliokunnan poytakirja ei ole samalla tavalla saatavilla, ja omistajaohjauspaatoksista tiedottaa usein OSTAJA eika valtio.\nHUOM: growhow-yara-osto sai R2 kylla vain siksi etta YARA tiedotti kaupasta porssitiedotteella. Valtion oma paatosasiakirja on yha varmentamatta.",
+  "_varaus": "Otos on 11 solmua kolmesta ketjusta. Se ei ole tilastollinen otos vaan havainto naista tapauksista."
+ },
+ "_content_hash": "cea8d01fcbf2"
+}

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OGAS3 · Trace-katselin</title>
+<style>
+:root{
+  --bg:#f4f3ef; --card:#fff; --ink:#1a1a1a; --muted:#6b6b66; --rule:#ddd9d0;
+  --auth:#2d5016; --sec:#8b3a10; --miss:#8b2500; --exp:#9a968e;
+  --mono:'DM Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  padding:1.2rem}
+.wrap{max-width:1000px;margin:0 auto}
+h1{font-size:1.05rem;font-weight:500;letter-spacing:.01em;margin:0 0 .2rem}
+.sub{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem}
+.drop{border:1px dashed var(--rule);background:var(--card);padding:1.4rem;
+  text-align:center;color:var(--muted);font-size:.85rem;cursor:pointer;
+  transition:border-color .15s}
+.drop:hover,.drop.on{border-color:var(--ink);color:var(--ink)}
+.drop input{display:none}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:.6rem;margin:1.2rem 0}
+.m{background:var(--card);border:1px solid var(--rule);padding:.6rem .75rem}
+.m .k{font-family:var(--mono);font-size:.55rem;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:.15rem}
+.m .v{font-family:var(--mono);font-size:.95rem}
+.warn{border-left:3px solid var(--miss);background:#fdf7f4;padding:.7rem .9rem;
+  font-size:.8rem;line-height:1.55;margin:.8rem 0}
+.sec{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);margin:1.6rem 0 .5rem}
+/* aikajana */
+.tl{position:relative;padding-left:1.4rem}
+.tl:before{content:'';position:absolute;left:.42rem;top:.4rem;bottom:.4rem;
+  width:1px;background:var(--rule)}
+.n{position:relative;background:var(--card);border:1px solid var(--rule);
+  padding:.6rem .8rem;margin-bottom:.5rem}
+.n:before{content:'';position:absolute;left:-1.22rem;top:.95rem;width:7px;
+  height:7px;border-radius:50%;background:var(--auth);border:2px solid var(--bg)}
+.n.sec-src:before{background:var(--sec)}
+.n.expd{border-style:dashed;background:transparent;color:var(--exp)}
+.n.expd:before{background:transparent;border:2px solid var(--exp)}
+.nh{display:flex;flex-wrap:wrap;gap:.5rem;align-items:baseline}
+.nid{font-family:var(--mono);font-size:.72rem}
+.date{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.tag{font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;
+  text-transform:uppercase;padding:.08rem .35rem;border:1px solid var(--rule);
+  color:var(--muted)}
+.tag.prec{border-color:#b9b2a4}
+.tag.secondary{border-color:var(--sec);color:var(--sec)}
+.tag.nullknown{border-color:var(--miss);color:var(--miss)}
+.q{font-size:.85rem;margin:.35rem 0 .2rem}
+.src{font-size:.68rem;color:var(--muted)}
+.src a{color:var(--sec);word-break:break-all}
+.extra{font-family:var(--mono);font-size:.66rem;color:var(--muted);
+  margin-top:.3rem;white-space:pre-wrap}
+table{border-collapse:collapse;width:100%;font-size:.8rem;background:var(--card)}
+th,td{border:1px solid var(--rule);padding:.3rem .5rem;text-align:left}
+th{font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted);font-weight:400}
+td.num{font-family:var(--mono);text-align:right}
+.foot{margin-top:2rem;font-size:.66rem;color:var(--muted);line-height:1.6;
+  border-top:1px solid var(--rule);padding-top:.8rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Decision Trace &mdash; katselin</h1>
+  <div class="sub">OGAS3 &middot; luonnos v0.1 &middot; ei palvelinta, ei verkkoa</div>
+
+  <label class="drop" id="drop">
+    <input type="file" id="file" accept=".json" multiple>
+    Pudota trace-JSON tähän tai klikkaa &mdash; tiedosto luetaan selaimessa,
+    mitään ei lähetetä mihinkään.
+  </label>
+
+  <div id="out"></div>
+
+  <div class="foot">
+    <strong>Mitä tämä tekee näkyväksi automaattisesti.</strong><br>
+    <span style="color:var(--miss)">known_at puuttuu</span> &mdash; se tarkoittaa
+    <em>&quot;julkiseksitulohetkeä ei tiedetä&quot;</em>, ei nollaa viivettä.
+    Ero on kadonnut tässä projektissa useammin kuin kerran.<br>
+    <strong>occurred_at_precision</strong> näkyy jokaisella solmulla, koska
+    vuositason aggregaatti ja päivätason tapahtuma <em>eivät ole samalla
+    aikajanalla</em> vaikka ne piirretään samaan.<br>
+    <span style="color:var(--sec)">secondary</span>-lähteet erottuvat
+    <span style="color:var(--auth)">authoritative</span>sta.<br>
+    <strong>expected</strong> on katkoviivalla ja harmaana &mdash; ne eivät ole
+    tapahtumia eikä niillä ole aikaleimoja.<br><br>
+    <strong>Mitä tämä EI tee:</strong> ei laske mitään, ei yhdistä traceja, ei
+    tarkista tiivistettä (se on <code>traces.py</code>:n työ), eikä näytä
+    RRI-arvoja &mdash; niitä ei ole.
+  </div>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s??'').replace(/[&<>"]/g, c =>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+$('#file').addEventListener('change', e => {
+  const out = $('#out'); out.innerHTML = '';
+  [...e.target.files].forEach(f => {
+    const r = new FileReader();
+    r.onload = () => {
+      try { out.appendChild(render(JSON.parse(r.result), f.name)); }
+      catch (err) {
+        const d = document.createElement('div');
+        d.className = 'warn';
+        d.innerHTML = `<strong>${esc(f.name)}</strong> &mdash; ei jäsenny: ${esc(err.message)}`;
+        out.appendChild(d);
+      }
+    };
+    r.readAsText(f);
+  });
+});
+['dragover','dragleave','drop'].forEach(ev =>
+  $('#drop').addEventListener(ev, e => {
+    e.preventDefault();
+    $('#drop').classList.toggle('on', ev === 'dragover');
+    if (ev === 'drop') { $('#file').files = e.dataTransfer.files;
+      $('#file').dispatchEvent(new Event('change')); }
+  }));
+
+function render(d, fname) {
+  const el = document.createElement('div');
+  const s = d.subject || {};
+  const obs = d.observed || [];
+  const exp = d.expected || [];
+
+  // resoluutiojakauma — lasketaan, ei oleteta
+  const prec = {};
+  obs.forEach(n => { const p = n.occurred_at_precision || 'täsmä';
+                     prec[p] = (prec[p]||0)+1; });
+  const nullKnown = obs.filter(n => !n.known_at).length;
+  const secondary = obs.filter(n => n.source_class === 'secondary').length;
+
+  let h = `<div class="sec">${esc(fname)}</div>
+  <h1 style="margin-bottom:.6rem">${esc(s.nimi || s.tunnus || '—')}</h1>
+  <div class="meta">
+    ${m('lukittu', d._locked_at)}
+    ${m('revisio', d._revision)}
+    ${m('tiiviste', d._content_hash)}
+    ${m('domain', d.domain || '—')}
+    ${m('havaittuja', obs.length)}
+    ${m('odotettuja', exp.length)}
+  </div>`;
+
+  // varoitukset — vain jos aihetta
+  const W = [];
+  if (Object.keys(prec).length > 1)
+    W.push(`<strong>ERI RESOLUUTIOITA SAMASSA LISTASSA:</strong> ` +
+      Object.entries(prec).map(([k,v]) => `${v}× ${k}`).join(' · ') +
+      `. <code>occurred_at</code> tarkoittaa niissä eri asiaa &mdash; ` +
+      `vuositason aggregaatti ei ole samalla janalla kuin päivätason tapahtuma.`);
+  if (nullKnown)
+    W.push(`<strong>${nullKnown} solmulla ei ole <code>known_at</code>-arvoa.</strong> ` +
+      `Se tarkoittaa että julkiseksitulohetkeä ei tiedetä &mdash; <em>ei</em> nollaa viivettä.`);
+  if (d._coverage?.osajoukko)
+    W.push(`<strong>OSAJOUKKO:</strong> ${d._coverage.tassa}/${d._coverage.kronikan_tapahtumia || '?'} ` +
+      `tapahtumaa. Puuttuvat: ${esc((d._coverage.puuttuvat||[]).join(', '))}.`);
+  if (secondary)
+    W.push(`<strong>${secondary} solmua sekundaarilähteestä.</strong> Niitä ei ole ristiintarkistettu.`);
+  if (W.length) h += W.map(w => `<div class="warn">${w}</div>`).join('');
+
+  // diff
+  if (d._diff) {
+    h += `<div class="sec">muutos edelliseen</div><table><tbody>
+      <tr><td>edellinen</td><td class="num">${esc(d._diff.edellinen||'—')}</td></tr>
+      <tr><td>uusia solmuja</td><td class="num">${d._diff.uusia_solmuja??'—'}</td></tr>
+      <tr><td>kadonneita</td><td class="num">${d._diff.kadonneita??'—'}</td></tr>
+      </tbody></table>`;
+  }
+
+  // aikajana
+  const sorted = [...obs].sort((a,b) =>
+    String(a.occurred_at).localeCompare(String(b.occurred_at)));
+  h += `<div class="sec">havaitut &mdash; aikajärjestyksessä</div><div class="tl">`;
+  sorted.forEach(n => {
+    const cls = n.source_class === 'secondary' ? 'n sec-src' : 'n';
+    const e = (n.evidence||[])[0] || {};
+    const tags = [];
+    if (n.occurred_at_precision) tags.push(`<span class="tag prec">${esc(n.occurred_at_precision)}</span>`);
+    if (n.source_class) tags.push(`<span class="tag ${n.source_class==='secondary'?'secondary':''}">${esc(n.source_class)}</span>`);
+    if (n.decision_body) tags.push(`<span class="tag">${esc(n.decision_body)}</span>`);
+    if (!n.known_at) tags.push(`<span class="tag nullknown">known_at puuttuu</span>`);
+    // lisäaikaleimat
+    const extra = [];
+    if (n.negotiation_started_at) extra.push(`neuvottelu alkoi  ${n.negotiation_started_at.slice(0,10)}`);
+    if (n.completed_at)           extra.push(`toteuma           ${n.completed_at.slice(0,10)}`);
+    if (n._measured) extra.push(Object.entries(n._measured)
+      .map(([k,v]) => `${k.padEnd(18)}${v}`).join('\n'));
+    h += `<div class="${cls}">
+      <div class="nh"><span class="nid">${esc(n.node_id)}</span>
+        <span class="date">${esc(String(n.occurred_at).slice(0,10))}</span>${tags.join('')}</div>
+      <div class="q">${esc(e.quote || '')}</div>
+      <div class="src">${esc(n.source||'')}${e.source_url
+        ? ` &middot; <a href="${esc(e.source_url)}" target="_blank" rel="noopener">toista haku</a>` : ''}</div>
+      ${extra.length ? `<div class="extra">${esc(extra.join('\n'))}</div>` : ''}
+    </div>`;
+  });
+  h += `</div>`;
+
+  // expected
+  if (exp.length) {
+    h += `<div class="sec">odotetut &mdash; EIVÄT ole tapahtumia</div><div class="tl">`;
+    exp.forEach(x => {
+      h += `<div class="n expd"><div class="nh">
+        <span class="nid">${esc(x.step || '—')}</span>
+        <span class="date">${esc(x.date || x.estimate || 'ei aikaleimaa')}</span>
+        <span class="tag">${esc(x.status || '')}</span></div>
+        ${x.note ? `<div class="q">${esc(x.note)}</div>` : ''}</div>`;
+    });
+    h += `</div>`;
+  }
+
+  el.innerHTML = h;
+  return el;
+}
+function m(k, v) {
+  return `<div class="m"><div class="k">${esc(k)}</div><div class="v">${esc(v ?? '—')}</div></div>`;
+}
+</script>
+</body>
+</html>

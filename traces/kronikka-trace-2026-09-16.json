@@ -1,11 +1,11 @@
 {
  "_schema": "aci/decision-trace/v0.1",
  "_locked_at": "2026-09-16",
- "_revision": 1,
+ "_revision": 2,
  "_lock_note": "LUKITTU. KOKEILU: voiko kronikan ajaa OGAS3:n lapi.",
  "domain": "fiskaali",
  "subject": {
-  "nimi": "Suomen poliittinen tase 2000-2026 (kronikka)",
+  "nimi": "Valtionhallinnon EDP-velka 2000-2025 (kronikan selkaranka)",
   "tunnus": "KRONIKKA-2000-2026"
  },
  "_caveat": "Kronikka EI ole yhden paatosketjun trace. Se on KOOSTE useasta eri ketjusta eri toimialueilta. domain=fiskaali on siksi karkeistus.",
@@ -231,57 +231,6 @@
    }
   },
   {
-   "node_id": "caruna-myynti",
-   "kind": "observed",
-   "occurred_at": "2013-12-12T00:00:00+02:00",
-   "known_at": null,
-   "retrieved_at": "2026-09-16T06:08:09+00:00",
-   "source": "kronikka Osa II — LAHDE VARMENTAMATTA",
-   "evidence": [
-    {
-     "quote": "Caruna-myynti, myyntitulo 2,55 mrd EUR",
-     "location": "Osa II",
-     "source_url": null,
-     "retrieved_at": "2026-09-16T06:08:09+00:00"
-    }
-   ],
-   "occurred_at_precision": "paiva",
-   "decision_body": "yhtion_hallitus",
-   "source_class": "secondary",
-   "_paattaja": "Fortumin hallitus",
-   "_menettely": "yhtion hallitus, omistajaohjaus",
-   "_R1": "kylla",
-   "_R2": "ei",
-   "completed_at": "2014-03-12T00:00:00+02:00",
-   "_aikaleima_huom": "occurred_at oli aiemmin 2014-03-12 = kaupan TOTEUMA. Paatos tehtiin Fortumin puolella 12.12.2013. Jos OGAS3 jaljittaa paatoksia, se tarvitsee paatospaivan. MOLEMMAT PAIVAT OVAT VARMENTAMATTA — source_class secondary."
-  },
-  {
-   "node_id": "loviisa-ppa",
-   "kind": "observed",
-   "occurred_at": "2026-09-09T00:00:00+03:00",
-   "known_at": "2026-09-09T00:00:00+03:00",
-   "retrieved_at": "2026-09-16T06:08:09+00:00",
-   "source": "Fortumin porssitiedote",
-   "evidence": [
-    {
-     "quote": "22 v sahkonostosopimus, 50 % Loviisan kapasiteetista 2030-2049",
-     "location": "porssitiedote",
-     "source_url": null,
-     "retrieved_at": "2026-09-16T06:08:09+00:00"
-    }
-   ],
-   "occurred_at_precision": "paiva",
-   "decision_body": "sopimusosapuolet",
-   "source_class": "authoritative",
-   "_paattaja": "Fortum + Google",
-   "_menettely": "kaupallinen sopimus",
-   "_R1": "kylla",
-   "_R2": "ei",
-   "negotiation_started_at": "2024-04-01T00:00:00+03:00",
-   "_negotiation_precision": "kuukausi",
-   "_aikaleima_huom": "occurred_at on allekirjoituspaiva. negotiation_started_at on datakeskusneuvottelujen alku (HS 9/2026: paaministerin puhelu 4/2024) — SE EI OLE VARMENNETTU PPA-neuvottelujen aluksi. Merkitty kuukauden tarkkuudella ja lahde on sekundaari."
-  },
-  {
    "node_id": "tem040-lausuntokierros",
    "kind": "observed",
    "occurred_at": "2026-09-03T00:00:00+03:00",
@@ -328,12 +277,25 @@
    "Datakeskusneuvottelut"
   ],
   "_syy": "Naille ei ole tassa istunnossa todennettua paatospaivamaaraa eika lahdetta. Niita EI lisata arvaamalla. Kronikan proosassa ne ovat; JSON:ssa vain ne joilla on pvm ja lahde.",
-  "_miksi_merkitaan": "Ilman tata OGAS3 ei tieda onko kyseessa koko aineisto vai otos — ja otos nayttaa kokonaisuudelta."
+  "_miksi_merkitaan": "Ilman tata OGAS3 ei tieda onko kyseessa koko aineisto vai otos — ja otos nayttaa kokonaisuudelta.",
+  "_huom": "Paatostapahtumat siirretty omiin traceihinsa. Tahan jaa vain EDP-velkasarja — se on yhtenainen vuosisarja yhdesta lahteesta, ja se on tama tiedoston varsinainen sisalto."
  },
  "_resolution": {
   "observations_vuositaso": 10,
   "events_paivataso": 2,
   "_note": "NAMA EIVAT OLE SAMALLA RESOLUUTIOLLA. EDP-solmut ovat vuositason aggregaatteja (tilinpaatostieto 31.12.); tapahtumasolmut ovat yksittaisia paivatason tapahtumia. occurred_at tarkoittaa eri asiaa.\\nEI eroteltu eri listoiksi: occurred_at_precision on jo olemassa ja kantaa eron. Erillinen lista olisi skeemamuutos joka rikkoisi yhteensopivuuden olemassa oleviin traceihin, eika poistaisi perusongelmaa — kuluttaja voi yha yhdistaa ne. Kentta on luettava ennen aggregointia kummassakin tapauksessa.\\nHAVAINTO: tama ero EI OLLUT NAKYVISSA kronikan proosassa. Se paljastui vasta koneellisesti luettavassa muodossa."
  },
- "_content_hash": "c9c02ef2ed81"
+ "_revision_note": "rev 1 sisalsi solmut caruna-myynti ja loviisa-ppa varmentamattomina (source_class secondary). Ne on POISTETTU, koska samoista tapahtumista on nyt varmennetut versiot muissa traceissa:\n  caruna-myynti  -> kronikka-paattyneet-2026-09-16.json\n  loviisa-ppa    -> sama tiedosto ei sisalla sita; PPA on kesken eika kuulu paattyneisiin. Se on TEM040-ketjun ulkopuolella eika sille ole omaa tracea.\nPERUSTELU: kaksi tracea joissa on ristiriitaiset tiedot samasta tapahtumasta on huonompi kuin yksi. Viittaus korvaa kopion.",
+ "_liittyvat_tracet": [
+  {
+   "file": "kronikka-paattyneet-2026-09-16.json",
+   "content_hash": "cea8d01fcbf2",
+   "_sisaltaa": "Caruna, Uniper ja GrowHow varmennettuina porssitiedotteista — 18 solmua, 14 authoritative."
+  },
+  {
+   "file": "TEM040-trace-2026-09-14.json",
+   "_sisaltaa": "Datakeskusrekisteri, KESKEN. uptake None."
+  }
+ ],
+ "_content_hash": "590e369aea6a"
 }
