@@ -94,8 +94,26 @@ DOMAINS = ("energia", "fiskaali", "liikenne", "ymparisto")
 #
 # Kenttä erottaa ne. Uptake on mitattavissa kunnallisesta päätöksestä,
 # mutta sitä EI lasketa yhteen eduskunnan uptaken kanssa.
-DECISION_BODIES = ("eduskunta", "valtioneuvosto", "kunnanvaltuusto",
-                   "viranomainen", "EU", "yhtiokokous")
+# LAAJENNETTU 2026-09-16. Alkuperainen lista pakotti jokaisen
+# yhtiopaatoksen arvoon "yhtiokokous", ja se oli VAARIN kahdesti:
+# Carunan myynnista paatti Fortumin HALLITUS, ei yhtiokokous; ja
+# Loviisa-PPA on kahden yhtion valinen SOPIMUS, ei kummankaan
+# yhtiopaatos.
+#
+# Liian kapea enum ei anna virhetta — se pakottaa vaaraan
+# kategoriaan hiljaa. Sama vikaluokka kuin muutkin: rakenne nayttaa
+# oikealta, sisalto on vaara.
+DECISION_BODIES = (
+    "eduskunta",
+    "valtioneuvosto",
+    "ministerio",
+    "kunnanvaltuusto",
+    "viranomainen",
+    "EU",
+    "yhtion_hallitus",      # yhtion oma paatoselin
+    "yhtiokokous",          # omistajien kokous
+    "sopimusosapuolet",     # kahden tai useamman valinen sopimus
+)
 
 
 class TraceError(ValueError):
@@ -184,6 +202,36 @@ def load_trace(path: str | Path) -> Trace:
         if not n.get("occurred_at"):
             raise TraceError(f"observed[{i}] ({nid}): occurred_at puuttuu. "
                              "Havaittu solmu ilman tapahtumahetkeä ei ole havainto.")
+        # KOLME ERI AIKALEIMAA (lisatty 2026-09-16).
+        #
+        # occurred_at oli kaytetty seka PAATOKSEN etta TOTEUMAN hetkena.
+        # Carunassa se oli 2014-03-12 = kaupan toteuma; paatos tehtiin
+        # Fortumin puolella 2013. Jos OGAS3 jaljittaa PAATOKSIA, se
+        # tarvitsee paatospaivan.
+        #
+        #   occurred_at             paatos
+        #   completed_at            toteuma
+        #   negotiation_started_at  neuvottelujen alku
+        #
+        # Kaksi jalkimmaista ovat VAPAAEHTOISIA, mutta jos ne ovat, niiden
+        # on oltava johdonmukaisia: neuvottelu ennen paatosta, paatos
+        # ennen toteumaa.
+        occ_ts = parse_ts(n["occurred_at"], f"{nid}.occurred_at")
+        for kentta, vertaa in (("negotiation_started_at", "ennen"),
+                               ("completed_at", "jalkeen")):
+            if not n.get(kentta):
+                continue
+            ts = parse_ts(n[kentta], f"{nid}.{kentta}")
+            if vertaa == "ennen" and ts > occ_ts:
+                raise TraceError(
+                    f"observed[{i}] ({nid}): negotiation_started_at "
+                    f"({ts.date()}) on occurred_at:n ({occ_ts.date()}) "
+                    "JALKEEN. Neuvottelu ei ala paatoksen jalkeen.")
+            if vertaa == "jalkeen" and ts < occ_ts:
+                raise TraceError(
+                    f"observed[{i}] ({nid}): completed_at ({ts.date()}) on "
+                    f"occurred_at:n ({occ_ts.date()}) ENNEN. Toteuma ei "
+                    "edella paatosta.")
         if not n.get("evidence"):
             raise TraceError(f"observed[{i}] ({nid}): evidence puuttuu")
         # known_at SAA olla None — se tarkoittaa "julkiseksitulohetkeä ei
@@ -267,6 +315,8 @@ def to_raw_events(t: Trace) -> tuple[list[dict], list[dict]]:
                 "decision_body": r.get("decision_body"),
                 "occurred_at_source": r.get("occurred_at_source"),
                 "occurred_at_precision": r.get("occurred_at_precision"),
+                "completed_at": r.get("completed_at"),
+                "negotiation_started_at": r.get("negotiation_started_at"),
                 "source_class": r.get("source_class"),
                 "trace_locked_at": t.locked_at,
             },

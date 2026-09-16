@@ -1,0 +1,339 @@
+{
+ "_schema": "aci/decision-trace/v0.1",
+ "_locked_at": "2026-09-16",
+ "_revision": 1,
+ "_lock_note": "LUKITTU. KOKEILU: voiko kronikan ajaa OGAS3:n lapi.",
+ "domain": "fiskaali",
+ "subject": {
+  "nimi": "Suomen poliittinen tase 2000-2026 (kronikka)",
+  "tunnus": "KRONIKKA-2000-2026"
+ },
+ "_caveat": "Kronikka EI ole yhden paatosketjun trace. Se on KOOSTE useasta eri ketjusta eri toimialueilta. domain=fiskaali on siksi karkeistus.",
+ "observed": [
+  {
+   "node_id": "edp-2000",
+   "kind": "observed",
+   "occurred_at": "2000-12-31T00:00:00+02:00",
+   "known_at": "2000-12-31T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T06:08:09+00:00",
+   "source": "Tilastokeskus StatFin/jali/122g.px sektori S1311",
+   "evidence": [
+    {
+     "quote": "EDP-velka 68.7 mrd EUR, 50.3 % BKT",
+     "location": "S1311 · jali-D / Ratio_D",
+     "source_url": "https://aci-pxweb-proxy.ruotsalainen-marko.workers.dev/?p=StatFin/jali/122g.px",
+     "retrieved_at": "2026-09-16T06:08:09+00:00"
+    }
+   ],
+   "occurred_at_precision": "vuosi",
+   "source_class": "authoritative",
+   "_measured": {
+    "edp_velka_mrd": 68.7,
+    "bkt_osuus_pct": 50.3
+   }
+  },
+  {
+   "node_id": "edp-2003",
+   "kind": "observed",
+   "occurred_at": "2003-12-31T00:00:00+02:00",
+   "known_at": "2003-12-31T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T06:08:09+00:00",
+   "source": "Tilastokeskus StatFin/jali/122g.px sektori S1311",
+   "evidence": [
+    {
+     "quote": "EDP-velka 67.5 mrd EUR, 44.5 % BKT",
+     "location": "S1311 · jali-D / Ratio_D",
+     "source_url": "https://aci-pxweb-proxy.ruotsalainen-marko.workers.dev/?p=StatFin/jali/122g.px",
+     "retrieved_at": "2026-09-16T06:08:09+00:00"
+    }
+   ],
+   "occurred_at_precision": "vuosi",
+   "source_class": "authoritative",
+   "_measured": {
+    "edp_velka_mrd": 67.5,
+    "bkt_osuus_pct": 44.5
+   }
+  },
+  {
+   "node_id": "edp-2007",
+   "kind": "observed",
+   "occurred_at": "2007-12-31T00:00:00+02:00",
+   "known_at": "2007-12-31T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T06:08:09+00:00",
+   "source": "Tilastokeskus StatFin/jali/122g.px sektori S1311",
+   "evidence": [
+    {
+     "quote": "EDP-velka 60.7 mrd EUR, 32.5 % BKT",
+     "location": "S1311 · jali-D / Ratio_D",
+     "source_url": "https://aci-pxweb-proxy.ruotsalainen-marko.workers.dev/?p=StatFin/jali/122g.px",
+     "retrieved_at": "2026-09-16T06:08:09+00:00"
+    }
+   ],
+   "occurred_at_precision": "vuosi",
+   "source_class": "authoritative",
+   "_measured": {
+    "edp_velka_mrd": 60.7,
+    "bkt_osuus_pct": 32.5
+   }
+  },
+  {
+   "node_id": "edp-2010",
+   "kind": "observed",
+   "occurred_at": "2010-12-31T00:00:00+02:00",
+   "known_at": "2010-12-31T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T06:08:09+00:00",
+   "source": "Tilastokeskus StatFin/jali/122g.px sektori S1311",
+   "evidence": [
+    {
+     "quote": "EDP-velka 83.7 mrd EUR, 44.5 % BKT",
+     "location": "S1311 · jali-D / Ratio_D",
+     "source_url": "https://aci-pxweb-proxy.ruotsalainen-marko.workers.dev/?p=StatFin/jali/122g.px",
+     "retrieved_at": "2026-09-16T06:08:09+00:00"
+    }
+   ],
+   "occurred_at_precision": "vuosi",
+   "source_class": "authoritative",
+   "_measured": {
+    "edp_velka_mrd": 83.7,
+    "bkt_osuus_pct": 44.5
+   }
+  },
+  {
+   "node_id": "edp-2011",
+   "kind": "observed",
+   "occurred_at": "2011-12-31T00:00:00+02:00",
+   "known_at": "2011-12-31T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T06:08:09+00:00",
+   "source": "Tilastokeskus StatFin/jali/122g.px sektori S1311",
+   "evidence": [
+    {
+     "quote": "EDP-velka 92.5 mrd EUR, 46.8 % BKT",
+     "location": "S1311 · jali-D / Ratio_D",
+     "source_url": "https://aci-pxweb-proxy.ruotsalainen-marko.workers.dev/?p=StatFin/jali/122g.px",
+     "retrieved_at": "2026-09-16T06:08:09+00:00"
+    }
+   ],
+   "occurred_at_precision": "vuosi",
+   "source_class": "authoritative",
+   "_measured": {
+    "edp_velka_mrd": 92.5,
+    "bkt_osuus_pct": 46.8
+   }
+  },
+  {
+   "node_id": "edp-2014",
+   "kind": "observed",
+   "occurred_at": "2014-12-31T00:00:00+02:00",
+   "known_at": "2014-12-31T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T06:08:09+00:00",
+   "source": "Tilastokeskus StatFin/jali/122g.px sektori S1311",
+   "evidence": [
+    {
+     "quote": "EDP-velka 113.3 mrd EUR, 55.0 % BKT",
+     "location": "S1311 · jali-D / Ratio_D",
+     "source_url": "https://aci-pxweb-proxy.ruotsalainen-marko.workers.dev/?p=StatFin/jali/122g.px",
+     "retrieved_at": "2026-09-16T06:08:09+00:00"
+    }
+   ],
+   "occurred_at_precision": "vuosi",
+   "source_class": "authoritative",
+   "_measured": {
+    "edp_velka_mrd": 113.3,
+    "bkt_osuus_pct": 55.0
+   }
+  },
+  {
+   "node_id": "edp-2015",
+   "kind": "observed",
+   "occurred_at": "2015-12-31T00:00:00+02:00",
+   "known_at": "2015-12-31T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T06:08:09+00:00",
+   "source": "Tilastokeskus StatFin/jali/122g.px sektori S1311",
+   "evidence": [
+    {
+     "quote": "EDP-velka 120.7 mrd EUR, 57.4 % BKT",
+     "location": "S1311 · jali-D / Ratio_D",
+     "source_url": "https://aci-pxweb-proxy.ruotsalainen-marko.workers.dev/?p=StatFin/jali/122g.px",
+     "retrieved_at": "2026-09-16T06:08:09+00:00"
+    }
+   ],
+   "occurred_at_precision": "vuosi",
+   "source_class": "authoritative",
+   "_measured": {
+    "edp_velka_mrd": 120.7,
+    "bkt_osuus_pct": 57.4
+   }
+  },
+  {
+   "node_id": "edp-2019",
+   "kind": "observed",
+   "occurred_at": "2019-12-31T00:00:00+02:00",
+   "known_at": "2019-12-31T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T06:08:09+00:00",
+   "source": "Tilastokeskus StatFin/jali/122g.px sektori S1311",
+   "evidence": [
+    {
+     "quote": "EDP-velka 126.1 mrd EUR, 52.9 % BKT",
+     "location": "S1311 · jali-D / Ratio_D",
+     "source_url": "https://aci-pxweb-proxy.ruotsalainen-marko.workers.dev/?p=StatFin/jali/122g.px",
+     "retrieved_at": "2026-09-16T06:08:09+00:00"
+    }
+   ],
+   "occurred_at_precision": "vuosi",
+   "source_class": "authoritative",
+   "_measured": {
+    "edp_velka_mrd": 126.1,
+    "bkt_osuus_pct": 52.9
+   }
+  },
+  {
+   "node_id": "edp-2023",
+   "kind": "observed",
+   "occurred_at": "2023-12-31T00:00:00+02:00",
+   "known_at": "2023-12-31T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T06:08:09+00:00",
+   "source": "Tilastokeskus StatFin/jali/122g.px sektori S1311",
+   "evidence": [
+    {
+     "quote": "EDP-velka 175.0 mrd EUR, 64.1 % BKT",
+     "location": "S1311 · jali-D / Ratio_D",
+     "source_url": "https://aci-pxweb-proxy.ruotsalainen-marko.workers.dev/?p=StatFin/jali/122g.px",
+     "retrieved_at": "2026-09-16T06:08:09+00:00"
+    }
+   ],
+   "occurred_at_precision": "vuosi",
+   "source_class": "authoritative",
+   "_measured": {
+    "edp_velka_mrd": 175.0,
+    "bkt_osuus_pct": 64.1
+   }
+  },
+  {
+   "node_id": "edp-2025",
+   "kind": "observed",
+   "occurred_at": "2025-12-31T00:00:00+02:00",
+   "known_at": "2025-12-31T00:00:00+02:00",
+   "retrieved_at": "2026-09-16T06:08:09+00:00",
+   "source": "Tilastokeskus StatFin/jali/122g.px sektori S1311",
+   "evidence": [
+    {
+     "quote": "EDP-velka 208.7 mrd EUR, 74.4 % BKT",
+     "location": "S1311 · jali-D / Ratio_D",
+     "source_url": "https://aci-pxweb-proxy.ruotsalainen-marko.workers.dev/?p=StatFin/jali/122g.px",
+     "retrieved_at": "2026-09-16T06:08:09+00:00"
+    }
+   ],
+   "occurred_at_precision": "vuosi",
+   "source_class": "authoritative",
+   "_measured": {
+    "edp_velka_mrd": 208.7,
+    "bkt_osuus_pct": 74.4
+   }
+  },
+  {
+   "node_id": "caruna-myynti",
+   "kind": "observed",
+   "occurred_at": "2013-12-12T00:00:00+02:00",
+   "known_at": null,
+   "retrieved_at": "2026-09-16T06:08:09+00:00",
+   "source": "kronikka Osa II — LAHDE VARMENTAMATTA",
+   "evidence": [
+    {
+     "quote": "Caruna-myynti, myyntitulo 2,55 mrd EUR",
+     "location": "Osa II",
+     "source_url": null,
+     "retrieved_at": "2026-09-16T06:08:09+00:00"
+    }
+   ],
+   "occurred_at_precision": "paiva",
+   "decision_body": "yhtion_hallitus",
+   "source_class": "secondary",
+   "_paattaja": "Fortumin hallitus",
+   "_menettely": "yhtion hallitus, omistajaohjaus",
+   "_R1": "kylla",
+   "_R2": "ei",
+   "completed_at": "2014-03-12T00:00:00+02:00",
+   "_aikaleima_huom": "occurred_at oli aiemmin 2014-03-12 = kaupan TOTEUMA. Paatos tehtiin Fortumin puolella 12.12.2013. Jos OGAS3 jaljittaa paatoksia, se tarvitsee paatospaivan. MOLEMMAT PAIVAT OVAT VARMENTAMATTA — source_class secondary."
+  },
+  {
+   "node_id": "loviisa-ppa",
+   "kind": "observed",
+   "occurred_at": "2026-09-09T00:00:00+03:00",
+   "known_at": "2026-09-09T00:00:00+03:00",
+   "retrieved_at": "2026-09-16T06:08:09+00:00",
+   "source": "Fortumin porssitiedote",
+   "evidence": [
+    {
+     "quote": "22 v sahkonostosopimus, 50 % Loviisan kapasiteetista 2030-2049",
+     "location": "porssitiedote",
+     "source_url": null,
+     "retrieved_at": "2026-09-16T06:08:09+00:00"
+    }
+   ],
+   "occurred_at_precision": "paiva",
+   "decision_body": "sopimusosapuolet",
+   "source_class": "authoritative",
+   "_paattaja": "Fortum + Google",
+   "_menettely": "kaupallinen sopimus",
+   "_R1": "kylla",
+   "_R2": "ei",
+   "negotiation_started_at": "2024-04-01T00:00:00+03:00",
+   "_negotiation_precision": "kuukausi",
+   "_aikaleima_huom": "occurred_at on allekirjoituspaiva. negotiation_started_at on datakeskusneuvottelujen alku (HS 9/2026: paaministerin puhelu 4/2024) — SE EI OLE VARMENNETTU PPA-neuvottelujen aluksi. Merkitty kuukauden tarkkuudella ja lahde on sekundaari."
+  },
+  {
+   "node_id": "tem040-lausuntokierros",
+   "kind": "observed",
+   "occurred_at": "2026-09-03T00:00:00+03:00",
+   "known_at": "2026-09-03T00:00:00+03:00",
+   "retrieved_at": "2026-09-16T06:08:09+00:00",
+   "source": "Hankeikkuna etapit",
+   "evidence": [
+    {
+     "quote": "LAUSUNTOMENETTELY 2026-09-03 – 2026-10-02",
+     "location": "etapit",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2026-09-16T06:08:09+00:00"
+    }
+   ],
+   "decision_body": "eduskunta",
+   "source_class": "authoritative",
+   "_menettely": "HE, lausuntokierros",
+   "_R1": "kylla",
+   "_R2": "osin"
+  }
+ ],
+ "_expected_note": "Eivat ole tapahtumia. Ei aikaleimoja.",
+ "expected": [
+  {
+   "step": "TEM040 lausuntokierros paattyy",
+   "date": "2026-10-02",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "R2-analyysi kuudelle tapaukselle",
+   "status": "ei tehty"
+  }
+ ],
+ "_coverage": {
+  "osajoukko": true,
+  "kronikan_tapahtumia": 9,
+  "tassa": 3,
+  "puuttuvat": [
+   "Sonera-alaskirjaus",
+   "GrowHow-jarjestely",
+   "Kriisipaketit",
+   "Uniper-hankinta",
+   "Uniper-ratkaisu",
+   "Datakeskusneuvottelut"
+  ],
+  "_syy": "Naille ei ole tassa istunnossa todennettua paatospaivamaaraa eika lahdetta. Niita EI lisata arvaamalla. Kronikan proosassa ne ovat; JSON:ssa vain ne joilla on pvm ja lahde.",
+  "_miksi_merkitaan": "Ilman tata OGAS3 ei tieda onko kyseessa koko aineisto vai otos — ja otos nayttaa kokonaisuudelta."
+ },
+ "_resolution": {
+  "observations_vuositaso": 10,
+  "events_paivataso": 2,
+  "_note": "NAMA EIVAT OLE SAMALLA RESOLUUTIOLLA. EDP-solmut ovat vuositason aggregaatteja (tilinpaatostieto 31.12.); tapahtumasolmut ovat yksittaisia paivatason tapahtumia. occurred_at tarkoittaa eri asiaa.\\nEI eroteltu eri listoiksi: occurred_at_precision on jo olemassa ja kantaa eron. Erillinen lista olisi skeemamuutos joka rikkoisi yhteensopivuuden olemassa oleviin traceihin, eika poistaisi perusongelmaa — kuluttaja voi yha yhdistaa ne. Kentta on luettava ennen aggregointia kummassakin tapauksessa.\\nHAVAINTO: tama ero EI OLLUT NAKYVISSA kronikan proosassa. Se paljastui vasta koneellisesti luettavassa muodossa."
+ },
+ "_content_hash": "c9c02ef2ed81"
+}

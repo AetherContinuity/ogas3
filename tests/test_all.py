@@ -1077,6 +1077,143 @@ def test_snapshot_expected_kannetaan_eika_keksita():
         st.fetch_hankeikkuna = orig
 
 
+# ── collect.py + laajennettu traces.py (lisätty 2026-09-16) ─────────
+def _node(nid="n1", **kw):
+    d = {"node_id": nid, "kind": "observed",
+         "occurred_at": "2026-09-09T00:00:00+03:00",
+         "known_at": "2026-09-09T00:00:00+03:00",
+         "retrieved_at": "2026-09-16T00:00:00+00:00", "source": "s",
+         "evidence": [{"quote": "q", "location": "l", "source_url": None,
+                       "retrieved_at": "2026-09-16T00:00:00+00:00"}]}
+    d.update(kw); return d
+
+
+def _trace(nodes, **kw):
+    from traces import content_hash
+    t = {"_schema": "aci/decision-trace/v0.1", "_locked_at": "2026-09-16",
+         "_revision": 1, "subject": {"nimi": "t"}, "observed": nodes,
+         "expected": []}
+    t.update(kw); t["_content_hash"] = content_hash(t); return t
+
+
+def _write(t, tmp, name="t.json"):
+    import json, os
+    p = os.path.join(tmp, name)
+    open(p, "w", encoding="utf-8").write(json.dumps(t, ensure_ascii=False))
+    return p
+
+
+def test_decision_bodies_kattaa_yhtion_hallituksen():
+    """Liian kapea enum pakotti Carunan ja PPA:n arvoon yhtiokokous.
+
+    Carunan myynnista paatti Fortumin HALLITUS; PPA on kahden yhtion
+    valinen SOPIMUS. Kumpikaan ei ole yhtiokokouspaatos.
+    """
+    from traces import DECISION_BODIES
+    for b in ("yhtion_hallitus", "sopimusosapuolet", "ministerio"):
+        assert b in DECISION_BODIES, f"{b} puuttuu"
+    assert len(DECISION_BODIES) >= 9
+
+
+def test_completed_at_ei_saa_edeltaa_paatosta():
+    """occurred_at = PAATOS, completed_at = TOTEUMA.
+
+    Carunassa occurred_at oli 2014-03-12 = kaupan toteuma; paatos
+    tehtiin 2013. Jos OGAS3 jaljittaa paatoksia, se tarvitsee
+    paatospaivan.
+    """
+    import tempfile
+    from traces import load_trace, TraceError
+    with tempfile.TemporaryDirectory() as tmp:
+        ok = _write(_trace([_node(completed_at="2026-10-01T00:00:00+03:00")]), tmp)
+        assert load_trace(ok).n_observed == 1
+        bad = _write(_trace([_node(completed_at="2026-01-01T00:00:00+02:00")]),
+                     tmp, "b.json")
+        try:
+            load_trace(bad)
+        except TraceError as e:
+            assert "completed_at" in str(e) and "ENNEN" in str(e)
+        else:
+            raise AssertionError("toteuma ennen paatosta meni lapi")
+
+
+def test_negotiation_ei_saa_alkaa_paatoksen_jalkeen():
+    import tempfile
+    from traces import load_trace, TraceError
+    with tempfile.TemporaryDirectory() as tmp:
+        ok = _write(_trace([_node(negotiation_started_at="2024-04-01T00:00:00+03:00")]), tmp)
+        assert load_trace(ok).n_observed == 1
+        bad = _write(_trace([_node(negotiation_started_at="2027-01-01T00:00:00+02:00")]),
+                     tmp, "b.json")
+        try:
+            load_trace(bad)
+        except TraceError as e:
+            assert "negotiation_started_at" in str(e) and "JALKEEN" in str(e)
+        else:
+            raise AssertionError("neuvottelu paatoksen jalkeen meni lapi")
+
+
+def test_aikaleimat_paatyvat_raweventtiin():
+    import tempfile
+    from traces import load_trace, to_raw_events
+    with tempfile.TemporaryDirectory() as tmp:
+        p = _write(_trace([_node(completed_at="2026-10-01T00:00:00+03:00",
+                                 negotiation_started_at="2024-04-01T00:00:00+03:00")]), tmp)
+        ev, sk = to_raw_events(load_trace(p))
+        assert sk == []
+        assert ev[0]["parameters"]["completed_at"].startswith("2026-10-01")
+        assert ev[0]["parameters"]["negotiation_started_at"].startswith("2024-04-01")
+
+
+def test_collect_tyhja_ei_ole_havainto():
+    """HAVAITTU 2026-09-16: ?ds=99999 ei anna virhetta.
+
+    Fingrid palauttaa 200 OK ja {"data": [], "pagination": {"total": 0}}.
+    Tuntematon datasetti ja aito tyhja ikkuna nayttavat TASMALLEEN
+    samalta. Sama vikaluokka kuin DS 105:n vakionolla.
+    """
+    import collect
+    f = collect.Fetch(proxy="fingrid", url="https://x/?ds=99999",
+                      data={"data": []}, retrieved_at="2026-09-16T00:00:00+00:00")
+    try:
+        collect.assert_nonempty(f, [], mika="DS 99999")
+    except collect.CollectError as e:
+        assert "TYHJÄ TULOS" in str(e)
+    else:
+        raise AssertionError("tyhja meni lapi")
+    # to_nodes tekee saman itse
+    try:
+        collect.to_nodes(f, rows=lambda d: d["data"], node_id=lambda r: "x",
+                         occurred_at=lambda r: "2026-01-01T00:00:00+02:00",
+                         quote=lambda r: "x", location="l", source="s")
+    except collect.CollectError as e:
+        assert "Tyhjä ei ole havainto" in str(e)
+    else:
+        raise AssertionError("to_nodes palautti tyhjan hiljaa")
+
+
+def test_collect_source_url_on_toistettava():
+    """evidence.source_url on se kutsu jolla data haettiin."""
+    import collect
+    f = collect.Fetch(proxy="pxweb", url="https://p/?p=StatFin/x.px",
+                      data={"rows": [{"v": 1}]},
+                      retrieved_at="2026-09-16T00:00:00+00:00")
+    n = collect.to_nodes(f, rows=lambda d: d["rows"], node_id=lambda r: "a",
+                         occurred_at=lambda r: "2026-01-01T00:00:00+02:00",
+                         quote=lambda r: "q", location="l", source="s")
+    assert n[0]["evidence"][0]["source_url"] == f.url
+
+
+def test_collect_tuntematon_proxy_nostaa_virheen():
+    import collect
+    try:
+        collect.fetch("olematon", {})
+    except collect.CollectError as e:
+        assert "tuntematon proxy" in str(e)
+    else:
+        raise AssertionError("tuntematon proxy meni lapi")
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0
