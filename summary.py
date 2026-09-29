@@ -246,7 +246,9 @@ def build_index() -> dict:
             "file": p.name, "promoted_at": r.get("promoted_at"), "promoted_by": r.get("promoted_by"),
             "approved_by": r.get("approved_by"), "he": r.get("he"), "tunnus": r.get("tunnus"),
             "peruste": (r.get("peruste") or "")[:500], "outcome_at_promotion": oc,
-            "ennen_ratkaisua": None if oc is None else oc not in decided,
+            # Vain 'eduskunnassa' on todettu ratkaisemattomaksi. 'määrittämätön'
+            # ja 'äänestetty' ilman vastausta eivät kerro kumpaan suuntaan.
+            "ennen_ratkaisua": True if oc == "eduskunnassa" else False if oc in decided else None,
             "issue": (r.get("issue") or {}).get("url"),
         })
 

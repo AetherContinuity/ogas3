@@ -152,13 +152,8 @@ def promote(*, he_in: str, tunnus_in: str, peruste: str, login: str,
         "state_at_promotion": state_at_promotion(he, tunnus, latest_summary()),
         "issue": {"number": issue_number, "url": issue_url},
     }
-    SEURANTA.mkdir(exist_ok=True)
-    name = f"{ts.strftime('%Y-%m-%dT%H%M%S')}-{_key(he, tunnus)}-{re.sub(r'[^A-Za-z0-9-]', '', login)}.json"
-    path = SEURANTA / name
-    if path.exists():
-        raise PromoteError(f"{name} on jo olemassa — nostoa ei kirjoiteta yli")
-    path.write_text(json.dumps(record, ensure_ascii=False, indent=1), encoding="utf-8")
-
+    # Trace ENSIN: jos haku kaatuu, nostoa ei kirjata. Muuten seurannassa
+    # olisi kirjaus ilman tracea, eikä sitä erottaisi onnistuneesta.
     prev = trace_exists(tunnus)
     trace_path, trace_note = None, None
     if prev is None:
@@ -166,6 +161,13 @@ def promote(*, he_in: str, tunnus_in: str, peruste: str, login: str,
         trace_note = "ensimmäinen trace tehty"
     else:
         trace_path, trace_note = prev, "trace oli jo olemassa — päivittyy kuukausiajossa"
+    SEURANTA.mkdir(exist_ok=True)
+    name = f"{ts.strftime('%Y-%m-%dT%H%M%S')}-{_key(he, tunnus)}-{re.sub(r'[^A-Za-z0-9-]', '', login)}.json"
+    path = SEURANTA / name
+    if path.exists():
+        raise PromoteError(f"{name} on jo olemassa — nostoa ei kirjoiteta yli")
+    path.write_text(json.dumps(record, ensure_ascii=False, indent=1), encoding="utf-8")
+
     return {"record": path, "trace": trace_path, "trace_note": trace_note, "tunnus": tunnus, "he": he}
 
 
@@ -211,7 +213,11 @@ def main() -> int:
     f = parse_issue_body(iss.get("body") or "")
     association, approved_by = iss.get("author_association", "NONE"), None
     if ev.get("action") == "labeled" and (ev.get("label") or {}).get("name") == "hyväksytty":
-        association, approved_by = "APPROVED", ev["sender"]["login"]
+        # Uusinta tai muun kuin avustajan nosto. Avustajan oma nosto säilyttää
+        # oman roolinsa; hyväksyjä kirjataan molemmissa.
+        approved_by = ev["sender"]["login"]
+        if association not in ALLOWED:
+            association = "APPROVED"
     msg_path = Path("promote-result.md")
     try:
         r = promote(he_in=f["he"], tunnus_in=f["tunnus"], peruste=f["peruste"],

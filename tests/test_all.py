@@ -1858,6 +1858,42 @@ def test_promote_refresh_skips_same_day_trace():
             pr.SEURANTA, pr.TRACES, pr.SNAPSHOTS = old
 
 
+def test_trace_open_etappi_does_not_crash_and_duration_is_stable():
+    from snapshot_trace import nodes_from_etapit
+    et = [{"alku": "2026-09-18", "loppu": "2026-10-09", "valmisteluvaihe": "LAUSUNTOMENETTELY"},
+          {"alku": "2026-09-20", "loppu": None, "valmisteluvaihe": "PERUSVALMISTELU"}]
+    a = nodes_from_etapit(et, "2026-09-28T00:00:00+00:00", "2026-09-28")
+    b = nodes_from_etapit(et, "2026-10-28T00:00:00+00:00", "2026-10-28")
+    assert a[0]["_derived"]["kesto_vrk"] == 21 == b[0]["_derived"]["kesto_vrk"], "kesto ei riipu ajohetkestä"
+    assert a[1]["_derived"]["kesto_vrk"] is None and a[1]["_derived"]["loppu"] is None
+    assert "avoin" in a[1]["evidence"][0]["quote"]
+
+
+def test_promote_failed_trace_writes_no_record():
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        pr, old = _promote_env(Path(tmp))
+        def boom(*a, **k): raise TypeError("haku kaatui")
+        try:
+            _raises_any(lambda: pr.promote(he_in="HE 46/2025", tunnus_in="TEM050:00/2024", peruste="x",
+                                           login="m", association="OWNER", created_at="2026-09-29T15:42:00Z",
+                                           issue_number=7, issue_url="u", snapshot=boom), TypeError)
+            assert not pr.SEURANTA.exists() or not list(pr.SEURANTA.iterdir())
+        finally:
+            pr.SEURANTA, pr.TRACES, pr.SNAPSHOTS = old
+
+
+def test_trace_state_closed_round_has_no_negative_remaining():
+    from snapshot_trace import derive_state
+    et = [{"alku": "2024-10-24", "loppu": "2024-12-04", "valmisteluvaihe": "LAUSUNTOMENETTELY"}]
+    st = derive_state({"tila": "PAATTYNYT"}, et, [], "2026-09-29")
+    assert st["lausuntokierros_tila"] == "päättynyt" and st["lausuntokierros_kesto_vrk"] == 41
+    assert st["lausuntokierros_jaljella_vrk"] is None and st["lausuntokierros_auki_vrk"] is None
+    et2 = et + [{"alku": "2026-09-18", "loppu": "2026-10-09", "valmisteluvaihe": "LAUSUNTOMENETTELY"}]
+    st2 = derive_state({}, et2, [], "2026-09-28")
+    assert (st2["lausuntokierros_tila"], st2["lausuntokierros_jaljella_vrk"], st2["lausuntokierroksia"]) == ("auki", 11, 2)
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0
