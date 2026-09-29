@@ -1750,6 +1750,21 @@ def test_summary_binds_to_source_hash_and_index_marks_latest():
         assert latest == {"a-old.json": False, "b-new.json": True}, latest
 
 
+def test_chain_resolve_hanke_filters_ranked_search():
+    from decision_chain import resolve_hanke
+    from fetchers import RawEvent
+    def ev(tunnus, hes):
+        return RawEvent(event_id=f"HI:{tunnus}", occurred_at=None, known_at=None, retrieved_at="x",
+                        source="Hankeikkuna", source_url="u", subtype=None,
+                        parameters={"tunnus": tunnus, "heNumerot": hes}, evidence=[])
+    ranked = [ev("OM059:00/2021", ["HE 89/2025"]), ev("TEM032:00/2023", ["HE 24/2026"]),
+              ev("SM053:00/2023", ["HE 16/2025"]), ev("X", ["HE 124/2026"])]
+    hits, log = resolve_hanke("HE 24/2026 vp", search=lambda extra: ranked)
+    assert [h.parameters["tunnus"] for h in hits] == ["TEM032:00/2023"]
+    assert log == {"source": "Hankeikkuna HE-haku", "tunnus": "HE 24/2026", "candidates": 4, "n": 1}
+    assert resolve_hanke("HE 1/2026", search=lambda e: ranked)[0] == []
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0

@@ -404,3 +404,31 @@ def chains(raw_events: Iterable[dict]) -> dict[str, dict]:
                         else "eduskunnassa" if c["eduskunta_vaiheet"]
                         else "määrittämätön")
     return dict(sorted(out.items()))
+
+# ── HE -> Hankeikkunan hanke ────────────────────────────────────────
+def resolve_hanke(he: str, search: Callable[[dict], list] | None = None) -> tuple[list, dict]:
+    """Hankeikkunan hankkeet joiden heTiedot.heNumerot sisältää tämän HE:n.
+
+    Hankeikkunan hakuskeemassa (KohdeV2SearchFormData) ei ole HE-kenttää.
+    `teksti` löytää HE-numeron, mutta se RANKKAA eikä suodata: haku
+    "HE 24/2026" palautti 4 hanketta, joista yksi oli oikea. Tulos
+    suodatetaan siksi tarkalla vertailulla heNumerot-kenttään — ilman
+    sitä liitos olisi väärä yhtä uskottavan näköisenä kuin oikea.
+
+    Palauttaa (RawEvent-lista, loki). Tyhjä lista = ei hanketta, jonka
+    heNumerot sisältäisi HE:n. Se ei tarkoita ettei hanketta ole:
+    vanhoissa hankkeissa numero on ilman HE-etuliitettä ('117/2007').
+    """
+    from fetchers import fetch_hankeikkuna
+    key = he_key(he)
+    if not key:
+        raise ChainError(f"ei HE-tunnus: {he!r}")
+    search = search or (lambda extra: fetch_hankeikkuna(valmisteluvaihe=None, size=20, extra=extra))
+    evs = search({"teksti": key})
+    hits = [e for e in evs
+            if key in {he_key(h) for h in (e.parameters.get("heNumerot") or []) if isinstance(h, str)}]
+    for e in hits:
+        e.parameters["query_valmisteluvaihe"] = "HE-haku (teksti + tarkka heNumerot)"
+    return hits, {"source": "Hankeikkuna HE-haku", "tunnus": key,
+                  "candidates": len(evs), "n": len(hits)}
+
