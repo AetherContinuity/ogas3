@@ -45,8 +45,17 @@
  "_lag_note": "known_at − occurred_at, anomaliat pois. Eduskunta ja äänestykset ovat 0 rakenteellisesti: istunto on julkinen tapahtuma.",
  "votes_lookup": {},
  "_votes_note": "'ei tietuetta' ei tarkoita 'ei äänestetty' — hyväksyminen ilman äänestystä ja keskeneräinen käsittely näyttävät samalta.",
+ "outcome_order": [
+  "säädös vahvistettu",
+  "eduskunta päättänyt",
+  "äänestetty",
+  "eduskunnassa",
+  "määrittämätön"
+ ],
  "chains_outcome": {
-  "määrittämätön": 81
+  "eduskunta päättänyt": 23,
+  "eduskunnassa": 17,
+  "määrittämätön": 41
  },
  "chains_derived_here": true,
  "chains": [
@@ -57,9 +66,10 @@
     "SM057:00/2023"
    ],
    "eduskunta_vaiheet": 35,
+   "eduskunta_vastaus": "2025-05-08",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 101/2024",
@@ -68,20 +78,10 @@
     "YM078:00/2023"
    ],
    "eduskunta_vaiheet": 64,
+   "eduskunta_vastaus": "2024-12-17",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 101/2026",
-   "nimeke": "Sika-alan salmonellariskien hallintaa koskeva säädöshanke; hallituksen esitys laiksi sika-alan salmonellavahinkorahastosta",
-   "hankkeet": [
-    "MMM023:00/2023"
-   ],
-   "eduskunta_vaiheet": 22,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 103/2024",
@@ -90,20 +90,10 @@
     "YM048:00/2023"
    ],
    "eduskunta_vaiheet": 47,
+   "eduskunta_vastaus": "2024-12-16",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 103/2026",
-   "nimeke": "Hallintotuomioistuinten kokoonpanosääntelyn tarkistaminen",
-   "hankkeet": [
-    "OM045:00/2023"
-   ],
-   "eduskunta_vaiheet": 4,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 105/2025",
@@ -112,20 +102,10 @@
     "LVM015:00/2024"
    ],
    "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2025-10-22",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 105/2026",
-   "nimeke": "Rahanpesulainsäädännön kokonaisuudistus -hanke",
-   "hankkeet": [
-    "VM053:00/2024"
-   ],
-   "eduskunta_vaiheet": 9,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 106/2025",
@@ -134,9 +114,10 @@
     "LVM031:00/2025"
    ],
    "eduskunta_vaiheet": 35,
+   "eduskunta_vastaus": "2025-11-06",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 108/2023",
@@ -145,9 +126,10 @@
     "STM081:00/2023"
    ],
    "eduskunta_vaiheet": 30,
+   "eduskunta_vastaus": "2024-03-08",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 109/2025",
@@ -156,119 +138,10 @@
     "STM040:00/2025"
    ],
    "eduskunta_vaiheet": 50,
+   "eduskunta_vastaus": "2025-12-17",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 109/2026",
-   "nimeke": "Kotoutumistuen ja työmarkkinatuen kielilisän valmistelu",
-   "hankkeet": [
-    "STM074:00/2024"
-   ],
-   "eduskunta_vaiheet": 4,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 118/2026",
-   "nimeke": "Säästövapaan pitämisen ajankohdan muuttamista valmisteleva työryhmä",
-   "hankkeet": [
-    "TEM056:00/2025"
-   ],
-   "eduskunta_vaiheet": 7,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 119/2026",
-   "nimeke": "Välimiesmenettelylain uudistaminen",
-   "hankkeet": [
-    "OM108:00/2023"
-   ],
-   "eduskunta_vaiheet": 4,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 123/2026",
-   "nimeke": "Hallituksen esitys eduskunnalle laiksi yritys- ja yhteisötietolain eräiden säännösten, Finanssivalvonnasta annetun lain 3 §:n 3 momentin 11 kohdan ja 5 §:n 26 kohdan sekä Finanssivalvonnan valvontamak",
-   "hankkeet": [
-    "TEM107:00/2025"
-   ],
-   "eduskunta_vaiheet": 4,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 125/2026",
-   "nimeke": "Hallituksen esitys yksityistielain muuttamiseksi",
-   "hankkeet": [
-    "LVM022:00/2025"
-   ],
-   "eduskunta_vaiheet": 2,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 126/2026",
-   "nimeke": "Osakeyhtiölain ja osuuskuntalain tarkistaminen",
-   "hankkeet": [
-    "OM118:00/2023"
-   ],
-   "eduskunta_vaiheet": 4,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 127/2026",
-   "nimeke": "Ihmiskauppadirektiivin muutosdirektiivin täytäntöönpano",
-   "hankkeet": [
-    "OM002:00/2025"
-   ],
-   "eduskunta_vaiheet": 12,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 130/2026",
-   "nimeke": "Eläinsuojelurikosten rangaistusten selvittäminen",
-   "hankkeet": [
-    "OM085:00/2023"
-   ],
-   "eduskunta_vaiheet": 4,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 137/2026",
-   "nimeke": "Menettämisseuraamuksia koskevat lainsäädäntömuutokset",
-   "hankkeet": [
-    "OM062:00/2023"
-   ],
-   "eduskunta_vaiheet": 4,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 138/2026",
-   "nimeke": "Muut rikosprosessin sujuvoittamistoimet (vaihe 2)",
-   "hankkeet": [
-    "OM088:00/2024"
-   ],
-   "eduskunta_vaiheet": 4,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 139/2025",
@@ -277,31 +150,10 @@
     "VM133:00/2024"
    ],
    "eduskunta_vaiheet": 26,
+   "eduskunta_vastaus": "2025-12-18",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 14/2026",
-   "nimeke": "Varmuusvankeuden käyttöönotto",
-   "hankkeet": [
-    "OM077:00/2023"
-   ],
-   "eduskunta_vaiheet": 34,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 141/2026",
-   "nimeke": "Hallituksen esitys laiksi ajoneuvolain muuttamisesta sekä siihen liittyviksi laeiksi (liikkuvat työkoneet ja Euro 7 -asetusten täytäntöönpano)",
-   "hankkeet": [
-    "LVM049:00/2025"
-   ],
-   "eduskunta_vaiheet": 2,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 143/2025",
@@ -310,20 +162,10 @@
     "OKM003:00/2025"
    ],
    "eduskunta_vaiheet": 46,
+   "eduskunta_vastaus": "2025-12-11",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 153/2026",
-   "nimeke": "Hallituksen esitys lentoliikenteestä Brasilian liittotasavallan kanssa tehdyn sopimuksen hyväksymiseksi ja voimaansaattamiseksi",
-   "hankkeet": [
-    "LVM028:00/2026"
-   ],
-   "eduskunta_vaiheet": 2,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 154/2025",
@@ -332,20 +174,10 @@
     "LVM047:00/2021"
    ],
    "eduskunta_vaiheet": 21,
+   "eduskunta_vastaus": "2025-11-14",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
-  },
-  {
-   "he": "HE 154/2026",
-   "nimeke": "Hallituksen esitys lentoliikenteestä Perun tasavallan kanssa tehdyn sopimuksen hyväksymiseksi ja voimaansaattamiseksi",
-   "hankkeet": [
-    "LVM027:00/2026"
-   ],
-   "eduskunta_vaiheet": 2,
-   "aanestykset": 0,
-   "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 155/2024",
@@ -354,9 +186,10 @@
     "VM056:00/2024"
    ],
    "eduskunta_vaiheet": 25,
+   "eduskunta_vastaus": "2024-12-12",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 166/2024",
@@ -365,9 +198,10 @@
     "MMM005:00/2024"
    ],
    "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2024-12-16",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 167/2025",
@@ -376,9 +210,10 @@
     "VM118:00/2024"
    ],
    "eduskunta_vaiheet": 40,
+   "eduskunta_vastaus": "2025-12-19",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 170/2022",
@@ -387,9 +222,10 @@
     "LVM056:00/2021"
    ],
    "eduskunta_vaiheet": 29,
+   "eduskunta_vastaus": "2022-11-30",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 182/2024",
@@ -398,9 +234,10 @@
     "LVM054:00/2023"
    ],
    "eduskunta_vaiheet": 34,
+   "eduskunta_vastaus": "2025-03-24",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 183/2025",
@@ -409,9 +246,10 @@
     "VM004:00/2025"
    ],
    "eduskunta_vaiheet": 48,
+   "eduskunta_vastaus": "2026-05-13",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 185/2025",
@@ -420,9 +258,10 @@
     "TEM042:00/2025"
    ],
    "eduskunta_vaiheet": 26,
+   "eduskunta_vastaus": "2026-03-05",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 199/2025",
@@ -431,9 +270,10 @@
     "TEM061:00/2024"
    ],
    "eduskunta_vaiheet": 57,
+   "eduskunta_vastaus": "2026-05-21",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 20/2025",
@@ -442,9 +282,10 @@
     "LVM037:00/2024"
    ],
    "eduskunta_vaiheet": 22,
+   "eduskunta_vastaus": "2025-05-08",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 201/2025",
@@ -453,9 +294,10 @@
     "MMM068:00/2024"
    ],
    "eduskunta_vaiheet": 31,
+   "eduskunta_vastaus": "2026-04-29",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 203/2025",
@@ -464,9 +306,10 @@
     "MMM007:00/2024"
    ],
    "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2026-04-28",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 208/2024",
@@ -475,9 +318,10 @@
     "VM119:00/2024"
    ],
    "eduskunta_vaiheet": 30,
+   "eduskunta_vastaus": "2025-04-09",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
   },
   {
    "he": "HE 23/2025",
@@ -486,9 +330,214 @@
     "TEM033:00/2025"
    ],
    "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2025-05-14",
    "aanestykset": 0,
    "saadokset": [],
-   "outcome": "määrittämätön"
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 101/2026",
+   "nimeke": "Sika-alan salmonellariskien hallintaa koskeva säädöshanke; hallituksen esitys laiksi sika-alan salmonellavahinkorahastosta",
+   "hankkeet": [
+    "MMM023:00/2023"
+   ],
+   "eduskunta_vaiheet": 22,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 103/2026",
+   "nimeke": "Hallintotuomioistuinten kokoonpanosääntelyn tarkistaminen",
+   "hankkeet": [
+    "OM045:00/2023"
+   ],
+   "eduskunta_vaiheet": 4,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 105/2026",
+   "nimeke": "Rahanpesulainsäädännön kokonaisuudistus -hanke",
+   "hankkeet": [
+    "VM053:00/2024"
+   ],
+   "eduskunta_vaiheet": 9,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 109/2026",
+   "nimeke": "Kotoutumistuen ja työmarkkinatuen kielilisän valmistelu",
+   "hankkeet": [
+    "STM074:00/2024"
+   ],
+   "eduskunta_vaiheet": 4,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 118/2026",
+   "nimeke": "Säästövapaan pitämisen ajankohdan muuttamista valmisteleva työryhmä",
+   "hankkeet": [
+    "TEM056:00/2025"
+   ],
+   "eduskunta_vaiheet": 7,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 119/2026",
+   "nimeke": "Välimiesmenettelylain uudistaminen",
+   "hankkeet": [
+    "OM108:00/2023"
+   ],
+   "eduskunta_vaiheet": 4,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 123/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi yritys- ja yhteisötietolain eräiden säännösten, Finanssivalvonnasta annetun lain 3 §:n 3 momentin 11 kohdan ja 5 §:n 26 kohdan sekä Finanssivalvonnan valvontamak",
+   "hankkeet": [
+    "TEM107:00/2025"
+   ],
+   "eduskunta_vaiheet": 4,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 125/2026",
+   "nimeke": "Hallituksen esitys yksityistielain muuttamiseksi",
+   "hankkeet": [
+    "LVM022:00/2025"
+   ],
+   "eduskunta_vaiheet": 2,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 126/2026",
+   "nimeke": "Osakeyhtiölain ja osuuskuntalain tarkistaminen",
+   "hankkeet": [
+    "OM118:00/2023"
+   ],
+   "eduskunta_vaiheet": 4,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 127/2026",
+   "nimeke": "Ihmiskauppadirektiivin muutosdirektiivin täytäntöönpano",
+   "hankkeet": [
+    "OM002:00/2025"
+   ],
+   "eduskunta_vaiheet": 12,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 130/2026",
+   "nimeke": "Eläinsuojelurikosten rangaistusten selvittäminen",
+   "hankkeet": [
+    "OM085:00/2023"
+   ],
+   "eduskunta_vaiheet": 4,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 137/2026",
+   "nimeke": "Menettämisseuraamuksia koskevat lainsäädäntömuutokset",
+   "hankkeet": [
+    "OM062:00/2023"
+   ],
+   "eduskunta_vaiheet": 4,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 138/2026",
+   "nimeke": "Muut rikosprosessin sujuvoittamistoimet (vaihe 2)",
+   "hankkeet": [
+    "OM088:00/2024"
+   ],
+   "eduskunta_vaiheet": 4,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 14/2026",
+   "nimeke": "Varmuusvankeuden käyttöönotto",
+   "hankkeet": [
+    "OM077:00/2023"
+   ],
+   "eduskunta_vaiheet": 34,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 141/2026",
+   "nimeke": "Hallituksen esitys laiksi ajoneuvolain muuttamisesta sekä siihen liittyviksi laeiksi (liikkuvat työkoneet ja Euro 7 -asetusten täytäntöönpano)",
+   "hankkeet": [
+    "LVM049:00/2025"
+   ],
+   "eduskunta_vaiheet": 2,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 153/2026",
+   "nimeke": "Hallituksen esitys lentoliikenteestä Brasilian liittotasavallan kanssa tehdyn sopimuksen hyväksymiseksi ja voimaansaattamiseksi",
+   "hankkeet": [
+    "LVM028:00/2026"
+   ],
+   "eduskunta_vaiheet": 2,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 154/2026",
+   "nimeke": "Hallituksen esitys lentoliikenteestä Perun tasavallan kanssa tehdyn sopimuksen hyväksymiseksi ja voimaansaattamiseksi",
+   "hankkeet": [
+    "LVM027:00/2026"
+   ],
+   "eduskunta_vaiheet": 2,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "eduskunnassa"
   },
   {
    "he": "HE 25/2026",
@@ -497,6 +546,7 @@
     "OM033:00/2025"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -508,6 +558,7 @@
     "OM003:00/2022"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -519,6 +570,7 @@
     "SM037:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -530,6 +582,7 @@
     "VM039:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -541,6 +594,7 @@
     "TEM103:00/2025"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -552,6 +606,7 @@
     "VM129:00/2024"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -563,6 +618,7 @@
     "TEM029:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -574,6 +630,7 @@
     "VM088:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -585,6 +642,7 @@
     "VM033:00/2024"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -596,6 +654,7 @@
     "STM101:00/2024"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -607,6 +666,7 @@
     "VM094:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -618,6 +678,7 @@
     "TEM050:00/2024"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -629,6 +690,7 @@
     "OM127:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -640,6 +702,7 @@
     "UM008:00/2019"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -651,6 +714,7 @@
     "OM163:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -662,6 +726,7 @@
     "MMM021:00/2025"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -673,6 +738,7 @@
     "OM061:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -684,6 +750,7 @@
     "VM023:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -695,6 +762,7 @@
     "OM067:00/2024"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -706,6 +774,7 @@
     "VM002:00/2026"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -717,6 +786,7 @@
     "LVM005:00/2024"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -728,6 +798,7 @@
     "STM104:00/2024"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -739,6 +810,7 @@
     "STM050:00/2025"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -750,6 +822,7 @@
     "YM057:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -761,6 +834,7 @@
     "OM162:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -772,6 +846,7 @@
     "PLM006:00/2025"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -783,6 +858,7 @@
     "VM121:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -794,6 +870,7 @@
     "OM029:00/2022"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -805,6 +882,7 @@
     "VM007:00/2024"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -816,6 +894,7 @@
     "STM069:00/2025"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -827,6 +906,7 @@
     "TEM073:00/2019"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -838,6 +918,7 @@
     "OM039:00/2019"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -849,6 +930,7 @@
     "VM167:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -860,6 +942,7 @@
     "TEM061:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -871,6 +954,7 @@
     "YM050:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -882,6 +966,7 @@
     "STM113:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -893,6 +978,7 @@
     "SM027:00/2021"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -904,6 +990,7 @@
     "TEM100:00/2025"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -915,6 +1002,7 @@
     "PLM002:00/2024"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -926,6 +1014,7 @@
     "VM172:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"
@@ -937,6 +1026,7 @@
     "OM055:00/2023"
    ],
    "eduskunta_vaiheet": 0,
+   "eduskunta_vastaus": null,
    "aanestykset": 0,
    "saadokset": [],
    "outcome": "määrittämätön"

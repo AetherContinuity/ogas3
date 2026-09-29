@@ -1,6 +1,6 @@
 {
  "_schema": "aci/ogas3-index/v0.1",
- "generated_at": "2026-09-29T09:51:50+00:00",
+ "generated_at": "2026-09-29T10:01:10+00:00",
  "months": [
   {
    "month": "2026-09",
@@ -13,7 +13,9 @@
     "Hankeikkuna"
    ],
    "chains_outcome": {
-    "määrittämätön": 81
+    "eduskunta päättänyt": 23,
+    "eduskunnassa": 17,
+    "määrittämätön": 41
    },
    "summary_matches_snapshot": true
   }

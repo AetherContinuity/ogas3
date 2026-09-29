@@ -142,8 +142,11 @@ Finlex        edellisenä kuukautena julkaistut säädökset      virallinen
 Liitosavain on HE-numero: Hankeikkunan `heTiedot.heNumerot`, Finlexin
 esityöt-osio (`preliminaryWork`) ja äänestysten `eduskuntatunnus`.
 Snapshotin `chains`-kenttä kokoaa HE-kohtaisesti mitä ketjusta on
-havaittu. Lopputulos on `säädös vahvistettu`, `äänestetty` tai
-`määrittämätön` — ei koskaan "hylätty" pelkän puuttuvan tiedon perusteella.
+havaittu. Lopputulos on vahvin havaittu tila: `säädös vahvistettu`,
+`eduskunta päättänyt` (vastaus annettu — voi olla hylkäävä), `äänestetty`,
+`eduskunnassa` tai `määrittämätön` — ei koskaan "hylätty" pelkän puuttuvan
+tiedon perusteella. Finlex-ikkuna on yksi kuukausi, joten vanhemmat lait
+tunnistetaan Eduskunnan vastauksesta, eivät säädöksestä.
 
 | Lähde | occurred_at | known_at |
 |---|---|---|
