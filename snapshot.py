@@ -38,6 +38,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from fetchers import fetch_eduskunta, fetch_hankeikkuna, summarize  # noqa: E402
 from avoimuus import fetch_current as fetch_avoimuus  # noqa: E402
+from yva import capture as capture_yva, write_registry as write_yva_registry  # noqa: E402
 from decision_chain import (chains, fetch_votes, he_key, resolve_hanke,  # noqa: E402
                             statutes_published_between)
 
@@ -160,6 +161,17 @@ def run(month: str | None = None, dry_run: bool = False) -> tuple[Path | None, d
                               "haettu": len(need), **summarize(evs)})
         except Exception as exc:
             per_query.append({"source": "Hankeikkuna", "tunnus": "vaikuttamisen kohteet", "error": str(exc)})
+
+    # YVA: menettelyn vaiheet hankesivuilta. Vain muuttuvat sivut haetaan;
+    # rekisteri kirjoitetaan vain varsinaisessa ajossa.
+    try:
+        yv, yva_log, yva_reg = capture_yva()
+        raw.extend(e.to_dict() for e in yv)
+        per_query.append(yva_log)
+        if not dry_run:
+            write_yva_registry(yva_reg)
+    except Exception as exc:
+        per_query.append({"source": "YVA", "error": str(exc)})
 
     # Finlex: edellisenä kalenterikuukautena julkaistut säädökset.
     # Kaappaus ajetaan kuun 1. päivänä, joten ikkuna on juuri päättynyt
