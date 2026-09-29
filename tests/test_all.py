@@ -1965,6 +1965,62 @@ def test_chain_joins_lobbying_via_hanke():
     assert list(unlinked_lobbying([e.to_dict() for e in evs])) == ["TEM043:00/2026"]
 
 
+# ── YVA ──────────────────────────────────────────────────────────────
+YVA_PAGE = {"fetched": "2026-10-01T06:10:00Z", "url": "https://www.ymparisto.fi/x", "tila": "Vireillä",
+            "aihealue": "Energiantuotanto", "alueet": "Pyhäjoki", "asianumero": "LVV-U/53982/2026",
+            "n_documents": 18, "aikataulu": [
+                {"text": "Arviointiohjelma nähtävillä 28.8.-26.9.2025", "vaihe": "ohjelma_nahtavilla",
+                 "alku": "2025-08-28", "loppu": "2025-09-26"},
+                {"text": "Yhteysviranomaisen perusteltu päätelmä 17.6.2026", "vaihe": "perusteltu_paatelma",
+                 "alku": "2026-06-17", "loppu": None},
+                {"text": "Tiedotustilaisuus 2.9.2025", "vaihe": None, "alku": "2025-09-02", "loppu": None}]}
+
+
+def test_yva_events_only_recognised_phases():
+    from yva import project_events
+    evs = project_events(YVA_PAGE, "pyhajoen-datakeskus", "Pyhäjoen datakeskus")
+    assert [e.parameters["vaihe"] for e in evs] == ["ohjelma_nahtavilla", "perusteltu_paatelma"]
+    d = evs[0].to_dict()
+    assert d["occurred_at"] == d["known_at"] and d["type"] is None
+    validate_event({**d, "type": "D"})
+
+
+def test_yva_capture_fetches_only_changing_pages():
+    import tempfile
+    from datetime import datetime, timezone
+    from yva import capture
+    now = datetime(2026, 10, 1, 6, tzinfo=timezone.utc)
+    reg = {"vanha": {"tila": "Päättynyt / perusteltu päätelmä annettu", "checked_at": "2026-09-01T00:00:00+00:00"},
+           "kesken": {"tila": "Vireillä", "checked_at": "2026-09-01T00:00:00+00:00"},
+           "unohtunut": {"tila": "Päättynyt", "checked_at": "2025-01-01T00:00:00+00:00"}}
+    calls = []
+    def get(params):
+        calls.append(params)
+        if "index" in params:
+            return {"data": [{"slug": s, "name": s} for s in ("vanha", "kesken", "unohtunut", "uusi")]}
+        return YVA_PAGE
+    with tempfile.TemporaryDirectory() as tmp:
+        p = Path(tmp) / "r.json"; p.write_text(json.dumps(reg))
+        evs, log, new = capture(now, get=get, registry=p, max_pages=2)
+    fetched = [c["project"] for c in calls if "project" in c]
+    assert fetched == ["uusi", "kesken"] and log["lykatty_seuraavaan"] == 1, (fetched, log)
+    assert new["unohtunut"]["checked_at"] == "2025-01-01T00:00:00+00:00", "lykätty ei saa näyttää tarkistetulta"
+    assert new["vanha"]["checked_at"] == "2026-09-01T00:00:00+00:00"
+
+
+def test_yva_future_phase_is_not_an_event():
+    from yva import project_events
+    page = {**YVA_PAGE, "fetched": "2026-09-29T17:00:00Z", "aikataulu": [
+        {"text": "Arviointiohjelma nähtävillä 30.9.-30.10.2026", "vaihe": "ohjelma_nahtavilla",
+         "alku": "2026-09-30", "loppu": "2026-10-30"}]}
+    st = {}
+    assert project_events(page, "s", "n", st) == [] and st["tulevia"] == 1
+    # Tunnistamaton rivi kirjataan, ei pudoteta hiljaa
+    st2 = {}
+    project_events(YVA_PAGE, "s", "n", st2)
+    assert st2["tunnistamattomat"] == ["Tiedotustilaisuus 2.9.2025"]
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0

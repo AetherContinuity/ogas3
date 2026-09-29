@@ -79,7 +79,7 @@ jobs:
           git config user.name  "ogas3-snapshot"
           git config user.email "actions@users.noreply.github.com"
           python3 summary.py >/dev/null
-          git add "$FILE" snapshots/*.summary.json snapshots/index.json traces/
+          git add "$FILE" snapshots/*.summary.json snapshots/index.json snapshots/yva-rekisteri.json traces/
           if git diff --cached --quiet; then
             echo "ei muutoksia"
           else

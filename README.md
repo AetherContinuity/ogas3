@@ -201,6 +201,32 @@ näkyvät tiivistelmässä erikseen (`vaikuttaminen.ilman_ketjua`).
 kiinnostavuudesta ilmoitusvelvollisille, ei siitä, muuttiko se mitään.
 Vaikuttaminen ei muuta ketjun lopputulosta.
 
+## YVA (`yva.py`)
+
+Ympäristövaikutusten arvioinnin vaiheet ymparisto.fi-hankesivuilta
+(aci-yva-proxy jäsentää sivun tekstistä). YVA on ainoa julkinen lähde,
+jossa suuri uusi kuorma — datakeskus, teollisuus, voimalaitos — näkyy
+ennen investointi- ja liittymäpäätöstä. Fingridin liittymisjono ei ole
+julkinen.
+
+| vaihe | merkitys |
+|---|---|
+| ohjelma_nahtavilla | menettely alkaa |
+| ohjelma_lausunto | yhteysviranomaisen lausunto ohjelmasta |
+| selostus_nahtavilla | arviointiselostus nähtävillä |
+| perusteltu_paatelma | menettely päättyy |
+
+occurred_at = known_at = kuulutettu päivä. Tulevaksi kuulutettu vaihe
+ei ole tapahtuma (ohitetaan, lasketaan lokiin). Tunnistamattomat
+aikataulurivit kirjataan lokiin esimerkkeineen, ei pudoteta.
+
+Kuorma: ~790 hankesivua. Rekisteri `snapshots/yva-rekisteri.json`
+muistaa tilan; joka kuu haetaan vain uudet, keskeneräiset (~240) ja yli
+180 vrk sitten tarkistetut. Ensimmäinen ajo hakee kaikki (~27 min).
+Koeajo 29.9.2026: 789 sivua, 532 vaihetta, 4 hakuvirhettä (haetaan
+uudelleen seuraavalla kerralla), 539 sivua ilman tunnistettavaa
+aikataulua (vanha sivupohja).
+
 ## Tiivistelmät käyttöliittymälle (`summary.py`)
 
 Snapshot on todiste, noin 9 Mt kuukaudessa. Käyttöliittymä lukee
@@ -290,6 +316,7 @@ luokittelun samassa kuukausiajossa kuin kaappauksen.
     classification.py        luokituskerros jäädytetyn todisteen päälle
 decision_chain.py        Finlex-säädökset, täysistuntoäänestykset, HE-ketjut
 summary.py               tiivistelmät ja index.json käyttöliittymälle
+yva.py                   YVA-menettelyn vaiheet, rekisteri muuttuvista sivuista
 avoimuus.py              Avoimuusrekisterin vaikuttamisilmoitukset hankkeisiin
 promote.py               nosto seurantaan (issue -> seuranta/ + trace), kuukausipäivitys
 tests/test_all.py        testit

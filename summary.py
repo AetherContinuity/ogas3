@@ -90,6 +90,39 @@ def _chain_titles(events: list[dict]) -> dict[str, str]:
     return {k: v[1] for k, v in best.items()}
 
 
+def _yva_summary(events: list[dict], month: str | None) -> dict | None:
+    """YVA-vaiheet, jotka tulivat julki kaappausta edeltävänä kuukautena
+    (sama ikkuna kuin Finlexillä). Energia-aihealue merkitään, ei suodateta."""
+    yv = [e for e in events if e.get("source") == "YVA"]
+    if not yv:
+        return None
+    if month:
+        y, m = (int(x) for x in month.split("-"))
+        py, pm = (y - 1, 12) if m == 1 else (y, m - 1)
+        prefix = f"{py:04d}-{pm:02d}"
+    else:
+        prefix = None
+    rows = []
+    for e in yv:
+        if prefix and not (e.get("known_at") or "").startswith(prefix):
+            continue
+        p = e.get("parameters") or {}
+        rows.append({"paiva": (e.get("known_at") or "")[:10], "vaihe": p.get("vaihe"),
+                     "hanke": p.get("hanke"), "aihealue": p.get("aihealue"),
+                     "energia": "energia" in (p.get("aihealue") or "").lower(),
+                     "tila": p.get("tila"), "url": e.get("source_url")})
+    rows.sort(key=lambda r: (r["paiva"], r["hanke"] or ""))
+    return {
+        "_note": "YVA-menettelyn vaiheet ymparisto.fi-hankesivuilta. Uusi kuorma näkyy YVA:ssa "
+                 "ennen investointi- ja liittymäpäätöstä. Kaikki YVA-hankkeet eivät ole "
+                 "sähkökuormaa; aihealue kertoo.",
+        "ikkuna": prefix,
+        "vaiheet_ikkunassa": rows,
+        "vaiheet_yhteensa": len(yv),
+        "hankkeita": len({(e.get("parameters") or {}).get("slug") for e in yv}),
+    }
+
+
 def summarize_snapshot(snap: dict, source_file: str | None = None,
                        source_sha256: str | None = None) -> dict:
     events: list[dict] = snap.get("events") or []
@@ -184,6 +217,7 @@ def summarize_snapshot(snap: dict, source_file: str | None = None,
                 key=lambda x: (-x["vaikuttajia"], x["tunnus"]))[:25],
             "ilman_ketjua_yhteensa": len(unlinked),
         },
+        "yva": _yva_summary(events, snap.get("month")),
         "anomalies": [{"event_id": e["event_id"], "source": e.get("source"),
                        "note": str(e["_anomaly"])[:300]}
                       for e in events if e.get("_anomaly")],
