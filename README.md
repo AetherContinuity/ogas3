@@ -127,6 +127,36 @@ eduskuntakäsittelyssä 20. Eduskunta on nolla, koska istunto on julkinen
 tapahtuma — ainoa lähde, jossa `occurred_at == known_at` on perusteltu
 eikä oletus.
 
+## Luokituskerros (`classification.py`)
+
+Snapshot jäädyttää todisteen. Luokitus (type, impact_weight,
+irreversibility, llm_classification) EI kirjoiteta jäädytettyyn
+tapahtumaan, vaan omaksi tietueekseen:
+
+```
+classifications/YYYY-MM.json   _schema: aci/classification/v0.1
+  event_id, event_hash         sidos todisteeseen (tiiviste ilman luokituskenttiä)
+  classified_at
+  classifier                   kind rule|llm|human, id, version,
+                               knowledge_cutoff (llm, null = tuntematon), prompt_hash (llm pakollinen)
+  type, impact_weight, irreversibility, llm_classification
+```
+
+Syy: luokittelija joka tietää miten hankkeelle kävi, vie tiedon
+painoihin. Aikaleimat pysyisivät puhtaina, painot eivät.
+
+Puhtaus johdetaan, ei ilmoiteta: `horisontti <= PRE-raja + max_lag`.
+PRE-raja on tapahtuman known_at-kuukauden loppu. Horisontti on
+`rule`: PRE-raja · `llm`: knowledge_cutoff · `human`: classified_at.
+Tuloksena CLEAN, CONTAMINATED tai UNVERIFIED. `max_lag` annetaan
+kutsussa, sille ei ole oletusta.
+
+PRE käyttää varhaisinta CLEAN-luokitusta, FULL viimeisintä. Luokittelematon
+tapahtuma jää pois ja listataan, snapshotin `_anomaly`-tapahtumat
+raportoidaan erikseen. Takautuvasti ihmisen luokittelema 2026-09 on
+rakenteellisesti CONTAMINATED — PRE-sarjan puhdas luokitus vaatii
+luokittelun samassa kuukausiajossa kuin kaappauksen.
+
 ## Rakenne
 
     schema.py                tapahtumaskeema, aikaleimasemantiikka
@@ -138,7 +168,8 @@ eikä oletus.
     scaler.py                D/O/S → 0–100, expanding | baseline | full-window
     audit.py                 turvalukko 4 + tarkoitukselliset NotImplementedError
     synthetic_events.json    45 tapahtumaa, 2 ilman painoa, viiveitä 0–51 vrk
-    tests/test_all.py        17 testiä
+    classification.py        luokituskerros jäädytetyn todisteen päälle
+tests/test_all.py        testit
 
 ## Rajapinta-ansat
 
@@ -155,7 +186,7 @@ eikä oletus.
 
 ## Ajo
 
-    python3 tests/test_all.py        # 17/17
+    python3 tests/test_all.py
 
 ## Synteettisen aineiston tulos
 
