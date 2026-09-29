@@ -37,6 +37,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from fetchers import fetch_eduskunta, fetch_hankeikkuna, summarize  # noqa: E402
+from avoimuus import fetch_current as fetch_avoimuus  # noqa: E402
 from decision_chain import (chains, fetch_votes, he_key, resolve_hanke,  # noqa: E402
                             statutes_published_between)
 
@@ -128,6 +129,37 @@ def run(month: str | None = None, dry_run: bool = False) -> tuple[Path | None, d
     raw = dedup
     if dups:
         per_query.append({"source": "Hankeikkuna", "note": f"{dups} duplikaattia poistettu kyselyjen väliltä"})
+
+    # Avoimuusrekisteri: uusimman ilmoituskauden hankkeisiin kohdistuva
+    # vaikuttaminen. Yksi kausihaku kuussa (käyttöehdot). Volyymiraja
+    # (403/429) kirjataan virheenä eikä hakua uusita.
+    try:
+        av, av_log = fetch_avoimuus()
+        raw.extend(e.to_dict() for e in av)
+        per_query.append(av_log)
+    except Exception as exc:
+        per_query.append({"source": "Avoimuusrekisteri", "error": str(exc)})
+        av = []
+
+    # Vaikuttamisen kohteena olleet hankkeet, joita vaihekyselyt eivät
+    # tuoneet (esim. ESIVALMISTELU, JATKOVALMISTELU, VALMISTUNUT). Yksi
+    # kutsu tunnuslistalla. Ilman tätä koeajossa 15/308 hankkeesta liittyi
+    # ketjuun, tämän kanssa 108. Vain LAINSAADANTO: HANKE- ja TOIMIELIN-
+    # kohteilla ei ole HE-numeroa, joten ne jäävät 'ilman ketjua' -listaan.
+    have_hi = {d["parameters"].get("tunnus") for d in raw if d["source"] == "Hankeikkuna"}
+    need = sorted({e.parameters["tunnus"] for e in av} - have_hi)
+    if need:
+        try:
+            evs = fetch_hankeikkuna(valmisteluvaihe=None, size=1000, extra={"tunnus": need})
+            for e in evs:
+                d = e.to_dict()
+                d["parameters"]["query_valmisteluvaihe"] = "vaikuttamisen kohde (tunnus)"
+                raw.append(d)
+            per_query.append({"source": "Hankeikkuna", "valmisteluvaihe": None,
+                              "extra": {"tunnus": f"{len(need)} vaikuttamisen kohdetta"},
+                              "haettu": len(need), **summarize(evs)})
+        except Exception as exc:
+            per_query.append({"source": "Hankeikkuna", "tunnus": "vaikuttamisen kohteet", "error": str(exc)})
 
     # Finlex: edellisenä kalenterikuukautena julkaistut säädökset.
     # Kaappaus ajetaan kuun 1. päivänä, joten ikkuna on juuri päättynyt

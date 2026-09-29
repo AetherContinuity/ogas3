@@ -177,6 +177,30 @@ Ansat:
 - Äänestyksistä talletetaan ryhmä- ja hallitus/oppositio-jakaumat,
   ei kansanedustajakohtaisia rivejä.
 
+## Vaikuttaminen (`avoimuus.py`)
+
+Avoimuusrekisterin toimintailmoitukset (VTV, CC BY 4.0), uusin
+ilmoituskausi kerran kuussa. Tapahtumaksi otetaan aihe, joka viittaa
+hankkeeseen tunnuksella (`contactTopicProject.projectId` = Hankeikkunan
+tunnus). Kausi 1–6/2026: 1 240 ilmoitusta, 4 819 aihetta, joista 635
+hankkeisiin (308 hanketta). Vapaatekstiaiheita ei tulkita hankkeiksi.
+
+| | |
+|---|---|
+| occurred_at | **yläraja**: min(kauden loppu, ilmoituspäivä) — päivää ei ilmoiteta |
+| known_at | ilmoituspäivä |
+| kohteet | organisaatio / osasto — ei henkilönimiä |
+
+Näkyvyysviive on siksi alaraja (mediaani ~59 vrk, todellinen jopa puoli
+vuotta pidempi). Vaikuttamisen kohteena olleet hankkeet, joita
+vaihekyselyt eivät tuoneet, haetaan yhdellä tunnuslistakutsulla, jotta ne
+liittyvät HE-ketjuihin (koeajossa 15 → 108 ketjua). Hankkeet ilman HE:tä
+näkyvät tiivistelmässä erikseen (`vaikuttaminen.ilman_ketjua`).
+
+**Ilmoitettu vaikuttaminen ei ole vaikutus.** Määrä kertoo ketjun
+kiinnostavuudesta ilmoitusvelvollisille, ei siitä, muuttiko se mitään.
+Vaikuttaminen ei muuta ketjun lopputulosta.
+
 ## Tiivistelmät käyttöliittymälle (`summary.py`)
 
 Snapshot on todiste, noin 9 Mt kuukaudessa. Käyttöliittymä lukee
@@ -266,6 +290,7 @@ luokittelun samassa kuukausiajossa kuin kaappauksen.
     classification.py        luokituskerros jäädytetyn todisteen päälle
 decision_chain.py        Finlex-säädökset, täysistuntoäänestykset, HE-ketjut
 summary.py               tiivistelmät ja index.json käyttöliittymälle
+avoimuus.py              Avoimuusrekisterin vaikuttamisilmoitukset hankkeisiin
 promote.py               nosto seurantaan (issue -> seuranta/ + trace), kuukausipäivitys
 tests/test_all.py        testit
 
