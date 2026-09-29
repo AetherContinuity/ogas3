@@ -132,11 +132,16 @@ class RawEvent:
         return d
 
 
-def fetch_hankeikkuna(valmisteluvaihe: str = "EDUSKUNTAKASITTELY",
+def fetch_hankeikkuna(valmisteluvaihe: str | None = "EDUSKUNTAKASITTELY",
                       tyyppi: str = "LAINSAADANTO",
-                      size: int = 500) -> list[RawEvent]:
+                      size: int = 500, extra: dict | None = None) -> list[RawEvent]:
+    """extra: lisäkentät hakurunkoon, esim. {"tila": ["PAATTYNYT"],
+    "muokattuPaivaAlku": "2026-09-01T00:00:00"} (ei Z-päätettä)."""
     url = f"{POLICY_PROXY}/?hi=kohteet/haku"
-    body = {"tyyppi": [tyyppi], "valmisteluvaihe": [valmisteluvaihe], "size": size}
+    body = {"tyyppi": [tyyppi], "size": size}
+    if valmisteluvaihe:
+        body["valmisteluvaihe"] = [valmisteluvaihe]
+    body.update(extra or {})
     j = _post(url, body)
     rows = j.get("data", {}).get("result", [])
     ret = _now_iso()

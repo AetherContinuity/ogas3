@@ -1530,6 +1530,141 @@ def test_cls_anomaly_reported_not_classified():
     _raises(lambda: _join([raw], [_rec(raw)]), "anomaliaksi")
 
 
+# ── Päätösketju: Finlex + äänestykset ────────────────────────────────
+def _akn(num, issued, published, title="Laki sähkömarkkinalain muuttamisesta",
+         typ="act", esityot=("HE 51/2026", "TaVM 9/2026", "EV 77/2026"), body_he=None):
+    refs = "".join(f"<p>{x}</p>" for x in esityot)
+    body = f"<p>Katso {body_he}</p>" if body_he else ""
+    return f'''<akomaNtoso xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0"
+ xmlns:finlex="http://data.finlex.fi/schema/finlex"><act name="main"><meta>
+ <identification source="#x"><FRBRWork>
+  <FRBRuri value="/akn/fi/act/statute/2026/{num}"/>
+  <FRBRalias name="eli" value="http://data.finlex.fi/eli/sd/2026/{num}/alkup"/>
+  <FRBRdate date="{issued}" name="dateIssued"/><FRBRdate date="{published}" name="datePublished"/>
+  <FRBRauthor as="#role_author" href="#organization_fi.parliament"/>
+ </FRBRWork></identification>
+ <proprietary source="#x"><finlex:typeStatute refersTo="#{typ}"/>
+  <finlex:categoryStatute refersTo="#amending-statute"/></proprietary></meta>
+ <preface><p><docNumber>{num}/2026</docNumber><docTitle>{title}</docTitle></p></preface>
+ <body>{body}</body>
+ <conclusions><hcontainer name="conclusions"><hcontainer name="preliminaryWork">
+  <content>{refs}</content></hcontainer></hcontainer></conclusions></act></akomaNtoso>'''.encode()
+
+
+def _fake_finlex(pubs):
+    """pubs: {numero: (issued, published)}; muut numerot 404."""
+    calls = []
+    def get(url):
+        import re as _re
+        n = int(_re.search(r"statute%2F2026%2F(\d+)", url).group(1))
+        calls.append(n)
+        if n in pubs:
+            return 200, _akn(n, *pubs[n])
+        return 200, json.dumps({"error": f"Finlex akn/...: 404 Not Found"}).encode()
+    return get, calls
+
+
+def test_chain_statute_parses_dates_and_esityot():
+    from decision_chain import parse_statute, statute_event
+    m = parse_statute(_akn(500, "2026-06-09", "2026-06-11", body_he="HE 3/2020"))
+    assert (m.number, m.date_issued, m.date_published) == (500, "2026-06-09", "2026-06-11")
+    assert m.he == ("HE 51/2026",), "HE luetaan vain esitöistä, ei leipätekstistä"
+    assert m.ev == ("EV 77/2026",) and m.mietinnot == ("TaVM 9/2026",)
+    e = statute_event(m, "u", "2026-09-29T00:00:00+00:00").to_dict()
+    assert e["occurred_at"].startswith("2026-06-09") and e["known_at"].startswith("2026-06-11")
+    assert e["type"] is None, "säädös ei ole automaattisesti IR"
+    validate_event({**e, "type": "D"})
+
+
+def test_chain_statute_published_before_issued_is_anomaly():
+    from decision_chain import parse_statute, statute_event
+    e = statute_event(parse_statute(_akn(1, "2026-06-09", "2026-06-01")), "u",
+                      "2026-09-29T00:00:00+00:00").to_dict()
+    assert "_anomaly" in e
+
+
+def test_chain_month_window_uses_published_date_and_margins():
+    from datetime import date
+    from decision_chain import statutes_published_between
+    pubs = {n: ("2026-07-01", "2026-07-15") for n in range(1, 60)}
+    pubs.update({n: ("2026-08-01", "2026-08-10") for n in range(60, 80)})
+    pubs[58] = ("2026-07-30", "2026-08-02")      # numeroltaan ennen, julkaistu elokuussa
+    pubs.update({n: ("2026-09-01", "2026-09-05") for n in range(80, 90)})
+    get, calls = _fake_finlex(pubs)
+    evs, log = statutes_published_between(date(2026, 8, 1), date(2026, 9, 1), get=get)
+    ids = [int(e.event_id.split("/")[1]) for e in evs]
+    assert ids == [58] + list(range(60, 80)), ids
+    assert log["n"] == 21 and log["calls"] == len(set(calls))
+
+
+def test_chain_max_calls_raises_not_truncates():
+    from datetime import date
+    from decision_chain import ChainError, statutes_published_between
+    get, _ = _fake_finlex({n: ("2026-08-01", "2026-08-10") for n in range(1, 300)})
+    _raises_any(lambda: statutes_published_between(date(2026, 8, 1), date(2026, 9, 1),
+                                                   get=get, max_calls=20), ChainError)
+
+
+def _raises_any(fn, exc):
+    try:
+        fn()
+    except exc:
+        return
+    raise AssertionError(f"odotettiin {exc.__name__}")
+
+
+def test_chain_votes_404_is_no_record_not_rejection():
+    from decision_chain import fetch_votes
+    get = lambda url: (200, json.dumps({"error": "Äänestykset HE 141/2026 vp: 404."}).encode())
+    evs, log = fetch_votes("HE 141/2026", get=get)
+    assert evs == [] and log["status"] == "ei tietuetta"
+
+
+def test_chain_votes_other_error_raises():
+    from decision_chain import ChainError, fetch_votes
+    get = lambda url: (200, json.dumps({"error": "upstream 500"}).encode())
+    _raises_any(lambda: fetch_votes("HE 1/2026", get=get), ChainError)
+
+
+def test_chain_vote_event_is_public_and_drops_mp_rows():
+    from decision_chain import fetch_votes
+    resp = {"status": "1 aanestysta", "uptake_measurable": True, "data": [{
+        "id": "2026-60-30", "istunnonTunniste": "2026-60", "aanestysnumero": "30",
+        "aanestysalkuaika": "2026-06-03T14:23:44.366+03:00",
+        "aanestysotsikko": {"fi": "Lakiehdotusten hyväksyminen JAA / hylkääminen EI"},
+        "aanestystulos": {"jaa": 147, "ei": 22, "tyhjia": 0, "poissa": 30},
+        "aanestystapahtumat": [{"nimi": "Edustaja", "kayttaytyminen": "Jaa"}],
+        "eduskuntaryhmaJakaumat": [{"nimi": {"fi": "Ryhmä"}, "jaa": 39, "ei": 0, "tyhjia": 0, "poissa": 9}],
+        "_vote_kind": "sisaltoaanestys-2k", "_uptake_usable": True, "_party_line": False}]}
+    evs, _ = fetch_votes("HE 51/2026 vp", get=lambda u: (200, json.dumps(resp).encode()))
+    d = evs[0].to_dict()
+    assert d["occurred_at"] == d["known_at"]
+    assert "aanestystapahtumat" not in json.dumps(d) and "Edustaja" not in json.dumps(d)
+    assert d["parameters"]["eduskuntaryhmat"][0]["nimi"] == "Ryhmä"
+    validate_event({**d, "type": "D"})
+
+
+def test_chain_join_outcomes():
+    from decision_chain import chains
+    raw = [
+        {"source": "Hankeikkuna", "event_id": "HI:A", "parameters": {"tunnus": "TEM1", "heNumerot": ["HE 1/2026"]}},
+        {"source": "Hankeikkuna", "event_id": "HI:B", "parameters": {"tunnus": "TEM2", "heNumerot": ["HE 2/2026"]}},
+        {"source": "Hankeikkuna", "event_id": "HI:C", "parameters": {"tunnus": "TEM3", "heNumerot": ["HE 3/2026"]}},
+        {"source": "Eduskunta äänestys", "event_id": "VOTE:1", "parameters": {"eduskuntatunnus": "HE 2/2026"}},
+        {"source": "Finlex", "event_id": "FX:2026/9", "parameters": {"saados": "9/2026", "heNumerot": ["HE 1/2026"]}},
+    ]
+    c = chains(raw)
+    assert c["HE 1/2026"]["outcome"] == "säädös vahvistettu"
+    assert c["HE 2/2026"]["outcome"] == "äänestetty"
+    assert c["HE 3/2026"]["outcome"] == "määrittämätön"
+
+
+def test_chain_he_key_normalises_forms():
+    from decision_chain import he_key
+    assert he_key("HE 51/2026 vp") == he_key("HE  051 / 2026") == "HE 51/2026"
+    assert he_key("VNT 1/2026 vp") is None
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0

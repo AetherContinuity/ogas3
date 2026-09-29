@@ -127,6 +127,48 @@ eduskuntakäsittelyssä 20. Eduskunta on nolla, koska istunto on julkinen
 tapahtuma — ainoa lähde, jossa `occurred_at == known_at` on perusteltu
 eikä oletus.
 
+## Päätösketjun loppupää (`decision_chain.py`)
+
+Kuukausikaappaus kattaa ketjun alusta loppuun:
+
+```
+Hankeikkuna   valmistelu, lausunnot, LAIN_VAHVISTAMINEN,
+              PAATTYNYT (vain ikkunan ajalta muokatut)       oma raportti
+Eduskunta     käsittelyvaiheet                                virallinen
+Eduskunta     täysistuntoäänestykset (?votes=)                virallinen
+Finlex        edellisenä kuukautena julkaistut säädökset      virallinen
+```
+
+Liitosavain on HE-numero: Hankeikkunan `heTiedot.heNumerot`, Finlexin
+esityöt-osio (`preliminaryWork`) ja äänestysten `eduskuntatunnus`.
+Snapshotin `chains`-kenttä kokoaa HE-kohtaisesti mitä ketjusta on
+havaittu. Lopputulos on `säädös vahvistettu`, `äänestetty` tai
+`määrittämätön` — ei koskaan "hylätty" pelkän puuttuvan tiedon perusteella.
+
+| Lähde | occurred_at | known_at |
+|---|---|---|
+| Finlex | dateIssued (vahvistus) | datePublished |
+| Äänestys | aanestysalkuaika | sama — täysistunto on julkinen |
+
+Ansat:
+
+- **Äänestysreitin 404 ei ole "ei äänestetty".** Hyväksyminen ilman
+  äänestystä, keskeneräinen käsittely ja olematon HE näyttävät samalta.
+  Tila kirjataan `ei tietuetta`.
+- **Finlexin `FRBRauthor` on eduskunta myös ministeriön asetuksille.**
+  Kenttää ei käytetä. Säädöslaji luetaan `finlex:typeStatute`-kentästä.
+- **HE-viittaus luetaan vain esitöistä.** Leipätekstin HE-maininta voi
+  koskea toisen lain esitöitä.
+- **Finlexin listausrajapinta palauttaa 10 riviä kerrallaan.** Kuukausi
+  haetaan siksi numerojärjestyksessä: binäärihaku ensimmäiseen
+  ikkunaan osuvaan numeroon, 20 numeron marginaali taaksepäin, eteenpäin
+  kunnes 15 peräkkäistä on ikkunan ulkopuolella. `max_calls` nostaa
+  virheen, se ei katkaise hiljaa.
+- **Säädös ei ole automaattisesti IR eikä äänestys lausunnon uptake.**
+  Ne ovat syötteitä luokitukselle. `type` jää `null`.
+- Äänestyksistä talletetaan ryhmä- ja hallitus/oppositio-jakaumat,
+  ei kansanedustajakohtaisia rivejä.
+
 ## Luokituskerros (`classification.py`)
 
 Snapshot jäädyttää todisteen. Luokitus (type, impact_weight,
@@ -169,6 +211,7 @@ luokittelun samassa kuukausiajossa kuin kaappauksen.
     audit.py                 turvalukko 4 + tarkoitukselliset NotImplementedError
     synthetic_events.json    45 tapahtumaa, 2 ilman painoa, viiveitä 0–51 vrk
     classification.py        luokituskerros jäädytetyn todisteen päälle
+decision_chain.py        Finlex-säädökset, täysistuntoäänestykset, HE-ketjut
 tests/test_all.py        testit
 
 ## Rajapinta-ansat

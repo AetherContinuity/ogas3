@@ -31,12 +31,14 @@ import json
 import os
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from fetchers import fetch_eduskunta, fetch_hankeikkuna, summarize  # noqa: E402
+from decision_chain import (chains, fetch_votes, he_key,  # noqa: E402
+                            statutes_published_between)
 
 SNAPSHOT_DIR = Path(__file__).resolve().parent / "snapshots"
 
@@ -57,7 +59,12 @@ HANKEIKKUNA_QUERIES = [
     ("LAINSAADANTO", "LAUSUNTOMENETTELY"),
     ("LAINSAADANTO", "PERUSVALMISTELU"),
     ("LAINSAADANTO", "VALTIONEUVOSTON_PAATOKSENTEKO"),
+    ("LAINSAADANTO", "LAIN_VAHVISTAMINEN"),
 ]
+# Lisätty 2026-09-29: ilman ketjun loppupään vaiheita Finlexissä
+# vahvistuneet lait eivät liittyneet mihinkään hankkeeseen — syyskuun
+# koeajossa 5/5 vahvistunutta HE:tä jäi ilman hanketta. PAATTYNYT haetaan
+# vain ikkunan ajalta (muokattuPaivaAlku), koska koko arkisto on vuodesta 2001.
 
 
 def git_sha() -> str | None:
@@ -87,28 +94,62 @@ def run(month: str | None = None, dry_run: bool = False) -> tuple[Path | None, d
     raw: list[dict] = []
     per_query = []
 
-    for tyyppi, vaihe in HANKEIKKUNA_QUERIES:
+    y, m = (int(x) for x in month.split("-"))
+    fx_start = date(y - 1, 12, 1) if m == 1 else date(y, m - 1, 1)
+    fx_end = date(y, m, 1)
+
+    queries = [(t, v, None) for t, v in HANKEIKKUNA_QUERIES] + [
+        ("LAINSAADANTO", None, {"tila": ["PAATTYNYT"],
+                                "muokattuPaivaAlku": f"{fx_start.isoformat()}T00:00:00"})]
+    for tyyppi, vaihe, extra in queries:
         try:
-            evs = fetch_hankeikkuna(valmisteluvaihe=vaihe, tyyppi=tyyppi, size=1000)
+            evs = fetch_hankeikkuna(valmisteluvaihe=vaihe, tyyppi=tyyppi, size=1000, extra=extra)
         except Exception as exc:                       # haku voi kaatua; se kirjataan
             per_query.append({"source": "Hankeikkuna", "tyyppi": tyyppi,
                               "valmisteluvaihe": vaihe, "error": str(exc)})
             continue
         for e in evs:
             d = e.to_dict()
-            d["parameters"]["query_valmisteluvaihe"] = vaihe
+            d["parameters"]["query_valmisteluvaihe"] = vaihe or "PAATTYNYT (ikkuna)"
             raw.append(d)
         per_query.append({"source": "Hankeikkuna", "tyyppi": tyyppi,
-                          "valmisteluvaihe": vaihe, **summarize(evs)})
+                          "valmisteluvaihe": vaihe, **({"extra": extra} if extra else {}),
+                          **summarize(evs)})
+
+    # Sama hanke voi osua kahteen kyselyyn (esim. LAIN_VAHVISTAMINEN ja
+    # PAATTYNYT). Ensimmäinen esiintymä pidetään, duplikaatti kirjataan.
+    seen, dedup, dups = set(), [], 0
+    for d in raw:
+        if d["event_id"] in seen:
+            dups += 1
+            continue
+        seen.add(d["event_id"])
+        dedup.append(d)
+    raw = dedup
+    if dups:
+        per_query.append({"source": "Hankeikkuna", "note": f"{dups} duplikaattia poistettu kyselyjen väliltä"})
+
+    # Finlex: edellisenä kalenterikuukautena julkaistut säädökset.
+    # Kaappaus ajetaan kuun 1. päivänä, joten ikkuna on juuri päättynyt
+    # kuukausi. known_at = datePublished osuu siis aina ikkunaan.
+    try:
+        fx, fx_log = statutes_published_between(fx_start, fx_end)
+        raw.extend(e.to_dict() for e in fx)
+        per_query.append(fx_log)
+    except Exception as exc:
+        per_query.append({"source": "Finlex", "window": [fx_start.isoformat(), fx_end.isoformat()],
+                          "error": str(exc)})
 
     # Eduskunnan käsittelyvaiheet niille hankkeille, joilla on HE-numero.
     # Nämä ovat ainoa lähde, jossa occurred_at == known_at on perusteltu.
     he_numbers = sorted({
-        n for d in raw
+        k for d in raw if d["source"] in ("Hankeikkuna", "Finlex")
         for n in (d["parameters"].get("heNumerot") or [])
-        if isinstance(n, str)
+        if isinstance(n, str) and (k := he_key(n))
     })
-    for he in he_numbers[:40]:
+    # KORJATTU 2026-09-29: aiemmin he_numbers[:40] — 2026-09-kaappauksessa
+    # HE-numeroita oli 81, joten puolet jäi hakematta ilman merkintää.
+    for he in he_numbers:
         try:
             evs = fetch_eduskunta(he)
         except Exception as exc:
@@ -116,6 +157,19 @@ def run(month: str | None = None, dry_run: bool = False) -> tuple[Path | None, d
             continue
         raw.extend(e.to_dict() for e in evs)
         per_query.append({"source": "Eduskunta", "tunnus": he, **summarize(evs)})
+
+    # Äänestykset: jokainen HE jonka Hankeikkuna tai Finlex tuntee.
+    # 'ei tietuetta' kirjataan omana tilanaan — se ei ole 'ei äänestetty'.
+    for he in he_numbers:
+        try:
+            evs, log = fetch_votes(he)
+        except Exception as exc:
+            per_query.append({"source": "Eduskunta äänestys", "tunnus": he, "error": str(exc)})
+            if "429" in str(exc):
+                break            # käyttöehdot: volyymiraja, lopetetaan
+            continue
+        raw.extend(e.to_dict() for e in evs)
+        per_query.append(log)
 
     anomalies = [d for d in raw if d.get("_anomaly")]
 
@@ -131,8 +185,9 @@ def run(month: str | None = None, dry_run: bool = False) -> tuple[Path | None, d
         "status": {
             "classification": "DEFERRED — ROE/D-O-S-kartta ei ole lukittu",
             "rri": "NOT SPECIFIED — ks. audit.compute_rri",
-            "note": "Tämä tiedosto on TODISTE, ei tulos. Luokitus lisätään "
-                    "myöhemmin näihin jäädytettyihin tapahtumiin.",
+            "note": "Tämä tiedosto on TODISTE, ei tulos. Luokitus tehdään "
+                    "erillisinä tietueina (classification.py), tätä tiedostoa "
+                    "ei muokata.",
         },
         "totals": {
             "events": len(raw),
@@ -140,6 +195,7 @@ def run(month: str | None = None, dry_run: bool = False) -> tuple[Path | None, d
             "sources": sorted({d["source"] for d in raw}),
         },
         "queries": per_query,
+        "chains": chains(raw),
         "events": raw,
     }
 
