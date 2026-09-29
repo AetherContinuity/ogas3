@@ -37,7 +37,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from fetchers import fetch_eduskunta, fetch_hankeikkuna, summarize  # noqa: E402
-from decision_chain import (chains, fetch_votes, he_key,  # noqa: E402
+from decision_chain import (chains, fetch_votes, he_key, resolve_hanke,  # noqa: E402
                             statutes_published_between)
 
 SNAPSHOT_DIR = Path(__file__).resolve().parent / "snapshots"
@@ -147,6 +147,24 @@ def run(month: str | None = None, dry_run: bool = False) -> tuple[Path | None, d
         for n in (d["parameters"].get("heNumerot") or [])
         if isinstance(n, str) and (k := he_key(n))
     })
+    # HE:t joilla ei ole hanketta kaappauksessa (tyypillisesti Finlexistä
+    # löytyneet, joiden hanke on päättynyt ennen ikkunaa). Haetaan
+    # hanke HE-numerolla — muuten ketjun alku puuttuu.
+    have = {k for d in raw if d["source"] == "Hankeikkuna"
+            for n in (d["parameters"].get("heNumerot") or [])
+            if isinstance(n, str) and (k := he_key(n))}
+    seen_ids = {d["event_id"] for d in raw}
+    for he in [h for h in he_numbers if h not in have]:
+        try:
+            evs, log = resolve_hanke(he)
+        except Exception as exc:
+            per_query.append({"source": "Hankeikkuna HE-haku", "tunnus": he, "error": str(exc)})
+            continue
+        for e in evs:
+            if e.event_id not in seen_ids:
+                raw.append(e.to_dict()); seen_ids.add(e.event_id)
+        per_query.append(log)
+
     # KORJATTU 2026-09-29: aiemmin he_numbers[:40] — 2026-09-kaappauksessa
     # HE-numeroita oli 81, joten puolet jäi hakematta ilman merkintää.
     for he in he_numbers:

@@ -167,6 +167,11 @@ Ansat:
   ikkunaan osuvaan numeroon, 20 numeron marginaali taaksepäin, eteenpäin
   kunnes 15 peräkkäistä on ikkunan ulkopuolella. `max_calls` nostaa
   virheen, se ei katkaise hiljaa.
+- **Hankeikkunan hakuskeemassa ei ole HE-kenttää.** HE:n hanke haetaan
+  `teksti`-kentällä, joka rankkaa eikä suodata ("HE 24/2026" → 4 hanketta,
+  1 oikea). Tulos suodatetaan tarkalla vertailulla `heNumerot`-kenttään
+  (`resolve_hanke`). Kaappaus tekee tämän jokaiselle HE:lle, jonka hanke
+  ei muuten osunut kyselyihin.
 - **Säädös ei ole automaattisesti IR eikä äänestys lausunnon uptake.**
   Ne ovat syötteitä luokitukselle. `type` jää `null`.
 - Äänestyksistä talletetaan ryhmä- ja hallitus/oppositio-jakaumat,
