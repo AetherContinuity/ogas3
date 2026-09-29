@@ -1,0 +1,28 @@
+name: Nosto seurantaan
+description: Nosta päätösketju OGAS3:n seurantalistalle. Käsitellään automaattisesti vain avustajilta.
+title: "Nosto: "
+labels: ["nosto"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Nosto kirjaa ketjun seurantaan ja tekee sille tracen, joka päivittyy kuukausittain.
+        Nostohetki ja ketjun tila nostohetkellä tallennetaan — niistä erotetaan ennen
+        ratkaisua tehdyt nostot jälkikäteen tehdyistä.
+  - type: input
+    id: he
+    attributes:
+      label: HE-numero
+      description: esim. HE 24/2026. Riittää yksin — hankkeen tunnus haetaan Hankeikkunasta.
+  - type: input
+    id: tunnus
+    attributes:
+      label: Hankkeen tunnus
+      description: esim. TEM032:00/2023. Anna jos HE-numeroa ei ole tai haku ei löydä yksiselitteistä hanketta.
+  - type: textarea
+    id: peruste
+    attributes:
+      label: Peruste
+      description: Miksi tämä ketju seurantaan? Kirjataan sellaisenaan.
+    validations:
+      required: true

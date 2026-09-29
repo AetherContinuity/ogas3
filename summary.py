@@ -234,11 +234,28 @@ def build_index() -> dict:
     for t in traces:
         t["latest"] = t["file"] not in superseded and "error" not in t
 
+    # Nostot. ennen_ratkaisua lasketaan TÄSSÄ nostohetken tilasta:
+    # True = eduskunta ei ollut vielä päättänyt, False = oli, None = tila
+    # tuntematon (ketju ei ollut kaappauksessa). Käyttöliittymä ei päättele.
+    decided = {"säädös vahvistettu", "eduskunta päättänyt"}
+    promotions = []
+    for p in sorted((ROOT / "seuranta").glob("*.json")) if (ROOT / "seuranta").exists() else []:
+        r = json.loads(p.read_text(encoding="utf-8"))
+        oc = (r.get("state_at_promotion") or {}).get("outcome")
+        promotions.append({
+            "file": p.name, "promoted_at": r.get("promoted_at"), "promoted_by": r.get("promoted_by"),
+            "approved_by": r.get("approved_by"), "he": r.get("he"), "tunnus": r.get("tunnus"),
+            "peruste": (r.get("peruste") or "")[:500], "outcome_at_promotion": oc,
+            "ennen_ratkaisua": None if oc is None else oc not in decided,
+            "issue": (r.get("issue") or {}).get("url"),
+        })
+
     return {
         "_schema": INDEX_SCHEMA,
         "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "months": months,
         "traces": traces,
+        "promotions": promotions,
     }
 
 

@@ -198,6 +198,30 @@ luokiteltu — tyhjä on rehellisempi kuin nolla.
 Kuukausiajo kirjoittaa tiivistelmät. `index.yml` päivittää ne kun
 `traces/`-hakemistoon lisätään trace. Käsin: `python3 summary.py`.
 
+## Nosto seurantaan (`promote.py`)
+
+Ketju nostetaan issue-lomakkeella (`.github/ISSUE_TEMPLATE/nosto.yml`,
+monitorin "Nosta seurantaan" -linkki esitäyttää sen). `promote.yml`
+käsittelee noston automaattisesti vain jos tekijä on omistaja, jäsen tai
+avustaja; muut odottavat labelia `hyväksytty`.
+
+```
+seuranta/<aika>-<avain>-<käyttäjä>.json   yksi muuttumaton tiedosto per nosto
+  promoted_at, promoted_by, approved_by
+  he, tunnus (haetaan HE:stä jos puuttuu)
+  peruste                                  nostajan teksti sellaisenaan
+  state_at_promotion                       ketjun tila uusimmassa tiivistelmässä
+```
+
+Trace on aihekohtainen: ensimmäinen nosto tekee sen, kuukausiajo
+(`promote.py refresh`) päivittää uuden revision. Saman ketjun uusi nosto
+on uusi kirjaus, ei uusi trace.
+
+**Seurantalista on valittu otos.** `index.json` laskee jokaiselle nostolle
+`ennen_ratkaisua` nostohetken tilasta. Jälkikäteen nostettua ketjua ei
+voi käyttää todisteena siitä, että asia olisi nähty ajoissa. Yleistävät
+väitteet tehdään koko kaappauksesta, ei seurantalistasta.
+
 ## Luokituskerros (`classification.py`)
 
 Snapshot jäädyttää todisteen. Luokitus (type, impact_weight,
@@ -242,6 +266,7 @@ luokittelun samassa kuukausiajossa kuin kaappauksen.
     classification.py        luokituskerros jäädytetyn todisteen päälle
 decision_chain.py        Finlex-säädökset, täysistuntoäänestykset, HE-ketjut
 summary.py               tiivistelmät ja index.json käyttöliittymälle
+promote.py               nosto seurantaan (issue -> seuranta/ + trace), kuukausipäivitys
 tests/test_all.py        testit
 
 ## Rajapinta-ansat

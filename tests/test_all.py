@@ -1765,6 +1765,99 @@ def test_chain_resolve_hanke_filters_ranked_search():
     assert resolve_hanke("HE 1/2026", search=lambda e: ranked)[0] == []
 
 
+# ── Nosto seurantaan ─────────────────────────────────────────────────
+ISSUE_BODY = """### HE-numero
+
+HE 24/2026 vp
+
+### Hankkeen tunnus
+
+_No response_
+
+### Peruste
+
+Ydinenergialaki: SMR-luvitus."""
+
+
+def _promote_env(tmp):
+    import promote as pr
+    old = (pr.SEURANTA, pr.TRACES, pr.SNAPSHOTS)
+    pr.SEURANTA, pr.TRACES, pr.SNAPSHOTS = tmp / "seuranta", tmp / "traces", tmp / "snapshots"
+    pr.TRACES.mkdir(); pr.SNAPSHOTS.mkdir()
+    (pr.SNAPSHOTS / "2026-10.summary.json").write_text(json.dumps({
+        "month": "2026-10", "source_sha256": "abc",
+        "chains": [{"he": "HE 24/2026", "hankkeet": [], "outcome": "säädös vahvistettu",
+                    "eduskunta_vastaus": "2026-06-10", "saadokset": ["775/2026"]}]}), encoding="utf-8")
+    return pr, old
+
+
+def test_promote_parses_issue_form():
+    from promote import parse_issue_body
+    f = parse_issue_body(ISSUE_BODY)
+    assert f == {"he": "HE 24/2026 vp", "tunnus": "", "peruste": "Ydinenergialaki: SMR-luvitus."}
+
+
+def test_promote_records_state_and_resolves_tunnus():
+    import tempfile
+    from fetchers import RawEvent
+    with tempfile.TemporaryDirectory() as tmp:
+        pr, old = _promote_env(Path(tmp))
+        made = []
+        def fake_snapshot(tunnus, outdir, **kw):
+            p = Path(outdir) / (tunnus.replace(":", "").replace("/", "-") + "-trace-2026-10-02.json")
+            p.write_text("{}"); made.append(tunnus); return p, {}
+        hit = RawEvent(event_id="HI:TEM032:00/2023", occurred_at=None, known_at=None, retrieved_at="x",
+                       source="Hankeikkuna", source_url="u", subtype=None,
+                       parameters={"tunnus": "TEM032:00/2023", "heNumerot": ["HE 24/2026"]}, evidence=[])
+        try:
+            kw = dict(he_in="HE 24/2026 vp", tunnus_in="", peruste="SMR", login="marko",
+                      association="OWNER", created_at="2026-10-02T09:15:00Z", issue_number=7,
+                      issue_url="u", resolve=lambda he: ([hit], {}), snapshot=fake_snapshot)
+            r = pr.promote(**kw)
+            rec = json.loads(r["record"].read_text(encoding="utf-8"))
+            assert rec["tunnus"] == "TEM032:00/2023" and rec["tunnus_source"].startswith("HE-haku")
+            assert rec["promoted_at"] == "2026-10-02T09:15:00+00:00"
+            assert rec["state_at_promotion"]["outcome"] == "säädös vahvistettu", \
+                "jälkikäteen tehty nosto on tunnistettavissa"
+            # toinen nosto samasta ketjusta: uusi kirjaus, ei uutta tracea
+            r2 = pr.promote(**{**kw, "login": "toinen", "created_at": "2026-10-03T10:00:00Z"})
+            assert r2["record"] != r["record"] and made == ["TEM032:00/2023"]
+            assert "jo olemassa" in r2["trace_note"]
+        finally:
+            pr.SEURANTA, pr.TRACES, pr.SNAPSHOTS = old
+
+
+def test_promote_refuses_outsider_and_missing_reason():
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        pr, old = _promote_env(Path(tmp))
+        try:
+            base = dict(he_in="HE 24/2026", tunnus_in="TEM032:00/2023", peruste="x", login="u",
+                        association="NONE", created_at="2026-10-02T09:15:00Z", issue_number=1,
+                        issue_url="u", snapshot=lambda *a, **k: (Path("x"), {}))
+            _raises_any(lambda: pr.promote(**base), pr.PromoteError)
+            _raises_any(lambda: pr.promote(**{**base, "association": "OWNER", "peruste": " "}), pr.PromoteError)
+            _raises_any(lambda: pr.promote(**{**base, "association": "OWNER", "tunnus_in": "TEM32"}), pr.PromoteError)
+            assert not (Path(tmp) / "seuranta").exists() or not list((Path(tmp) / "seuranta").iterdir())
+        finally:
+            pr.SEURANTA, pr.TRACES, pr.SNAPSHOTS = old
+
+
+def test_promote_refresh_skips_same_day_trace():
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        pr, old = _promote_env(Path(tmp))
+        try:
+            pr.SEURANTA.mkdir()
+            (pr.SEURANTA / "a.json").write_text(json.dumps({"tunnus": "TEM032:00/2023"}))
+            (pr.TRACES / "TEM03200-2023-trace-2026-11-01.json").write_text("{}")
+            called = []
+            res = pr.refresh(today="2026-11-01", snapshot=lambda *a, **k: called.append(a))
+            assert res == [{"tunnus": "TEM032:00/2023", "status": "tänään jo tehty"}] and not called
+        finally:
+            pr.SEURANTA, pr.TRACES, pr.SNAPSHOTS = old
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0

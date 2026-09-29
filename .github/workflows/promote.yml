@@ -1,0 +1,89 @@
+name: promote
+
+# Nosto seurantaan issuesta. Käsitellään automaattisesti vain jos issuen
+# tekijä on omistaja/jäsen/avustaja, tai avustaja lisää labelin
+# "hyväksytty". Muut saavat kommentin ja labelin "odottaa-hyvaksyntaa".
+#
+# Rajaus ei ole muodollisuus: jokainen nosto tekee Hankeikkuna-haun
+# proxyjen kautta, ja proxyjen IP on yhteinen kaikille ACI-instrumenteille.
+
+on:
+  issues:
+    types: [opened, labeled]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: monthly-snapshot       # sama jono kuin kuukausiajolla: ei push-kilpailua
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    if: >-
+      startsWith(github.event.issue.title, 'Nosto') &&
+      github.event.issue.state == 'open' &&
+      (github.event.action == 'opened' ||
+       (github.event.action == 'labeled' && github.event.label.name == 'hyväksytty'))
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ISSUE: ${{ github.event.issue.number }}
+      ASSOC: ${{ github.event.issue.author_association }}
+    steps:
+      # Lomakkeen label toimii vain jos label on olemassa. Luodaan ne
+      # ensimmäisellä ajolla; siksi ajoehto katsoo otsikkoa eikä labelia.
+      - name: Labelit
+        run: |
+          gh label create nosto -R "$GITHUB_REPOSITORY" --color 8b4513 --description "Nosto seurantaan" 2>/dev/null || true
+          gh label create hyväksytty -R "$GITHUB_REPOSITORY" --color 3f6e3f --description "Avustaja hyväksyi noston" 2>/dev/null || true
+          gh label create odottaa-hyvaksyntaa -R "$GITHUB_REPOSITORY" --color c8bfad --description "Nosto muulta kuin avustajalta" 2>/dev/null || true
+
+      - name: Ei avustaja — odottaa hyväksyntää
+        if: >-
+          github.event.action == 'opened' &&
+          !contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.issue.author_association)
+        run: |
+          gh issue comment "$ISSUE" -R "$GITHUB_REPOSITORY" --body \
+            "Kiitos. Nostoja käsitellään automaattisesti vain avustajilta; tämä odottaa, että avustaja lisää labelin \`hyväksytty\`."
+          gh issue edit "$ISSUE" -R "$GITHUB_REPOSITORY" --add-label odottaa-hyvaksyntaa || true
+          echo "SKIP=1" >> "$GITHUB_ENV"
+
+      - uses: actions/checkout@v4
+        if: env.SKIP != '1'
+
+      - uses: actions/setup-python@v5
+        if: env.SKIP != '1'
+        with:
+          python-version: "3.12"
+
+      - name: Nosto
+        if: env.SKIP != '1'
+        id: nosto
+        run: |
+          set +e
+          python3 promote.py issue "$GITHUB_EVENT_PATH"
+          echo "rc=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Tiivistelmät ja commit
+        if: env.SKIP != '1' && steps.nosto.outputs.rc == '0'
+        run: |
+          python3 summary.py
+          git config user.name  "ogas3-promote"
+          git config user.email "actions@users.noreply.github.com"
+          git add seuranta/ traces/ snapshots/*.summary.json snapshots/index.json
+          git commit -m "nosto #${ISSUE}: $(ls -t seuranta | head -1)"
+          for i in 1 2 3; do
+            git pull --rebase -q origin main && git push -q && break
+            sleep 5
+          done
+
+      - name: Vastaus issueen
+        if: env.SKIP != '1' && always()
+        run: |
+          [ -f promote-result.md ] || echo "**Nosto epäonnistui** — katso ajoloki: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" > promote-result.md
+          gh issue comment "$ISSUE" -R "$GITHUB_REPOSITORY" --body-file promote-result.md
+          if [ "${{ steps.nosto.outputs.rc }}" = "0" ]; then
+            gh issue close "$ISSUE" -R "$GITHUB_REPOSITORY" --reason completed
+          fi

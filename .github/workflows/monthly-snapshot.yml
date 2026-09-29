@@ -55,6 +55,12 @@ jobs:
             python3 snapshot.py
           fi
 
+      # Seurannassa olevien ketjujen tracet: uusi revisio kerran kuussa.
+      # Epäonnistunut päivitys ei kaada kaappausta — se näkyy lokissa.
+      - name: Seurannan tracet
+        if: env.DRY_RUN != 'true'
+        run: python3 promote.py refresh || echo "::warning::osa tracepäivityksistä epäonnistui"
+
       - name: Commit
         if: env.DRY_RUN != 'true'
         run: |
@@ -72,7 +78,8 @@ jobs:
           fi
           git config user.name  "ogas3-snapshot"
           git config user.email "actions@users.noreply.github.com"
-          git add "$FILE" snapshots/*.summary.json snapshots/index.json
+          python3 summary.py >/dev/null
+          git add "$FILE" snapshots/*.summary.json snapshots/index.json traces/
           if git diff --cached --quiet; then
             echo "ei muutoksia"
           else
