@@ -127,6 +127,78 @@ eduskuntakäsittelyssä 20. Eduskunta on nolla, koska istunto on julkinen
 tapahtuma — ainoa lähde, jossa `occurred_at == known_at` on perusteltu
 eikä oletus.
 
+## Päätösketjun loppupää (`decision_chain.py`)
+
+Kuukausikaappaus kattaa ketjun alusta loppuun:
+
+```
+Hankeikkuna   valmistelu, lausunnot, LAIN_VAHVISTAMINEN,
+              PAATTYNYT (vain ikkunan ajalta muokatut)       oma raportti
+Eduskunta     käsittelyvaiheet                                virallinen
+Eduskunta     täysistuntoäänestykset (?votes=)                virallinen
+Finlex        edellisenä kuukautena julkaistut säädökset      virallinen
+```
+
+Liitosavain on HE-numero: Hankeikkunan `heTiedot.heNumerot`, Finlexin
+esityöt-osio (`preliminaryWork`) ja äänestysten `eduskuntatunnus`.
+Snapshotin `chains`-kenttä kokoaa HE-kohtaisesti mitä ketjusta on
+havaittu. Lopputulos on `säädös vahvistettu`, `äänestetty` tai
+`määrittämätön` — ei koskaan "hylätty" pelkän puuttuvan tiedon perusteella.
+
+| Lähde | occurred_at | known_at |
+|---|---|---|
+| Finlex | dateIssued (vahvistus) | datePublished |
+| Äänestys | aanestysalkuaika | sama — täysistunto on julkinen |
+
+Ansat:
+
+- **Äänestysreitin 404 ei ole "ei äänestetty".** Hyväksyminen ilman
+  äänestystä, keskeneräinen käsittely ja olematon HE näyttävät samalta.
+  Tila kirjataan `ei tietuetta`.
+- **Finlexin `FRBRauthor` on eduskunta myös ministeriön asetuksille.**
+  Kenttää ei käytetä. Säädöslaji luetaan `finlex:typeStatute`-kentästä.
+- **HE-viittaus luetaan vain esitöistä.** Leipätekstin HE-maininta voi
+  koskea toisen lain esitöitä.
+- **Finlexin listausrajapinta palauttaa 10 riviä kerrallaan.** Kuukausi
+  haetaan siksi numerojärjestyksessä: binäärihaku ensimmäiseen
+  ikkunaan osuvaan numeroon, 20 numeron marginaali taaksepäin, eteenpäin
+  kunnes 15 peräkkäistä on ikkunan ulkopuolella. `max_calls` nostaa
+  virheen, se ei katkaise hiljaa.
+- **Säädös ei ole automaattisesti IR eikä äänestys lausunnon uptake.**
+  Ne ovat syötteitä luokitukselle. `type` jää `null`.
+- Äänestyksistä talletetaan ryhmä- ja hallitus/oppositio-jakaumat,
+  ei kansanedustajakohtaisia rivejä.
+
+## Luokituskerros (`classification.py`)
+
+Snapshot jäädyttää todisteen. Luokitus (type, impact_weight,
+irreversibility, llm_classification) EI kirjoiteta jäädytettyyn
+tapahtumaan, vaan omaksi tietueekseen:
+
+```
+classifications/YYYY-MM.json   _schema: aci/classification/v0.1
+  event_id, event_hash         sidos todisteeseen (tiiviste ilman luokituskenttiä)
+  classified_at
+  classifier                   kind rule|llm|human, id, version,
+                               knowledge_cutoff (llm, null = tuntematon), prompt_hash (llm pakollinen)
+  type, impact_weight, irreversibility, llm_classification
+```
+
+Syy: luokittelija joka tietää miten hankkeelle kävi, vie tiedon
+painoihin. Aikaleimat pysyisivät puhtaina, painot eivät.
+
+Puhtaus johdetaan, ei ilmoiteta: `horisontti <= PRE-raja + max_lag`.
+PRE-raja on tapahtuman known_at-kuukauden loppu. Horisontti on
+`rule`: PRE-raja · `llm`: knowledge_cutoff · `human`: classified_at.
+Tuloksena CLEAN, CONTAMINATED tai UNVERIFIED. `max_lag` annetaan
+kutsussa, sille ei ole oletusta.
+
+PRE käyttää varhaisinta CLEAN-luokitusta, FULL viimeisintä. Luokittelematon
+tapahtuma jää pois ja listataan, snapshotin `_anomaly`-tapahtumat
+raportoidaan erikseen. Takautuvasti ihmisen luokittelema 2026-09 on
+rakenteellisesti CONTAMINATED — PRE-sarjan puhdas luokitus vaatii
+luokittelun samassa kuukausiajossa kuin kaappauksen.
+
 ## Rakenne
 
     schema.py                tapahtumaskeema, aikaleimasemantiikka
@@ -138,7 +210,9 @@ eikä oletus.
     scaler.py                D/O/S → 0–100, expanding | baseline | full-window
     audit.py                 turvalukko 4 + tarkoitukselliset NotImplementedError
     synthetic_events.json    45 tapahtumaa, 2 ilman painoa, viiveitä 0–51 vrk
-    tests/test_all.py        17 testiä
+    classification.py        luokituskerros jäädytetyn todisteen päälle
+decision_chain.py        Finlex-säädökset, täysistuntoäänestykset, HE-ketjut
+tests/test_all.py        testit
 
 ## Rajapinta-ansat
 
@@ -155,7 +229,7 @@ eikä oletus.
 
 ## Ajo
 
-    python3 tests/test_all.py        # 17/17
+    python3 tests/test_all.py
 
 ## Synteettisen aineiston tulos
 

@@ -7,62 +7,75 @@
 <style>
 :root{
   --bg:#f4f3ef; --card:#fff; --ink:#1a1a1a; --muted:#6b6b66; --rule:#ddd9d0;
-  --auth:#2d5016; --sec:#8b3a10; --miss:#8b2500; --exp:#9a968e;
+  --auth:#2d5016; --sec:#8b3a10; --miss:#8b2500; --exp:#9a968e; --ok:#2d5016;
+  --warnbg:#fdf7f4;
   --mono:'DM Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
 }
+@media (prefers-color-scheme:dark){:root{
+  --bg:#161614; --card:#1f1f1c; --ink:#e8e6e0; --muted:#9a978f; --rule:#3a3934;
+  --auth:#8fbf6a; --sec:#e08a5a; --miss:#ef7a5c; --exp:#77746c; --ok:#8fbf6a;
+  --warnbg:#2a1f1b;
+}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);
   font:15px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  padding:1.2rem}
+  padding:1.2rem 16px}
 .wrap{max-width:1000px;margin:0 auto}
 h1{font-size:1.05rem;font-weight:500;letter-spacing:.01em;margin:0 0 .2rem}
+code{font-family:var(--mono);font-size:.9em}
 .sub{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem}
-.drop{border:1px dashed var(--rule);background:var(--card);padding:1.4rem;
+.drop{display:block;border:1px dashed var(--rule);background:var(--card);padding:1.4rem;
   text-align:center;color:var(--muted);font-size:.85rem;cursor:pointer;
   transition:border-color .15s}
 .drop:hover,.drop.on{border-color:var(--ink);color:var(--ink)}
 .drop input{display:none}
-.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:.6rem;margin:1.2rem 0}
-.m{background:var(--card);border:1px solid var(--rule);padding:.6rem .75rem}
+.file{margin-top:2.2rem;padding-top:.4rem;border-top:2px solid var(--rule)}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:.6rem;margin:1rem 0}
+.m{background:var(--card);border:1px solid var(--rule);padding:.6rem .75rem;min-width:0}
 .m .k{font-family:var(--mono);font-size:.55rem;letter-spacing:.09em;
   text-transform:uppercase;color:var(--muted);margin-bottom:.15rem}
-.m .v{font-family:var(--mono);font-size:.95rem}
-.warn{border-left:3px solid var(--miss);background:#fdf7f4;padding:.7rem .9rem;
+.m .v{font-family:var(--mono);font-size:.9rem;overflow-wrap:anywhere}
+.m .v.ok{color:var(--ok)} .m .v.bad{color:var(--miss)}
+.warn{border-left:3px solid var(--miss);background:var(--warnbg);padding:.7rem .9rem;
   font-size:.8rem;line-height:1.55;margin:.8rem 0}
 .sec{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--muted);margin:1.6rem 0 .5rem}
-/* aikajana */
 .tl{position:relative;padding-left:1.4rem}
 .tl:before{content:'';position:absolute;left:.42rem;top:.4rem;bottom:.4rem;
   width:1px;background:var(--rule)}
 .n{position:relative;background:var(--card);border:1px solid var(--rule);
-  padding:.6rem .8rem;margin-bottom:.5rem}
+  padding:.6rem .8rem;margin-bottom:.5rem;min-width:0}
 .n:before{content:'';position:absolute;left:-1.22rem;top:.95rem;width:7px;
   height:7px;border-radius:50%;background:var(--auth);border:2px solid var(--bg)}
 .n.sec-src:before{background:var(--sec)}
 .n.expd{border-style:dashed;background:transparent;color:var(--exp)}
 .n.expd:before{background:transparent;border:2px solid var(--exp)}
 .nh{display:flex;flex-wrap:wrap;gap:.5rem;align-items:baseline}
-.nid{font-family:var(--mono);font-size:.72rem}
+.nid{font-family:var(--mono);font-size:.72rem;overflow-wrap:anywhere}
 .date{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
 .tag{font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;
   text-transform:uppercase;padding:.08rem .35rem;border:1px solid var(--rule);
   color:var(--muted)}
-.tag.prec{border-color:#b9b2a4}
-.tag.secondary{border-color:var(--sec);color:var(--sec)}
+.tag.prec{border-color:var(--exp)}
+.tag.secondary,.tag.fallback{border-color:var(--sec);color:var(--sec)}
 .tag.nullknown{border-color:var(--miss);color:var(--miss)}
-.q{font-size:.85rem;margin:.35rem 0 .2rem}
+.q{font-size:.85rem;margin:.35rem 0 .2rem;overflow-wrap:anywhere}
+.note{font-size:.78rem;color:var(--muted);margin:.25rem 0}
 .src{font-size:.68rem;color:var(--muted)}
 .src a{color:var(--sec);word-break:break-all}
 .extra{font-family:var(--mono);font-size:.66rem;color:var(--muted);
-  margin-top:.3rem;white-space:pre-wrap}
+  margin-top:.3rem;white-space:pre-wrap;overflow-wrap:anywhere}
 table{border-collapse:collapse;width:100%;font-size:.8rem;background:var(--card)}
-th,td{border:1px solid var(--rule);padding:.3rem .5rem;text-align:left}
-th{font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;
-  text-transform:uppercase;color:var(--muted);font-weight:400}
+th,td{border:1px solid var(--rule);padding:.3rem .5rem;text-align:left;vertical-align:top;
+  overflow-wrap:anywhere}
+td.k{font-family:var(--mono);font-size:.7rem;color:var(--muted);width:40%}
 td.num{font-family:var(--mono);text-align:right}
+details{background:var(--card);border:1px solid var(--rule);margin:.4rem 0;padding:.4rem .7rem}
+summary{cursor:pointer;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+details pre{font-family:var(--mono);font-size:.68rem;white-space:pre-wrap;
+  overflow-wrap:anywhere;margin:.4rem 0 0}
 .foot{margin-top:2rem;font-size:.66rem;color:var(--muted);line-height:1.6;
   border-top:1px solid var(--rule);padding-top:.8rem}
 </style>
@@ -70,7 +83,7 @@ td.num{font-family:var(--mono);text-align:right}
 <body>
 <div class="wrap">
   <h1>Decision Trace &mdash; katselin</h1>
-  <div class="sub">OGAS3 &middot; luonnos v0.1 &middot; ei palvelinta, ei verkkoa</div>
+  <div class="sub">OGAS3 &middot; v0.2 &middot; ei palvelinta, ei verkkoa</div>
 
   <label class="drop" id="drop">
     <input type="file" id="file" accept=".json" multiple>
@@ -82,42 +95,115 @@ td.num{font-family:var(--mono);text-align:right}
 
   <div class="foot">
     <strong>Mitä tämä tekee näkyväksi automaattisesti.</strong><br>
-    <span style="color:var(--miss)">known_at puuttuu</span> &mdash; se tarkoittaa
-    <em>&quot;julkiseksitulohetkeä ei tiedetä&quot;</em>, ei nollaa viivettä.
-    Ero on kadonnut tässä projektissa useammin kuin kerran.<br>
-    <strong>occurred_at_precision</strong> näkyy jokaisella solmulla, koska
-    vuositason aggregaatti ja päivätason tapahtuma <em>eivät ole samalla
-    aikajanalla</em> vaikka ne piirretään samaan.<br>
-    <span style="color:var(--sec)">secondary</span>-lähteet erottuvat
-    <span style="color:var(--auth)">authoritative</span>sta.<br>
-    <strong>expected</strong> on katkoviivalla ja harmaana &mdash; ne eivät ole
-    tapahtumia eikä niillä ole aikaleimoja.<br><br>
-    <strong>Mitä tämä EI tee:</strong> ei laske mitään, ei yhdistä traceja, ei
-    tarkista tiivistettä (se on <code>traces.py</code>:n työ), eikä näytä
-    RRI-arvoja &mdash; niitä ei ole.
+    <strong>Tiiviste</strong> lasketaan selaimessa samalla säännöllä kuin
+    <code>traces.py</code>: OK, ERO tai <em>ei todennettavissa</em> (luku jonka
+    muotoa selain ei voi toistaa Pythonin tavoin &mdash; ei väitetä kumpaankaan suuntaan).<br>
+    <span style="color:var(--miss)">known_at puuttuu</span> &mdash;
+    julkiseksitulohetkeä ei tiedetä, <em>ei</em> nollaa viivettä.<br>
+    <strong>Näkyvyysviive</strong> (known_at &minus; occurred_at) lasketaan vain
+    päivätason solmuille; vuosi- tai kuukausiresoluutiolla se olisi keksitty luku.<br>
+    <span style="color:var(--sec)">aloitusPaiva</span> &mdash; occurred_at on
+    varakentästä, ei asettamispäivästä. Kentät eivät ole sama asia.<br>
+    <strong>expected</strong> on katkoviivalla &mdash; ne eivät ole tapahtumia.<br>
+    <strong>Kentät joita katselin ei tunne</strong> näytetään raakana, ei pudoteta.<br><br>
+    <strong>Mitä tämä EI tee:</strong> ei laske mitään tapahtumista, ei yhdistä
+    traceja, eikä näytä RRI-arvoja &mdash; tracessa niitä ei ole.
   </div>
 </div>
 
 <script>
 const $ = s => document.querySelector(s);
-const esc = s => String(s??'').replace(/[&<>"]/g, c =>
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c =>
   ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-$('#file').addEventListener('change', e => {
+// ── Kanoninen JSON Pythonin json.dumps(sort_keys, separators=(',',':'),
+// ensure_ascii=False) mukaan. JSON.parse hävittää tiedon siitä, oliko
+// luku 4 vai 4.0 — Python kirjoittaa float-arvon aina desimaalilla.
+// Siksi raakateksti jäsennetään itse ja lukuliteraalin muoto säilytetään.
+function parseKeep(text) {
+  let i = 0, unsure = false;
+  const ws = () => { while (/\s/.test(text[i])) i++; };
+  function val() {
+    ws();
+    const c = text[i];
+    if (c === '{') { i++; const o = {}; ws();
+      if (text[i] === '}') { i++; return {t:'o', v:o}; }
+      for (;;) { ws(); const k = str(); ws(); i++; o[k] = val(); ws();
+        if (text[i++] === '}') return {t:'o', v:o}; } }
+    if (c === '[') { i++; const a = []; ws();
+      if (text[i] === ']') { i++; return {t:'a', v:a}; }
+      for (;;) { a.push(val()); ws(); if (text[i++] === ']') return {t:'a', v:a}; } }
+    if (c === '"') return {t:'s', v:str()};
+    if (text.startsWith('true', i))  { i += 4; return {t:'l', v:'true'}; }
+    if (text.startsWith('false', i)) { i += 5; return {t:'l', v:'false'}; }
+    if (text.startsWith('null', i))  { i += 4; return {t:'l', v:'null'}; }
+    const m = /^-?\d+(\.\d+)?([eE][+-]?\d+)?/.exec(text.slice(i));
+    if (!m) throw new Error('JSON-jäsennys epäonnistui kohdassa ' + i);
+    i += m[0].length;
+    const lit = m[0];
+    if (!m[1] && !m[2]) return {t:'l', v:String(BigInt(lit))};      // kokonaisluku
+    const f = Number(lit), a = Math.abs(f);
+    if (f !== 0 && (a < 1e-4 || a >= 1e16)) unsure = true;           // eksponenttimuoto eroaa
+    let s = String(f);
+    if (Number.isInteger(f) && !/e/i.test(s)) s += '.0';
+    return {t:'l', v:s};
+  }
+  function str() {
+    const start = i; i++;
+    while (text[i] !== '"') { if (text[i] === '\\') i++; i++; }
+    i++;
+    return JSON.parse(text.slice(start, i));
+  }
+  const root = val();
+  return {root, unsure};
+}
+function canon(n) {
+  if (n.t === 'o') return '{' + Object.keys(n.v).sort().map(k =>
+    JSON.stringify(k) + ':' + canon(n.v[k])).join(',') + '}';
+  if (n.t === 'a') return '[' + n.v.map(canon).join(',') + ']';
+  if (n.t === 's') return JSON.stringify(n.v);
+  return n.v;
+}
+async function verifyHash(text) {
+  const {root, unsure} = parseKeep(text);
+  if (root.t !== 'o') return {state:'—'};
+  const stored = root.v._content_hash ? root.v._content_hash.v : null;
+  delete root.v._content_hash;
+  if (!crypto.subtle) return {state:'ei todennettavissa', stored};
+  const buf = await crypto.subtle.digest('SHA-256',
+    new TextEncoder().encode(canon(root)));
+  const actual = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,'0'))
+    .join('').slice(0, 12);
+  if (stored == null) return {state:'ei tallennettu', stored, actual};
+  if (stored === actual) return {state:'OK', stored, actual};
+  return {state: unsure ? 'ei todennettavissa' : 'ERO', stored, actual};
+}
+
+// ── Tiedostot ────────────────────────────────────────────────────────
+$('#file').addEventListener('change', async e => {
   const out = $('#out'); out.innerHTML = '';
-  [...e.target.files].forEach(f => {
-    const r = new FileReader();
-    r.onload = () => {
-      try { out.appendChild(render(JSON.parse(r.result), f.name)); }
-      catch (err) {
-        const d = document.createElement('div');
-        d.className = 'warn';
-        d.innerHTML = `<strong>${esc(f.name)}</strong> &mdash; ei jäsenny: ${esc(err.message)}`;
-        out.appendChild(d);
-      }
-    };
-    r.readAsText(f);
+  const loaded = await Promise.all([...e.target.files].map(f =>
+    f.text().then(text => ({f, text}))));
+  const items = [];
+  for (const {f, text} of loaded) {
+    try { items.push({f, text, d: JSON.parse(text)}); }
+    catch (err) {
+      const w = document.createElement('div'); w.className = 'warn';
+      w.innerHTML = `<strong>${esc(f.name)}</strong> &mdash; ei jäsenny: ${esc(err.message)}`;
+      out.appendChild(w);
+    }
+  }
+  // sama ketju peräkkäin, vanhin ensin
+  items.sort((a, b) => {
+    const ka = (a.d.subject?.tunnus || a.f.name) + '|' + (a.d._locked_at || '');
+    const kb = (b.d.subject?.tunnus || b.f.name) + '|' + (b.d._locked_at || '');
+    return ka.localeCompare(kb);
   });
+  for (const it of items) {
+    let h;
+    try { h = await verifyHash(it.text); } catch (err) { h = {state:'ei todennettavissa'}; }
+    out.appendChild(render(it.d, it.f.name, h));
+  }
 });
 ['dragover','dragleave','drop'].forEach(ev =>
   $('#drop').addEventListener(ev, e => {
@@ -127,103 +213,168 @@ $('#file').addEventListener('change', e => {
       $('#file').dispatchEvent(new Event('change')); }
   }));
 
-function render(d, fname) {
-  const el = document.createElement('div');
+// ── Renderöinti ──────────────────────────────────────────────────────
+const TOP_SHOWN = new Set(['_schema','_locked_at','_revision','_content_hash','domain',
+  'subject','observed','expected','_state','_diff','_supersedes','_coverage']);
+const OBS_SHOWN = new Set(['node_id','kind','occurred_at','known_at','retrieved_at','source',
+  'evidence','occurred_at_precision','occurred_at_source','source_class','decision_body',
+  'negotiation_started_at','completed_at','_measured','note','doc_type','laatija','actor']);
+const EXP_SHOWN = new Set(['step','date','estimate','earliest','deadline','status','note']);
+
+function lagDays(n) {
+  if (!n.known_at || !n.occurred_at) return null;
+  if (n.occurred_at_precision && n.occurred_at_precision !== 'paiva') return null;
+  const a = Date.parse(n.occurred_at), b = Date.parse(n.known_at);
+  if (isNaN(a) || isNaN(b)) return null;
+  return Math.round((b - a) / 864e5);
+}
+const d10 = v => String(v ?? '').slice(0, 10);
+const raw = (obj, shown) => Object.entries(obj).filter(([k]) => !shown.has(k));
+const fmt = v => typeof v === 'string' ? v : JSON.stringify(v, null, 1);
+
+function render(d, fname, hash) {
+  const el = document.createElement('div'); el.className = 'file';
   const s = d.subject || {};
   const obs = d.observed || [];
   const exp = d.expected || [];
 
-  // resoluutiojakauma — lasketaan, ei oleteta
   const prec = {};
   obs.forEach(n => { const p = n.occurred_at_precision || 'täsmä';
-                     prec[p] = (prec[p]||0)+1; });
+                     prec[p] = (prec[p] || 0) + 1; });
   const nullKnown = obs.filter(n => !n.known_at).length;
   const secondary = obs.filter(n => n.source_class === 'secondary').length;
+  const lags = obs.map(lagDays).filter(x => x != null).sort((a, b) => a - b);
+  const med = lags.length ? (lags.length % 2 ? lags[(lags.length - 1) / 2]
+    : (lags[lags.length / 2 - 1] + lags[lags.length / 2]) / 2) : null;
 
+  const hcls = hash.state === 'OK' ? 'ok' : hash.state === 'ERO' ? 'bad' : '';
   let h = `<div class="sec">${esc(fname)}</div>
-  <h1 style="margin-bottom:.6rem">${esc(s.nimi || s.tunnus || '—')}</h1>
+  <h1 style="margin-bottom:.2rem">${esc(s.nimi || s.tunnus || '—')}</h1>
+  <div class="date">${esc([s.tunnus, s.asianumero].filter(Boolean).join(' · '))}</div>
   <div class="meta">
     ${m('lukittu', d._locked_at)}
     ${m('revisio', d._revision)}
-    ${m('tiiviste', d._content_hash)}
+    ${m('tiiviste', `${d._content_hash ?? '—'} · ${hash.state}`, hcls)}
     ${m('domain', d.domain || '—')}
     ${m('havaittuja', obs.length)}
     ${m('odotettuja', exp.length)}
+    ${m('viive, mediaani', med == null ? '—' : `${med} vrk (n=${lags.length})`)}
   </div>`;
 
-  // varoitukset — vain jos aihetta
   const W = [];
+  if (hash.state === 'ERO')
+    W.push(`<strong>TIIVISTE EI TÄSMÄÄ:</strong> tallennettu ${esc(hash.stored)}, laskettu
+      ${esc(hash.actual)}. Tiedostoa on muutettu lukituksen jälkeen ilman revisiota.`);
   if (Object.keys(prec).length > 1)
     W.push(`<strong>ERI RESOLUUTIOITA SAMASSA LISTASSA:</strong> ` +
-      Object.entries(prec).map(([k,v]) => `${v}× ${k}`).join(' · ') +
-      `. <code>occurred_at</code> tarkoittaa niissä eri asiaa &mdash; ` +
-      `vuositason aggregaatti ei ole samalla janalla kuin päivätason tapahtuma.`);
+      Object.entries(prec).map(([k, v]) => `${v}× ${esc(k)}`).join(' · ') +
+      `. Vuositason aggregaatti ei ole samalla janalla kuin päivätason tapahtuma.`);
   if (nullKnown)
     W.push(`<strong>${nullKnown} solmulla ei ole <code>known_at</code>-arvoa.</strong> ` +
-      `Se tarkoittaa että julkiseksitulohetkeä ei tiedetä &mdash; <em>ei</em> nollaa viivettä.`);
+      `Julkiseksitulohetkeä ei tiedetä &mdash; <em>ei</em> nollaa viivettä.`);
   if (d._coverage?.osajoukko)
-    W.push(`<strong>OSAJOUKKO:</strong> ${d._coverage.tassa}/${d._coverage.kronikan_tapahtumia || '?'} ` +
-      `tapahtumaa. Puuttuvat: ${esc((d._coverage.puuttuvat||[]).join(', '))}.`);
+    W.push(`<strong>OSAJOUKKO:</strong> ${esc(d._coverage.tassa)}/${esc(d._coverage.kronikan_tapahtumia || '?')} ` +
+      `tapahtumaa. Puuttuvat: ${esc((d._coverage.puuttuvat || []).join(', '))}.`);
   if (secondary)
     W.push(`<strong>${secondary} solmua sekundaarilähteestä.</strong> Niitä ei ole ristiintarkistettu.`);
+  if (d._diff?.kadonneita)
+    W.push(`<strong>${d._diff.kadonneita} solmua kadonnut edellisestä.</strong> ` +
+      `Ensimmäisellä automaattiajolla käsin kirjatut solmut näkyvät kadonneina ilman että ne ovat kadonneet.`);
   if (W.length) h += W.map(w => `<div class="warn">${w}</div>`).join('');
 
-  // diff
-  if (d._diff) {
-    h += `<div class="sec">muutos edelliseen</div><table><tbody>
-      <tr><td>edellinen</td><td class="num">${esc(d._diff.edellinen||'—')}</td></tr>
-      <tr><td>uusia solmuja</td><td class="num">${d._diff.uusia_solmuja??'—'}</td></tr>
-      <tr><td>kadonneita</td><td class="num">${d._diff.kadonneita??'—'}</td></tr>
-      </tbody></table>`;
+  if (d._supersedes) {
+    const p = d._supersedes;
+    h += `<div class="sec">korvaa</div>${kv({tiedosto: p.file, tiiviste: p.content_hash ?? 'ei tallennettu',
+      lukittu: p.locked_at, huom: p._note})}`;
   }
 
-  // aikajana
-  const sorted = [...obs].sort((a,b) =>
-    String(a.occurred_at).localeCompare(String(b.occurred_at)));
+  if (d._state) h += `<div class="sec">tila lukitushetkellä</div>${kv(d._state)}`;
+
+  if (d._diff) {
+    const df = d._diff;
+    h += `<div class="sec">muutos edelliseen</div>${kv({
+      edellinen: df.edellinen || '—',
+      'uusia solmuja': df.uusia_solmuja,
+      uudet: (df.uudet || []).join('\n') || '—',
+      kadonneita: df.kadonneita,
+      kadonneet: (df.kadonneet || []).join('\n') || '—'})}`;
+  }
+
+  const sorted = [...obs].sort((a, b) =>
+    (Date.parse(a.occurred_at) || 0) - (Date.parse(b.occurred_at) || 0));
   h += `<div class="sec">havaitut &mdash; aikajärjestyksessä</div><div class="tl">`;
   sorted.forEach(n => {
     const cls = n.source_class === 'secondary' ? 'n sec-src' : 'n';
-    const e = (n.evidence||[])[0] || {};
+    const e = (n.evidence || [])[0] || {};
     const tags = [];
     if (n.occurred_at_precision) tags.push(`<span class="tag prec">${esc(n.occurred_at_precision)}</span>`);
-    if (n.source_class) tags.push(`<span class="tag ${n.source_class==='secondary'?'secondary':''}">${esc(n.source_class)}</span>`);
+    if (n.occurred_at_source) tags.push(`<span class="tag fallback">occurred_at: ${esc(n.occurred_at_source)}</span>`);
+    if (n.source_class) tags.push(`<span class="tag ${n.source_class === 'secondary' ? 'secondary' : ''}">${esc(n.source_class)}</span>`);
+    if (n.doc_type) tags.push(`<span class="tag">${esc(n.doc_type)}</span>`);
     if (n.decision_body) tags.push(`<span class="tag">${esc(n.decision_body)}</span>`);
     if (!n.known_at) tags.push(`<span class="tag nullknown">known_at puuttuu</span>`);
-    // lisäaikaleimat
+    const lag = lagDays(n);
+
     const extra = [];
-    if (n.negotiation_started_at) extra.push(`neuvottelu alkoi  ${n.negotiation_started_at.slice(0,10)}`);
-    if (n.completed_at)           extra.push(`toteuma           ${n.completed_at.slice(0,10)}`);
+    if (n.known_at) extra.push(`julkinen          ${d10(n.known_at)}` + (lag != null ? `   (+${lag} vrk)` : ''));
+    if (n.retrieved_at) extra.push(`haettu            ${d10(n.retrieved_at)}`);
+    if (n.laatija || n.actor) extra.push(`laatija           ${n.laatija || n.actor}`);
+    if (n.negotiation_started_at) extra.push(`neuvottelu alkoi  ${d10(n.negotiation_started_at)}`);
+    if (n.completed_at)           extra.push(`toteuma           ${d10(n.completed_at)}`);
     if (n._measured) extra.push(Object.entries(n._measured)
-      .map(([k,v]) => `${k.padEnd(18)}${v}`).join('\n'));
+      .map(([k, v]) => `${k.padEnd(18)}${fmt(v)}`).join('\n'));
+    const rest = raw(n, OBS_SHOWN);
+
     h += `<div class="${cls}">
       <div class="nh"><span class="nid">${esc(n.node_id)}</span>
-        <span class="date">${esc(String(n.occurred_at).slice(0,10))}</span>${tags.join('')}</div>
+        <span class="date">${esc(d10(n.occurred_at))}</span>${tags.join('')}</div>
       <div class="q">${esc(e.quote || '')}</div>
-      <div class="src">${esc(n.source||'')}${e.source_url
+      ${n.note ? `<div class="note">${esc(n.note)}</div>` : ''}
+      <div class="src">${esc(n.source || '')}${e.source_url
         ? ` &middot; <a href="${esc(e.source_url)}" target="_blank" rel="noopener">toista haku</a>` : ''}</div>
       ${extra.length ? `<div class="extra">${esc(extra.join('\n'))}</div>` : ''}
+      ${rest.length ? details('muut kentät', rest) : ''}
     </div>`;
   });
   h += `</div>`;
 
-  // expected
   if (exp.length) {
     h += `<div class="sec">odotetut &mdash; EIVÄT ole tapahtumia</div><div class="tl">`;
     exp.forEach(x => {
+      const when = x.date || x.estimate || (x.earliest && `aikaisintaan ${x.earliest}`)
+        || (x.deadline && `määräaika ${x.deadline}`) || 'ei aikaleimaa';
+      const rest = raw(x, EXP_SHOWN);
       h += `<div class="n expd"><div class="nh">
         <span class="nid">${esc(x.step || '—')}</span>
-        <span class="date">${esc(x.date || x.estimate || 'ei aikaleimaa')}</span>
+        <span class="date">${esc(when)}</span>
         <span class="tag">${esc(x.status || '')}</span></div>
-        ${x.note ? `<div class="q">${esc(x.note)}</div>` : ''}</div>`;
+        ${x.note ? `<div class="q">${esc(x.note)}</div>` : ''}
+        ${rest.length ? details('muut kentät', rest) : ''}</div>`;
     });
     h += `</div>`;
+  }
+
+  const top = raw(d, TOP_SHOWN);
+  if (top.length) {
+    h += `<div class="sec">muistiinpanot ja muut kentät</div>`;
+    top.forEach(([k, v]) => { h += details(k, [[k, v]], true); });
   }
 
   el.innerHTML = h;
   return el;
 }
-function m(k, v) {
-  return `<div class="m"><div class="k">${esc(k)}</div><div class="v">${esc(v ?? '—')}</div></div>`;
+function m(k, v, cls = '') {
+  return `<div class="m"><div class="k">${esc(k)}</div><div class="v ${cls}">${esc(v ?? '—')}</div></div>`;
+}
+function kv(o) {
+  const rows = Object.entries(o).filter(([, v]) => v !== undefined);
+  return `<table><tbody>${rows.map(([k, v]) =>
+    `<tr><td class="k">${esc(k)}</td><td style="white-space:pre-wrap">${esc(v === null ? 'null' : fmt(v))}</td></tr>`).join('')}</tbody></table>`;
+}
+function details(label, entries, single = false) {
+  const body = single ? fmt(entries[0][1])
+    : entries.map(([k, v]) => `${k}: ${fmt(v)}`).join('\n');
+  return `<details><summary>${esc(label)}</summary><pre>${esc(body)}</pre></details>`;
 }
 </script>
 </body>
