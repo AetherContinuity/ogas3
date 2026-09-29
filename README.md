@@ -169,6 +169,27 @@ Ansat:
 - Äänestyksistä talletetaan ryhmä- ja hallitus/oppositio-jakaumat,
   ei kansanedustajakohtaisia rivejä.
 
+## Tiivistelmät käyttöliittymälle (`summary.py`)
+
+Snapshot on todiste, noin 9 Mt kuukaudessa. Käyttöliittymä lukee
+tiivistelmää, joka lasketaan Pythonissa samasta tiedostosta:
+
+```
+snapshots/YYYY-MM.summary.json   ~60 kt: ketjut, lähdekohtaiset määrät,
+                                 viiveet, anomaliat, virheet
+snapshots/index.json             kuukaudet + tracet (seurantalista,
+                                 uusin per aihe _supersedes-ketjusta)
+```
+
+**Käyttöliittymä ei laske mitään.** Kaksi laskentaa samalla nimellä
+ajautuvat erilleen (OGAS2). Tiivistelmä sitoo itsensä lähteeseensä
+sha256-tiivisteellä (`source_sha256`), ja `index.json` kertoo täsmääkö
+se yhä (`summary_matches_snapshot`). `rri` on `null` kunnes tapahtumia on
+luokiteltu — tyhjä on rehellisempi kuin nolla.
+
+Kuukausiajo kirjoittaa tiivistelmät. `index.yml` päivittää ne kun
+`traces/`-hakemistoon lisätään trace. Käsin: `python3 summary.py`.
+
 ## Luokituskerros (`classification.py`)
 
 Snapshot jäädyttää todisteen. Luokitus (type, impact_weight,
@@ -212,6 +233,7 @@ luokittelun samassa kuukausiajossa kuin kaappauksen.
     synthetic_events.json    45 tapahtumaa, 2 ilman painoa, viiveitä 0–51 vrk
     classification.py        luokituskerros jäädytetyn todisteen päälle
 decision_chain.py        Finlex-säädökset, täysistuntoäänestykset, HE-ketjut
+summary.py               tiivistelmät ja index.json käyttöliittymälle
 tests/test_all.py        testit
 
 ## Rajapinta-ansat

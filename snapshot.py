@@ -222,6 +222,19 @@ if __name__ == "__main__":
     prev_n = _existing_events(month)   # luetaan ENNEN mahdollista ylikirjoitusta
 
     path, d = run(month, dry_run=args.dry_run)
+
+    # Tiivistelmät käyttöliittymälle. Kuivaharjoituksessa lasketaan
+    # muistissa (savutesti), varsinaisessa ajossa kirjoitetaan kaikki
+    # kuukaudet ja index.json uudelleen — deterministinen, joten vanhat
+    # tiivistelmät eivät muutu ellei lähde muutu.
+    from summary import summarize_snapshot, write_all
+    if path:
+        for w in write_all():
+            print(f"  tiivistelmä  {w.name}  {w.stat().st_size:,} B")
+    else:
+        s = summarize_snapshot(d)
+        print(f"  tiivistelmä (ei kirjoitettu)  {len(json.dumps(s, ensure_ascii=False)):,} B, "
+              f"ketjut {s['chains_outcome']}")
     label = path.name if path else f"{d['month']}.json (ei kirjoitettu — --dry-run)"
     print(f"{label}: {d['totals']['events']} tapahtumaa, "
           f"{d['totals']['anomalies']} anomaliaa, lähteet {d['totals']['sources']}")

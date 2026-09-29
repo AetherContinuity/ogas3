@@ -1,0 +1,966 @@
+{
+ "_schema": "aci/ogas3-summary/v0.1",
+ "_note": "Johdannainen. Laskettu summary.py:llä snapshotista; käyttöliittymä ei laske mitään itse.",
+ "month": "2026-09",
+ "source_file": "2026-09.json",
+ "source_sha256": "2a1f852eca4145bac8084bbbf50e7498fd6fb495678391c5147029bf9fab3c74",
+ "captured_at": "2026-09-05T08:59:17+00:00",
+ "captured_by": "monthly-snapshot",
+ "run_url": "https://github.com/AetherContinuity/ogas3/actions/runs/33956734352",
+ "git_sha": "a8cb465287eacf206b6475cb098cf3d53d1aa110",
+ "status": {
+  "classification": "DEFERRED — ROE/D-O-S-kartta ei ole lukittu",
+  "rri": "NOT SPECIFIED — ks. audit.compute_rri",
+  "note": "Tämä tiedosto on TODISTE, ei tulos. Luokitus lisätään myöhemmin näihin jäädytettyihin tapahtumiin."
+ },
+ "totals": {
+  "events": 1116,
+  "anomalies": 3,
+  "by_source": {
+   "Eduskunta": 932,
+   "Hankeikkuna": 184
+  },
+  "typed": 0,
+  "untyped": 1116
+ },
+ "hankeikkuna_vaiheet": {
+  "EDUSKUNTAKASITTELY": 32,
+  "LAUSUNTOMENETTELY": 88,
+  "PERUSVALMISTELU": 21,
+  "VALTIONEUVOSTON_PAATOKSENTEKO": 43
+ },
+ "finlex_lajit": {},
+ "visibility_lag_days": {
+  "Eduskunta": {
+   "n": 932,
+   "median": 0.0,
+   "max": 0.0
+  },
+  "Hankeikkuna": {
+   "n": 181,
+   "median": 14.3,
+   "max": 3176.3
+  }
+ },
+ "_lag_note": "known_at − occurred_at, anomaliat pois. Eduskunta ja äänestykset ovat 0 rakenteellisesti: istunto on julkinen tapahtuma.",
+ "votes_lookup": {},
+ "_votes_note": "'ei tietuetta' ei tarkoita 'ei äänestetty' — hyväksyminen ilman äänestystä ja keskeneräinen käsittely näyttävät samalta.",
+ "chains_outcome": {
+  "määrittämätön": 81
+ },
+ "chains_derived_here": true,
+ "chains": [
+  {
+   "he": "HE 10/2025",
+   "nimeke": "Kansainvälistä suojelua koskevan hakemuksen rekisteröintiä, jättämistä ja turvapaikkatutkintaa koskevan ulkomaalaislain sääntelyn uudistaminen",
+   "hankkeet": [
+    "SM057:00/2023"
+   ],
+   "eduskunta_vaiheet": 35,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 101/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi rakentamislain muuttamisesta ja eräiksi siihen liittyviksi laeiksi",
+   "hankkeet": [
+    "YM078:00/2023"
+   ],
+   "eduskunta_vaiheet": 64,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 101/2026",
+   "nimeke": "Sika-alan salmonellariskien hallintaa koskeva säädöshanke; hallituksen esitys laiksi sika-alan salmonellavahinkorahastosta",
+   "hankkeet": [
+    "MMM023:00/2023"
+   ],
+   "eduskunta_vaiheet": 22,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 103/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi jätelain muuttamisesta (I vaihe)",
+   "hankkeet": [
+    "YM048:00/2023"
+   ],
+   "eduskunta_vaiheet": 47,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 103/2026",
+   "nimeke": "Hallintotuomioistuinten kokoonpanosääntelyn tarkistaminen",
+   "hankkeet": [
+    "OM045:00/2023"
+   ],
+   "eduskunta_vaiheet": 4,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 105/2025",
+   "nimeke": "Hallituksen esityksen luonnos laiksi liikennejärjestelmän digitaalisista tietopalveluista ja siihen liittyviksi laeiksi (Liikenteen data-avaruus II)",
+   "hankkeet": [
+    "LVM015:00/2024"
+   ],
+   "eduskunta_vaiheet": 28,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 105/2026",
+   "nimeke": "Rahanpesulainsäädännön kokonaisuudistus -hanke",
+   "hankkeet": [
+    "VM053:00/2024"
+   ],
+   "eduskunta_vaiheet": 9,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 106/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi määräaikaisesta henkilöautojen romutuspalkkiosta 2026–2027",
+   "hankkeet": [
+    "LVM031:00/2025"
+   ],
+   "eduskunta_vaiheet": 35,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 108/2023",
+   "nimeke": "Hallituksen esitys eduskunnalle sotilasvammalain 6 ja 6 b §:n muuttamisesta",
+   "hankkeet": [
+    "STM081:00/2023"
+   ],
+   "eduskunta_vaiheet": 30,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 109/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi kuntouttavasta työtoiminnasta annetun lain muuttamisesta",
+   "hankkeet": [
+    "STM040:00/2025"
+   ],
+   "eduskunta_vaiheet": 50,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 109/2026",
+   "nimeke": "Kotoutumistuen ja työmarkkinatuen kielilisän valmistelu",
+   "hankkeet": [
+    "STM074:00/2024"
+   ],
+   "eduskunta_vaiheet": 4,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 118/2026",
+   "nimeke": "Säästövapaan pitämisen ajankohdan muuttamista valmisteleva työryhmä",
+   "hankkeet": [
+    "TEM056:00/2025"
+   ],
+   "eduskunta_vaiheet": 7,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 119/2026",
+   "nimeke": "Välimiesmenettelylain uudistaminen",
+   "hankkeet": [
+    "OM108:00/2023"
+   ],
+   "eduskunta_vaiheet": 4,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 123/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi yritys- ja yhteisötietolain eräiden säännösten, Finanssivalvonnasta annetun lain 3 §:n 3 momentin 11 kohdan ja 5 §:n 26 kohdan sekä Finanssivalvonnan valvontamak",
+   "hankkeet": [
+    "TEM107:00/2025"
+   ],
+   "eduskunta_vaiheet": 4,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 125/2026",
+   "nimeke": "Hallituksen esitys yksityistielain muuttamiseksi",
+   "hankkeet": [
+    "LVM022:00/2025"
+   ],
+   "eduskunta_vaiheet": 2,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 126/2026",
+   "nimeke": "Osakeyhtiölain ja osuuskuntalain tarkistaminen",
+   "hankkeet": [
+    "OM118:00/2023"
+   ],
+   "eduskunta_vaiheet": 4,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 127/2026",
+   "nimeke": "Ihmiskauppadirektiivin muutosdirektiivin täytäntöönpano",
+   "hankkeet": [
+    "OM002:00/2025"
+   ],
+   "eduskunta_vaiheet": 12,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 130/2026",
+   "nimeke": "Eläinsuojelurikosten rangaistusten selvittäminen",
+   "hankkeet": [
+    "OM085:00/2023"
+   ],
+   "eduskunta_vaiheet": 4,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 137/2026",
+   "nimeke": "Menettämisseuraamuksia koskevat lainsäädäntömuutokset",
+   "hankkeet": [
+    "OM062:00/2023"
+   ],
+   "eduskunta_vaiheet": 4,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 138/2026",
+   "nimeke": "Muut rikosprosessin sujuvoittamistoimet (vaihe 2)",
+   "hankkeet": [
+    "OM088:00/2024"
+   ],
+   "eduskunta_vaiheet": 4,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 139/2025",
+   "nimeke": "Vaihtoehtoisten sijoitusrahastojen hoitajia koskevan direktiivin (AIFMD 2011/61/EU) ja siirtokelpoisiin arvopapereihin kohdistuvaa yhteistä sijoitustoimintaa harjoittavia yrityksiä koskevan direktiivi",
+   "hankkeet": [
+    "VM133:00/2024"
+   ],
+   "eduskunta_vaiheet": 26,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 14/2026",
+   "nimeke": "Varmuusvankeuden käyttöönotto",
+   "hankkeet": [
+    "OM077:00/2023"
+   ],
+   "eduskunta_vaiheet": 34,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 141/2026",
+   "nimeke": "Hallituksen esitys laiksi ajoneuvolain muuttamisesta sekä siihen liittyviksi laeiksi (liikkuvat työkoneet ja Euro 7 -asetusten täytäntöönpano)",
+   "hankkeet": [
+    "LVM049:00/2025"
+   ],
+   "eduskunta_vaiheet": 2,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 143/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle ammatillisesta koulutuksesta annetun lain muuttamisesta ja siihen liittyviksi laeiksi",
+   "hankkeet": [
+    "OKM003:00/2025"
+   ],
+   "eduskunta_vaiheet": 46,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 153/2026",
+   "nimeke": "Hallituksen esitys lentoliikenteestä Brasilian liittotasavallan kanssa tehdyn sopimuksen hyväksymiseksi ja voimaansaattamiseksi",
+   "hankkeet": [
+    "LVM028:00/2026"
+   ],
+   "eduskunta_vaiheet": 2,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 154/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle lentoliikenteestä Ruandan tasavallan kanssa tehdyn sopimuksen hyväksymiseksi ja voimaansaattamiseksi",
+   "hankkeet": [
+    "LVM047:00/2021"
+   ],
+   "eduskunta_vaiheet": 21,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 154/2026",
+   "nimeke": "Hallituksen esitys lentoliikenteestä Perun tasavallan kanssa tehdyn sopimuksen hyväksymiseksi ja voimaansaattamiseksi",
+   "hankkeet": [
+    "LVM027:00/2026"
+   ],
+   "eduskunta_vaiheet": 2,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 155/2024",
+   "nimeke": "Eurooppalaista keskitettyä yhteyspistettä koskevan asetuksen ja siihen liittyvien direktiivin ja asetuksen kansallinen toimeenpano",
+   "hankkeet": [
+    "VM056:00/2024"
+   ],
+   "eduskunta_vaiheet": 25,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 166/2024",
+   "nimeke": "Hallituksen esitys vieraslajeista aiheutuvien riskien hallinnasta annetun lain muuttamisesta",
+   "hankkeet": [
+    "MMM005:00/2024"
+   ],
+   "eduskunta_vaiheet": 28,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 167/2025",
+   "nimeke": "Finanssipoliittisten sääntöjen uudistamista valmisteleva työryhmä",
+   "hankkeet": [
+    "VM118:00/2024"
+   ],
+   "eduskunta_vaiheet": 40,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 170/2022",
+   "nimeke": "Eurooppalaisen Galileo-satelliittipaikannusjärjestelmän julkisesti säänneltyyn palveluun (PRS) liittyvän kansallisen lainsäädännön uudistaminen",
+   "hankkeet": [
+    "LVM056:00/2021"
+   ],
+   "eduskunta_vaiheet": 29,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 182/2024",
+   "nimeke": "Hallituksen esitys liikenteen ja logistiikan tietosääntelyn päivitys, data-avaruus osa 1",
+   "hankkeet": [
+    "LVM054:00/2023"
+   ],
+   "eduskunta_vaiheet": 34,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 183/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi Harmaan talouden selvitysyksiköstä annetun lain muuttamisesta ja eräiksi siihen liittyviksi laeiksi",
+   "hankkeet": [
+    "VM004:00/2025"
+   ],
+   "eduskunta_vaiheet": 48,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 185/2025",
+   "nimeke": "Hallituksen esitys laiksi jalometallituotteista annetun lain muuttamisesta",
+   "hankkeet": [
+    "TEM042:00/2025"
+   ],
+   "eduskunta_vaiheet": 26,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 199/2025",
+   "nimeke": "Työsopimuksen määräaikaisuuden perustetta, lomautusilmoitusaikaa ja takaisinottovelvollisuutta koskevan sääntelyn muuttamista valmisteleva työryhmä",
+   "hankkeet": [
+    "TEM061:00/2024"
+   ],
+   "eduskunta_vaiheet": 57,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 20/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle SOLAS-yleissopimuksen liitteeseen, MARPOL-yleissopimuksen I pöytäkirjaan ja painolastivesiyleissopimuksen liitteeseen tehtyjen muutosten hyväksymiseksi ja voimaansaatta",
+   "hankkeet": [
+    "LVM037:00/2024"
+   ],
+   "eduskunta_vaiheet": 22,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 201/2025",
+   "nimeke": "Hallituksen esitys laiksi Euroopan unionin yhteisen kalastuspolitiikan kansallisesta täytäntöönpanosta annetun lain muuttamisesta",
+   "hankkeet": [
+    "MMM068:00/2024"
+   ],
+   "eduskunta_vaiheet": 31,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 203/2025",
+   "nimeke": "Hallituksen esitys laeiksi Luonnonvarakeskuksesta annetun lain ja ruoka- ja luonnonvaratilastoista annetun lain 2 §:n muuttamisesta",
+   "hankkeet": [
+    "MMM007:00/2024"
+   ],
+   "eduskunta_vaiheet": 28,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 208/2024",
+   "nimeke": "NPL-direktiivin täytäntöönpano",
+   "hankkeet": [
+    "VM119:00/2024"
+   ],
+   "eduskunta_vaiheet": 30,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 23/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi valtion vientitakuista annetun lain 10 §:n muuttamisesta",
+   "hankkeet": [
+    "TEM033:00/2025"
+   ],
+   "eduskunta_vaiheet": 28,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 25/2026",
+   "nimeke": "Rikosseuraamuslaitoksen organisaatiorakenteen ja rikosseuraamusalan koulutusjärjestelmän uudistaminen",
+   "hankkeet": [
+    "OM033:00/2025"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 254/2022",
+   "nimeke": "Hallituksen esitys laeiksi ehdokkaan vaalirahoituksesta annetun lain, vaalilain, puoluelain ja kansalaisaloitelain muuttamisesta",
+   "hankkeet": [
+    "OM003:00/2022"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 29/2024",
+   "nimeke": "Hanke tiettyjen kansainvälistä suojelua koskevien ulkomaalaislain säännösten muuttamiseksi",
+   "hankkeet": [
+    "SM037:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 3/2024",
+   "nimeke": "Hallituksen esitys arvopaperimarkkinalain muuttamisesta",
+   "hankkeet": [
+    "VM039:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 3/2026",
+   "nimeke": "Hallituksen esitys laeiksi vaarallisten kemikaalien ja räjähteiden käsittelyn turvallisuudesta annetun lain ja rakentamislain muuttamisesta",
+   "hankkeet": [
+    "TEM103:00/2025"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 30/2025",
+   "nimeke": "MIFID II -direktiivin päivityksen kansallinen täytäntöönpano",
+   "hankkeet": [
+    "VM129:00/2024"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 37/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi biopolttoaineista, bionesteistä ja biomassapolttoaineista annetun lain muuttamisesta (RED III toimeenpano)",
+   "hankkeet": [
+    "TEM029:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 44/2023",
+   "nimeke": "Osakesäästötilin talletusrajan enimmäismäärän korottaminen 100 000 euroon",
+   "hankkeet": [
+    "VM088:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 44/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi tuloverolain 46 ja 55 §:n muuttamisesta",
+   "hankkeet": [
+    "VM033:00/2024"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 44/2026",
+   "nimeke": "Hanke alkoholilain muuttamiseksi (panimoiden, tislaamoiden ja viinitilojen ulosmyyntioikeuden laajentaminen)",
+   "hankkeet": [
+    "STM101:00/2024"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 45/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi valmisteverotuslain muuttamisesta",
+   "hankkeet": [
+    "VM094:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 46/2025",
+   "nimeke": "Hallituksen esitys laiksi eräiden tekoälyjärjestelmien valvonnasta ja siihen liittyvien lakien muuttamisesta",
+   "hankkeet": [
+    "TEM050:00/2024"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 46/2026",
+   "nimeke": "Hallinnollisten seuraamusmaksujen määrääminen tietosuojalainsäädännön rikkomuksista julkissektorilla",
+   "hankkeet": [
+    "OM127:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 47/2024",
+   "nimeke": "Kaksikäyttötuotteiden vientivalvontaa koskevan lain uudistaminen",
+   "hankkeet": [
+    "UM008:00/2019"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 48/2025",
+   "nimeke": "Toisessa valtiossa annetun kuolemanrangaistuksen muuntaminen vapausrangaistukseksi",
+   "hankkeet": [
+    "OM163:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 48/2026",
+   "nimeke": "Eläinten tunnistamisesta ja rekisteröinnistä annetun lain (1069/2021) muuttamista koskeva säädöshanke",
+   "hankkeet": [
+    "MMM021:00/2025"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 5/2026",
+   "nimeke": "Sakkomenettelyn kokonaistarkastelu (rikosprosessin sujuvoittaminen) (I-vaihe)",
+   "hankkeet": [
+    "OM061:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 50/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi arvonlisäverolain ja oma-aloitteisten verojen verotusmenettelystä annetun lain 39 §:n muuttamisesta",
+   "hankkeet": [
+    "VM023:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 50/2026",
+   "nimeke": "Perustuslain 10 §:n tarkistaminen",
+   "hankkeet": [
+    "OM067:00/2024"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 6/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi suurten konsernien vähimmäisverosta annetun lain muuttamisesta annetun hallituksen esityksen (HE 196/2025 vp) täydentämisestä",
+   "hankkeet": [
+    "VM002:00/2026"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 66/2025",
+   "nimeke": "Hallituksen esitys laiksi liikenteen palveluista annetun lain muuttamisesta",
+   "hankkeet": [
+    "LVM005:00/2024"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 68/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi eräistä asbestipurkutyötä koskevista vaatimuksista annetun lain 2 ja 11 §:n, työsuojelun valvonnasta ja työpaikan työsuojeluyhteistoiminnasta annetun lain 48 §:",
+   "hankkeet": [
+    "STM104:00/2024"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 69/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle kotihoidon tuen Norjan mallista",
+   "hankkeet": [
+    "STM050:00/2025"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 70/2026",
+   "nimeke": "Hallituksen esitys uudeksi alueidenkäyttölaiksi",
+   "hankkeet": [
+    "YM057:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 71/2026",
+   "nimeke": "Turvallisuustutkintalain muuttaminen (kyberturvallisuus)",
+   "hankkeet": [
+    "OM162:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 73/2026",
+   "nimeke": "Pariisin pöytäkirjaa täydentävän sopimuksen kansallinen voimaansaattaminen",
+   "hankkeet": [
+    "PLM006:00/2025"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 77/2024",
+   "nimeke": "Eurooppalaisia vihreitä joukkolainoja koskevan asetuksen kansallinen toimeenpano",
+   "hankkeet": [
+    "VM121:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 77/2026",
+   "nimeke": "Syyttäjälaitoksen henkilötietojen käsittelyn sääntelytarpeen arviointi",
+   "hankkeet": [
+    "OM029:00/2022"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 78/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi hyvinvointialueesta annetun lain ja sosiaali- ja terveydenhuollon sekä pelastustoimen järjestämisestä Uudellamaalla annetun lain 2 ja 17 §:n muuttamisesta",
+   "hankkeet": [
+    "VM007:00/2024"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 81/2026",
+   "nimeke": "Hallituksen esitys terveydenhuoltolain muuttamisesta (saattohoito ja eräät muut terveydenhuoltoa koskevat muutokset)",
+   "hankkeet": [
+    "STM069:00/2025"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 83/2023",
+   "nimeke": "Hallituksen esitys laiksi Kanadan kanssa solmitun nuorison liikkuvuussopimuksen voimaansaattamiseksi",
+   "hankkeet": [
+    "TEM073:00/2019"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 84/2026",
+   "nimeke": "Vesilain tarkistaminen - uuden kalatalousvelvoitetta tai -maksua koskevan lupamääräyksen antaminen vesivoimalaitokselle",
+   "hankkeet": [
+    "OM039:00/2019"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 85/2026",
+   "nimeke": "Julkisen hallinnon tietojärjestelmien vaatimustenmukaisuuden arvioinnin ajantasaistaminen ja tehostaminen",
+   "hankkeet": [
+    "VM167:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 86/2024",
+   "nimeke": "Valtion pääomasijoitusyhtiön hallituksen esityksen valmistelu",
+   "hankkeet": [
+    "TEM061:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 89/2024",
+   "nimeke": "Hallituksen esitys rakennetun ympäristön tietojärjestelmästä annetun lain 2 ja 10 §:n muuttamisesta",
+   "hankkeet": [
+    "YM050:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 90/2026",
+   "nimeke": "Vaikuttavien palvelujen ja menetelmien kansallisen valinnan periaatteista säätäminen",
+   "hankkeet": [
+    "STM113:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 92/2023",
+   "nimeke": "Lainsäädäntöhanke Suomen ja Ruotsin välisen raja-alueen poliisiyhteistyöstä tehdyn sopimuksen hyväksymiseksi ja voimaansaattamiseksi",
+   "hankkeet": [
+    "SM027:00/2021"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 94/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle työvoimapalveluiden järjestämisestä annetun lain ja tulotietojärjestelmästä annetun lain 13 §:n muuttamisesta",
+   "hankkeet": [
+    "TEM100:00/2025"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 96/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi Maanpuolustuskorkeakoulusta annetun lain muuttamisesta",
+   "hankkeet": [
+    "PLM002:00/2024"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 98/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi suurten konsernien vähimmäisverosta annetun lain muuttamisesta",
+   "hankkeet": [
+    "VM172:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  },
+  {
+   "he": "HE 98/2026",
+   "nimeke": "Pakkokeinolain muutostarpeiden arviointi",
+   "hankkeet": [
+    "OM055:00/2023"
+   ],
+   "eduskunta_vaiheet": 0,
+   "aanestykset": 0,
+   "saadokset": [],
+   "outcome": "määrittämätön"
+  }
+ ],
+ "anomalies": [
+  {
+   "event_id": "HI:TEM061:00/2024",
+   "source": "Hankeikkuna",
+   "note": "known_at 31 vrk ENNEN occurred_at (lähde asettamisPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:OM162:00/2023",
+   "source": "Hankeikkuna",
+   "note": "known_at 396 vrk ENNEN occurred_at (lähde aloitusPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:TEM062:00/2020",
+   "source": "Hankeikkuna",
+   "note": "aikaleimaa ei voi johtaa: julkaisuaika tai molemmat alkupäivät puuttuvat"
+  }
+ ],
+ "errors": [],
+ "finlex_window": null,
+ "rri": null,
+ "_rri_note": "Ei laskettu: tapahtumia ei ole luokiteltu. Tyhjä kenttä on rehellisempi kuin nolla."
+}
