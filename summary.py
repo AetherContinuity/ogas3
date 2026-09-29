@@ -40,6 +40,10 @@ ROOT = Path(__file__).resolve().parent
 SNAPSHOT_DIR = ROOT / "snapshots"
 TRACE_DIR = ROOT / "traces"
 SUMMARY_SCHEMA = "aci/ogas3-summary/v0.1"
+# Järjestys vahvimmasta havainnosta heikoimpaan. Sama lista kulkee
+# tiivistelmässä (outcome_order), jotta käyttöliittymä ei kovakoodaa tiloja.
+OUTCOME_ORDER = ["säädös vahvistettu", "eduskunta päättänyt", "äänestetty",
+                 "eduskunnassa", "määrittämätön"]
 INDEX_SCHEMA = "aci/ogas3-index/v0.1"
 
 
@@ -111,11 +115,12 @@ def summarize_snapshot(snap: dict, source_file: str | None = None,
         "nimeke": titles.get(he),
         "hankkeet": c["hankkeet"],
         "eduskunta_vaiheet": c["eduskunta_vaiheet"],
+        "eduskunta_vastaus": c.get("eduskunta_vastaus"),
         "aanestykset": len(c["aanestykset"]),
         "saadokset": c["saadokset"],
         "outcome": c["outcome"],
     } for he, c in ch.items()]
-    order = {"säädös vahvistettu": 0, "äänestetty": 1, "määrittämätön": 2}
+    order = {o: i for i, o in enumerate(OUTCOME_ORDER)}
     chain_rows.sort(key=lambda r: (order.get(r["outcome"], 9), r["he"]))
 
     queries = snap.get("queries") or []
@@ -157,6 +162,7 @@ def summarize_snapshot(snap: dict, source_file: str | None = None,
         "votes_lookup": dict(vote_status),
         "_votes_note": "'ei tietuetta' ei tarkoita 'ei äänestetty' — hyväksyminen ilman "
                        "äänestystä ja keskeneräinen käsittely näyttävät samalta.",
+        "outcome_order": OUTCOME_ORDER,
         "chains_outcome": dict(Counter(r["outcome"] for r in chain_rows)),
         "chains_derived_here": derived,
         "chains": chain_rows,

@@ -1654,10 +1654,23 @@ def test_chain_join_outcomes():
         {"source": "Eduskunta äänestys", "event_id": "VOTE:1", "parameters": {"eduskuntatunnus": "HE 2/2026"}},
         {"source": "Finlex", "event_id": "FX:2026/9", "parameters": {"saados": "9/2026", "heNumerot": ["HE 1/2026"]}},
     ]
+    raw += [
+        {"source": "Hankeikkuna", "event_id": "HI:D", "parameters": {"tunnus": "TEM4", "heNumerot": ["HE 4/2026"]}},
+        {"source": "Eduskunta", "event_id": "E1", "occurred_at": "2026-05-06T00:00:00+03:00",
+         "parameters": {"eduskuntatunnus": "HE 4/2026", "vaihe": "Toinen käsittely"}},
+        {"source": "Eduskunta", "event_id": "E2", "occurred_at": "2026-05-08T00:00:00+03:00",
+         "parameters": {"eduskuntatunnus": "HE 4/2026", "vaihe": "Eduskunnan vastaus ja kirjelmä"}},
+        {"source": "Eduskunta", "event_id": "E3", "occurred_at": "2026-05-01T00:00:00+03:00",
+         "parameters": {"eduskuntatunnus": "HE 3/2026", "vaihe": "Lähetekeskustelu"}},
+    ]
     c = chains(raw)
     assert c["HE 1/2026"]["outcome"] == "säädös vahvistettu"
     assert c["HE 2/2026"]["outcome"] == "äänestetty"
-    assert c["HE 3/2026"]["outcome"] == "määrittämätön"
+    assert c["HE 3/2026"]["outcome"] == "eduskunnassa"
+    assert c["HE 4/2026"]["outcome"] == "eduskunta päättänyt"
+    assert c["HE 4/2026"]["eduskunta_vastaus"] == "2026-05-08"
+    assert chains(raw[:3])["HE 3/2026"]["outcome"] == "määrittämätön", \
+        "ilman Eduskunnan havaintoa tila on määrittämätön, ei hylätty"
 
 
 def test_chain_he_key_normalises_forms():

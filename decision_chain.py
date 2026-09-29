@@ -342,18 +342,34 @@ def fetch_votes(he: str, get: Getter = _http_get) -> tuple[list[RawEvent], dict]
 
 
 # ── Ketjut ───────────────────────────────────────────────────────────
+# Eduskunnan käsittelyvaiheet, jotka tarkoittavat että eduskunta on
+# päättänyt asian: eduskunnan vastaus on annettu. Vastaus voi olla myös
+# hylkäävä, joten tämä EI ole "hyväksytty" — se on "eduskunta päättänyt".
+EV_VAIHEET = ("Eduskunnan vastaus ja kirjelmä",
+              "Eduskunnan vastauksen tai kirjelmän toimittaminen")
+
+
 def chains(raw_events: Iterable[dict]) -> dict[str, dict]:
     """HE-numero -> mitä ketjusta on havaittu. Ei tulkintaa, vain liitos.
 
-    outcome:
+    outcome, vahvimmasta heikoimpaan:
       säädös vahvistettu   Finlex-säädös viittaa HE:hen
-      äänestetty           äänestystietue, ei (vielä) säädöstä
-      määrittämätön        kumpaakaan ei havaittu — EI hylätty, EI nolla
+      eduskunta päättänyt  eduskunnan vastaus annettu (ei kerro hyväksyttiinkö)
+      äänestetty           äänestystietue, ei vastausta eikä säädöstä
+      eduskunnassa         käsittelyvaiheita, ei vielä vastausta
+      määrittämätön        Eduskunnasta ei havaintoa — EI hylätty, EI nolla
+
+    KORJATTU 2026-09-29: aiemmin vain kolme tilaa, ja Finlex-ikkuna on yksi
+    kuukausi. Vuosia sitten vahvistettu laki jäi siksi pysyvästi tilaan
+    'määrittämätön', vaikka Eduskunnan aikajanalla oli vastaus. Lopputulos
+    riippui kaappausikkunasta eikä todellisuudesta. Syyskuun kaappauksessa
+    23/40 haetusta HE:stä oli jo eduskunnan vastaus.
     """
     out: dict[str, dict] = {}
 
     def slot(k: str) -> dict:
         return out.setdefault(k, {"hankkeet": [], "eduskunta_vaiheet": 0,
+                                  "eduskunta_vastaus": None,
                                   "aanestykset": [], "saadokset": []})
     for d in raw_events:
         p = d.get("parameters") or {}
@@ -366,7 +382,12 @@ def chains(raw_events: Iterable[dict]) -> dict[str, dict]:
         elif src == "Eduskunta":
             k = he_key(p.get("eduskuntatunnus", ""))
             if k:
-                slot(k)["eduskunta_vaiheet"] += 1
+                c = slot(k)
+                c["eduskunta_vaiheet"] += 1
+                if p.get("vaihe") in EV_VAIHEET and d.get("occurred_at"):
+                    pvm = d["occurred_at"][:10]
+                    if c["eduskunta_vastaus"] is None or pvm < c["eduskunta_vastaus"]:
+                        c["eduskunta_vastaus"] = pvm
         elif src == "Eduskunta äänestys":
             k = he_key(p.get("eduskuntatunnus", ""))
             if k:
@@ -378,5 +399,8 @@ def chains(raw_events: Iterable[dict]) -> dict[str, dict]:
                     slot(k)["saadokset"].append(p.get("saados"))
     for c in out.values():
         c["outcome"] = ("säädös vahvistettu" if c["saadokset"]
-                        else "äänestetty" if c["aanestykset"] else "määrittämätön")
+                        else "eduskunta päättänyt" if c["eduskunta_vastaus"]
+                        else "äänestetty" if c["aanestykset"]
+                        else "eduskunnassa" if c["eduskunta_vaiheet"]
+                        else "määrittämätön")
     return dict(sorted(out.items()))
