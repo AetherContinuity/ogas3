@@ -1,0 +1,616 @@
+{
+ "_schema": "aci/decision-trace/v0.1",
+ "_locked_at": "2026-09-29",
+ "_revision": 1,
+ "_generator": "snapshot.py (automaattinen) — EI tulkintaa, vain laskettuja kenttia. Proosa kuuluu _commentary-kenttaan jonka ihminen lisaa ja joka EI vaikuta tiivisteeseen.",
+ "_lock_note": "LUKITTU. Ei muuteta jalkikateen; uudet havainnot seuraavaan snapshotiin.",
+ "subject": {
+  "tunnus": "TEM061:00/2023",
+  "asianumero": "VN/23161/2023",
+  "nimi": "Valtion pääomasijoitusyhtiön hallituksen esityksen valmistelu",
+  "he": "HE 86/2024"
+ },
+ "_state": {
+  "tila": "PAATTYNYT",
+  "asiakirjat_yhteensa": 23,
+  "asiakirjat_tyypeittain": {
+   "LAUSUNTO": 23
+  },
+  "lausuntoja_hankeikkunassa": 23,
+  "lausuntokierros_tila": "päättynyt",
+  "lausuntokierros_kesto_vrk": 28,
+  "lausuntokierros_auki_vrk": null,
+  "lausuntokierros_jaljella_vrk": null,
+  "lausuntokierroksia": 1,
+  "_lausuntoja_note": "Luku on Hankeikkunan asiakirjoista. TEM: Lausuntopalvelussa annetut nakyvat automaattisesti, kirjaamoon toimitettuja EI julkaista. Havaittu maara on siis ALARAJA, ei kokonaismaara.",
+  "uptake": null,
+  "_uptake_note": "MAARITTAMATON, ei nolla. Mitattavissa vasta taysistunnon aanestyksesta, ja aanestystyyppi on luokiteltava erikseen."
+ },
+ "_diff": {
+  "edellinen": null,
+  "uusia_solmuja": 27,
+  "uudet": [
+   "hanke-asetettu",
+   "etappi-lausuntomenettely-2024-04-10",
+   "etappi-jatkovalmistelu-2024-05-09",
+   "etappi-valtioneuvoston_paatoksenteko-2025-01-17",
+   "asiakirja-c4cd3830",
+   "asiakirja-440c53ff",
+   "asiakirja-e1a7b974",
+   "asiakirja-2f23360c",
+   "asiakirja-a97d700c",
+   "asiakirja-270f4915",
+   "asiakirja-dfdbcb64",
+   "asiakirja-d1d3b58f",
+   "asiakirja-2060be81",
+   "asiakirja-2e47213b",
+   "asiakirja-982ab32f",
+   "asiakirja-2ce96c31",
+   "asiakirja-da385ef9",
+   "asiakirja-d63948c4",
+   "asiakirja-2cd13e1a",
+   "asiakirja-7ca9523c",
+   "asiakirja-26d5d621",
+   "asiakirja-046d2a60",
+   "asiakirja-e82a824b",
+   "asiakirja-9b647093",
+   "asiakirja-080787a4",
+   "asiakirja-5dcfa94a",
+   "asiakirja-b4f5c1a9"
+  ],
+  "kadonneita": 0,
+  "kadonneet": [],
+  "_kadonneet_note": "Solmu joka oli edellisessa muttei tassa. EI poisteta hiljaa — lahde on muuttunut, ja se on oma havaintonsa.\nHUOM KAKSI VAARAA HALYTYSTA:\n(1) KASIN kirjatut solmut joita Hankeikkuna ei tunne (esim. oma lausunto ennen kuin se nakyy asiakirjoissa) nakyvat AINA kadonneina. Ne eivat ole kadonneet — automaatti ei vain nae niita.\n(2) NIMEAMISERO: kasin kirjatut kayttivat vapaita node_id-arvoja (esim. 'lausuntokierros-alkoi'), automaatti kayttaa kaavaa 'etappi-<vaihe>-<pvm>'. Sama tapahtuma, eri tunniste. Ensimmainen automaattiajo kasin kirjoitetun snapshotin paalle raportoi siksi kadonneita joita ei ole.\nKumpikin nakyy VAIN ensimmaisella ajolla; sen jalkeen tunnisteet ovat yhtenaiset."
+ },
+ "observed": [
+  {
+   "node_id": "hanke-asetettu",
+   "kind": "observed",
+   "occurred_at": "2023-08-08T00:00:00+03:00",
+   "occurred_at_source": "aloitusPaiva",
+   "known_at": "2023-08-30T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna kohteet/haku",
+   "evidence": [
+    {
+     "quote": "Valtion pääomasijoitusyhtiön hallituksen esityksen valmistelu",
+     "location": "kohde TEM061:00/2023",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "asettamisPaiva_puuttuu": true
+   }
+  },
+  {
+   "node_id": "etappi-lausuntomenettely-2024-04-10",
+   "kind": "observed",
+   "occurred_at": "2024-04-10T00:00:00+03:00",
+   "known_at": "2024-04-10T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna etapit",
+   "evidence": [
+    {
+     "quote": "LAUSUNTOMENETTELY 2024-04-10 – 2024-05-08",
+     "location": "etapit",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "vaihe": "KAYNNISSA",
+    "loppu": "2024-05-08",
+    "kesto_vrk": 28,
+    "kulunut_vrk_lukitushetkella": 902
+   }
+  },
+  {
+   "node_id": "etappi-jatkovalmistelu-2024-05-09",
+   "kind": "observed",
+   "occurred_at": "2024-05-09T00:00:00+03:00",
+   "known_at": "2024-05-09T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna etapit",
+   "evidence": [
+    {
+     "quote": "JATKOVALMISTELU 2024-05-09 – avoin",
+     "location": "etapit",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "vaihe": "KAYNNISSA",
+    "loppu": null,
+    "kesto_vrk": null,
+    "kulunut_vrk_lukitushetkella": 873
+   }
+  },
+  {
+   "node_id": "etappi-valtioneuvoston_paatoksenteko-2025-01-17",
+   "kind": "observed",
+   "occurred_at": "2025-01-17T00:00:00+03:00",
+   "known_at": "2025-01-17T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna etapit",
+   "evidence": [
+    {
+     "quote": "VALTIONEUVOSTON_PAATOKSENTEKO 2025-01-17 – avoin",
+     "location": "etapit",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "vaihe": "KAYNNISSA",
+    "loppu": null,
+    "kesto_vrk": null,
+    "kulunut_vrk_lukitushetkella": 620
+   }
+  },
+  {
+   "node_id": "asiakirja-c4cd3830",
+   "kind": "observed",
+   "occurred_at": "2024-04-30T00:00:00+03:00",
+   "known_at": "2024-04-30T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Yhteiskunnallisten yritysten liitto ARVO ry; lausunto",
+     "location": "asiakirjat · uuid c4cd3830-72da-4db9-8294-99a07ec3a9cc",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/c4cd3830-72da-4db9-8294-99a07ec3a9cc/LAUSUNTO_20240430113231.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Yhteiskunnallisten yritysten liitto ARVO ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-440c53ff",
+   "kind": "observed",
+   "occurred_at": "2024-05-02T00:00:00+03:00",
+   "known_at": "2024-05-02T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Finanssiala ry; lausunto",
+     "location": "asiakirjat · uuid 440c53ff-34b5-4448-b623-ab3b82590c13",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/440c53ff-34b5-4448-b623-ab3b82590c13/LAUSUNTO_20240502164742.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Finanssiala ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-e1a7b974",
+   "kind": "observed",
+   "occurred_at": "2024-05-02T00:00:00+03:00",
+   "known_at": "2024-05-05T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Suomen Ammattiliittojen Keskusjärjestö SAK ry; lausunto",
+     "location": "asiakirjat · uuid e1a7b974-9b5c-46e4-a7a7-c1ea4287b265",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/e1a7b974-9b5c-46e4-a7a7-c1ea4287b265/LAUSUNTO_20240505172748.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Suomen Ammattiliittojen Keskusjärjestö SAK ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-2f23360c",
+   "kind": "observed",
+   "occurred_at": "2024-05-06T00:00:00+03:00",
+   "known_at": "2024-05-07T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Innovaatiorahoituskeskus Business Finland; lausunto",
+     "location": "asiakirjat · uuid 2f23360c-240b-402c-9660-9f120f0c9306",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/2f23360c-240b-402c-9660-9f120f0c9306/LAUSUNTO_20240507161553.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Innovaatiorahoituskeskus Business Finland"
+   }
+  },
+  {
+   "node_id": "asiakirja-a97d700c",
+   "kind": "observed",
+   "occurred_at": "2024-05-07T00:00:00+03:00",
+   "known_at": "2024-05-07T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Elinkeinoelämän keskusliitto EK; lausunto",
+     "location": "asiakirjat · uuid a97d700c-1b8f-4dcb-902f-586e463bdfea",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/a97d700c-1b8f-4dcb-902f-586e463bdfea/LAUSUNTO_20240507161848.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Elinkeinoelämän keskusliitto EK (1)"
+   }
+  },
+  {
+   "node_id": "asiakirja-270f4915",
+   "kind": "observed",
+   "occurred_at": "2024-05-07T00:00:00+03:00",
+   "known_at": "2024-05-07T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Suomen Tekstiili ja Muoti ry; lausunto",
+     "location": "asiakirjat · uuid 270f4915-0189-4a22-b9ad-f862a688fa71",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/270f4915-0189-4a22-b9ad-f862a688fa71/LAUSUNTO_20240507162306.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Suomen Tekstiili ja Muoti ry (1)"
+   }
+  },
+  {
+   "node_id": "asiakirja-dfdbcb64",
+   "kind": "observed",
+   "occurred_at": "2024-05-07T00:00:00+03:00",
+   "known_at": "2024-05-07T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Opetushallitus; lausunto",
+     "location": "asiakirjat · uuid dfdbcb64-9e74-44b6-87ba-26a582af3c4d",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/dfdbcb64-9e74-44b6-87ba-26a582af3c4d/LAUSUNTO_20240507162705.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Opetushallitus"
+   }
+  },
+  {
+   "node_id": "asiakirja-d1d3b58f",
+   "kind": "observed",
+   "occurred_at": "2024-05-07T00:00:00+03:00",
+   "known_at": "2024-05-07T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Finnish Business Angels Network ry - FiBAN; lausunto",
+     "location": "asiakirjat · uuid d1d3b58f-74ad-4668-ba54-fc989a1d608a",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/d1d3b58f-74ad-4668-ba54-fc989a1d608a/LAUSUNTO_20240507163010.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Finnish Business Angels Network ry - FiBAN"
+   }
+  },
+  {
+   "node_id": "asiakirja-2060be81",
+   "kind": "observed",
+   "occurred_at": "2024-05-08T00:00:00+03:00",
+   "known_at": "2024-05-08T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Kulttuuri- ja taidealan keskusjärjestö KULTA ry; lausunto",
+     "location": "asiakirjat · uuid 2060be81-692f-4dd3-80f4-e594a35674fb",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/2060be81-692f-4dd3-80f4-e594a35674fb/LAUSUNTO_20240508163628.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Kulttuuri- ja taidealan keskusjärjestö KULTA ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-2e47213b",
+   "kind": "observed",
+   "occurred_at": "2024-05-08T00:00:00+03:00",
+   "known_at": "2024-05-08T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Mikro- ja yksinyrittäjät ry; lausunto",
+     "location": "asiakirjat · uuid 2e47213b-36be-486e-8c36-0b99210b0072",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/2e47213b-36be-486e-8c36-0b99210b0072/LAUSUNTO_20240508163936.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Mikro- ja yksinyrittäjät ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-982ab32f",
+   "kind": "observed",
+   "occurred_at": "2024-05-08T00:00:00+03:00",
+   "known_at": "2024-05-08T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Teknologiateollisuus ry; lausunto",
+     "location": "asiakirjat · uuid 982ab32f-44aa-4f02-8619-2cd5a731f61c",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/982ab32f-44aa-4f02-8619-2cd5a731f61c/LAUSUNTO_20240508164240.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Teknologiateollisuus ry "
+   }
+  },
+  {
+   "node_id": "asiakirja-2ce96c31",
+   "kind": "observed",
+   "occurred_at": "2024-05-08T00:00:00+03:00",
+   "known_at": "2024-05-08T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Suomen Teollisuussijoitus Oy - Tesi Oy; lausunto",
+     "location": "asiakirjat · uuid 2ce96c31-5398-494f-85e4-cd4c158283db",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/2ce96c31-5398-494f-85e4-cd4c158283db/LAUSUNTO_20240508164546.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Suomen Teollisuussijoitus Oy - Tesi Oy"
+   }
+  },
+  {
+   "node_id": "asiakirja-da385ef9",
+   "kind": "observed",
+   "occurred_at": "2024-05-08T00:00:00+03:00",
+   "known_at": "2024-05-08T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Business Finland Venture Capital Oy; lausunto",
+     "location": "asiakirjat · uuid da385ef9-af9f-41a1-b194-2cdfb9b12578",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/da385ef9-af9f-41a1-b194-2cdfb9b12578/LAUSUNTO_20240508164958.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Business Finland Venture Capital Oy"
+   }
+  },
+  {
+   "node_id": "asiakirja-d63948c4",
+   "kind": "observed",
+   "occurred_at": "2024-05-08T00:00:00+03:00",
+   "known_at": "2024-05-08T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Pääomasijoittajat ry; lausunto",
+     "location": "asiakirjat · uuid d63948c4-d3fa-4511-ab75-198e427d5179",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/d63948c4-d3fa-4511-ab75-198e427d5179/LAUSUNTO_20240508165303.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Pääomasijoittajat ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-2cd13e1a",
+   "kind": "observed",
+   "occurred_at": "2024-05-08T00:00:00+03:00",
+   "known_at": "2024-05-12T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Ilmastorahasto Oy; lausunto",
+     "location": "asiakirjat · uuid 2cd13e1a-a178-430d-aa87-4be4a6522446",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/2cd13e1a-a178-430d-aa87-4be4a6522446/LAUSUNTO_20240512111714.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Ilmastorahasto Oy"
+   }
+  },
+  {
+   "node_id": "asiakirja-7ca9523c",
+   "kind": "observed",
+   "occurred_at": "2024-05-08T00:00:00+03:00",
+   "known_at": "2024-05-12T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Teknologian tutkimuskeskus VTT Oy; lausunto",
+     "location": "asiakirjat · uuid 7ca9523c-e220-4429-ae18-b72c0c74071a",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/7ca9523c-e220-4429-ae18-b72c0c74071a/LAUSUNTO_20240512112018.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Teknologian tutkimuskeskus VTT Oy​"
+   }
+  },
+  {
+   "node_id": "asiakirja-26d5d621",
+   "kind": "observed",
+   "occurred_at": "2024-05-08T00:00:00+03:00",
+   "known_at": "2024-05-12T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Keskuskauppakamari; lausunto",
+     "location": "asiakirjat · uuid 26d5d621-7d36-40b0-a91c-714fd97e913c",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/26d5d621-7d36-40b0-a91c-714fd97e913c/LAUSUNTO_20240512112323.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Keskuskauppakamari ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-046d2a60",
+   "kind": "observed",
+   "occurred_at": "2024-05-15T00:00:00+03:00",
+   "known_at": "2024-08-27T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Ulkoministeriön lausunto",
+     "location": "asiakirjat · uuid 046d2a60-3a39-4277-8c85-66deefd47707",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/046d2a60-3a39-4277-8c85-66deefd47707/LAUSUNTO_20240827105603.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Ulkoministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-e82a824b",
+   "kind": "observed",
+   "occurred_at": "2024-05-15T00:00:00+03:00",
+   "known_at": "2024-08-27T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "OIkeusministeriön lausunto",
+     "location": "asiakirjat · uuid e82a824b-ac6e-4f61-9fdd-2c72cd9e6c6c",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/e82a824b-ac6e-4f61-9fdd-2c72cd9e6c6c/LAUSUNTO_20240827110753.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Oikeusministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-9b647093",
+   "kind": "observed",
+   "occurred_at": "2024-05-07T00:00:00+03:00",
+   "known_at": "2024-09-02T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Opetus- ja kulttuuriministeriön lausunto",
+     "location": "asiakirjat · uuid 9b647093-45cb-4d29-9d65-2e1e675b8b51",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/9b647093-45cb-4d29-9d65-2e1e675b8b51/LAUSUNTO_20240902092842.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Opetus- ja kulttuuriministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-080787a4",
+   "kind": "observed",
+   "occurred_at": "2024-05-07T00:00:00+03:00",
+   "known_at": "2024-09-02T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Valtioneuvoston kanslian lausunto liittyen ehdotukseen hallituksen esitykseksi eduskunnalle laeiksi Suomen Teollisuussij",
+     "location": "asiakirjat · uuid 080787a4-095a-4c78-ae39-72c3653253be",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/080787a4-095a-4c78-ae39-72c3653253be/LAUSUNTO_20240902092842.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Valtioneuvoston kanslia"
+   }
+  },
+  {
+   "node_id": "asiakirja-5dcfa94a",
+   "kind": "observed",
+   "occurred_at": "2024-05-07T00:00:00+03:00",
+   "known_at": "2024-09-02T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Ympäristöministeriön lausunto; Lausuntopyyntö Suomen Teollisuussijoitus -konsernin muodostamista koskevasta HE-luonnokse",
+     "location": "asiakirjat · uuid 5dcfa94a-0ada-4be8-9869-be3b4d17832d",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/5dcfa94a-0ada-4be8-9869-be3b4d17832d/LAUSUNTO_20240902092842.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Ympäristöministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-b4f5c1a9",
+   "kind": "observed",
+   "occurred_at": "2024-05-06T00:00:00+03:00",
+   "known_at": "2024-09-02T00:00:00+03:00",
+   "retrieved_at": "2026-09-29T16:04:29+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Valtiovarainministeriön lausunto",
+     "location": "asiakirjat · uuid b4f5c1a9-2f67-43a2-bf92-95ae7a9f8c85",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/4f20efd3-0b7b-4c05-9237-1adb7041c9fa/b4f5c1a9-2f67-43a2-bf92-95ae7a9f8c85/LAUSUNTO_20240902092842.PDF",
+     "retrieved_at": "2026-09-29T16:04:29+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Valtiovarainministeriö"
+   }
+  }
+ ],
+ "_expected_note": "Eivat ole tapahtumia. Ei aikaleimoja. Automaatti EI lisaa naita — se vain kantaa ne edellisesta ja poistaa toteutuneet.",
+ "expected": [],
+ "_content_hash": "eff2b82ad189"
+}

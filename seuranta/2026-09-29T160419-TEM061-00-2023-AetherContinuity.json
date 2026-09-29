@@ -1,0 +1,24 @@
+{
+ "_schema": "aci/ogas3-promotion/v0.1",
+ "_note": "Muuttumaton. Uusi nosto = uusi tiedosto.",
+ "promoted_at": "2026-09-29T16:04:19+00:00",
+ "promoted_by": "AetherContinuity",
+ "association": "OWNER",
+ "approved_by": null,
+ "he": "HE 86/2024",
+ "tunnus": "TEM061:00/2023",
+ "tunnus_source": "annettu",
+ "peruste": "https://www.edilex.fi/mt/tavm20240023\nTaVM 23/2024 vp - HE 86/2024 vp\nTalousvaliokunta\nHallituksen esitys eduskunnalle laeiksi Teollisuustuki Oy -nimisestä valtion kokonaan omistamasta osakeyhtiöstä sekä Suomen Teollisuussijoitus Oy -nimisestä valtionyhtiöstä annetun lain muuttamisesta\nJOHDANTO",
+ "state_at_promotion": {
+  "summary": "2026-09",
+  "summary_sha256": "2a1f852eca4145bac8084bbbf50e7498fd6fb495678391c5147029bf9fab3c74",
+  "outcome": "määrittämätön",
+  "eduskunta_vastaus": null,
+  "saadokset": [],
+  "note": null
+ },
+ "issue": {
+  "number": 9,
+  "url": "https://github.com/AetherContinuity/ogas3/issues/9"
+ }
+}

@@ -1,6 +1,6 @@
 {
  "_schema": "aci/ogas3-index/v0.1",
- "generated_at": "2026-09-29T16:00:28+00:00",
+ "generated_at": "2026-09-29T16:04:30+00:00",
  "months": [
   {
    "month": "2026-09",
@@ -113,6 +113,37 @@
    "latest": true
   },
   {
+   "file": "TEM06100-2023-trace-2026-09-29.json",
+   "tunnus": "TEM061:00/2023",
+   "subject": "Valtion pääomasijoitusyhtiön hallituksen esityksen valmistelu",
+   "domain": null,
+   "locked_at": "2026-09-29",
+   "revision": 1,
+   "content_hash": "eff2b82ad189",
+   "hash_matches": true,
+   "observed": 27,
+   "expected": 0,
+   "known_at_missing": 0,
+   "state": {
+    "tila": "PAATTYNYT",
+    "asiakirjat_yhteensa": 23,
+    "asiakirjat_tyypeittain": {
+     "LAUSUNTO": 23
+    },
+    "lausuntoja_hankeikkunassa": 23,
+    "lausuntokierros_tila": "päättynyt",
+    "lausuntokierros_kesto_vrk": 28,
+    "lausuntokierros_auki_vrk": null,
+    "lausuntokierros_jaljella_vrk": null,
+    "lausuntokierroksia": 1,
+    "_lausuntoja_note": "Luku on Hankeikkunan asiakirjoista. TEM: Lausuntopalvelussa annetut nakyvat automaattisesti, kirjaamoon toimitettuja EI julkaista. Havaittu maara on siis ALARAJA, ei kokonaismaara.",
+    "uptake": null,
+    "_uptake_note": "MAARITTAMATON, ei nolla. Mitattavissa vasta taysistunnon aanestyksesta, ja aanestystyyppi on luokiteltava erikseen."
+   },
+   "supersedes": null,
+   "latest": true
+  },
+  {
    "file": "harjulinja-trace-2026-09-07.json",
    "tunnus": null,
    "subject": "Harjulinja 2 x 400+110 kV voimajohtohanke, Pyhäjärvi–Kangasniemi",
@@ -177,5 +208,18 @@
    "latest": true
   }
  ],
- "promotions": []
+ "promotions": [
+  {
+   "file": "2026-09-29T160419-TEM061-00-2023-AetherContinuity.json",
+   "promoted_at": "2026-09-29T16:04:19+00:00",
+   "promoted_by": "AetherContinuity",
+   "approved_by": null,
+   "he": "HE 86/2024",
+   "tunnus": "TEM061:00/2023",
+   "peruste": "https://www.edilex.fi/mt/tavm20240023\nTaVM 23/2024 vp - HE 86/2024 vp\nTalousvaliokunta\nHallituksen esitys eduskunnalle laeiksi Teollisuustuki Oy -nimisestä valtion kokonaan omistamasta osakeyhtiöstä sekä Suomen Teollisuussijoitus Oy -nimisestä valtionyhtiöstä annetun lain muuttamisesta\nJOHDANTO",
+   "outcome_at_promotion": "määrittämätön",
+   "ennen_ratkaisua": null,
+   "issue": "https://github.com/AetherContinuity/ogas3/issues/9"
+  }
+ ]
 }
