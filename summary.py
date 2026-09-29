@@ -34,7 +34,7 @@ from pathlib import Path
 from typing import Any
 
 from decision_chain import chains as build_chains
-from decision_chain import he_key
+from decision_chain import he_key, unlinked_lobbying
 
 ROOT = Path(__file__).resolve().parent
 SNAPSHOT_DIR = ROOT / "snapshots"
@@ -110,6 +110,7 @@ def summarize_snapshot(snap: dict, source_file: str | None = None,
     if ch is None:
         ch = build_chains(events)
     titles = _chain_titles(events)
+    unlinked = unlinked_lobbying(events)
     chain_rows = [{
         "he": he,
         "nimeke": titles.get(he),
@@ -118,6 +119,8 @@ def summarize_snapshot(snap: dict, source_file: str | None = None,
         "eduskunta_vastaus": c.get("eduskunta_vastaus"),
         "aanestykset": len(c["aanestykset"]),
         "saadokset": c["saadokset"],
+        "vaikuttamisilmoituksia": len(c.get("vaikuttaminen") or []),
+        "vaikuttajat": c.get("vaikuttajat") or [],
         "outcome": c["outcome"],
     } for he, c in ch.items()]
     order = {o: i for i, o in enumerate(OUTCOME_ORDER)}
@@ -166,6 +169,21 @@ def summarize_snapshot(snap: dict, source_file: str | None = None,
         "chains_outcome": dict(Counter(r["outcome"] for r in chain_rows)),
         "chains_derived_here": derived,
         "chains": chain_rows,
+        "vaikuttaminen": {
+            "_note": "Avoimuusrekisterin ilmoitukset, joiden aihe viittaa hankkeeseen "
+                     "tunnuksella. Päivä on ilmoituskauden tarkkuudella. Määrä kertoo "
+                     "ilmoitetusta toiminnasta, ei vaikutuksesta.",
+            "ketjut_eniten": sorted(
+                ({"he": r["he"], "nimeke": r["nimeke"], "vaikuttajia": len(r["vaikuttajat"]),
+                  "ilmoituksia": r["vaikuttamisilmoituksia"], "outcome": r["outcome"]}
+                 for r in chain_rows if r["vaikuttamisilmoituksia"]),
+                key=lambda x: (-x["vaikuttajia"], x["he"]))[:25],
+            "ilman_ketjua": sorted(
+                ({"tunnus": t, **{k: v for k, v in c.items() if k != "vaikuttajat"},
+                  "vaikuttajia": len(c["vaikuttajat"])} for t, c in unlinked.items()),
+                key=lambda x: (-x["vaikuttajia"], x["tunnus"]))[:25],
+            "ilman_ketjua_yhteensa": len(unlinked),
+        },
         "anomalies": [{"event_id": e["event_id"], "source": e.get("source"),
                        "note": str(e["_anomaly"])[:300]}
                       for e in events if e.get("_anomaly")],

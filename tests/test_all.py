@@ -1894,6 +1894,77 @@ def test_trace_state_closed_round_has_no_negative_remaining():
     assert (st2["lausuntokierros_tila"], st2["lausuntokierros_jaljella_vrk"], st2["lausuntokierroksia"]) == ("auki", 11, 2)
 
 
+# ── Avoimuusrekisteri ────────────────────────────────────────────────
+AV_TERM = {"id": 5, "status": "closed", "reportingStartDate": "2026-01-01T00:00:00.000Z",
+           "reportingEndDate": "2026-06-30T00:00:00.000Z", "signUpStartDate": "2026-07-01T00:00:00.000Z"}
+
+
+def _av_notif(date="2026-08-15", topics=None):
+    return {"companyName": "Energiateollisuus ry", "companyId": "0215330-6", "mainIndustry": "Etujärjestö",
+            "activityAmount": "many", "activityNotificationDate": date, "diaryNumber": "D-1",
+            "isOverdue": False, "isEdited": False, "topics": topics if topics is not None else [
+                {"id": 11, "contactTopicType": "project", "activityType": "direct",
+                 "contactTopicProject": {"projectId": "TEM043:00/2026", "fi": "Sähkömarkkinalaki"},
+                 "contactedTargets": [{"contactedTargetId": 1, "contactMethods": ["meeting"]},
+                                      {"contactedTargetId": 2, "contactMethods": ["mail"]}]},
+                {"id": 12, "contactTopicType": "other", "contactTopicOther": "yleinen", "contactedTargets": []}]}
+
+
+AV_TARGETS = [{"id": 1, "fi": {"organization": "Työ- ja elinkeinoministeriö", "department": "Energiaosasto",
+                               "name": "Virkamies Esimerkki"}},
+              {"id": 2, "fi": {"organization": "Eduskunta", "department": "-", "name": "Kansanedustaja X"}}]
+
+
+def test_avoimuus_project_topics_only_and_no_person_names():
+    from avoimuus import topic_events
+    evs, log = topic_events([_av_notif()], AV_TARGETS, AV_TERM, "2026-09-29T00:00:00+00:00")
+    assert len(evs) == 1 and log["muita_aiheita"] == 1 and log["hankeaiheita"] == 1
+    d = evs[0].to_dict()
+    assert d["parameters"]["tunnus"] == "TEM043:00/2026"
+    assert d["parameters"]["kohteet"] == ["Eduskunta", "Työ- ja elinkeinoministeriö / Energiaosasto"]
+    assert "Virkamies" not in json.dumps(d, ensure_ascii=False), "henkilönimiä ei talleteta"
+    assert d["occurred_at"].startswith("2026-06-30") and d["known_at"].startswith("2026-08-15")
+    assert d["parameters"]["occurred_at_precision"] == "ilmoituskausi"
+    validate_event({**d, "type": "L"})
+
+
+def test_avoimuus_occurred_never_after_notification():
+    from avoimuus import topic_events
+    evs, _ = topic_events([_av_notif(date="2026-03-02")], AV_TARGETS, AV_TERM, "2026-09-29T00:00:00+00:00")
+    d = evs[0].to_dict()
+    assert d["occurred_at"].startswith("2026-03-02"), "kesken kauden ilmoitettu: yläraja on ilmoituspäivä"
+    validate_event({**d, "type": "L"})
+
+
+def test_avoimuus_term_selection_and_rate_limit_stops():
+    from datetime import datetime, timezone
+    from avoimuus import AvoimuusError, current_term, fetch_current
+    terms = [AV_TERM, {**AV_TERM, "id": 6, "signUpStartDate": "2027-01-01T00:00:00.000Z"},
+             {**AV_TERM, "id": 23, "status": "draft", "signUpStartDate": "2025-01-01T00:00:00.000Z"}]
+    assert current_term(terms, datetime(2026, 9, 29, tzinfo=timezone.utc))["id"] == 5
+    calls = []
+    def get(params):
+        calls.append(params)
+        if params.get("r"):
+            return {"data": terms}
+        raise AvoimuusError("avoimuusrekisteri 429: volyymiraja")
+    _raises_any(lambda: fetch_current(datetime(2026, 9, 29, tzinfo=timezone.utc), get=get), AvoimuusError)
+    assert len(calls) == 2, "volyymirajan jälkeen ei tehdä enää kutsuja"
+
+
+def test_chain_joins_lobbying_via_hanke():
+    from avoimuus import topic_events
+    from decision_chain import chains, unlinked_lobbying
+    evs, _ = topic_events([_av_notif()], AV_TARGETS, AV_TERM, "2026-09-29T00:00:00+00:00")
+    raw = [{"source": "Hankeikkuna", "event_id": "HI:TEM043", "parameters":
+            {"tunnus": "TEM043:00/2026", "heNumerot": ["HE 150/2026"]}}] + [e.to_dict() for e in evs]
+    c = chains(raw)["HE 150/2026"]
+    assert c["vaikuttaminen"] == ["AV:11"] and c["vaikuttajat"] == ["Energiateollisuus ry"]
+    assert c["outcome"] == "määrittämätön", "vaikuttaminen ei muuta lopputulosta"
+    assert unlinked_lobbying(raw) == {}
+    assert list(unlinked_lobbying([e.to_dict() for e in evs])) == ["TEM043:00/2026"]
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0

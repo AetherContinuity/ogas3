@@ -366,11 +366,25 @@ def chains(raw_events: Iterable[dict]) -> dict[str, dict]:
     23/40 haetusta HE:stä oli jo eduskunnan vastaus.
     """
     out: dict[str, dict] = {}
+    raw_events = list(raw_events)
 
     def slot(k: str) -> dict:
         return out.setdefault(k, {"hankkeet": [], "eduskunta_vaiheet": 0,
                                   "eduskunta_vastaus": None,
-                                  "aanestykset": [], "saadokset": []})
+                                  "aanestykset": [], "saadokset": [],
+                                  "vaikuttaminen": [], "vaikuttajat": []})
+
+    # Hankkeen tunnus -> HE. Avoimuusrekisteri viittaa hankkeeseen, ei
+    # HE:hen, joten liitos kulkee Hankeikkunan heNumerot-kentän kautta.
+    tunnus_he: dict[str, set] = {}
+    for d in raw_events:
+        if d.get("source") == "Hankeikkuna":
+            p = d.get("parameters") or {}
+            for h in p.get("heNumerot") or []:
+                k = he_key(h) if isinstance(h, str) else None
+                if k and p.get("tunnus"):
+                    tunnus_he.setdefault(p["tunnus"], set()).add(k)
+
     for d in raw_events:
         p = d.get("parameters") or {}
         src = d.get("source")
@@ -397,7 +411,17 @@ def chains(raw_events: Iterable[dict]) -> dict[str, dict]:
                 k = he_key(h)
                 if k:
                     slot(k)["saadokset"].append(p.get("saados"))
+        elif src == "Avoimuusrekisteri":
+            # Vaikuttaminen EI muuta lopputulosta: se on ketjun sisältöä,
+            # ei sen vaihe. Hanke ilman HE:tä jää ketjujen ulkopuolelle
+            # (ks. unlinked_lobbying).
+            for k in tunnus_he.get(p.get("tunnus"), ()):
+                c = slot(k)
+                c["vaikuttaminen"].append(d["event_id"])
+                if p.get("ilmoittaja") and p["ilmoittaja"] not in c["vaikuttajat"]:
+                    c["vaikuttajat"].append(p["ilmoittaja"])
     for c in out.values():
+        c["vaikuttajat"].sort()
         c["outcome"] = ("säädös vahvistettu" if c["saadokset"]
                         else "eduskunta päättänyt" if c["eduskunta_vastaus"]
                         else "äänestetty" if c["aanestykset"]
@@ -432,3 +456,24 @@ def resolve_hanke(he: str, search: Callable[[dict], list] | None = None) -> tupl
     return hits, {"source": "Hankeikkuna HE-haku", "tunnus": key,
                   "candidates": len(evs), "n": len(hits)}
 
+
+def unlinked_lobbying(raw_events: Iterable[dict]) -> dict[str, dict]:
+    """Avoimuusrekisterin hankkeet, joita ei voitu liittää HE-ketjuun:
+    hanke ei ollut kaappauksessa tai sillä ei ole HE-numeroa (esim.
+    asetushanke, strategia). Näytetään erikseen, ei pudoteta."""
+    evs = list(raw_events)
+    linked = {(d.get("parameters") or {}).get("tunnus") for d in evs
+              if d.get("source") == "Hankeikkuna" and (d.get("parameters") or {}).get("heNumerot")}
+    out: dict[str, dict] = {}
+    for d in evs:
+        if d.get("source") != "Avoimuusrekisteri":
+            continue
+        p = d.get("parameters") or {}
+        t = p.get("tunnus")
+        if not t or t in linked:
+            continue
+        c = out.setdefault(t, {"hanke_nimi": p.get("hanke_nimi"), "ilmoituksia": 0, "vaikuttajat": set()})
+        c["ilmoituksia"] += 1
+        if p.get("ilmoittaja"):
+            c["vaikuttajat"].add(p["ilmoittaja"])
+    return {t: {**c, "vaikuttajat": sorted(c["vaikuttajat"])} for t, c in sorted(out.items())}
