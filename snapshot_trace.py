@@ -131,13 +131,23 @@ def nodes_from_etapit(etapit: list, retrieved_at: str, today: str) -> list[dict]
             continue
         vaihe = e.get("valmisteluvaihe") or "ETAPPI"
         nid = f"etappi-{vaihe.lower()}-{e['alku'][:10]}"
-        kesto = None
-        if e.get("alku"):
-            try:
-                a = datetime.fromisoformat(e["alku"][:10])
-                kesto = (datetime.fromisoformat(today) - a).days
-            except Exception:
-                pass
+        alku = e["alku"][:10]
+        loppu = (e.get("loppu") or "")[:10] or None
+        # KORJATTU 2026-09-29, kaksi vikaa:
+        # (1) Avoin etappi (loppu = None) kaatoi koko tracen: e.get('loppu','')
+        #     palauttaa None:n kun avain on olemassa arvolla null. Ensimmäinen
+        #     nosto (HE 46/2025, TEM050:00/2024) kaatui tähän.
+        # (2) 'kesto_vrk' oli today − alku, eli KULUNUT aika, joka muuttui
+        #     jokaisessa snapshotissa vaikka mikään ei muuttunut. Nyt kaksi
+        #     kenttää: kesto on loppu − alku (None avoimelle), kulunut erikseen.
+        kesto = kulunut = None
+        try:
+            a = datetime.fromisoformat(alku)
+            kulunut = (datetime.fromisoformat(today) - a).days
+            if loppu:
+                kesto = (datetime.fromisoformat(loppu) - a).days
+        except ValueError:
+            pass
         out.append({
             "node_id": nid,
             "kind": "observed",
@@ -146,15 +156,16 @@ def nodes_from_etapit(etapit: list, retrieved_at: str, today: str) -> list[dict]
             "retrieved_at": retrieved_at,
             "source": "Hankeikkuna etapit",
             "evidence": [{
-                "quote": f"{vaihe} {e.get('alku','')[:10]} – {e.get('loppu','')[:10]}",
+                "quote": f"{vaihe} {alku} – {loppu or 'avoin'}",
                 "location": "etapit",
                 "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
                 "retrieved_at": retrieved_at,
             }],
             "_derived": {
                 "vaihe": e.get("vaihe"),
-                "loppu": (e.get("loppu") or "")[:10] or None,
+                "loppu": loppu,
                 "kesto_vrk": kesto,
+                "kulunut_vrk_lukitushetkella": kulunut,
             },
         })
     return out
@@ -200,24 +211,34 @@ def derive_state(kohde: dict, etapit: list, asiakirjat: list,
         t = x.get("tyyppi") or "?"
         tyypit[t] = tyypit.get(t, 0) + 1
 
-    lausunto_kierros = None
-    for e in etapit or []:
-        if (e.get("valmisteluvaihe") or "").upper() == "LAUSUNTOMENETTELY":
-            lausunto_kierros = e
-            break
+    # Uusin lausuntokierros (hankkeella voi olla useita). KORJATTU
+    # 2026-09-29: aiemmin ensimmäinen, ja päättyneelle kierrokselle
+    # laskettiin "jäljellä −664 vrk" ja "auki 705 vrk". Nyt jäljellä ja
+    # auki vain avoimelle kierrokselle; päättyneelle kesto.
+    kierrokset = sorted((e for e in etapit or []
+                         if (e.get("valmisteluvaihe") or "").upper() == "LAUSUNTOMENETTELY"
+                         and e.get("alku")), key=lambda e: e["alku"])
+    lausunto_kierros = kierrokset[-1] if kierrokset else None
 
-    auki_vrk = None
-    jaljella_vrk = None
+    auki_vrk = jaljella_vrk = kesto_vrk = None
+    kierros_tila = None
     if lausunto_kierros:
         try:
             t0 = datetime.fromisoformat(today)
-            if lausunto_kierros.get("alku"):
-                auki_vrk = (t0 - datetime.fromisoformat(
-                    lausunto_kierros["alku"][:10])).days
-            if lausunto_kierros.get("loppu"):
-                jaljella_vrk = (datetime.fromisoformat(
-                    lausunto_kierros["loppu"][:10]) - t0).days
-        except Exception:
+            a = datetime.fromisoformat(lausunto_kierros["alku"][:10])
+            l = (datetime.fromisoformat(lausunto_kierros["loppu"][:10])
+                 if lausunto_kierros.get("loppu") else None)
+            if l is not None:
+                kesto_vrk = (l - a).days
+            if t0 < a:
+                kierros_tila = "tulossa"
+            elif l is not None and l < t0:
+                kierros_tila = "päättynyt"
+            else:
+                kierros_tila = "auki"
+                auki_vrk = (t0 - a).days
+                jaljella_vrk = (l - t0).days if l is not None else None
+        except ValueError:
             pass
 
     return {
@@ -225,8 +246,11 @@ def derive_state(kohde: dict, etapit: list, asiakirjat: list,
         "asiakirjat_yhteensa": len(asiakirjat or []),
         "asiakirjat_tyypeittain": tyypit,
         "lausuntoja_hankeikkunassa": tyypit.get("LAUSUNTO", 0),
+        "lausuntokierros_tila": kierros_tila,
+        "lausuntokierros_kesto_vrk": kesto_vrk,
         "lausuntokierros_auki_vrk": auki_vrk,
         "lausuntokierros_jaljella_vrk": jaljella_vrk,
+        "lausuntokierroksia": len(kierrokset),
         "_lausuntoja_note": (
             "Luku on Hankeikkunan asiakirjoista. TEM: Lausuntopalvelussa "
             "annetut nakyvat automaattisesti, kirjaamoon toimitettuja EI "
