@@ -4,6 +4,7 @@ Aja: python3 -m pytest tests -q     (tai)     python3 tests/test_all.py
 """
 
 import copy
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -1663,6 +1664,77 @@ def test_chain_he_key_normalises_forms():
     from decision_chain import he_key
     assert he_key("HE 51/2026 vp") == he_key("HE  051 / 2026") == "HE 51/2026"
     assert he_key("VNT 1/2026 vp") is None
+
+
+# ── Tiivistelmä käyttöliittymälle ────────────────────────────────────
+def _snap_min():
+    return {"month": "2026-10", "queries": [
+        {"source": "Eduskunta äänestys", "tunnus": "HE 2/2026", "status": "ei tietuetta", "n": 0},
+        {"source": "Finlex", "error": "Finlex 429"}],
+        "events": [
+        {"event_id": "HI:A", "source": "Hankeikkuna", "subtype": "EDUSKUNTAKASITTELY",
+         "occurred_at": "2026-09-01T00:00:00+03:00", "known_at": "2026-09-03T00:00:00+03:00",
+         "type": None, "parameters": {"tunnus": "TEM1", "heNumerot": ["HE 1/2026"]},
+         "evidence": [{"quote": "Hankkeen nimi"}]},
+        {"event_id": "FX:2026/9", "source": "Finlex", "subtype": "act", "type": None,
+         "occurred_at": "2026-09-10T00:00:00+03:00", "known_at": "2026-09-12T00:00:00+03:00",
+         "parameters": {"saados": "9/2026", "nimeke": "Laki X:n muuttamisesta", "heNumerot": ["HE 1/2026"]},
+         "evidence": [{"quote": "9/2026 Laki"}]},
+        {"event_id": "HI:B", "source": "Hankeikkuna", "type": None, "_anomaly": "known ennen occurred",
+         "occurred_at": None, "known_at": None, "parameters": {"tunnus": "TEM2", "heNumerot": ["HE 2/2026"]},
+         "evidence": [{"quote": "Toinen"}]}]}
+
+
+def test_summary_derives_chains_with_same_function():
+    from decision_chain import chains
+    from summary import summarize_snapshot
+    snap = _snap_min()
+    s = summarize_snapshot(snap)
+    assert s["chains_derived_here"] is True
+    assert {r["he"]: r["outcome"] for r in s["chains"]} == \
+           {k: v["outcome"] for k, v in chains(snap["events"]).items()}
+    assert s["chains"][0]["outcome"] == "säädös vahvistettu", "järjestys: vahvistetut ensin"
+
+
+def test_summary_title_prefers_statute_and_reports_quality():
+    from summary import summarize_snapshot
+    s = summarize_snapshot(_snap_min())
+    row = next(r for r in s["chains"] if r["he"] == "HE 1/2026")
+    assert row["nimeke"] == "Laki X:n muuttamisesta"
+    assert s["totals"]["anomalies"] == 1 and s["anomalies"][0]["event_id"] == "HI:B"
+    assert s["errors"] and s["errors"][0]["source"] == "Finlex"
+    assert s["votes_lookup"] == {"ei tietuetta": 1}
+    assert s["rri"] is None, "RRI:tä ei näytetä nollana ennen luokitusta"
+    assert s["visibility_lag_days"]["Hankeikkuna"]["n"] == 1, "anomalia ei mene viivetilastoon"
+
+
+def test_summary_binds_to_source_hash_and_index_marks_latest():
+    import tempfile, summary as sm
+    from traces import content_hash
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp = Path(tmp)
+        (tmp / "snapshots").mkdir(); (tmp / "traces").mkdir()
+        sp = tmp / "snapshots" / "2026-10.json"
+        sp.write_text(json.dumps(_snap_min()), encoding="utf-8")
+        old = _mk_trace(tmp / "traces", _locked_at="2026-09-07")
+        oldp = Path(old); oldp.rename(tmp / "traces" / "a-old.json")
+        new = json.loads((tmp / "traces" / "a-old.json").read_text(encoding="utf-8"))
+        new["_locked_at"] = "2026-09-14"; new["_revision"] = 2
+        new["_supersedes"] = {"file": "a-old.json"}
+        new.pop("_content_hash", None); new["_content_hash"] = content_hash(new)
+        (tmp / "traces" / "b-new.json").write_text(json.dumps(new), encoding="utf-8")
+        o1, o2, o3 = sm.SNAPSHOT_DIR, sm.TRACE_DIR, sm.ROOT
+        sm.SNAPSHOT_DIR, sm.TRACE_DIR, sm.ROOT = tmp / "snapshots", tmp / "traces", tmp
+        try:
+            sm.write_all()
+            idx = json.loads((tmp / "snapshots" / "index.json").read_text(encoding="utf-8"))
+            s = json.loads((tmp / "snapshots" / "2026-10.summary.json").read_text(encoding="utf-8"))
+        finally:
+            sm.SNAPSHOT_DIR, sm.TRACE_DIR, sm.ROOT = o1, o2, o3
+        assert s["source_sha256"] == hashlib.sha256(sp.read_bytes()).hexdigest()
+        assert idx["months"][0]["summary_matches_snapshot"] is True
+        latest = {t["file"]: t["latest"] for t in idx["traces"]}
+        assert latest == {"a-old.json": False, "b-new.json": True}, latest
 
 
 if __name__ == "__main__":

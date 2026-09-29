@@ -1,0 +1,178 @@
+{
+ "_schema": "aci/ogas3-index/v0.1",
+ "generated_at": "2026-09-29T09:39:58+00:00",
+ "months": [
+  {
+   "month": "2026-09",
+   "snapshot": "2026-09.json",
+   "summary": "2026-09.summary.json",
+   "events": 1116,
+   "anomalies": 3,
+   "sources": [
+    "Eduskunta",
+    "Hankeikkuna"
+   ],
+   "chains_outcome": {
+    "määrittämätön": 81
+   },
+   "summary_matches_snapshot": true
+  }
+ ],
+ "traces": [
+  {
+   "file": "TEM040-trace-2026-09-07.json",
+   "tunnus": "TEM040:00/2026",
+   "subject": "Hallituksen esitys eduskunnalle laiksi datakeskusrekisteristä",
+   "domain": null,
+   "locked_at": "2026-09-07",
+   "revision": 1,
+   "content_hash": "948e9084a6f3",
+   "hash_matches": true,
+   "observed": 4,
+   "expected": 7,
+   "known_at_missing": 0,
+   "state": null,
+   "supersedes": null,
+   "latest": false
+  },
+  {
+   "file": "TEM040-trace-2026-09-14.json",
+   "tunnus": "TEM040:00/2026",
+   "subject": "Hallituksen esitys eduskunnalle laiksi datakeskusrekisteristä",
+   "domain": null,
+   "locked_at": "2026-09-14",
+   "revision": 2,
+   "content_hash": "4144764abbf8",
+   "hash_matches": true,
+   "observed": 5,
+   "expected": 8,
+   "known_at_missing": 0,
+   "state": null,
+   "supersedes": "TEM040-trace-2026-09-07.json",
+   "latest": false
+  },
+  {
+   "file": "TEM04000-2026-trace-2026-09-14.json",
+   "tunnus": "TEM040:00/2026",
+   "subject": "Hallituksen esitys eduskunnalle laiksi datakeskusrekisteristä",
+   "domain": null,
+   "locked_at": "2026-09-14",
+   "revision": 1,
+   "content_hash": "accc762da836",
+   "hash_matches": true,
+   "observed": 4,
+   "expected": 8,
+   "known_at_missing": 0,
+   "state": {
+    "tila": "KAYNNISSA",
+    "asiakirjat_yhteensa": 4,
+    "asiakirjat_tyypeittain": {
+     "LAUSUNTOPYYNTO": 2,
+     "KIRJE": 2
+    },
+    "lausuntoja_hankeikkunassa": 0,
+    "lausuntokierros_auki_vrk": 11,
+    "lausuntokierros_jaljella_vrk": 18,
+    "_lausuntoja_note": "Luku on Hankeikkunan asiakirjoista. TEM: Lausuntopalvelussa annetut nakyvat automaattisesti, kirjaamoon toimitettuja EI julkaista. Havaittu maara on siis ALARAJA, ei kokonaismaara.",
+    "uptake": null,
+    "_uptake_note": "MAARITTAMATON, ei nolla. Mitattavissa vasta taysistunnon aanestyksesta, ja aanestystyyppi on luokiteltava erikseen."
+   },
+   "supersedes": "TEM040-trace-2026-09-14.json",
+   "latest": true
+  },
+  {
+   "file": "TEM04300-2026-trace-2026-09-28.json",
+   "tunnus": "TEM043:00/2026",
+   "subject": "Hallituksen esitys laiksi sähkömarkkinalain muuttamisesta",
+   "domain": null,
+   "locked_at": "2026-09-28",
+   "revision": 1,
+   "content_hash": "72f0070649c0",
+   "hash_matches": true,
+   "observed": 7,
+   "expected": 9,
+   "known_at_missing": 0,
+   "state": {
+    "tila": "KAYNNISSA",
+    "asiakirjat_yhteensa": 7,
+    "asiakirjat_tyypeittain": {
+     "LAUSUNTOPYYNTO": 2,
+     "KIRJE": 2,
+     "LAUSUNTO": 3
+    },
+    "lausuntoja_hankeikkunassa": 3,
+    "lausuntokierros_auki_vrk": 10,
+    "lausuntokierros_jaljella_vrk": 11,
+    "_lausuntoja_note": "Luku on Hankeikkunan asiakirjoista. TEM: Lausuntopalvelussa annetut nakyvat automaattisesti, kirjaamoon toimitettuja EI julkaista. Havaittu maara on siis ALARAJA, ei kokonaismaara.",
+    "uptake": null,
+    "_uptake_note": "MAARITTAMATON, ei nolla. Mitattavissa vasta taysistunnon aanestyksesta, ja aanestystyyppi on luokiteltava erikseen."
+   },
+   "supersedes": null,
+   "latest": true
+  },
+  {
+   "file": "harjulinja-trace-2026-09-07.json",
+   "tunnus": null,
+   "subject": "Harjulinja 2 x 400+110 kV voimajohtohanke, Pyhäjärvi–Kangasniemi",
+   "domain": null,
+   "locked_at": "2026-09-07",
+   "revision": 1,
+   "content_hash": "bb03b206400b",
+   "hash_matches": true,
+   "observed": 1,
+   "expected": 7,
+   "known_at_missing": 1,
+   "state": null,
+   "supersedes": null,
+   "latest": true
+  },
+  {
+   "file": "kronikka-paattyneet-2026-09-16.json",
+   "tunnus": "KRONIKKA-PAATTYNEET",
+   "subject": "Caruna, Uniper ja GrowHow — paattyneet paatosketjut",
+   "domain": "fiskaali",
+   "locked_at": "2026-09-16",
+   "revision": 1,
+   "content_hash": "cea8d01fcbf2",
+   "hash_matches": true,
+   "observed": 18,
+   "expected": 4,
+   "known_at_missing": 1,
+   "state": null,
+   "supersedes": null,
+   "latest": true
+  },
+  {
+   "file": "kronikka-trace-2026-09-16.json",
+   "tunnus": "KRONIKKA-2000-2026",
+   "subject": "Valtionhallinnon EDP-velka 2000-2025 (kronikan selkaranka)",
+   "domain": "fiskaali",
+   "locked_at": "2026-09-16",
+   "revision": 2,
+   "content_hash": "590e369aea6a",
+   "hash_matches": true,
+   "observed": 11,
+   "expected": 2,
+   "known_at_missing": 0,
+   "state": null,
+   "supersedes": null,
+   "latest": true
+  },
+  {
+   "file": "lansirata-trace-2026-09-07.json",
+   "tunnus": null,
+   "subject": "Länsirata (Espoo–Salo-oikorata, ent. Turun tunnin juna)",
+   "domain": "fiskaali",
+   "locked_at": "2026-09-07",
+   "revision": 1,
+   "content_hash": "a7484aa07c05",
+   "hash_matches": true,
+   "observed": 6,
+   "expected": 4,
+   "known_at_missing": 2,
+   "state": null,
+   "supersedes": null,
+   "latest": true
+  }
+ ]
+}
