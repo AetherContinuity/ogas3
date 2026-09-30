@@ -31,6 +31,21 @@ DT = [
 ]
 
 
+# PTX — sähköä kuluttava polttoaine- ja kemikaalituotanto. Vireillä
+# olevien PtX-YVA-hankkeiden kehittäjät (lahto_ptx.json), ilman
+# siirtoverkkoja ja satamia. Lisätty 30.9.2026 ennen lukitusta: PtX ja
+# datakeskus kilpailevat samasta liittymäkapasiteetista.
+PTX = [
+    "arctic sisu", "flagshipseven", "flexens", "vetyalfa", "abo energy", "wega group",
+    "etfuels", "st1", "plug power", "luoto energia", "nordic ren-gas",
+]
+
+
+def is_ptx(name: str | None) -> bool:
+    n = (name or "").strip().lower()
+    return any(n.startswith(s) for s in PTX)
+
+
 def is_dt(name: str | None) -> bool:
     n = (name or "").strip().lower()
     return any(n.startswith(s) for s in DT)
@@ -78,6 +93,16 @@ def h1() -> dict:
     return {"hypoteesi": "H1", "trace_locked_at": t["_locked_at"], "lausunnonantajia": len(la),
             "dt": dt, "n_dt": len(dt), "ennuste": ">= 3", "tulos": "TUETTU" if len(dt) >= 3 else "KUMOTTU",
             "muut_yritykset": [a for a in la if not is_dt(a) and re.search(r"\b(oy|oyj|ab|ltd)\b", a, re.I)]}
+
+
+def h1b() -> dict:
+    """Toissijainen. Uusi suurkuorma = DT ∪ PTX."""
+    t = latest_trace("TEM043:00/2026", H12_MIN_LOCKED)
+    la = lausunnonantajat(t)
+    sk = [a for a in la if is_dt(a) or is_ptx(a)]
+    return {"hypoteesi": "H1b", "trace_locked_at": t["_locked_at"], "lausunnonantajia": len(la),
+            "suurkuorma": sk, "dt": [a for a in sk if is_dt(a)], "ptx": [a for a in sk if is_ptx(a)],
+            "n": len(sk), "ennuste": ">= 5", "tulos": "TUETTU" if len(sk) >= 5 else "KUMOTTU"}
 
 
 def h2() -> dict:
@@ -142,8 +167,8 @@ def h4() -> dict:
 
 if __name__ == "__main__":
     which = sys.argv[1] if len(sys.argv) > 1 else ""
-    fn = {"H1": h1, "H2": h2, "H4": h4}.get(which)
+    fn = {"H1": h1, "H1b": h1b, "H2": h2, "H4": h4}.get(which)
     res = h3(sys.argv[2]) if which == "H3" else fn() if fn else None
     if res is None:
-        raise SystemExit("käyttö: q001.py H1|H2|H4  tai  q001.py H3 <kausi6.json>")
+        raise SystemExit("käyttö: q001.py H1|H1b|H2|H4  tai  q001.py H3 <kausi6.json>")
     print(json.dumps(res, ensure_ascii=False, indent=1))

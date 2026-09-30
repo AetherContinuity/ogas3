@@ -171,6 +171,27 @@ def promote(*, he_in: str, tunnus_in: str, peruste: str, login: str,
     return {"record": path, "trace": trace_path, "trace_note": trace_note, "tunnus": tunnus, "he": he}
 
 
+def traced_open() -> set[str]:
+    """Hankkeet joilla on trace mutta ei nostoa (tehty ennen nostotoimintoa
+    tai käsin). KORJATTU 2026-09-30: monitori näytti ne seurantalistalla,
+    mutta refresh päivitti vain nostetut — lista väitti seurantaa jota ei
+    tehty. Nyt jokainen Hankeikkuna-tunnuksellinen trace päivittyy, kunnes
+    sen uusin tila on PAATTYNYT. Nostettu päivittyy aina."""
+    latest: dict[str, dict] = {}
+    for f in TRACES.glob("*.json") if TRACES.exists() else []:
+        try:
+            d = json.loads(f.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        t = (d.get("subject") or {}).get("tunnus")
+        if not t or not TUNNUS_RE.match(t):
+            continue
+        key = (d.get("_locked_at") or "", d.get("_revision") or 1)
+        if t not in latest or key > latest[t]["key"]:
+            latest[t] = {"key": key, "tila": (d.get("_state") or {}).get("tila")}
+    return {t for t, v in latest.items() if v["tila"] != "PAATTYNYT"}
+
+
 def refresh(today: str | None = None, snapshot=None) -> list[dict]:
     """Kuukausiajo: uusi trace-revisio jokaiselle seurannassa olevalle
     tunnukselle. Samana päivänä jo tehtyä ei tehdä uudelleen (tiedostonimi
@@ -178,8 +199,9 @@ def refresh(today: str | None = None, snapshot=None) -> list[dict]:
     if snapshot is None:
         from snapshot_trace import make_snapshot as snapshot
     today = today or datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    tunnukset = sorted({json.loads(p.read_text(encoding="utf-8"))["tunnus"]
-                        for p in SEURANTA.glob("*.json")} if SEURANTA.exists() else set())
+    promoted = {json.loads(p.read_text(encoding="utf-8"))["tunnus"]
+                for p in SEURANTA.glob("*.json")} if SEURANTA.exists() else set()
+    tunnukset = sorted(promoted | traced_open())
     out = []
     for t in tunnukset:
         prev = trace_exists(t)

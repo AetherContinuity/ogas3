@@ -2021,6 +2021,29 @@ def test_yva_future_phase_is_not_an_event():
     assert st2["tunnistamattomat"] == ["Tiedotustilaisuus 2.9.2025"]
 
 
+def test_promote_refresh_includes_open_unpromoted_traces():
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        pr, old = _promote_env(Path(tmp))
+        try:
+            (pr.TRACES / "TEM04300-2026-trace-2026-09-28.json").write_text(json.dumps(
+                {"_locked_at": "2026-09-28", "subject": {"tunnus": "TEM043:00/2026"}, "_state": {"tila": "KAYNNISSA"}}))
+            (pr.TRACES / "TEM06100-2023-trace-2026-09-29.json").write_text(json.dumps(
+                {"_locked_at": "2026-09-29", "subject": {"tunnus": "TEM061:00/2023"}, "_state": {"tila": "PAATTYNYT"}}))
+            (pr.TRACES / "kronikka.json").write_text(json.dumps({"subject": {"tunnus": "KRONIKKA-2000-2026"}}))
+            called = []
+            def snap(t, *a, **k):
+                called.append(t); return Path(f"{t}.json"), {}
+            pr.refresh(today="2026-11-01", snapshot=snap)
+            assert called == ["TEM043:00/2026"], called
+            pr.SEURANTA.mkdir()
+            (pr.SEURANTA / "a.json").write_text(json.dumps({"tunnus": "TEM061:00/2023"}))
+            called.clear(); pr.refresh(today="2026-11-01", snapshot=snap)
+            assert called == ["TEM043:00/2026", "TEM061:00/2023"], "nostettu päivittyy vaikka päättynyt"
+        finally:
+            pr.SEURANTA, pr.TRACES, pr.SNAPSHOTS = old
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0
