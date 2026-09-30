@@ -1,0 +1,216 @@
+{
+ "_haettu": "2026-09-30 YVA-hakemisto + hankesivun kuvaus",
+ "_saanto": "YVA-hankkeen nimi täsmää /vety|vedyn|metaan|metanol|power.?to|p2x|ptx|e-?polttoain|ammoniak|synteett|elektroly|sähköpolttoain|biohiili|e-?fuel/i; PTX-luetteloon vireillä (tai tila tuntematon) olevien kehittäjät, pois lukien siirtoverkot (Gasgrid Vetyverkot) ja satamat",
+ "hankkeet": {
+  "arctic-sisu-e-metaanin-tuotantolaitos-kotka": {
+   "nimi": "Arctic Sisu e-metaanin tuotantolaitos, Kotka",
+   "tila": "Vireillä",
+   "aihealue": "Kemianteollisuus",
+   "kehittaja": "Arctic Sisu",
+   "kuvaus": "Arctic Sisu suunnittelee vihreän vedyn ja e-metaanin tuotantolaitoksen rakentamista ja toiminnan käynnistämistä Kotkassa. Hanke sijoittuu Kotkan saaren itäosaan"
+  },
+  "e-metanolin-tuotantolaitos-naantali": {
+   "nimi": "e-metanolin tuotantolaitos, Naantali",
+   "tila": "Vireillä",
+   "aihealue": "Kemianteollisuus",
+   "kehittaja": "FlagshipSEVEN Oy",
+   "kuvaus": "FlagshipSEVEN Oy suunnittelee e-metanolin tuotantolaitosta Naantaliin. Laitoksen suunniteltu sijaintipaikka on Satama-Tupavuoren kaupunginosan teollisuusalueell"
+  },
+  "flexens-oy-ab-ammoniakin-tuotantolaitos-kokkola": {
+   "nimi": "Flexens Oy Ab, ammoniakin tuotantolaitos, Kokkola",
+   "tila": "Vireillä",
+   "aihealue": "Kemianteollisuus, Peruskemianteollisuuden laitokset, Öljyn, petrokemian tuotteiden tai kemiallisten tuotteiden varastot",
+   "kehittaja": "Flexens Oy Ab",
+   "kuvaus": "Flexens Oy Ab suunnittelee Kokkolan suurteollisuusalueelle sijoittuvaa kapasiteetiltaan noin 350 tai 400 megawatin vedyn tuotantolaitosta."
+  },
+  "green-north-energy-oy-vihrean-vedyn-ja-ammoniakin-tuotantolaitos-naantali": {
+   "nimi": "Green North Energy Oy, Vihreän vedyn ja ammoniakin tuotantolaitos, Naantali",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Kemianteollisuus, Peruskemianteollisuuden laitokset",
+   "kehittaja": "Green North Energy Oy",
+   "kuvaus": "Green North Energy Oy suunnittelee vihreän vedyn ja ammoniakin tuotantolaitoksen rakentamista ja toiminnan käynnistämistä Naantalissa. Laitoskokonaisuuteen kuul"
+  },
+  "koppo-energia-oy-synteettisen-metaanin-tai-metanolin-valmistus-kristiinankaupunki": {
+   "nimi": "Koppö Energia Oy, synteettisen metaanin tai metanolin valmistus, Kristiinankaupunki",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Kemianteollisuus, Peruskemianteollisuuden laitokset",
+   "kehittaja": null,
+   "kuvaus": "Laitoskokonaisuus on suunniteltu rakennettavaksi Karhusaaren teollisuusalueelle, vanhan voimalaitoksen eteläpuolelle. Hankealue sijaitsee Kristiinankaupungin ke"
+  },
+  "liminkankaan-vihrean-vedyn-jalostamohanke-vaala": {
+   "nimi": "Liminkankaan vihreän vedyn jalostamohanke, Vaala",
+   "tila": "Vireillä",
+   "aihealue": "Energiantuotanto, Voimalaitokset",
+   "kehittaja": "Vetyalfa Oy",
+   "kuvaus": "Vetyalfa Oy suunnittelee Vaalan kuntaan Liminkankaan alueelle vihreän vedyn jalostamoa. Hankkeessa suunnitellaan enimmillään noin 1000 MW:n vedynerotus- ja synt"
+  },
+  "mustikkakankaan-vihrean-vedyn-jalostamo-utajarvi": {
+   "nimi": "Mustikkakankaan vihreän vedyn jalostamo, Utajärvi",
+   "tila": "Vireillä",
+   "aihealue": "Energiantuotanto, Voimalaitokset",
+   "kehittaja": null,
+   "kuvaus": "Vetyalfa Oy:n Utajärvelle Mustikkakankaalle sijoittuva vihreän vedyn jalostamohanke tähtää 500–1000 MW:n vedynerotus- ja jalostuslaitoksen rakentamiseen sekä au"
+  },
+  "nivalan-bio-ja-e-metaanin-laitoshanke-nivala": {
+   "nimi": "Nivalan bio- ja e-metaanin laitoshanke, Nivala",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Muiden jätteiden poltto- tai käsittelylaitokset",
+   "kehittaja": "Wega Group Oy",
+   "kuvaus": "Wega Group Oy suunnittelee Copenhagen Infrastructure Partnersin kanssa biometaanin ja e-metaanin yhdistettyä tuotantolaitosta Nivalan Kurunpuhtoon. Suunniteltu "
+  },
+  "nivalan-vihrean-vedyn-tuotantolaitos": {
+   "nimi": "Nivalan vihreän vedyn tuotantolaitos",
+   "tila": "Vireillä",
+   "aihealue": "Kemianteollisuus, Peruskemianteollisuuden laitokset",
+   "kehittaja": "ABO Energy",
+   "kuvaus": "ABO Energy suunnittelee vihreän vedyn tuotantolaitoksen rakentamista Nivalan kuntaan Kurunpuhdon teollisuusalueelle. Hankkeeseen kuuluu myös sähkönsiirtolinja 4"
+  },
+  "nordic-ren-gas-oy-puhtaiden-p2x-kaasupolttoaineiden-ja-co2-vapaan-kaukolammon-yhteistuotantolaitos": {
+   "nimi": "Nordic Ren-Gas Oy, Puhtaiden P2X kaasupolttoaineiden ja CO2-vapaan kaukolämmön yhteistuotantolaitos, Lahti",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Kemianteollisuus, Peruskemianteollisuuden laitokset",
+   "kehittaja": "Nordic Ren-Gas Oy",
+   "kuvaus": "Nordic Ren-Gas Oy suunnittelee Power-to- Gas -tuotantolaitosta Lahteen. Hankkeen tavoitteena on rakentaa tuotantolaitos, joka tuottaa uusiutuvaa synteettistä me"
+  },
+  "nordic-ren-gas-oy-puhtaiden-p2x-kaasupolttoaineiden-ja-co2-vapaan-kaukolammon-yhteistuotantolaitos-0": {
+   "nimi": "Nordic Ren-Gas Oy, Puhtaiden P2X kaasupolttoaineiden ja CO2-vapaan kaukolämmön yhteistuotantolaitos, Kerava",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Kemianteollisuus, Peruskemianteollisuuden laitokset",
+   "kehittaja": null,
+   "kuvaus": "Hankkeen tavoitteena on rakentaa uusiutuvaa synteettistä metaania, vetyä ja hukkalämmöstä tuotettua kaukolämpöä tuottava Power-to-Gas-tuotantolaitos. Laitos toi"
+  },
+  "poytyan-bio-ja-e-metaanin-laitoshanke-poytya": {
+   "nimi": "Pöytyän bio- ja e-metaanin laitoshanke, Pöytyä",
+   "tila": "Vireillä",
+   "aihealue": "Jätehuolto, Muiden jätteiden poltto- tai käsittelylaitokset, Kemianteollisuus, Muu kemianteollisuus",
+   "kehittaja": "Wega Group Oy",
+   "kuvaus": "Wega Group Oy suunnittelee Copenhagen Infrastructure Partnersin kanssa Pöytyälle, Lallin teollisuusalueelle, biokaasulaitosta ja sen yhteydessä toimivaa metanoi"
+  },
+  "puhtaiden-p2x-kaasupolttoaineiden-ja-co2-vapaan-kaukolammon-yhteistuotantolaitos-mikkeli": {
+   "nimi": "Puhtaiden P2X-kaasupolttoaineiden ja CO2-vapaan kaukolämmön yhteistuotantolaitos, Mikkeli",
+   "tila": null,
+   "aihealue": "Peruskemianteollisuuden laitokset, Kemianteollisuus",
+   "kehittaja": "Nordic Ren-Gas Oy",
+   "kuvaus": "Nordic Ren-Gas Oy suunnittelee Power-to-Gas-tuotantolaitosta Mikkeliin. Hankkeen tavoitteena on rakentaa tuotantolaitos, joka tuottaa uusiutuvaa synteettistä me"
+  },
+  "puhtaiden-p2x-kaasupolttoaineiden-ja-co2-vapaan-kaukolammon-yhteistuotantolaitos-pori": {
+   "nimi": "Puhtaiden P2X-kaasupolttoaineiden ja CO2-vapaan kaukolämmön yhteistuotantolaitos, Pori",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Kemianteollisuus, Peruskemianteollisuuden laitokset",
+   "kehittaja": "Nordic Ren-Gas Oy",
+   "kuvaus": "Nordic Ren-Gas Oy suunnittelee Power-to-Gas -tuotantolaitosta Porin Kirrinsannan teollisuusalueelle. Hankkeen tavoitteena on rakentaa tuotantolaitos, joka tuott"
+  },
+  "puhtaiden-p2x-kaasupolttoaineiden-ja-co2-vapaan-kaukolammon-yhteistuotantolaitos-seka-co2": {
+   "nimi": "Puhtaiden P2X kaasupolttoaineiden ja CO2-vapaan kaukolämmön yhteistuotantolaitos sekä CO2 talteenottolaitos, Nordic Ren-Gas Oy, Kotka",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Kemianteollisuus",
+   "kehittaja": "Yhtiö",
+   "kuvaus": "Yhtiö suunnittelee synteettisen kaasun tuotantolaitosta (P2G-laitos) sekä hiilidioksidin talteenottolaitosta (CCU-laitos) Kotkaan."
+  },
+  "puhtaiden-p2x-kaasupolttoaineiden-ja-co2-vapaan-kaukolammon-yhteistuotantolaitos-tampere": {
+   "nimi": "Puhtaiden P2X-kaasupolttoaineiden ja CO2-vapaan kaukolämmön yhteistuotantolaitos, Tampere",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Kemianteollisuus, Peruskemianteollisuuden laitokset",
+   "kehittaja": "Nordic Ren-Gas Oy",
+   "kuvaus": "Nordic Ren-Gas Oy suunnittelee Power-to-Gas -tuotantolaitosta Tampereelle. Hankkeen tavoitteena on rakentaa tuotantolaitos, joka tuottaa uusiutuvaa synteettistä"
+  },
+  "ranuan-naataaavan-e-metanolilaitos-ja-tuulivoima-alue": {
+   "nimi": "Ranuan Näätäaavan e-metanolilaitos ja tuulivoima-alue",
+   "tila": "Vireillä",
+   "aihealue": "Energiantuotanto, Tuulivoima, Tuulivoimalahankkeet",
+   "kehittaja": "Hankkeesta vastaava ETFuels Finland Oy",
+   "kuvaus": "Hankkeesta vastaava ETFuels Finland Oy suunnittelee Ranuan kunnan alueelle hanketta, johon kuuluvassa tehdaskokonaisuudessa valmistetaan merenkulun ja lentoliik"
+  },
+  "st1-metanolilaitos-lappeeranta": {
+   "nimi": "St1 metanolilaitos, Lappeeranta",
+   "tila": "Vireillä",
+   "aihealue": "Kemianteollisuus",
+   "kehittaja": null,
+   "kuvaus": "Metanolilaitos sijoittuu Nordkalkin omistamalle kaivosalueelle ja hankkeen lähelle sijoittuu Finnsementin tuotantolaitos. Hankkeen päätuote on metanoli, jota va"
+  },
+  "suomen-kansallinen-vedyn-siirtoverkko-osa-i-meri-lappi": {
+   "nimi": "Suomen kansallinen vedyn siirtoverkko, osa I, Meri-Lappi",
+   "tila": "Vireillä",
+   "aihealue": "Energian ja aineiden siirto sekä varastointi, Öljy-, kemikaali- ja kaasuputket",
+   "kehittaja": "Gasgrid Vetyverkot Oy",
+   "kuvaus": "Gasgrid Vetyverkot Oy suunnittelee Suomen kansallista vedyn siirtoverkkoa eteläisestä Suomesta Tornioon. Hanke on maantieteellisen laajuutensa vuoksi jaettu vii"
+  },
+  "suomen-kansallinen-vedyn-siirtoverkko-osa-ii-pohjois-pohjanmaa": {
+   "nimi": "Suomen kansallinen vedyn siirtoverkko, osa II, Pohjois-Pohjanmaa",
+   "tila": "Vireillä",
+   "aihealue": "Energian ja aineiden siirto sekä varastointi",
+   "kehittaja": "Gasgrid Vetyverkot Oy",
+   "kuvaus": "Gasgrid Vetyverkot Oy suunnittelee Suomen kansallista vedyn siirtoverkkoa eteläisestä Suomesta Tornioon. Hanke on maantieteellisen laajuutensa vuoksi jaettu vii"
+  },
+  "suomen-kansallinen-vedyn-siirtoverkko-osa-iii-lansi-suomi": {
+   "nimi": "Suomen kansallinen vedyn siirtoverkko, osa III, Länsi-Suomi",
+   "tila": "Vireillä",
+   "aihealue": "Energian ja aineiden siirto sekä varastointi, Öljy-, kemikaali- ja kaasuputket",
+   "kehittaja": "Gasgrid Vetyverkot Oy",
+   "kuvaus": "Gasgrid Vetyverkot Oy suunnittelee Suomen kansallista vedyn siirtoverkkoa eteläisestä Suomesta Tornioon."
+  },
+  "suomen-kansallinen-vedyn-siirtoverkko-osa-iv-lounais-suomi": {
+   "nimi": "Suomen kansallinen vedyn siirtoverkko, osa IV, Lounais-Suomi",
+   "tila": "Vireillä",
+   "aihealue": "Energian ja aineiden siirto sekä varastointi, Öljy-, kemikaali- ja kaasuputket",
+   "kehittaja": "Gasgrid Vetyverkot Oy",
+   "kuvaus": "Gasgrid Vetyverkot Oy suunnittelee Suomen kansallista vedyn siirtoverkkoa, joka kulkee Suomen halki Meri-Lapista Porvooseen asti. Hanke on maantieteellisen laaj"
+  },
+  "suomen-kansallinen-vedyn-siirtoverkko-osa-v-etela-suomi": {
+   "nimi": "Suomen kansallinen vedyn siirtoverkko, osa V, Etelä-Suomi",
+   "tila": "Vireillä",
+   "aihealue": "Energian ja aineiden siirto sekä varastointi, Öljy-, kemikaali- ja kaasuputket",
+   "kehittaja": "Gasgrid Vetyverkot Oy",
+   "kuvaus": "Gasgrid Vetyverkot Oy suunnittelee Suomen kansallista vedyn siirtoverkkoa eteläisestä Suomesta Tornioon. Hanke on maantieteellisen laajuutensa vuoksi jaettu vii"
+  },
+  "synteettisen-metaanin-tuotanto-nokia": {
+   "nimi": "Synteettisen metaanin tuotanto, Nokia",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Peruskemianteollisuuden laitokset, Kemianteollisuus",
+   "kehittaja": "Freija-yhtiö, joka on osa pohjoismaista teollisuusyritystä Vanir Green Industriesia,",
+   "kuvaus": "Freija-yhtiö, joka on osa pohjoismaista teollisuusyritystä Vanir Green Industriesia, suunnittelee synteettisten polttoaineiden tuotantolaitosta Nokialle Kolmenk"
+  },
+  "synteettisen-metaanin-tuotanto-porvoo": {
+   "nimi": "Synteettisen metaanin tuotanto, Porvoo",
+   "tila": "Vireillä",
+   "aihealue": "Kemianteollisuus, Peruskemianteollisuuden laitokset",
+   "kehittaja": "Plug Power Finland Site 1 Oy",
+   "kuvaus": "Plug Power Finland Site 1 Oy suunnittelee synteettisen metaanin tuotantolaitosta Porvoon Tolkkisiin. Gasgrid Finland Oy suunnittelee kyseisen laitosyksikön siir"
+  },
+  "synteettisen-metaanin-valmistus-mustasaari": {
+   "nimi": "Synteettisen metaanin valmistus, Mustasaari",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Kemianteollisuus, Peruskemianteollisuuden laitokset",
+   "kehittaja": null,
+   "kuvaus": "Laitoskokonaisuus on suunniteltu rakennettavaksi Stormossenin jätekeskuksen läheisyyteen, Westenergy Oy:n olemassa olevan jätteenpolttolaitoksen kiinteistölle."
+  },
+  "vantaan-energia-oyn-synteettisen-metaanin-tuotanto-vantaa": {
+   "nimi": "Vantaan Energia Oy:n synteettisen metaanin tuotanto, Vantaa",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Kemianteollisuus, Peruskemianteollisuuden laitokset",
+   "kehittaja": "Vantaan Energia Oy",
+   "kuvaus": "Vantaan Energia Oy suunnittelee rakentavansa synteettistä metaania tuottavan laitoksen. Laitoksella tuotetaan hiilineutraalia synteettistä metaania raskaan tie­"
+  },
+  "vedyn-ja-metaanin-tuotantolaitos-rauma": {
+   "nimi": "Vedyn ja metaanin tuotantolaitos, Rauma",
+   "tila": "Vireillä",
+   "aihealue": "Peruskemianteollisuuden laitokset, Kemianteollisuus",
+   "kehittaja": "Luoto Energia Oy ja Rauman Satama Oy",
+   "kuvaus": "Luoto Energia Oy ja Rauman Satama Oy suunnittelevat Power-to-Gas-tuotantolaitoksen rakentamista Rauman Iso Järviluodon saarelle Rauman sataman läheisyyteen."
+  },
+  "vihrean-vedyn-ja-sahkopolttoaineiden-tuotantolaitos-oulu": {
+   "nimi": "Vihreän vedyn ja sähköpolttoaineiden tuotantolaitos, Oulu",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Kemianteollisuus, Muu kemianteollisuus",
+   "kehittaja": "P2X Solutions Oy yhdessä Oulun Energia Oy:n kanssa",
+   "kuvaus": "P2X Solutions Oy yhdessä Oulun Energia Oy:n kanssa suunnittelee vihreän vedyn ja sähköpolttoaineiden, joko synteettisen metanolin tai metaanin tuotantolaitoksen"
+  },
+  "vihrean-vedyn-ja-synteettisen-polttoaineen-tuotantolaitos-joensuu": {
+   "nimi": "Vihreän vedyn ja synteettisen polttoaineen tuotantolaitos, Joensuu",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Kemianteollisuus, Peruskemianteollisuuden laitokset",
+   "kehittaja": "P2X Solutions Oy",
+   "kuvaus": "P2X Solutions Oy suunnittelee vihreän vedyn ja sähköpolttoaineiden, joko synteettisen metaanin tai synteettisen metanolin tuotantolaitoksen rakentamista Joensuu"
+  }
+ }
+}
