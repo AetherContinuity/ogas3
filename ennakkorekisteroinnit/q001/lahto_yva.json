@@ -1,0 +1,278 @@
+{
+ "_haettu": "2026-09-29T17:47Z (YVA koko hakemisto), kehittäjät 2026-09-30T06:0xZ hankesivun kuvauksesta",
+ "_saanto": "YVA-hankkeen nimi täsmää /datakeskus|palvelinkeskus|data ?cent/i",
+ "hankkeet": [
+  {
+   "slug": "espoon-datakeskusalue-espoo",
+   "nimi": "Espoon datakeskusalue, Espoo",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Energiantuotanto, Voimalaitokset",
+   "kehittaja": "Microsoft 3465 Finland Oy",
+   "vaiheet": [
+    [
+     "2023-07-06",
+     "ohjelma_lausunto"
+    ],
+    [
+     "2024-02-05",
+     "selostus_nahtavilla"
+    ],
+    [
+     "2024-06-04",
+     "perusteltu_paatelma"
+    ]
+   ]
+  },
+  {
+   "slug": "hervan-datakeskus-ii",
+   "nimi": "Hervan datakeskus, Ii",
+   "tila": "Vireillä",
+   "aihealue": "Energiantuotanto, Voimalaitokset",
+   "kehittaja": null,
+   "vaiheet": [
+    [
+     "2026-05-21",
+     "ohjelma_nahtavilla"
+    ],
+    [
+     "2026-08-21",
+     "ohjelma_lausunto"
+    ]
+   ]
+  },
+  {
+   "slug": "itaisen-seppalankankaan-datakeskushanke-jyvaskyla",
+   "nimi": "Itäisen Seppälänkankaan datakeskushanke, Jyväskylä",
+   "tila": null,
+   "aihealue": null,
+   "kehittaja": null,
+   "vaiheet": []
+  },
+  {
+   "slug": "jarvenpaan-palvelinkeskus",
+   "nimi": "Järvenpään palvelinkeskus",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Energiantuotanto, Voimalaitokset",
+   "kehittaja": "Data Prop Link Oy",
+   "vaiheet": [
+    [
+     "2026-03-11",
+     "ohjelma_lausunto"
+    ],
+    [
+     "2026-05-25",
+     "selostus_nahtavilla"
+    ],
+    [
+     "2026-09-08",
+     "perusteltu_paatelma"
+    ]
+   ]
+  },
+  {
+   "slug": "jokelan-datakeskushanke-tuusula-nurmijarvi",
+   "nimi": "Jokelan datakeskushanke, Tuusula, Nurmijärvi",
+   "tila": "Vireillä",
+   "aihealue": "Energiantuotanto, Voimalaitokset",
+   "kehittaja": "Jokelan Vihreä Maa Oy",
+   "vaiheet": [
+    [
+     "2026-04-23",
+     "ohjelma_lausunto"
+    ],
+    [
+     "2026-06-22",
+     "selostus_nahtavilla"
+    ]
+   ]
+  },
+  {
+   "slug": "kirkkonummen-datakeskus",
+   "nimi": "Kirkkonummen datakeskus",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Energiantuotanto, Voimalaitokset",
+   "kehittaja": null,
+   "vaiheet": [
+    [
+     "2023-09-25",
+     "ohjelma_lausunto"
+    ],
+    [
+     "2024-03-26",
+     "selostus_nahtavilla"
+    ],
+    [
+     "2024-07-09",
+     "perusteltu_paatelma"
+    ]
+   ]
+  },
+  {
+   "slug": "klaukkalan-sudentullin-datakeskus-nurmijarvi",
+   "nimi": "Klaukkalan Sudentullin datakeskus, Nurmijärvi",
+   "tila": "Vireillä",
+   "aihealue": "Energiantuotanto, Voimalaitokset",
+   "kehittaja": null,
+   "vaiheet": []
+  },
+  {
+   "slug": "lohjan-palvelinkeskus",
+   "nimi": "Lohjan palvelinkeskus",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Energiantuotanto, Voimalaitokset",
+   "kehittaja": "Hyperco Oy",
+   "vaiheet": [
+    [
+     "2024-09-30",
+     "ohjelma_lausunto"
+    ],
+    [
+     "2025-04-16",
+     "selostus_nahtavilla"
+    ],
+    [
+     "2025-08-14",
+     "perusteltu_paatelma"
+    ]
+   ]
+  },
+  {
+   "slug": "mustanlahden-datakeskushanke-mantta-vilppula",
+   "nimi": "Mustanlahden datakeskushanke, Mänttä - Vilppula",
+   "tila": "Vireillä",
+   "aihealue": "Energiantuotanto, Voimalaitokset",
+   "kehittaja": "Mustanlahden Datakeskus Oy",
+   "vaiheet": [
+    [
+     "2026-09-30",
+     "ohjelma_nahtavilla"
+    ]
+   ]
+  },
+  {
+   "slug": "mykanmaan-datakeskus-keminmaa-tornio",
+   "nimi": "Mykänmaan datakeskus, Keminmaa, Tornio",
+   "tila": "Vireillä",
+   "aihealue": "Energiantuotanto, Voimalaitokset",
+   "kehittaja": "Pohjan Voima Keminmaa Oy",
+   "vaiheet": [
+    [
+     "2026-08-12",
+     "ohjelma_nahtavilla"
+    ]
+   ]
+  },
+  {
+   "slug": "palvelinkeskus-kajaani-otanmaki",
+   "nimi": "Palvelinkeskus Kajaani-Otanmäki",
+   "tila": "Vireillä",
+   "aihealue": "Energiantuotanto, Muu energiantuotanto",
+   "kehittaja": "Tuike Finland Oy",
+   "vaiheet": []
+  },
+  {
+   "slug": "palvelinkeskus-muhos",
+   "nimi": "Palvelinkeskus, Muhos",
+   "tila": "Vireillä",
+   "aihealue": "Energiantuotanto",
+   "kehittaja": "Tuike Finland Oy",
+   "vaiheet": [
+    [
+     "2025-09-29",
+     "ohjelma_nahtavilla"
+    ],
+    [
+     "2025-11-28",
+     "ohjelma_lausunto"
+    ]
+   ]
+  },
+  {
+   "slug": "pispantallin-datakeskushanke-valkeakoski",
+   "nimi": "Pispantallin datakeskushanke, Valkeakoski",
+   "tila": "Vireillä",
+   "aihealue": "Voimalaitokset, Muu energian ja aineiden siirto sekä varastointi",
+   "kehittaja": null,
+   "vaiheet": []
+  },
+  {
+   "slug": "pyhajoen-datakeskus-pyhajoki",
+   "nimi": "Pyhäjoen datakeskus, Pyhäjoki",
+   "tila": "Vireillä",
+   "aihealue": "Energiantuotanto",
+   "kehittaja": "Hyperco Oy",
+   "vaiheet": [
+    [
+     "2025-08-28",
+     "ohjelma_nahtavilla"
+    ],
+    [
+     "2025-10-23",
+     "ohjelma_lausunto"
+    ],
+    [
+     "2026-03-19",
+     "selostus_nahtavilla"
+    ],
+    [
+     "2026-06-17",
+     "perusteltu_paatelma"
+    ]
+   ]
+  },
+  {
+   "slug": "sarvenmaan-datakeskus-keminmaa",
+   "nimi": "Sarvenmaan datakeskus, Keminmaa",
+   "tila": "Vireillä",
+   "aihealue": "Energiantuotanto, Voimalaitokset",
+   "kehittaja": "Polarnode Keminmaa Oy",
+   "vaiheet": [
+    [
+     "2026-08-12",
+     "ohjelma_nahtavilla"
+    ]
+   ]
+  },
+  {
+   "slug": "tervamaen-datakeskus-iisalmi",
+   "nimi": "Tervamäen datakeskus, Iisalmi",
+   "tila": null,
+   "aihealue": "Energiantuotanto, Voimalaitokset",
+   "kehittaja": null,
+   "vaiheet": []
+  },
+  {
+   "slug": "tuike-finland-oy-palvelinkeskus-hamina",
+   "nimi": "Tuike Finland Oy palvelinkeskus, Hamina",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Muut hankkeet",
+   "kehittaja": "Tuike Finland Oy",
+   "vaiheet": []
+  },
+  {
+   "slug": "vaalan-datakeskus-vaala",
+   "nimi": "Vaalan datakeskus, Vaala",
+   "tila": null,
+   "aihealue": "Energiantuotanto, Voimalaitokset",
+   "kehittaja": null,
+   "vaiheet": []
+  },
+  {
+   "slug": "vihdin-datakeskus",
+   "nimi": "Vihdin datakeskus",
+   "tila": "Päättynyt / perusteltu päätelmä annettu",
+   "aihealue": "Energiantuotanto, Voimalaitokset",
+   "kehittaja": "Microsoft 3465 Finland Oy",
+   "vaiheet": [
+    [
+     "2024-02-07",
+     "selostus_nahtavilla"
+    ],
+    [
+     "2024-06-05",
+     "perusteltu_paatelma"
+    ]
+   ]
+  }
+ ]
+}

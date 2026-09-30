@@ -1,0 +1,197 @@
+{
+ "_haettu": "2026-09-30T06:0xZ Hankeikkuna kohteet/haku tunnuksella",
+ "TEM040:00/2026": {
+  "etapit": [
+   [
+    "LAUSUNTOMENETTELY",
+    "2026-09-03",
+    "2026-10-02"
+   ]
+  ],
+  "lausunnot": [
+   {
+    "laatija": {
+     "fi": "Maa- ja metsätalousministeriö",
+     "sv": "Jord- och skogsbruksministeriet",
+     "en": "Ministry of Agriculture and Forestry"
+    },
+    "pvm": "2026-09-23",
+    "nimi": "Maa- ja metsätalousministeriön lausunto"
+   },
+   {
+    "laatija": {
+     "fi": "Valtiovarainministeriö",
+     "sv": "Finansministeriet",
+     "en": "Ministry of Finance"
+    },
+    "pvm": "2026-09-23",
+    "nimi": "Valtiovarainministeriön lausunto luonnoksesta hallituksen esitykseksi laiksi datakeskusrekisteristä"
+   },
+   {
+    "laatija": {
+     "fi": "Suojelupoliisi",
+     "sv": null,
+     "en": null
+    },
+    "pvm": "2026-09-23",
+    "nimi": "Suojelupoliisi; lausunto"
+   },
+   {
+    "laatija": {
+     "fi": "Traficom NCSA",
+     "sv": null,
+     "en": null
+    },
+    "pvm": "2026-09-23",
+    "nimi": "Traficom; lausunto"
+   },
+   {
+    "laatija": {
+     "fi": "Oikeusministeriö",
+     "sv": "Justitieministeriet",
+     "en": "Ministry of Justice"
+    },
+    "pvm": "2026-09-24",
+    "nimi": "Oikeusministeriön lausunto datakeskusrekisterilaista"
+   },
+   {
+    "laatija": {
+     "fi": null,
+     "sv": null,
+     "en": null
+    },
+    "pvm": "2026-09-25",
+    "nimi": "Rajavartiolaitos; Ei lausuttavaa"
+   },
+   {
+    "laatija": {
+     "fi": "Vihreä eduskuntaryhmä",
+     "sv": null,
+     "en": null
+    },
+    "pvm": "2026-09-24",
+    "nimi": "Vihreä eduskuntaryhmä; lausunto"
+   },
+   {
+    "laatija": {
+     "fi": "Oikeuskanslerin virasto",
+     "sv": null,
+     "en": null
+    },
+    "pvm": "2026-09-28",
+    "nimi": "OKV Oikeuskanslerinvirasto; lausunto"
+   },
+   {
+    "laatija": {
+     "fi": "Paikallisvoima ry",
+     "sv": null,
+     "en": null
+    },
+    "pvm": "2026-09-28",
+    "nimi": "Paikallisvoima ry; lausunto"
+   },
+   {
+    "laatija": {
+     "fi": "Metsähallitus",
+     "sv": null,
+     "en": null
+    },
+    "pvm": "2026-09-29",
+    "nimi": "Metsähallitus; lausunto"
+   },
+   {
+    "laatija": {
+     "fi": "Tulli",
+     "sv": null,
+     "en": null
+    },
+    "pvm": "2026-09-29",
+    "nimi": "Tulli; lausunto"
+   },
+   {
+    "laatija": {
+     "fi": "Kristinestads stad / Kristiinankaupunki",
+     "sv": null,
+     "en": null
+    },
+    "pvm": "2026-09-29",
+    "nimi": "Kristinestads stad / Kristiinankaupunki; lausunto"
+   },
+   {
+    "laatija": {
+     "fi": "Kiinteistönomistajat ja rakennuttajat Rakli ry (1)",
+     "sv": null,
+     "en": null
+    },
+    "pvm": "2026-09-29",
+    "nimi": "Kiinteistönomistajat ja rakennuttajat Rakli ry; lausunto"
+   }
+  ],
+  "tyypit": [
+   "KIRJE",
+   "LAUSUNTO",
+   "LAUSUNTOPYYNTO"
+  ]
+ },
+ "TEM043:00/2026": {
+  "etapit": [
+   [
+    "LAUSUNTOMENETTELY",
+    "2026-09-18",
+    "2026-10-09"
+   ]
+  ],
+  "lausunnot": [
+   {
+    "laatija": {
+     "fi": "Maa- ja metsätalousministeriö",
+     "sv": "Jord- och skogsbruksministeriet",
+     "en": "Ministry of Agriculture and Forestry"
+    },
+    "pvm": "2026-09-21",
+    "nimi": "Maa- ja metsätalousministeriö; ei lausuttavaa"
+   },
+   {
+    "laatija": {
+     "fi": "Neurotics Oy",
+     "sv": null,
+     "en": null
+    },
+    "pvm": "2026-09-23",
+    "nimi": "Neurotics Oy; lausunto"
+   },
+   {
+    "laatija": {
+     "fi": "Innoenergy",
+     "sv": null,
+     "en": null
+    },
+    "pvm": "2026-09-28",
+    "nimi": "Innoenergy; lausunto"
+   },
+   {
+    "laatija": {
+     "fi": "Polarnode Oy",
+     "sv": null,
+     "en": null
+    },
+    "pvm": "2026-09-28",
+    "nimi": "Polarnode Oy; lausunto"
+   },
+   {
+    "laatija": {
+     "fi": "Arctic Sisu Kotka Oy",
+     "sv": null,
+     "en": null
+    },
+    "pvm": "2026-09-29",
+    "nimi": "Arctic Sisu Kotka Oy; lausunto"
+   }
+  ],
+  "tyypit": [
+   "KIRJE",
+   "LAUSUNTO",
+   "LAUSUNTOPYYNTO"
+  ]
+ }
+}

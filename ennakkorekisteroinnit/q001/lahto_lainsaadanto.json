@@ -1,0 +1,122 @@
+{
+ "_haettu": "2026-09-30 Hankeikkuna teksti-haku",
+ "_saanto": "LAINSAADANTO, aloitus >= 2023-01-01, nimi täsmää /sähkömarkkinala|datakeskus|sähkön ja eräiden polttoaineiden|energiatehokkuuslain/i; haut: sähkömarkkinalain, sähkömarkkinalaki, datakeskus, sähkövero, sähköverolain, valmisteverosta, sähköveroluokka, sähkön ja eräiden polttoaineiden",
+ "hankkeet": {
+  "TEM039:00/2023": {
+   "nimi": "Hallituksen esitys laeiksi sähkömarkkinalain ja maakaasumarkkinalain muuttamisesta (lisääntyvän sähköntuotannon ja kasvavien kulutuksen kuormien integrointi sähköverkkoihin)",
+   "tila": "PAATTYNYT",
+   "aloitus": "2024-03-01",
+   "he": [
+    "HE 45/2025"
+   ],
+   "haut": [
+    "sähkömarkkinalain",
+    "sähkömarkkinalaki"
+   ]
+  },
+  "TEM040:00/2023": {
+   "nimi": "Hallituksen esitys laiksi sähkömarkkinalain muuttamisesta (EU:n uuden sähkömarkkinadesignin täytäntöönpano)",
+   "tila": "KAYNNISSA",
+   "aloitus": "2024-01-01",
+   "he": [],
+   "haut": [
+    "sähkömarkkinalain"
+   ]
+  },
+  "TEM040:00/2026": {
+   "nimi": "Hallituksen esitys eduskunnalle laiksi datakeskusrekisteristä",
+   "tila": "KAYNNISSA",
+   "aloitus": "2026-08-10",
+   "he": [],
+   "haut": [
+    "datakeskus"
+   ]
+  },
+  "TEM043:00/2026": {
+   "nimi": "Hallituksen esitys laiksi sähkömarkkinalain muuttamisesta",
+   "tila": "KAYNNISSA",
+   "aloitus": "2026-08-19",
+   "he": [],
+   "haut": [
+    "sähkömarkkinalain"
+   ]
+  },
+  "TEM095:00/2023": {
+   "nimi": "Hallituksen esitys laeiksi sähkö- ja maakaasumarkkinoiden valvonnasta annetun lain ja sähkömarkkinalain 3 §:n muuttamisesta",
+   "tila": "KAYNNISSA",
+   "aloitus": "2023-09-13",
+   "he": [],
+   "haut": [
+    "sähkömarkkinalain",
+    "sähkömarkkinalaki"
+   ]
+  },
+  "TEM123:00/2023": {
+   "nimi": "Hallituksen esitys laiksi energiatehokkuuslain muuttamisesta",
+   "tila": "PAATTYNYT",
+   "aloitus": "2023-12-15",
+   "he": [
+    "HE 170/2024"
+   ],
+   "haut": [
+    "datakeskus"
+   ]
+  },
+  "TEM123:00/2025": {
+   "nimi": "Hallituksen esitys eduskunnalle laiksi EU:n energia-alan metaanipäästöjen vähentämistä koskevan asetuksen velvoitteiden toimeenpanosta ja valvonnasta sekä sähkömarkkinalain muuttamisesta",
+   "tila": "KAYNNISSA",
+   "aloitus": "2025-12-17",
+   "he": [],
+   "haut": [
+    "sähkömarkkinalain"
+   ]
+  },
+  "TEM124:00/2025": {
+   "nimi": "Hallituksen esitys laiksi sähkömarkkinalain 65 b §:n muuttamisesta",
+   "tila": "PAATTYNYT",
+   "aloitus": "2025-12-17",
+   "he": [
+    "HE 61/2026"
+   ],
+   "haut": [
+    "sähkömarkkinalain"
+   ]
+  },
+  "VM034:00/2025": {
+   "nimi": "Hallituksen esitys eduskunnalle laiksi sähkön ja eräiden polttoaineiden valmisteverosta annetun lain 2 §:n muuttamisesta",
+   "tila": "PAATTYNYT",
+   "aloitus": "2025-04-07",
+   "he": [
+    "HE 97/2025"
+   ],
+   "haut": [
+    "valmisteverosta",
+    "sähkön ja eräiden polttoaineiden"
+   ]
+  },
+  "VM101:00/2025": {
+   "nimi": "Hallituksen esitys eduskunnalle laeksi nestemäisten polttoaineiden valmisteverosta annetun lain liitteen sekä sähkön ja eräiden polttoaineiden valmisteverosta annetun lain liitteen muuttamisesta",
+   "tila": "PAATTYNYT",
+   "aloitus": "2025-09-03",
+   "he": [
+    "HE 194/2025"
+   ],
+   "haut": [
+    "valmisteverosta",
+    "sähkön ja eräiden polttoaineiden"
+   ]
+  },
+  "VM130:00/2025": {
+   "nimi": "Hallituksen esitys eduskunnalle laiksi sähkön ja eräiden polttoaineiden valmisteverosta annetun lain eräiden säännösten kumoamisesta",
+   "tila": "PAATTYNYT",
+   "aloitus": "2025-10-13",
+   "he": [
+    "HE 156/2025"
+   ],
+   "haut": [
+    "valmisteverosta",
+    "sähkön ja eräiden polttoaineiden"
+   ]
+  }
+ }
+}

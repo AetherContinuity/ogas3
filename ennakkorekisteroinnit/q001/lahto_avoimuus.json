@@ -1,0 +1,124 @@
+{
+ "_haettu": "2026-09-29T16:12Z Avoimuusrekisteri kausi 5 (1–6/2026)",
+ "datakeskusaiheet": {
+  "hankenumerolla": 1,
+  "vapaana_tekstina": 35,
+  "osuus_ilman_hanketta": 0.972
+ },
+ "L": [
+  "TEM039:00/2023",
+  "TEM040:00/2023",
+  "TEM040:00/2026",
+  "TEM043:00/2026",
+  "TEM095:00/2023",
+  "TEM123:00/2023",
+  "TEM123:00/2025",
+  "TEM124:00/2025",
+  "VM034:00/2025",
+  "VM101:00/2025",
+  "VM130:00/2025"
+ ],
+ "lobL": {
+  "TEM040:00/2023": [
+   "Blic Oy",
+   "Energiateollisuus ry, Finsk Energiindustri rf"
+  ],
+  "TEM123:00/2025": [
+   "Neste Oyj"
+  ],
+  "TEM040:00/2026": [
+   "Finnish Data Center Association ry"
+  ],
+  "TEM039:00/2023": [
+   "Suomen uusiutuvat ry, Finlands förnybara rf"
+  ]
+ },
+ "lobD": {
+  "Verda Cloud Oy": [
+   "Tapaamispyynnöt liitttyen tekoälyn suvereniteetin, tekoälyinfrastruktuurin ja datakeskusten teemoihin.",
+   "Tapaaminen liittyen datakeskustoiminnan edellytyksiin Suomessa"
+  ],
+  "Microsoft Oy": [
+   "Datakeskusinvestoinnin työllisyys ja talousvaikutukset sekä luvituksen sujuvoittaminen"
+  ],
+  "Bamla Oy": [
+   "Datakeskusten toimintaympäristöön vaikuttavan päätöksenteon, sääntelyn ja verotuksen kehityksen seuraaminen ja"
+  ],
+  "Rud Pedersen Finland Oy": [
+   "Yleiset politiikan ja energiapolitiikan ajankohtaiset sekä tiedustelu eduskunnan ajankohtaisista energia- ja t"
+  ],
+  "Päijät-Hämeen Yrittäjät ry": [
+   "Nimikkoyrittäjien tapaaminen eduskunnassa.\n\nEduskunnassa järjestetyssä nimikkoyrittäjien tapaamisessa käytiin ",
+   "Nimikkoyrittäjien tapaaminen eduskunnassa.\n\nEduskunnassa järjestetyssä nimikkoyrittäjien tapaamisessa käytiin ",
+   "Datakeskukset Suomen taloudessa: hyödyt, sähkömarkkinariskit ja politiikkasuositukset."
+  ],
+  "Geradin Partners Asianajotoimisto Oy": [
+   "Viranomaisten ja päätöksentekijöiden informointi datakeskushankkeista."
+  ],
+  "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf": [
+   "Datakeskuspolitiikka, ei olemassa olevaa hankenumeroa."
+  ],
+  "Suomen Kuntaliitto ry;Finlands Kommunförbund rf": [
+   "Ympäristöministeriölle pyyntö vastata datakeskuslupien turvallisuuskysymyksiin"
+  ],
+  "Verne Vantaa Oy": [
+   "Datakeskustoimialan ymmärryksen lisääminen ja arvon kvantifiointi."
+  ],
+  "Fortum Oyj": [
+   "EU:n datakeskusten kestävyysmerkintä, https://www.fortum.com/about-us/public-affairs/our-views-and-positions/f"
+  ],
+  "Burson Finland Oy": [
+   "Datakeskustoimialan ymmärryksen lisääminen ja arvon kvantifiointi",
+   "Datakeskustoimialan ymmärryksen lisääminen ja arvon kvantifiointi"
+  ],
+  "Finnish Data Center Association ry": [
+   "Alueelliset datakeskusklusterit, keskustelu TEM Innovaatiot ja yritysrahoitusosasto",
+   "Hallituksen esitys eduskunnalle laiksi datakeskusrekisteristä",
+   "Digitaalinen suvereniteetti ja datakeskusteollisuus",
+   "Datakeskusinvestointien kokonaiskuva Suomessa 2026, yleiskatsaus",
+   "Datakeskusten sähköveronpalautus, tilannekuva, veronpalautusmalli.",
+   "SuomiAreenan paneeli Suomen datakeskustoimialan yhteiskunnallisiata vaikutuksista",
+   "Datakeskusteollisuuden hallitusohjelmatavoitteet ja digitaalinen infrastruktuuri",
+   "Lakialoite, jonka mukaan datakeskusten tulisi kattaa sähkönkulutuksensa rakentamalla tai ostamalla uutta sähkö"
+  ],
+  "Fingrid Oyj": [
+   "Datakeskusten vaikutukset Suomen sähköjärjestelmään."
+  ],
+  "CSC-Tieteen tietotekniikan keskus Oy": [
+   "Datakeskusten veroluokan muutoksen mahdollinen kompensaatiomekanismi sekä veroluokan muutoksen vaikutukset CSC"
+  ],
+  "Suomen uusiutuvat ry, Finlands förnybara rf": [
+   "Sähkön riittävyys Suomessa teollisuuden ja datakeskusten tarpeeseen\n\nSuomessa on runsaasti uusiutuvan sähköntu",
+   "Kannusteet joustavan kulutuksen investoinneille\n\nSuomen uusiutuvat painottaa pitkäjänteisyyden tärkeyttä energ"
+  ],
+  "Miltton Networks Oy": [
+   "Datakeskusten toimintaedellytykset, datakeskusinfrastruktuurin kehittäminen Suomessa, energiapolitiikka, ympär",
+   "Datakeskusliiketoiminnan toimintaedellytykset Suomessa",
+   "Monitoring of the operating environment for data centers, monitoring of the media environment",
+   "Data center business, data center taxation, and operating environment in Finland",
+   "Datakeskusliiketoiminnan toimintaedellytykset Suomessa"
+  ],
+  "Cursor Oy": [
+   "Datakeskukset ja akkuteollisuus, Cursorin toiminta-alueen elinkeinoelämän tarpeet ja yhteiset intressit Suomen",
+   "Datakeskukset, Cursorin toiminta-alueen elinkeinoelämän tarpeet ja yhteiset intressit Suomen valtion kanssa"
+  ],
+  "Sähkö- ja teleurakoitsijaliitto STUL ry": [
+   "Sähköistysalan näkemyksiä datakeskusten kehityksestä ja tulevaisuudesta"
+  ],
+  "FiCom ry": [
+   "Datakeskusten toimintaympäristön kehitys: verotuskysymykset, rekisteröintivelvoite ja turvallisuusnäkökohdat"
+  ]
+ },
+ "devhits": {
+  "Microsoft Oy": [
+   "many"
+  ],
+  "Google Finland Oy": [
+   "many"
+  ]
+ },
+ "both": [
+  "Finnish Data Center Association ry",
+  "Suomen uusiutuvat ry, Finlands förnybara rf"
+ ]
+}
