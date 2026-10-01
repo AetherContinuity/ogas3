@@ -1989,10 +1989,12 @@ def test_yva_capture_fetches_only_changing_pages():
     import tempfile
     from datetime import datetime, timezone
     from yva import capture
-    now = datetime(2026, 10, 1, 6, tzinfo=timezone.utc)
-    reg = {"vanha": {"tila": "Päättynyt / perusteltu päätelmä annettu", "checked_at": "2026-09-01T00:00:00+00:00"},
-           "kesken": {"tila": "Vireillä", "checked_at": "2026-09-01T00:00:00+00:00"},
-           "unohtunut": {"tila": "Päättynyt", "checked_at": "2025-01-01T00:00:00+00:00"}}
+    # checked_at PARSER_SINCE:n jälkeen, jotta jäsenninmuutoksen
+    # kertauudelleenhaku ei sekoita tätä testiä (ks. erillinen testi).
+    now = datetime(2027, 5, 1, 6, tzinfo=timezone.utc)
+    reg = {"vanha": {"tila": "Päättynyt / perusteltu päätelmä annettu", "checked_at": "2027-04-01T00:00:00+00:00"},
+           "kesken": {"tila": "Vireillä", "checked_at": "2027-04-01T00:00:00+00:00"},
+           "unohtunut": {"tila": "Päättynyt", "checked_at": "2026-10-02T00:00:00+00:00"}}
     calls = []
     def get(params):
         calls.append(params)
@@ -2004,8 +2006,34 @@ def test_yva_capture_fetches_only_changing_pages():
         evs, log, new = capture(now, get=get, registry=p, max_pages=2)
     fetched = [c["project"] for c in calls if "project" in c]
     assert fetched == ["uusi", "kesken"] and log["lykatty_seuraavaan"] == 1, (fetched, log)
-    assert new["unohtunut"]["checked_at"] == "2025-01-01T00:00:00+00:00", "lykätty ei saa näyttää tarkistetulta"
-    assert new["vanha"]["checked_at"] == "2026-09-01T00:00:00+00:00"
+    assert new["unohtunut"]["checked_at"] == "2026-10-02T00:00:00+00:00", "lykätty ei saa näyttää tarkistetulta"
+    assert new["vanha"]["checked_at"] == "2027-04-01T00:00:00+00:00"
+
+
+def test_yva_parser_change_refetches_closed_once():
+    """Ennen PARSER_SINCE:ä tarkistettu päättynyt hanke haetaan kerran
+    uudelleen; sen jälkeen tarkistettu ei."""
+    from datetime import datetime, timezone
+    from yva import needs_fetch
+    now = datetime(2026, 11, 1, 6, tzinfo=timezone.utc)
+    closed = "Päättynyt / perusteltu päätelmä annettu"
+    assert needs_fetch("a", {"a": {"tila": closed, "checked_at": "2026-10-01T12:35:24+00:00"}}, now)
+    assert not needs_fetch("a", {"a": {"tila": closed, "checked_at": "2026-11-01T06:20:00+00:00"}}, now)
+
+
+def test_yva_new_phases_and_known_non_phase():
+    from yva import project_events
+    page = {**YVA_PAGE, "aikataulu": [
+        {"text": "Puutteellisen YVA-selostuksen täydennyspyyntö 5.6.2025", "vaihe": "taydennyspyynto",
+         "alku": "2025-06-05", "loppu": None},
+        {"text": "Yhteysviranomaisen lausunto 20.10.2016", "vaihe": "selostus_lausunto",
+         "alku": "2016-10-20", "loppu": None, "vaihe_paatelty": "konteksti: edeltävä selostus_nahtavilla"},
+        {"text": "Yleisötilaisuus järjestetään 6.5.2025", "vaihe": "yleisotilaisuus",
+         "alku": "2025-05-06", "loppu": None}]}
+    st = {}
+    evs = project_events(page, "s", "n", st)
+    assert [e.parameters["vaihe"] for e in evs] == ["taydennyspyynto", "selostus_lausunto"]
+    assert st.get("tunnettuja_ohitettu") == 1 and "tunnistamattomat" not in st
 
 
 def test_yva_future_phase_is_not_an_event():

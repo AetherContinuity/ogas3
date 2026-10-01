@@ -214,7 +214,12 @@ julkinen.
 | ohjelma_nahtavilla | menettely alkaa |
 | ohjelma_lausunto | yhteysviranomaisen lausunto ohjelmasta |
 | selostus_nahtavilla | arviointiselostus nähtävillä |
+| taydennyspyynto | yhteysviranomaisen täydennyspyyntö (viivästys) |
+| selostus_lausunto | lausunto selostuksesta = menettely päättyy (YVA-laki ennen 16.5.2017) |
 | perusteltu_paatelma | menettely päättyy |
+
+"Nähtävillä" kattaa myös "kuultavana" ja "kuulutus" (proxy 2026-10-01).
+Yleisötilaisuus tunnistetaan mutta ei ole vaihe: lokissa `tunnettuja_ohitettu`.
 
 occurred_at = known_at = kuulutettu päivä. Tulevaksi kuulutettu vaihe
 ei ole tapahtuma (ohitetaan, lasketaan lokiin). Tunnistamattomat
