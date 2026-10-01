@@ -6,6 +6,7 @@
  "source_sha256": "2a1f852eca4145bac8084bbbf50e7498fd6fb495678391c5147029bf9fab3c74",
  "captured_at": "2026-09-05T08:59:17+00:00",
  "captured_by": "monthly-snapshot",
+ "trigger": null,
  "run_url": "https://github.com/AetherContinuity/ogas3/actions/runs/33956734352",
  "git_sha": "a8cb465287eacf206b6475cb098cf3d53d1aa110",
  "status": {
