@@ -239,6 +239,9 @@ def run(month: str | None = None, dry_run: bool = False) -> tuple[Path | None, d
         "month": month,
         "captured_at": now.isoformat(),
         "captured_by": os.environ.get("GITHUB_WORKFLOW") or "local",
+        # schedule / workflow_dispatch / local — käsiajo on poikkeama,
+        # joka näkyy datassa eikä vain ajolokissa.
+        "trigger": os.environ.get("GITHUB_EVENT_NAME") or "local",
         "run_url": (f"{os.environ.get('GITHUB_SERVER_URL','')}/"
                     f"{os.environ.get('GITHUB_REPOSITORY','')}/actions/runs/"
                     f"{os.environ.get('GITHUB_RUN_ID','')}")
