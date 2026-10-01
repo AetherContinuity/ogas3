@@ -285,11 +285,15 @@ def vote_events(resp: dict, he: str, source_url: str, retrieved_at: str) -> list
         t = v.get("aanestysalkuaika")
         tulos = v.get("aanestystulos") or {}
         otsikko = ((v.get("aanestysotsikko") or {}).get("fi") or "").strip()
+        # Mitätöity äänestys ei ole havainto. Proxy merkitsee sen 2026-10-01
+        # alkaen, mutta tarkistus tehdään myös täällä: vanhempi proxy (ja
+        # lokakuun 2026 snapshot) merkitsi sen uptake-kelpoiseksi.
+        void = v.get("aanestysmitatoity") is True
         out.append(RawEvent(
             event_id=f"VOTE:{v.get('id')}",
             occurred_at=t, known_at=t, retrieved_at=retrieved_at,
             source="Eduskunta äänestys", source_url=source_url,
-            subtype=v.get("_vote_kind"),
+            subtype="mitatoity" if void else v.get("_vote_kind"),
             parameters={
                 "eduskuntatunnus": he,
                 "istunto": v.get("istunnonTunniste"),
@@ -298,7 +302,7 @@ def vote_events(resp: dict, he: str, source_url: str, retrieved_at: str) -> list
                 "jaa": tulos.get("jaa"), "ei": tulos.get("ei"),
                 "tyhjia": tulos.get("tyhjia"), "poissa": tulos.get("poissa"),
                 "mitatoity": v.get("aanestysmitatoity"),
-                "uptake_usable": v.get("_uptake_usable"),
+                "uptake_usable": False if void else v.get("_uptake_usable"),
                 "party_line": v.get("_party_line"),
                 "uptake_note": v.get("_uptake_note"),
                 "eduskuntaryhmat": _jakauma(v.get("eduskuntaryhmaJakaumat")),

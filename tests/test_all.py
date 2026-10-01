@@ -1645,6 +1645,21 @@ def test_chain_vote_event_is_public_and_drops_mp_rows():
     validate_event({**d, "type": "D"})
 
 
+def test_chain_voided_vote_is_not_usable():
+    """HE 145/2026 äänestys 4 (18.9.2026): mitätöity, 0–0, mutta vanha
+    proxy merkitsi sen uptake-kelpoiseksi. OGAS3 ei luota lippuun."""
+    from decision_chain import fetch_votes
+    resp = {"status": "1 aanestysta", "data": [{
+        "id": "2026-84-4", "istunnonTunniste": "2026-84", "aanestysnumero": "4",
+        "aanestysalkuaika": "2026-09-18T13:05:00.000+03:00", "aanestysmitatoity": True,
+        "aanestysotsikko": {"fi": "Valiokuntaan lähettäminen: puhemiesneuvoston ehdotus JAA / X EI"},
+        "aanestystulos": {"jaa": 0, "ei": 0, "tyhjia": 0, "poissa": 199},
+        "_vote_kind": "sisaltoaanestys", "_uptake_usable": True, "_party_line": True}]}
+    evs, _ = fetch_votes("HE 145/2026 vp", get=lambda u: (200, json.dumps(resp).encode()))
+    d = evs[0].to_dict()
+    assert d["subtype"] == "mitatoity" and d["parameters"]["uptake_usable"] is False
+
+
 def test_chain_join_outcomes():
     from decision_chain import chains
     raw = [
