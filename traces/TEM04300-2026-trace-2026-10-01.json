@@ -1,0 +1,282 @@
+{
+ "_schema": "aci/decision-trace/v0.1",
+ "_locked_at": "2026-10-01",
+ "_revision": 1,
+ "_generator": "snapshot.py (automaattinen) — EI tulkintaa, vain laskettuja kenttia. Proosa kuuluu _commentary-kenttaan jonka ihminen lisaa ja joka EI vaikuta tiivisteeseen.",
+ "_lock_note": "LUKITTU. Ei muuteta jalkikateen; uudet havainnot seuraavaan snapshotiin.",
+ "subject": {
+  "tunnus": "TEM043:00/2026",
+  "asianumero": "VN/24069/2026",
+  "nimi": "Hallituksen esitys laiksi sähkömarkkinalain muuttamisesta"
+ },
+ "_state": {
+  "tila": "KAYNNISSA",
+  "asiakirjat_yhteensa": 9,
+  "asiakirjat_tyypeittain": {
+   "LAUSUNTOPYYNTO": 2,
+   "KIRJE": 2,
+   "LAUSUNTO": 5
+  },
+  "lausuntoja_hankeikkunassa": 5,
+  "lausuntokierros_tila": "auki",
+  "lausuntokierros_kesto_vrk": 21,
+  "lausuntokierros_auki_vrk": 13,
+  "lausuntokierros_jaljella_vrk": 8,
+  "lausuntokierroksia": 1,
+  "_lausuntoja_note": "Luku on Hankeikkunan asiakirjoista. TEM: Lausuntopalvelussa annetut nakyvat automaattisesti, kirjaamoon toimitettuja EI julkaista. Havaittu maara on siis ALARAJA, ei kokonaismaara.",
+  "uptake": null,
+  "_uptake_note": "MAARITTAMATON, ei nolla. Mitattavissa vasta taysistunnon aanestyksesta, ja aanestystyyppi on luokiteltava erikseen."
+ },
+ "_diff": {
+  "edellinen": "TEM04300-2026-trace-2026-09-28.json",
+  "uusia_solmuja": 2,
+  "uudet": [
+   "asiakirja-9c109d4b",
+   "asiakirja-27457cdc"
+  ],
+  "kadonneita": 0,
+  "kadonneet": [],
+  "_kadonneet_note": "Solmu joka oli edellisessa muttei tassa. EI poisteta hiljaa — lahde on muuttunut, ja se on oma havaintonsa.\nHUOM KAKSI VAARAA HALYTYSTA:\n(1) KASIN kirjatut solmut joita Hankeikkuna ei tunne (esim. oma lausunto ennen kuin se nakyy asiakirjoissa) nakyvat AINA kadonneina. Ne eivat ole kadonneet — automaatti ei vain nae niita.\n(2) NIMEAMISERO: kasin kirjatut kayttivat vapaita node_id-arvoja (esim. 'lausuntokierros-alkoi'), automaatti kayttaa kaavaa 'etappi-<vaihe>-<pvm>'. Sama tapahtuma, eri tunniste. Ensimmainen automaattiajo kasin kirjoitetun snapshotin paalle raportoi siksi kadonneita joita ei ole.\nKumpikin nakyy VAIN ensimmaisella ajolla; sen jalkeen tunnisteet ovat yhtenaiset."
+ },
+ "observed": [
+  {
+   "node_id": "hanke-asetettu",
+   "kind": "observed",
+   "occurred_at": "2026-08-19T00:00:00+03:00",
+   "occurred_at_source": "aloitusPaiva",
+   "known_at": "2026-08-20T00:00:00+03:00",
+   "retrieved_at": "2026-10-01T13:15:03+00:00",
+   "source": "Hankeikkuna kohteet/haku",
+   "evidence": [
+    {
+     "quote": "Hallituksen esitys laiksi sähkömarkkinalain muuttamisesta",
+     "location": "kohde TEM043:00/2026",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2026-10-01T13:15:03+00:00"
+    }
+   ],
+   "_derived": {
+    "asettamisPaiva_puuttuu": true
+   }
+  },
+  {
+   "node_id": "etappi-lausuntomenettely-2026-09-18",
+   "kind": "observed",
+   "occurred_at": "2026-09-18T00:00:00+03:00",
+   "known_at": "2026-09-18T00:00:00+03:00",
+   "retrieved_at": "2026-10-01T13:15:03+00:00",
+   "source": "Hankeikkuna etapit",
+   "evidence": [
+    {
+     "quote": "LAUSUNTOMENETTELY 2026-09-18 – 2026-10-09",
+     "location": "etapit",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2026-10-01T13:15:03+00:00"
+    }
+   ],
+   "_derived": {
+    "vaihe": "KAYNNISSA",
+    "loppu": "2026-10-09",
+    "kesto_vrk": 21,
+    "kulunut_vrk_lukitushetkella": 13
+   }
+  },
+  {
+   "node_id": "asiakirja-5dba8de7",
+   "kind": "observed",
+   "occurred_at": "2026-09-18T00:00:00+03:00",
+   "known_at": "2026-09-18T00:00:00+03:00",
+   "retrieved_at": "2026-10-01T13:15:03+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTOPYYNTO",
+   "evidence": [
+    {
+     "quote": "20260918_Lausuntopyyntö luonnoksesta hallituksen esitykseksi eduskunnalle laiksi sähkömarkkinalain muuttamisesta_28489",
+     "location": "asiakirjat · uuid 5dba8de7-252c-45df-a686-b19cf5005ab4",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/cd699943-ca7e-452a-b324-bd6e28d3aace/5dba8de7-252c-45df-a686-b19cf5005ab4/LAUSUNTOPYYNTO_20260918125422.PDF",
+     "retrieved_at": "2026-10-01T13:15:03+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Työ- ja elinkeinoministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-dee13180",
+   "kind": "observed",
+   "occurred_at": "2026-09-18T00:00:00+03:00",
+   "known_at": "2026-09-18T00:00:00+03:00",
+   "retrieved_at": "2026-10-01T13:15:03+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "KIRJE",
+   "evidence": [
+    {
+     "quote": "Luonnos hallituksen esitykseksi eduskunnalle laiksi sähkömarkkinalain muuttamisesta (18.9.2026)",
+     "location": "asiakirjat · uuid dee13180-3364-4558-911a-9e0a9204cca0",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/cd699943-ca7e-452a-b324-bd6e28d3aace/dee13180-3364-4558-911a-9e0a9204cca0/KIRJE_20260918125422.PDF",
+     "retrieved_at": "2026-10-01T13:15:03+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Työ- ja elinkeinoministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-c5eeca56",
+   "kind": "observed",
+   "occurred_at": "2026-09-21T00:00:00+03:00",
+   "known_at": "2026-09-22T00:00:00+03:00",
+   "retrieved_at": "2026-10-01T13:15:03+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Maa- ja metsätalousministeriö; ei lausuttavaa",
+     "location": "asiakirjat · uuid c5eeca56-1714-4475-82b6-7d280fc0bcec",
+     "source_url": "",
+     "retrieved_at": "2026-10-01T13:15:03+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Maa- ja metsätalousministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-3f39af79",
+   "kind": "observed",
+   "occurred_at": "2026-09-23T00:00:00+03:00",
+   "known_at": "2026-09-27T00:00:00+03:00",
+   "retrieved_at": "2026-10-01T13:15:03+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Neurotics Oy; lausunto",
+     "location": "asiakirjat · uuid 3f39af79-37d1-4728-9b7c-5160ce93ffed",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/cd699943-ca7e-452a-b324-bd6e28d3aace/3f39af79-37d1-4728-9b7c-5160ce93ffed/LAUSUNTO_20260927031545.PDF",
+     "retrieved_at": "2026-10-01T13:15:03+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Neurotics Oy"
+   }
+  },
+  {
+   "node_id": "asiakirja-3e64c545",
+   "kind": "observed",
+   "occurred_at": "2026-09-28T00:00:00+03:00",
+   "known_at": "2026-09-28T00:00:00+03:00",
+   "retrieved_at": "2026-10-01T13:15:03+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Innoenergy; lausunto",
+     "location": "asiakirjat · uuid 3e64c545-e981-4a15-b9c5-b6a0a157ce31",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/cd699943-ca7e-452a-b324-bd6e28d3aace/3e64c545-e981-4a15-b9c5-b6a0a157ce31/LAUSUNTO_20260928182516.PDF",
+     "retrieved_at": "2026-10-01T13:15:03+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Innoenergy"
+   }
+  },
+  {
+   "node_id": "asiakirja-9c109d4b",
+   "kind": "observed",
+   "occurred_at": "2026-09-28T00:00:00+03:00",
+   "known_at": "2026-09-28T00:00:00+03:00",
+   "retrieved_at": "2026-10-01T13:15:03+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Polarnode Oy; lausunto",
+     "location": "asiakirjat · uuid 9c109d4b-2012-4586-839f-5e5fa73bf169",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/cd699943-ca7e-452a-b324-bd6e28d3aace/9c109d4b-2012-4586-839f-5e5fa73bf169/LAUSUNTO_20260928185316.PDF",
+     "retrieved_at": "2026-10-01T13:15:03+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Polarnode Oy"
+   }
+  },
+  {
+   "node_id": "asiakirja-27457cdc",
+   "kind": "observed",
+   "occurred_at": "2026-09-29T00:00:00+03:00",
+   "known_at": "2026-09-29T00:00:00+03:00",
+   "retrieved_at": "2026-10-01T13:15:03+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Arctic Sisu Kotka Oy; lausunto",
+     "location": "asiakirjat · uuid 27457cdc-5ee6-4a04-b933-89b825cc1b1f",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/cd699943-ca7e-452a-b324-bd6e28d3aace/27457cdc-5ee6-4a04-b933-89b825cc1b1f/LAUSUNTO_20260929174156.PDF",
+     "retrieved_at": "2026-10-01T13:15:03+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Arctic Sisu Kotka Oy"
+   }
+  }
+ ],
+ "_expected_note": "Eivat ole tapahtumia. Ei aikaleimoja. Automaatti EI lisaa naita — se vain kantaa ne edellisesta ja poistaa toteutuneet.",
+ "expected": [
+  {
+   "step": "lausuntokierros paattyy",
+   "date": "2026-10-09",
+   "status": "ei tapahtunut",
+   "note": "Ruotsinkielista luonnosta koskevat lausunnot 15.10.2026 mennessa (lausuntopyynto)."
+  },
+  {
+   "step": "oma lausunto nakyy Hankeikkunan asiakirjoissa",
+   "status": "ei tapahtunut",
+   "note": "Annettu Lausuntopalvelussa 2026-09-28. Yksityishenkilon lausunto julkaistaan hankesivuilla vain kirjallisesta pyynnosta; pyynto sisaltyy lausuntoon. Hankeikkunan LAUSUNTO-maara on ALARAJA."
+  },
+  {
+   "step": "HE:n antaminen eduskunnalle",
+   "estimate": "marraskuu 2026",
+   "status": "ei tapahtunut",
+   "note": "TEM:n hankesivun aikajana, ei sitova."
+  },
+  {
+   "step": "lahetekeskustelu eduskunnassa",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "valiokuntakasittely + asiantuntijakuulemiset",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "taysistuntoaanestys",
+   "status": "ei tapahtunut",
+   "note": "Uptake mitattavissa vasta tasta. Ennen tata None, ei 0."
+  },
+  {
+   "step": "lain vahvistaminen",
+   "estimate": "joulukuu 2026",
+   "status": "ei tapahtunut",
+   "note": "TEM:n hankesivun aikajana."
+  },
+  {
+   "step": "laki voimaan",
+   "estimate": "2027-01-01",
+   "status": "ei tapahtunut",
+   "note": "Ensimmainen etusijaryhmakohtainen era viimeistaan 31.12.2027."
+  },
+  {
+   "step": "liittyva hanke TEM040:00/2023 (direktiivi 2024/1711) HE annettu",
+   "estimate": "vko 45/2026",
+   "status": "ei tapahtunut",
+   "note": "Hankeikkunan esittelyviikko siirretty toistuvasti: 51/2024, 7/2025, 26/2025, 4/2026, 39/2026, 45/2026."
+  }
+ ],
+ "_supersedes": {
+  "file": "TEM04300-2026-trace-2026-09-28.json",
+  "content_hash": "72f0070649c0",
+  "locked_at": "2026-09-28"
+ },
+ "_content_hash": "92c5ca79f8e6"
+}

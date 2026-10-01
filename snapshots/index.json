@@ -1,6 +1,6 @@
 {
  "_schema": "aci/ogas3-index/v0.1",
- "generated_at": "2026-09-29T18:54:33+00:00",
+ "generated_at": "2026-10-01T13:15:05+00:00",
  "months": [
   {
    "month": "2026-09",
@@ -16,6 +16,28 @@
     "eduskunta päättänyt": 23,
     "eduskunnassa": 17,
     "määrittämätön": 41
+   },
+   "summary_matches_snapshot": true
+  },
+  {
+   "month": "2026-10",
+   "snapshot": "2026-10.json",
+   "summary": "2026-10.summary.json",
+   "events": 12745,
+   "anomalies": 32,
+   "sources": [
+    "Avoimuusrekisteri",
+    "Eduskunta",
+    "Eduskunta äänestys",
+    "Finlex",
+    "Hankeikkuna",
+    "YVA"
+   ],
+   "chains_outcome": {
+    "säädös vahvistettu": 5,
+    "eduskunta päättänyt": 204,
+    "äänestetty": 5,
+    "eduskunnassa": 68
    },
    "summary_matches_snapshot": true
   }
@@ -80,6 +102,39 @@
     "_uptake_note": "MAARITTAMATON, ei nolla. Mitattavissa vasta taysistunnon aanestyksesta, ja aanestystyyppi on luokiteltava erikseen."
    },
    "supersedes": "TEM040-trace-2026-09-14.json",
+   "latest": false
+  },
+  {
+   "file": "TEM04000-2026-trace-2026-10-01.json",
+   "tunnus": "TEM040:00/2026",
+   "subject": "Hallituksen esitys eduskunnalle laiksi datakeskusrekisteristä",
+   "domain": null,
+   "locked_at": "2026-10-01",
+   "revision": 1,
+   "content_hash": "ec2a4fdc94a6",
+   "hash_matches": true,
+   "observed": 20,
+   "expected": 8,
+   "known_at_missing": 0,
+   "state": {
+    "tila": "KAYNNISSA",
+    "asiakirjat_yhteensa": 21,
+    "asiakirjat_tyypeittain": {
+     "LAUSUNTOPYYNTO": 2,
+     "KIRJE": 2,
+     "LAUSUNTO": 17
+    },
+    "lausuntoja_hankeikkunassa": 17,
+    "lausuntokierros_tila": "auki",
+    "lausuntokierros_kesto_vrk": 29,
+    "lausuntokierros_auki_vrk": 28,
+    "lausuntokierros_jaljella_vrk": 1,
+    "lausuntokierroksia": 1,
+    "_lausuntoja_note": "Luku on Hankeikkunan asiakirjoista. TEM: Lausuntopalvelussa annetut nakyvat automaattisesti, kirjaamoon toimitettuja EI julkaista. Havaittu maara on siis ALARAJA, ei kokonaismaara.",
+    "uptake": null,
+    "_uptake_note": "MAARITTAMATON, ei nolla. Mitattavissa vasta taysistunnon aanestyksesta, ja aanestystyyppi on luokiteltava erikseen."
+   },
+   "supersedes": "TEM04000-2026-trace-2026-09-14.json",
    "latest": true
   },
   {
@@ -110,6 +165,39 @@
     "_uptake_note": "MAARITTAMATON, ei nolla. Mitattavissa vasta taysistunnon aanestyksesta, ja aanestystyyppi on luokiteltava erikseen."
    },
    "supersedes": null,
+   "latest": false
+  },
+  {
+   "file": "TEM04300-2026-trace-2026-10-01.json",
+   "tunnus": "TEM043:00/2026",
+   "subject": "Hallituksen esitys laiksi sähkömarkkinalain muuttamisesta",
+   "domain": null,
+   "locked_at": "2026-10-01",
+   "revision": 1,
+   "content_hash": "92c5ca79f8e6",
+   "hash_matches": true,
+   "observed": 9,
+   "expected": 9,
+   "known_at_missing": 0,
+   "state": {
+    "tila": "KAYNNISSA",
+    "asiakirjat_yhteensa": 9,
+    "asiakirjat_tyypeittain": {
+     "LAUSUNTOPYYNTO": 2,
+     "KIRJE": 2,
+     "LAUSUNTO": 5
+    },
+    "lausuntoja_hankeikkunassa": 5,
+    "lausuntokierros_tila": "auki",
+    "lausuntokierros_kesto_vrk": 21,
+    "lausuntokierros_auki_vrk": 13,
+    "lausuntokierros_jaljella_vrk": 8,
+    "lausuntokierroksia": 1,
+    "_lausuntoja_note": "Luku on Hankeikkunan asiakirjoista. TEM: Lausuntopalvelussa annetut nakyvat automaattisesti, kirjaamoon toimitettuja EI julkaista. Havaittu maara on siis ALARAJA, ei kokonaismaara.",
+    "uptake": null,
+    "_uptake_note": "MAARITTAMATON, ei nolla. Mitattavissa vasta taysistunnon aanestyksesta, ja aanestystyyppi on luokiteltava erikseen."
+   },
+   "supersedes": "TEM04300-2026-trace-2026-09-28.json",
    "latest": true
   },
   {
@@ -141,6 +229,37 @@
     "_uptake_note": "MAARITTAMATON, ei nolla. Mitattavissa vasta taysistunnon aanestyksesta, ja aanestystyyppi on luokiteltava erikseen."
    },
    "supersedes": null,
+   "latest": false
+  },
+  {
+   "file": "TEM06100-2023-trace-2026-10-01.json",
+   "tunnus": "TEM061:00/2023",
+   "subject": "Valtion pääomasijoitusyhtiön hallituksen esityksen valmistelu",
+   "domain": null,
+   "locked_at": "2026-10-01",
+   "revision": 1,
+   "content_hash": "4e3bb9b059ac",
+   "hash_matches": true,
+   "observed": 27,
+   "expected": 0,
+   "known_at_missing": 0,
+   "state": {
+    "tila": "PAATTYNYT",
+    "asiakirjat_yhteensa": 23,
+    "asiakirjat_tyypeittain": {
+     "LAUSUNTO": 23
+    },
+    "lausuntoja_hankeikkunassa": 23,
+    "lausuntokierros_tila": "päättynyt",
+    "lausuntokierros_kesto_vrk": 28,
+    "lausuntokierros_auki_vrk": null,
+    "lausuntokierros_jaljella_vrk": null,
+    "lausuntokierroksia": 1,
+    "_lausuntoja_note": "Luku on Hankeikkunan asiakirjoista. TEM: Lausuntopalvelussa annetut nakyvat automaattisesti, kirjaamoon toimitettuja EI julkaista. Havaittu maara on siis ALARAJA, ei kokonaismaara.",
+    "uptake": null,
+    "_uptake_note": "MAARITTAMATON, ei nolla. Mitattavissa vasta taysistunnon aanestyksesta, ja aanestystyyppi on luokiteltava erikseen."
+   },
+   "supersedes": "TEM06100-2023-trace-2026-09-29.json",
    "latest": true
   },
   {

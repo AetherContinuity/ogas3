@@ -1,0 +1,5131 @@
+{
+ "_schema": "aci/ogas3-summary/v0.1",
+ "_note": "Johdannainen. Laskettu summary.py:llä snapshotista; käyttöliittymä ei laske mitään itse.",
+ "month": "2026-10",
+ "source_file": "2026-10.json",
+ "source_sha256": "64bca7e8726e5469f66a57a9dbfde48b2bb89197c5003913b8d150af75ac279d",
+ "captured_at": "2026-10-01T12:35:05+00:00",
+ "captured_by": "monthly-snapshot",
+ "run_url": "https://github.com/AetherContinuity/ogas3/actions/runs/36862714217",
+ "git_sha": "82b3bde2060ec949ba5e4b6443ff75b5361e4e62",
+ "status": {
+  "classification": "DEFERRED — ROE/D-O-S-kartta ei ole lukittu",
+  "rri": "NOT SPECIFIED — ks. audit.compute_rri",
+  "note": "Tämä tiedosto on TODISTE, ei tulos. Luokitus tehdään erillisinä tietueina (classification.py), tätä tiedostoa ei muokata."
+ },
+ "totals": {
+  "events": 12745,
+  "anomalies": 32,
+  "by_source": {
+   "Avoimuusrekisteri": 635,
+   "Eduskunta": 10326,
+   "Eduskunta äänestys": 434,
+   "Finlex": 99,
+   "Hankeikkuna": 508,
+   "YVA": 743
+  },
+  "typed": 0,
+  "untyped": 12745
+ },
+ "hankeikkuna_vaiheet": {
+  "EDUSKUNTAKASITTELY": 43,
+  "ESIVALMISTELU": 3,
+  "JATKOVALMISTELU": 10,
+  "KESKEYTETTY": 2,
+  "LAIN_VAHVISTAMINEN": 71,
+  "LAUSUNTOMENETTELY": 85,
+  "null": 206,
+  "PERUSVALMISTELU": 24,
+  "VALMISTUNUT": 21,
+  "VALTIONEUVOSTON_PAATOKSENTEKO": 43
+ },
+ "finlex_lajit": {
+  "act": 61,
+  "announcement": 1,
+  "decision": 5,
+  "decree": 32
+ },
+ "visibility_lag_days": {
+  "Avoimuusrekisteri": {
+   "n": 635,
+   "median": 59.0,
+   "max": 85.0
+  },
+  "Eduskunta": {
+   "n": 10326,
+   "median": 0.0,
+   "max": 0.0
+  },
+  "Eduskunta äänestys": {
+   "n": 434,
+   "median": 0.0,
+   "max": 0.0
+  },
+  "Finlex": {
+   "n": 98,
+   "median": 4.0,
+   "max": 8.0
+  },
+  "Hankeikkuna": {
+   "n": 477,
+   "median": 10.4,
+   "max": 3176.3
+  },
+  "YVA": {
+   "n": 743,
+   "median": 0.0,
+   "max": 0.0
+  }
+ },
+ "_lag_note": "known_at − occurred_at, anomaliat pois. Eduskunta ja äänestykset ovat 0 rakenteellisesti: istunto on julkinen tapahtuma.",
+ "votes_lookup": {
+  "äänestyksiä": 88,
+  "ei tietuetta": 194
+ },
+ "_votes_note": "'ei tietuetta' ei tarkoita 'ei äänestetty' — hyväksyminen ilman äänestystä ja keskeneräinen käsittely näyttävät samalta.",
+ "outcome_order": [
+  "säädös vahvistettu",
+  "eduskunta päättänyt",
+  "äänestetty",
+  "eduskunnassa",
+  "määrittämätön"
+ ],
+ "chains_outcome": {
+  "säädös vahvistettu": 5,
+  "eduskunta päättänyt": 204,
+  "äänestetty": 5,
+  "eduskunnassa": 68
+ },
+ "chains_derived_here": false,
+ "chains": [
+  {
+   "he": "HE 17/2026",
+   "nimeke": "Laki eräistä rajat ylittävän sähköisen asioinnin mahdollistavista palveluista",
+   "hankkeet": [
+    "VM059:00/2024"
+   ],
+   "eduskunta_vaiheet": 37,
+   "eduskunta_vastaus": "2026-06-24",
+   "aanestykset": 0,
+   "saadokset": [
+    "810/2026",
+    "811/2026",
+    "812/2026",
+    "813/2026",
+    "814/2026",
+    "815/2026",
+    "816/2026",
+    "817/2026",
+    "818/2026",
+    "819/2026",
+    "820/2026",
+    "821/2026",
+    "822/2026",
+    "823/2026",
+    "824/2026",
+    "825/2026",
+    "826/2026",
+    "827/2026",
+    "828/2026",
+    "829/2026",
+    "830/2026",
+    "831/2026",
+    "832/2026",
+    "833/2026",
+    "834/2026",
+    "835/2026",
+    "836/2026",
+    "837/2026",
+    "838/2026",
+    "839/2026"
+   ],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "säädös vahvistettu"
+  },
+  {
+   "he": "HE 198/2025",
+   "nimeke": "Laki henkilötietojen käsittelystä Rikosseuraamuslaitoksessa annetun lain muuttamisesta",
+   "hankkeet": [
+    "OM063:00/2023"
+   ],
+   "eduskunta_vaiheet": 63,
+   "eduskunta_vastaus": "2026-06-11",
+   "aanestykset": 0,
+   "saadokset": [
+    "791/2026",
+    "792/2026",
+    "793/2026",
+    "794/2026"
+   ],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "säädös vahvistettu"
+  },
+  {
+   "he": "HE 21/2026",
+   "nimeke": "Laki rikoslain 11 ja 47 luvun muuttamisesta",
+   "hankkeet": [
+    "OM093:00/2023"
+   ],
+   "eduskunta_vaiheet": 50,
+   "eduskunta_vastaus": "2026-06-11",
+   "aanestykset": 1,
+   "saadokset": [
+    "795/2026",
+    "796/2026",
+    "797/2026",
+    "798/2026",
+    "799/2026",
+    "800/2026",
+    "801/2026",
+    "802/2026",
+    "803/2026",
+    "804/2026"
+   ],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "säädös vahvistettu"
+  },
+  {
+   "he": "HE 24/2026",
+   "nimeke": "Ydinenergialaki",
+   "hankkeet": [
+    "TEM032:00/2023"
+   ],
+   "eduskunta_vaiheet": 76,
+   "eduskunta_vastaus": "2026-06-23",
+   "aanestykset": 11,
+   "saadokset": [
+    "775/2026",
+    "776/2026",
+    "777/2026",
+    "778/2026",
+    "779/2026",
+    "780/2026",
+    "781/2026",
+    "782/2026",
+    "783/2026",
+    "784/2026",
+    "785/2026",
+    "786/2026",
+    "787/2026",
+    "788/2026",
+    "789/2026",
+    "790/2026"
+   ],
+   "vaikuttamisilmoituksia": 4,
+   "vaikuttajat": [
+    "Energiateollisuus ry, Finsk Energiindustri rf",
+    "Fortum Oyj",
+    "Posiva Oy",
+    "Teollisuuden Voima Oyj"
+   ],
+   "outcome": "säädös vahvistettu"
+  },
+  {
+   "he": "HE 39/2026",
+   "nimeke": "Laki naisten ja miesten välisestä tasa-arvosta annetun lain muuttamisesta",
+   "hankkeet": [
+    "STM092:00/2025"
+   ],
+   "eduskunta_vaiheet": 42,
+   "eduskunta_vastaus": "2026-06-11",
+   "aanestykset": 3,
+   "saadokset": [
+    "805/2026"
+   ],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Ammattiliitto Jyty ry, Fackförbundet Jyty rf"
+   ],
+   "outcome": "säädös vahvistettu"
+  },
+  {
+   "he": "HE 10/2025",
+   "nimeke": "Kansainvälistä suojelua koskevan hakemuksen rekisteröintiä, jättämistä ja turvapaikkatutkintaa koskevan ulkomaalaislain sääntelyn uudistaminen",
+   "hankkeet": [
+    "SM057:00/2023"
+   ],
+   "eduskunta_vaiheet": 35,
+   "eduskunta_vastaus": "2025-05-08",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 100/2020",
+   "nimeke": "Hallituksen esitys eduskunnalle Kansainvälisen rokoteinstituutin perustamisesta tehdyn sopimuksen hyväksymiseksi ja voimaansaattamiseksi",
+   "hankkeet": [
+    "STM057:00/2020"
+   ],
+   "eduskunta_vaiheet": 23,
+   "eduskunta_vastaus": "2020-06-23",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 101/2020",
+   "nimeke": "Korona-tiedonhallintaratkaisujen säädösvalmistelusta vastaava työryhmä",
+   "hankkeet": [
+    "STM056:00/2020"
+   ],
+   "eduskunta_vaiheet": 42,
+   "eduskunta_vastaus": "2020-06-26",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 101/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi rakentamislain muuttamisesta ja eräiksi siihen liittyviksi laeiksi",
+   "hankkeet": [
+    "YM078:00/2023"
+   ],
+   "eduskunta_vaiheet": 64,
+   "eduskunta_vastaus": "2024-12-17",
+   "aanestykset": 13,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Suomen Kuntaliitto ry;Finlands Kommunförbund rf",
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 103/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi jätelain muuttamisesta (I vaihe)",
+   "hankkeet": [
+    "YM048:00/2023"
+   ],
+   "eduskunta_vaiheet": 47,
+   "eduskunta_vastaus": "2024-12-16",
+   "aanestykset": 4,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 104/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle rauhoitettujen eläinten aiheuttamien vahinkojen ennalta ehkäisemisestä ja korvaamisesta annetun lain muuttamisesta",
+   "hankkeet": [
+    "YM019:00/2024"
+   ],
+   "eduskunta_vaiheet": 25,
+   "eduskunta_vastaus": "2024-11-05",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 105/2025",
+   "nimeke": "Hallituksen esityksen luonnos laiksi liikennejärjestelmän digitaalisista tietopalveluista ja siihen liittyviksi laeiksi (Liikenteen data-avaruus II)",
+   "hankkeet": [
+    "LVM015:00/2024"
+   ],
+   "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2025-10-22",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 106/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi määräaikaisesta henkilöautojen romutuspalkkiosta 2026–2027",
+   "hankkeet": [
+    "LVM031:00/2025"
+   ],
+   "eduskunta_vaiheet": 35,
+   "eduskunta_vastaus": "2025-11-06",
+   "aanestykset": 5,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 107/2024",
+   "nimeke": "Hallituksen esitys ajoneuvoverolain 11 §:n ja liitteen muuttamisesta",
+   "hankkeet": [
+    "VM105:00/2024"
+   ],
+   "eduskunta_vaiheet": 37,
+   "eduskunta_vastaus": "2024-12-09",
+   "aanestykset": 5,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 108/2023",
+   "nimeke": "Hallituksen esitys eduskunnalle sotilasvammalain 6 ja 6 b §:n muuttamisesta",
+   "hankkeet": [
+    "STM081:00/2023"
+   ],
+   "eduskunta_vaiheet": 30,
+   "eduskunta_vastaus": "2024-03-08",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 108/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi metsästyslain sekä rauhoitettujen eläinten aiheuttamien vahinkojen ennalta ehkäisemisestä ja korvaamisesta annetun lain 4 §:n muuttamisesta",
+   "hankkeet": [
+    "MMM034:00/2025"
+   ],
+   "eduskunta_vaiheet": 29,
+   "eduskunta_vastaus": "2026-06-24",
+   "aanestykset": 7,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 109/2021",
+   "nimeke": "Luottotietolain yhteensovittaminen EU:n tietosuoja-asetuksen kanssa",
+   "hankkeet": [
+    "OM023:00/2019"
+   ],
+   "eduskunta_vaiheet": 72,
+   "eduskunta_vastaus": "2022-04-22",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 109/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi kuntouttavasta työtoiminnasta annetun lain muuttamisesta",
+   "hankkeet": [
+    "STM040:00/2025"
+   ],
+   "eduskunta_vaiheet": 50,
+   "eduskunta_vastaus": "2025-12-17",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 11/2026",
+   "nimeke": "Hallituksen esitys ajokorttilain muuttamisesta",
+   "hankkeet": [
+    "LVM024:00/2025"
+   ],
+   "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2026-05-06",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 112/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle yleistukea koskevaksi lainsäädännöksi",
+   "hankkeet": [
+    "STM035:00/2024"
+   ],
+   "eduskunta_vaiheet": 67,
+   "eduskunta_vastaus": "2025-12-17",
+   "aanestykset": 22,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Työllisyysrahasto"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 113/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi tuloverolain muuttamisesta ja väliaikaisesta muuttamisesta",
+   "hankkeet": [
+    "VM046:00/2026"
+   ],
+   "eduskunta_vaiheet": 35,
+   "eduskunta_vastaus": "2026-09-17",
+   "aanestykset": 3,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Epassi Finland Oy"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 114/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi maataloudessa käytettyjen eräiden energiatuotteiden valmisteveron palautuksesta annetun lain 4 §:n muuttamisesta",
+   "hankkeet": [
+    "VM045:00/2026"
+   ],
+   "eduskunta_vaiheet": 29,
+   "eduskunta_vastaus": "2026-06-23",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 116/2024",
+   "nimeke": "Väylämaksulain muuttaminen väylämaksun perimiseksi täysimääräisenä ja väliaikaisen väylämaksulainsäädännön kumoaminen",
+   "hankkeet": [
+    "LVM016:00/2024"
+   ],
+   "eduskunta_vaiheet": 35,
+   "eduskunta_vastaus": "2024-11-28",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 116/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi toimeentulotuesta annetun lain, sosiaali- ja terveydenhuollon asiakastietojen käsittelystä annetun lain 64 §:n ja kuntouttavasta työtoiminnasta annetun lain 10 ",
+   "hankkeet": [
+    "STM154:00/2024"
+   ],
+   "eduskunta_vaiheet": 78,
+   "eduskunta_vastaus": "2025-12-19",
+   "aanestykset": 8,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Sosiaalialan korkeakoulutettujen ammattijärjestö Talentia ry, Fackorganisationen för högutbildade inom socialbranschen Talentia rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 118/2025",
+   "nimeke": "Hallituksen esitys laiksi terveydenhuoltolain muuttamisesta ja siihen liittyviksi laeiksi",
+   "hankkeet": [
+    "STM105:00/2023"
+   ],
+   "eduskunta_vaiheet": 61,
+   "eduskunta_vastaus": "2025-12-04",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 12/2024",
+   "nimeke": "Työtaisteluoikeuden käyttämiseen liittyviä kysymyksiä selvittävä työryhmä",
+   "hankkeet": [
+    "TEM053:00/2023"
+   ],
+   "eduskunta_vaiheet": 106,
+   "eduskunta_vastaus": "2024-05-14",
+   "aanestykset": 11,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Palvelualojen työnantajat PALTA ry, Arbetsgivarna för servicebrancherna PALTA rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 12/2025",
+   "nimeke": "Hallituksen esitys mikroliikkumista ohjaavaksi lainsäädännöksi",
+   "hankkeet": [
+    "LVM044:00/2023"
+   ],
+   "eduskunta_vaiheet": 47,
+   "eduskunta_vastaus": "2025-05-28",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 12/2026",
+   "nimeke": "Hallituksen esitys laiksi sähköisen viestinnän palveluista annetun lain muuttamisesta",
+   "hankkeet": [
+    "LVM002:00/2025"
+   ],
+   "eduskunta_vaiheet": 27,
+   "eduskunta_vastaus": "2026-04-10",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 120/2025",
+   "nimeke": "Kuluttajaluotto- ja rahoituspalvelujen etämyyntisääntelyn valmistelu",
+   "hankkeet": [
+    "OM134:00/2023"
+   ],
+   "eduskunta_vaiheet": 31,
+   "eduskunta_vastaus": "2025-12-09",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 123/2021",
+   "nimeke": "Hallituksen esitys, naisiin kohdistuvan väkivallan raportoijan tehtävän perustaminen",
+   "hankkeet": [
+    "OM010:00/2020"
+   ],
+   "eduskunta_vaiheet": 32,
+   "eduskunta_vastaus": "2021-11-01",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 127/2020",
+   "nimeke": "Hallituksen esitys eduskunnalle valtioneuvostosta annetun lain 2 §:n muuttamisesta",
+   "hankkeet": [
+    "VNK002:00/2020"
+   ],
+   "eduskunta_vaiheet": 29,
+   "eduskunta_vastaus": "2020-11-09",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 127/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi kaivosmineraaliverolain muuttamisesta",
+   "hankkeet": [
+    "VM041:00/2024"
+   ],
+   "eduskunta_vaiheet": 58,
+   "eduskunta_vastaus": "2025-12-15",
+   "aanestykset": 7,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Geradin Partners Asianajotoimisto Oy"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 128/2021",
+   "nimeke": "Hallituksen esitys laiksi päästökauppalain muuttamisesta",
+   "hankkeet": [
+    "TEM008:00/2021"
+   ],
+   "eduskunta_vaiheet": 23,
+   "eduskunta_vastaus": "2021-10-28",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 128/2025",
+   "nimeke": "Hallituksen esitys EU:n datasäädöksen toimeenpanosta",
+   "hankkeet": [
+    "LVM050:00/2023"
+   ],
+   "eduskunta_vaiheet": 39,
+   "eduskunta_vastaus": "2025-11-21",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 13/2025",
+   "nimeke": "Valtion aluehallinnon uudistamisen lainsäädäntöhanke",
+   "hankkeet": [
+    "VM114:00/2023"
+   ],
+   "eduskunta_vaiheet": 166,
+   "eduskunta_vastaus": "2025-06-19",
+   "aanestykset": 5,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Elinkeinoelämän keskusliitto ry, Finlands näringsliv rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 13/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi yleistukilain 13 ja 19 §:n ja työttömyysturvalain 10 luvun 4 §:n muuttamisesta",
+   "hankkeet": [
+    "STM008:00/2026"
+   ],
+   "eduskunta_vaiheet": 26,
+   "eduskunta_vastaus": "2026-04-20",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Ammattiliittojen Keskusjärjestö SAK ry, ruotsiksi Finlands Fackförbunds Centralorganisation FFC rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 131/2025",
+   "nimeke": "Hallituksen esitys laiksi alkoholilain muuttamisesta (alkoholijuoman toimittaminen, etämyynti ja markkinointi)",
+   "hankkeet": [
+    "STM031:00/2025"
+   ],
+   "eduskunta_vaiheet": 126,
+   "eduskunta_vastaus": "2026-06-24",
+   "aanestykset": 5,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Matkailu- ja Ravintolapalvelut MaRa ry, Turism- och Restaurangförbundet rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 132/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle sosiaalihuollon ammattihenkilöistä annetun lain 12 ja 16 §:n muuttamisesta",
+   "hankkeet": [
+    "STM044:00/2024"
+   ],
+   "eduskunta_vaiheet": 33,
+   "eduskunta_vastaus": "2024-11-21",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Sosiaalialan korkeakoulutettujen ammattijärjestö Talentia ry, Fackorganisationen för högutbildade inom socialbranschen Talentia rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 137/2025",
+   "nimeke": "Hallituksen esitys laiksi valtioneuvostosta annetun lain muuttamisesta",
+   "hankkeet": [
+    "VNK015:00/2025"
+   ],
+   "eduskunta_vaiheet": 41,
+   "eduskunta_vastaus": "2026-02-20",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 138/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle Suomen ja Ukrainan välisen perhe- ja puolisosopimuksen hyväksymiseksi ja voimaansaattamiseksi",
+   "hankkeet": [
+    "UM017:00/2021"
+   ],
+   "eduskunta_vaiheet": 24,
+   "eduskunta_vastaus": "2024-11-12",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 139/2025",
+   "nimeke": "Vaihtoehtoisten sijoitusrahastojen hoitajia koskevan direktiivin (AIFMD 2011/61/EU) ja siirtokelpoisiin arvopapereihin kohdistuvaa yhteistä sijoitustoimintaa harjoittavia yrityksiä koskevan direktiivi",
+   "hankkeet": [
+    "VM133:00/2024"
+   ],
+   "eduskunta_vaiheet": 26,
+   "eduskunta_vastaus": "2025-12-18",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 14/2020",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi työttömyyskassalain muuttamisesta",
+   "hankkeet": [
+    "STM076:00/2019"
+   ],
+   "eduskunta_vaiheet": 42,
+   "eduskunta_vastaus": "2020-11-18",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 14/2022",
+   "nimeke": "Kuluttajansuojan Omnibus-direktiivin kansallinen täytäntöönpano sekä puhelin- ja kotimyyntiä koskevan sääntelyn tarkistaminen",
+   "hankkeet": [
+    "OM082:00/2020"
+   ],
+   "eduskunta_vaiheet": 44,
+   "eduskunta_vastaus": "2022-06-29",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 141/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi arvonlisäverolain ja Ahvenanmaan maakuntaa koskevista poikkeuksista arvonlisävero- ja valmisteverolainsäädäntöön annetun lain 18 b ja 22 a §:n muuttamisesta",
+   "hankkeet": [
+    "VM099:00/2023"
+   ],
+   "eduskunta_vaiheet": 42,
+   "eduskunta_vastaus": "2024-11-28",
+   "aanestykset": 5,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 143/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle ammatillisesta koulutuksesta annetun lain muuttamisesta ja siihen liittyviksi laeiksi",
+   "hankkeet": [
+    "OKM003:00/2025"
+   ],
+   "eduskunta_vaiheet": 46,
+   "eduskunta_vastaus": "2025-12-11",
+   "aanestykset": 6,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 146/2024",
+   "nimeke": "Työriitojen sovittelujärjestelmän kehittämistä valmisteleva työryhmä",
+   "hankkeet": [
+    "TEM110:00/2023"
+   ],
+   "eduskunta_vaiheet": 51,
+   "eduskunta_vastaus": "2024-12-17",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Palvelualojen työnantajat PALTA ry, Arbetsgivarna för servicebrancherna PALTA rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 146/2025",
+   "nimeke": "Hallituksen esitys kotoutumislain muuttamisesta (tekninen)",
+   "hankkeet": [
+    "TEM057:00/2025"
+   ],
+   "eduskunta_vaiheet": 37,
+   "eduskunta_vastaus": "2025-12-08",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 147/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi merituulivoimasta talousvyöhykkeellä",
+   "hankkeet": [
+    "TEM033:00/2023"
+   ],
+   "eduskunta_vaiheet": 46,
+   "eduskunta_vastaus": "2024-12-13",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen uusiutuvat ry, Finlands förnybara rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 148/2022",
+   "nimeke": "Yhdenvertaisuuslain osittaisuudistus",
+   "hankkeet": [
+    "OM013:00/2021"
+   ],
+   "eduskunta_vaiheet": 45,
+   "eduskunta_vastaus": "2022-12-07",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 149/2025",
+   "nimeke": "Hallituksen esitys lastensuojelulainsäädännön uudistamiseksi; 1. vaihe",
+   "hankkeet": [
+    "STM009:00/2024"
+   ],
+   "eduskunta_vaiheet": 75,
+   "eduskunta_vastaus": "2026-05-21",
+   "aanestykset": 3,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Hoivatie Oy",
+    "Suomen Psykologiliitto ry"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 15/2020",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi aikuiskoulutusetuuksista annetun lain muuttamisesta ja opintotukilain 15 §:n muuttamisesta",
+   "hankkeet": [
+    "STM064:00/2019"
+   ],
+   "eduskunta_vaiheet": 38,
+   "eduskunta_vastaus": "2020-05-29",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 15/2026",
+   "nimeke": "Hallituksen esitys liikennepalvelulain muuttamisesta (taksit)",
+   "hankkeet": [
+    "LVM038:00/2024"
+   ],
+   "eduskunta_vaiheet": 53,
+   "eduskunta_vastaus": "2026-06-11",
+   "aanestykset": 7,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Bolt Services FI Oy"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 150/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi sairausvakuutuslain muuttamisesta ja siihen liittyviksi laeiksi",
+   "hankkeet": [
+    "STM119:00/2023"
+   ],
+   "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2025-12-17",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 154/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle lentoliikenteestä Ruandan tasavallan kanssa tehdyn sopimuksen hyväksymiseksi ja voimaansaattamiseksi",
+   "hankkeet": [
+    "LVM047:00/2021"
+   ],
+   "eduskunta_vaiheet": 21,
+   "eduskunta_vastaus": "2025-11-14",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 155/2024",
+   "nimeke": "Eurooppalaista keskitettyä yhteyspistettä koskevan asetuksen ja siihen liittyvien direktiivin ja asetuksen kansallinen toimeenpano",
+   "hankkeet": [
+    "VM056:00/2024"
+   ],
+   "eduskunta_vaiheet": 25,
+   "eduskunta_vastaus": "2024-12-12",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 157/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle tietojenvaihdon tehostamista rahanpesun ja terrorismin rahoittamisen estämistoiminnassa sekä kansallisen turvallisuuden suojaamista koskeviksi laeiksi",
+   "hankkeet": [
+    "VM063:00/2023"
+   ],
+   "eduskunta_vaiheet": 49,
+   "eduskunta_vastaus": "2025-04-29",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 157/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle sähköistä tiedoksiantoa Verohallinnossa koskevaksi lainsäädännöksi",
+   "hankkeet": [
+    "VM002:00/2025"
+   ],
+   "eduskunta_vaiheet": 57,
+   "eduskunta_vastaus": "2026-03-19",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Veronmaksajain Keskusliitto ry, ruotsiksi Skattebetalarnas Centralförbund rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 158/2025",
+   "nimeke": "Henkilöön liittyvän irtisanomisperusteen sääntelyn muuttamista valmisteleva työryhmä",
+   "hankkeet": [
+    "TEM055:00/2024"
+   ],
+   "eduskunta_vaiheet": 59,
+   "eduskunta_vastaus": "2025-12-19",
+   "aanestykset": 15,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 159/2025",
+   "nimeke": "Hallituksen esitys terveydenhuoltolain ja asiakastietolain muuttamisesta",
+   "hankkeet": [
+    "STM020:00/2024"
+   ],
+   "eduskunta_vaiheet": 42,
+   "eduskunta_vastaus": "2026-04-23",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Hyvinvointiala HALI ry"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 161/2025",
+   "nimeke": "Porolaidunten hoidon ja käytön suunnittelua sekä eloporojen enimmäismäärän kontrollointia koskeva lainsäädäntöhanke",
+   "hankkeet": [
+    "MMM027:00/2024"
+   ],
+   "eduskunta_vaiheet": 42,
+   "eduskunta_vastaus": "2026-05-21",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 3,
+   "vaikuttajat": [
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 162/2025",
+   "nimeke": "Hallituksen esitys laeiksi kunnan kiinteistöinsinööristä annetun lain 2 §:n  ja kaupanvahvistajista annetun lain 2 §:n muuttamisesta",
+   "hankkeet": [
+    "MMM003:00/2025"
+   ],
+   "eduskunta_vaiheet": 25,
+   "eduskunta_vastaus": "2025-12-08",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 165/2024",
+   "nimeke": "Hallituksen esitys laeiksi eläinten hyvinvoinnista annetun lain ja eläinlääkärinammatin harjoittamisesta annetun lain 12 §:n muuttamisesta.",
+   "hankkeet": [
+    "MMM041:00/2024"
+   ],
+   "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2024-12-16",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 165/2025",
+   "nimeke": "Hallituksen esitys kaivoslain muuttamisesta",
+   "hankkeet": [
+    "TEM054:00/2025"
+   ],
+   "eduskunta_vaiheet": 26,
+   "eduskunta_vastaus": "2026-02-13",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Borenius Asianajotoimisto Oy"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 166/2024",
+   "nimeke": "Hallituksen esitys vieraslajeista aiheutuvien riskien hallinnasta annetun lain muuttamisesta",
+   "hankkeet": [
+    "MMM005:00/2024"
+   ],
+   "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2024-12-16",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 167/2025",
+   "nimeke": "Finanssipoliittisten sääntöjen uudistamista valmisteleva työryhmä",
+   "hankkeet": [
+    "VM118:00/2024"
+   ],
+   "eduskunta_vaiheet": 40,
+   "eduskunta_vastaus": "2025-12-19",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 170/2022",
+   "nimeke": "Eurooppalaisen Galileo-satelliittipaikannusjärjestelmän julkisesti säänneltyyn palveluun (PRS) liittyvän kansallisen lainsäädännön uudistaminen",
+   "hankkeet": [
+    "LVM056:00/2021"
+   ],
+   "eduskunta_vaiheet": 29,
+   "eduskunta_vastaus": "2022-11-30",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 173/2025",
+   "nimeke": "Hallituksen esitys laiksi metsästyslain muuttamisesta",
+   "hankkeet": [
+    "MMM030:00/2025"
+   ],
+   "eduskunta_vaiheet": 43,
+   "eduskunta_vastaus": "2025-12-16",
+   "aanestykset": 6,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 175/2025",
+   "nimeke": "E-evidence-asetuksen ja -direktiivin täytäntöönpano",
+   "hankkeet": [
+    "OM099:00/2023"
+   ],
+   "eduskunta_vaiheet": 70,
+   "eduskunta_vastaus": "2026-05-13",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "FiCom ry"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 178/2024",
+   "nimeke": "Hallituksen esitys merenkulun ympäristönsuojelulain ja eräiden muiden lakien muuttamisesta sekä Hongkongin yleissopimuksesta ja MARPOL-yleissopimuksen ja Lontoon pöytäkirjan muutoksista",
+   "hankkeet": [
+    "LVM056:00/2023"
+   ],
+   "eduskunta_vaiheet": 33,
+   "eduskunta_vastaus": "2024-12-04",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 179/2025",
+   "nimeke": "Hallituksen esitys kyberkestävyyssäädöksen täytäntöönpanemiseksi",
+   "hankkeet": [
+    "LVM014:00/2024"
+   ],
+   "eduskunta_vaiheet": 30,
+   "eduskunta_vastaus": "2026-05-13",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 180/2021",
+   "nimeke": "Digisopimus- ja tavarankauppadirektiivien kansallinen täytäntöönpano",
+   "hankkeet": [
+    "OM013:00/2020"
+   ],
+   "eduskunta_vaiheet": 25,
+   "eduskunta_vastaus": "2021-12-15",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 182/2024",
+   "nimeke": "Hallituksen esitys liikenteen ja logistiikan tietosääntelyn päivitys, data-avaruus osa 1",
+   "hankkeet": [
+    "LVM054:00/2023"
+   ],
+   "eduskunta_vaiheet": 34,
+   "eduskunta_vastaus": "2025-03-24",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 183/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi Harmaan talouden selvitysyksiköstä annetun lain muuttamisesta ja eräiksi siihen liittyviksi laeiksi",
+   "hankkeet": [
+    "VM004:00/2025"
+   ],
+   "eduskunta_vaiheet": 48,
+   "eduskunta_vastaus": "2026-05-13",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 184/2024",
+   "nimeke": "Hallituksen esitys valtion televisio- ja radiorahastolain 3 § muuttamisesta",
+   "hankkeet": [
+    "LVM040:00/2024"
+   ],
+   "eduskunta_vaiheet": 22,
+   "eduskunta_vastaus": "2024-11-27",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 185/2025",
+   "nimeke": "Hallituksen esitys laiksi jalometallituotteista annetun lain muuttamisesta",
+   "hankkeet": [
+    "TEM042:00/2025"
+   ],
+   "eduskunta_vaiheet": 26,
+   "eduskunta_vastaus": "2026-03-05",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 19/2023",
+   "nimeke": "Hallituksen esitys eduskunnalle sähköisten tietullijärjestelmien yhteentoimivuudesta annetun lain muuttamisesta",
+   "hankkeet": [
+    "LVM036:00/2022"
+   ],
+   "eduskunta_vaiheet": 20,
+   "eduskunta_vastaus": "2023-11-30",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 19/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi liikenteen palveluista annetun lain muuttamisesta ja eräiksi siihen liittyviksi laeiksi",
+   "hankkeet": [
+    "LVM029:00/2025"
+   ],
+   "eduskunta_vaiheet": 26,
+   "eduskunta_vastaus": "2026-04-24",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 192/2022",
+   "nimeke": "Hallituksen esitys ministereiden karenssia koskevaksi lainsäädännöksi",
+   "hankkeet": [
+    "VNK001:00/2020"
+   ],
+   "eduskunta_vaiheet": 8,
+   "eduskunta_vastaus": "2023-04-05",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 193/2025",
+   "nimeke": "Lainsäädäntöhanke poliisilain 5 luvun 34 §:n ja pakkokeinolain 10 luvun 33 §:n muuttamisesta",
+   "hankkeet": [
+    "SM023:00/2025"
+   ],
+   "eduskunta_vaiheet": 22,
+   "eduskunta_vastaus": "2026-03-26",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Lääkäriliitto - Finlands Läkarförbund ry"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 196/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi suurten konsernien vähimmäisverosta annetun lain muuttamisesta",
+   "hankkeet": [
+    "VM080:00/2025"
+   ],
+   "eduskunta_vaiheet": 34,
+   "eduskunta_vastaus": "2026-03-12",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Finnwatch ry"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 199/2025",
+   "nimeke": "Työsopimuksen määräaikaisuuden perustetta, lomautusilmoitusaikaa ja takaisinottovelvollisuutta koskevan sääntelyn muuttamista valmisteleva työryhmä",
+   "hankkeet": [
+    "TEM061:00/2024"
+   ],
+   "eduskunta_vaiheet": 57,
+   "eduskunta_vastaus": "2026-05-21",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 8,
+   "vaikuttajat": [
+    "Ammattiliitto Pro ry, Fackförbundet Pro rf",
+    "Kaupan liitto ry, Finsk Handel rf",
+    "Opetusalan Ammattijärjestö OAJ ry, Undervisningssektorns Fackorganisation rf",
+    "Palvelualojen ammattiliitto PAM ry, Servicefacket PAM rf",
+    "STTK ry STTK rf",
+    "Suomen Ammattiliittojen Keskusjärjestö SAK ry, ruotsiksi Finlands Fackförbunds Centralorganisation FFC rf",
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf",
+    "Teollisuusliitto ry, ruotsiksi Industrifacket rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 2/2023",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi arvonlisäverolain muuttamisesta",
+   "hankkeet": [
+    "VM001:00/2023"
+   ],
+   "eduskunta_vaiheet": 20,
+   "eduskunta_vastaus": "2023-05-16",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 2/2026",
+   "nimeke": "Hankintalain uudistamishanke",
+   "hankkeet": [
+    "TEM014:00/2024"
+   ],
+   "eduskunta_vaiheet": 113,
+   "eduskunta_vastaus": "2026-06-11",
+   "aanestykset": 21,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 15,
+   "vaikuttajat": [
+    "Dittmar & Indrenius Advokatbyrå Ab",
+    "Elinkeinoelämän keskusliitto ry, Finlands näringsliv rf",
+    "Elintarviketeollisuusliitto ry, Livsmedelsindustriförbundet rf",
+    "Gasum Oy",
+    "Geradin Partners Asianajotoimisto Oy",
+    "LapIT Oy",
+    "Lapin Yrittäjät ry",
+    "Pro Vege ry",
+    "Päivittäistavarakauppa ry, ruotsiksi Finlands Dagligvaruhandel rf",
+    "Suomen Kuntaliitto ry;Finlands Kommunförbund rf",
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf",
+    "Varsinais-Suomen Yrittäjät ry, Egentliga Finlands Företagare rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 20/2023",
+   "nimeke": "Hallituksen esitys, yritysten kestävyysraportointi (CSRD-direktiivi)",
+   "hankkeet": [
+    "TEM082:00/2022"
+   ],
+   "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2023-12-08",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 20/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle SOLAS-yleissopimuksen liitteeseen, MARPOL-yleissopimuksen I pöytäkirjaan ja painolastivesiyleissopimuksen liitteeseen tehtyjen muutosten hyväksymiseksi ja voimaansaatta",
+   "hankkeet": [
+    "LVM037:00/2024"
+   ],
+   "eduskunta_vaiheet": 22,
+   "eduskunta_vastaus": "2025-05-08",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 20/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle liikennemerkkejä ja -opasteita koskevan yleissopimuksen muutosten hyväksymiseksi ja voimaansaattamiseksi",
+   "hankkeet": [
+    "LVM036:00/2025"
+   ],
+   "eduskunta_vaiheet": 24,
+   "eduskunta_vastaus": "2026-04-09",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 200/2022",
+   "nimeke": "Yhteisöllinen kansalaistoiminta 2020-luvulla",
+   "hankkeet": [
+    "OM005:00/2019"
+   ],
+   "eduskunta_vaiheet": 25,
+   "eduskunta_vastaus": "2023-01-16",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 201/2025",
+   "nimeke": "Hallituksen esitys laiksi Euroopan unionin yhteisen kalastuspolitiikan kansallisesta täytäntöönpanosta annetun lain muuttamisesta",
+   "hankkeet": [
+    "MMM068:00/2024"
+   ],
+   "eduskunta_vaiheet": 31,
+   "eduskunta_vastaus": "2026-04-29",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 203/2025",
+   "nimeke": "Hallituksen esitys laeiksi Luonnonvarakeskuksesta annetun lain ja ruoka- ja luonnonvaratilastoista annetun lain 2 §:n muuttamisesta",
+   "hankkeet": [
+    "MMM007:00/2024"
+   ],
+   "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2026-04-28",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 204/2025",
+   "nimeke": "Patenttilainsäädännön uudistaminen",
+   "hankkeet": [
+    "TEM051:00/2022"
+   ],
+   "eduskunta_vaiheet": 34,
+   "eduskunta_vastaus": "2026-05-28",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Elinkeinoelämän keskusliitto ry, Finlands näringsliv rf",
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 205/2024",
+   "nimeke": "Lainsäädäntöhanke: Kriittisen infrastruktuurin tunnistaminen ja kriisinkestävyyden parantaminen",
+   "hankkeet": [
+    "SM047:00/2022"
+   ],
+   "eduskunta_vaiheet": 85,
+   "eduskunta_vastaus": "2025-05-21",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 207/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi eräiden suurten ilmastoneutraaliin talouteen tähtäävien investointien verohyvityksestä sekä laiksi Innovaatiorahoituskeskus Business Finlandista ja Business Finl",
+   "hankkeet": [
+    "VM082:00/2024"
+   ],
+   "eduskunta_vaiheet": 56,
+   "eduskunta_vastaus": "2025-03-27",
+   "aanestykset": 6,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Elintarviketeollisuusliitto ry, Livsmedelsindustriförbundet rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 208/2022",
+   "nimeke": "Hallituksen esitys laiksi kotoutumisen edistämisestä ja siihen liittyviksi laeiksi",
+   "hankkeet": [
+    "TEM100:00/2019"
+   ],
+   "eduskunta_vaiheet": 74,
+   "eduskunta_vastaus": "2023-03-23",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Bildningsalliansen rf",
+    "Kansalaisopistojen liitto KoL ry, Medborgarinstitutens förbund Mif rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 208/2024",
+   "nimeke": "NPL-direktiivin täytäntöönpano",
+   "hankkeet": [
+    "VM119:00/2024"
+   ],
+   "eduskunta_vaiheet": 30,
+   "eduskunta_vastaus": "2025-04-09",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 212/2020",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi sosiaali- ja terveydenhuollon asiakastietojen sähköisestä käsittelystä ja eräiksi siihen liittyviksi muiksi laeiksi",
+   "hankkeet": [
+    "STM066:00/2019"
+   ],
+   "eduskunta_vaiheet": 48,
+   "eduskunta_vastaus": "2021-07-01",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 215/2020",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi julkisen arvonannon osoituksista annetun lain muuttamisesta",
+   "hankkeet": [
+    "VNK013:00/2018"
+   ],
+   "eduskunta_vaiheet": 22,
+   "eduskunta_vastaus": "2021-10-12",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 216/2022",
+   "nimeke": "Hallituksen esitys laiksi ulosottokaaren väliaikaisesta muuttamisesta (suojaosuuden korotusta koskeva määräaikainen kokeilu)",
+   "hankkeet": [
+    "OM063:00/2022"
+   ],
+   "eduskunta_vaiheet": 41,
+   "eduskunta_vastaus": "2022-11-23",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 219/2018",
+   "nimeke": "Hallituksen esitys laiksi vuosilomalain muuttamisesta",
+   "hankkeet": [
+    "TEM054:00/2018"
+   ],
+   "eduskunta_vaiheet": 32,
+   "eduskunta_vastaus": "2019-03-05",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 229/2021",
+   "nimeke": "Yleiseurooppalaisesta yksilöllisestä eläketuotteesta (PEPP) annettua Euroopan parlamentin ja neuvoston asetusta täydentävien kansallisten säännösten valmistelu",
+   "hankkeet": [
+    "STM019:00/2020"
+   ],
+   "eduskunta_vaiheet": 21,
+   "eduskunta_vastaus": "2022-03-23",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 23/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi valtion vientitakuista annetun lain 10 §:n muuttamisesta",
+   "hankkeet": [
+    "TEM033:00/2025"
+   ],
+   "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2025-05-14",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 238/2022",
+   "nimeke": "Hallituksen esitys laiksi rakennusten varustamisesta sähköajoneuvojen latauspisteillä ja latauspistevalmiuksilla sekä automaatio- ja ohjausjärjestelmille annetun lain muuttamisesta",
+   "hankkeet": [
+    "YM026:00/2022"
+   ],
+   "eduskunta_vaiheet": 25,
+   "eduskunta_vastaus": "2022-11-23",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Energiateollisuus ry, Finsk Energiindustri rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 241/2020",
+   "nimeke": "Hallituksen esitys eduskunnalle hyvinvointialueiden perustamista ja sosiaali- ja terveydenhuollon sekä pelastustoimen järjestämisen uudistusta koskevaksi lainsäädännöksi sekä Euroopan paikallisen itse",
+   "hankkeet": [
+    "STM055:00/2019"
+   ],
+   "eduskunta_vaiheet": 496,
+   "eduskunta_vastaus": "2021-06-23",
+   "aanestykset": 84,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 25/2026",
+   "nimeke": "Rikosseuraamuslaitoksen organisaatiorakenteen ja rikosseuraamusalan koulutusjärjestelmän uudistaminen",
+   "hankkeet": [
+    "OM033:00/2025"
+   ],
+   "eduskunta_vaiheet": 62,
+   "eduskunta_vastaus": "2026-09-15",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 254/2022",
+   "nimeke": "Hallituksen esitys laeiksi ehdokkaan vaalirahoituksesta annetun lain, vaalilain, puoluelain ja kansalaisaloitelain muuttamisesta",
+   "hankkeet": [
+    "OM003:00/2022"
+   ],
+   "eduskunta_vaiheet": 30,
+   "eduskunta_vastaus": "2023-04-05",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 26/2024",
+   "nimeke": "Ulkomaalaislainsäädännön oleskelulupasääntelyn kehittäminen",
+   "hankkeet": [
+    "SM041:00/2023"
+   ],
+   "eduskunta_vaiheet": 51,
+   "eduskunta_vastaus": "2024-07-01",
+   "aanestykset": 3,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 261/2016",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi valtioneuvoston tilannekeskuksesta",
+   "hankkeet": [
+    "VNK021:00/2016"
+   ],
+   "eduskunta_vaiheet": 36,
+   "eduskunta_vastaus": "2017-04-27",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 27/2025",
+   "nimeke": "Hallituksen esitys kyberturvallisuuslain muuttamiseksi",
+   "hankkeet": [
+    "LVM004:00/2025"
+   ],
+   "eduskunta_vaiheet": 25,
+   "eduskunta_vastaus": "2025-06-18",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 279/2022",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi tuloverolain 10 §:n muuttamisesta sekä veropohjan rapautumisen ja voitonsiirron estämiseksi verosopimuksiin toteuttavista toimenpiteistä tehdyn monenvälisen ylei",
+   "hankkeet": [
+    "VM012:00/2022"
+   ],
+   "eduskunta_vaiheet": 31,
+   "eduskunta_vastaus": "2023-02-08",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 28/2023",
+   "nimeke": "Hallituksen esitys laiksi tasavallan presidentin palkkiosta annetun lain 1 §:n muuttamisesta",
+   "hankkeet": [
+    "VNK020:00/2023"
+   ],
+   "eduskunta_vaiheet": 24,
+   "eduskunta_vastaus": "2023-12-08",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 28/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi kansainvälistä suojelua hakevan vastaanotosta sekä ihmiskaupan uhrin tunnistamisesta ja auttamisesta annetun lain 20 ja 21 §:n väliaikaisesta muuttamisesta",
+   "hankkeet": [
+    "SM036:00/2023"
+   ],
+   "eduskunta_vaiheet": 67,
+   "eduskunta_vastaus": "2024-06-28",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 28/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi tullilain 9 luvun otsikon ja 61 §:n muuttamisesta (asiakirjojen tiedoksianto)",
+   "hankkeet": [
+    "VM124:00/2024"
+   ],
+   "eduskunta_vaiheet": 27,
+   "eduskunta_vastaus": "2026-06-22",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 29/2024",
+   "nimeke": "Hanke tiettyjen kansainvälistä suojelua koskevien ulkomaalaislain säännösten muuttamiseksi",
+   "hankkeet": [
+    "SM037:00/2023"
+   ],
+   "eduskunta_vaiheet": 47,
+   "eduskunta_vastaus": "2024-10-25",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 29/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle merituulivoiman kiinteistö- ja tuloverotusta koskevaksi lainsäädännöksi",
+   "hankkeet": [
+    "VM063:00/2024"
+   ],
+   "eduskunta_vaiheet": 56,
+   "eduskunta_vastaus": "2026-06-23",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Suomen uusiutuvat ry, Finlands förnybara rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 291/2018",
+   "nimeke": "Hallituksen esitys kalastusalan työtä koskevan direktiivin täytäntöönpanosta",
+   "hankkeet": [
+    "TEM027:00/2018"
+   ],
+   "eduskunta_vaiheet": 23,
+   "eduskunta_vastaus": "2019-01-30",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 3/2023",
+   "nimeke": "Hallituksen esitys laiksi tuomioistuinmaksulain 2 §:n muuttamisesta",
+   "hankkeet": [
+    "OM027:00/2023"
+   ],
+   "eduskunta_vaiheet": 24,
+   "eduskunta_vastaus": "2023-06-07",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 3/2024",
+   "nimeke": "Hallituksen esitys arvopaperimarkkinalain muuttamisesta",
+   "hankkeet": [
+    "VM039:00/2023"
+   ],
+   "eduskunta_vaiheet": 27,
+   "eduskunta_vastaus": "2024-03-22",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 3/2025",
+   "nimeke": "Hallituksen esitys ajoneuvolain ja rikosrekisterilain muuttamisesta",
+   "hankkeet": [
+    "LVM004:00/2024"
+   ],
+   "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2025-04-11",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 3/2026",
+   "nimeke": "Hallituksen esitys laeiksi vaarallisten kemikaalien ja räjähteiden käsittelyn turvallisuudesta annetun lain ja rakentamislain muuttamisesta",
+   "hankkeet": [
+    "TEM103:00/2025"
+   ],
+   "eduskunta_vaiheet": 60,
+   "eduskunta_vastaus": "2026-04-15",
+   "aanestykset": 3,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Asianajotoimisto Krogerus Oy"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 30/2025",
+   "nimeke": "MIFID II -direktiivin päivityksen kansallinen täytäntöönpano",
+   "hankkeet": [
+    "VM129:00/2024"
+   ],
+   "eduskunta_vaiheet": 29,
+   "eduskunta_vastaus": "2025-06-18",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 30/2026",
+   "nimeke": "Hallituksen esitys pesintäaikaista metsänhakkuuta ja muuta metsänkäsittelyä koskeviksi säännöksiksi",
+   "hankkeet": [
+    "MMM055:00/2025"
+   ],
+   "eduskunta_vaiheet": 57,
+   "eduskunta_vastaus": "2026-05-26",
+   "aanestykset": 3,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 31/2023",
+   "nimeke": "Hallituksen esitys laiksi Oikeushallinnon erityisviranomaiset -virastosta",
+   "hankkeet": [
+    "OM067:00/2023"
+   ],
+   "eduskunta_vaiheet": 47,
+   "eduskunta_vastaus": "2023-12-12",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 32/2025",
+   "nimeke": "Hallituksen esitys eurooppalaista medianvapausasetusta täydentäväksi lainsäädännöksi",
+   "hankkeet": [
+    "LVM033:00/2024"
+   ],
+   "eduskunta_vaiheet": 27,
+   "eduskunta_vastaus": "2025-06-16",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 32/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi eläinten hyvinvoinnista annetun lain muuttamisesta ja laiksi eläinten lääkitsemisestä annetun lain 17 §:n muuttamisesta",
+   "hankkeet": [
+    "MMM019:00/2025"
+   ],
+   "eduskunta_vaiheet": 32,
+   "eduskunta_vastaus": "2026-06-11",
+   "aanestykset": 3,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 3,
+   "vaikuttajat": [
+    "Atria Suomi Oy",
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry",
+    "Svenska lantbruksproducenternas centralförbund SLC rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 33/2023",
+   "nimeke": "Äitiyden selvittäminen ja oikeusgeneettiset tutkimukset",
+   "hankkeet": [
+    "OM024:00/2022"
+   ],
+   "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2023-12-13",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 33/2026",
+   "nimeke": "Asuinhuoneiston vuokrauksesta annetun lain uudistaminen",
+   "hankkeet": [
+    "OM100:00/2023"
+   ],
+   "eduskunta_vaiheet": 29,
+   "eduskunta_vastaus": "2026-06-03",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 3,
+   "vaikuttajat": [
+    "Kiinteistönomistajat ja rakennuttajat Rakli ry",
+    "Suomen Vuokranantajat ry",
+    "Suomen opiskelija-asunnot SOA ry"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 34/2025",
+   "nimeke": "Hallituksen esitys laiksi Yleisradio Oy:stä annetun lain muuttamisesta",
+   "hankkeet": [
+    "LVM032:00/2024"
+   ],
+   "eduskunta_vaiheet": 27,
+   "eduskunta_vastaus": "2025-06-18",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 34/2026",
+   "nimeke": "Asunto-osakeyhtiölain tarkistaminen",
+   "hankkeet": [
+    "OM119:00/2023"
+   ],
+   "eduskunta_vaiheet": 42,
+   "eduskunta_vastaus": "2026-05-29",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Matkailu- ja Ravintolapalvelut MaRa ry, Turism- och Restaurangförbundet rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 35/2026",
+   "nimeke": "Hallituksen esitys laiksi perusopetuslain muuttamisesta",
+   "hankkeet": [
+    "OKM043:00/2025"
+   ],
+   "eduskunta_vaiheet": 30,
+   "eduskunta_vastaus": "2026-06-16",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Opetusalan Ammattijärjestö OAJ ry, Undervisningssektorns Fackorganisation rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 36/2026",
+   "nimeke": "Elintarvikemarkkinalainsäädännön muutosten valmistelu (II vaihe)",
+   "hankkeet": [
+    "MMM058:00/2024"
+   ],
+   "eduskunta_vaiheet": 55,
+   "eduskunta_vastaus": "2026-06-12",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 9,
+   "vaikuttajat": [
+    "Elintarviketeollisuusliitto ry, Livsmedelsindustriförbundet rf",
+    "Kaupan liitto ry, Finsk Handel rf",
+    "Kesko Oyj",
+    "Lidl Suomi Kommandiittiyhtiö",
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry",
+    "Päivittäistavarakauppa ry, ruotsiksi Finlands Dagligvaruhandel rf",
+    "Suomen Osuuskauppojen Keskuskunta"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 37/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi biopolttoaineista, bionesteistä ja biomassapolttoaineista annetun lain muuttamisesta (RED III toimeenpano)",
+   "hankkeet": [
+    "TEM029:00/2023"
+   ],
+   "eduskunta_vaiheet": 50,
+   "eduskunta_vastaus": "2025-06-19",
+   "aanestykset": 4,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 37/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi Euroopan unionin hiilirajamekanismia koskevan asetuksen toimeenpanosta annetun lain muuttamisesta",
+   "hankkeet": [
+    "TEM086:00/2025"
+   ],
+   "eduskunta_vaiheet": 22,
+   "eduskunta_vastaus": "2026-05-11",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 38/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi kirjanpitolain ja tilintarkastuslain muuttamisesta",
+   "hankkeet": [
+    "TEM096:00/2025"
+   ],
+   "eduskunta_vaiheet": 26,
+   "eduskunta_vastaus": "2026-06-03",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 3,
+   "vaikuttajat": [
+    "Energiateollisuus ry, Finsk Energiindustri rf",
+    "Fortum Oyj",
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 39/2019",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi sairausvakuutuslain 11 luvun 10 §:n sekä eräiden muiden lakien muuttamisesta",
+   "hankkeet": [
+    "STM057:00/2019"
+   ],
+   "eduskunta_vaiheet": 29,
+   "eduskunta_vastaus": "2019-11-22",
+   "aanestykset": 4,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 40/2021",
+   "nimeke": "EU:n jätesäädöspaketin toimeenpano",
+   "hankkeet": [
+    "YM003:00/2019"
+   ],
+   "eduskunta_vaiheet": 104,
+   "eduskunta_vastaus": "2021-06-23",
+   "aanestykset": 9,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 40/2025",
+   "nimeke": "Vesihuoltolain uudistus",
+   "hankkeet": [
+    "MMM033:00/2022"
+   ],
+   "eduskunta_vaiheet": 40,
+   "eduskunta_vastaus": "2025-11-21",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Kuntaliitto ry;Finlands Kommunförbund rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 40/2026",
+   "nimeke": "Työeläkejärjestelmän uudistamista valmisteleva työryhmä",
+   "hankkeet": [
+    "STM021:00/2025"
+   ],
+   "eduskunta_vaiheet": 42,
+   "eduskunta_vastaus": "2026-06-02",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Keskinäinen työeläkevakuutusyhtiö Varma"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 41/2019",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi työttömyysetuuksien rahoituksesta annetun lain ja työttömyysturvalain muuttamisesta",
+   "hankkeet": [
+    "STM061:00/2019"
+   ],
+   "eduskunta_vaiheet": 25,
+   "eduskunta_vastaus": "2019-11-19",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 41/2025",
+   "nimeke": "Yhden luukun palvelujen lainsäädäntöhanke",
+   "hankkeet": [
+    "YM063:00/2023"
+   ],
+   "eduskunta_vaiheet": 47,
+   "eduskunta_vastaus": "2025-06-19",
+   "aanestykset": 6,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 42/2020",
+   "nimeke": "Hallituksen esitys merityötä koskevan yleissopimuksen ohjeiston muutosten hyväksymiseksi ja voimaansaattamiseksi sekä laiksi merityösopimuslain muuttamisesta ja eräiksi muiksi laeiksi",
+   "hankkeet": [
+    "TEM057:00/2018"
+   ],
+   "eduskunta_vaiheet": 25,
+   "eduskunta_vastaus": "2020-06-02",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 43/2025",
+   "nimeke": "Taloyhtiöiden osakaskohtaisia lainaosuuksia koskevien tietojen siirtäminen positiiviseen luottotietorekisteriin",
+   "hankkeet": [
+    "OM016:00/2024"
+   ],
+   "eduskunta_vaiheet": 52,
+   "eduskunta_vastaus": "2025-10-08",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 44/2023",
+   "nimeke": "Osakesäästötilin talletusrajan enimmäismäärän korottaminen 100 000 euroon",
+   "hankkeet": [
+    "VM088:00/2023"
+   ],
+   "eduskunta_vaiheet": 50,
+   "eduskunta_vastaus": "2023-12-12",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 44/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi tuloverolain 46 ja 55 §:n muuttamisesta",
+   "hankkeet": [
+    "VM033:00/2024"
+   ],
+   "eduskunta_vaiheet": 38,
+   "eduskunta_vastaus": "2025-06-19",
+   "aanestykset": 3,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 45/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi valmisteverotuslain muuttamisesta",
+   "hankkeet": [
+    "VM094:00/2023"
+   ],
+   "eduskunta_vaiheet": 32,
+   "eduskunta_vastaus": "2024-06-13",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 45/2025",
+   "nimeke": "Hallituksen esitys laeiksi sähkömarkkinalain ja maakaasumarkkinalain muuttamisesta (lisääntyvän sähköntuotannon ja kasvavien kulutuksen kuormien integrointi sähköverkkoihin)",
+   "hankkeet": [
+    "TEM039:00/2023"
+   ],
+   "eduskunta_vaiheet": 35,
+   "eduskunta_vastaus": "2025-10-08",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen uusiutuvat ry, Finlands förnybara rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 46/2025",
+   "nimeke": "Hallituksen esitys laiksi eräiden tekoälyjärjestelmien valvonnasta ja siihen liittyvien lakien muuttamisesta",
+   "hankkeet": [
+    "TEM050:00/2024"
+   ],
+   "eduskunta_vaiheet": 72,
+   "eduskunta_vastaus": "2025-12-15",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "STTK ry STTK rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 47/2024",
+   "nimeke": "Kaksikäyttötuotteiden vientivalvontaa koskevan lain uudistaminen",
+   "hankkeet": [
+    "UM008:00/2019"
+   ],
+   "eduskunta_vaiheet": 48,
+   "eduskunta_vastaus": "2024-06-27",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 47/2025",
+   "nimeke": "Holokaustin kieltämisen kriminalisointi",
+   "hankkeet": [
+    "OM191:00/2023"
+   ],
+   "eduskunta_vaiheet": 45,
+   "eduskunta_vastaus": "2025-12-17",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 47/2026",
+   "nimeke": "Kuluttajansuojalain uudistaminen vihreän siirtymän edistämiseksi",
+   "hankkeet": [
+    "OM033:00/2024"
+   ],
+   "eduskunta_vaiheet": 39,
+   "eduskunta_vastaus": "2026-06-15",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 5,
+   "vaikuttajat": [
+    "Elinkeinoelämän keskusliitto ry, Finlands näringsliv rf",
+    "Energiateollisuus ry, Finsk Energiindustri rf",
+    "Kaupan liitto ry, Finsk Handel rf",
+    "Pro Luomu ry.",
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 48/2026",
+   "nimeke": "Eläinten tunnistamisesta ja rekisteröinnistä annetun lain (1069/2021) muuttamista koskeva säädöshanke",
+   "hankkeet": [
+    "MMM021:00/2025"
+   ],
+   "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2026-06-04",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 5/2025",
+   "nimeke": "Sakon täytäntöönpanosta annetun lain uudistaminen vaihe 1 (rikosprosessin sujuvoittaminen)",
+   "hankkeet": [
+    "OM032:00/2021"
+   ],
+   "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2025-05-22",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 5/2026",
+   "nimeke": "Sakkomenettelyn kokonaistarkastelu (rikosprosessin sujuvoittaminen) (I-vaihe)",
+   "hankkeet": [
+    "OM061:00/2023"
+   ],
+   "eduskunta_vaiheet": 59,
+   "eduskunta_vastaus": "2026-06-16",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 50/2023",
+   "nimeke": "Hallituksen esitys eduskunnalle sähköisen viestinnän palveluista annetun lain muuttamiseksi (datanhallinta-asetuksen täytäntöönpano)",
+   "hankkeet": [
+    "LVM011:00/2023"
+   ],
+   "eduskunta_vaiheet": 23,
+   "eduskunta_vastaus": "2023-12-11",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 50/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi arvonlisäverolain ja oma-aloitteisten verojen verotusmenettelystä annetun lain 39 §:n muuttamisesta",
+   "hankkeet": [
+    "VM023:00/2023"
+   ],
+   "eduskunta_vaiheet": 38,
+   "eduskunta_vastaus": "2024-06-19",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 50/2025",
+   "nimeke": "Ilman oleskeluoikeutta maassa oleskelevien terveyspalveluja koskeva sääntelymuutos",
+   "hankkeet": [
+    "STM158:00/2024"
+   ],
+   "eduskunta_vaiheet": 49,
+   "eduskunta_vastaus": "2025-11-26",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Lääkärin sosiaalinen vastuu ry, Läkares sociala ansvar rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 51/2023",
+   "nimeke": "Väylämaksulain muuttamisesta ja väliaikaisesta muuttamisesta annetun lain voimaantulosäännöksen muutos",
+   "hankkeet": [
+    "LVM032:00/2023"
+   ],
+   "eduskunta_vaiheet": 26,
+   "eduskunta_vastaus": "2023-11-28",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 52/2026",
+   "nimeke": "EU:n muuttoliike- ja turvapaikkasopimuksen kansallista täytäntöönpanoa koskeva lainsäädäntöhanke",
+   "hankkeet": [
+    "SM032:00/2024"
+   ],
+   "eduskunta_vaiheet": 72,
+   "eduskunta_vastaus": "2026-06-03",
+   "aanestykset": 10,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Amnesty International Suomen osasto ry, Amnesty International Finländska sektionen rf",
+    "Pakolaisneuvonta ry;Flyktingrådgivningen rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 53/2023",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi uusiutuvien polttoaineiden käytön edistämisestä liikenteessä annetun lain 5 §:n muuttamisesta",
+   "hankkeet": [
+    "TEM048:00/2023"
+   ],
+   "eduskunta_vaiheet": 51,
+   "eduskunta_vastaus": "2023-12-12",
+   "aanestykset": 15,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 54/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi varhaiskasvatuksen palvelusetelistä ja eräiksi siihen liittyviksi laeiksi",
+   "hankkeet": [
+    "OKM062:00/2023"
+   ],
+   "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2025-11-12",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 57/2024",
+   "nimeke": "Hallituksen esitys Euroopan unionin kyberturvallisuusdirektiivin (NIS2-direktiivi) täytäntöönpanemiseksi",
+   "hankkeet": [
+    "LVM027:00/2023"
+   ],
+   "eduskunta_vaiheet": 64,
+   "eduskunta_vastaus": "2025-03-21",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 57/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle EU:n poliittisen mainonnan asetusta täydentäväksi lainsäädännöksi",
+   "hankkeet": [
+    "OM055:00/2024"
+   ],
+   "eduskunta_vaiheet": 50,
+   "eduskunta_vastaus": "2025-11-19",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 57/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi tuloverolain muuttamisesta",
+   "hankkeet": [
+    "VM017:00/2026"
+   ],
+   "eduskunta_vaiheet": 33,
+   "eduskunta_vastaus": "2026-06-05",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 6/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi suurten konsernien vähimmäisverosta annetun lain muuttamisesta annetun hallituksen esityksen (HE 196/2025 vp) täydentämisestä",
+   "hankkeet": [
+    "VM002:00/2026"
+   ],
+   "eduskunta_vaiheet": 25,
+   "eduskunta_vastaus": "2026-03-12",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Finnwatch ry"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 62/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle eräiden polttoaineiden kestävyyskriteereistä annetun lain ja päästökauppalain 34 §:n muuttamisesta",
+   "hankkeet": [
+    "TEM049:00/2025"
+   ],
+   "eduskunta_vaiheet": 24,
+   "eduskunta_vastaus": "2026-06-02",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 65/2024",
+   "nimeke": "Avioliittoon pakottamisen rangaistavuus rikoslaissa",
+   "hankkeet": [
+    "OM069:00/2022"
+   ],
+   "eduskunta_vaiheet": 30,
+   "eduskunta_vastaus": "2024-11-13",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 65/2025",
+   "nimeke": "Hallituksen esitys laiksi raideliikennelain ja liikenteen palveluista annetun lain muuttamisesta",
+   "hankkeet": [
+    "LVM027:00/2024"
+   ],
+   "eduskunta_vaiheet": 24,
+   "eduskunta_vastaus": "2025-10-23",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 65/2026",
+   "nimeke": "Hallituksen esitys laiksi urheilijan tapaturma- ja eläketurvasta annetun lain muuttamisesta",
+   "hankkeet": [
+    "STM085:00/2025"
+   ],
+   "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2026-06-10",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Jalkapallon Pelaajayhdistys ry",
+    "Suomen Urheilijat ry"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 66/2025",
+   "nimeke": "Hallituksen esitys laiksi liikenteen palveluista annetun lain muuttamisesta",
+   "hankkeet": [
+    "LVM005:00/2024"
+   ],
+   "eduskunta_vaiheet": 27,
+   "eduskunta_vastaus": "2025-10-23",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 67/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi Kansaneläkelaitoksen kuntoutusetuuksista ja kuntoutusrahaetuuksista annetun lain ja sairausvakuutuslain 15  ja 17 luvun sekä eräiden muiden lakien muuttamisesta",
+   "hankkeet": [
+    "STM196:00/2025"
+   ],
+   "eduskunta_vaiheet": 29,
+   "eduskunta_vastaus": "2026-06-11",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 68/2018",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi kilpailulain muuttamisesta ja eräiksi siihen liittyviksi laeiksi",
+   "hankkeet": [
+    "TEM003:00/2018"
+   ],
+   "eduskunta_vaiheet": 24,
+   "eduskunta_vastaus": "2019-05-16",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 68/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi eräistä asbestipurkutyötä koskevista vaatimuksista annetun lain 2 ja 11 §:n, työsuojelun valvonnasta ja työpaikan työsuojeluyhteistoiminnasta annetun lain 48 §:",
+   "hankkeet": [
+    "STM104:00/2024"
+   ],
+   "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": "2025-10-10",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 7/2021",
+   "nimeke": "Rikoslain 6 luvun 5 §:n täydentäminen säätämällä koventamisperusteeksi rikoksen tekeminen sukupuoleen perustuvasta vaikuttimesta",
+   "hankkeet": [
+    "OM024:00/2019"
+   ],
+   "eduskunta_vaiheet": 38,
+   "eduskunta_vastaus": "2022-12-02",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 7/2023",
+   "nimeke": "Rajavartiolaitoksen rikostorjuntalain tarkistaminen (salaiset tiedonhankintakeinot)",
+   "hankkeet": [
+    "SM046:00/2022"
+   ],
+   "eduskunta_vaiheet": 24,
+   "eduskunta_vastaus": "2023-10-11",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 71/2025",
+   "nimeke": "Sinivilkkusabotaasi ja ensihoitajien rikosoikeudellinen suoja",
+   "hankkeet": [
+    "OM049:00/2024"
+   ],
+   "eduskunta_vaiheet": 53,
+   "eduskunta_vastaus": "2026-03-18",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 72/2023",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi biopolttoaineista, bionesteistä ja biomassapolttoaineista annetun lain muuttamisesta (tekninen muutos)",
+   "hankkeet": [
+    "TEM024:00/2023"
+   ],
+   "eduskunta_vaiheet": 46,
+   "eduskunta_vastaus": "2023-12-14",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 72/2025",
+   "nimeke": "Ahvenanmaalaisten miesten vapaaehtoista asepalvelusta koskeva lainvalmistelutyöryhmä",
+   "hankkeet": [
+    "PLM004:00/2023"
+   ],
+   "eduskunta_vaiheet": 36,
+   "eduskunta_vastaus": "2026-04-28",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 72/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi ydinenergialain sekä rikoslain 34 luvun 6 §:n muuttamisesta",
+   "hankkeet": [
+    "PLM002:00/2026"
+   ],
+   "eduskunta_vaiheet": 104,
+   "eduskunta_vastaus": "2026-06-22",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 73/2026",
+   "nimeke": "Pariisin pöytäkirjaa täydentävän sopimuksen kansallinen voimaansaattaminen",
+   "hankkeet": [
+    "PLM006:00/2025"
+   ],
+   "eduskunta_vaiheet": 46,
+   "eduskunta_vastaus": "2026-06-22",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 74/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi kotoutumisen edistämisestä annetun lain muuttamisesta ja siihen liittyviksi laeiksi",
+   "hankkeet": [
+    "TEM099:00/2024"
+   ],
+   "eduskunta_vaiheet": 60,
+   "eduskunta_vastaus": "2026-06-22",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Amnesty International Suomen osasto ry, Amnesty International Finländska sektionen rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 75/2026",
+   "nimeke": "Hallituksen esitys teollisuuspäästödirektiivin muutoksen täytäntöönpanosta",
+   "hankkeet": [
+    "YM063:00/2024"
+   ],
+   "eduskunta_vaiheet": 29,
+   "eduskunta_vastaus": "2026-06-16",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Kemianteollisuus KT ry, ruotsiksi Kemiindustrin KI rf",
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 76/2025",
+   "nimeke": "Digi- ja väestötietoviraston säästötavoitteita tukeva lainsäädäntötyöryhmä",
+   "hankkeet": [
+    "VM167:00/2024"
+   ],
+   "eduskunta_vaiheet": 27,
+   "eduskunta_vastaus": "2025-11-20",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 77/2024",
+   "nimeke": "Eurooppalaisia vihreitä joukkolainoja koskevan asetuksen kansallinen toimeenpano",
+   "hankkeet": [
+    "VM121:00/2023"
+   ],
+   "eduskunta_vaiheet": 27,
+   "eduskunta_vastaus": "2024-11-15",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 77/2026",
+   "nimeke": "Syyttäjälaitoksen henkilötietojen käsittelyn sääntelytarpeen arviointi",
+   "hankkeet": [
+    "OM029:00/2022"
+   ],
+   "eduskunta_vaiheet": 39,
+   "eduskunta_vastaus": "2026-09-23",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 78/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi hyvinvointialueesta annetun lain ja sosiaali- ja terveydenhuollon sekä pelastustoimen järjestämisestä Uudellamaalla annetun lain 2 ja 17 §:n muuttamisesta",
+   "hankkeet": [
+    "VM007:00/2024"
+   ],
+   "eduskunta_vaiheet": 64,
+   "eduskunta_vastaus": "2024-12-17",
+   "aanestykset": 5,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 80/2019",
+   "nimeke": "Hallituksen esitys eduskunnalle aktiivimallin leikkureiden ja velvoitteiden kumoamista koskevaksi lainsäädännöksi",
+   "hankkeet": [
+    "STM058:00/2019"
+   ],
+   "eduskunta_vaiheet": 44,
+   "eduskunta_vastaus": "2019-12-12",
+   "aanestykset": 5,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 80/2020",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi lääkelain, lääkkeiden velvoitevarastoinnista annetun lain ja tartuntatautilain muuttamisesta",
+   "hankkeet": [
+    "STM042:00/2020"
+   ],
+   "eduskunta_vaiheet": 33,
+   "eduskunta_vastaus": "2020-06-23",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 82/2025",
+   "nimeke": "Hallituksen esitys laiksi kuurojen ja viittomakielisten totuus- ja sovintoprosessin toteuttamisesta",
+   "hankkeet": [
+    "OM019:00/2025"
+   ],
+   "eduskunta_vaiheet": 29,
+   "eduskunta_vastaus": "2025-12-04",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 82/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle  laeiksi jätelain ja verkon välityspalveluiden valvonnasta annetun lain muuttamisesta (EU:n pakkausjäteasetuksen täytäntöönpano)",
+   "hankkeet": [
+    "YM003:00/2025"
+   ],
+   "eduskunta_vaiheet": 24,
+   "eduskunta_vastaus": "2026-06-15",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Kaupan liitto ry, Finsk Handel rf",
+    "Päivittäistavarakauppa ry, ruotsiksi Finlands Dagligvaruhandel rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 83/2019",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi työttömyysturvalain 3 luvun 1 §:n ja 6 luvun 9 §:n ja työttömyysetuuksien rahoituksesta annetun lain muuttamisesta",
+   "hankkeet": [
+    "STM097:00/2019"
+   ],
+   "eduskunta_vaiheet": 41,
+   "eduskunta_vastaus": "2019-12-13",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 83/2020",
+   "nimeke": "Hallituksen esitys eduskunnalle valtion lainanannosta sekä valtiontakauksesta ja valtiontakuusta annetun lain 3 ja 4 a §:n muuttamisesta",
+   "hankkeet": [
+    "VM080:00/2020"
+   ],
+   "eduskunta_vaiheet": 27,
+   "eduskunta_vastaus": "2020-06-23",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 83/2023",
+   "nimeke": "Hallituksen esitys laiksi Kanadan kanssa solmitun nuorison liikkuvuussopimuksen voimaansaattamiseksi",
+   "hankkeet": [
+    "TEM073:00/2019"
+   ],
+   "eduskunta_vaiheet": 23,
+   "eduskunta_vastaus": "2023-12-14",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 85/2024",
+   "nimeke": "Paikallisen sopimisen edistämistä valmisteleva työryhmä",
+   "hankkeet": [
+    "TEM054:00/2023"
+   ],
+   "eduskunta_vaiheet": 65,
+   "eduskunta_vastaus": "2024-12-17",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Palvelualojen työnantajat PALTA ry, Arbetsgivarna för servicebrancherna PALTA rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 86/2024",
+   "nimeke": "Valtion pääomasijoitusyhtiön hallituksen esityksen valmistelu",
+   "hankkeet": [
+    "TEM061:00/2023"
+   ],
+   "eduskunta_vaiheet": 45,
+   "eduskunta_vastaus": "2024-12-17",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 87/2019",
+   "nimeke": "Hallituksen esitys eduskunnalle sosiaaliturva- ja vakuutuslainsäädännön muuttamiseksi EU:n yleisen tietosuoja-asetuksen johdosta",
+   "hankkeet": [
+    "STM062:00/2019"
+   ],
+   "eduskunta_vaiheet": 48,
+   "eduskunta_vastaus": "2020-03-27",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 89/2024",
+   "nimeke": "Hallituksen esitys rakennetun ympäristön tietojärjestelmästä annetun lain 2 ja 10 §:n muuttamisesta",
+   "hankkeet": [
+    "YM050:00/2023"
+   ],
+   "eduskunta_vaiheet": 23,
+   "eduskunta_vastaus": "2024-11-08",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 89/2025",
+   "nimeke": "Pienten riita-asioiden menettely",
+   "hankkeet": [
+    "OM059:00/2021"
+   ],
+   "eduskunta_vaiheet": 43,
+   "eduskunta_vastaus": "2026-04-16",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 9/2026",
+   "nimeke": "Tietosuojalainsäädännön kokonaisuudistukseen liittyvät muutokset oikeusministeriön hallinnonalan lainsäädäntöön",
+   "hankkeet": [
+    "OM015:00/2025"
+   ],
+   "eduskunta_vaiheet": 22,
+   "eduskunta_vastaus": "2026-05-05",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 91/2023",
+   "nimeke": "Hallituksen esitys positiivisesta luottotietorekisteristä annetun lain muuttamisesta",
+   "hankkeet": [
+    "OM057:00/2023"
+   ],
+   "eduskunta_vaiheet": 25,
+   "eduskunta_vastaus": "2024-03-14",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 91/2026",
+   "nimeke": "Luonnonsuojelulain muutos kansallisen ennallistamissuunnitelman säännöksiksi ja luonnonarvomarkkinoiden edistämiseksi",
+   "hankkeet": [
+    "YM062:00/2024"
+   ],
+   "eduskunta_vaiheet": 62,
+   "eduskunta_vastaus": "2026-06-24",
+   "aanestykset": 14,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 3,
+   "vaikuttajat": [
+    "Kemianteollisuus KT ry, ruotsiksi Kemiindustrin KI rf",
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 92/2023",
+   "nimeke": "Lainsäädäntöhanke Suomen ja Ruotsin välisen raja-alueen poliisiyhteistyöstä tehdyn sopimuksen hyväksymiseksi ja voimaansaattamiseksi",
+   "hankkeet": [
+    "SM027:00/2021"
+   ],
+   "eduskunta_vaiheet": 36,
+   "eduskunta_vastaus": "2024-05-02",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 92/2024",
+   "nimeke": "Daisy Chain 2 -direktiivin täytäntöönpano",
+   "hankkeet": [
+    "VM087:00/2024"
+   ],
+   "eduskunta_vaiheet": 24,
+   "eduskunta_vastaus": "2024-11-05",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 93/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi arvonlisäverolain 85 §:n  ja Ahvenanmaan maakuntaa koskevista poikkeuksista arvonlisävero- ja valmisteverolainsäädäntöön annetun lain 18 b §:n muuttamisesta",
+   "hankkeet": [
+    "VM043:00/2025"
+   ],
+   "eduskunta_vaiheet": 41,
+   "eduskunta_vastaus": "2025-12-01",
+   "aanestykset": 6,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Kaupan liitto ry, Finsk Handel rf",
+    "Päivittäistavarakauppa ry, ruotsiksi Finlands Dagligvaruhandel rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 93/2026",
+   "nimeke": "Hallituksen esitys laeiksi yliopistolain ja ammattikorkeakoululain väliaikaisesta muuttamisesta (opintosetelikokeilu)",
+   "hankkeet": [
+    "OKM001:00/2026"
+   ],
+   "eduskunta_vaiheet": 30,
+   "eduskunta_vastaus": "2026-06-18",
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Bildningsalliansen rf",
+    "Kansalaisopistojen liitto KoL ry, Medborgarinstitutens förbund Mif rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 94/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle työvoimapalveluiden järjestämisestä annetun lain ja tulotietojärjestelmästä annetun lain 13 §:n muuttamisesta",
+   "hankkeet": [
+    "TEM100:00/2025"
+   ],
+   "eduskunta_vaiheet": 37,
+   "eduskunta_vastaus": "2026-09-17",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 95/2019",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi sosiaali- ja terveystietojen toissijaisesta käytöstä annetun lain 50 §:n muuttamisesta",
+   "hankkeet": [
+    "STM119:00/2019"
+   ],
+   "eduskunta_vaiheet": 23,
+   "eduskunta_vastaus": "2019-12-17",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 96/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi Maanpuolustuskorkeakoulusta annetun lain muuttamisesta",
+   "hankkeet": [
+    "PLM002:00/2024"
+   ],
+   "eduskunta_vaiheet": 22,
+   "eduskunta_vastaus": "2024-11-27",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 98/2022",
+   "nimeke": "Avoimuusrekisteri",
+   "hankkeet": [
+    "OM033:00/2019"
+   ],
+   "eduskunta_vaiheet": 82,
+   "eduskunta_vastaus": "2023-02-27",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Elinkeinoelämän keskusliitto ry, Finlands näringsliv rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 98/2024",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi suurten konsernien vähimmäisverosta annetun lain muuttamisesta",
+   "hankkeet": [
+    "VM172:00/2023"
+   ],
+   "eduskunta_vaiheet": 32,
+   "eduskunta_vastaus": "2024-12-05",
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 98/2025",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi vuoden 2026 tuloveroasteikosta ja tuloverolain muuttamisesta sekä eräiksi muiksi verolaeiksi",
+   "hankkeet": [
+    "VM064:00/2024"
+   ],
+   "eduskunta_vaiheet": 49,
+   "eduskunta_vastaus": "2025-11-20",
+   "aanestykset": 12,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Päivittäistavarakauppa ry, ruotsiksi Finlands Dagligvaruhandel rf",
+    "Vastuullinen Lahjoittaminen ry, Ansvarsfullt Donerande rf"
+   ],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 99/2026",
+   "nimeke": "Suullisen todistelun tallentamista ja vastaanottamista yleisissä tuomioistuimissa koskevan uudistuksen voimaanpano",
+   "hankkeet": [
+    "OM064:00/2021"
+   ],
+   "eduskunta_vaiheet": 27,
+   "eduskunta_vastaus": "2026-06-22",
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunta päättänyt"
+  },
+  {
+   "he": "HE 110/2026",
+   "nimeke": "Hallituksen esitys laeiksi lääketieteellisestä tutkimuksesta annetun lain, kliinisestä lääketutkimuksesta annetun lain ja biopankkilain muuttamisesta sekä eräiksi muiksi laeiksi",
+   "hankkeet": [
+    "STM111:00/2024"
+   ],
+   "eduskunta_vaiheet": 11,
+   "eduskunta_vastaus": null,
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "äänestetty"
+  },
+  {
+   "he": "HE 145/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi tupakkalain muuttamisesta",
+   "hankkeet": [
+    "STM165:00/2024"
+   ],
+   "eduskunta_vaiheet": 29,
+   "eduskunta_vastaus": null,
+   "aanestykset": 2,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen ASH ry"
+   ],
+   "outcome": "äänestetty"
+  },
+  {
+   "he": "HE 146/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle työeläkejärjestelmän viimeisen eläkelaitoksen menettelyn laajentamista koskevaksi lainsäädännöksi ja eräiksi muiksi laeiksi",
+   "hankkeet": [
+    "STM183:00/2025"
+   ],
+   "eduskunta_vaiheet": 11,
+   "eduskunta_vastaus": null,
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Keskinäinen Työeläkevakuutusyhtiö Elo",
+    "Työeläkevakuuttajat TELA - Arbetspensionsförsäkrarna TELA ry"
+   ],
+   "outcome": "äänestetty"
+  },
+  {
+   "he": "HE 39/2021",
+   "nimeke": "Liikkumisvapauden ja lähikontaktien väliaikainen rajoittaminen",
+   "hankkeet": [
+    "VNK027:00/2021"
+   ],
+   "eduskunta_vaiheet": 65,
+   "eduskunta_vastaus": null,
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "äänestetty"
+  },
+  {
+   "he": "HE 70/2026",
+   "nimeke": "Hallituksen esitys uudeksi alueidenkäyttölaiksi",
+   "hankkeet": [
+    "YM057:00/2023"
+   ],
+   "eduskunta_vaiheet": 61,
+   "eduskunta_vastaus": null,
+   "aanestykset": 1,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 19,
+   "vaikuttajat": [
+    "Asianajotoimisto Petri Vesa Oy",
+    "Burson Finland Oy",
+    "Energiakaupungit ry",
+    "Energiateollisuus ry, Finsk Energiindustri rf",
+    "Kiinteistönomistajat ja rakennuttajat Rakli ry",
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry",
+    "Metsäteollisuus ry, Skogsindustrin rf",
+    "Päivittäistavarakauppa ry, ruotsiksi Finlands Dagligvaruhandel rf",
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf",
+    "Suomen uusiutuvat ry, Finlands förnybara rf",
+    "Svenska lantbruksproducenternas centralförbund SLC rf"
+   ],
+   "outcome": "äänestetty"
+  },
+  {
+   "he": "HE 101/2026",
+   "nimeke": "Sika-alan salmonellariskien hallintaa koskeva säädöshanke; hallituksen esitys laiksi sika-alan salmonellavahinkorahastosta",
+   "hankkeet": [
+    "MMM023:00/2023"
+   ],
+   "eduskunta_vaiheet": 33,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 3,
+   "vaikuttajat": [
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry",
+    "Svenska lantbruksproducenternas centralförbund SLC rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 103/2026",
+   "nimeke": "Hallintotuomioistuinten kokoonpanosääntelyn tarkistaminen",
+   "hankkeet": [
+    "OM045:00/2023"
+   ],
+   "eduskunta_vaiheet": 16,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 105/2026",
+   "nimeke": "Rahanpesulainsäädännön kokonaisuudistus -hanke",
+   "hankkeet": [
+    "VM053:00/2024"
+   ],
+   "eduskunta_vaiheet": 23,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 3,
+   "vaikuttajat": [
+    "Elinkeinoelämän keskusliitto ry, Finlands näringsliv rf",
+    "Nordea Bank Abp"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 109/2026",
+   "nimeke": "Kotoutumistuen ja työmarkkinatuen kielilisän valmistelu",
+   "hankkeet": [
+    "STM074:00/2024"
+   ],
+   "eduskunta_vaiheet": 22,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 115/2026",
+   "nimeke": "Taiteen perusopetusta koskevan lainsäädännön uudistaminen, jatkovalmistelu",
+   "hankkeet": [
+    "OKM034:00/2025"
+   ],
+   "eduskunta_vaiheet": 19,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Opetusalan Ammattijärjestö OAJ ry, Undervisningssektorns Fackorganisation rf",
+    "Taiteen perusopetusliitto TPO ry, Förbundet för grundläggande konstundervisning i Finland rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 116/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle Maailman postiliiton yleissopimuksen toisen lisäpöytäkirjan hyväksymiseksi ja voimaansaattamiseksi sekä laiksi postilain 77 §:n muuttamisesta.",
+   "hankkeet": [
+    "LVM048:00/2025"
+   ],
+   "eduskunta_vaiheet": 17,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 118/2026",
+   "nimeke": "Säästövapaan pitämisen ajankohdan muuttamista valmisteleva työryhmä",
+   "hankkeet": [
+    "TEM056:00/2025"
+   ],
+   "eduskunta_vaiheet": 27,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 3,
+   "vaikuttajat": [
+    "Elinkeinoelämän keskusliitto ry, Finlands näringsliv rf",
+    "Kuljetusliitot KL ry, Transportunionerna TU rf",
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 119/2026",
+   "nimeke": "Välimiesmenettelylain uudistaminen",
+   "hankkeet": [
+    "OM108:00/2023"
+   ],
+   "eduskunta_vaiheet": 9,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 120/2026",
+   "nimeke": "Vankeuslain ja tutkintavankeuslain kehittäminen (2. vaihe)",
+   "hankkeet": [
+    "OM085:00/2024"
+   ],
+   "eduskunta_vaiheet": 27,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 123/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi yritys- ja yhteisötietolain eräiden säännösten, Finanssivalvonnasta annetun lain 3 §:n 3 momentin 11 kohdan ja 5 §:n 26 kohdan sekä Finanssivalvonnan valvontamak",
+   "hankkeet": [
+    "TEM107:00/2025"
+   ],
+   "eduskunta_vaiheet": 9,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 124/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi yleistukilain voimaantulosäännöksen muuttamisesta",
+   "hankkeet": [
+    "STM035:00/2026"
+   ],
+   "eduskunta_vaiheet": 11,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Keskinäinen työeläkevakuutusyhtiö Varma"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 125/2026",
+   "nimeke": "Hallituksen esitys yksityistielain muuttamiseksi",
+   "hankkeet": [
+    "LVM022:00/2025"
+   ],
+   "eduskunta_vaiheet": 14,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Suomen Kuntaliitto ry;Finlands Kommunförbund rf",
+    "Suomen Tieyhdistys ry, Vägföreningen i Finland rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 126/2026",
+   "nimeke": "Osakeyhtiölain ja osuuskuntalain tarkistaminen",
+   "hankkeet": [
+    "OM118:00/2023"
+   ],
+   "eduskunta_vaiheet": 7,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Suomen Pörssisäätiö sr",
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 127/2026",
+   "nimeke": "Ihmiskauppadirektiivin muutosdirektiivin täytäntöönpano",
+   "hankkeet": [
+    "OM002:00/2025"
+   ],
+   "eduskunta_vaiheet": 34,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 128/2026",
+   "nimeke": "Hyödyllisyysmallilaki",
+   "hankkeet": [
+    "TEM113:00/2025"
+   ],
+   "eduskunta_vaiheet": 11,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Wärtsilä Oyj Abp"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 129/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi naisten ja miesten välisestä tasa-arvosta annetun lain ja eräiden muiden lakien muuttamisesta (palkka-avoimuusdirektiivin kansallinen täytäntöönpano)",
+   "hankkeet": [
+    "STM069:00/2024"
+   ],
+   "eduskunta_vaiheet": 16,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 9,
+   "vaikuttajat": [
+    "Ammattiliitto Pro ry, Fackförbundet Pro rf",
+    "Elinkeinoelämän keskusliitto ry, Finlands näringsliv rf",
+    "Insinööriliitto IL ry, Ingenjörsförbundet IL rf",
+    "Metsäteollisuus ry, Skogsindustrin rf",
+    "Palvelualojen työnantajat PALTA ry, Arbetsgivarna för servicebrancherna PALTA rf",
+    "STTK ry STTK rf",
+    "Suomen Ammattiliittojen Keskusjärjestö SAK ry, ruotsiksi Finlands Fackförbunds Centralorganisation FFC rf",
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 130/2026",
+   "nimeke": "Eläinsuojelurikosten rangaistusten selvittäminen",
+   "hankkeet": [
+    "OM085:00/2023"
+   ],
+   "eduskunta_vaiheet": 23,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 136/2026",
+   "nimeke": "Hallituksen esitys laiksi alusturvallisuuden valvonnasta ja siihen liittyviksi laeiksi",
+   "hankkeet": [
+    "LVM003:00/2025"
+   ],
+   "eduskunta_vaiheet": 13,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 137/2026",
+   "nimeke": "Menettämisseuraamuksia koskevat lainsäädäntömuutokset",
+   "hankkeet": [
+    "OM062:00/2023"
+   ],
+   "eduskunta_vaiheet": 20,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 138/2026",
+   "nimeke": "Muut rikosprosessin sujuvoittamistoimet (vaihe 2)",
+   "hankkeet": [
+    "OM088:00/2024"
+   ],
+   "eduskunta_vaiheet": 25,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 14/2026",
+   "nimeke": "Varmuusvankeuden käyttöönotto",
+   "hankkeet": [
+    "OM077:00/2023"
+   ],
+   "eduskunta_vaiheet": 44,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 141/2026",
+   "nimeke": "Hallituksen esitys laiksi ajoneuvolain muuttamisesta sekä siihen liittyviksi laeiksi (liikkuvat työkoneet ja Euro 7 -asetusten täytäntöönpano)",
+   "hankkeet": [
+    "LVM049:00/2025"
+   ],
+   "eduskunta_vaiheet": 12,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 144/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle työttömyysturvan yhdistelmävakuutusta koskevaksi lainsäädännöksi",
+   "hankkeet": [
+    "STM047:00/2025"
+   ],
+   "eduskunta_vaiheet": 9,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Työllisyysrahasto"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 150/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi kuntalain muuttamisesta",
+   "hankkeet": [
+    "VM155:00/2025"
+   ],
+   "eduskunta_vaiheet": 5,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Suomen Nuorisovaltuustojen Liitto ry - Finlands Ungdomsfullmäktiges Förbund rf",
+    "Suomen UNICEF ry, Finlands UNICEF rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 151/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi tuloverolain 119 ja 124 §:n muuttamisesta sekä rajoitetusti verovelvollisen tulon verottamisesta annetun lain 7 ja 15 §:n muuttamisesta",
+   "hankkeet": [
+    "VM083:00/2025"
+   ],
+   "eduskunta_vaiheet": 27,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Finnwatch ry",
+    "Veronmaksajain Keskusliitto ry, ruotsiksi Skattebetalarnas Centralförbund rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 153/2026",
+   "nimeke": "Hallituksen esitys lentoliikenteestä Brasilian liittotasavallan kanssa tehdyn sopimuksen hyväksymiseksi ja voimaansaattamiseksi",
+   "hankkeet": [
+    "LVM028:00/2026"
+   ],
+   "eduskunta_vaiheet": 6,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 154/2026",
+   "nimeke": "Hallituksen esitys lentoliikenteestä Perun tasavallan kanssa tehdyn sopimuksen hyväksymiseksi ja voimaansaattamiseksi",
+   "hankkeet": [
+    "LVM027:00/2026"
+   ],
+   "eduskunta_vaiheet": 6,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 155/2026",
+   "nimeke": "Rakennusten energiatodistuksia koskevien säädösten muuttaminen (EPBD 2024)",
+   "hankkeet": [
+    "YM005:00/2025"
+   ],
+   "eduskunta_vaiheet": 10,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Energiateollisuus ry, Finsk Energiindustri rf",
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 157/2026",
+   "nimeke": "Ympäristörikosdirektiivin täytäntöönpano",
+   "hankkeet": [
+    "OM034:00/2024"
+   ],
+   "eduskunta_vaiheet": 29,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Elinkeinoelämän keskusliitto ry, Finlands näringsliv rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 161/2026",
+   "nimeke": "Tutkija- ja opiskelijalain muuttaminen; hallituksen esityksen valmistelu",
+   "hankkeet": [
+    "TEM004:00/2026"
+   ],
+   "eduskunta_vaiheet": 5,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen opiskelija-asunnot SOA ry"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 163/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle apteekkitoiminnan kehittämistä koskevaksi lainsäädännöksi",
+   "hankkeet": [
+    "STM045:00/2025"
+   ],
+   "eduskunta_vaiheet": 2,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Kuluttajaliitto ry, Konsumentförbundet rf",
+    "Näkeminen ja silmäterveys NÄE ry, ruotsiksi Syn och ögonhälsa i Finland rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 164/2026",
+   "nimeke": "Hallituksen esitys laiksi rakennusten energiatehokkuudesta",
+   "hankkeet": [
+    "YM069:00/2024"
+   ],
+   "eduskunta_vaiheet": 8,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 3,
+   "vaikuttajat": [
+    "Kiinteistönomistajat ja rakennuttajat Rakli ry",
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry",
+    "Suomen Kiinteistöliitto ry, ruotsiksi Finlands Fastighetsförbund rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 166/2026",
+   "nimeke": "Hallituksen esitys saaristolaiksi",
+   "hankkeet": [
+    "MMM025:00/2024"
+   ],
+   "eduskunta_vaiheet": 2,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 168/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi terveydenhuoltolain, sosiaalihuollon ammattihenkilöistä annetun lain ja terveydenhuollon ammattihenkilöistä annetun lain muuttamisesta (Kaksiportainen psykotera",
+   "hankkeet": [
+    "STM063:00/2025"
+   ],
+   "eduskunta_vaiheet": 11,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Sosiaalialan korkeakoulutettujen ammattijärjestö Talentia ry, Fackorganisationen för högutbildade inom socialbranschen Talentia rf",
+    "Suomen Psykologiliitto ry"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 170/2026",
+   "nimeke": "Hallituksen esitys kaavojen toteuttamisen ja katujen kunnossapidon lainsäädännön uudistamisesta",
+   "hankkeet": [
+    "YM074:00/2023"
+   ],
+   "eduskunta_vaiheet": 6,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 3,
+   "vaikuttajat": [
+    "Kiinteistönomistajat ja rakennuttajat Rakli ry",
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 173/2024",
+   "nimeke": "Hallituksen esitys laiksi alkoholilain muuttamisesta, alkoholin kotiinkuljetus",
+   "hankkeet": [
+    "STM101:00/2023"
+   ],
+   "eduskunta_vaiheet": 42,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 4,
+   "vaikuttajat": [
+    "Blic Oy",
+    "Sininauhaliitto r.y.",
+    "Starship Technologies (Finland) Oy",
+    "Wolt Oy"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 174/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi vuoden 2027 tuloveroasteikosta ja tuloverolain muuttamisesta sekä eräiksi muiksi verolaeiksi",
+   "hankkeet": [
+    "VM065:00/2024"
+   ],
+   "eduskunta_vaiheet": 20,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 5,
+   "vaikuttajat": [
+    "Aalto-korkeakoulusäätiö sr",
+    "Digiloi Oy",
+    "Pääomasijoittajat ry",
+    "Supercell Oy",
+    "Veronmaksajain Keskusliitto ry, ruotsiksi Skattebetalarnas Centralförbund rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 177/2026",
+   "nimeke": "Opintotuen kokonaisuudistus",
+   "hankkeet": [
+    "OKM010:00/2024"
+   ],
+   "eduskunta_vaiheet": 16,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 4,
+   "vaikuttajat": [
+    "Helsingin Yliopiston Ylioppilaskunta",
+    "Suomen Olympiakomitea ry, Finlands Olympiska Kommitté rf",
+    "Suomen Urheilijat ry",
+    "Suomen ylioppilaskuntien liitto (SYL) ry, Finlands studentkårers förbund (FSF) rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 178/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi metsityksen määräaikaisesta tukemisesta annetun lain muuttamisesta",
+   "hankkeet": [
+    "MMM053:00/2025"
+   ],
+   "eduskunta_vaiheet": 12,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 179/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle työvoimapalveluiden järjestämisestä annetun lain ja työttömyysturvalain muuttamisesta",
+   "hankkeet": [
+    "TEM011:00/2026"
+   ],
+   "eduskunta_vaiheet": 4,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Ammattiliittojen Keskusjärjestö SAK ry, ruotsiksi Finlands Fackförbunds Centralorganisation FFC rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 180/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi sosiaalihuoltolain muuttamisesta ja siihen liittyviksi laeiksi",
+   "hankkeet": [
+    "STM107:00/2023"
+   ],
+   "eduskunta_vaiheet": 13,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 6,
+   "vaikuttajat": [
+    "Lastensuojelun Keskusliitto ry - Centralförbundet för Barnskydd rf",
+    "Sosiaalialan korkeakoulutettujen ammattijärjestö Talentia ry, Fackorganisationen för högutbildade inom socialbranschen Talentia rf",
+    "Suomen Psykologiliitto ry"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 182/2026",
+   "nimeke": "Hallituksen esitys lastensuojelulainsäädännön uudistamiseksi; 2. vaihe",
+   "hankkeet": [
+    "STM057:00/2025"
+   ],
+   "eduskunta_vaiheet": 13,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Sosiaalialan korkeakoulutettujen ammattijärjestö Talentia ry, Fackorganisationen för högutbildade inom socialbranschen Talentia rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 183/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi kuolemansyyn selvittämisestä annetun lain sekä ihmisen elimien, kudoksien ja solujen lääketieteellisestä käytöstä annetun lain muuttamisesta",
+   "hankkeet": [
+    "STM190:00/2025"
+   ],
+   "eduskunta_vaiheet": 13,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Kuluttajaliitto ry, Konsumentförbundet rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 184/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi sosiaali- ja terveydenhuollon järjestämisestä annetun lain ja terveydenhuoltolain 54 ja 57 §:n muuttamisesta",
+   "hankkeet": [
+    "STM029:00/2025"
+   ],
+   "eduskunta_vaiheet": 13,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Kuluttajaliitto ry, Konsumentförbundet rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 190/2026",
+   "nimeke": "Tuotevastuudirektiivin kansallinen täytäntöönpano",
+   "hankkeet": [
+    "OM042:00/2024"
+   ],
+   "eduskunta_vaiheet": 6,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Energiateollisuus ry, Finsk Energiindustri rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 191/2026",
+   "nimeke": "Asuntokauppalain uudistaminen",
+   "hankkeet": [
+    "OM101:00/2023"
+   ],
+   "eduskunta_vaiheet": 10,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Kiinteistönvälitysalan Keskusliitto ry"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 192/2026",
+   "nimeke": "Etäyhteydet oikeudenkäynneissä hallintoasioissa",
+   "hankkeet": [
+    "OM044:00/2023"
+   ],
+   "eduskunta_vaiheet": 8,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 194/2026",
+   "nimeke": "Hallituksen esitys audiovisuaalisen tilausohjelmapalvelun tarjoajan velvollisuudesta investoida audiovisuaaliseen sisältöön",
+   "hankkeet": [
+    "OKM052:00/2025"
+   ],
+   "eduskunta_vaiheet": 6,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 196/2026",
+   "nimeke": "Siviilipalveluksen kehittäminen",
+   "hankkeet": [
+    "TEM102:00/2024"
+   ],
+   "eduskunta_vaiheet": 7,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Punainen Risti"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 197/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laiksi eräitä yrityksiä koskevasta taloudellisen toiminnan avoimuus- ja tiedonantovelvollisuudesta annetun lain muuttamisesta",
+   "hankkeet": [
+    "TEM027:00/2026"
+   ],
+   "eduskunta_vaiheet": 6,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 199/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle laeiksi terveydenhuoltolain ja sosiaali- ja terveydenhuollon asiakastietojen käsittelystä annetun lain muuttamisesta (ennakoiva sote 2)",
+   "hankkeet": [
+    "STM011:00/2026"
+   ],
+   "eduskunta_vaiheet": 6,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Geradin Partners Asianajotoimisto Oy"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 200/2026",
+   "nimeke": "Hallituksen esitys sosiaalihuoltolain, vanhuspalvelulain ja asiakasmaksulain muuttamisesta annetun hallituksen esityksen (HE 113/2025 vp) täydentämisestä",
+   "hankkeet": [
+    "STM064:00/2026"
+   ],
+   "eduskunta_vaiheet": 4,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 201/2026",
+   "nimeke": "Valtion tukemien vuokra-asuntojen asukasvalintaa ja asuntojen käyttöä koskevan sääntelyn kehittäminen",
+   "hankkeet": [
+    "YM008:00/2026"
+   ],
+   "eduskunta_vaiheet": 6,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen opiskelija-asunnot SOA ry"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 44/2026",
+   "nimeke": "Hanke alkoholilain muuttamiseksi (panimoiden, tislaamoiden ja viinitilojen ulosmyyntioikeuden laajentaminen)",
+   "hankkeet": [
+    "STM101:00/2024"
+   ],
+   "eduskunta_vaiheet": 23,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 46/2026",
+   "nimeke": "Hallinnollisten seuraamusmaksujen määrääminen tietosuojalainsäädännön rikkomuksista julkissektorilla",
+   "hankkeet": [
+    "OM127:00/2023"
+   ],
+   "eduskunta_vaiheet": 33,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 48/2025",
+   "nimeke": "Toisessa valtiossa annetun kuolemanrangaistuksen muuntaminen vapausrangaistukseksi",
+   "hankkeet": [
+    "OM163:00/2023"
+   ],
+   "eduskunta_vaiheet": 33,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 50/2026",
+   "nimeke": "Perustuslain 10 §:n tarkistaminen",
+   "hankkeet": [
+    "OM067:00/2024"
+   ],
+   "eduskunta_vaiheet": 55,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 64/2026",
+   "nimeke": "Hallituksen esitys työkyvyttömyyseläkkeen ja työansioiden yhteensovittamista koskevaksi lainsäädännöksi (ns. joustomalli)",
+   "hankkeet": [
+    "STM066:00/2025"
+   ],
+   "eduskunta_vaiheet": 36,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Amnesty International Suomen osasto ry, Amnesty International Finländska sektionen rf",
+    "Keskinäinen työeläkevakuutusyhtiö Varma"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 69/2026",
+   "nimeke": "Hallituksen esitys eduskunnalle kotihoidon tuen Norjan mallista",
+   "hankkeet": [
+    "STM050:00/2025"
+   ],
+   "eduskunta_vaiheet": 31,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 71/2026",
+   "nimeke": "Turvallisuustutkintalain muuttaminen (kyberturvallisuus)",
+   "hankkeet": [
+    "OM162:00/2023"
+   ],
+   "eduskunta_vaiheet": 8,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 77/2025",
+   "nimeke": "Metsäkatoasetuksen kansallisen täytäntöönpanon työryhmä",
+   "hankkeet": [
+    "MMM024:00/2023"
+   ],
+   "eduskunta_vaiheet": 24,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 2,
+   "vaikuttajat": [
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry",
+    "Päivittäistavarakauppa ry, ruotsiksi Finlands Dagligvaruhandel rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 81/2026",
+   "nimeke": "Hallituksen esitys terveydenhuoltolain muuttamisesta (saattohoito ja eräät muut terveydenhuoltoa koskevat muutokset)",
+   "hankkeet": [
+    "STM069:00/2025"
+   ],
+   "eduskunta_vaiheet": 28,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Syöpäyhdistys - Cancerföreningen i Finland ry"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 83/2026",
+   "nimeke": "Hallituksen esitys laiksi rakentamislain muuttamisesta",
+   "hankkeet": [
+    "YM002:00/2025"
+   ],
+   "eduskunta_vaiheet": 51,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 7,
+   "vaikuttajat": [
+    "Finnish Lapland Tourist Board ry",
+    "Maa- ja metsätaloustuottajain Keskusliitto MTK ry",
+    "Matkailu- ja Ravintolapalvelut MaRa ry, Turism- och Restaurangförbundet rf",
+    "Raecom Oy",
+    "Suomen Vuokranantajat ry",
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf",
+    "Sähköteknisen Kaupan Liitto ry, Elektrotekniska Handelsförbundet i Finland rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 84/2026",
+   "nimeke": "Vesilain tarkistaminen - uuden kalatalousvelvoitetta tai -maksua koskevan lupamääräyksen antaminen vesivoimalaitokselle",
+   "hankkeet": [
+    "OM039:00/2019"
+   ],
+   "eduskunta_vaiheet": 35,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 3,
+   "vaikuttajat": [
+    "Energiateollisuus ry, Finsk Energiindustri rf",
+    "Fortum Oyj",
+    "Pienvesivoimayhdistys ry"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 85/2026",
+   "nimeke": "Julkisen hallinnon tietojärjestelmien vaatimustenmukaisuuden arvioinnin ajantasaistaminen ja tehostaminen",
+   "hankkeet": [
+    "VM167:00/2023"
+   ],
+   "eduskunta_vaiheet": 18,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 90/2026",
+   "nimeke": "Vaikuttavien palvelujen ja menetelmien kansallisen valinnan periaatteista säätäminen",
+   "hankkeet": [
+    "STM113:00/2023"
+   ],
+   "eduskunta_vaiheet": 25,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Toimintaterapeuttiliitto ry, Finlands Ergoterapeutförbund rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 96/2026",
+   "nimeke": "Hallituksen esitys laeiksi kirjanpitolain, kaupparekisterilain ja tilintarkastuslain muuttamisesta",
+   "hankkeet": [
+    "TEM027:00/2025"
+   ],
+   "eduskunta_vaiheet": 10,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 1,
+   "vaikuttajat": [
+    "Suomen Yrittäjät ry, ruotsiksi Företagarna i Finland rf"
+   ],
+   "outcome": "eduskunnassa"
+  },
+  {
+   "he": "HE 98/2026",
+   "nimeke": "Pakkokeinolain muutostarpeiden arviointi",
+   "hankkeet": [
+    "OM055:00/2023"
+   ],
+   "eduskunta_vaiheet": 45,
+   "eduskunta_vastaus": null,
+   "aanestykset": 0,
+   "saadokset": [],
+   "vaikuttamisilmoituksia": 0,
+   "vaikuttajat": [],
+   "outcome": "eduskunnassa"
+  }
+ ],
+ "vaikuttaminen": {
+  "_note": "Avoimuusrekisterin ilmoitukset, joiden aihe viittaa hankkeeseen tunnuksella. Päivä on ilmoituskauden tarkkuudella. Määrä kertoo ilmoitetusta toiminnasta, ei vaikutuksesta.",
+  "ketjut_eniten": [
+   {
+    "he": "HE 2/2026",
+    "nimeke": "Hankintalain uudistamishanke",
+    "vaikuttajia": 12,
+    "ilmoituksia": 15,
+    "outcome": "eduskunta päättänyt"
+   },
+   {
+    "he": "HE 70/2026",
+    "nimeke": "Hallituksen esitys uudeksi alueidenkäyttölaiksi",
+    "vaikuttajia": 11,
+    "ilmoituksia": 19,
+    "outcome": "äänestetty"
+   },
+   {
+    "he": "HE 129/2026",
+    "nimeke": "Hallituksen esitys eduskunnalle laiksi naisten ja miesten välisestä tasa-arvosta annetun lain ja eräiden muiden lakien muuttamisesta (palkka-avoimuusdirektiivin kansallinen täytäntöönpano)",
+    "vaikuttajia": 8,
+    "ilmoituksia": 9,
+    "outcome": "eduskunnassa"
+   },
+   {
+    "he": "HE 199/2025",
+    "nimeke": "Työsopimuksen määräaikaisuuden perustetta, lomautusilmoitusaikaa ja takaisinottovelvollisuutta koskevan sääntelyn muuttamista valmisteleva työryhmä",
+    "vaikuttajia": 8,
+    "ilmoituksia": 8,
+    "outcome": "eduskunta päättänyt"
+   },
+   {
+    "he": "HE 36/2026",
+    "nimeke": "Elintarvikemarkkinalainsäädännön muutosten valmistelu (II vaihe)",
+    "vaikuttajia": 7,
+    "ilmoituksia": 9,
+    "outcome": "eduskunta päättänyt"
+   },
+   {
+    "he": "HE 83/2026",
+    "nimeke": "Hallituksen esitys laiksi rakentamislain muuttamisesta",
+    "vaikuttajia": 7,
+    "ilmoituksia": 7,
+    "outcome": "eduskunnassa"
+   },
+   {
+    "he": "HE 174/2026",
+    "nimeke": "Hallituksen esitys eduskunnalle laeiksi vuoden 2027 tuloveroasteikosta ja tuloverolain muuttamisesta sekä eräiksi muiksi verolaeiksi",
+    "vaikuttajia": 5,
+    "ilmoituksia": 5,
+    "outcome": "eduskunnassa"
+   },
+   {
+    "he": "HE 47/2026",
+    "nimeke": "Kuluttajansuojalain uudistaminen vihreän siirtymän edistämiseksi",
+    "vaikuttajia": 5,
+    "ilmoituksia": 5,
+    "outcome": "eduskunta päättänyt"
+   },
+   {
+    "he": "HE 173/2024",
+    "nimeke": "Hallituksen esitys laiksi alkoholilain muuttamisesta, alkoholin kotiinkuljetus",
+    "vaikuttajia": 4,
+    "ilmoituksia": 4,
+    "outcome": "eduskunnassa"
+   },
+   {
+    "he": "HE 177/2026",
+    "nimeke": "Opintotuen kokonaisuudistus",
+    "vaikuttajia": 4,
+    "ilmoituksia": 4,
+    "outcome": "eduskunnassa"
+   },
+   {
+    "he": "HE 24/2026",
+    "nimeke": "Ydinenergialaki",
+    "vaikuttajia": 4,
+    "ilmoituksia": 4,
+    "outcome": "säädös vahvistettu"
+   },
+   {
+    "he": "HE 118/2026",
+    "nimeke": "Säästövapaan pitämisen ajankohdan muuttamista valmisteleva työryhmä",
+    "vaikuttajia": 3,
+    "ilmoituksia": 3,
+    "outcome": "eduskunnassa"
+   },
+   {
+    "he": "HE 164/2026",
+    "nimeke": "Hallituksen esitys laiksi rakennusten energiatehokkuudesta",
+    "vaikuttajia": 3,
+    "ilmoituksia": 3,
+    "outcome": "eduskunnassa"
+   },
+   {
+    "he": "HE 180/2026",
+    "nimeke": "Hallituksen esitys eduskunnalle laiksi sosiaalihuoltolain muuttamisesta ja siihen liittyviksi laeiksi",
+    "vaikuttajia": 3,
+    "ilmoituksia": 6,
+    "outcome": "eduskunnassa"
+   },
+   {
+    "he": "HE 32/2026",
+    "nimeke": "Hallituksen esitys eduskunnalle laiksi eläinten hyvinvoinnista annetun lain muuttamisesta ja laiksi eläinten lääkitsemisestä annetun lain 17 §:n muuttamisesta",
+    "vaikuttajia": 3,
+    "ilmoituksia": 3,
+    "outcome": "eduskunta päättänyt"
+   },
+   {
+    "he": "HE 33/2026",
+    "nimeke": "Asuinhuoneiston vuokrauksesta annetun lain uudistaminen",
+    "vaikuttajia": 3,
+    "ilmoituksia": 3,
+    "outcome": "eduskunta päättänyt"
+   },
+   {
+    "he": "HE 38/2026",
+    "nimeke": "Hallituksen esitys eduskunnalle laeiksi kirjanpitolain ja tilintarkastuslain muuttamisesta",
+    "vaikuttajia": 3,
+    "ilmoituksia": 3,
+    "outcome": "eduskunta päättänyt"
+   },
+   {
+    "he": "HE 84/2026",
+    "nimeke": "Vesilain tarkistaminen - uuden kalatalousvelvoitetta tai -maksua koskevan lupamääräyksen antaminen vesivoimalaitokselle",
+    "vaikuttajia": 3,
+    "ilmoituksia": 3,
+    "outcome": "eduskunnassa"
+   },
+   {
+    "he": "HE 101/2024",
+    "nimeke": "Hallituksen esitys eduskunnalle laiksi rakentamislain muuttamisesta ja eräiksi siihen liittyviksi laeiksi",
+    "vaikuttajia": 2,
+    "ilmoituksia": 2,
+    "outcome": "eduskunta päättänyt"
+   },
+   {
+    "he": "HE 101/2026",
+    "nimeke": "Sika-alan salmonellariskien hallintaa koskeva säädöshanke; hallituksen esitys laiksi sika-alan salmonellavahinkorahastosta",
+    "vaikuttajia": 2,
+    "ilmoituksia": 3,
+    "outcome": "eduskunnassa"
+   },
+   {
+    "he": "HE 105/2026",
+    "nimeke": "Rahanpesulainsäädännön kokonaisuudistus -hanke",
+    "vaikuttajia": 2,
+    "ilmoituksia": 3,
+    "outcome": "eduskunnassa"
+   },
+   {
+    "he": "HE 115/2026",
+    "nimeke": "Taiteen perusopetusta koskevan lainsäädännön uudistaminen, jatkovalmistelu",
+    "vaikuttajia": 2,
+    "ilmoituksia": 2,
+    "outcome": "eduskunnassa"
+   },
+   {
+    "he": "HE 125/2026",
+    "nimeke": "Hallituksen esitys yksityistielain muuttamiseksi",
+    "vaikuttajia": 2,
+    "ilmoituksia": 2,
+    "outcome": "eduskunnassa"
+   },
+   {
+    "he": "HE 126/2026",
+    "nimeke": "Osakeyhtiölain ja osuuskuntalain tarkistaminen",
+    "vaikuttajia": 2,
+    "ilmoituksia": 2,
+    "outcome": "eduskunnassa"
+   },
+   {
+    "he": "HE 146/2026",
+    "nimeke": "Hallituksen esitys eduskunnalle työeläkejärjestelmän viimeisen eläkelaitoksen menettelyn laajentamista koskevaksi lainsäädännöksi ja eräiksi muiksi laeiksi",
+    "vaikuttajia": 2,
+    "ilmoituksia": 2,
+    "outcome": "äänestetty"
+   }
+  ],
+  "ilman_ketjua": [
+   {
+    "tunnus": "STM096:00/2023",
+    "hanke_nimi": "Sosiaali- ja terveydenhuollon ammattihenkilölainsäädännön kokonaisuudistus",
+    "ilmoituksia": 10,
+    "vaikuttajia": 10
+   },
+   {
+    "tunnus": "YM030:00/2024",
+    "hanke_nimi": "Kiertotalouslaki",
+    "ilmoituksia": 10,
+    "vaikuttajia": 10
+   },
+   {
+    "tunnus": "STM200:00/2025",
+    "hanke_nimi": "Hallituksen esitys eduskunnalle laeiksi yrittäjän eläkelain ja Eläketurvakeskuksesta annetun lain 2 §:n muuttamisesta",
+    "ilmoituksia": 8,
+    "vaikuttajia": 8
+   },
+   {
+    "tunnus": "STM076:00/2024",
+    "hanke_nimi": "Lääkkeet ja apteekkitalous -hanke",
+    "ilmoituksia": 10,
+    "vaikuttajia": 7
+   },
+   {
+    "tunnus": "TEM092:00/2024",
+    "hanke_nimi": "Alustatyödirektiivin kansallista täytäntöönpanoa valmisteleva työryhmä",
+    "ilmoituksia": 7,
+    "vaikuttajia": 7
+   },
+   {
+    "tunnus": "OM015:00/2022",
+    "hanke_nimi": "Valmiuslain kokonaisuudistus",
+    "ilmoituksia": 6,
+    "vaikuttajia": 6
+   },
+   {
+    "tunnus": "TEM035:00/2023",
+    "hanke_nimi": "Hallituksen esitys eduskunnalle laiksi energian alkuperätakuista annetun lain muuttamisesta",
+    "ilmoituksia": 8,
+    "vaikuttajia": 6
+   },
+   {
+    "tunnus": "LVM013:00/2024",
+    "hanke_nimi": "Liikenteen verotuksen ja rahoituksen kokonaisuudistus",
+    "ilmoituksia": 5,
+    "vaikuttajia": 5
+   },
+   {
+    "tunnus": "OKM087:00/2024",
+    "hanke_nimi": "Korkeakoulutuksen ja tutkimuksen visio",
+    "ilmoituksia": 5,
+    "vaikuttajia": 5
+   },
+   {
+    "tunnus": "OM159:00/2023",
+    "hanke_nimi": "Yrityslähestymiskielto",
+    "ilmoituksia": 7,
+    "vaikuttajia": 5
+   },
+   {
+    "tunnus": "VM026:00/2025",
+    "hanke_nimi": "Hallituksen esitys eduskunnalle korkovähennysrajoitusta koskevan sääntelyn muuttamisesta",
+    "ilmoituksia": 5,
+    "vaikuttajia": 5
+   },
+   {
+    "tunnus": "YM012:00/2024",
+    "hanke_nimi": "Käytöstä poistettujen maatuulivoimaloiden purku- ja ennallistamisvelvoitteiden lainsäädäntöhanke",
+    "ilmoituksia": 11,
+    "vaikuttajia": 5
+   },
+   {
+    "tunnus": "YM034:00/2024",
+    "hanke_nimi": "Hallituksen esitys eduskunnalle laiksi jätelain muuttamisesta, II osa 2023-2026 (kilpailuneutraliteetin parantaminen)",
+    "ilmoituksia": 6,
+    "vaikuttajia": 5
+   },
+   {
+    "tunnus": "YM041:00/2024",
+    "hanke_nimi": "Valtioneuvoston asetus rakennuksissa käytettävien energiamuotojen kertoimien lukuarvoista",
+    "ilmoituksia": 5,
+    "vaikuttajia": 5
+   },
+   {
+    "tunnus": "YM055:00/2024",
+    "hanke_nimi": "Kansallisen ennallistamissuunnitelman laatiminen",
+    "ilmoituksia": 8,
+    "vaikuttajia": 5
+   },
+   {
+    "tunnus": "LVM008:00/2026",
+    "hanke_nimi": "Valtioneuvoston kirjelmä eduskunnalle ehdotuksesta Euroopan parlamentin ja neuvoston asetukseksi digitaalisista verkoista (Digiverkkoasetus) (EU-valmistelu)",
+    "ilmoituksia": 4,
+    "vaikuttajia": 4
+   },
+   {
+    "tunnus": "MMM042:00/2023",
+    "hanke_nimi": "Suomalaisen ruuantuotannon strategian ja ruoka-alan kasvuohjelman toimenpiteiden sekä maatalouden tulos- ja kehitysnäkymien parlamentaarisen arviointiryhmän  loppuraportissa tunnistettujen lainsäädäntöhankkeiden valmistelu ja toteuttaminen (Kestävä ja kannattava ruokajärjestelmä)",
+    "ilmoituksia": 5,
+    "vaikuttajia": 4
+   },
+   {
+    "tunnus": "OKM044:00/2023",
+    "hanke_nimi": "Kulttuuripoliittinen selonteko 2023-2024",
+    "ilmoituksia": 4,
+    "vaikuttajia": 4
+   },
+   {
+    "tunnus": "TEM007:00/2026",
+    "hanke_nimi": "Kansallinen standardointistrategia",
+    "ilmoituksia": 4,
+    "vaikuttajia": 4
+   },
+   {
+    "tunnus": "TEM018:00/2024",
+    "hanke_nimi": "Itäisen Suomen tuulivoimarakentamisen työryhmä",
+    "ilmoituksia": 20,
+    "vaikuttajia": 4
+   },
+   {
+    "tunnus": "TEM050:00/2025",
+    "hanke_nimi": "Yhteistoimintalain muuttamista valmisteleva työryhmä (henkilöstön hallintoedustus)",
+    "ilmoituksia": 4,
+    "vaikuttajia": 4
+   },
+   {
+    "tunnus": "YM021:00/2026",
+    "hanke_nimi": "Valtioneuvoston asetus asuinrakennusten energia-avustuksista vuosina 2026–2027",
+    "ilmoituksia": 4,
+    "vaikuttajia": 4
+   },
+   {
+    "tunnus": "LVM067:00/2025",
+    "hanke_nimi": "Komission ehdotukset Euroopan parlamentin ja neuvoston asetusten ja direktiivien muuttamisesta digitaalisen lainsäädäntökehyksen yksinkertaistamisen ja tekoälyä koskevien yhdenmukaistettujen sääntöjen täytäntöönpanon yksinkertaistamisen osalta (digiomnibus)",
+    "ilmoituksia": 3,
+    "vaikuttajia": 3
+   },
+   {
+    "tunnus": "MMM012:00/2024",
+    "hanke_nimi": "Maaseutupoliittinen selonteko",
+    "ilmoituksia": 3,
+    "vaikuttajia": 3
+   },
+   {
+    "tunnus": "OKM062:00/2025",
+    "hanke_nimi": "Hallituksen esitys eduskunnalle laeiksi yliopistolain ja ammattikorkeakoululain muuttamisesta (tutkinnon suorittaminen avoimena korkeakouluopetuksena)",
+    "ilmoituksia": 3,
+    "vaikuttajia": 3
+   }
+  ],
+  "ilman_ketjua_yhteensa": 197
+ },
+ "yva": {
+  "_note": "YVA-menettelyn vaiheet ymparisto.fi-hankesivuilta. Uusi kuorma näkyy YVA:ssa ennen investointi- ja liittymäpäätöstä. Kaikki YVA-hankkeet eivät ole sähkökuormaa; aihealue kertoo.",
+  "ikkuna": "2026-09",
+  "vaiheet_ikkunassa": [
+   {
+    "paiva": "2026-09-01",
+    "vaihe": "perusteltu_paatelma",
+    "hanke": "Rautajalan tuulivoimahanke, Kokkola ja Toholampi",
+    "aihealue": "Energiantuotanto, Tuulivoimalahankkeet",
+    "energia": true,
+    "tila": "Päättynyt / perusteltu päätelmä annettu",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/rautajalan-tuulivoimahanke-kokkola-ja-toholampi"
+   },
+   {
+    "paiva": "2026-09-01",
+    "vaihe": "perusteltu_paatelma",
+    "hanke": "Tuohimaa-Riutanmaan tuulivoimahanke (Kokkola, Halsua) ja hankkeen  sähkönsiirtoon liittyvä 400 kV:n voimajohto (Toholampi, Lestijärvi)",
+    "aihealue": "Energiantuotanto, Tuulivoimalahankkeet",
+    "energia": true,
+    "tila": "Päättynyt / perusteltu päätelmä annettu",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/tuohimaa-riutanmaan-tuulivoimahanke-kokkola-halsua-ja-hankkeen-sahkonsiirtoon-liittyva-400-kvn"
+   },
+   {
+    "paiva": "2026-09-03",
+    "vaihe": "perusteltu_paatelma",
+    "hanke": "Juoleikonkankaan tuulivoimahanke, Ähtäri",
+    "aihealue": "Energiantuotanto, Tuulivoimalahankkeet",
+    "energia": true,
+    "tila": "Päättynyt / perusteltu päätelmä annettu",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/juoleikonkankaan-tuulivoimahanke-ahtari"
+   },
+   {
+    "paiva": "2026-09-08",
+    "vaihe": "perusteltu_paatelma",
+    "hanke": "Järvenpään palvelinkeskus",
+    "aihealue": "Energiantuotanto, Voimalaitokset",
+    "energia": true,
+    "tila": "Päättynyt / perusteltu päätelmä annettu",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/jarvenpaan-palvelinkeskus"
+   },
+   {
+    "paiva": "2026-09-08",
+    "vaihe": "ohjelma_lausunto",
+    "hanke": "Venna Oy, lypsykarjatuotannon laajennus, Turku",
+    "aihealue": "Eläintenpito ja kalankasvatus",
+    "energia": false,
+    "tila": "Vireillä",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/venna-oy-lypsykarjatuotannon-laajennus-turku"
+   },
+   {
+    "paiva": "2026-09-11",
+    "vaihe": "ohjelma_lausunto",
+    "hanke": "Lypsykarjatilan ja biokaasulaitoksen laajennuksen YVA –menettely, Bull Team Oy ja WeKas Oy",
+    "aihealue": "Eläintenpito ja kalankasvatus",
+    "energia": false,
+    "tila": "Vireillä",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/lypsykarjatilan-ja-biokaasulaitoksen-laajennuksen-yva-menettely-bull-team-oy-ja-wekas-oy"
+   },
+   {
+    "paiva": "2026-09-16",
+    "vaihe": "selostus_nahtavilla",
+    "hanke": "Fingrid Oyj, Seinäjoki-Hirvisuo 400+110 kV voimajohtohanke",
+    "aihealue": "Energian ja aineiden siirto sekä varastointi, Voimajohdot",
+    "energia": true,
+    "tila": "Vireillä",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/fingrid-oyj-seinajoki-hirvisuo-400110-kv-voimajohtohanke"
+   },
+   {
+    "paiva": "2026-09-16",
+    "vaihe": "ohjelma_nahtavilla",
+    "hanke": "Ihalaisen kaivoksen uusi rikastushiekan läjitysalue, Lappeenranta",
+    "aihealue": "Luonnonvarojen otto ja käsittely, Metallimalmien ja muiden kaivoskivennäisten louhinta, rikastaminen ja käsittely",
+    "energia": false,
+    "tila": "Vireillä",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/ihalaisen-kaivoksen-uusi-rikastushiekan-lajitysalue-lappeenranta"
+   },
+   {
+    "paiva": "2026-09-16",
+    "vaihe": "ohjelma_nahtavilla",
+    "hanke": "Klaukkalan Sudentullin datakeskus, Nurmijärvi",
+    "aihealue": "Energiantuotanto, Voimalaitokset",
+    "energia": true,
+    "tila": "Vireillä",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/klaukkalan-sudentullin-datakeskus-nurmijarvi"
+   },
+   {
+    "paiva": "2026-09-16",
+    "vaihe": "ohjelma_nahtavilla",
+    "hanke": "Merituulivoimahanke Ebban mantereen sähkönsiirto, Raahe, Pyhäjoki, Kalajoki",
+    "aihealue": "Energian ja aineiden siirto sekä varastointi, Voimajohdot",
+    "energia": true,
+    "tila": "Vireillä",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/merituulivoimahanke-ebban-mantereen-sahkonsiirto-raahe-pyhajoki-kalajoki"
+   },
+   {
+    "paiva": "2026-09-16",
+    "vaihe": "selostus_nahtavilla",
+    "hanke": "SER-jätteen käsittely ja metallien talteenotto, Jyväskylä",
+    "aihealue": "Jätehuolto, Metalliteollisuus",
+    "energia": false,
+    "tila": "Vireillä",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/ser-jatteen-kasittely-ja-metallien-talteenotto-jyvaskyla"
+   },
+   {
+    "paiva": "2026-09-22",
+    "vaihe": "ohjelma_nahtavilla",
+    "hanke": "Synteettisen metaanin tuotanto, Porvoo",
+    "aihealue": "Kemianteollisuus, Peruskemianteollisuuden laitokset",
+    "energia": false,
+    "tila": "Vireillä",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/synteettisen-metaanin-tuotanto-porvoo"
+   },
+   {
+    "paiva": "2026-09-23",
+    "vaihe": "perusteltu_paatelma",
+    "hanke": "Uusnivalan aurinkovoimahanke, Nivala, Ylivieska",
+    "aihealue": "Energiantuotanto",
+    "energia": true,
+    "tila": "Päättynyt / perusteltu päätelmä annettu",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/uusnivalan-aurinkovoimahanke-nivala-ylivieska"
+   },
+   {
+    "paiva": "2026-09-23",
+    "vaihe": "selostus_nahtavilla",
+    "hanke": "Ylitornion Harjunkorven tuulivoimahanke, Ylitornio, Tornio",
+    "aihealue": "Tuulivoimalahankkeet, Energiantuotanto",
+    "energia": true,
+    "tila": "Vireillä",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/ylitornion-harjunkorven-tuulivoimahanke-ylitornio-tornio"
+   },
+   {
+    "paiva": "2026-09-24",
+    "vaihe": "ohjelma_nahtavilla",
+    "hanke": "Metsä-Juntulan energiapuistohanke, Hyrynsalmi",
+    "aihealue": "Energiantuotanto, Muu energiantuotanto, Tuulivoimalahankkeet",
+    "energia": true,
+    "tila": "Vireillä",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/metsa-juntulan-energiapuistohanke-hyrynsalmi"
+   },
+   {
+    "paiva": "2026-09-25",
+    "vaihe": "ohjelma_lausunto",
+    "hanke": "Pampalon kaivoksen toiminnan laajentaminen, Ilomantsi, Endomines Oy",
+    "aihealue": "Metallimalmien ja muiden kaivoskivennäisten louhinta, rikastaminen ja käsittely, Luonnonvarojen otto ja käsittely",
+    "energia": false,
+    "tila": "Vireillä",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/pampalon-kaivoksen-toiminnan-laajentaminen-ilomantsi-endomines-oy"
+   },
+   {
+    "paiva": "2026-09-25",
+    "vaihe": "ohjelma_lausunto",
+    "hanke": "Sarvilahden aurinkovoimahanke, Loviisa",
+    "aihealue": "Energiantuotanto, Muu energiantuotanto",
+    "energia": true,
+    "tila": "Vireillä",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/sarvilahden-aurinkovoimahanke-loviisa"
+   },
+   {
+    "paiva": "2026-09-30",
+    "vaihe": "ohjelma_nahtavilla",
+    "hanke": "Mustanlahden datakeskushanke, Mänttä - Vilppula",
+    "aihealue": "Energiantuotanto, Voimalaitokset",
+    "energia": true,
+    "tila": "Vireillä",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/mustanlahden-datakeskushanke-mantta-vilppula"
+   },
+   {
+    "paiva": "2026-09-30",
+    "vaihe": "ohjelma_lausunto",
+    "hanke": "Sydänmaankylän tuulivoimahanke, Kärsämäki",
+    "aihealue": "Tuulivoimalahankkeet, Energiantuotanto",
+    "energia": true,
+    "tila": "Vireillä",
+    "url": "https://www.ymparisto.fi/fi/osallistu-ja-vaikuta/ymparistovaikutusten-arviointi/sydanmaankylan-tuulivoimahanke-karsamaki"
+   }
+  ],
+  "vaiheet_yhteensa": 743,
+  "hankkeita": 258
+ },
+ "anomalies": [
+  {
+   "event_id": "HI:OM101:00/2023",
+   "source": "Hankeikkuna",
+   "note": "known_at 304 vrk ENNEN occurred_at (lähde aloitusPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:OM162:00/2023",
+   "source": "Hankeikkuna",
+   "note": "known_at 396 vrk ENNEN occurred_at (lähde aloitusPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:TEM062:00/2020",
+   "source": "Hankeikkuna",
+   "note": "aikaleimaa ei voi johtaa: julkaisuaika tai molemmat alkupäivät puuttuvat"
+  },
+  {
+   "event_id": "HI:LVM050:00/2023",
+   "source": "Hankeikkuna",
+   "note": "known_at 172 vrk ENNEN occurred_at (lähde asettamisPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:SM041:00/2023",
+   "source": "Hankeikkuna",
+   "note": "known_at 13 vrk ENNEN occurred_at (lähde asettamisPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:OM024:00/2019",
+   "source": "Hankeikkuna",
+   "note": "known_at 348 vrk ENNEN occurred_at (lähde aloitusPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:TEM061:00/2024",
+   "source": "Hankeikkuna",
+   "note": "known_at 31 vrk ENNEN occurred_at (lähde asettamisPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:OM069:00/2022",
+   "source": "Hankeikkuna",
+   "note": "known_at 28 vrk ENNEN occurred_at (lähde aloitusPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:TEM008:00/2021",
+   "source": "Hankeikkuna",
+   "note": "aikaleimaa ei voi johtaa: julkaisuaika tai molemmat alkupäivät puuttuvat"
+  },
+  {
+   "event_id": "HI:STM153:00/2020",
+   "source": "Hankeikkuna",
+   "note": "aikaleimaa ei voi johtaa: julkaisuaika tai molemmat alkupäivät puuttuvat"
+  },
+  {
+   "event_id": "HI:STM056:00/2020",
+   "source": "Hankeikkuna",
+   "note": "known_at 1 vrk ENNEN occurred_at (lähde aloitusPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:VNK002:00/2020",
+   "source": "Hankeikkuna",
+   "note": "aikaleimaa ei voi johtaa: julkaisuaika tai molemmat alkupäivät puuttuvat"
+  },
+  {
+   "event_id": "HI:OM010:00/2020",
+   "source": "Hankeikkuna",
+   "note": "aikaleimaa ei voi johtaa: julkaisuaika tai molemmat alkupäivät puuttuvat"
+  },
+  {
+   "event_id": "HI:STM130:00/2019",
+   "source": "Hankeikkuna",
+   "note": "aikaleimaa ei voi johtaa: julkaisuaika tai molemmat alkupäivät puuttuvat"
+  },
+  {
+   "event_id": "HI:STM141:00/2019",
+   "source": "Hankeikkuna",
+   "note": "aikaleimaa ei voi johtaa: julkaisuaika tai molemmat alkupäivät puuttuvat"
+  },
+  {
+   "event_id": "HI:STM119:00/2019",
+   "source": "Hankeikkuna",
+   "note": "aikaleimaa ei voi johtaa: julkaisuaika tai molemmat alkupäivät puuttuvat"
+  },
+  {
+   "event_id": "HI:STM113:00/2019",
+   "source": "Hankeikkuna",
+   "note": "aikaleimaa ei voi johtaa: julkaisuaika tai molemmat alkupäivät puuttuvat"
+  },
+  {
+   "event_id": "HI:STM074:00/2018",
+   "source": "Hankeikkuna",
+   "note": "aikaleimaa ei voi johtaa: julkaisuaika tai molemmat alkupäivät puuttuvat"
+  },
+  {
+   "event_id": "HI:TEM027:00/2018",
+   "source": "Hankeikkuna",
+   "note": "aikaleimaa ei voi johtaa: julkaisuaika tai molemmat alkupäivät puuttuvat"
+  },
+  {
+   "event_id": "HI:TEM003:00/2018",
+   "source": "Hankeikkuna",
+   "note": "aikaleimaa ei voi johtaa: julkaisuaika tai molemmat alkupäivät puuttuvat"
+  },
+  {
+   "event_id": "HI:TEM066:00/2017",
+   "source": "Hankeikkuna",
+   "note": "aikaleimaa ei voi johtaa: julkaisuaika tai molemmat alkupäivät puuttuvat"
+  },
+  {
+   "event_id": "HI:VNK021:00/2016",
+   "source": "Hankeikkuna",
+   "note": "aikaleimaa ei voi johtaa: julkaisuaika tai molemmat alkupäivät puuttuvat"
+  },
+  {
+   "event_id": "HI:STM092:00/2025",
+   "source": "Hankeikkuna",
+   "note": "known_at 21 vrk ENNEN occurred_at (lähde aloitusPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:OKM034:00/2025",
+   "source": "Hankeikkuna",
+   "note": "known_at 1 vrk ENNEN occurred_at (lähde aloitusPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:TEM102:00/2024",
+   "source": "Hankeikkuna",
+   "note": "known_at 167 vrk ENNEN occurred_at (lähde asettamisPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:TEM069:00/2024",
+   "source": "Hankeikkuna",
+   "note": "known_at 34 vrk ENNEN occurred_at (lähde aloitusPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:TEM055:00/2024",
+   "source": "Hankeikkuna",
+   "note": "known_at 66 vrk ENNEN occurred_at (lähde asettamisPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:TEM045:00/2024",
+   "source": "Hankeikkuna",
+   "note": "known_at 276 vrk ENNEN occurred_at (lähde aloitusPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:YM034:00/2024",
+   "source": "Hankeikkuna",
+   "note": "known_at 18 vrk ENNEN occurred_at (lähde aloitusPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:YM030:00/2024",
+   "source": "Hankeikkuna",
+   "note": "known_at 49 vrk ENNEN occurred_at (lähde asettamisPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "HI:TEM040:00/2023",
+   "source": "Hankeikkuna",
+   "note": "known_at 214 vrk ENNEN occurred_at (lähde aloitusPaiva) — päivämäärä on todennäköisesti eteenpäin päivätty hallinnollinen merkintä. Ei korjattu automaattisesti."
+  },
+  {
+   "event_id": "FX:2026/846",
+   "source": "Finlex",
+   "note": "dateIssued tai datePublished puuttuu"
+  }
+ ],
+ "errors": [],
+ "finlex_window": {
+  "source": "Finlex",
+  "window": [
+   "2026-09-01",
+   "2026-10-01"
+  ],
+  "first_number": 766,
+  "last_number_in_window": 864,
+  "calls": 142,
+  "missing_numbers_seen": 15,
+  "n": 99
+ },
+ "rri": null,
+ "_rri_note": "Ei laskettu: tapahtumia ei ole luokiteltu. Tyhjä kenttä on rehellisempi kuin nolla."
+}
