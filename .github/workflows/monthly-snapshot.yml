@@ -1,6 +1,15 @@
 name: monthly-snapshot
 
-# Kuukausittainen tilannekaappaus. Ajetaan kuukauden 1. päivä klo 06 UTC.
+# Kuukausittainen tilannekaappaus. Ajetaan kuukauden 1. päivä klo 06:17 UTC,
+# varmistusajo samana päivänä klo 13:41 UTC.
+#
+# MIKSI EI TASATUNTI JA MIKSI VARMISTUSAJO
+# 1.10.2026 klo 06:00 UTC ajastus ei käynnistynyt lainkaan: GitHub pudottaa
+# ajastettuja ajoja kuormahuipuissa ilman ilmoitusta, ja kuun 1. päivän
+# tasatunti on pahin hetki. Kaappaus tehtiin käsiajona (workflow_dispatch,
+# run 36862714217). Minuutti 17 vähentää riskiä; varmistusajo ajaa
+# kaappauksen vain, jos kuun tiedosto puuttuu vielä mainista.
+# Snapshotin trigger-kenttä kertoo, millä tapahtumalla kaappaus syntyi.
 #
 # MIKSI CI EIKÄ PAIKALLINEN AJO
 # PRE-sarja väittää mittaavansa sitä, mitä olisi voitu tietää kyseisenä
@@ -13,7 +22,8 @@ name: monthly-snapshot
 
 on:
   schedule:
-    - cron: "0 6 1 * *"
+    - cron: "17 6 1 * *"     # pääajo
+    - cron: "41 13 1 * *"    # varmistus: ajaa vain jos pääajo puuttuu
   workflow_dispatch:          # savutesti oletuksena — ks. dry_run
     inputs:
       dry_run:
@@ -29,7 +39,30 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Varmistusajo ohitetaan, jos kuun kaappaus on jo mainissa. Muut
+  # tapahtumat (pääajo, käsiajo) menevät aina läpi.
+  guard:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.check.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: check
+        run: |
+          FILE="snapshots/$(date -u +%Y-%m).json"
+          if [ "${{ github.event.schedule }}" = "41 13 1 * *" ] && [ -f "$FILE" ]; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "$FILE on jo olemassa — varmistusajo ohitetaan"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            if [ "${{ github.event.schedule }}" = "41 13 1 * *" ]; then
+              echo "::warning::pääajo puuttui — varmistusajo kaappaa"
+            fi
+          fi
+
   snapshot:
+    needs: guard
+    if: needs.guard.outputs.run == 'true'
     runs-on: ubuntu-latest
     env:
       # Cronilla ei koskaan; käsinajolla inputin mukaan (oletus savutesti).
