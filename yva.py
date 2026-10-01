@@ -18,7 +18,16 @@ Jokainen hankesivun aikataulurivi, jonka vaihe tunnistetaan:
     ohjelma_nahtavilla     arviointiohjelma nähtävillä   = menettelyn alku
     ohjelma_lausunto       yhteysviranomaisen lausunto ohjelmasta
     selostus_nahtavilla    arviointiselostus nähtävillä
+    taydennyspyynto        yhteysviranomaisen täydennyspyyntö (viivästys)
+    selostus_lausunto      lausunto selostuksesta = loppu (YVA-laki < 16.5.2017)
     perusteltu_paatelma    yhteysviranomaisen perusteltu päätelmä = loppu
+
+    yleisotilaisuus tunnistetaan (proxy), mutta se ei ole menettelyn vaihe:
+    lasketaan lokiin "tunnettuja_ohitettu", ei tunnistamattomiin.
+
+    2026-10-01: proxy tunnistaa "kuultavana"/"kuulutus" nähtävilläolon
+    synonyymeinä. Q-001 H4 käyttää ohjelma_nahtavilla-vaihetta — ks.
+    ennakkorekisteroinnit/q001/poikkeama_1.md.
 
     occurred_at = known_at = rivin päivä. Nähtävilläolo ja päätös
     kuulutetaan julkisesti, joten tieto on julkinen samana päivänä —
@@ -51,8 +60,14 @@ from fetchers import RawEvent
 
 YVA_PROXY = "https://aci-yva-proxy.ruotsalainen-marko.workers.dev/"
 REGISTRY = Path(__file__).resolve().parent / "snapshots" / "yva-rekisteri.json"
-VAIHEET = ("ohjelma_nahtavilla", "ohjelma_lausunto", "selostus_nahtavilla", "perusteltu_paatelma")
+VAIHEET = ("ohjelma_nahtavilla", "ohjelma_lausunto", "selostus_nahtavilla",
+           "taydennyspyynto", "selostus_lausunto", "perusteltu_paatelma")
+EI_VAIHE = ("yleisotilaisuus",)
 REFRESH_DAYS = 180
+# Proxyn jäsennin muuttui: tätä ennen tarkistetut sivut haetaan kerran
+# uudelleen, muuten päättyneet hankkeet saisivat uudet vaiheet vasta
+# 180 vrk:n päästä. ISO-aikaleima, verrataan merkkijonona.
+PARSER_SINCE = "2026-10-01T16:00:00+00:00"
 SPACING_S = 1.0
 
 Getter = Callable[[dict], dict]
@@ -84,6 +99,8 @@ def needs_fetch(slug: str, reg: dict, now: datetime) -> bool:
     r = reg.get(slug)
     if not r or not r.get("checked_at"):
         return True
+    if r["checked_at"] < PARSER_SINCE:
+        return True
     if not _closed(r.get("tila")):
         return True
     return now - datetime.fromisoformat(r["checked_at"]) > timedelta(days=REFRESH_DAYS)
@@ -99,6 +116,9 @@ def project_events(page: dict, slug: str, name: str, stats: dict | None = None) 
     for a in page.get("aikataulu") or []:
         v = a.get("vaihe")
         if not a.get("alku"):
+            continue
+        if v in EI_VAIHE:
+            stats["tunnettuja_ohitettu"] = stats.get("tunnettuja_ohitettu", 0) + 1
             continue
         if v not in VAIHEET:
             stats.setdefault("tunnistamattomat", []).append(a.get("text", "")[:120])
@@ -116,7 +136,7 @@ def project_events(page: dict, slug: str, name: str, stats: dict | None = None) 
                 "slug": slug, "hanke": name, "tila": page.get("tila"),
                 "aihealue": page.get("aihealue"), "alueet": page.get("alueet"),
                 "asianumero": page.get("asianumero"), "julkaisija": page.get("julkaisija"),
-                "vaihe": v, "loppu": a.get("loppu"), "asiakirjoja": page.get("n_documents"),
+                "vaihe": v, "vaihe_paatelty": a.get("vaihe_paatelty"), "loppu": a.get("loppu"), "asiakirjoja": page.get("n_documents"),
                 "data_class": "authoritative (lakisääteinen YVA-menettely)",
             },
             evidence=[{"quote": a.get("text", "")[:300], "location": "YVA-menettelyn aikataulu",
@@ -163,6 +183,7 @@ def capture(now: datetime | None = None, get: Getter = _get, registry: Path = RE
            "lykatty_seuraavaan": len(deferred), "virheita": len(errors), "virheet": errors[:20],
            "tapahtumia": len(events),
            "tulevia_ohitettu": stats.get("tulevia", 0),
+           "tunnettuja_ohitettu": stats.get("tunnettuja_ohitettu", 0),
            "tunnistamattomia_riveja": len(stats.get("tunnistamattomat", [])),
            "tunnistamattomat_esimerkit": stats.get("tunnistamattomat", [])[:15],
            "vaiheettomia": sum(1 for p in todo[:max_pages] if reg.get(p["slug"], {}).get("vaiheita") == 0)}
