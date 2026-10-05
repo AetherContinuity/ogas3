@@ -2087,6 +2087,98 @@ def test_promote_refresh_includes_open_unpromoted_traces():
             pr.SEURANTA, pr.TRACES, pr.SNAPSHOTS = old
 
 
+# ── Vahti ────────────────────────────────────────────────────────────
+def _vahti_post(hits: dict, docs: dict, fail: set = frozenset()):
+    def post(url, body):
+        if "teksti" in body:
+            t = body["teksti"]
+            if t in fail:
+                return {"error": "upstream 502"}
+            rows = [{"kohde": {"tunnus": x, "nimi": {"fi": "n " + x}, "tila": "KAYNNISSA"}} for x in hits.get(t, [])]
+            return {"totalHits": len(rows), "data": {"result": rows}}
+        t = body["tunnus"][0]
+        assert isinstance(body["tunnus"], list), "tunnus on lista — merkkijono palauttaa 400"
+        if t not in docs:
+            return {"totalHits": 0, "data": {"result": []}}
+        return {"totalHits": 1, "data": {"result": [{"kohde": {"tunnus": t, "tila": "KAYNNISSA"},
+                "asiakirjat": [{"uuid": u, "tyyppi": "KIRJE", "luotu": "2026-11-02T10:00:00", "nimi": {"fi": u}} for u in docs[t]]}]}}
+    return post
+
+_VW = [{"id": "w1", "kuvaus": "k", "hakusanat": ["raideleveys"], "hankkeet": ["LVM029:00/2023"]}]
+
+
+def test_vahti_first_run_is_baseline_not_news():
+    import tempfile, vahti
+    with tempfile.TemporaryDirectory() as tmp:
+        reg = Path(tmp) / "r.json"
+        b, log, new = vahti.capture(post=_vahti_post({"raideleveys": ["A:1"]}, {"LVM029:00/2023": ["d1"]}),
+                                    registry=reg, watches=_VW)
+        w = b["watches"][0]
+        assert w["ensimmainen_ajo"] is True
+        assert w["haut"][0]["uudet"] is None and w["hankkeet"][0]["uudet_asiakirjat"] is None, \
+            "lähtötilassa ei ole vertailukohtaa: null, ei tyhjä lista"
+        assert log["uusia"] == 0 and not reg.exists(), "capture ei kirjoita rekisteriä"
+        s = vahti.summarize(b)["watches"][0]
+        assert s["lahtotila"] and s["uudet_hankkeet"] == [] and s["uudet_asiakirjat"] == []
+
+
+def test_vahti_reports_new_hanke_and_new_document():
+    import tempfile, vahti
+    with tempfile.TemporaryDirectory() as tmp:
+        reg = Path(tmp) / "r.json"
+        _, _, r1 = vahti.capture(post=_vahti_post({"raideleveys": ["A:1"]}, {"LVM029:00/2023": ["d1"]}),
+                                 registry=reg, watches=_VW)
+        vahti.write_registry(r1, reg)
+        b, log, r2 = vahti.capture(post=_vahti_post({"raideleveys": ["A:1", "B:2"]}, {"LVM029:00/2023": ["d1", "d2"]}),
+                                   registry=reg, watches=_VW)
+        w = b["watches"][0]
+        assert [h["tunnus"] for h in w["haut"][0]["uudet"]] == ["B:2"]
+        assert [d["uuid"] for d in w["hankkeet"][0]["uudet_asiakirjat"]] == ["d2"]
+        assert log["uusia"] == 2
+        s = vahti.summarize(b)["watches"][0]
+        assert not s["lahtotila"] and s["uudet_asiakirjat"][0]["hanke"] == "LVM029:00/2023"
+        vahti.write_registry(r2, reg)
+        b3, log3, _ = vahti.capture(post=_vahti_post({"raideleveys": ["A:1", "B:2"]}, {"LVM029:00/2023": ["d1", "d2"]}),
+                                    registry=reg, watches=_VW)
+        assert b3["watches"][0]["haut"][0]["uudet"] == [] and log3["uusia"] == 0, "sama tila = ei uusia"
+
+
+def test_vahti_failed_search_keeps_registry_state():
+    """Epäonnistunut haku ei saa tyhjentää rekisteriä: muuten vanhat osumat
+    näyttäisivät seuraavassa ajossa uusilta."""
+    import tempfile, vahti
+    with tempfile.TemporaryDirectory() as tmp:
+        reg = Path(tmp) / "r.json"
+        _, _, r1 = vahti.capture(post=_vahti_post({"raideleveys": ["A:1"]}, {"LVM029:00/2023": ["d1"]}),
+                                 registry=reg, watches=_VW)
+        vahti.write_registry(r1, reg)
+        b, log, r2 = vahti.capture(post=_vahti_post({}, {}, fail={"raideleveys"}), registry=reg, watches=_VW)
+        assert "error" in b["watches"][0]["haut"][0] and "error" in log
+        assert "error" in b["watches"][0]["hankkeet"][0], "kadonnut hanke on virhe, ei tyhjä tulos"
+        assert r2["w1"]["hakusanat"]["raideleveys"] == ["A:1"] and r2["w1"]["hankkeet"]["LVM029:00/2023"] == ["d1"]
+        assert vahti.summarize(b)["watches"][0]["virheet"] == ["raideleveys", "LVM029:00/2023"]
+
+
+def test_vahti_new_term_on_existing_watch_is_baseline():
+    import tempfile, vahti
+    with tempfile.TemporaryDirectory() as tmp:
+        reg = Path(tmp) / "r.json"
+        _, _, r1 = vahti.capture(post=_vahti_post({"raideleveys": ["A:1"]}, {"LVM029:00/2023": []}),
+                                 registry=reg, watches=_VW)
+        vahti.write_registry(r1, reg)
+        w2 = [{**_VW[0], "hakusanat": ["raideleveys", "uusi sana"]}]
+        b, _, _ = vahti.capture(post=_vahti_post({"raideleveys": ["A:1"], "uusi sana": ["C:3"]}, {"LVM029:00/2023": []}),
+                                registry=reg, watches=w2)
+        haut = {h["teksti"]: h for h in b["watches"][0]["haut"]}
+        assert haut["raideleveys"]["uudet"] == [] and haut["uusi sana"]["uudet"] is None
+
+
+def test_vahti_summary_absent_for_old_snapshots():
+    from summary import summarize_snapshot
+    s = summarize_snapshot({"month": "2026-09", "events": [], "queries": []})
+    assert s["vahti"] is None, "ennen vahtia kaapattu kuukausi: None, ei tyhjä lohko"
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     ok = 0

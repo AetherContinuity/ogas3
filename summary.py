@@ -123,6 +123,12 @@ def _yva_summary(events: list[dict], month: str | None) -> dict | None:
     }
 
 
+def _vahti_summary(block: dict | None) -> dict | None:
+    """Vahtilohkon tiivistelmä. None jos kaappaus on ajalta ennen vahtia."""
+    from vahti import summarize
+    return summarize(block)
+
+
 def summarize_snapshot(snap: dict, source_file: str | None = None,
                        source_sha256: str | None = None) -> dict:
     events: list[dict] = snap.get("events") or []
@@ -219,6 +225,7 @@ def summarize_snapshot(snap: dict, source_file: str | None = None,
             "ilman_ketjua_yhteensa": len(unlinked),
         },
         "yva": _yva_summary(events, snap.get("month")),
+        "vahti": _vahti_summary(snap.get("vahti")),
         "anomalies": [{"event_id": e["event_id"], "source": e.get("source"),
                        "note": str(e["_anomaly"])[:300]}
                       for e in events if e.get("_anomaly")],
