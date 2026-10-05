@@ -39,6 +39,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from fetchers import fetch_eduskunta, fetch_hankeikkuna, summarize  # noqa: E402
 from avoimuus import fetch_current as fetch_avoimuus  # noqa: E402
 from yva import capture as capture_yva, write_registry as write_yva_registry  # noqa: E402
+from vahti import capture as capture_vahti, write_registry as write_vahti_registry  # noqa: E402
 from decision_chain import (chains, fetch_votes, he_key, resolve_hanke,  # noqa: E402
                             statutes_published_between)
 
@@ -233,6 +234,17 @@ def run(month: str | None = None, dry_run: bool = False) -> tuple[Path | None, d
         raw.extend(e.to_dict() for e in evs)
         per_query.append(log)
 
+    # Vahti: nimettyjen asioiden ilmaantuminen (hakusanat, hankkeiden
+    # asiakirjat). Oma lohkonsa — ei tapahtumia, ei vaikutusta lukuihin.
+    vahti_block = None
+    try:
+        vahti_block, vahti_log, vahti_reg = capture_vahti(now=now)
+        per_query.append(vahti_log)
+        if not dry_run:
+            write_vahti_registry(vahti_reg)
+    except Exception as exc:
+        per_query.append({"source": "Vahti", "error": str(exc)})
+
     anomalies = [d for d in raw if d.get("_anomaly")]
 
     snap = {
@@ -261,6 +273,7 @@ def run(month: str | None = None, dry_run: bool = False) -> tuple[Path | None, d
         },
         "queries": per_query,
         "chains": chains(raw),
+        "vahti": vahti_block,
         "events": raw,
     }
 

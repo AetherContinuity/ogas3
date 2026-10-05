@@ -277,6 +277,37 @@ on uusi kirjaus, ei uusi trace.
 voi käyttää todisteena siitä, että asia olisi nähty ajoissa. Yleistävät
 väitteet tehdään koko kaappauksesta, ei seurantalistasta.
 
+## Vahti (`vahti.py`)
+
+Kaappaus seuraa ketjuja, joilla on jo hanke tai HE-numero. Vahti seuraa
+asioita, joilla sitä ei vielä ole: luvattua selvitystä, odotettua
+päätöstä, suunnitelmaa jolle on annettu määräaika. Kysymys on "onko tämä
+ilmestynyt", ei "miten tämä eteni".
+
+```
+WATCHES                          vahdit koodissa; lisäys on uusi alkio
+  hakusanat                      Hankeikkunan tekstihaut -> osumien tunnukset
+  hankkeet                       nimetyn hankkeen asiakirjat -> uuid:t
+snapshots/vahti-rekisteri.json   edellisen ajon tila (kuten yva-rekisteri)
+snapshot["vahti"]                oma lohkonsa: ei tapahtumia, ei vaikutusta lukuihin
+summary["vahti"]                 vain uudet hankkeet, uudet asiakirjat ja virheet
+```
+
+`uudet = null` on lähtötila (ei vertailukohtaa), `[]` ei uusia.
+Epäonnistunut haku kirjataan virheenä eikä muuta rekisteriä, jotta vanhat
+osumat eivät näytä seuraavassa ajossa uusilta.
+
+**Hiljaisuus ei ole havainto.** Tyhjä haku kertoo, ettei asia ole
+ilmestynyt Hankeikkunaan tällä sanalla. Virastojen omat selvitykset,
+kehyspäätökset ja varautumissuunnitelmat eivät näy siellä lainkaan.
+Tekstihaku ei taivuta sanoja, joten muodot on lueteltava erikseen.
+
+Ensimmäiset vahdit (5.10.2026) koskevat länsireittiä: kuljetuskapasiteetin
+määrällinen tavoite, raideleveyden siirtymäsuunnitelma (määräaika 6/2027)
+ja selonteossa luvattu raidekalustoselvitys. Tausta: CN-030, luku 7.
+Lähtötila kaapattiin käsin samana päivänä; marraskuun ajo on ensimmäinen,
+joka voi raportoida muutoksen.
+
 ## Luokituskerros (`classification.py`)
 
 Snapshot jäädyttää todisteen. Luokitus (type, impact_weight,
@@ -323,6 +354,7 @@ decision_chain.py        Finlex-säädökset, täysistuntoäänestykset, HE-ketj
 summary.py               tiivistelmät ja index.json käyttöliittymälle
 yva.py                   YVA-menettelyn vaiheet, rekisteri muuttuvista sivuista
 avoimuus.py              Avoimuusrekisterin vaikuttamisilmoitukset hankkeisiin
+vahti.py                 nimettyjen asioiden ilmaantuminen (hakusanat, hankkeiden asiakirjat)
 promote.py               nosto seurantaan (issue -> seuranta/ + trace), kuukausipäivitys
 tests/test_all.py        testit
 
