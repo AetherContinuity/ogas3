@@ -1,0 +1,1335 @@
+{
+ "_schema": "aci/decision-trace/v0.1",
+ "_locked_at": "2026-11-01",
+ "_revision": 1,
+ "_generator": "snapshot.py (automaattinen) — EI tulkintaa, vain laskettuja kenttia. Proosa kuuluu _commentary-kenttaan jonka ihminen lisaa ja joka EI vaikuta tiivisteeseen.",
+ "_lock_note": "LUKITTU. Ei muuteta jalkikateen; uudet havainnot seuraavaan snapshotiin.",
+ "subject": {
+  "tunnus": "TEM040:00/2026",
+  "asianumero": "VN/23332/2026",
+  "nimi": "Hallituksen esitys eduskunnalle laiksi datakeskusrekisteristä"
+ },
+ "_state": {
+  "tila": "KAYNNISSA",
+  "asiakirjat_yhteensa": 60,
+  "asiakirjat_tyypeittain": {
+   "LAUSUNTOPYYNTO": 2,
+   "KIRJE": 2,
+   "LAUSUNTO": 55,
+   "YHTEENVETO": 1
+  },
+  "lausuntoja_hankeikkunassa": 55,
+  "lausuntokierros_tila": "päättynyt",
+  "lausuntokierros_kesto_vrk": 29,
+  "lausuntokierros_auki_vrk": null,
+  "lausuntokierros_jaljella_vrk": null,
+  "lausuntokierroksia": 1,
+  "_lausuntoja_note": "Luku on Hankeikkunan asiakirjoista. TEM: Lausuntopalvelussa annetut nakyvat automaattisesti, kirjaamoon toimitettuja EI julkaista. Havaittu maara on siis ALARAJA, ei kokonaismaara.",
+  "uptake": null,
+  "_uptake_note": "MAARITTAMATON, ei nolla. Mitattavissa vasta taysistunnon aanestyksesta, ja aanestystyyppi on luokiteltava erikseen."
+ },
+ "_diff": {
+  "edellinen": "TEM04000-2026-trace-2026-10-01.json",
+  "uusia_solmuja": 40,
+  "uudet": [
+   "etappi-valtioneuvoston_paatoksenteko-2026-10-29",
+   "asiakirja-5c30d556",
+   "asiakirja-cabfb021",
+   "asiakirja-5551e7f6",
+   "asiakirja-5f7ebf67",
+   "asiakirja-a77859f3",
+   "asiakirja-76123f29",
+   "asiakirja-3da74866",
+   "asiakirja-1d8742fd",
+   "asiakirja-15024d1e",
+   "asiakirja-566ef216",
+   "asiakirja-cd2103fc",
+   "asiakirja-02bea0ff",
+   "asiakirja-1e93c2d3",
+   "asiakirja-5636b293",
+   "asiakirja-d7e17c5a",
+   "asiakirja-2fcbf495",
+   "asiakirja-be104150",
+   "asiakirja-d5cf6dfd",
+   "asiakirja-272852b8",
+   "asiakirja-3f20eccf",
+   "asiakirja-61e64f94",
+   "asiakirja-42194ba0",
+   "asiakirja-cc5d7a8e",
+   "asiakirja-2d161c72",
+   "asiakirja-165e85ce",
+   "asiakirja-13372c7b",
+   "asiakirja-84b4989e",
+   "asiakirja-2c21e423",
+   "asiakirja-916d36a1",
+   "asiakirja-bb8348ca",
+   "asiakirja-d6341962",
+   "asiakirja-0b4c34e3",
+   "asiakirja-81ccc974",
+   "asiakirja-db0d0b16",
+   "asiakirja-ddb8fd0f",
+   "asiakirja-4d6c0d79",
+   "asiakirja-b064452f",
+   "asiakirja-7ec63ada",
+   "asiakirja-3e405aa8"
+  ],
+  "kadonneita": 0,
+  "kadonneet": [],
+  "_kadonneet_note": "Solmu joka oli edellisessa muttei tassa. EI poisteta hiljaa — lahde on muuttunut, ja se on oma havaintonsa.\nHUOM KAKSI VAARAA HALYTYSTA:\n(1) KASIN kirjatut solmut joita Hankeikkuna ei tunne (esim. oma lausunto ennen kuin se nakyy asiakirjoissa) nakyvat AINA kadonneina. Ne eivat ole kadonneet — automaatti ei vain nae niita.\n(2) NIMEAMISERO: kasin kirjatut kayttivat vapaita node_id-arvoja (esim. 'lausuntokierros-alkoi'), automaatti kayttaa kaavaa 'etappi-<vaihe>-<pvm>'. Sama tapahtuma, eri tunniste. Ensimmainen automaattiajo kasin kirjoitetun snapshotin paalle raportoi siksi kadonneita joita ei ole.\nKumpikin nakyy VAIN ensimmaisella ajolla; sen jalkeen tunnisteet ovat yhtenaiset."
+ },
+ "observed": [
+  {
+   "node_id": "hanke-asetettu",
+   "kind": "observed",
+   "occurred_at": "2026-08-10T00:00:00+03:00",
+   "occurred_at_source": "aloitusPaiva",
+   "known_at": "2026-08-10T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna kohteet/haku",
+   "evidence": [
+    {
+     "quote": "Hallituksen esitys eduskunnalle laiksi datakeskusrekisteristä",
+     "location": "kohde TEM040:00/2026",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "asettamisPaiva_puuttuu": true
+   }
+  },
+  {
+   "node_id": "etappi-lausuntomenettely-2026-09-03",
+   "kind": "observed",
+   "occurred_at": "2026-09-03T00:00:00+03:00",
+   "known_at": "2026-09-03T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna etapit",
+   "evidence": [
+    {
+     "quote": "LAUSUNTOMENETTELY 2026-09-03 – 2026-10-02",
+     "location": "etapit",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "vaihe": "KAYNNISSA",
+    "loppu": "2026-10-02",
+    "kesto_vrk": 29,
+    "kulunut_vrk_lukitushetkella": 59
+   }
+  },
+  {
+   "node_id": "etappi-valtioneuvoston_paatoksenteko-2026-10-29",
+   "kind": "observed",
+   "occurred_at": "2026-10-29T00:00:00+03:00",
+   "known_at": "2026-10-29T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna etapit",
+   "evidence": [
+    {
+     "quote": "VALTIONEUVOSTON_PAATOKSENTEKO 2026-10-29 – 2026-10-29",
+     "location": "etapit",
+     "source_url": "https://api.hankeikkuna.fi/api/v2/kohteet/haku",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "vaihe": "KAYNNISSA",
+    "loppu": "2026-10-29",
+    "kesto_vrk": 0,
+    "kulunut_vrk_lukitushetkella": 3
+   }
+  },
+  {
+   "node_id": "asiakirja-6745b69b",
+   "kind": "observed",
+   "occurred_at": "2026-09-03T00:00:00+03:00",
+   "known_at": "2026-09-03T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTOPYYNTO",
+   "evidence": [
+    {
+     "quote": "20260903_Työ- ja elinkeinoministeriön lausuntopyyntö luonnoksesta hallituksen esitykseksi eduskunnalle laiksi datakeskusrekister",
+     "location": "asiakirjat · uuid 6745b69b-da62-4dea-a47d-e5c99ca83f80",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/6745b69b-da62-4dea-a47d-e5c99ca83f80/LAUSUNTOPYYNTO_20260903134202.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Työ- ja elinkeinoministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-aa4b9c70",
+   "kind": "observed",
+   "occurred_at": "2026-09-03T00:00:00+03:00",
+   "known_at": "2026-09-03T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "KIRJE",
+   "evidence": [
+    {
+     "quote": "HE-luonnos datakeskusrekisteristä 3.9.2026",
+     "location": "asiakirjat · uuid aa4b9c70-e6fd-4271-bb78-3dd45e5d9edc",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/aa4b9c70-e6fd-4271-bb78-3dd45e5d9edc/KIRJE_20260903134202.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Työ- ja elinkeinoministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-7068cc45",
+   "kind": "observed",
+   "occurred_at": "2026-09-23T00:00:00+03:00",
+   "known_at": "2026-09-23T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Maa- ja metsätalousministeriön lausunto",
+     "location": "asiakirjat · uuid 7068cc45-c481-4c75-8271-fd5ce70fb52b",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/7068cc45-c481-4c75-8271-fd5ce70fb52b/LAUSUNTO_20260923125245.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Maa- ja metsätalousministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-11d69c4c",
+   "kind": "observed",
+   "occurred_at": "2026-09-23T00:00:00+03:00",
+   "known_at": "2026-09-23T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Valtiovarainministeriön lausunto luonnoksesta hallituksen esitykseksi laiksi datakeskusrekisteristä",
+     "location": "asiakirjat · uuid 11d69c4c-6cb9-4446-a783-c3616241ed2c",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/11d69c4c-6cb9-4446-a783-c3616241ed2c/LAUSUNTO_20260923125325.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Valtiovarainministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-afa379d2",
+   "kind": "observed",
+   "occurred_at": "2026-09-23T00:00:00+03:00",
+   "known_at": "2026-09-23T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Suojelupoliisi; lausunto",
+     "location": "asiakirjat · uuid afa379d2-7749-4827-9491-ef6a3c8f79d2",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/afa379d2-7749-4827-9491-ef6a3c8f79d2/LAUSUNTO_20260923132929.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Suojelupoliisi"
+   }
+  },
+  {
+   "node_id": "asiakirja-7b86407a",
+   "kind": "observed",
+   "occurred_at": "2026-09-23T00:00:00+03:00",
+   "known_at": "2026-09-23T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Traficom; lausunto",
+     "location": "asiakirjat · uuid 7b86407a-1547-4556-9cfe-3a9ee324ab1d",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/7b86407a-1547-4556-9cfe-3a9ee324ab1d/LAUSUNTO_20260923164622.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Traficom NCSA"
+   }
+  },
+  {
+   "node_id": "asiakirja-1f478659",
+   "kind": "observed",
+   "occurred_at": "2026-09-24T00:00:00+03:00",
+   "known_at": "2026-09-25T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Oikeusministeriön lausunto datakeskusrekisterilaista",
+     "location": "asiakirjat · uuid 1f478659-cc0e-457d-9f53-8fd921783155",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/1f478659-cc0e-457d-9f53-8fd921783155/LAUSUNTO_20260925075311.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Oikeusministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-3d6512a3",
+   "kind": "observed",
+   "occurred_at": "2026-09-25T00:00:00+03:00",
+   "known_at": "2026-09-25T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "RVL vastaus, lausuntopyyntö luonnoksesta hallituksen esitykseksi eduskunnalle laiksi datakeskusrekisteristä VN_23332_2026",
+     "location": "asiakirjat · uuid 3d6512a3-fdef-4fab-a2a1-233d47ddfdbb",
+     "source_url": "",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": null
+   }
+  },
+  {
+   "node_id": "asiakirja-27a00c72",
+   "kind": "observed",
+   "occurred_at": "2026-09-24T00:00:00+03:00",
+   "known_at": "2026-09-27T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Vihreä eduskuntaryhmä; lausunto",
+     "location": "asiakirjat · uuid 27a00c72-ca95-47a6-a620-125aef15f2df",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/27a00c72-ca95-47a6-a620-125aef15f2df/LAUSUNTO_20260927031806.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Vihreä eduskuntaryhmä"
+   }
+  },
+  {
+   "node_id": "asiakirja-7ba375fe",
+   "kind": "observed",
+   "occurred_at": "2026-09-28T00:00:00+03:00",
+   "known_at": "2026-09-28T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "OKV Oikeuskanslerinvirasto; lausunto",
+     "location": "asiakirjat · uuid 7ba375fe-abda-4322-ad89-f19f843aa16c",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/7ba375fe-abda-4322-ad89-f19f843aa16c/LAUSUNTO_20260928182956.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Oikeuskanslerin virasto"
+   }
+  },
+  {
+   "node_id": "asiakirja-d26e91d9",
+   "kind": "observed",
+   "occurred_at": "2026-09-28T00:00:00+03:00",
+   "known_at": "2026-09-28T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Paikallisvoima ry; lausunto",
+     "location": "asiakirjat · uuid d26e91d9-5eb8-4876-a555-936101a7cae5",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/d26e91d9-5eb8-4876-a555-936101a7cae5/LAUSUNTO_20260928185055.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Paikallisvoima ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-92edd485",
+   "kind": "observed",
+   "occurred_at": "2026-09-29T00:00:00+03:00",
+   "known_at": "2026-09-29T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Metsähallitus; lausunto",
+     "location": "asiakirjat · uuid 92edd485-a3a2-4618-9ed6-78eed93f942f",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/92edd485-a3a2-4618-9ed6-78eed93f942f/LAUSUNTO_20260929172541.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Metsähallitus"
+   }
+  },
+  {
+   "node_id": "asiakirja-41ff6753",
+   "kind": "observed",
+   "occurred_at": "2026-09-29T00:00:00+03:00",
+   "known_at": "2026-09-29T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Tulli; lausunto",
+     "location": "asiakirjat · uuid 41ff6753-8ff2-4d90-98da-323283c3e905",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/41ff6753-8ff2-4d90-98da-323283c3e905/LAUSUNTO_20260929173447.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Tulli"
+   }
+  },
+  {
+   "node_id": "asiakirja-0ee269fe",
+   "kind": "observed",
+   "occurred_at": "2026-09-29T00:00:00+03:00",
+   "known_at": "2026-09-29T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Kristinestads stad / Kristiinankaupunki; lausunto",
+     "location": "asiakirjat · uuid 0ee269fe-e358-460e-b7af-dbe4fb3d8028",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/0ee269fe-e358-460e-b7af-dbe4fb3d8028/LAUSUNTO_20260929173933.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Kristinestads stad / Kristiinankaupunki"
+   }
+  },
+  {
+   "node_id": "asiakirja-4fa13b74",
+   "kind": "observed",
+   "occurred_at": "2026-09-29T00:00:00+03:00",
+   "known_at": "2026-09-29T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Kiinteistönomistajat ja rakennuttajat Rakli ry; lausunto",
+     "location": "asiakirjat · uuid 4fa13b74-7fb8-438e-b950-5d1e6022e654",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/4fa13b74-7fb8-438e-b950-5d1e6022e654/LAUSUNTO_20260929175302.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Kiinteistönomistajat ja rakennuttajat Rakli ry (1)"
+   }
+  },
+  {
+   "node_id": "asiakirja-52911d25",
+   "kind": "observed",
+   "occurred_at": "2026-09-30T00:00:00+03:00",
+   "known_at": "2026-09-30T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Kuluttajaliitto ry; lausunto",
+     "location": "asiakirjat · uuid 52911d25-2a8a-442f-88ef-d1c53c6f8100",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/52911d25-2a8a-442f-88ef-d1c53c6f8100/LAUSUNTO_20260930181206.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Kuluttajaliitto ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-be1578eb",
+   "kind": "observed",
+   "occurred_at": "2026-09-30T00:00:00+03:00",
+   "known_at": "2026-09-30T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Suomen Omakotiliitto ry; lausunto",
+     "location": "asiakirjat · uuid be1578eb-c1e7-4767-b26b-1c2e0731630b",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/be1578eb-c1e7-4767-b26b-1c2e0731630b/LAUSUNTO_20260930181657.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Suomen Omakotiliitto ry "
+   }
+  },
+  {
+   "node_id": "asiakirja-482fcc63",
+   "kind": "observed",
+   "occurred_at": "2026-09-30T00:00:00+03:00",
+   "known_at": "2026-09-30T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Kaakkois-Suomen elinvoimakeskus; lausunto",
+     "location": "asiakirjat · uuid 482fcc63-3b67-4f9e-a382-a4fb35a580b2",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/482fcc63-3b67-4f9e-a382-a4fb35a580b2/LAUSUNTO_20260930183015.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Kaakkois-Suomen elinvoimakeskus"
+   }
+  },
+  {
+   "node_id": "asiakirja-5c30d556",
+   "kind": "observed",
+   "occurred_at": "2026-09-30T00:00:00+03:00",
+   "known_at": "2026-10-01T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Vasemmistoliiton eduskuntaryhmä; lausunto",
+     "location": "asiakirjat · uuid 5c30d556-cf83-40a6-8e05-f712828c760d",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/5c30d556-cf83-40a6-8e05-f712828c760d/LAUSUNTO_20261001175252.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Vasemmistoliiton eduskuntaryhmä"
+   }
+  },
+  {
+   "node_id": "asiakirja-cabfb021",
+   "kind": "observed",
+   "occurred_at": "2026-10-01T00:00:00+03:00",
+   "known_at": "2026-10-01T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "atNorth Oy; lausunto",
+     "location": "asiakirjat · uuid cabfb021-08d3-47c7-913f-e759f3f44519",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/cabfb021-08d3-47c7-913f-e759f3f44519/LAUSUNTO_20261001180218.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "atNorth Oy"
+   }
+  },
+  {
+   "node_id": "asiakirja-5551e7f6",
+   "kind": "observed",
+   "occurred_at": "2026-10-01T00:00:00+03:00",
+   "known_at": "2026-10-01T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "CSC - Tieteen tietotekniikan keskus Oy; lausunto",
+     "location": "asiakirjat · uuid 5551e7f6-396a-48fe-86f0-e5fbad0501e5",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/5551e7f6-396a-48fe-86f0-e5fbad0501e5/LAUSUNTO_20261001180702.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "CSC - Tieteen tietotekniikan keskus Oy "
+   }
+  },
+  {
+   "node_id": "asiakirja-5f7ebf67",
+   "kind": "observed",
+   "occurred_at": "2026-10-01T00:00:00+03:00",
+   "known_at": "2026-10-01T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Keski-Pohjanmaan liitto; lausunto",
+     "location": "asiakirjat · uuid 5f7ebf67-8bb2-444a-a825-ec4892fbb4ac",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/5f7ebf67-8bb2-444a-a825-ec4892fbb4ac/LAUSUNTO_20261001180909.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Keski-Pohjanmaan liitto"
+   }
+  },
+  {
+   "node_id": "asiakirja-a77859f3",
+   "kind": "observed",
+   "occurred_at": "2026-10-01T00:00:00+03:00",
+   "known_at": "2026-10-01T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Tietosuojavaltuutetun toimisto; lausunto",
+     "location": "asiakirjat · uuid a77859f3-5e11-4e82-93ef-ed17c1a18512",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/a77859f3-5e11-4e82-93ef-ed17c1a18512/LAUSUNTO_20261001181353.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Tietosuojavaltuutetun toimisto"
+   }
+  },
+  {
+   "node_id": "asiakirja-76123f29",
+   "kind": "observed",
+   "occurred_at": "2026-10-01T00:00:00+03:00",
+   "known_at": "2026-10-01T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Fingrid Oyj; lausunto",
+     "location": "asiakirjat · uuid 76123f29-3f25-4fd3-85ab-eba250227f38",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/76123f29-3f25-4fd3-85ab-eba250227f38/LAUSUNTO_20261001181600.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Fingrid Oyj"
+   }
+  },
+  {
+   "node_id": "asiakirja-3da74866",
+   "kind": "observed",
+   "occurred_at": "2026-10-01T00:00:00+03:00",
+   "known_at": "2026-10-01T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Korkein hallinto-oikeus; lausunto",
+     "location": "asiakirjat · uuid 3da74866-2a63-4904-af8f-cddf5cd8ac5b",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/3da74866-2a63-4904-af8f-cddf5cd8ac5b/LAUSUNTO_20261001182044.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Korkein hallinto-oikeus"
+   }
+  },
+  {
+   "node_id": "asiakirja-1d8742fd",
+   "kind": "observed",
+   "occurred_at": "2026-10-01T00:00:00+03:00",
+   "known_at": "2026-10-01T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Finnwatch ry; lausunto",
+     "location": "asiakirjat · uuid 1d8742fd-c113-444a-8348-c7a63765949c",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/1d8742fd-c113-444a-8348-c7a63765949c/LAUSUNTO_20261001182253.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Finnwatch ry (1)"
+   }
+  },
+  {
+   "node_id": "asiakirja-15024d1e",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-02T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "YIT Oy; Lausunto",
+     "location": "asiakirjat · uuid 15024d1e-d68a-4608-abaf-5d2683ecb506",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/15024d1e-d68a-4608-abaf-5d2683ecb506/LAUSUNTO_20261002114838.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "YIT Oyj (1)"
+   }
+  },
+  {
+   "node_id": "asiakirja-566ef216",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-02T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Digita Oy; lausunto",
+     "location": "asiakirjat · uuid 566ef216-1395-4b19-a5c3-c41f7cc2790c",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/566ef216-1395-4b19-a5c3-c41f7cc2790c/LAUSUNTO_20261002120234.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Digita Oy "
+   }
+  },
+  {
+   "node_id": "asiakirja-cd2103fc",
+   "kind": "observed",
+   "occurred_at": "2026-10-01T00:00:00+03:00",
+   "known_at": "2026-10-04T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Energiateollisuus ry; lausunto",
+     "location": "asiakirjat · uuid cd2103fc-7d8b-4208-a990-1356105a9289",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/cd2103fc-7d8b-4208-a990-1356105a9289/LAUSUNTO_20261004033147.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Energiateollisuus ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-02bea0ff",
+   "kind": "observed",
+   "occurred_at": "2026-10-01T00:00:00+03:00",
+   "known_at": "2026-10-04T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "FiCom ry; lausunto",
+     "location": "asiakirjat · uuid 02bea0ff-7bd5-49a8-9ce3-4429527cfe02",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/02bea0ff-7bd5-49a8-9ce3-4429527cfe02/LAUSUNTO_20261004033357.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "FiCom ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-1e93c2d3",
+   "kind": "observed",
+   "occurred_at": "2026-10-01T00:00:00+03:00",
+   "known_at": "2026-10-04T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Suomen Sähkönkäyttäjät ry; lausunto",
+     "location": "asiakirjat · uuid 1e93c2d3-2b6c-43d3-8bf2-47fcfe81eab7",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/1e93c2d3-2b6c-43d3-8bf2-47fcfe81eab7/LAUSUNTO_20261004033605.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Suomen Sähkönkäyttäjät ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-5636b293",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-04T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Huoltovarmuuskeskus; lausunto",
+     "location": "asiakirjat · uuid 5636b293-6fb5-4aa7-adc5-c5b40adb5de1",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/5636b293-6fb5-4aa7-adc5-c5b40adb5de1/LAUSUNTO_20261004034535.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Huoltovarmuuskeskus"
+   }
+  },
+  {
+   "node_id": "asiakirja-d7e17c5a",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-04T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Energiavirasto; lausunto",
+     "location": "asiakirjat · uuid d7e17c5a-be61-4c2d-9f2a-bad9d0203470",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/d7e17c5a-be61-4c2d-9f2a-bad9d0203470/LAUSUNTO_20261004035234.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Energiavirasto"
+   }
+  },
+  {
+   "node_id": "asiakirja-2fcbf495",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-04T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Suomen Kuntaliitto ry; lausunto",
+     "location": "asiakirjat · uuid 2fcbf495-92dd-4dc0-b186-99932c97e047",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/2fcbf495-92dd-4dc0-b186-99932c97e047/LAUSUNTO_20261004035442.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Suomen Kuntaliitto ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-be104150",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-04T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Maa- ja metsätaloustuottajain Keskusliitto MTK ry; lausunto",
+     "location": "asiakirjat · uuid be104150-9084-4a15-ba7d-416f497b43be",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/be104150-9084-4a15-ba7d-416f497b43be/LAUSUNTO_20261004040125.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Maa- ja metsätaloustuottajain Keskusliitto MTK ry (1)"
+   }
+  },
+  {
+   "node_id": "asiakirja-d5cf6dfd",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-04T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Google Sweden AB; lausunto",
+     "location": "asiakirjat · uuid d5cf6dfd-1da0-4847-9087-28932c3ec24b",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/d5cf6dfd-1da0-4847-9087-28932c3ec24b/LAUSUNTO_20261004040331.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Google Sweden AB"
+   }
+  },
+  {
+   "node_id": "asiakirja-272852b8",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-04T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Verohallinto; lausunto",
+     "location": "asiakirjat · uuid 272852b8-1736-4e1b-8718-6f1f36f8f0cd",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/272852b8-1736-4e1b-8718-6f1f36f8f0cd/LAUSUNTO_20261004040536.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Verohallinto"
+   }
+  },
+  {
+   "node_id": "asiakirja-3f20eccf",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-04T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Suomen Ammattiliittojen Keskusjärjestö SAK ry; lausunto",
+     "location": "asiakirjat · uuid 3f20eccf-cbf2-49f6-95a2-3d84593c8327",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/3f20eccf-cbf2-49f6-95a2-3d84593c8327/LAUSUNTO_20261004040746.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Suomen Ammattiliittojen Keskusjärjestö SAK ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-61e64f94",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-04T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Palvelualojen työnantajat Palta ry; lausunto",
+     "location": "asiakirjat · uuid 61e64f94-6afa-45b9-bdb5-7377909aa427",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/61e64f94-6afa-45b9-bdb5-7377909aa427/LAUSUNTO_20261004040954.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Palvelualojen työnantajat PALTA ry "
+   }
+  },
+  {
+   "node_id": "asiakirja-42194ba0",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-04T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Energiakaupungit ry; lausunto",
+     "location": "asiakirjat · uuid 42194ba0-3359-41ee-ba60-81648072e026",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/42194ba0-3359-41ee-ba60-81648072e026/LAUSUNTO_20261004041204.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Energiakaupungit ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-cc5d7a8e",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-04T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Digita Oy; lausunto",
+     "location": "asiakirjat · uuid cc5d7a8e-b964-4907-9f3f-82e78d36d047",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/cc5d7a8e-b964-4907-9f3f-82e78d36d047/LAUSUNTO_20261004041412.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Digita Oy "
+   }
+  },
+  {
+   "node_id": "asiakirja-2d161c72",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-04T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Poliisihallitus; lausunto",
+     "location": "asiakirjat · uuid 2d161c72-ae3c-40da-8ae2-99e603abd7a7",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/2d161c72-ae3c-40da-8ae2-99e603abd7a7/LAUSUNTO_20261004042159.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Poliisihallitus"
+   }
+  },
+  {
+   "node_id": "asiakirja-165e85ce",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-04T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Greenpeace; lausunto",
+     "location": "asiakirjat · uuid 165e85ce-a9fe-4cf7-a6a0-5736ed64def2",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/165e85ce-a9fe-4cf7-a6a0-5736ed64def2/LAUSUNTO_20261004042411.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Greenpeace "
+   }
+  },
+  {
+   "node_id": "asiakirja-13372c7b",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-04T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Finnish Data Center Association ry; lausunto",
+     "location": "asiakirjat · uuid 13372c7b-097b-43e1-8145-5d8b900e54b1",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/13372c7b-097b-43e1-8145-5d8b900e54b1/LAUSUNTO_20261004042621.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Finnish Data Center Association ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-84b4989e",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-05T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Energiakaupungit ry; lausunto",
+     "location": "asiakirjat · uuid 84b4989e-f42a-4ee9-94b1-4595b52edfaf",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/84b4989e-f42a-4ee9-94b1-4595b52edfaf/LAUSUNTO_20261005053421.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Energiakaupungit ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-2c21e423",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-05T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Verda Cloud Oy; lausunto",
+     "location": "asiakirjat · uuid 2c21e423-6fcd-4bf8-9713-bc4b9a3159ab",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/2c21e423-6fcd-4bf8-9713-bc4b9a3159ab/LAUSUNTO_20261005170434.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Verda Cloud Oy"
+   }
+  },
+  {
+   "node_id": "asiakirja-916d36a1",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-05T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Bioenergia ry; lausunto",
+     "location": "asiakirjat · uuid 916d36a1-ec80-4a58-9ab3-f2019d15c200",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/916d36a1-ec80-4a58-9ab3-f2019d15c200/LAUSUNTO_20261005170642.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Bioenergia ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-bb8348ca",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-05T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Keskuskauppakamari; lausunto",
+     "location": "asiakirjat · uuid bb8348ca-b536-4cf7-9a55-ee31cbb13ac8",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/bb8348ca-b536-4cf7-9a55-ee31cbb13ac8/LAUSUNTO_20261005170848.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Keskuskauppakamari ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-d6341962",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-05T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Suomen luonnonsuojeluliitto; lausunto",
+     "location": "asiakirjat · uuid d6341962-b701-429d-8e70-12a5eed5ef5e",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/d6341962-b701-429d-8e70-12a5eed5ef5e/LAUSUNTO_20261005171053.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Suomen luonnonsuojeluliitto Etelä-Karjala ry"
+   }
+  },
+  {
+   "node_id": "asiakirja-0b4c34e3",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-05T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "E-Heat Oy; lausunto",
+     "location": "asiakirjat · uuid 0b4c34e3-51b3-4f0c-b7b5-756d6132afe8",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/0b4c34e3-51b3-4f0c-b7b5-756d6132afe8/LAUSUNTO_20261005171257.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "E-Heat Oy"
+   }
+  },
+  {
+   "node_id": "asiakirja-81ccc974",
+   "kind": "observed",
+   "occurred_at": "2026-10-09T00:00:00+03:00",
+   "known_at": "2026-10-12T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Sisäministeriö; lausunto ",
+     "location": "asiakirjat · uuid 81ccc974-3f69-4a9d-8931-9a34fc8c753a",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/81ccc974-3f69-4a9d-8931-9a34fc8c753a/LAUSUNTO_20261012063108.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Sisäministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-db0d0b16",
+   "kind": "observed",
+   "occurred_at": "2026-10-05T00:00:00+03:00",
+   "known_at": "2026-10-19T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Ympäristöministeriö; lausunto",
+     "location": "asiakirjat · uuid db0d0b16-41e6-40db-ad32-cc0ac6464741",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/db0d0b16-41e6-40db-ad32-cc0ac6464741/LAUSUNTO_20261019070534.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Ympäristöministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-ddb8fd0f",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-19T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Valtioneuvoston kanslia; lausunto ",
+     "location": "asiakirjat · uuid ddb8fd0f-1b50-41e2-b9f3-beda7bc6adb5",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/ddb8fd0f-1b50-41e2-b9f3-beda7bc6adb5/LAUSUNTO_20261019070650.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Valtioneuvoston kanslia"
+   }
+  },
+  {
+   "node_id": "asiakirja-4d6c0d79",
+   "kind": "observed",
+   "occurred_at": "2026-10-02T00:00:00+03:00",
+   "known_at": "2026-10-19T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Puolustusministeriö; lausunto",
+     "location": "asiakirjat · uuid 4d6c0d79-dfcd-44da-a71b-831b6b467c0e",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/4d6c0d79-dfcd-44da-a71b-831b6b467c0e/LAUSUNTO_20261019070742.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Puolustusministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-b064452f",
+   "kind": "observed",
+   "occurred_at": "2026-10-01T00:00:00+03:00",
+   "known_at": "2026-10-19T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Liikenne- ja viestintäministeriö; lausunto",
+     "location": "asiakirjat · uuid b064452f-e56c-493a-a8e4-724e95dfc2fb",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/b064452f-e56c-493a-a8e4-724e95dfc2fb/LAUSUNTO_20261019071117.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Liikenne- ja viestintäministeriö"
+   }
+  },
+  {
+   "node_id": "asiakirja-7ec63ada",
+   "kind": "observed",
+   "occurred_at": "2026-10-19T00:00:00+03:00",
+   "known_at": "2026-10-19T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "LAUSUNTO",
+   "evidence": [
+    {
+     "quote": "Open Knowledge Finland; Lausunto\n",
+     "location": "asiakirjat · uuid 7ec63ada-e5b7-407b-955e-a2ed10cf41ba",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/7ec63ada-e5b7-407b-955e-a2ed10cf41ba/LAUSUNTO_20261019092114.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Open Knowledge Finland"
+   }
+  },
+  {
+   "node_id": "asiakirja-3e405aa8",
+   "kind": "observed",
+   "occurred_at": "2026-10-29T00:00:00+03:00",
+   "known_at": "2026-10-29T00:00:00+03:00",
+   "retrieved_at": "2026-11-01T13:36:15+00:00",
+   "source": "Hankeikkuna asiakirjat",
+   "doc_type": "YHTEENVETO",
+   "evidence": [
+    {
+     "quote": "Lausuntoyhteenveto - Hallituksen esitys eduskunnalle laiksi datakeskusrekisteristä",
+     "location": "asiakirjat · uuid 3e405aa8-ddc0-4e7e-8f97-8320645ce905",
+     "source_url": "https://api.hankeikkuna.fi/asiakirjat/9b06f18b-f0c2-41ad-88df-ee18d32760eb/3e405aa8-ddc0-4e7e-8f97-8320645ce905/YHTEENVETO_20261029081644.PDF",
+     "retrieved_at": "2026-11-01T13:36:15+00:00"
+    }
+   ],
+   "_derived": {
+    "laatija": "Työ- ja elinkeinoministeriö"
+   }
+  }
+ ],
+ "_expected_note": "Eivat ole tapahtumia. Ei aikaleimoja. Automaatti EI lisaa naita — se vain kantaa ne edellisesta ja poistaa toteutuneet.",
+ "expected": [
+  {
+   "step": "lausuntokierros paattyy",
+   "date": "2026-10-02",
+   "status": "ei tapahtunut",
+   "_huom": "18 vrk jaljella snapshot-hetkella (2026-09-14)"
+  },
+  {
+   "step": "lausuntojen julkaisu Hankeikkunassa",
+   "status": "ei tapahtunut",
+   "_huom": "TEM: Lausuntopalvelussa annetut nakyvat automaattisesti, kirjaamoon toimitettuja EI julkaista. Havaittu maara on ALARAJA."
+  },
+  {
+   "step": "HE:n esittely valtioneuvostossa",
+   "estimate": "vko 44/2026",
+   "status": "ei tapahtunut",
+   "note": "TEM:n oma arvio, ei sitova"
+  },
+  {
+   "step": "lahetekeskustelu eduskunnassa",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "valiokuntakasittely + asiantuntijakuulemiset",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "mietinto",
+   "status": "ei tapahtunut"
+  },
+  {
+   "step": "taysistuntoaanestys",
+   "status": "ei tapahtunut",
+   "note": "TASSA uptake muuttuu mitattavaksi. Ennen tata se on None, ei 0. Aanestystyyppi on luokiteltava: luottamusaanestys ei kelpaa."
+  },
+  {
+   "step": "laki voimaan",
+   "estimate": "2027-01-01",
+   "status": "ei tapahtunut",
+   "note": "Ilmoitusvelvollisuus olemassa oleville 30.6.2027 mennessa."
+  }
+ ],
+ "_supersedes": {
+  "file": "TEM04000-2026-trace-2026-10-01.json",
+  "content_hash": "ec2a4fdc94a6",
+  "locked_at": "2026-10-01"
+ },
+ "_content_hash": "d21cc1234dda"
+}
