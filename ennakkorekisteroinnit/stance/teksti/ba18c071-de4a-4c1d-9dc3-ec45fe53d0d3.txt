@@ -1,0 +1,182 @@
+Logistiikkayritysten Liitto ry
+
+                                                    Lausunto
+
+                                                    02.02.2022
+
+
+
+
+Asia: VN/17669/2021
+
+Luonnos valtioneuvoston asetukseksi sähköisen liikenteen, biokaasun ja
+uusiutuvan vedyn liikennekäytön infrastruktuurituesta vuosina 2022–2025
+
+
+Lausunnonantajan lausunto
+Voitte kirjoittaa lausuntonne alla olevaan tekstikenttään
+
+
+
+        Logistiikkayritysten Liitto ry kiittää mahdollisuudesta antaa lausunto otsikon aiheesta.
+
+
+
+        Yleisesti pidämme hyvinä ehdotettuja vaihtoehtoisten käyttövoimien jakeluinfrastruktuurintukia,
+        joilla edistetään fossiilittoman liikenteen tiekartan tavoitteita Suomen liikenteen
+        kasvihuonekaasujen vähentämiseksi.
+
+
+
+        Lausuntomme huomiot kohdistuvat lähinnä tavarankuljetusten kuorma-autoille ja pakettiautoille
+        liittyvien sähkön latauspisteiden tukemiseen. Yhdymme siltä osin Autotuojat ja -teollisuus ry:n ja
+        Autoalan Keskusliitto ry:n yhteiseen lausuntoon, joka on kirjoitettuna alla.
+
+
+
+        Kuorma-autoille soveltuvien latauspisteiden tukeminen
+
+        Asetuksen 5§:ssä on määritelty tukiohjelman hakukohteet, joita on yhteensä viisi. Ensimmäisenä
+        hakukohteena ovat suuritehoisten latauspisteiden investointihankkeet.
+
+
+
+        Suuritehoisille latauspisteille on tarvetta henkilöautojen lisäksi paketti- ja kuorma-autoille, joiden
+        latausinfra voi olla osin yhtenäinen henkilöautoille tarkoitetun latauspisteverkoston kanssa.
+        Ladattavia kuorma-autoja on autokannassa vielä vähän, mutta lähivuosina niiden määrän
+        ennakoidaan kasvavan huomattavasti erityisesti kaupunkiseutujen jakeluliikenteessä. Varsinkin
+        alkuvaiheessa raskaan kaluston julkinen latausverkko voi nojautua pääosin yhteisiin latauspisteisiin
+        henkilö- ja pakettiautojen kanssa. Tulevaisuudessa yksinomaan kuorma-autoille suunnattavien
+
+
+                                               Lausuntopalvelu.fi                                            1/4
+latauspisteiden tulisi olla suuritehoisempia, jotta niillä voitaisiin vastata erityisesti nopeiden
+välilatausten tarpeisiin. On todennäköistä, että jo kuluvan tukikauden aikana syntyy
+investointimahdollisuuksia myös yksinomaan raskaalle kalustolle tarkoitetuille erittäin suuritehoisille
+(>350–600 kW) latauspisteille.
+
+
+
+Asetusluonnoksen 5§:n 1. momentin mukaisesti latauspisteen tulisi soveltua sähkökäyttöisen
+henkilöauton lataamiseen. Koska kuorma-autoille ja osin myös pakettiautoille voi syntyä
+ammattiliikenteelle tarkoitettuja erillisiä latauspisteitä, esitämme, että 1. momentti muutettaisiin
+seuraavasti:
+
+
+
+1) ajoneuvojen latauspisteiden investointihankkeeseen, johon sisältyy yksi tai useampi ajoneuvojen
+suuritehoinen latauspiste, joka soveltuu sähkökäyttöisen henkilö-, paketti- tai kuorma-auton
+lataamiseen siten, että kunkin latauspisteen samanaikainen tasavirtalatausteho on yli 22 kilowattia
+
+
+
+Ammattiliikenteelle suunnattavien latauspisteiden investointien tukeminen
+
+
+
+Suurin osa sähkökäyttöisten paketti- ja kuorma-autojen latauksista tapahtuu todennäköisimmin
+varikoilla ja terminaaleissa, jolloin auton toimintamatka otetaan huomioon reitin suunnittelussa ja
+kalustokierto suunnitellaan terminaalioperaatioihin sopivaksi. Raskaalle kalustolle soveltuvia julkisia
+tai puolijulkisia latauspisteitä tarvitaan riittävästi, jotta myös täydentävä satunnaisempi lataus olisi
+tarvittaessa mahdollista. Täydentävä julkinen ammattiliikenteelle suunnattu latausverkko lisää
+mahdollisuuksia kaluston joustavampaan käyttöön ja antaa mahdollisuuksia varautua esimerkiksi
+poikkeaviin tilanteisiin, jossa auton toimintamatka jäisikin ennakoitua pienemmäksi esimerkiksi
+sääolosuhteiden seurauksena. Tukea on perusteltua erityisesti sähköistymisen alkuvaiheessa
+suunnata raskaan kaluston terminaaleissa ja levähdysalueilla sijaitsevien latauspisteiden
+toteutukseen, jossa ne olisivat saman ajoneuvoryhmän käytettävissä, vaikka ne eivät olisikaan
+julkisesti kaikkien ajoneuvojen käytettävissä.
+
+
+
+Myös varikoille ja terminaaleihin rakennettavat latauspisteet on joissakin tapauksissa avattavissa
+saman viiteryhmän ajoneuvoille, vaikka ne eivät täytäkään julkisen latauspisteen määritelmää.
+Suurtehoinen latauspiste sekä vedyn tai nesteytetyn metaanin esimerkiksi varikolla, terminaalissa tai
+satamassa sijaitseva tankkausasema olisi perusteltua sisällyttää tuen piiriin, sillä pikalataus tai
+tankkaustapahtuma kaasumaisella ja nestemäisellä polttoaineella on suhteellisen nopeaa ja
+varikkosijainnista huolimatta asema voisi palvella myös laajemmin raskasta sähkö-, vety- tai
+kaasukäyttöistä kalustoa.
+
+
+
+Asetuksen 7 §:n mukaisesti tukikelpoisuus edellyttää, että latauspisteiden tulisi olla vapaasti kaikkien
+käyttäjien ja kuluttajien käytettävissä ilman syrjiviä ehtoja lukuun ottamatta tarpeellisia tunnistus-,
+käyttö- ja maksuehtoja. Asetusluonnoksen taustamuistiossa on tätä edellytystä tarkentaen todettu,
+että latauspiste voi olla suunnattu kaikille saman viiteryhmän käyttäjille tai kuluttajille. Jotta tukea
+
+                                       Lausuntopalvelu.fi                                              2/4
+voitaisiin hakea myös ammattiliikenteelle suunnattavan erillisen latauspisteen tai vedyn ja kaasun
+tankkausaseman toteuttamiseen, esitämme, että 7§:n kolmannen momentin muotoiluun seuraavan
+tapaista muutosta.
+
+
+
+Nykyinen muotoilu:
+
+
+
+1) kaasun tai vedyn tankkauspiste taikka ajoneuvojen suuritehoinen latauspiste on vapaasti kaikkien
+käyttäjien ja kuluttajien käytettävissä:
+
+a) ilman syrjiviä ehtoja lukuun ottamatta tarpeellisia tunnistus-, käyttö- ja maksuehtoja; ja
+
+b) kaikkina vuorokauden aikoina lukuun ottamatta välttämättömiä korjaus-, huolto- ja
+ylläpitokatkoja;
+
+
+
+Ehdotettu uusi muotoilu:
+
+
+
+1) kaasun tai vedyn tankkauspiste taikka ajoneuvojen suuritehoinen latauspiste on vapaasti pisteen
+kohderyhmän ajoneuvoluokkaa tai viiteryhmää edustavien ajoneuvojen käytettävissä.
+
+a) ilman syrjiviä ehtoja lukuun ottamatta tarpeellisia tunnistus-, käyttö- ja maksuehtoja ja
+
+b) mahdollisuuksien mukaan kaikkina vuorokauden aikoina lukuun ottamatta välttämättömiä
+korjaus-, huolto- ja ylläpitokatkoja;
+
+
+
+
+Raskaalle kalustolle soveltuvien pisteiden suosiminen tarjousten vertailussa
+
+
+
+Jotta latausinvestoinneissa voitaisiin soveltuvin osin toteuttaa monikäyttöisiä eri ajoneuvolajeille
+soveltuvia latauspisteitä, esitämme, että 12§:ään lisättäisiin erillinen kerroin investoinnin
+vertailuluvulle, jos kyseessä oleva investointi mahdollistaa vähintään yhden latauspisteen
+sijoittamisen siten, että se soveltuu myös kuorma-autoliikenteen käyttöön. Tällöin yksi tai useampi
+investointikohteen latauspisteistä olisi mitoitettu siten, että latauspisteelle mahtuu myös kuorma-
+auto ja piste on esimerkiksi läpi ajettavissa siten, että kuorma-auton on mahdollista ajaa
+latauspisteelle muuta liikennettä häiritsemättä. Koska väljemmän mitoituksen toteuttaminen lisää
+tyypillisesti jonkin verran investointikustannuksia, pisteytyksessä on perusteltua kannustaa myös
+kuorma-autoille soveltuvien latauspaikkojen toteutusta. Kuorma-autoliikenteelle soveltuvan
+latauspisteen toteuttamisen kerroin voisi olla esimerkiksi 0,8.
+
+
+
+                                       Lausuntopalvelu.fi                                         3/4
+Kunnioittavasti
+
+
+
+Logistiikkayritysten Liitto ry
+
+
+
+Pekka Aaltonen
+
+Toimitusjohtaja
+
+
+
+
+                          Aaltonen Pekka
+                          Logistiikkayritysten Liitto ry
+
+
+
+
+                                        Lausuntopalvelu.fi   4/4
+
