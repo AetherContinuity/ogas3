@@ -1,0 +1,36 @@
+name: llm-probe
+
+# LLM-luokittelijan esitarkistus: mallilista + yksi minimikutsu.
+# Ei luokittele, ei committaa. Tulos lokiin ja artefaktiksi.
+# Ajetaan vain käsin.
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Mallin tunniste"
+        default: "kimi-k3.1-pro"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Probe
+        env:
+          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
+          MODEL: ${{ inputs.model }}
+        run: python3 tools/llm_probe.py --model "$MODEL" --out llm-probe.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: llm-probe
+          path: llm-probe.json
+          if-no-files-found: ignore
