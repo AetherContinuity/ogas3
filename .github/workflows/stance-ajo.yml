@@ -1,0 +1,75 @@
+name: stance-ajo
+
+# Stance-validoinnin mallien ajo (kehikko.md: Ajot). Vain käsin.
+# Neljä malli × effort -yhdistelmää rinnakkain, kukin omalla budjetillaan
+# (yhteensä 4 × budjetti). Lopuksi arviointi ja yksi commit main-haaraan.
+
+on:
+  workflow_dispatch:
+    inputs:
+      budjetti_per_ajo:
+        description: "Budjetti / malli×effort, USD (4 rinnakkain)"
+        default: "4"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stance-ajo
+  cancel-in-progress: false
+
+jobs:
+  ajo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      matrix:
+        ajo: ["kimi:low", "kimi:max", "sonnet:low", "sonnet:high"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Aja
+        env:
+          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
+          OGAS3ANTH_API_KEY: ${{ secrets.OGAS3ANTH_API_KEY }}
+          AJO: ${{ matrix.ajo }}
+          BUDJETTI: ${{ inputs.budjetti_per_ajo }}
+        run: python3 ennakkorekisteroinnit/stance/stance.py --ajot "$AJO" --toistot 2 --budjetti "$BUDJETTI"
+      - name: Nimi
+        id: n
+        if: always()
+        run: echo "nimi=$(echo '${{ matrix.ajo }}' | tr ':' '_')" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tulokset-${{ steps.n.outputs.nimi }}
+          path: ennakkorekisteroinnit/stance/tulokset/
+          if-no-files-found: ignore
+
+  arviointi:
+    needs: ajo
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: tulokset-*
+          path: ennakkorekisteroinnit/stance/tulokset/
+          merge-multiple: true
+      - name: Arvioi
+        run: python3 ennakkorekisteroinnit/stance/arviointi.py
+      - name: Commit
+        run: |
+          git config user.name  "ogas3-stance"
+          git config user.email "actions@users.noreply.github.com"
+          git add ennakkorekisteroinnit/stance/tulokset ennakkorekisteroinnit/stance/arviointi.md
+          git commit -m "stance: validointiajon tulokset ja arviointi" || echo "ei muutoksia"
+          git push
