@@ -198,8 +198,18 @@ def main() -> int:
             katto = 8000 if effort == "low" else 16000
             tiedosto = out_dir / f"{malli}_{effort}_{toisto}.json"
             if tiedosto.exists():
-                print(f"{tiedosto.name} on jo olemassa — ohitetaan")
-                continue
+                vanha = json.loads(tiedosto.read_text(encoding="utf-8"))
+                # Korvataan VAIN jos yksikään malli ei nähnyt yhtään yksikköä:
+                # jokainen tietue on virhe eikä yhdestäkään ole usage-tietoa
+                # (pyyntö hylättiin ennen mallia, esim. HTTP 400). Muuten
+                # olemassa oleva tulos säilyy aina.
+                if vanha and all(r.get("virhe") and not r.get("usage") for r in vanha):
+                    print(f"{tiedosto.name}: kaikki {len(vanha)} tietuetta hylättyjä pyyntöjä "
+                          f"ilman mallin vastausta — ajetaan uudelleen. Ensimmäinen virhe: "
+                          f"{vanha[0]['virhe'][:300]}")
+                else:
+                    print(f"{tiedosto.name} on jo olemassa — ohitetaan")
+                    continue
             tietueet = []
             for y in yk:
                 user = user_viesti(user_pohja, y)
@@ -219,7 +229,7 @@ def main() -> int:
                 except Exception as exc:          # noqa: BLE001 — kirjataan
                     rec["virhe"] = str(exc)[:500]
                     tietueet.append(rec)
-                    print(f"  {y['id'][-8:]} VIRHE {rec['virhe'][:80]}")
+                    print(f"  {y['id'][-8:]} VIRHE {rec['virhe'][:300]}")
                     continue
                 hin, hout = m["hinta"]
                 hinta = r["tin"] * hin / 1e6 + r["tout"] * hout / 1e6
