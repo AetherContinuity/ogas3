@@ -1,161 +1,163 @@
 {
  "_schema": "aci/stance-ihminen/v0.1",
  "koodaaja": "Marko Ruotsalainen",
- "ohje": "stance yksi luokista; quote sanatarkka ote yksikön tekstistä (<= 300 merkkiä), ei_kantaa voi jättää tyhjäksi. Älä katso mallien tuloksia ennen kuin tämä on committattu.",
+ "ohje": "stance yksi luokista. quote vapaaehtoinen ihmiskoodaajalle: se ei kuulu yhteenkään mittariin (otteen tarkistus koskee malleja). Älä katso mallien tuloksia ennen kuin tämä on committattu.",
  "koodit": [
   {
    "id": "825944a5-b7c3-495f-b976-a2021c46693f#0",
-   "stance": null,
+   "stance": "ei_kantaa",
    "quote": null
   },
   {
    "id": "cebbebef-96a3-412c-a02b-844b41d8a5df#0",
-   "stance": null,
+   "stance": "kannattaa_muutoksin",
    "quote": null
   },
   {
    "id": "999cbdfd-b2ff-4fed-af04-eb0de8771762#0",
-   "stance": null,
+   "stance": "vastustaa",
    "quote": null
   },
   {
    "id": "279ad081-505d-4f93-a1b1-8f6143764ef3#0",
-   "stance": null,
+   "stance": "kannattaa_muutoksin",
    "quote": null
   },
   {
    "id": "279ad081-505d-4f93-a1b1-8f6143764ef3#1",
-   "stance": null,
+   "stance": "kannattaa_muutoksin",
    "quote": null
   },
   {
    "id": "279ad081-505d-4f93-a1b1-8f6143764ef3#2",
-   "stance": null,
+   "stance": "kannattaa_muutoksin",
    "quote": null
   },
   {
    "id": "279ad081-505d-4f93-a1b1-8f6143764ef3#3",
-   "stance": null,
+   "stance": "kannattaa_muutoksin",
    "quote": null
   },
   {
    "id": "279ad081-505d-4f93-a1b1-8f6143764ef3#4",
-   "stance": null,
+   "stance": "kannattaa_muutoksin",
    "quote": null
   },
   {
    "id": "6d08cfb6-dced-4d9d-82da-07409da5b0ea#0",
-   "stance": null,
+   "stance": "kannattaa_muutoksin",
    "quote": null
   },
   {
    "id": "d437e21f-a364-447f-b343-e3d21e647ca9#0",
-   "stance": null,
+   "stance": "vastustaa",
    "quote": null
   },
   {
    "id": "e132adc4-4e54-492e-a5e1-9f7cd96f940d#0",
-   "stance": null,
+   "stance": "vastustaa",
    "quote": null
   },
   {
    "id": "e37a3efa-e1e2-4ff7-a3a1-5f171652df7f#0",
-   "stance": null,
-   "quote": null
+   "stance": "kannattaa_muutoksin",
+   "quote": null,
+   "huom": "koodaaja: muutoksia vaaditaan niin laajalti että valmistelu pitäisi aloittaa alusta"
   },
   {
    "id": "e8420bd3-7d90-4d32-a456-ad8728997d5f#0",
-   "stance": null,
+   "stance": "vastustaa",
    "quote": null
   },
   {
    "id": "13b59065-5552-4564-b248-e31e36905d00#0",
-   "stance": null,
+   "stance": "kannattaa",
    "quote": null
   },
   {
    "id": "3bb76ff4-db8c-4f36-a93e-0bbb41d998ea#0",
-   "stance": null,
+   "stance": "kannattaa_muutoksin",
    "quote": null
   },
   {
    "id": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5#0",
-   "stance": null,
+   "stance": "kannattaa",
    "quote": null
   },
   {
    "id": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5#1",
-   "stance": null,
-   "quote": null
+   "stance": "kannattaa",
+   "quote": null,
+   "huom": "koodaajan oma kysymys: entä jos omistaja on asetettu konkurssiin?"
   },
   {
    "id": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5#2",
-   "stance": null,
+   "stance": "kannattaa_muutoksin",
    "quote": null
   },
   {
    "id": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5#3",
-   "stance": null,
+   "stance": "kannattaa_muutoksin",
    "quote": null
   },
   {
    "id": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5#4",
-   "stance": null,
+   "stance": "kannattaa_muutoksin",
    "quote": null
   },
   {
    "id": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5#5",
-   "stance": null,
+   "stance": "kannattaa_muutoksin",
    "quote": null
   },
   {
    "id": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5#6",
-   "stance": null,
+   "stance": "kannattaa_muutoksin",
    "quote": null
   },
   {
    "id": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5#7",
-   "stance": null,
+   "stance": "ei_kantaa",
    "quote": null
   },
   {
    "id": "11b44725-92e5-4c7d-ac1c-926ef1efb52a#0",
-   "stance": null,
-   "quote": null
+   "stance": "vastustaa",
+   "quote": "Lainsäädännön muutokset vaarantavat pitkälle valmistellut investoinnit, joita tarvittaisiin viipymättä sekä talouden että ilmaston näkökulmasta."
   },
   {
    "id": "eb91c3e6-98fe-479e-8344-63b32cb674be#0",
-   "stance": null,
-   "quote": null
+   "stance": "kannattaa_muutoksin",
+   "quote": "Valtion ei kategorisesti pitäisi sulkea mitään tuotantomuotoa, joilla saavutetaan ympäristöhyötyjä asetuksen tavoitteiden puitteissa, pois tuen piiristä."
   },
   {
    "id": "cac47e77-e88b-4041-818e-2020268550cb#0",
-   "stance": null,
+   "stance": "kannattaa_muutoksin",
    "quote": null
   },
   {
    "id": "5d59055e-e0d0-4d00-9c75-b730b1bed0b7#0",
-   "stance": null,
+   "stance": "kannattaa_muutoksin",
    "quote": null
   },
   {
    "id": "2a72211c-2c31-4f1e-b12d-6eb53f34df83#0",
-   "stance": null,
+   "stance": "vastustaa",
    "quote": null
   },
   {
    "id": "ba18c071-de4a-4c1d-9dc3-ec45fe53d0d3#0",
-   "stance": null,
+   "stance": "ei_kantaa",
    "quote": null
   },
   {
    "id": "7b9aaebb-d2d7-4f1c-8cfa-4664b5fa2948#0",
-   "stance": null,
+   "stance": "vastustaa",
    "quote": null
   },
   {
    "id": "41532368-86e4-449f-93d6-deb6934a118e#0",
-   "stance": null,
+   "stance": "kannattaa_muutoksin",
    "quote": null
   }
  ]
