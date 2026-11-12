@@ -87,18 +87,24 @@ Lausunnon arvo lasketaan yksiköistä, ei luokitella:
 
 `epaselva`-yksiköt eivät osallistu johtamiseen; niiden määrä raportoidaan.
 
-## Tietueen muoto — AVOIN ennen `stance.py`:tä
+## Tietueen muoto
 
 `classification.py`:n `llm_classification` hyväksyy vain L-komponentit
 (`intensity, targeting, policy_proximity, uptake`) lukuina väliltä 0–1.
 Stance on luokka, ei luku, eikä se ole RRI:n L-komponentti. Sille ei ole
 paikkaa nykyisessä skeemassa.
 
-Ehdotus: oma skeema `aci/stance/v0.1`, joka viittaa tapahtumaan samalla
-tavalla kuin `ClassificationRecord` (event_id + event_hash, classified_at,
-classifier) ja lisää yksikön tunnisteen (vastauksen indeksi + `section`).
-Nykyiseen `classification.py`:hin ei kosketa. Päätös tehdään ennen
-`stance.py`:tä, ei tässä.
+**Päätetty:** oma skeema `aci/stance/v0.1`. Tietue viittaa tapahtumaan
+samalla tavalla kuin `ClassificationRecord` (event_id + event_hash,
+classified_at, classifier: kind, id, version, knowledge_cutoff,
+prompt_hash) ja lisää:
+
+- yksikön tunnisteen: vastauksen indeksi + `section`
+- `stance` (yksi viidestä luokasta) ja `quote`
+- `response_model`: rajapinnan palauttama mallitunniste
+- `effort`
+
+Nykyiseen `classification.py`:hin ei kosketa.
 
 ## Tietohorisontti
 
@@ -123,8 +129,16 @@ ei koskaan väärää CLEAN-tulosta.
 rinnalla, kuten Q-001:n poikkeama 1:n herkkyystulos. Jos tulokset eroavat,
 ero raportoidaan tapahtumittain eikä ensisijaista muuteta.
 
-Jos luokittelijan cutoff on julkaistu (esim. vertailumalli), ehdollisena
-rajana käytetään julkaistua arvoa.
+Jos luokittelijan cutoff on julkaistu, ehdollisena rajana käytetään
+julkaistua arvoa.
+
+| luokittelija | ehdollinen raja | peruste |
+|---|---|---|
+| Kimi K3.1 Pro (`kimi-k3.1-pro`) | 2026-10-23 | julkaisupäivä, yläraja. Pätee vain jos mallia ei vaihdettu |
+| Claude Sonnet 5.5 (`claude-sonnet-5-5`) | 2026-06-30 | julkaistu training data cutoff "Jun 2026", kuukauden loppu. Anthropicin mukaan jokainen mallitunniste on kiinnitetty snapshot, joten raja ei riipu vaihtumisoletuksesta |
+
+Epäsymmetria on mittauksen ominaisuus, ei vika: Sonnetin ehdollinen raja
+on dokumentoitu, Kimin johdettu.
 
 Jokaiseen tietueeseen tallennetaan vastauksen `model`-kenttä. Jos arvo
 muuttuu kesken ajon, ajo keskeytyy.
@@ -162,7 +176,7 @@ RRI-dataa, joten validointiaineiston tietohorisontilla ei ole merkitystä.
 | malli | reasoning_effort | toistot |
 |---|---|---|
 | Kimi K3.1 Pro | low, max | 2 kertaa kumpikin |
-| vertailumalli (valitaan ennen lukitusta) | mallin vastaava | 2 kertaa |
+| Claude Sonnet 5.5 (`claude-sonnet-5-5`) | low, high (oletus) | 2 kertaa kumpikin |
 
 Lämpötila ei ole säädettävissä kaikissa malleissa, joten kahdella toistolla
 mitataan mallin oma vakaus. Prompt, skeema ja `prompt_hash` kirjataan
@@ -187,13 +201,24 @@ Malli × effort-taso, jolle:
 | κ(ihminen) 0,40–0,60 | käyttöön vain kahden mallin yhtäpitävissä yksiköissä; eroavat → `epaselva` |
 | κ(ihminen) < 0,40 tai otehylkäys > 5 % | hylätään |
 
-Jos sekä `low` että `max` ylittävät käyttöönottorajan, valitaan halvempi.
+Jos mallin kumpikin effort-taso ylittää käyttöönottorajan, valitaan halvempi.
 Jos kumpikin malli ylittää rajan, käyttöön otetaan avoimen painon malli
 (toistettavuus), ellei ero ihmisyhtäpitävyydessä ole > 0,10.
 
-## Avoimet ennen lukitusta
+## Tunnettu vinouma: kehikon laatija
 
-- Vertailumallin valinta.
-- Tietueen skeema (`aci/stance/v0.1` vai muu).
-- Rajasäännöt 1–6: rekisteröijä tarkistaa, vastaavatko ne sitä miten hän
-  itse lukee lausuntoja. Tämä on ainoa hetki muuttaa niitä.
+Tämän kehikon luonnosteli Claude (Anthropic) rekisteröijän ohjauksessa, ja
+vertailumalli on Anthropicin. Rajasääntöjen sanamuoto voi siksi osua
+Clauden lukutapaan paremmin kuin Kimin, mikä kallistaisi mallien välistä
+vertailua Sonnetin hyväksi. Päätössääntö vertaa kumpaakin mallia
+rekisteröijän käsikoodaukseen, ei malleja toisiinsa, mikä rajaa vaikutusta
+mutta ei poista sitä. Lukija voi arvioida sen tämän kirjauksen perusteella.
+
+Rekisteröijä on lukenut rajasäännöt 1–6 ja hyväksynyt ne sellaisinaan
+(12.11.2026).
+
+## Ajoympäristö
+
+GitHub Actions. Avaimet salaisuuksina `MOONSHOT_API_KEY` ja
+`OGAS3ANTH_API_KEY`. Hinnat 12.11.2026: kummallakin mallilla 2 $ / 10 $
+per miljoona syöte-/tulostetokenia.
