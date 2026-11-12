@@ -1,0 +1,870 @@
+[
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "825944a5-b7c3-495f-b976-a2021c46693f#0",
+  "uuid": "825944a5-b7c3-495f-b976-a2021c46693f",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "a12a74e21605bd26d505d69b034ca0f47132ab726a3de73956f57467da5fdf67",
+  "classified_at": "2026-11-12T22:43:23+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "ei_kantaa",
+  "quote": "Turvallisuus- ja kemikaalivirastolla (Tukes) ei ole luonnoksesta lausuttavaa.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 2678,
+   "out": 144
+  },
+  "hinta_usd": 0.0068
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "cebbebef-96a3-412c-a02b-844b41d8a5df#0",
+  "uuid": "cebbebef-96a3-412c-a02b-844b41d8a5df",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "e13a422dbb8228b228c045a7706b47468c5f0ce9de58052240f10de8d1497b5d",
+  "classified_at": "2026-11-12T22:43:27+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "M3- ajoneuvojen luokkavaatimuksia tulisi selkeyttää niin, että puhuttaessa kaupunkiliikenteen busseista, joita lakiluonnos koskee, käytettäisiin Yhdistyneiden kansakuntien ja Euroopan talouskomission säännön nro 107 mukaisia määritelmiä.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1751,
+   "out": 350
+  },
+  "hinta_usd": 0.007
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "999cbdfd-b2ff-4fed-af04-eb0de8771762#0",
+  "uuid": "999cbdfd-b2ff-4fed-af04-eb0de8771762",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "3a263b9906d3ce61b3a6601b6ad136c0410d79e0664e1baf884345bd0ec797b7",
+  "classified_at": "2026-11-12T22:43:35+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "Lisäksi ehdotamme, että lainmuutoksen perusteluissa tulisi ohjeistaa tarkemmin miten liikesalaisuuksia tulkitaan direktiivin liitteen VII osalta ja ao. asetuksen perusteella.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1480,
+   "out": 253
+  },
+  "hinta_usd": 0.00549
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "279ad081-505d-4f93-a1b1-8f6143764ef3#0",
+  "uuid": "279ad081-505d-4f93-a1b1-8f6143764ef3",
+  "indeksi": 0,
+  "section": "1",
+  "teksti_sha256": "84ede3fb5ffa13800ba25794f9418fdf5765fab0c5d8e99efea273c5d64e0faa",
+  "classified_at": "2026-11-12T22:43:41+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa",
+  "quote": "Sääntelyn kohdentaminen direktiivin edellyttämään kokonaisuuteen on kannatettavaa.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1277,
+   "out": 148
+  },
+  "hinta_usd": 0.00403
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "279ad081-505d-4f93-a1b1-8f6143764ef3#1",
+  "uuid": "279ad081-505d-4f93-a1b1-8f6143764ef3",
+  "indeksi": 1,
+  "section": "2",
+  "teksti_sha256": "344471cb7735949661a8b5c904f8f74ed0bdffee90b8741960e1e4d5080523f8",
+  "classified_at": "2026-11-12T22:43:47+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "Perusteluissa tai myöhemmässä soveltamisohjeistuksessa tulisi täsmentää, että teknisessä toteutettavuudessa voidaan ottaa huomioon myös rakenteellinen eheys, paloturvallisuus, kosteustekninen toimivuus, huollettavuus sekä kiinnitysratkaisujen toteutettavuus.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1253,
+   "out": 301
+  },
+  "hinta_usd": 0.00552
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "279ad081-505d-4f93-a1b1-8f6143764ef3#2",
+  "uuid": "279ad081-505d-4f93-a1b1-8f6143764ef3",
+  "indeksi": 2,
+  "section": "3",
+  "teksti_sha256": "dcb01608ffeafaf7988325f2c5f307aea75624b0410e227e36545949bee319d6",
+  "classified_at": "2026-11-12T22:43:54+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "Tätä olisi hyvä avata perusteluissa selkeämmin, jotta sääntely ei muodostuisi tulkinnanvaraiseksi tai ennakoimattomaksi.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1270,
+   "out": 175
+  },
+  "hinta_usd": 0.00429
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "279ad081-505d-4f93-a1b1-8f6143764ef3#3",
+  "uuid": "279ad081-505d-4f93-a1b1-8f6143764ef3",
+  "indeksi": 3,
+  "section": "4",
+  "teksti_sha256": "851ac12f2a22b1edf49f2bfb3215fe15722a2038cb7982c8d7ec0c131bb9155e",
+  "classified_at": "2026-11-12T22:43:58+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "Aurinkoenergiavelvoitteiden toimeenpanon tulee olla teknologia- ja materiaalineutraalia.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1303,
+   "out": 252
+  },
+  "hinta_usd": 0.00513
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "279ad081-505d-4f93-a1b1-8f6143764ef3#4",
+  "uuid": "279ad081-505d-4f93-a1b1-8f6143764ef3",
+  "indeksi": 4,
+  "section": "5",
+  "teksti_sha256": "6bea7ab41aa74acf05d20cfa84a430c7ffb3e6c40148bb68f41532e6b47e421b",
+  "classified_at": "2026-11-12T22:44:06+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "Lausunnonantajan näkökulmasta keskeisin kehittämistarve liittyy aurinkoenergiaa koskevien velvoitteiden käytännön soveltamiseen.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 2237,
+   "out": 307
+  },
+  "hinta_usd": 0.00754
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "6d08cfb6-dced-4d9d-82da-07409da5b0ea#0",
+  "uuid": "6d08cfb6-dced-4d9d-82da-07409da5b0ea",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "396b78483e531d228a6ac6d24565cacd6ef6732ed154af22f1fec80729f80a7e",
+  "classified_at": "2026-11-12T22:44:13+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "Luonnonvarakeskus kuitenkin painottaa, että erityisesti nurmeen liittyviä määritelmiä olisi tärkeää tarkentaa, sillä sen käyttöön erityisesti biokaasutuotannossa kohdistuu suuri mielenkiinto.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 3152,
+   "out": 374
+  },
+  "hinta_usd": 0.01004
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "d437e21f-a364-447f-b343-e3d21e647ca9#0",
+  "uuid": "d437e21f-a364-447f-b343-e3d21e647ca9",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "90ea836a0bcc012f506ebed5701b119ddad2577be0d5a2f78637f9748f52e8f9",
+  "classified_at": "2026-11-12T22:44:22+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "MTK esittää, että polttoon perustuvat lämmöntuotantohankkeet olisivat jatkossakin tuettavien kohteiden joukossa, jos poltettava polttoaine on uusiutuvaa.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1696,
+   "out": 131
+  },
+  "hinta_usd": 0.0047
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "e132adc4-4e54-492e-a5e1-9f7cd96f940d#0",
+  "uuid": "e132adc4-4e54-492e-a5e1-9f7cd96f940d",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "8f6a577ff1babbebb29abf098c2dbe43b4198df2fb78ab700378f4dfa77a20bf",
+  "classified_at": "2026-11-12T22:44:26+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "vastustaa",
+  "quote": "Kustannustiedon kerääminen rakennustasolla aiheuttaa huomattavan suuren työmäärän eikä kustannusten todenperäisyyttä voida varmistaa.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1374,
+   "out": 278
+  },
+  "hinta_usd": 0.00553
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "e37a3efa-e1e2-4ff7-a3a1-5f171652df7f#0",
+  "uuid": "e37a3efa-e1e2-4ff7-a3a1-5f171652df7f",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "6b9d359b8f6d3505d037bd73bb3cdafe71b432a45dcfb2b406e41e4b2d8aaffa",
+  "classified_at": "2026-11-12T22:44:35+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "vastustaa",
+  "quote": "Edes ensimmäisiä konkreettisia askelia kohti tämänkaltaista, vaikuttavaa ilmastolakia kohti ei nykyisessä ilmastolakiluonnoksessa ole otettu.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 6108,
+   "out": 265
+  },
+  "hinta_usd": 0.01487
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "e8420bd3-7d90-4d32-a456-ad8728997d5f#0",
+  "uuid": "e8420bd3-7d90-4d32-a456-ad8728997d5f",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "f4ef1c7e5d103114519b9b70e1569fa9c7b9c59b7c1f288e0c0cc9984e5455a6",
+  "classified_at": "2026-11-12T22:44:42+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "vastustaa",
+  "quote": "lakimuutos on palautettava uudelleen valmisteluun huomioiden Kuntaliiton lausunnossa todetut lakiluonnoksen korjaustarpeet",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1450,
+   "out": 92
+  },
+  "hinta_usd": 0.00382
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "13b59065-5552-4564-b248-e31e36905d00#0",
+  "uuid": "13b59065-5552-4564-b248-e31e36905d00",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "5344253c1846c5408cc246fd7c35956bc8cdd21f3a0fc88c9b931c51c99f412b",
+  "classified_at": "2026-11-12T22:44:46+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa",
+  "quote": "Verohallinto kannattaa tätä ehdotusta.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1570,
+   "out": 91
+  },
+  "hinta_usd": 0.00405
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "3bb76ff4-db8c-4f36-a93e-0bbb41d998ea#0",
+  "uuid": "3bb76ff4-db8c-4f36-a93e-0bbb41d998ea",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "ca9364be3c9069e7220e6cb2382b5ae207a848381b4bf7fa703f5edc45eb5d00",
+  "classified_at": "2026-11-12T22:44:49+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "Pidämme 6 § yleisesti erinomaisena vaatimuksena. Hyvän, terveellisen ja turvallisen sisäilmaston määritelmä vaatii kuitenkin tarkennusta.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1142,
+   "out": 175
+  },
+  "hinta_usd": 0.00403
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5#0",
+  "uuid": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5",
+  "indeksi": 0,
+  "section": "1",
+  "teksti_sha256": "be065761f008c0fce903d15f4bbc3ae7c8cba530bcaf58520f9299ab47afd620",
+  "classified_at": "2026-11-12T22:44:55+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa",
+  "quote": "On perusteltua, että laki koskisi napakorkeudeltaan vähintään 30 m maatuulivoima-loita.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1206,
+   "out": 168
+  },
+  "hinta_usd": 0.00409
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5#1",
+  "uuid": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5",
+  "indeksi": 1,
+  "section": "2–3",
+  "teksti_sha256": "29cf3053384e3f7795a73b75ac81b2f7116dc4245621ed4dba00b3f1a8345f73",
+  "classified_at": "2026-11-12T22:45:00+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa",
+  "quote": "On perusteltua, että purkamisvelvollisuus osoitetaan voimalan omistajalle.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1079,
+   "out": 82
+  },
+  "hinta_usd": 0.00298
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5#2",
+  "uuid": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5",
+  "indeksi": 2,
+  "section": "4–6",
+  "teksti_sha256": "e4fb8be5623a09575d7034c891fb49d7ff97697a6b5085968ca9f5c5d84cfd49",
+  "classified_at": "2026-11-12T22:45:05+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "Ehdotamme, että valtioneuvoston asetuksessa säädetään velvoittava laskentamalli, jolla vähennetään kuntakohtaista tulkintaa asiassa. Toivomme malliasiakirjoja ja ohjeistusta vakuuden riittävyyden arviointiin. Vakuuden tulee olla yhtäjaksoisesti voimassa rakentamisesta purun loppuun.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1160,
+   "out": 181
+  },
+  "hinta_usd": 0.00413
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5#3",
+  "uuid": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5",
+  "indeksi": 3,
+  "section": "7",
+  "teksti_sha256": "2839c33810edc732ccadd06fe1de0232b3959b5791b88eacb49662be31d21d94",
+  "classified_at": "2026-11-12T22:45:09+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "Menettelyjen (teettämisuhka, määräajat, kuuleminen) tulee olla ohjeistettu valtakunnallisesti.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1144,
+   "out": 192
+  },
+  "hinta_usd": 0.00421
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5#4",
+  "uuid": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5",
+  "indeksi": 4,
+  "section": "8",
+  "teksti_sha256": "5193258cef68edc36191669768d1202f6482b5fc1646961ebf01803eb30e1c3b",
+  "classified_at": "2026-11-12T22:45:15+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "Kunnille on laadittava selkeät ohjeet konkurssivalvonnasta.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1071,
+   "out": 83
+  },
+  "hinta_usd": 0.00297
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5#5",
+  "uuid": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5",
+  "indeksi": 5,
+  "section": "9",
+  "teksti_sha256": "13cb55c77288f035c9119675ce744feda9d52a19ba011b56849f3d809e16044d",
+  "classified_at": "2026-11-12T22:45:19+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "Maksuperusteiden tulee olla selkeät ja valtakunnallisesti yhdenmukaiset. Ehdo-tamme mallitaksan luomista.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1091,
+   "out": 218
+  },
+  "hinta_usd": 0.00436
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5#6",
+  "uuid": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5",
+  "indeksi": 6,
+  "section": "11",
+  "teksti_sha256": "8f6eeae7f8298dd4b21905e0f5fbb819ce03ce67a80c492865855047cb8d3676",
+  "classified_at": "2026-11-12T22:45:24+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "Asetuksella tulee täsmentää purkamislupahakemuksen liitteet, jotta lupakäytäntö on valtakunnallisesti yhtenäinen.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1234,
+   "out": 197
+  },
+  "hinta_usd": 0.00444
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5#7",
+  "uuid": "f7f30766-9021-4e43-b0c3-6b61ed9c6ba5",
+  "indeksi": 7,
+  "section": null,
+  "teksti_sha256": "51571dd1b6727dedc387e292ef3fb1bf2d5eb1b29d37981188161c3672d676c6",
+  "classified_at": "2026-11-12T22:45:30+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "ei_kantaa",
+  "quote": "",
+  "quote_ok": null,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1079,
+   "out": 44
+  },
+  "hinta_usd": 0.0026
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "11b44725-92e5-4c7d-ac1c-926ef1efb52a#0",
+  "uuid": "11b44725-92e5-4c7d-ac1c-926ef1efb52a",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "c17fc94cd041afaa8ee01954bcb2f7a3dc82283958c748580fc4876b1bedf580",
+  "classified_at": "2026-11-12T22:45:32+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "Suomen Lantakaasu kannattaa vahvasti kehittyneiden biopolttoaineiden lisävelvoitteen ja RFNBO- velvoitteen erottamista toisistaan.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 2004,
+   "out": 220
+  },
+  "hinta_usd": 0.00621
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "eb91c3e6-98fe-479e-8344-63b32cb674be#0",
+  "uuid": "eb91c3e6-98fe-479e-8344-63b32cb674be",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "e27ace15b160044ff5814c62fd03d8eecc6d21eafe3621217f033cb4fc53c9c1",
+  "classified_at": "2026-11-12T22:45:39+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "Valtion ei kategorisesti pitäisi sulkea mitään tuotantomuotoa, joilla saavutetaan ympäristöhyötyjä asetuksen tavoitteiden puitteissa, pois tuen piiristä.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1590,
+   "out": 198
+  },
+  "hinta_usd": 0.00516
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "cac47e77-e88b-4041-818e-2020268550cb#0",
+  "uuid": "cac47e77-e88b-4041-818e-2020268550cb",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "513c60b80b1a2fca0d879f92ed738a969848cd656bad25229d1f82355a1bb0f9",
+  "classified_at": "2026-11-12T22:45:44+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa_muutoksin",
+  "quote": "Samalla pidämme tärkeänä, että pilotoinnin toteutuksessa kiinnitetään erityistä huomiota kokonaisvaltaiseen fosforitason seurantaan sekä kestävien toimintatapojen varmistamiseen selkein rajauksin.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1726,
+   "out": 470
+  },
+  "hinta_usd": 0.00815
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "5d59055e-e0d0-4d00-9c75-b730b1bed0b7#0",
+  "uuid": "5d59055e-e0d0-4d00-9c75-b730b1bed0b7",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "df9449386de877b3a942ed33a32341ec32d8709a20dff143acd95be2a52a518f",
+  "classified_at": "2026-11-12T22:45:56+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa",
+  "quote": "Täten ensimmäisen hankinta-ajanjakson 5%:n alatavoite sähköbusseista on Oulun seudulle kohtuullinen. Toisen hankinta-ajanjakson 10% osuus on saavutettavissa myöhemmin lakiluonnoksen aikataulun mukaisesti.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1722,
+   "out": 229
+  },
+  "hinta_usd": 0.00573
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "2a72211c-2c31-4f1e-b12d-6eb53f34df83#0",
+  "uuid": "2a72211c-2c31-4f1e-b12d-6eb53f34df83",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "7898fc33ae519653e3d0610ea2e75f91ba4c345506035eb5695516e4a823f1ef",
+  "classified_at": "2026-11-12T22:46:02+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "vastustaa",
+  "quote": "Pääomasijoittajat ry vastustaa ehdotusta jakeluvelvoitteen muuttamisesta",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1516,
+   "out": 76
+  },
+  "hinta_usd": 0.00379
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "ba18c071-de4a-4c1d-9dc3-ec45fe53d0d3#0",
+  "uuid": "ba18c071-de4a-4c1d-9dc3-ec45fe53d0d3",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "1b214057ce41ab739fb8a25d436b1adfe28f4d1637cd87f448c5e5c223bf42c9",
+  "classified_at": "2026-11-12T22:46:05+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "ei_kantaa",
+  "quote": "",
+  "quote_ok": null,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1082,
+   "out": 55
+  },
+  "hinta_usd": 0.00271
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "7b9aaebb-d2d7-4f1c-8cfa-4664b5fa2948#0",
+  "uuid": "7b9aaebb-d2d7-4f1c-8cfa-4664b5fa2948",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "fb82eba312fde02e253ac689eb3d7d33afb812cc9d777c32b0450a43b4127f2d",
+  "classified_at": "2026-11-12T22:46:07+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "vastustaa",
+  "quote": "Koko lakiesitys on syytä palauttaa valmisteluun. Silloin voidaan tarkastella kaikki ongelmakohdat uudestaan.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 4027,
+   "out": 137
+  },
+  "hinta_usd": 0.00942
+ },
+ {
+  "_schema": "aci/stance/v0.1",
+  "id": "41532368-86e4-449f-93d6-deb6934a118e#0",
+  "uuid": "41532368-86e4-449f-93d6-deb6934a118e",
+  "indeksi": 0,
+  "section": null,
+  "teksti_sha256": "d1f236c5d878de6dcaf8ac3ecb6d12d080a440aa1bf104fa33c62fc6b189d73f",
+  "classified_at": "2026-11-12T22:46:11+00:00",
+  "classifier": {
+   "kind": "llm",
+   "id": "kimi-k3.1-pro",
+   "version": "kimi-k3.1-pro/cutoff=release-upper-bound",
+   "knowledge_cutoff": "2026-10-23T23:59:59+00:00",
+   "prompt_hash": "26f0186e2e790488a0e84598d54fad792878ee7421a7fb8348e82a5f25402f75"
+  },
+  "effort": "low",
+  "toisto": 1,
+  "stance": "kannattaa",
+  "quote": "Kiinteistöliitto pitää yleisesti hyvänä, että työ- ja elinkeinoministeriön asettaman älyverkkotyöryhmän loppuraportissaan esittämien toimien toimeenpanoa jatketaan.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "kimi-k3.1-pro",
+  "usage": {
+   "in": 1574,
+   "out": 285
+  },
+  "hinta_usd": 0.006
+ }
+]
