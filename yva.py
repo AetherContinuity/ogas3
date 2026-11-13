@@ -77,14 +77,27 @@ class YvaError(RuntimeError):
     pass
 
 
+RETRY_WAIT_S = (20, 60)   # 2026-11-01: yksi index-haun 502 pudotti koko kuun YVA:n
+
+
 def _get(params: dict) -> dict:
     url = YVA_PROXY + "?" + urllib.parse.urlencode(params)
     req = urllib.request.Request(url, headers={"User-Agent": "OGAS3/0.1"})
-    try:
-        with urllib.request.urlopen(req, timeout=120) as r:
-            d = json.loads(r.read())
-    except urllib.error.HTTPError as e:
-        raise YvaError(f"yva-proxy HTTP {e.code}") from e
+    for wait in (*RETRY_WAIT_S, None):
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                d = json.loads(r.read())
+            break
+        except urllib.error.HTTPError as e:
+            if e.code >= 500 and wait is not None:
+                time.sleep(wait)
+                continue
+            raise YvaError(f"yva-proxy HTTP {e.code}") from e
+        except (urllib.error.URLError, TimeoutError) as e:
+            if wait is not None:
+                time.sleep(wait)
+                continue
+            raise YvaError(f"yva-proxy verkko: {e}") from e
     if isinstance(d, dict) and d.get("error"):
         raise YvaError(f"yva-proxy: {d['error']}")
     time.sleep(SPACING_S)

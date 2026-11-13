@@ -120,6 +120,23 @@ jobs:
             git push
           fi
 
+      # Lähteen virhe ei estä kaappausta (muut lähteet tallentuvat), mutta
+      # sen on näyttävä: 2026-11 YVA putosi kokonaan HTTP 502:n takia eikä
+      # mikään huomauttanut. Punainen ajo lähettää omistajalle ilmoituksen.
+      - name: Lähdevirheet
+        if: env.DRY_RUN != 'true'
+        run: |
+          FILE="snapshots/$(date -u +%Y-%m).json"
+          [ -f "$FILE" ] || exit 0
+          python3 - "$FILE" <<'PY'
+          import json, sys
+          s = json.load(open(sys.argv[1]))
+          bad = [q for q in s.get("queries") or [] if q.get("error")]
+          for q in bad:
+              print(f"::error::{q.get('source')}: {q.get('error')}")
+          sys.exit(1 if bad else 0)
+          PY
+
       - name: Yhteenveto
         if: always() && env.DRY_RUN != 'true'
         run: |
