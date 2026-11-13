@@ -7,6 +7,10 @@ name: stance-ajo
 on:
   workflow_dispatch:
     inputs:
+      ajot:
+        description: "Ajettavat yhdistelmät (JSON-lista)"
+        default: '["kimi:low", "kimi:max", "sonnet:low", "sonnet:high"]'
+        required: true
       budjetti_per_ajo:
         description: "Budjetti / malli×effort, USD (4 rinnakkain)"
         default: "4"
@@ -26,7 +30,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ajo: ["kimi:low", "kimi:max", "sonnet:low", "sonnet:high"]
+        ajo: ${{ fromJSON(inputs.ajot) }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
