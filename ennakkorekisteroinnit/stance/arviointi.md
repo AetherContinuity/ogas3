@@ -29,16 +29,16 @@ Yksiköitä 31. Ihmisen jakauma: kannattaa_muutoksin 18, vastustaa 7, ei_kantaa 
 | epaselva | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## sonnet · high
-- toisto 1: κ 0.000 (95 % 0.00–0.00) · raaka 0% · otehylkäys 100% · virheitä 31 · hinta 0.00 $
-- toisto 2: κ 0.000 (95 % 0.00–0.00) · raaka 0% · otehylkäys 100% · virheitä 31 · hinta 0.00 $
-- κ toistojen välillä: 1.000
+- toisto 1: κ 0.625 (95 % 0.39–0.82) · raaka 74% · otehylkäys 0% · virheitä 4 · hinta 0.19 $
+- toisto 2: κ 0.702 (95 % 0.47–0.90) · raaka 81% · otehylkäys 0% · virheitä 2 · hinta 0.18 $
+- κ toistojen välillä: 0.910
 
 | ihminen \ malli | kannattaa | kannattaa_mu | vastustaa | ei_kantaa | epaselva | virhe |
 |---|---|---|---|---|---|---|
-| kannattaa | 0 | 0 | 0 | 0 | 0 | 3 |
-| kannattaa_muutoksin | 0 | 0 | 0 | 0 | 0 | 18 |
-| vastustaa | 0 | 0 | 0 | 0 | 0 | 7 |
-| ei_kantaa | 0 | 0 | 0 | 0 | 0 | 3 |
+| kannattaa | 3 | 0 | 0 | 0 | 0 | 0 |
+| kannattaa_muutoksin | 1 | 12 | 1 | 1 | 0 | 3 |
+| vastustaa | 0 | 1 | 5 | 0 | 0 | 1 |
+| ei_kantaa | 0 | 0 | 0 | 3 | 0 | 0 |
 | epaselva | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## sonnet · low
@@ -56,9 +56,9 @@ Yksiköitä 31. Ihmisen jakauma: kannattaa_muutoksin 18, vastustaa 7, ei_kantaa 
 
 ## Mallien välinen yhtäpitävyys (toisto 1)
 
-- kimi:low vs sonnet:high: κ 0.000
+- kimi:low vs sonnet:high: κ 0.678
 - kimi:low vs sonnet:low: κ 0.000
-- kimi:max vs sonnet:high: κ 0.000
+- kimi:max vs sonnet:high: κ 0.628
 - kimi:max vs sonnet:low: κ 0.000
 
 ## Päätössääntö (kehikko + T2)
@@ -67,7 +67,7 @@ Yksiköitä 31. Ihmisen jakauma: kannattaa_muutoksin 18, vastustaa 7, ei_kantaa 
 |---|---|---|---|---|---|---|
 | kimi | low | 0.634 | 0% | 0.947 | KÄYTTÖÖN | 0.34 $ |
 | kimi | max | 0.637 | 0% | 0.947 | KÄYTTÖÖN | 0.67 $ |
-| sonnet | high | 0.000 | 100% | 1.000 | HYLÄTÄÄN | 0.00 $ |
+| sonnet | high | 0.625 | 0% | 0.910 | KÄYTTÖÖN | 0.37 $ |
 | sonnet | low | 0.000 | 100% | 1.000 | HYLÄTÄÄN | 0.00 $ |
 
 ### Valinta

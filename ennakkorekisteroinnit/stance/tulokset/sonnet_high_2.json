@@ -6,7 +6,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "a12a74e21605bd26d505d69b034ca0f47132ab726a3de73956f57467da5fdf67",
-  "classified_at": "2026-11-12T22:43:25+00:00",
+  "classified_at": "2026-11-13T08:14:44+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -16,10 +16,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpqTkx1Ai6tyrdbcYK\"}"
+  "stance": "ei_kantaa",
+  "quote": "Turvallisuus- ja kemikaalivirastolla (Tukes) ei ole luonnoksesta lausuttavaa.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 3562,
+   "out": 67
+  },
+  "hinta_usd": 0.00779
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -28,7 +34,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "e13a422dbb8228b228c045a7706b47468c5f0ce9de58052240f10de8d1497b5d",
-  "classified_at": "2026-11-12T22:43:25+00:00",
+  "classified_at": "2026-11-13T08:14:45+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -38,10 +44,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpqmrtVDicmmtwd61j\"}"
+  "stance": "kannattaa_muutoksin",
+  "quote": "M3- ajoneuvojen luokkavaatimuksia tulisi selkeyttää niin, että puhuttaessa kaupunkiliikenteen busseista, joita lakiluonnos koskee, käytettäisiin Yhdistyneiden kansakuntien ja Euroopan talouskomission säännön nro 107 mukaisia määritelmiä.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 2288,
+   "out": 150
+  },
+  "hinta_usd": 0.00608
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -50,7 +62,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "3a263b9906d3ce61b3a6601b6ad136c0410d79e0664e1baf884345bd0ec797b7",
-  "classified_at": "2026-11-12T22:43:25+00:00",
+  "classified_at": "2026-11-13T08:14:46+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -63,7 +75,14 @@
   "stance": null,
   "quote": null,
   "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011Cgyqpr5D6kfktg3y4JokW\"}"
+  "virhe": "jäsennys: Extra data: line 3 column 1 (char 330)",
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1940,
+   "out": 318
+  },
+  "hinta_usd": 0.00706,
+  "raaka": "{\"stance\": \"kannattaa_muutoksin\", \"quote\": \"Kannatamme sitä, ettei tässä vaiheessa kansallisesti aseteta EU-lainsäädäntöä tiukempia tietovaatimuksia kuin mitä ao. direktiivissä ja asetuksessa säädetään\", \"note\": \"Lausuja kannattaa ehdotuksen perusratkaisua mutta pyytää täydentämään perusteluja liikesalaisuuksien tulkinnasta.\"}\n\nKorjaus: palautan vain pyydetyn JSON-muodon.\n\n{\"stance\": \"kannattaa_muutoksin\", \"quote\": \"Lisäksi ehdotamme, että lainmuutoksen perusteluissa tulisi ohjeistaa tarkemmin miten liikesalaisuuksia tulkitaan direktiivin liitteen VII osalta ja ao. asetuksen perusteella.\"}"
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -72,7 +91,7 @@
   "indeksi": 0,
   "section": "1",
   "teksti_sha256": "84ede3fb5ffa13800ba25794f9418fdf5765fab0c5d8e99efea273c5d64e0faa",
-  "classified_at": "2026-11-12T22:43:25+00:00",
+  "classified_at": "2026-11-13T08:14:49+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -82,10 +101,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqprP4sF8s4fHBpzzcA\"}"
+  "stance": "kannattaa_muutoksin",
+  "quote": "Soveltamisalan osalta olisi kuitenkin hyödyllistä avata perusteluissa vielä nykyistä selkeämmin tämän lain suhdetta rakentamislakiin, energiatodistuslakiin ja asetustasoiseen sääntelyyn.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1655,
+   "out": 123
+  },
+  "hinta_usd": 0.00454
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -94,7 +119,7 @@
   "indeksi": 1,
   "section": "2",
   "teksti_sha256": "344471cb7735949661a8b5c904f8f74ed0bdffee90b8741960e1e4d5080523f8",
-  "classified_at": "2026-11-12T22:43:25+00:00",
+  "classified_at": "2026-11-13T08:14:51+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -104,10 +129,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011Cgyqprgg5GJL65mQFHn22\"}"
+  "stance": "kannattaa_muutoksin",
+  "quote": "Perusteluissa tai myöhemmässä soveltamisohjeistuksessa tulisi täsmentää, että teknisessä toteutettavuudessa voidaan ottaa huomioon myös rakenteellinen eheys, paloturvallisuus, kosteustekninen toimivuus, huollettavuus sekä kiinnitysratkaisujen toteutettavuus.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1607,
+   "out": 156
+  },
+  "hinta_usd": 0.00477
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -116,7 +147,7 @@
   "indeksi": 2,
   "section": "3",
   "teksti_sha256": "dcb01608ffeafaf7988325f2c5f307aea75624b0410e227e36545949bee319d6",
-  "classified_at": "2026-11-12T22:43:26+00:00",
+  "classified_at": "2026-11-13T08:14:52+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -126,10 +157,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011Cgyqpry3d4G3QPUSaMz3W\"}"
+  "stance": "kannattaa_muutoksin",
+  "quote": "Tätä olisi hyvä avata perusteluissa selkeämmin, jotta sääntely ei muodostuisi tulkinnanvaraiseksi tai ennakoimattomaksi.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1640,
+   "out": 195
+  },
+  "hinta_usd": 0.00523
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -138,7 +175,7 @@
   "indeksi": 3,
   "section": "4",
   "teksti_sha256": "851ac12f2a22b1edf49f2bfb3215fe15722a2038cb7982c8d7ec0c131bb9155e",
-  "classified_at": "2026-11-12T22:43:26+00:00",
+  "classified_at": "2026-11-13T08:14:55+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -148,10 +185,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpsGtmjCf1FznHMwow\"}"
+  "stance": "kannattaa_muutoksin",
+  "quote": "Aurinkoenergiavelvoitteiden toimeenpanon tulee olla teknologia- ja materiaalineutraalia.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1689,
+   "out": 190
+  },
+  "hinta_usd": 0.00528
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -160,7 +203,7 @@
   "indeksi": 4,
   "section": "5",
   "teksti_sha256": "6bea7ab41aa74acf05d20cfa84a430c7ffb3e6c40148bb68f41532e6b47e421b",
-  "classified_at": "2026-11-12T22:43:26+00:00",
+  "classified_at": "2026-11-13T08:14:57+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -173,7 +216,14 @@
   "stance": null,
   "quote": null,
   "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpscjXzV5k9Hs1KtBj\"}"
+  "virhe": "jäsennys: Extra data: line 3 column 1 (char 134)",
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 2935,
+   "out": 192
+  },
+  "hinta_usd": 0.00779,
+  "raaka": "{\"stance\": \"kannattaa_muutoksin\", \"quote\": \"Puutuoteteollisuus ry pitää esityksen yleistä tavoitetta kannatettavana.\", \"note\": null}\n\nKorjaus: palautan vain vaaditun JSON-muodon.\n\n{\"stance\": \"kannattaa_muutoksin\", \"quote\": \"Vaikutusarviointia olisi perusteltua täydentää materiaalivalintojen, rakennusjärjestelmien, elementtiratkaisujen ja teollisen rakentamisen näkökulmasta\"}"
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -182,7 +232,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "396b78483e531d228a6ac6d24565cacd6ef6732ed154af22f1fec80729f80a7e",
-  "classified_at": "2026-11-12T22:43:26+00:00",
+  "classified_at": "2026-11-13T08:14:59+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -192,10 +242,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpsxpRuX2CkRvBz6C4\"}"
+  "stance": "kannattaa_muutoksin",
+  "quote": "Luonnonvarakeskuksen näkemyksen mukaan lakiesityksen keskeiset ehdotukset ja tavoitteet ovat hyviä tukemaan uusiutuvan energian osuutta liikenteessä. Luonnonvarakeskus kuitenkin painottaa, että erityisesti nurmeen liittyviä määritelmiä olisi tärkeää tarkentaa",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 4246,
+   "out": 175
+  },
+  "hinta_usd": 0.01024
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -204,7 +260,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "90ea836a0bcc012f506ebed5701b119ddad2577be0d5a2f78637f9748f52e8f9",
-  "classified_at": "2026-11-12T22:43:26+00:00",
+  "classified_at": "2026-11-13T08:15:01+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -214,10 +270,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqptHf87gZFS3bbT4nM\"}"
+  "stance": "kannattaa_muutoksin",
+  "quote": "MTK esittää, että polttoon perustuvat lämmöntuotantohankkeet olisivat jatkossakin tuettavien kohteiden joukossa, jos poltettava polttoaine on uusiutuvaa.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 2228,
+   "out": 102
+  },
+  "hinta_usd": 0.00548
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -226,7 +288,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "8f6a577ff1babbebb29abf098c2dbe43b4198df2fb78ab700378f4dfa77a20bf",
-  "classified_at": "2026-11-12T22:43:26+00:00",
+  "classified_at": "2026-11-13T08:15:02+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -236,10 +298,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011Cgyqptb2DXVAtFRbDBJxy\"}"
+  "stance": "vastustaa",
+  "quote": "Kustannustiedon kerääminen rakennustasolla aiheuttaa huomattavan suuren työmäärän eikä kustannusten todenperäisyyttä voida varmistaa.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1753,
+   "out": 176
+  },
+  "hinta_usd": 0.00527
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -248,7 +316,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "6b9d359b8f6d3505d037bd73bb3cdafe71b432a45dcfb2b406e41e4b2d8aaffa",
-  "classified_at": "2026-11-12T22:43:26+00:00",
+  "classified_at": "2026-11-13T08:15:04+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -258,10 +326,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011Cgyqptv7HBtJfUcvYQcqz\"}"
+  "stance": "vastustaa",
+  "quote": "Edes ensimmäisiä konkreettisia askelia kohti tämänkaltaista, vaikuttavaa ilmastolakia kohti ei nykyisessä ilmastolakiluonnoksessa ole otettu.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 8260,
+   "out": 255
+  },
+  "hinta_usd": 0.01907
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -270,7 +344,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "f4ef1c7e5d103114519b9b70e1569fa9c7b9c59b7c1f288e0c0cc9984e5455a6",
-  "classified_at": "2026-11-12T22:43:26+00:00",
+  "classified_at": "2026-11-13T08:15:06+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -280,10 +354,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpuCUymMk5vXSMSuNg\"}"
+  "stance": "vastustaa",
+  "quote": "lakimuutos on palautettava uudelleen valmisteluun huomioiden Kuntaliiton lausunnossa todetut lakiluonnoksen korjaustarpeet.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1883,
+   "out": 82
+  },
+  "hinta_usd": 0.00459
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -292,7 +372,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "5344253c1846c5408cc246fd7c35956bc8cdd21f3a0fc88c9b931c51c99f412b",
-  "classified_at": "2026-11-12T22:43:26+00:00",
+  "classified_at": "2026-11-13T08:15:08+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -302,10 +382,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpuUrXsw1iDNPcqvvq\"}"
+  "stance": "kannattaa",
+  "quote": "Verohallinto kannattaa tätä ehdotusta.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 2058,
+   "out": 41
+  },
+  "hinta_usd": 0.00453
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -314,7 +400,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "ca9364be3c9069e7220e6cb2382b5ae207a848381b4bf7fa703f5edc45eb5d00",
-  "classified_at": "2026-11-12T22:43:26+00:00",
+  "classified_at": "2026-11-13T08:15:09+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -324,10 +410,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpunwuKT8W3yNAg2HY\"}"
+  "stance": "kannattaa_muutoksin",
+  "quote": "Pidämme 6 § yleisesti erinomaisena vaatimuksena. Hyvän, terveellisen ja turvallisen sisäilmaston määritelmä vaatii kuitenkin tarkennusta.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1474,
+   "out": 101
+  },
+  "hinta_usd": 0.00396
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -336,7 +428,7 @@
   "indeksi": 0,
   "section": "1",
   "teksti_sha256": "be065761f008c0fce903d15f4bbc3ae7c8cba530bcaf58520f9299ab47afd620",
-  "classified_at": "2026-11-12T22:43:26+00:00",
+  "classified_at": "2026-11-13T08:15:11+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -346,10 +438,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011Cgyqpv4prpNDTLpFAT3FD\"}"
+  "stance": "kannattaa",
+  "quote": "On perusteltua, että laki koskisi napakorkeudeltaan vähintään 30 m maatuulivoima-loita.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1532,
+   "out": 63
+  },
+  "hinta_usd": 0.00369
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -358,7 +456,7 @@
   "indeksi": 1,
   "section": "2–3",
   "teksti_sha256": "29cf3053384e3f7795a73b75ac81b2f7116dc4245621ed4dba00b3f1a8345f73",
-  "classified_at": "2026-11-12T22:43:26+00:00",
+  "classified_at": "2026-11-13T08:15:13+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -368,10 +466,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpvPvLQmayoPu13BVR\"}"
+  "stance": "kannattaa",
+  "quote": "On perusteltua, että purkamisvelvollisuus osoitetaan voimalan omistajalle.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1372,
+   "out": 55
+  },
+  "hinta_usd": 0.00329
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -380,7 +484,7 @@
   "indeksi": 2,
   "section": "4–6",
   "teksti_sha256": "e4fb8be5623a09575d7034c891fb49d7ff97697a6b5085968ca9f5c5d84cfd49",
-  "classified_at": "2026-11-12T22:43:26+00:00",
+  "classified_at": "2026-11-13T08:15:14+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -390,10 +494,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpvhH25gboKXCequfr\"}"
+  "stance": "kannattaa_muutoksin",
+  "quote": "Ehdotamme, että valtioneuvoston asetuksessa säädetään velvoittava laskentamalli, jolla vähennetään kuntakohtaista tulkintaa asiassa.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1483,
+   "out": 208
+  },
+  "hinta_usd": 0.00505
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -402,7 +512,7 @@
   "indeksi": 3,
   "section": "7",
   "teksti_sha256": "2839c33810edc732ccadd06fe1de0232b3959b5791b88eacb49662be31d21d94",
-  "classified_at": "2026-11-12T22:43:26+00:00",
+  "classified_at": "2026-11-13T08:15:16+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -412,10 +522,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011Cgyqpw1875CtdUY1pzUL5\"}"
+  "stance": "kannattaa_muutoksin",
+  "quote": "Menettelyjen (teettämisuhka, määräajat, kuuleminen) tulee olla ohjeistettu valtakunnallisesti.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1455,
+   "out": 338
+  },
+  "hinta_usd": 0.00629
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -424,7 +540,7 @@
   "indeksi": 4,
   "section": "8",
   "teksti_sha256": "5193258cef68edc36191669768d1202f6482b5fc1646961ebf01803eb30e1c3b",
-  "classified_at": "2026-11-12T22:43:27+00:00",
+  "classified_at": "2026-11-13T08:15:20+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -434,10 +550,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpwJz5gWrkr4g4H9Y3\"}"
+  "stance": "kannattaa_muutoksin",
+  "quote": "Kunnille on laadittava selkeät ohjeet konkurssivalvonnasta.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1366,
+   "out": 187
+  },
+  "hinta_usd": 0.0046
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -446,7 +568,7 @@
   "indeksi": 5,
   "section": "9",
   "teksti_sha256": "13cb55c77288f035c9119675ce744feda9d52a19ba011b56849f3d809e16044d",
-  "classified_at": "2026-11-12T22:43:27+00:00",
+  "classified_at": "2026-11-13T08:15:22+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -456,10 +578,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpwdLbr9CrsU1KjJ8X\"}"
+  "stance": "kannattaa_muutoksin",
+  "quote": "Maksuperusteiden tulee olla selkeät ja valtakunnallisesti yhdenmukaiset. Ehdo-tamme mallitaksan luomista.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1393,
+   "out": 158
+  },
+  "hinta_usd": 0.00437
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -468,7 +596,7 @@
   "indeksi": 6,
   "section": "11",
   "teksti_sha256": "8f6eeae7f8298dd4b21905e0f5fbb819ce03ce67a80c492865855047cb8d3676",
-  "classified_at": "2026-11-12T22:43:27+00:00",
+  "classified_at": "2026-11-13T08:15:24+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -478,10 +606,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpwzR6S6KGgYhJUvKs\"}"
+  "stance": "kannattaa_muutoksin",
+  "quote": "Kannatamme purkukustannusselvityksen liittämistä lupahakemukseen. Jotta va-kuus olisi riittävä ja vertailukelpoinen, ehdotamme että tätä varten laaditaan valta-kunnallinen lomakepohja ja sille vähimmäissisältö.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1568,
+   "out": 131
+  },
+  "hinta_usd": 0.00445
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -490,7 +624,7 @@
   "indeksi": 7,
   "section": null,
   "teksti_sha256": "51571dd1b6727dedc387e292ef3fb1bf2d5eb1b29d37981188161c3672d676c6",
-  "classified_at": "2026-11-12T22:43:27+00:00",
+  "classified_at": "2026-11-13T08:15:26+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -500,10 +634,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
+  "stance": "ei_kantaa",
+  "quote": "",
   "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpxHGWQCu61fY8pZtw\"}"
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1374,
+   "out": 23
+  },
+  "hinta_usd": 0.00298
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -512,7 +652,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "c17fc94cd041afaa8ee01954bcb2f7a3dc82283958c748580fc4876b1bedf580",
-  "classified_at": "2026-11-12T22:43:27+00:00",
+  "classified_at": "2026-11-13T08:15:27+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -522,10 +662,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011Cgyqpxb8RYkxN4Mmwgnwh\"}"
+  "stance": "vastustaa",
+  "quote": "Kehittyneiden biopolttoaineiden lisävelvoitteen leikkaaminen kuitenkin heikentää erityisesti biokaasun käytön edellytyksiä, mikä on ristiriidassa hallitusohjelman tavoitteiden kanssa.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 2685,
+   "out": 115
+  },
+  "hinta_usd": 0.00652
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -534,7 +680,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "e27ace15b160044ff5814c62fd03d8eecc6d21eafe3621217f033cb4fc53c9c1",
-  "classified_at": "2026-11-12T22:43:27+00:00",
+  "classified_at": "2026-11-13T08:15:28+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -544,10 +690,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011Cgyqpxuy7eMn75GvueqiG\"}"
+  "stance": "kannattaa_muutoksin",
+  "quote": "Valtion ei kategorisesti pitäisi sulkea mitään tuotantomuotoa, joilla saavutetaan ympäristöhyötyjä asetuksen tavoitteiden puitteissa, pois tuen piiristä.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 2059,
+   "out": 193
+  },
+  "hinta_usd": 0.00605
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -556,7 +708,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "513c60b80b1a2fca0d879f92ed738a969848cd656bad25229d1f82355a1bb0f9",
-  "classified_at": "2026-11-12T22:43:27+00:00",
+  "classified_at": "2026-11-13T08:15:31+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -566,10 +718,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpyFKZaBnXbt33ckAN\"}"
+  "stance": "kannattaa_muutoksin",
+  "quote": "Kannatamme vahvasti tulosperusteisen tuen pilotointia ja sen tavoitteita maatalouden vesiensuojelun kehittämisessä. Samalla pidämme tärkeänä, että pilotoinnin toteutuksessa kiinnitetään erityistä huomiota kokonaisvaltaiseen fosforitason seurantaan",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 2273,
+   "out": 152
+  },
+  "hinta_usd": 0.00607
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -578,7 +736,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "df9449386de877b3a942ed33a32341ec32d8709a20dff143acd95be2a52a518f",
-  "classified_at": "2026-11-12T22:43:27+00:00",
+  "classified_at": "2026-11-13T08:15:32+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -588,10 +746,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpyYRYJshEyooWHLU7\"}"
+  "stance": "kannattaa",
+  "quote": "Täten ensimmäisen hankinta-ajanjakson 5%:n alatavoite sähköbusseista on Oulun seudulle kohtuullinen. Toisen hankinta-ajanjakson 10% osuus on saavutettavissa myöhemmin lakiluonnoksen aikataulun mukaisesti.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 2258,
+   "out": 131
+  },
+  "hinta_usd": 0.00583
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -600,7 +764,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "7898fc33ae519653e3d0610ea2e75f91ba4c345506035eb5695516e4a823f1ef",
-  "classified_at": "2026-11-12T22:43:27+00:00",
+  "classified_at": "2026-11-13T08:15:34+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -610,10 +774,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpyqY8mjRo3NAP7Rme\"}"
+  "stance": "vastustaa",
+  "quote": "Pääomasijoittajat ry vastustaa ehdotusta jakeluvelvoitteen muuttamisesta",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1972,
+   "out": 62
+  },
+  "hinta_usd": 0.00456
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -622,7 +792,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "1b214057ce41ab739fb8a25d436b1adfe28f4d1637cd87f448c5e5c223bf42c9",
-  "classified_at": "2026-11-12T22:43:27+00:00",
+  "classified_at": "2026-11-13T08:15:35+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -632,10 +802,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
+  "stance": "ei_kantaa",
+  "quote": "",
   "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011Cgyqpz9eNm1Gr4u2SJApc\"}"
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 1385,
+   "out": 23
+  },
+  "hinta_usd": 0.003
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -644,7 +820,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "fb82eba312fde02e253ac689eb3d7d33afb812cc9d777c32b0450a43b4127f2d",
-  "classified_at": "2026-11-12T22:43:27+00:00",
+  "classified_at": "2026-11-13T08:15:37+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -654,10 +830,16 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011CgyqpzWii9jzZhdWTZXj4\"}"
+  "stance": "vastustaa",
+  "quote": "Koko lakiesitys on syytä palauttaa valmisteluun. Silloin voidaan tarkastella kaikki ongelmakohdat uudestaan.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 5306,
+   "out": 76
+  },
+  "hinta_usd": 0.01137
  },
  {
   "_schema": "aci/stance/v0.1",
@@ -666,7 +848,7 @@
   "indeksi": 0,
   "section": null,
   "teksti_sha256": "d1f236c5d878de6dcaf8ac3ecb6d12d080a440aa1bf104fa33c62fc6b189d73f",
-  "classified_at": "2026-11-12T22:43:27+00:00",
+  "classified_at": "2026-11-13T08:15:38+00:00",
   "classifier": {
    "kind": "llm",
    "id": "claude-sonnet-5-5",
@@ -676,9 +858,15 @@
   },
   "effort": "high",
   "toisto": 2,
-  "stance": null,
-  "quote": null,
-  "quote_ok": null,
-  "virhe": "HTTP 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"This API key is not scoped to a workspace, so this request must include the anthropic-workspace-id header with the ID of the workspace to use. Add the header, or use an API key that is scoped to a workspace.\"},\"request_id\":\"req_011Cgyqpzp5exb6uNEyeXkLu\"}"
+  "stance": "ei_kantaa",
+  "quote": "Kiinteistöliitto pitää yleisesti hyvänä, että työ- ja elinkeinoministeriön asettaman älyverkkotyöryhmän loppuraportissaan esittämien toimien toimeenpanoa jatketaan.",
+  "quote_ok": true,
+  "virhe": null,
+  "response_model": "claude-sonnet-5-5",
+  "usage": {
+   "in": 2049,
+   "out": 107
+  },
+  "hinta_usd": 0.00517
  }
 ]
