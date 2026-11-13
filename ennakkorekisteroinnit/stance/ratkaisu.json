@@ -1,0 +1,18 @@
+{
+ "_schema": "aci/stance-ratkaisu/v0.1",
+ "ohje": "Toissijainen analyysi (rajoite_1.md). Ei sokkoutettu: rekisteröijä on nähnyt mallien luokitukset. ratkaisu = yksi luokka, tai null jos ratkaisematon; ehdokkaat = luokat joiden väliltä ratkaisu jäi auki. Ratkaisemattomat jätetään toissijaisen κ:n ulkopuolelle ja raportoidaan erikseen.",
+ "ratkaisut": [
+  {
+   "id": "999cbdfd-b2ff-4fed-af04-eb0de8771762#0",
+   "yksikko": 3,
+   "alkuperainen": "vastustaa",
+   "ratkaisu": null,
+   "ehdokkaat": [
+    "kannattaa",
+    "kannattaa_muutoksin"
+   ],
+   "perustelu": "Fortum kannattaa luonnoksen linjaa (ei EU:ta tiukempia kansallisia vaatimuksia, EU-tietokanta). Alkuperäinen 'vastustaa' perustui intressin lukemiseen kannaksi. Ratkaisematta, onko pyyntö ohjeistaa liikesalaisuuksien tulkintaa perusteluissa sisällöllinen lisäys vai tarkennus; ratkaisu vaatisi luonnoksen tekstin.",
+   "ratkaistu": "2026-11-13"
+  }
+ ]
+}
