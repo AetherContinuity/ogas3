@@ -1,0 +1,397 @@
+TEHTÄVÄ: riippumaton katselmointi
+
+Alla on lukittu ennakkorekisteröinti (q001.md), sen mittauskoodi (q001.py), yksi kirjattu poikkeama (poikkeama_1.md) ja sen mittauskoodi (q001_poikkeama_1.py). Mittausta ei ole vielä tehty. Katselmoi:
+
+1. Toteuttaako q001.py jokaisen hypoteesin (H1, H1b, H2, H3, H4) täsmälleen niin kuin q001.md sen määrittelee: mittari, aineisto, raja, kumoutumisehto? Listaa jokainen poikkeama koodin ja tekstin välillä rivitasolla.
+2. Mitkä koodin ratkaisut voivat vääristää tulosta hiljaa (nimitäsmäys, tyhjät kentät, duplikaatit, aikarajat)?
+3. Onko poikkeama 1 käsitelty oikein?
+
+Älä ehdota hypoteesien tai rajojen muuttamista: ne on lukittu. Arvioi vain, mittaako koodi sitä mitä teksti lupaa. Jos jokin on epäselvää, sano se äläkä arvaa.
+
+==================== TIEDOSTO: q001.md ====================
+# Q-001 — Näkyykö datakeskuskuorma lainsäädännössä?
+
+**Tila:** LUONNOS — lukittuu kun tämä tiedosto yhdistetään `main`-haaraan.
+Lukitushetki on yhdistämiscommitin aikaleima. Lukituksen jälkeen tätä
+tiedostoa eikä `q001.py`:tä muuteta; korjaukset uusina tiedostoina.
+
+**Rekisteröijä:** Marko Ruotsalainen · **Luonnos:** 30.9.2026
+
+## Kysymys
+
+Datakeskukset ovat Suomen suurin uusi sähkökuorma. Ne näkyvät YVA-
+menettelyssä ennen investointi- ja liittymäpäätöstä. Näkyykö sama kuorma
+lainsäädännön valmistelussa, ja kulkeeko vaikuttaminen samojen toimijoiden
+kautta molemmissa kanavissa?
+
+## Mitä on jo nähty — rajaus
+
+Osa aineistosta on nähty ennen tätä rekisteröintiä: YVA-hakemisto
+(29.9.), Avoimuusrekisterin kausi 1–6/2026 (29.9.) ja TEM040/TEM043:n
+lausunnot rekisteröintihetkeen asti (30.9.). Ne ovat **lähtötaso**, eivät
+testiaineistoa. Hypoteesit koskevat vain aineistoa, jota ei rekisteröinti-
+hetkellä ole julkaistu:
+
+- TEM040:n (päättyy 2.10.2026) ja TEM043:n (päättyy 9.10.2026) lopulliset lausunnot
+- Avoimuusrekisterin kausi 7–12/2026 (ilmoitusaika 1.1.–28.2.2027)
+- YVA-menettelyt, jotka alkavat 1.10.2026–31.3.2027
+
+Hypoteesit on kirjoitettu lähtötason laskemisen jälkeen. Se on kirjattu
+tähän, koska muuten lukija ei voi arvioida, kuinka paljon lähtötaso ohjasi
+kynnysarvoja.
+
+## Määritelmät (kiinteät)
+
+| | |
+|---|---|
+| **D** — datakeskus-YVA | YVA-hankkeen nimi täsmää `/datakeskus\|palvelinkeskus\|data ?cent/i`. Lähtötaso 19 hanketta: `lahto_yva.json` |
+| **L** — lainsäädäntö | Hankeikkuna LAINSAADANTO, aloitus ≥ 2023, nimi täsmää `/sähkömarkkinala\|datakeskus\|sähkön ja eräiden polttoaineiden\|energiatehokkuuslain/i`. 11 hanketta: `lahto_lainsaadanto.json` |
+| **DT** — datakeskustoimija | Kiinteä luettelo `q001.py`:ssä: D:n kehittäjät ja konsernit (Microsoft, Google/Tuike, Hyperco, Polarnode, Data Prop Link, Jokelan Vihreä Maa, Mustanlahden Datakeskus, Pohjan Voima Keminmaa) sekä kaudella 5 datakeskustoiminnan omaksi liiketoiminnakseen ilmoittaneet (Finnish Data Center Association, Verne, Verda Cloud). Luetteloa ei täydennetä mittaushetkellä. |
+| **PTX** — PtX-toimija | Kiinteä luettelo `q001.py`:ssä: vireillä olevien PtX-YVA-hankkeiden kehittäjät (vety, e-metaani, e-metanoli, ammoniakki), ei siirtoverkkoja: `lahto_ptx.json` |
+| **viranomainen** | `actors.actor_role()` sellaisenaan. Tuntematon rooli raportoidaan molempiin suuntiin, ei arvata. |
+
+## Lähtötaso 30.9.2026
+
+1. **YVA:** 19 datakeskushanketta, joista 11 vireillä. Huhti–syyskuussa 2026
+   alkoi 4 uutta menettelyä (Herva, Mykänmaa, Sarvenmaa, Mustanlahti).
+2. **Lainsäädäntö:** 11 hanketta. Kaksi koskee datakeskuksia suoraan:
+   TEM040:00/2026 datakeskusrekisteri ja TEM043:00/2026 liittymien
+   etusijamenettely.
+3. **Lausunnot:** TEM040:ssä 13, pääosin viranomaisia. TEM043:ssa 5, joista
+   yksi DT-toimija: **Polarnode Oy** (Sarvenmaan YVA:n kehittäjän emoyhtiö).
+   Kehittäjä vaikuttaa siis molemmissa kanavissa jo nyt.
+4. **Vaikuttaminen kaudella 1–6/2026:** 36 aihetta mainitsee datakeskukset,
+   **35 ilman hankenumeroa (97 %)**. OGAS3:n hankeliitos näkee niistä yhden.
+   Molempiin (L-hanke ja datakeskusaihe) vaikuttaneita: Finnish Data Center
+   Association ry, Suomen uusiutuvat ry. D:n kehittäjistä ilmoittajina
+   Microsoft Oy ja Google Finland Oy — kumpikaan ei L-hankkeeseen hankenumerolla.
+
+## Hypoteesit
+
+| | Ennuste | Mittari | Mittaushetki | Kumoutuu jos |
+|---|---|---|---|---|
+| **H1** | Datakeskustoimijat lausuvat suoraan liittymälainsäädännöstä | DT-toimijoiden määrä TEM043:n lopullisissa lausunnoissa | trace lukittu ≥ 8.11.2026 | < 3 |
+| **H1b** | Liittymälainsäädäntö kerää uuden suurkuorman — datakeskukset ja PtX yhdessä | DT ∪ PTX -toimijat TEM043:n lopullisissa lausunnoissa | trace lukittu ≥ 8.11.2026 | < 5 |
+| **H2** | Rekisterilaki ja liittymälaki keräävät eri lausujat | TEM040 ∩ TEM043, ei-viranomaiset | trace lukittu ≥ 8.11.2026 | > 3 |
+| **H3** | Datakeskusvaikuttaminen kulkee ohi hankenumeroiden | datakeskusaiheiden osuus ilman hankenumeroa, kausi 7–12/2026 | kausi 6 julkaistu, 3/2027 | ≤ 50 % |
+| **H4** | Datakeskusputki jatkuu ennen kuin TEM043 on laki | uudet D-menettelyt (ohjelma nähtävillä) 1.10.2026–31.3.2027 | snapshotit 11/2026–4/2027 | < 3 |
+
+Mittaus: `python3 ennakkorekisteroinnit/q001/q001.py H1` (jne.). Tulos
+kirjataan tiedostoon `q001-tulokset.md` mittauskomennon tulosteen kanssa.
+
+**H1b on toissijainen ja lisätty lähtötason jälkeen.** Peruste on
+rakenteellinen, ei havaintoon sovitettu: PtX ja datakeskus kilpailevat
+samasta liittymä- ja siirtokapasiteetista, jota TEM043 jakaa. Lisäys tehtiin
+kuitenkin sen jälkeen, kun Arctic Sisun lausunto oli nähty; lähtötaso
+H1b:lle on 2 (Polarnode Oy, Arctic Sisu). H1 on ensisijainen.
+
+## Mitä tulos tarkoittaa — ja mitä ei
+
+- **H1 + H2 tuettu:** kuorma näkyy lainsäädännössä toimijoina, mutta eri
+  lait ovat eri areenoja. Rekisteri on turvallisuuskysymys, liittymä energia.
+- **H3 tuettu:** OGAS3:n Avoimuusrekisteri-liitos on rakenteellisesti sokea
+  datakeskusvaikuttamiselle. Se on mittarin raja eikä havainto
+  päätöksenteosta, ja se pitää ratkaista ennen kuin vaikuttamisesta
+  tehdään johtopäätöksiä.
+- **H4 tuettu:** kuorma kasvaa nopeammin kuin sääntely valmistuu, eli CN-004:n
+  kalibrointiepäsymmetria datakeskusten kohdalla.
+- **Ei kausaliteettia.** Mikään mittari ei kerro, vaikuttiko vaikuttaminen.
+
+## Avoimet ennen lukitusta
+
+- **Arctic Sisu Kotka Oy** (lausunto TEM043:een 29.9.) — RATKAISTU 30.9.: e-metaanin
+  (PtX) hanke Kotkassa, ei datakeskus. Ei DT-luettelossa; PTX-luettelossa,
+  koska sen YVA on vireillä. Johti toissijaiseen H1b:hen.
+- TEM040 ja TEM043 päivittyvät kuukausittain ilman nostoa: `promote.refresh`
+  päivittää 30.9. alkaen jokaisen avoimen Hankeikkuna-tracen, ei vain nostettuja.
+
+==================== LOPPU: q001.md ====================
+
+==================== TIEDOSTO: q001.py ====================
+  1  """Q-001 — mittaukset. LUKITTU yhdessä q001.md:n kanssa.
+  2  
+  3  Tätä tiedostoa EI muuteta rekisteröinnin jälkeen. Jos mittauksessa
+  4  havaitaan vika, korjaus tehdään uutena tiedostona (q001_korjaus_N.py)
+  5  ja molempien tulokset raportoidaan. Sama periaate kuin lukitussa
+  6  tracessa: vanhaa ei korvata, uusi viittaa siihen.
+  7  
+  8  Ajo:  python3 ennakkorekisteroinnit/q001/q001.py H1|H2|H3|H4
+  9  """
+ 10  
+ 11  from __future__ import annotations
+ 12  
+ 13  import json
+ 14  import re
+ 15  import sys
+ 16  from pathlib import Path
+ 17  
+ 18  ROOT = Path(__file__).resolve().parents[2]
+ 19  sys.path.insert(0, str(ROOT))
+ 20  
+ 21  # ── Kiinteä datakeskustoimijoiden luettelo (DT) ──────────────────────
+ 22  # YVA-datakeskushankkeiden kehittäjät (lahto_yva.json) ja niiden
+ 23  # konsernit, sekä toimijat jotka Avoimuusrekisterin kaudella 5 ilmoittivat
+ 24  # datakeskustoiminnan omaksi liiketoiminnakseen. Täsmäys nimen alkuun,
+ 25  # kirjainkoosta riippumatta. Luetteloa EI täydennetä mittaushetkellä:
+ 26  # luettelon ulkopuoliset yritykset raportoidaan erikseen, ei lasketa.
+ 27  DT = [
+ 28      "microsoft", "google", "tuike", "hyperco", "polarnode", "data prop link",
+ 29      "jokelan vihreä maa", "mustanlahden datakeskus", "pohjan voima keminmaa",
+ 30      "finnish data center association", "verne", "verda cloud",
+ 31  ]
+ 32  
+ 33  
+ 34  # PTX — sähköä kuluttava polttoaine- ja kemikaalituotanto. Vireillä
+ 35  # olevien PtX-YVA-hankkeiden kehittäjät (lahto_ptx.json), ilman
+ 36  # siirtoverkkoja ja satamia. Lisätty 30.9.2026 ennen lukitusta: PtX ja
+ 37  # datakeskus kilpailevat samasta liittymäkapasiteetista.
+ 38  PTX = [
+ 39      "arctic sisu", "flagshipseven", "flexens", "vetyalfa", "abo energy", "wega group",
+ 40      "etfuels", "st1", "plug power", "luoto energia", "nordic ren-gas",
+ 41  ]
+ 42  
+ 43  
+ 44  def is_ptx(name: str | None) -> bool:
+ 45      n = (name or "").strip().lower()
+ 46      return any(n.startswith(s) for s in PTX)
+ 47  
+ 48  
+ 49  def is_dt(name: str | None) -> bool:
+ 50      n = (name or "").strip().lower()
+ 51      return any(n.startswith(s) for s in DT)
+ 52  
+ 53  
+ 54  def laatija(node: dict) -> str | None:
+ 55      """Lausunnon antaja tracen solmusta. laatija-kenttä, tai nimekkeen
+ 56      alku ennen ';' ("Rajavartiolaitos; Ei lausuttavaa")."""
+ 57      v = (node.get("_derived") or {}).get("laatija")
+ 58      if v:
+ 59          return re.sub(r"\s*\(\d+\)\s*$", "", v).strip()
+ 60      q = ((node.get("evidence") or [{}])[0].get("quote") or "")
+ 61      return q.split(";")[0].strip() or None if ";" in q else None
+ 62  
+ 63  
+ 64  def latest_trace(tunnus: str, min_locked: str) -> dict:
+ 65      stem = tunnus.replace(":", "").replace("/", "-")
+ 66      files = sorted((ROOT / "traces").glob(f"{stem}-trace-*.json"))
+ 67      ok = [json.loads(p.read_text(encoding="utf-8")) for p in files]
+ 68      ok = [t for t in ok if t.get("_locked_at", "") >= min_locked]
+ 69      if not ok:
+ 70          raise SystemExit(f"{tunnus}: ei tracea lukittuna {min_locked} tai myöhemmin — mittausta ei voi tehdä")
+ 71      return max(ok, key=lambda t: (t["_locked_at"], t.get("_revision", 1)))
+ 72  
+ 73  
+ 74  def lausunnonantajat(trace: dict) -> list[str]:
+ 75      out = []
+ 76      for n in trace.get("observed") or []:
+ 77          if n.get("doc_type") == "LAUSUNTO":
+ 78              a = laatija(n)
+ 79              if a and a not in out:
+ 80                  out.append(a)
+ 81      return out
+ 82  
+ 83  
+ 84  # Mittausajankohta H1/H2: kierrokset päättyvät 2.10. ja 9.10.2026.
+ 85  # Mediaaniviive lausuntomenettelyssä on 7 vrk; 30 vrk marginaali.
+ 86  H12_MIN_LOCKED = "2026-11-08"
+ 87  
+ 88  
+ 89  def h1() -> dict:
+ 90      t = latest_trace("TEM043:00/2026", H12_MIN_LOCKED)
+ 91      la = lausunnonantajat(t)
+ 92      dt = [a for a in la if is_dt(a)]
+ 93      return {"hypoteesi": "H1", "trace_locked_at": t["_locked_at"], "lausunnonantajia": len(la),
+ 94              "dt": dt, "n_dt": len(dt), "ennuste": ">= 3", "tulos": "TUETTU" if len(dt) >= 3 else "KUMOTTU",
+ 95              "muut_yritykset": [a for a in la if not is_dt(a) and re.search(r"\b(oy|oyj|ab|ltd)\b", a, re.I)]}
+ 96  
+ 97  
+ 98  def h1b() -> dict:
+ 99      """Toissijainen. Uusi suurkuorma = DT ∪ PTX."""
+100      t = latest_trace("TEM043:00/2026", H12_MIN_LOCKED)
+101      la = lausunnonantajat(t)
+102      sk = [a for a in la if is_dt(a) or is_ptx(a)]
+103      return {"hypoteesi": "H1b", "trace_locked_at": t["_locked_at"], "lausunnonantajia": len(la),
+104              "suurkuorma": sk, "dt": [a for a in sk if is_dt(a)], "ptx": [a for a in sk if is_ptx(a)],
+105              "n": len(sk), "ennuste": ">= 5", "tulos": "TUETTU" if len(sk) >= 5 else "KUMOTTU"}
+106  
+107  
+108  def h2() -> dict:
+109      from actors import actor_role, canonical
+110      a = latest_trace("TEM040:00/2026", H12_MIN_LOCKED)
+111      b = latest_trace("TEM043:00/2026", H12_MIN_LOCKED)
+112      ca = {canonical(x) or x for x in lausunnonantajat(a)}
+113      cb = {canonical(x) or x for x in lausunnonantajat(b)}
+114      both = sorted(ca & cb)
+115      roles = {x: actor_role(x)[0] for x in both}
+116      non_auth = [x for x in both if roles[x] not in ("viranomainen",)]
+117      unknown = [x for x in both if roles[x] is None]
+118      # Tuntematon rooli: raportoidaan molempiin suuntiin, ei arvata.
+119      lo = len([x for x in non_auth if roles[x] is not None])
+120      hi = len(non_auth)
+121      return {"hypoteesi": "H2", "yhteiset": both, "roolit": roles, "ei_viranomaisia_min": lo,
+122              "ei_viranomaisia_max": hi, "rooli_tuntematon": unknown, "ennuste": "<= 3",
+123              "tulos": ("TUETTU" if hi <= 3 else "KUMOTTU" if lo > 3 else "RATKAISEMATON (tuntemattomat roolit)")}
+124  
+125  
+126  def h3(term_json: str) -> dict:
+127      """term_json: Avoimuusrekisterin kausi 6 (7–12/2026) proxysta
+128      ?term_route=activities_term&termId=6, tallennettuna repoon."""
+129      DX = re.compile(r"datakesk|palvelinkesk|data ?cent", re.I)
+130      d = json.loads(Path(term_json).read_text(encoding="utf-8"))
+131      if d.get("termId") not in ("6", 6):
+132          raise SystemExit("H3 mitataan kaudelta 6")
+133      proj = other = 0
+134      for n in d.get("data") or []:
+135          for t in n.get("topics") or []:
+136              p = t.get("contactTopicProject") or {}
+137              txt = f"{t.get('contactTopicOther') or ''} {p.get('fi') or ''} {t.get('title') or ''}"
+138              if DX.search(txt):
+139                  if p.get("projectId"):
+140                      proj += 1
+141                  else:
+142                      other += 1
+143      n = proj + other
+144      share = other / n if n else None
+145      return {"hypoteesi": "H3", "hankenumerolla": proj, "ilman": other, "osuus_ilman": share,
+146              "ennuste": "> 0.5", "tulos": None if share is None else ("TUETTU" if share > 0.5 else "KUMOTTU")}
+147  
+148  
+149  def h4() -> dict:
+150      """Uudet datakeskus-YVA:t: vaihe ohjelma_nahtavilla, known_at
+151      2026-10-01 … 2027-03-31, snapshoteista 2026-11 … 2027-04."""
+152      RX = re.compile(r"datakeskus|palvelinkeskus|data ?cent", re.I)
+153      seen = {}
+154      for m in ("2026-11", "2026-12", "2027-01", "2027-02", "2027-03", "2027-04"):
+155          p = ROOT / "snapshots" / f"{m}.json"
+156          if not p.exists():
+157              raise SystemExit(f"snapshot {m} puuttuu — H4:ää ei voi vielä mitata")
+158          for e in json.loads(p.read_text(encoding="utf-8"))["events"]:
+159              pr = e.get("parameters") or {}
+160              if (e.get("source") == "YVA" and pr.get("vaihe") == "ohjelma_nahtavilla"
+161                      and RX.search(pr.get("hanke") or "")
+162                      and "2026-10-01" <= (e.get("known_at") or "")[:10] <= "2027-03-31"):
+163                  seen[pr["slug"]] = (e["known_at"][:10], pr.get("hanke"))
+164      return {"hypoteesi": "H4", "uudet": sorted(seen.values()), "n": len(seen), "ennuste": ">= 3",
+165              "tulos": "TUETTU" if len(seen) >= 3 else "KUMOTTU"}
+166  
+167  
+168  if __name__ == "__main__":
+169      which = sys.argv[1] if len(sys.argv) > 1 else ""
+170      fn = {"H1": h1, "H1b": h1b, "H2": h2, "H4": h4}.get(which)
+171      res = h3(sys.argv[2]) if which == "H3" else fn() if fn else None
+172      if res is None:
+173          raise SystemExit("käyttö: q001.py H1|H1b|H2|H4  tai  q001.py H3 <kausi6.json>")
+174      print(json.dumps(res, ensure_ascii=False, indent=1))
+
+==================== LOPPU: q001.py ====================
+
+==================== TIEDOSTO: poikkeama_1.md ====================
+# Q-001 — poikkeama 1: YVA-vaiheiden tunnistus laajeni lukituksen jälkeen
+
+**Kirjattu:** 2026-10-01, ennen yhtäkään H4:n mittaussnapshotia (ensimmäinen on 2026-11).
+**Koskee:** H4. H1, H1b, H2 ja H3 eivät käytä YVA-vaiheita.
+**Lukitut tiedostot** (`q001.md`, `q001.py`, `lahto_*.json`) ovat ennallaan.
+
+## Mitä muuttui
+
+H4 laskee YVA-tapahtumat, joiden `vaihe == "ohjelma_nahtavilla"`. Vaiheen
+asettaa aci-yva-proxy hankesivun tekstistä. Lukitushetkellä (82b3bde,
+2026-09-30) tunnistus vaati sanan **"nähtävillä"**.
+
+OGAS3:n ensimmäinen täysi kaappaus (2026-10-01, run 36862714217) löysi
+32 tunnistamatonta aikataulua riviä, mm.:
+
+    YVA-ohjelma oli kuultavana 4.11.-5.12.2022.
+
+Proxy hyväksyy 2026-10-01 alkaen nähtävilläolon synonyymeinä myös
+**"kuultavana"** ja **"kuulutus"**. Lisäksi uudet vaiheet
+`taydennyspyynto` ja `selostus_lausunto` sekä ei-vaihe `yleisotilaisuus`
+(ne eivät vaikuta H4:ään).
+
+## Miksi tämä on poikkeama
+
+Muutos voi vain **lisätä** `ohjelma_nahtavilla`-tapahtumia. H4:n ennuste on
+`>= 3`, joten muutos kallistaa tulosta kohti TUETTU-tulosta. Instrumentin
+parannus lukituksen jälkeen on silti instrumentin vaihto.
+
+## Miten H4 raportoidaan
+
+1. **Ensisijainen = lukittu instrumentti.** Jokaisen YVA-tapahtuman
+   `evidence[0].quote` on alkuperäinen aikataulurivi. H4 lasketaan
+   uudelleen soveltamalla siihen lukitushetken säännöllistä lauseketta:
+
+       /(arviointi|yva-)ohjelm\S*[^.]{0,40}?nähtävillä/i
+
+   ja ohittamalla rivit, joihin aiempi järjestys (perusteltu päätelmä,
+   ohjelmalausunto) osuisi ensin. Vain tämä luku ratkaisee TUETTU/KUMOTTU.
+2. **Herkkyys = nykyinen instrumentti.** `q001.py H4` sellaisenaan.
+   Raportoidaan rinnalla. Jos tulokset eroavat, ero raportoidaan
+   hankkeittain eikä ensisijaista tulosta muuteta.
+
+Laskenta tehdään uudessa tiedostossa (`q001_poikkeama_1.py`) ennen
+ensimmäistä H4-mittausta. `q001.py`:tä ei muuteta.
+
+==================== LOPPU: poikkeama_1.md ====================
+
+==================== TIEDOSTO: q001_poikkeama_1.py ====================
+  1  """Q-001 H4 lukitulla YVA-tunnistuksella (poikkeama_1.md).
+  2  
+  3  Ensisijainen H4-luku. Tunnistaa ohjelma_nahtavilla-vaiheen tapahtuman
+  4  evidence-lainauksesta lukitushetken (82b3bde, 2026-09-30) säännöillä ja
+  5  järjestyksellä — ei proxyn nykyisestä vaihe-kentästä. Herkkyysluku on
+  6  q001.py H4. q001.py:tä ei muuteta.
+  7  """
+  8  import json
+  9  import re
+ 10  import sys
+ 11  from pathlib import Path
+ 12  
+ 13  ROOT = Path(__file__).resolve().parents[2]
+ 14  
+ 15  # aci-yva-proxy worker.js @ lukitus, VAIHEET-järjestys (ensimmäinen osuma voittaa)
+ 16  LUKITTU = [
+ 17      ("perusteltu_paatelma", re.compile(r"perustel\S*\s+päätelm", re.I)),
+ 18      ("ohjelma_lausunto", re.compile(r"lausun\S*[^.]{0,60}?(yva-|arviointi)?ohjelmasta|ohjelmasta\s+on\s+annettu", re.I)),
+ 19      ("ohjelma_nahtavilla", re.compile(r"(arviointi|yva-)ohjelm\S*[^.]{0,40}?nähtävillä", re.I)),
+ 20      ("selostus_nahtavilla", re.compile(r"(arviointi|yva-)selostu\S*[^.]{0,40}?nähtävillä", re.I)),
+ 21  ]
+ 22  RX = re.compile(r"datakeskus|palvelinkeskus|data ?cent", re.I)  # = q001.py h4
+ 23  
+ 24  
+ 25  def lukittu_vaihe(text: str):
+ 26      return next((v for v, rx in LUKITTU if rx.search(text)), None)
+ 27  
+ 28  
+ 29  def h4_lukittu(months=("2026-11", "2026-12", "2027-01", "2027-02", "2027-03", "2027-04")) -> dict:
+ 30      seen, vain_uusi = {}, {}
+ 31      for m in months:
+ 32          p = ROOT / "snapshots" / f"{m}.json"
+ 33          if not p.exists():
+ 34              raise SystemExit(f"snapshot {m} puuttuu — H4:ää ei voi vielä mitata")
+ 35          for e in json.loads(p.read_text(encoding="utf-8"))["events"]:
+ 36              pr = e.get("parameters") or {}
+ 37              if not (e.get("source") == "YVA" and RX.search(pr.get("hanke") or "")
+ 38                      and "2026-10-01" <= (e.get("known_at") or "")[:10] <= "2027-03-31"):
+ 39                  continue
+ 40              quote = ((e.get("evidence") or [{}])[0]).get("quote") or ""
+ 41              if lukittu_vaihe(quote) == "ohjelma_nahtavilla":
+ 42                  seen[pr["slug"]] = (e["known_at"][:10], pr.get("hanke"))
+ 43              elif pr.get("vaihe") == "ohjelma_nahtavilla":
+ 44                  vain_uusi[pr["slug"]] = (e["known_at"][:10], pr.get("hanke"), quote[:160])
+ 45      for s in seen:
+ 46          vain_uusi.pop(s, None)
+ 47      return {"hypoteesi": "H4 (lukittu instrumentti, ensisijainen)", "uudet": sorted(seen.values()),
+ 48              "n": len(seen), "ennuste": ">= 3", "tulos": "TUETTU" if len(seen) >= 3 else "KUMOTTU",
+ 49              "vain_nykyisella_instrumentilla": sorted(vain_uusi.values())}
+ 50  
+ 51  
+ 52  if __name__ == "__main__":
+ 53      if sys.argv[1:] == ["--self-test"]:
+ 54          assert lukittu_vaihe("Arviointiohjelma nähtävillä 28.8.-26.9.2025") == "ohjelma_nahtavilla"
+ 55          assert lukittu_vaihe("YVA-ohjelma oli kuultavana 4.11.-5.12.2022.") is None
+ 56          assert lukittu_vaihe("Lausunto YVA-ohjelmasta on annettu, ohjelma nähtävillä") == "ohjelma_lausunto"
+ 57          print("ok")
+ 58      else:
+ 59          print(json.dumps(h4_lukittu(), ensure_ascii=False, indent=1))
+
+==================== LOPPU: q001_poikkeama_1.py ====================
