@@ -64,6 +64,34 @@ def lue_ajo(p: Path, ids: list[str]) -> tuple[list[str], list[dict]]:
     return out, list(recs.values())
 
 
+def ensimmainen_objekti(raaka: str) -> str | None:
+    """Poikkeama 2: ensimmäinen kokonainen JSON-objekti, kuten stance.py:n
+    jasenna()-docstring lupaa. Vain herkkyysanalyysiin."""
+    i = (raaka or "").find("{")
+    if i < 0:
+        return None
+    try:
+        d, _ = json.JSONDecoder().raw_decode(raaka[i:])
+    except ValueError:
+        return None
+    s = d.get("stance") if isinstance(d, dict) else None
+    return s if s in LUOKAT[:-1] else None
+
+
+def lue_ajo_herkkyys(p: Path, ids: list[str]) -> list[str]:
+    recs = {r["id"]: r for r in json.loads(p.read_text(encoding="utf-8"))}
+    out = []
+    for i in ids:
+        r = recs.get(i) or {}
+        if r.get("stance") and not r.get("virhe"):
+            out.append(r["stance"])
+        elif (r.get("virhe") or "").startswith("jäsennys"):
+            out.append(ensimmainen_objekti(r.get("raaka")) or "virhe")
+        else:
+            out.append("virhe")
+    return out
+
+
 def otehylkays(recs: list[dict]) -> float:
     arvioit = [r for r in recs if r.get("stance") and r["stance"] != "ei_kantaa" and not r.get("virhe")]
     if not arvioit:
@@ -134,6 +162,15 @@ def main() -> int:
            "|---|---|---|---|---|---|---|"]
     for m, e, k, h, v, t, hi in yhteenveto:
         md.append(f"| {m} | {e} | {k:.3f} | {h:.0%} | {'–' if v is None else f'{v:.3f}'} | {t} | {hi:.2f} $ |")
+
+    md += ["", "## Herkkyys: jäsennin ottaa ensimmäisen JSON-objektin (poikkeama 2)", "",
+           "Ensisijainen tulos ja päätössääntö yllä ovat lukitun jäsentimen mukaiset. "
+           "Tässä jäsennysvirheet luetaan uudelleen ensimmäisestä kokonaisesta "
+           "JSON-objektista; muut virheet pysyvät virheinä.", ""]
+    for p in sorted(tdir.glob("*.json")):
+        st = lue_ajo_herkkyys(p, ids)
+        md.append(f"- {p.stem}: κ {kappa(ih, st):.3f} · raaka {raaka(ih, st):.0%} · "
+                  f"virheitä {st.count('virhe')}")
 
     hyv = [y for y in yhteenveto if y[5] == "KÄYTTÖÖN"]
     md += ["", "### Valinta", ""]

@@ -51,7 +51,10 @@ jobs:
         if: always()
         with:
           name: tulokset-${{ steps.n.outputs.nimi }}
-          path: ennakkorekisteroinnit/stance/tulokset/
+          # vain tämän jobin omat tiedostot: koko hakemisto sisältäisi myös
+          # repossa jo olevat tulokset, jotka ylikirjoittaisivat toisen jobin
+          # tuoreet tiedostot merge-multiple-latauksessa (ajo 43391570301)
+          path: ennakkorekisteroinnit/stance/tulokset/${{ steps.n.outputs.nimi }}_*.json
           if-no-files-found: ignore
 
   arviointi:
