@@ -39,7 +39,9 @@ eikä `system_fingerprint`:iä; knowledge cutoffia ei ole julkaistu.
 
 - `tools/katselmointi.py` + workflow `katselmointi` (käsin). Pyyntö tiedostona
   `katselmoinnit/<nimi>-pyynto.txt`, vastaus committautuu `<nimi>-vastaus-<pvm>.md`.
-  max-effort, tulostekatto 32k (≤ 0,32 $).
+  Vastaus striimataan (ilman striimausta yhteys katkesi ~17,5 min kohdalla, aether-one).
+  Oletus max-effort, katto 48k; molemmat workflow-syötteitä. **Katto sisältää
+  päättelytokenit**: Q-001-katselmointi käytti 29 456 / 32 000, josta päättelyä 23 647.
 - Katselmointi on **lausunto, ei mittaus**. Jokainen löydös tarkistetaan koodia ja dataa
   vasten ennen kuin siitä kirjataan mitään.
 - Ensimmäinen (13.11.2026): Q-001:n mittauskoodi vs esirekisteröinti → Q-001
@@ -48,6 +50,10 @@ eikä `system_fingerprint`:iä; knowledge cutoffia ei ole julkaistu.
 - Pyyntöön mukaan kaikki, mitä katselmoija tarvitsee (myös apumoduulit kuten `yva.py`,
   `actors.py`): Kimillä ei ole verkkoa eikä repoa. Rivinumerot koodiin. Kielto ehdottaa
   lukittujen rajojen muuttamista.
+
+Katselmoija kannattaa vain, kun ulkoista mittapuuta ei ole. Jos testivektorit, synteesi
+tai tahallinen rikkominen (negatiivikontrolli) ratkaisee kysymyksen, ne ovat halvempia
+ja varmempia kuin lausunto.
 
 ### Mihin Kimiä EI käytetä
 
