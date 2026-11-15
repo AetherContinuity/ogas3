@@ -22,11 +22,39 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 MALLI = "kimi-k3.1-pro"
-EFFORT = "max"
-KATTO = 32000          # tulostekatto: enintään 0,32 $ / kutsu (10 $ / Mtok)
+# Oletukset; workflow voi ohittaa ympäristömuuttujilla. Katto sisältää
+# myös päättelytokenit: Q-001-katselmointi (13.11.2026) käytti 29 456 / 32 000,
+# joista päättelyä 23 647 — lähellä katkeamista.
+EFFORT = os.environ.get("KATSELMOINTI_EFFORT", "max")
+KATTO = int(os.environ.get("KATSELMOINTI_KATTO", "48000"))   # ≤ 0,48 $ / kutsu
 SYSTEM = ("Olet huolellinen ja kriittinen menetelmä- ja koodikatselmoija. "
           "Vastaa suomeksi. Viittaa rivinumeroihin. Älä arvaa: jos jokin ei "
           "käy ilmi aineistosta, sano se.")
+
+
+def kokoa_striimi(lines) -> dict:
+    """SSE-rivit (bytes) → sama muoto kuin ei-striimattu vastaus."""
+    content, model, finish, usage = [], None, None, {}
+    for raw in lines:
+        line = raw.decode("utf-8", errors="replace").strip()
+        if not line.startswith("data:"):
+            continue
+        data = line[5:].strip()
+        if data == "[DONE]":
+            break
+        c = json.loads(data)
+        model = c.get("model") or model
+        if c.get("usage"):
+            usage = c["usage"]
+        for ch in c.get("choices") or []:
+            d = ch.get("delta") or {}
+            if d.get("content"):
+                content.append(d["content"])
+            if ch.get("usage"):
+                usage = ch["usage"]
+            finish = ch.get("finish_reason") or finish
+    return {"model": model, "usage": usage,
+            "choices": [{"finish_reason": finish, "message": {"content": "".join(content)}}]}
 
 
 def main() -> int:
@@ -37,16 +65,20 @@ def main() -> int:
     key = os.environ.get("MOONSHOT_API_KEY", "").strip()
     if not key:
         raise SystemExit("MOONSHOT_API_KEY puuttuu")
+    # Striimattuna: pitkä max-effort-päättely ilman tavuja katkaisi yhteyden
+    # noin 17,5 minuutin kohdalla (aether-one, 15.11.2026).
     body = {"model": MALLI, "reasoning_effort": EFFORT, "max_completion_tokens": KATTO,
+            "stream": True, "stream_options": {"include_usage": True},
             "messages": [{"role": "system", "content": SYSTEM},
                          {"role": "user", "content": pyynto}]}
     req = urllib.request.Request(
         "https://api.moonshot.ai/v1/chat/completions", data=json.dumps(body).encode(),
         headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json",
-                 "User-Agent": "OGAS3/0.1 katselmointi"}, method="POST")
+                 "Accept": "text/event-stream", "User-Agent": "OGAS3/0.1 katselmointi"},
+        method="POST")
     try:
-        with urllib.request.urlopen(req, timeout=1800) as r:
-            j = json.loads(r.read().decode())
+        with urllib.request.urlopen(req, timeout=300) as r:   # aikakatkaisu per luku, ei koko ajolle
+            j = kokoa_striimi(r)
     except urllib.error.HTTPError as e:
         raise SystemExit(f"HTTP {e.code}: {e.read().decode(errors='replace')[:500]}")
     ch = j["choices"][0]
