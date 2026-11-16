@@ -1,137 +1,156 @@
 TEHTÄVÄ: riippumaton katselmointi ennen julkaisua
 
-Alla on ACI:n muistioluonnos SM-022 v0.3 (datakeskusten rahavirrat Suomessa) ja sen laskentaskripti rivinumeroin. Muistiota ei ole julkaistu. Aritmetiikka tarkistetaan ajamalla skripti, joten älä laske lukuja uudelleen. Katselmoi:
+Alla on ACI:n muistioluonnos SM-022 (datakeskusten rahavirrat Suomessa) ja sen laskentaskripti rivinumeroin sekä ajon tuloste. Aritmetiikka tarkistetaan ajamalla skripti, joten älä laske lukuja uudelleen. Katselmoi:
 
-1. Oletukset: mitkä [A]-merkityistä oletuksista ovat heikoimpia tai suuntaa vääristäviä? Perustele mekanismilla, älä yleisellä epävarmuudella.
-2. Päättely: seuraavatko havainnot 1–3 laskelmasta? Erityisesti havainto 3 (kantaverkko ei ole merkittävä siirtokanava): onko vertailu (datakeskusten maksamat energiaperusteiset maksut vs. niille kohdistettu osuus uusien investointien annuiteetista) oikea tapa kysyä asiaa? Mitä kustannuksia se jättää pois?
-3. Hintavaikutus: onko herkkyysesitys (€/MWh x 85 TWh) oikea tapa käsitellä hintaa, kun hintataso jätetään mallintamatta? Mitä se jättää pois?
-4. Puuttuvat rahavirrat: mikä merkittävä virta puuttuu ja mihin suuntaan se muuttaisi johtopäätöksiä?
-5. Onko tekstissä väitteitä, joita laskelma ei tue?
+1. Rajaus: onko neljän tarkastelutason erottelu (§ 01) ja kolmannen tason käsittely herkkyytenä johdonmukainen koko muistiossa?
+2. Oletukset: mitkä [A]-merkityistä oletuksista ovat heikoimpia tai suuntaa vääristäviä? Perustele mekanismilla, älä yleisellä epävarmuudella.
+3. Päättely: seuraavatko johtopäätökset 1–3 (§ 06) tuloksista? Erityisesti kantaverkon vertailu: onko jyvityksen rajoitus kuvattu riittävästi, ja mitä kustannuksia vertailu jättää pois?
+4. Hinta: onko perustelu hinnan jättämiselle mallintamatta (§ 05) uskottava? Onko herkkyysesitys oikea tapa?
+5. Puuttuvat rahavirrat ja väitteet, joita laskelma tai lähteet eivät tue.
 
-Sinulla ei ole verkkoa eikä pääsyä lähteisiin. Älä keksi lukuja tai lähteitä; jos jokin väite vaatisi tarkistusta, sano mikä ja mistä. Jos jokin on epäselvää, sano se äläkä arvaa. Toinen kielimalli on jo katselmoinut v0.1:n; v0.2 korjaa sen löydökset (veroluokan tila, hintavaikutus herkkyyslaskelmana, kantaverkko jyvityksenä, kululisäherkkyys, IT-teho/PUE). v0.3 poistaa lisäksi hintavaikutuksen laskelmasta ja esittää sen herkkyytenä. Arvioi v0.3 itsenäisesti. Vastaa suomeksi, tiiviisti, löydökset vakavuusjärjestyksessä.
+Sinulla ei ole verkkoa eikä pääsyä lähteisiin. Älä keksi lukuja tai lähteitä; jos jokin väite vaatisi tarkistusta, sano mikä ja mistä. Jos jokin on epäselvää, sano se äläkä arvaa. Vastaa suomeksi, tiiviisti, löydökset vakavuusjärjestyksessä.
 
 ==================== TIEDOSTO: papers/sm-022-datakeskusten-rahavirrat.html (teksti) ====================
 Synthesis Memo · SM-022 · Domain D-1 · D-3
 
- StatusWorking Draft v0.3, katselmoimatta
+ StatusWorking Draft v1.0
  LanguageFI
- Date16.11.2026
- Relates toSM-012, SM-016, WEM, DEMO-001
- BasisFingrid, VaVM 28/2025, datakeskushankerekisteri
+ DateMarraskuu 2026
+ Relates toSM-012, SM-016, SM-020, WP-015, DEMO-001
+ BasisFingrid, Svenska kraftnät, VaVM 28/2025, datakeskushankerekisteri
  Laskentasm022_datakeskusten_rahavirrat.py
 
  Datakeskusten rahavirrat
 
- Kuka maksaa ja kuka saa, kun Suomeen tulee 1,5–4 GW datakeskuskuormaa
+ Mitä 1,5–4 GW datakeskuskuormaa tuo valtiolle ja kantaverkolle, ja miksi sähkön hintaa ei voi kohdistaa datakeskuksille
 
- Muistio kokoaa samaan laskelmaan kolme vuosittaista rahavirtaa: sähkövero, datakeskusyhtiöiden yhteisövero ja kantaverkkomaksut. Sähkön hintavaikutusta ei mallinneta, koska hintataso riippuu ennen kaikkea tuulesta, vesitilanteesta, siirtoyhteyksistä ja kulutuksen kasvusta, ja julkiset arviot vaihtelevat. Se esitetään herkkyytenä: jokainen 1 €/MWh muutos keskihinnassa on muille sähkönkäyttäjille noin 85 M€ vuodessa. Tulos: valtion suurin tulo on sähkövero. Kantaverkkomaksujen ja investointien vertailu on laskennallinen jyvitys, ei syy-seuraussuhde. Merkinnät: [M] mitattu tai lähteestä, [L] laskettu, [A] oletus.
+ Muistio laskee datakeskuskuorman vuosittaiset rahavirrat kolmessa skenaariossa. Valtion tulo on lähes kokonaan sähköveroa: 2,5 GW:n kuormalla noin 390 M€ vuodessa, yhteisöveroa vain kymmeniä miljoonia. Kantaverkossa datakeskusten maksut ylittävät niille laskennallisesti jyvitetyn osuuden suunnitelluista investoinneista, mutta jyvitys ei ole syy-seuraussuhde. Sähkön hintaa ei mallinneta: se riippuu tuulesta, vesitilanteesta, siirtoyhteyksistä sekä Suomen ja Ruotsin kulutuksen kasvusta, eikä datakeskusten osuutta voi erottaa yhdestä hintaluvusta. Hinta esitetään herkkyytenä. Merkinnät: [M] mitattu tai lähteestä, [L] laskettu, [A] oletus.
 
-§ 01Skenaariot
+§ 01Kysymys ja rajaus
 
-Lisäkuorma 1,5, 2,5 tai 4,0 GW verkosta otettavaa tehoa, käyttöaste 80 % [A]. Rekisterin MW-luvut ovat usein IT-tehoa; verkosta otettava teho on PUE-kertoimen (tyypillisesti 1,1–1,3 [A]) verran suurempi, joten 4,0 GW:n skenaario voi aliarvioida rakenteilla olevien hankkeiden kulutuksen. 2,5 GW on AFRYn vuoden 2030 skenaario [M]. 4,0 GW vastaa datakeskushankerekisterin rakenteilla olevia hankkeita (4,1 GW ilmoitettua, 16.11.2026) [M]. Vuosikulutus 10,5 / 17,5 / 28,0 TWh [L]; vertailuna Suomen kulutus 2025 noin 85 TWh [M].
+Datakeskusten taloudellista vaikutusta voi tarkastella neljällä tasolla: julkisen talouden rahavirrat, sähköjärjestelmän kustannukset ja tulot, muiden sähkönkäyttäjien kustannukset ja Suomeen jäävä arvonlisä. Niitä ei voi laskea yhteen yhdeksi nettoluvuksi, koska sama euro voi esiintyä usealla tasolla eri nimellä: kuluttajan lisäkustannus on tuottajan lisätulo, ja osa siitä palaa valtiolle veroina.
 
-§ 02Tulos
+Tämä muistio laskee kaksi ensimmäistä tasoa. Kolmas esitetään herkkyytenä (§ 05). Neljäs, kotimaahan jäävä arvonlisä ja siirtohinnoittelu, on SM-012:n ja SM-016:n kysymys eikä kuulu tähän.
 
-M€ / vuosi | 1,5 GW | 2,5 GW | 4,0 GW | Kenelle | 
+§ 02Lähtötilanne marraskuussa 2026
 
-Sähkövero, luokka I (22,4 €/MWh) [M]/[L] | 235 | 392 | 628 | Valtio | 
+Verotus. Datakeskusten sähkö siirtyi veroluokasta II luokkaan I 1.7.2026 (HE 156/2025). Energiavero nousi 0,05 → 2,24 snt/kWh; huoltovarmuusmaksu mukaan lukien 0,135 → 2,325 snt/kWh [M]. Korvaavaksi valmisteltu tukimalli (enintään 30 M€/v) peruttiin budjettiriihessä syyskuussa 2026 [M]. Luokka I on siis voimassa oleva tilanne; luokkaa II käytetään tässä vastaskenaariona.
 
-— vastaskenaario: luokka II (0,5 €/MWh), voimassa 30.6.2026 asti | 5 | 9 | 14 | Valtio | 
+Hankekanta. Datakeskushankerekisterin mukaan toiminnassa on noin 380 MW ja rakenteilla noin 4,1 GW ilmoitettua tehoa (16.11.2026) [M]. Fingridin mukaan liittymissopimuksia on lähes 5 GW [M].
 
-Yhteisövero, datakeskukset, kululisä 5 % [A] | 17 | 29 | 46 | Valtio | 
+Teholuvut. Rekisterin MW-luvut ovat usein IT-tehoa. Verkosta otettava teho on PUE-kertoimen verran suurempi, tyypillisesti 1,1–1,3 [A].
 
-— herkkyys: kululisä 2 % / 10 % | 7 / 35 | 12 / 58 | 19 / 93 | Valtio | 
+§ 03Skenaariot ja menetelmä
 
-Kantaverkkomaksut, datakeskukset maksavat [L] | 50 | 84 | 134 | Fingrid | 
+Lisäkuorma on 1,5, 2,5 tai 4,0 GW verkosta otettavaa tehoa ja käyttöaste 80 % [A], jolloin vuosikulutus on 10,5, 17,5 tai 28,0 TWh [L]. 4,0 GW vastaa rakenteilla olevia hankkeita; jos rekisterin luvut ovat IT-tehoa, todellinen kulutus on suurempi. Vertailuna Suomen sähkönkulutus oli noin 85 TWh vuonna 2025 [M]. Laskelma kuvaa vakiintunutta vuotta; rakennusvaihetta ei lasketa.
 
-Uusien kantaverkkoinvestointien annuiteetista jyvitetty osuus (kulutuksen kasvun suhteessa) [A] | 42 | 71 | 113 | Fingrid | 
+§ 04Tulokset
 
-Havainto 1
-Valtion tulo on lähes kokonaan sähköveroa. Yhteisövero on alle kymmenesosa siitä, koska datakeskusyhtiöt toimivat kululisämallilla (vrt. Tuike Finland Oy: liikevoitto 5–6 % kuluista 2022–2025). Datakeskukset siirtyivät veroluokkaan I 1.7.2026. Korvaavaksi suunniteltu tukimalli (enintään 30 M€/v) peruttiin budjettiriihessä syyskuussa 2026, joten luokka I on voimassa oleva tilanne ja luokka II vastaskenaario. Kokonaisvero huoltovarmuusmaksu mukaan lukien on 2,325 snt/kWh; taulukossa on vain valtion budjettiin tuleva energiavero.
+M€ / vuosi | 1,5 GW | 2,5 GW | 4,0 GW | 
 
-Havainto 2
-Sähkön hintavaikutus on samaa suuruusluokkaa kuin sähköveron tuotto, jos keskihinta nousee muutamia euroja megawattitunnilta: 2,5 GW:n sähkövero (390 M€) vastaa noin 4,6 €/MWh:n nousua 85 TWh:n muulle kulutukselle. Toteutuuko nousu, ei ratkea tällä laskelmalla. Hinnannousu ei myöskään siirry kokonaan kotimaisille tuottajille: osa sähköstä tuodaan, osa myydään pitkillä sopimuksilla ja osa jää suojausten vastapuolille.
+Sähkövero, luokka I, 22,4 €/MWh [M]/[L] | 235 | 392 | 628 | 
 
-Keskihinnan muutos | Muiden käyttäjien kustannus M€/v | ALV kotitalouksilta M€/v [A] | 
+Vastaskenaario: luokka II, 0,5 €/MWh | 5 | 9 | 14 | 
 
-+1 €/MWh (2 %) | 85 | 5 | 
+Yhteisövero, kululisä 5 % [A] | 17 | 29 | 46 | 
 
-+2 €/MWh (5 %) | 170 | 11 | 
+Yhteisövero, kululisä 2 % / 10 % [A] | 7 / 35 | 12 / 58 | 19 / 93 | 
 
-+5 €/MWh (12 %) | 425 | 27 | 
+Kantaverkkomaksut, jotka datakeskukset maksavat [L] | 50 | 84 | 134 | 
 
-+10 €/MWh (25 %) | 850 | 54 | 
+Uusien kantaverkkoinvestointien annuiteetista jyvitetty osuus [A] | 42 | 71 | 113 | 
 
-Hintatasoon vaikuttaa Suomen oman kulutuksen lisäksi naapurialueiden kulutuksen kasvu. Svenska kraftnätin lyhyen aikavälin markkina-analyysi (KMA2025, maaliskuu 2026) olettaa Ruotsin sähkönkäytön kasvavan noin 137 TWh:sta (2026) noin 177 TWh:iin (2030) ja Suomen noin 88:sta 116 TWh:iin [M]; ennusteita on samalla laskettu edellisestä analyysista. Ruotsin teollisuuden oma arvio on 46 TWh:sta 93 TWh:iin vuoteen 2035 [M]. Jos Pohjois-Ruotsin teollisuus käyttää sen ylijäämän, josta Suomi nyt tuo, Suomen hinta voi nousta datakeskuksista riippumatta. Tätä ei voi erottaa datakeskusten vaikutuksesta yhdellä hintaluvulla.
+Sähkövero
 
-Julkisia arvioita: AFRY (2025) arvioi 2,5 GW:n kulutuksen nostavan keskihintaa noin 10 % vuoteen 2030 ja 20 %:n jouston alentavan sitä yli 1 €/MWh; Energiateollisuus pitää merkittävää nousua epätodennäköisenä, koska tuotanto kasvaa kulutuksen mukana. ACI ei käytä kumpaakaan laskelman pohjana.
+Valtion tulo datakeskuksista on lähes kokonaan sähköveroa. Taulukossa on vain valtion budjettiin tuleva energiavero; huoltovarmuusmaksu menee Huoltovarmuusrahastoon. Veroluokan merkitys on suuri: luokassa II sama kuorma tuottaisi alle 2,5 % luokan I tulosta.
 
-Havainto 3
-Nykyisellä tariffilla datakeskusten energiaperusteinen maksuosuus (4,79 €/MWh [L]) on laskennallisesti suurempi kuin niille kulutuksen kasvun suhteessa jyvitetty osuus suunniteltujen investointien vuosittaisesta pääomakustannuksesta. Vertailu ei osoita, että hankkeiden aiheuttamat verkkokustannukset katetaan: investointiohjelma palvelee myös tuotannon siirtoa, rajayhteyksiä ja muita asiakkaita, eikä jyvitys ole syy-seuraussuhde. Selvin riski on toteutumatta jäävissä hankkeissa.
+Yhteisövero
 
-§ 03Oletukset ja lähteet
+Datakeskusyhtiöt toimivat tyypillisesti konsernin palveluyhtiöinä, joiden voitto määräytyy kululisänä. Tuike Finland Oy:n (Googlen Haminan datakeskus) liikevoitto oli 2022–2025 noin 5–11 % liikevaihdosta ja vuonna 2025 noin 5,6 % kuluista [M]. Kulupohjaksi oletetaan 1,16 M€/MW vuodessa (sähkö noin 82 €/MWh sekä rakennusten ja tekniikan poistot 10 M€/MW 17 vuodessa) [A]. Verotettava tulo voi poiketa liikevoitosta rahoituserien, konsernin sisäisten maksujen ja aiempien tappioiden vuoksi, joten luku on suuruusluokka. Herkkyysvälillä 2–10 % yhteisövero jää joka tapauksessa alle kuudesosaan sähköverosta.
 
-Suure | Arvo | Tyyppi ja lähde | 
+Kantaverkko
 
-Sähkövero I / II | 22,4 / 0,5 €/MWh | [M] VaVM 28/2025 vp | 
+Tasaisesti kuluttava datakeskus maksaa nykyisellä tariffilla noin 4,79 €/MWh (talviarkipäivä 10,47, muu aika 2,97, ottomaksu 1,07 €/MWh; talviarkipäivien osuus vuoden tunneista 10 % [A]). Fingridin investoinnit ovat 5,2 mrd € vuosina 2026–2035 [M]; 5 %:n korolla ja 40 vuoden pitoajalla vuosikustannus on noin 300 M€ [A]. Kun siitä jyvitetään datakeskuksille niiden osuus kulutuksen kasvusta 85:stä 160 TWh:iin [M], datakeskusten maksut ovat jyvitettyä osuutta suuremmat.
 
-Keskihinta | 40,5 €/MWh (2025), vain prosenttien vertailutaso | [M] Fingrid | 
+Vertailu ei osoita, että datakeskusten aiheuttamat verkkokustannukset katetaan. Investointiohjelma palvelee myös tuotannon siirtoa pohjoisesta etelään, rajayhteyksiä ja muita asiakkaita, ja tariffitulo rahoittaa koko verkkoa. Jyvitys on laskennallinen, ei syy-seuraussuhde. Selvin kantaverkon riski on toteutumatta jäävissä hankkeissa: investointi tehdään, mutta kuormaa ja sen maksuja ei tule.
 
-Muu kulutus, joka kohtaa hinnan | 85 TWh | [A] koko nykykulutus; kiinteät sopimukset siirtävät vaikutusta ajallisesti, eivät poista sitä | 
+§ 05Sähkön hinta herkkyytenä
 
-Kotitalouksien osuus | 25 % | [A] ALV-rivi; tarkistettava Tilastokeskuksesta | 
+Sähkön hintaa ei mallinneta. Suomen hintataso riippuu ennen kaikkea tuulituotannosta, pohjoismaisesta vesitilanteesta, siirtoyhteyksistä ja kulutuksen kasvusta, eikä mikään näistä ole datakeskusten hallinnassa. SM-020:n 753 tunnin tuontijaksolla hinnan ratkaisi SE3:n pullonkaula, ei Suomen oma kulutus.
 
-Kantaverkkomaksu | 10,47 / 2,97 + 1,07 €/MWh, talviarkipäivien osuus 10 % | [M] Fingrid 2026; osuus [A] | 
+Kulutus kasvaa myös naapurissa. Svenska kraftnätin lyhyen aikavälin markkina-analyysi (KMA2025, maaliskuu 2026) olettaa Ruotsin sähkönkäytön kasvavan noin 137 TWh:sta noin 177 TWh:iin vuosina 2026–2030 ja Suomen noin 88:sta 116 TWh:iin [M]. Ruotsin teollisuuden oma arvio on 46 TWh:sta 93 TWh:iin vuoteen 2035 [M]. Jos Pohjois-Ruotsin teollisuus käyttää sen ylijäämän, jota Suomi nyt tuo, Suomen hinta nousee datakeskuksista riippumatta (vrt. WP-015, DEMO-001). Yhdestä hintaluvusta ei voi erottaa, mikä osa noususta johtuu datakeskuksista.
 
-Kantaverkkoinvestoinnit | 5,2 mrd € 2026–2035, annuiteetti 5 % / 40 v = 303 M€/v | [M] Fingrid; annuiteetti [A] | 
+Siksi hinta esitetään herkkyytenä: jokainen 1 €/MWh:n muutos keskihinnassa on muille sähkönkäyttäjille noin 85 M€ vuodessa (85 TWh [A]).
 
-Datakeskusten osuus | kulutuksen kasvusta 85 → 160 TWh | [M] Fingrid kehittämissuunnitelma; kohdistus energian mukaan [A] | 
+Keskihinnan muutos | Muiden käyttäjien kustannus, M€/v | ALV kotitalouksilta, M€/v [A] | 
 
-Yhteisövero | 11,6 k€/MW/v (kululisä 5 %, kulupohja 1,16 M€/MW) | [A], suuruusluokka tarkistettu Tuike Finland Oy:n tilinpäätöksistä | 
++1 €/MWh | 85 | 5 | 
 
-§ 04Mitä laskelma ei kata
++2 €/MWh | 170 | 11 | 
 
-Tuottajien voiton jakautumista: osa jää Suomeen (yhteisövero, valtion osinko Fortumilta), osa ulkomaisille omistajille. Tätä ei ole eritelty.
++5 €/MWh | 425 | 27 | 
 
-Jakeluverkkoja ja niiden maksuja.
++10 €/MWh | 850 | 54 | 
 
-Kysyntäjoustoa: AFRYn mukaan 20 %:n jousto vähentää hintapiikkejä merkittävästi. Fingrid edellyttää yli 30 MW:n laitoksilta 30 %:n joustoa. Toteutunutta joustoa ei ole mitattu.
+Vertailukohdaksi: 2,5 GW:n sähkövero (390 M€) vastaa noin 4,6 €/MWh:n muutosta. Hinnannousu ei siirry kokonaan kotimaisille tuottajille, koska osa sähköstä tuodaan, osa myydään pitkillä sopimuksilla ja osa jää suojausten vastapuolille. Julkiset arviot vaihtelevat: AFRY (2025) arvioi 2,5 GW:n kulutuksen nostavan keskihintaa noin 10 % vuoteen 2030 ja 20 %:n jouston alentavan sitä yli 1 €/MWh, kun taas Energiateollisuus pitää merkittävää nousua epätodennäköisenä, koska tuotanto kasvaa kulutuksen mukana. Kumpaakaan ei käytetä laskelman pohjana.
 
-Rakennusvaiheen tuloja ja ALV:tä (ALV-palautus on ajoitusilmiö, ks. SM-016:n korjaus).
+§ 06Johtopäätökset
 
-Kantaverkkomaksujen rakenneuudistusta, josta Fingrid päättää vuoden 2026 lopussa.
+Datakeskusten julkinen tulo on sähköveroa. Yhteisövero on kululisämallin vuoksi pieni ja investointien kokoon nähden lähes riippumaton. Veroluokan valinta ratkaisee, onko datakeskuskuorma valtiolle merkittävä tulonlähde.
 
-Kotimaahan jäävää arvonlisää: palkat, konsernin sisäiset palvelu- ja lisenssimaksut, ulkomaille kotiutettavat voitot. Tämä on SM-012:n ja SM-016:n kysymys.
+Kantaverkon kautta ei laskennallisesti synny datakeskuksista muille maksettavaa kustannusta, jos hankkeet toteutuvat. Riski on toteutumatta jäävissä hankkeissa.
 
-Uuden tuotannon ajallista ja maantieteellistä kohtaamista kulutuksen kanssa; AFRY oletti vuosienergian tasapainon.
+Sähkön hintavaikutus voi olla samaa suuruusluokkaa kuin sähköveron tuotto, mutta sitä ei voi kohdistaa datakeskuksille, koska hintaan vaikuttavat yhtä aikaa tuuli, vesitilanne, siirrot sekä Suomen ja Ruotsin teollisuuden kulutuksen kasvu.
 
-Hintatasoa: se riippuu tuulesta, vesitilanteesta, siirroista ja kulutuksen kasvusta, eikä sitä mallinneta.
+§ 07Mitä muistio ei kata ja mitä seurataan
 
-§ 05Seurattavat muuttujat
+Muistio ei kata kotimaahan jäävää arvonlisää (SM-012, SM-016), jakeluverkkoja, rakennusvaiheen verotuloja, kysyntäjouston toteutumista (Fingrid edellyttää yli 30 MW:n laitoksilta 30 %:n joustoa) eikä uuden tuotannon ajallista ja maantieteellistä kohtaamista kulutuksen kanssa. Fingridin kantaverkkomaksujen rakenneuudistus, josta päätetään vuoden 2026 lopussa, voi muuttaa § 04:n kantaverkkovertailua.
 
-Palaako tukimalli tai veroluokan II kaltainen huojennus myöhempiin budjetteihin.
+Seurattavat muuttujat:
 
-Rakenteilla olevien hankkeiden toteutuminen (datakeskushankerekisteri).
+Pysyykö datakeskusten sähkö veroluokassa I.
 
-Suomen vuosikeskihinta suhteessa SE1:een ja SE3:een sekä tuulituotannon vuosivaihtelu (aci-entsoe-proxy /day-ahead-price, Fingrid DS 181).
+Rakenteilla olevien hankkeiden toteutuminen ja niiden IT- ja liittymätehot (datakeskushankerekisteri).
 
-Ruotsin sähkönkäytön ja SE1:n vientiylijäämän kehitys Svenska kraftnätin vuosittaisissa KMA-analyyseissa.
+Suomen vuosikeskihinta suhteessa SE1:een ja SE3:een sekä tuulituotannon vuosivaihtelu (aci-entsoe-proxy, Fingrid DS 181).
+
+Ruotsin sähkönkäytön ja SE1:n vientiylijäämän kehitys Svenska kraftnätin KMA-analyyseissa.
 
 Kantaverkkomaksujen rakenneuudistuksen päätös.
 
+LiiteOletukset
+
+Suure | Arvo | Tyyppi ja lähde | 
+
+Käyttöaste | 80 % | [A] | 
+
+Sähkövero I / II | 22,4 / 0,5 €/MWh | [M] VaVM 28/2025 vp | 
+
+Kulupohja, kululisä | 1,16 M€/MW/v; 2 / 5 / 10 % | [A]; suuruusluokka verrattu Tuike Finland Oy:n tilinpäätöksiin | 
+
+Kantaverkkomaksu | 10,47 / 2,97 + 1,07 €/MWh, talviarkipäivien osuus 10 % | [M] Fingrid 2026; osuus [A] | 
+
+Kantaverkkoinvestoinnit | 5,2 mrd € 2026–2035; annuiteetti 5 %, 40 v | [M] Fingrid; annuiteetti [A] | 
+
+Kulutuksen kasvu | 85 → 160 TWh | [M] Fingrid kehittämissuunnitelma 2026–2035; datakeskusten osuus energian mukaan [A] | 
+
+Muu hintaa kohtaava kulutus | 85 TWh | [A] | 
+
+Kotitalouksien osuus kulutuksesta, ALV | 25 %, 25,5 % | [A], ALV [M] | 
+
 Lähteet
 
-Eduskunta: VaVM 28/2025 vp (sähköveron muutos, verotuotto ja yhteisöverovaikutus); HE 156/2025
+Eduskunta: HE 156/2025; VaVM 28/2025 vp
 
-Budjettiriihi 2.9.2026: datakeskusten 30 M€:n tukimallista luovuttiin (Suomen Uutiset 2.9.2026; AI Suomi 2.9.2026)
+Budjettiriihi syyskuu 2026: datakeskusten tukimallista luopuminen (Suomen Uutiset 2.9.2026; AI Suomi 2.9.2026)
 
-AFRY Management Consulting (2025): Report on impacts of data centers on Finnish electricity market (jouston vaikutus: yli 1 €/MWh, 125 M€); Yle 4.11.2025
+Fingrid: Kantaverkkopalvelumaksut 2026; Kantaverkon kehittämissuunnitelma 2026–2035; liittymissopimukset datakeskuksille (8/2026)
 
-Fingrid: Kantaverkkopalvelumaksut 2026; Kantaverkon kehittämissuunnitelma 2026–2035; kantaverkkopalvelumaksujen rakenneuudistuksen kysymykset ja vastaukset (keskihinta 2025)
+Svenska kraftnät: Aktuella tendenser i kraftsystemet, KMA2025: Kortsiktig marknadsanalys 2026–2030 (maaliskuu 2026); Långsiktig marknadsanalys 2026
 
-Svenska kraftnät: Aktuella tendenser i kraftsystemet, KMA2025: Kortsiktig marknadsanalys 2026–2030 (maaliskuu 2026); Långsiktig marknadsanalys 2026 (17.6.2026)
+Ruotsin teollisuuden sähköntarvearvio 2035 (tiedote 2026, via.tt.se)
 
-Ruotsin teollisuuden sähköntarvearvio 2035 (tiedote, via.tt.se 2026)
+AFRY Management Consulting (2025): Report on impacts of data centers on Finnish electricity market
 
 Kuntamonitori / Datakeskushankkeiden kansallinen rekisteri (CC BY 4.0), haettu 16.11.2026
 
