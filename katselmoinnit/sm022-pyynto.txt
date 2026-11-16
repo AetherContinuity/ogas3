@@ -62,6 +62,8 @@ Keskihinnan muutos | Muiden käyttäjien kustannus M€/v | ALV kotitalouksilta 
 
 +10 €/MWh (25 %) | 850 | 54 | 
 
+Hintatasoon vaikuttaa Suomen oman kulutuksen lisäksi naapurialueiden kulutuksen kasvu. Svenska kraftnätin lyhyen aikavälin markkina-analyysi (KMA2025, maaliskuu 2026) olettaa Ruotsin sähkönkäytön kasvavan noin 137 TWh:sta (2026) noin 177 TWh:iin (2030) ja Suomen noin 88:sta 116 TWh:iin [M]; ennusteita on samalla laskettu edellisestä analyysista. Ruotsin teollisuuden oma arvio on 46 TWh:sta 93 TWh:iin vuoteen 2035 [M]. Jos Pohjois-Ruotsin teollisuus käyttää sen ylijäämän, josta Suomi nyt tuo, Suomen hinta voi nousta datakeskuksista riippumatta. Tätä ei voi erottaa datakeskusten vaikutuksesta yhdellä hintaluvulla.
+
 Julkisia arvioita: AFRY (2025) arvioi 2,5 GW:n kulutuksen nostavan keskihintaa noin 10 % vuoteen 2030 ja 20 %:n jouston alentavan sitä yli 1 €/MWh; Energiateollisuus pitää merkittävää nousua epätodennäköisenä, koska tuotanto kasvaa kulutuksen mukana. ACI ei käytä kumpaakaan laskelman pohjana.
 
 Havainto 3
@@ -113,6 +115,8 @@ Rakenteilla olevien hankkeiden toteutuminen (datakeskushankerekisteri).
 
 Suomen vuosikeskihinta suhteessa SE1:een ja SE3:een sekä tuulituotannon vuosivaihtelu (aci-entsoe-proxy /day-ahead-price, Fingrid DS 181).
 
+Ruotsin sähkönkäytön ja SE1:n vientiylijäämän kehitys Svenska kraftnätin vuosittaisissa KMA-analyyseissa.
+
 Kantaverkkomaksujen rakenneuudistuksen päätös.
 
 Lähteet
@@ -124,6 +128,10 @@ Budjettiriihi 2.9.2026: datakeskusten 30 M€:n tukimallista luovuttiin (Suomen 
 AFRY Management Consulting (2025): Report on impacts of data centers on Finnish electricity market (jouston vaikutus: yli 1 €/MWh, 125 M€); Yle 4.11.2025
 
 Fingrid: Kantaverkkopalvelumaksut 2026; Kantaverkon kehittämissuunnitelma 2026–2035; kantaverkkopalvelumaksujen rakenneuudistuksen kysymykset ja vastaukset (keskihinta 2025)
+
+Svenska kraftnät: Aktuella tendenser i kraftsystemet, KMA2025: Kortsiktig marknadsanalys 2026–2030 (maaliskuu 2026); Långsiktig marknadsanalys 2026 (17.6.2026)
+
+Ruotsin teollisuuden sähköntarvearvio 2035 (tiedote, via.tt.se 2026)
 
 Kuntamonitori / Datakeskushankkeiden kansallinen rekisteri (CC BY 4.0), haettu 16.11.2026
 
