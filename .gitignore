@@ -5,3 +5,6 @@ __pycache__/
 # Kehitysajon välituloste. Varsinaiset kaappaukset ovat snapshots/
 # ja ne KUULUVAT versionhallintaan — ne ovat sarjan ainoa muisti.
 fetched_raw.json
+
+# Nord Pool UMM: vain sisäiseen käyttöön, ei repoon (CLAUDE.md)
+umm-paikallinen/

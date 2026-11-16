@@ -60,8 +60,9 @@ def main() -> int:
             print("   lista, rivejä:", len(items))
         if items:
             m = items[0]
+            # Vain kenttien nimet: viestien sisältöä ei tulosteta julkiseen
+            # Actions-lokiin (Nord Poolin ehdot, CLAUDE.md).
             print("   esimerkin kentät:", sorted(m)[:40])
-            print("   esimerkki:", json.dumps({k: m[k] for k in list(m)[:12]}, ensure_ascii=False)[:900])
     print("\nTULOS:", "API vastaa ilman avainta" if ok else "ei vastausta ilman avainta")
     return 0
 

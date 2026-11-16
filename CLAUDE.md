@@ -61,6 +61,21 @@ ja varmempia kuin lausunto.
 - Liitosavaimiin, aikaleimoihin, diaarinumeroiden poimintaan: regex ja koodi.
 - Mittapuuksi itselleen: Kimi arvioi huonosti omaa suoritustaan.
 
+## Nord Pool UMM — vain sisäiseen tutkimukseen
+
+Päätetty 16.11.2026. `ummapi.nordpoolgroup.com/messages` vastaa ilman avainta, mutta
+Nord Poolin ehdot sallivat lataamisen, tallentamisen ja käytön analyysiin ja
+tutkimukseen; uudelleenjulkaisu tai muille saataville asettaminen vaatii kirjallisen
+luvan. Repo ja sen Actions-lokit ovat julkisia, joten:
+
+- **UMM-viestejä ei committata** eikä niitä tulosteta Actions-lokeihin tai artefakteihin
+  (`umm-testi`-ajon 43860594142 lokit poistettu tästä syystä).
+- **Ei julkista proxya**, joka välittäisi viestejä.
+- Data haetaan käsin (Nord Poolin UMM-sivun xlsx-vienti) tai suoraan työtilaan, ja
+  käsitellään paikallisesti hakemistossa `umm-paikallinen/` (gitignore).
+- Siirtokeskeytykset ovat saatavilla myös ENTSO-E:stä; sen ehdot tarkistetaan erikseen,
+  jos niitä halutaan julkaista.
+
 ## Tunnetut ansat
 
 - `stance.py`:n jäsennin ottaa `{`…`}` ahneesti (poikkeama 2): Sonnet kirjoitti 6/62
