@@ -38,6 +38,8 @@ Verotus. Datakeskusten sähkö siirtyi veroluokasta II luokkaan I 1.7.2026 (HE 1
 
 Hankekanta. Datakeskushankerekisterin mukaan toiminnassa on noin 380 MW ja rakenteilla noin 4,1 GW ilmoitettua tehoa (16.11.2026) [M]. Fingridin mukaan liittymissopimuksia on lähes 5 GW [M].
 
+Liittymien sääntely. Sähkömarkkinalain muutos verkkokapasiteetin etusijamenettelystä (TEM043:00/2026) on valmistelussa; hallituksen esitystä ei ollut annettu eduskunnalle marraskuun puoliväliin mennessä. Lausuntoluonnoksessa liittymän etusija sidottiin joustositoumukseen. Laki ratkaisee, mitkä hankkeet liitetään, missä järjestyksessä ja millä joustoehdoilla. Se vaikuttaa siksi suoraan kaikkiin tämän muistion tuloksiin: toteutuvaan kuormaan (§ 03), kantaverkon toteutumattomien hankkeiden riskiin (§ 04) ja hintaan (§ 05). Muistio ei oleta lain sisältöä.
+
 Teholuvut. Rekisterin MW-luvut ovat usein IT-tehoa. Verkosta otettava teho on PUE-kertoimen verran suurempi, tyypillisesti 1,1–1,3 [A].
 
 § 03Skenaariot ja menetelmä
@@ -108,6 +110,8 @@ Muistio ei kata kotimaahan jäävää arvonlisää (SM-012, SM-016), jakeluverkk
 
 Seurattavat muuttujat:
 
+Sähkömarkkinalain etusijamenettelyn sisältö: etusijan perusteet, joustositoumuksen ehdot ja ohjaako laki kulutusta tuotannon lähelle (OGAS3:n seurantalista, TEM043:00/2026).
+
 Pysyykö datakeskusten sähkö veroluokassa I.
 
 Rakenteilla olevien hankkeiden toteutuminen ja niiden IT- ja liittymätehot (datakeskushankerekisteri).
@@ -141,6 +145,8 @@ Kotitalouksien osuus kulutuksesta, ALV | 25 %, 25,5 % | [A], ALV [M] |
 Lähteet
 
 Eduskunta: HE 156/2025; VaVM 28/2025 vp
+
+TEM: Luonnos hallituksen esitykseksi sähkömarkkinalain muuttamisesta (sähköverkon kapasiteetin etusijamenettely), TEM043:00/2026, lausuntokierros syksy 2026
 
 Budjettiriihi syyskuu 2026: datakeskusten tukimallista luopuminen (Suomen Uutiset 2.9.2026; AI Suomi 2.9.2026)
 
