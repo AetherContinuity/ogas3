@@ -68,6 +68,7 @@ ja varmempia kuin lausunto.
 - Workflow-artefaktit: lataa vain jobin omat tiedostot (koko hakemisto ylikirjoitti
   tuoreet tulokset, ajo 43391570301). Tulos-commitissa `git pull --rebase` ennen pushia.
 - Re-run ajaa vanhan commitin version; uusi ajo aina "Run workflow" -napista.
+- Katselmointi-workflow haaralla: commit-vaihe rebasoi ajohaaran päälle (ennen mainin päälle → push hylättiin, vastaus hävisi, ajo 43918481837).
 - Anthropic-avain ilman workspace-rajausta → HTTP 400 ennen mallia.
 - Snapshotin lähdevirhe ei kaada kaappausta; katso `queries[].error`.
 

@@ -45,5 +45,8 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add katselmoinnit/
           git commit -m "katselmointi: Kimi K3.1 Pro -vastaus" || echo "ei muutoksia"
-          git pull --rebase origin main
-          git push
+          # Rebase sen haaran päälle, jolta ajo käynnistettiin (ei mainin):
+          # haara-ajossa shallow checkout + rebase mainiin kirjoitti commitit
+          # uudelleen ja push hylättiin (ajo 43918481837, vastaus hävisi).
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
