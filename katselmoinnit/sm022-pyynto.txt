@@ -1,30 +1,30 @@
 TEHTÄVÄ: riippumaton katselmointi ennen julkaisua
 
-Alla on ACI:n muistioluonnos SM-022 v0.2 (datakeskusten rahavirrat Suomessa) ja sen laskentaskripti rivinumeroin. Muistiota ei ole julkaistu. Aritmetiikka tarkistetaan ajamalla skripti, joten älä laske lukuja uudelleen. Katselmoi:
+Alla on ACI:n muistioluonnos SM-022 v0.3 (datakeskusten rahavirrat Suomessa) ja sen laskentaskripti rivinumeroin. Muistiota ei ole julkaistu. Aritmetiikka tarkistetaan ajamalla skripti, joten älä laske lukuja uudelleen. Katselmoi:
 
 1. Oletukset: mitkä [A]-merkityistä oletuksista ovat heikoimpia tai suuntaa vääristäviä? Perustele mekanismilla, älä yleisellä epävarmuudella.
 2. Päättely: seuraavatko havainnot 1–3 laskelmasta? Erityisesti havainto 3 (kantaverkko ei ole merkittävä siirtokanava): onko vertailu (datakeskusten maksamat energiaperusteiset maksut vs. niille kohdistettu osuus uusien investointien annuiteetista) oikea tapa kysyä asiaa? Mitä kustannuksia se jättää pois?
-3. Hintavaikutus: onko AFRYn +10 %:n (2,5 GW) lineaarinen skaalaus ja sen soveltaminen 85 TWh:iin perusteltu? Onko kyse siirrosta (käyttäjiltä tuottajille) vai osin todellisesta kustannuksesta?
+3. Hintavaikutus: onko herkkyysesitys (€/MWh x 85 TWh) oikea tapa käsitellä hintaa, kun hintataso jätetään mallintamatta? Mitä se jättää pois?
 4. Puuttuvat rahavirrat: mikä merkittävä virta puuttuu ja mihin suuntaan se muuttaisi johtopäätöksiä?
 5. Onko tekstissä väitteitä, joita laskelma ei tue?
 
-Sinulla ei ole verkkoa eikä pääsyä lähteisiin. Älä keksi lukuja tai lähteitä; jos jokin väite vaatisi tarkistusta, sano mikä ja mistä. Jos jokin on epäselvää, sano se äläkä arvaa. Toinen kielimalli on jo katselmoinut v0.1:n; v0.2 korjaa sen löydökset (veroluokan tila, hintavaikutus herkkyyslaskelmana, kantaverkko jyvityksenä, kululisäherkkyys, IT-teho/PUE). Arvioi v0.2 itsenäisesti. Vastaa suomeksi, tiiviisti, löydökset vakavuusjärjestyksessä.
+Sinulla ei ole verkkoa eikä pääsyä lähteisiin. Älä keksi lukuja tai lähteitä; jos jokin väite vaatisi tarkistusta, sano mikä ja mistä. Jos jokin on epäselvää, sano se äläkä arvaa. Toinen kielimalli on jo katselmoinut v0.1:n; v0.2 korjaa sen löydökset (veroluokan tila, hintavaikutus herkkyyslaskelmana, kantaverkko jyvityksenä, kululisäherkkyys, IT-teho/PUE). v0.3 poistaa lisäksi hintavaikutuksen laskelmasta ja esittää sen herkkyytenä. Arvioi v0.3 itsenäisesti. Vastaa suomeksi, tiiviisti, löydökset vakavuusjärjestyksessä.
 
 ==================== TIEDOSTO: papers/sm-022-datakeskusten-rahavirrat.html (teksti) ====================
 Synthesis Memo · SM-022 · Domain D-1 · D-3
 
- StatusWorking Draft v0.2, katselmoimatta
+ StatusWorking Draft v0.3, katselmoimatta
  LanguageFI
  Date16.11.2026
  Relates toSM-012, SM-016, WEM, DEMO-001
- BasisFingrid, VaVM 28/2025, AFRY/Mattila 2025, datakeskushankerekisteri
+ BasisFingrid, VaVM 28/2025, datakeskushankerekisteri
  Laskentasm022_datakeskusten_rahavirrat.py
 
  Datakeskusten rahavirrat
 
  Kuka maksaa ja kuka saa, kun Suomeen tulee 1,5–4 GW datakeskuskuormaa
 
- Muistio kokoaa samaan laskelmaan neljä vuosittaista rahavirtaa: sähkövero, datakeskusyhtiöiden yhteisövero, kantaverkkomaksut ja sähkön hintavaikutus muille käyttäjille. Tulos: valtion suurin tulo on sähkövero. Muiden sähkönkäyttäjien laskennallinen kustannusvaikutus on samaa suuruusluokkaa, mutta se on herkkyyslaskelma, ei osoitettu rahavirta. Kantaverkkomaksujen ja investointien vertailu on laskennallinen jyvitys, ei syy-seuraussuhde. Merkinnät: [M] mitattu tai lähteestä, [L] laskettu, [A] oletus.
+ Muistio kokoaa samaan laskelmaan kolme vuosittaista rahavirtaa: sähkövero, datakeskusyhtiöiden yhteisövero ja kantaverkkomaksut. Sähkön hintavaikutusta ei mallinneta, koska hintataso riippuu ennen kaikkea tuulesta, vesitilanteesta, siirtoyhteyksistä ja kulutuksen kasvusta, ja julkiset arviot vaihtelevat. Se esitetään herkkyytenä: jokainen 1 €/MWh muutos keskihinnassa on muille sähkönkäyttäjille noin 85 M€ vuodessa. Tulos: valtion suurin tulo on sähkövero. Kantaverkkomaksujen ja investointien vertailu on laskennallinen jyvitys, ei syy-seuraussuhde. Merkinnät: [M] mitattu tai lähteestä, [L] laskettu, [A] oletus.
 
 § 01Skenaariot
 
@@ -42,10 +42,6 @@ Yhteisövero, datakeskukset, kululisä 5 % [A] | 17 | 29 | 46 | Valtio |
 
 — herkkyys: kululisä 2 % / 10 % | 7 / 35 | 12 / 58 | 19 / 93 | Valtio | 
 
-Muiden sähkönkäyttäjien laskennallinen kustannusvaikutus; herkkyyslaskelma AFRYn 2,5 GW:n skenaariosta [A] | (−207) | −344 | (−551) | Sähkön ostajat; tuottajille vain osin | 
-
-ALV kotitalouksien hinnannoususta [A] | 13 | 22 | 35 | Valtio | 
-
 Kantaverkkomaksut, datakeskukset maksavat [L] | 50 | 84 | 134 | Fingrid | 
 
 Uusien kantaverkkoinvestointien annuiteetista jyvitetty osuus (kulutuksen kasvun suhteessa) [A] | 42 | 71 | 113 | Fingrid | 
@@ -54,7 +50,19 @@ Havainto 1
 Valtion tulo on lähes kokonaan sähköveroa. Yhteisövero on alle kymmenesosa siitä, koska datakeskusyhtiöt toimivat kululisämallilla (vrt. Tuike Finland Oy: liikevoitto 5–6 % kuluista 2022–2025). Datakeskukset siirtyivät veroluokkaan I 1.7.2026. Korvaavaksi suunniteltu tukimalli (enintään 30 M€/v) peruttiin budjettiriihessä syyskuussa 2026, joten luokka I on voimassa oleva tilanne ja luokka II vastaskenaario. Kokonaisvero huoltovarmuusmaksu mukaan lukien on 2,325 snt/kWh; taulukossa on vain valtion budjettiin tuleva energiavero.
 
 Havainto 2
-Muiden sähkönkäyttäjien laskennallinen kustannusvaikutus on 2,5 GW:n skenaariossa noin 340 M€ vuodessa, samaa suuruusluokkaa kuin sähköveron tuotto (390 M€). Luku on herkkyyslaskelma: AFRYn +10 % on vuoden 2030 mallinnustulos, joka on tässä sovellettu vuoden 2025 keskihintaan, ja 1,5 ja 4,0 GW:n luvut ovat lineaarisia ekstrapolaatioita (suluissa). Hinnannousu ei siirry kokonaan kotimaisille tuottajille: osa sähköstä tuodaan, osa myydään pitkillä sopimuksilla ja osa jää suojausten vastapuolille. AFRYn mukaan 20 %:n jousto alentaa keskihintaa yli 1 €/MWh ja tuo käyttäjille noin 125 M€ hyödyn keskimääräisenä vuonna.
+Sähkön hintavaikutus on samaa suuruusluokkaa kuin sähköveron tuotto, jos keskihinta nousee muutamia euroja megawattitunnilta: 2,5 GW:n sähkövero (390 M€) vastaa noin 4,6 €/MWh:n nousua 85 TWh:n muulle kulutukselle. Toteutuuko nousu, ei ratkea tällä laskelmalla. Hinnannousu ei myöskään siirry kokonaan kotimaisille tuottajille: osa sähköstä tuodaan, osa myydään pitkillä sopimuksilla ja osa jää suojausten vastapuolille.
+
+Keskihinnan muutos | Muiden käyttäjien kustannus M€/v | ALV kotitalouksilta M€/v [A] | 
+
++1 €/MWh (2 %) | 85 | 5 | 
+
++2 €/MWh (5 %) | 170 | 11 | 
+
++5 €/MWh (12 %) | 425 | 27 | 
+
++10 €/MWh (25 %) | 850 | 54 | 
+
+Julkisia arvioita: AFRY (2025) arvioi 2,5 GW:n kulutuksen nostavan keskihintaa noin 10 % vuoteen 2030 ja 20 %:n jouston alentavan sitä yli 1 €/MWh; Energiateollisuus pitää merkittävää nousua epätodennäköisenä, koska tuotanto kasvaa kulutuksen mukana. ACI ei käytä kumpaakaan laskelman pohjana.
 
 Havainto 3
 Nykyisellä tariffilla datakeskusten energiaperusteinen maksuosuus (4,79 €/MWh [L]) on laskennallisesti suurempi kuin niille kulutuksen kasvun suhteessa jyvitetty osuus suunniteltujen investointien vuosittaisesta pääomakustannuksesta. Vertailu ei osoita, että hankkeiden aiheuttamat verkkokustannukset katetaan: investointiohjelma palvelee myös tuotannon siirtoa, rajayhteyksiä ja muita asiakkaita, eikä jyvitys ole syy-seuraussuhde. Selvin riski on toteutumatta jäävissä hankkeissa.
@@ -65,9 +73,7 @@ Suure | Arvo | Tyyppi ja lähde |
 
 Sähkövero I / II | 22,4 / 0,5 €/MWh | [M] VaVM 28/2025 vp | 
 
-Hintavaikutus | +10 % keskihintaan 2,5 GW:lla, skaalattu lineaarisesti | [M] AFRY 2025 (Mattilan tiekartta); skaalaus [A]. AFRY oletti tuotannon kasvavan kulutuksen tahdissa. | 
-
-Keskihinta | 40,5 €/MWh (2025) | [M] Fingrid | 
+Keskihinta | 40,5 €/MWh (2025), vain prosenttien vertailutaso | [M] Fingrid | 
 
 Muu kulutus, joka kohtaa hinnan | 85 TWh | [A] koko nykykulutus; kiinteät sopimukset siirtävät vaikutusta ajallisesti, eivät poista sitä | 
 
@@ -97,7 +103,7 @@ Kotimaahan jäävää arvonlisää: palkat, konsernin sisäiset palvelu- ja lise
 
 Uuden tuotannon ajallista ja maantieteellistä kohtaamista kulutuksen kanssa; AFRY oletti vuosienergian tasapainon.
 
-Hintavaikutuksen epälineaarisuutta yli 2,5 GW:n: lineaarinen skaalaus voi ali- tai yliarvioida.
+Hintatasoa: se riippuu tuulesta, vesitilanteesta, siirroista ja kulutuksen kasvusta, eikä sitä mallinneta.
 
 § 05Seurattavat muuttujat
 
@@ -105,7 +111,7 @@ Palaako tukimalli tai veroluokan II kaltainen huojennus myöhempiin budjetteihin
 
 Rakenteilla olevien hankkeiden toteutuminen (datakeskushankerekisteri).
 
-Suomen vuosikeskihinta suhteessa SE1:een ja SE3:een (aci-entsoe-proxy /day-ahead-price).
+Suomen vuosikeskihinta suhteessa SE1:een ja SE3:een sekä tuulituotannon vuosivaihtelu (aci-entsoe-proxy /day-ahead-price, Fingrid DS 181).
 
 Kantaverkkomaksujen rakenneuudistuksen päätös.
 
@@ -136,8 +142,8 @@ Tuike Finland Oy, tilinpäätöstiedot 2022–2025 (Asiakastieto, Vainu)
  10: FG_INVEST = 5.2e9            # [M] Fingrid 2026-2035
  11: ANNUITEETTI = 0.05/(1-1.05**-40)   # [A] 5 %, 40 v
  12: KULUTUS_2025, KULUTUS_2035 = 85, 160   # [M] TWh (ET 2025; Fingrid kehittämissuunnitelma)
- 13: HINTA_2025 = 40.5            # [M] €/MWh, Fingrid
- 14: AFRY_GW, AFRY_DP = 2.5, 0.10 # [M] AFRY: 2,5 GW -> +10 % keskihinta 2030
+ 13: HINTA_2025 = 40.5            # [M] €/MWh, Fingrid (vertailutaso, ei ennuste)
+ 14: HINTAHERKKYYS = (1, 2, 5, 10) # €/MWh muutos keskihinnassa; hintaa ei mallinneta (riippuu tuulesta, vesitilanteesta, siirroista ja kulutuksen kasvusta)
  15: MUU_KULUTUS = 85             # [A] TWh, muu kuin datakeskus
  16: KOTIT_OSUUS = 0.25           # [A] kotitalouksien osuus kulutuksesta (ALV-vaikutus)
  17: ALV = 0.255                  # [M]
@@ -151,41 +157,41 @@ Tuike Finland Oy, tilinpäätöstiedot 2022–2025 (Asiakastieto, Vainu)
  25:     out['yhteisovero_dc'] = gw*1000*YHTEISOVERO_PER_MW
  26:     out['kv_maksut_dc'] = e*1e6*KV_KESKI
  27:     out['kv_kustannus_dc'] = FG_INVEST*ANNUITEETTI * min(1, e/(KULUTUS_2035-KULUTUS_2025))
- 28:     dp = AFRY_DP*HINTA_2025*gw/AFRY_GW     # [A] lineaarinen skaalaus
- 29:     out['hinnannousu_EUR_MWh'] = dp
- 30:     out['siirto_kuluttajilta'] = dp*MUU_KULUTUS*1e6
- 31:     out['alv_kotitaloudet'] = out['siirto_kuluttajilta']*KOTIT_OSUUS*ALV
- 32:     for m in (0.02, 0.05, 0.10):       # [A] kululisäherkkyys
- 33:         out[f'yhteisovero_{int(m*100)}pct'] = gw*1000*1.16e6*m*0.20
- 34:     return out
- 35: 
- 36: if __name__ == '__main__':
- 37:     print(f'Kantaverkkomaksu tasaiselle kuormalle {KV_KESKI:.2f} €/MWh; investointien annuiteetti {FG_INVEST*ANNUITEETTI/1e6:.0f} M€/v')
- 38:     for gw in (1.5, 2.5, 4.0):
- 39:         o = skenaario(gw); M = lambda k: o[k]/1e6
- 40:         print(f'\n== {gw} GW lisäkuormaa, {o["kulutus_TWh"]:.1f} TWh/v')
- 41:         print(f'Valtio: sähkövero I {M("sahkovero_I"):.0f} M€ (luokka II olisi {M("sahkovero_II"):.0f}), yhteisövero DC {M("yhteisovero_dc"):.0f} M€, ALV kotitalouksien hinnannoususta {M("alv_kotitaloudet"):.0f} M€')
- 42:         print(f'Kantaverkko: DC maksaa {M("kv_maksut_dc"):.0f} M€, DC:lle kohdistuva investointikulu {M("kv_kustannus_dc"):.0f} M€ -> muille {M("kv_kustannus_dc")-M("kv_maksut_dc"):.0f} M€')
- 43:         print(f'Yhteisövero kululisällä 2/5/10 %: {M("yhteisovero_2pct"):.0f} / {M("yhteisovero_5pct"):.0f} / {M("yhteisovero_10pct"):.0f} M€')
- 44:         print(f'Hinta: +{o["hinnannousu_EUR_MWh"]:.1f} €/MWh -> muiden sähkönkäyttäjien laskennallinen kustannusvaikutus {M("siirto_kuluttajilta"):.0f} M€')
+ 28:     for m in (0.02, 0.05, 0.10):       # [A] kululisäherkkyys
+ 29:         out[f'yhteisovero_{int(m*100)}pct'] = gw*1000*1.16e6*m*0.20
+ 30:     return out
+ 31: 
+ 32: if __name__ == '__main__':
+ 33:     print(f'Kantaverkkomaksu tasaiselle kuormalle {KV_KESKI:.2f} €/MWh; investointien annuiteetti {FG_INVEST*ANNUITEETTI/1e6:.0f} M€/v')
+ 34:     print('Hintaherkkyys (riippumaton datakeskusskenaariosta): muiden käyttäjien kustannus / ALV kotitalouksilta, M€/v')
+ 35:     for d in HINTAHERKKYYS:
+ 36:         print(f'  +{d} €/MWh ({d/HINTA_2025:.0%} vuoden 2025 tasosta): {d*MUU_KULUTUS:.0f} / {d*MUU_KULUTUS*KOTIT_OSUUS*ALV:.0f}')
+ 37:     for gw in (1.5, 2.5, 4.0):
+ 38:         o = skenaario(gw); M = lambda k: o[k]/1e6
+ 39:         print(f'\n== {gw} GW lisäkuormaa, {o["kulutus_TWh"]:.1f} TWh/v')
+ 40:         print(f'Valtio: sähkövero I {M("sahkovero_I"):.0f} M€ (luokka II olisi {M("sahkovero_II"):.0f}), yhteisövero DC {M("yhteisovero_dc"):.0f} M€')
+ 41:         print(f'Kantaverkko: DC maksaa {M("kv_maksut_dc"):.0f} M€, DC:lle kohdistuva investointikulu {M("kv_kustannus_dc"):.0f} M€ -> muille {M("kv_kustannus_dc")-M("kv_maksut_dc"):.0f} M€')
+ 42:         print(f'Yhteisövero kululisällä 2/5/10 %: {M("yhteisovero_2pct"):.0f} / {M("yhteisovero_5pct"):.0f} / {M("yhteisovero_10pct"):.0f} M€')
 
 ==================== AJON TULOSTE ====================
 Kantaverkkomaksu tasaiselle kuormalle 4.79 €/MWh; investointien annuiteetti 303 M€/v
+Hintaherkkyys (riippumaton datakeskusskenaariosta): muiden käyttäjien kustannus / ALV kotitalouksilta, M€/v
+  +1 €/MWh (2% vuoden 2025 tasosta): 85 / 5
+  +2 €/MWh (5% vuoden 2025 tasosta): 170 / 11
+  +5 €/MWh (12% vuoden 2025 tasosta): 425 / 27
+  +10 €/MWh (25% vuoden 2025 tasosta): 850 / 54
 
 == 1.5 GW lisäkuormaa, 10.5 TWh/v
-Valtio: sähkövero I 235 M€ (luokka II olisi 5), yhteisövero DC 17 M€, ALV kotitalouksien hinnannoususta 13 M€
+Valtio: sähkövero I 235 M€ (luokka II olisi 5), yhteisövero DC 17 M€
 Kantaverkko: DC maksaa 50 M€, DC:lle kohdistuva investointikulu 42 M€ -> muille -8 M€
 Yhteisövero kululisällä 2/5/10 %: 7 / 17 / 35 M€
-Hinta: +2.4 €/MWh -> muiden sähkönkäyttäjien laskennallinen kustannusvaikutus 207 M€
 
 == 2.5 GW lisäkuormaa, 17.5 TWh/v
-Valtio: sähkövero I 392 M€ (luokka II olisi 9), yhteisövero DC 29 M€, ALV kotitalouksien hinnannoususta 22 M€
+Valtio: sähkövero I 392 M€ (luokka II olisi 9), yhteisövero DC 29 M€
 Kantaverkko: DC maksaa 84 M€, DC:lle kohdistuva investointikulu 71 M€ -> muille -13 M€
 Yhteisövero kululisällä 2/5/10 %: 12 / 29 / 58 M€
-Hinta: +4.0 €/MWh -> muiden sähkönkäyttäjien laskennallinen kustannusvaikutus 344 M€
 
 == 4.0 GW lisäkuormaa, 28.0 TWh/v
-Valtio: sähkövero I 628 M€ (luokka II olisi 14), yhteisövero DC 46 M€, ALV kotitalouksien hinnannoususta 35 M€
+Valtio: sähkövero I 628 M€ (luokka II olisi 14), yhteisövero DC 46 M€
 Kantaverkko: DC maksaa 134 M€, DC:lle kohdistuva investointikulu 113 M€ -> muille -21 M€
 Yhteisövero kululisällä 2/5/10 %: 19 / 46 / 93 M€
-Hinta: +6.5 €/MWh -> muiden sähkönkäyttäjien laskennallinen kustannusvaikutus 551 M€
