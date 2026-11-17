@@ -1,5 +1,5 @@
 {
- "haettu": "2026-11-17T18:56:13.549410+00:00",
+ "haettu": "2026-11-17T19:06:53.379364+00:00",
  "c1": {
   "2024": {
    "url": "https://comptroller.war.gov/Portals/45/Documents/defbudget/FY2024/FY2024_c1.pdf",
@@ -10,14 +10,94 @@
     },
     "Norway": {
      "yhteenvetorivit": [
-      "Norway                                                                                   9,700           8,200           8,200          8,200",
-      "Norway                                                                                   9,700           8,200           8,200          8,200",
-      "Norway                                                      119,000          119,000        119,000        119,000",
-      "Norway                                        119,000         119,000        119,000        119,000",
-      "Norway                                                                                  8,200            8,200           8,200          8,200",
-      "Norway                                                                                  8,200            8,200           8,200          8,200",
-      "Norway                                                                                119,000         119,000          119,000        119,000",
-      "Norway                                                                                119,000         119,000          119,000        119,000"
+      {
+       "rivi": "Norway                                                                                   9,700           8,200           8,200          8,200",
+       "otsikot": [
+        "State-Country | Auth Amount* | Amount* | Appn Amount* | TOA Amount*",
+        "*Includes enacted funding in the Disaster Relief Supplemental Appropriation Act, 2023 (Division N of Public Law 117-328).",
+        "Summary for 2023",
+        "Military Construction and Family Housing",
+        "Summary by State and Country",
+        "State-Country | Auth Amount* | Amount* | Appn Amount* | TOA Amount*"
+       ]
+      },
+      {
+       "rivi": "Norway                                                                                   9,700           8,200           8,200          8,200",
+       "otsikot": [
+        "State-Country | Auth Amount* | Amount* | Appn Amount* | TOA Amount*",
+        "*Includes enacted funding in the Disaster Relief Supplemental Appropriation Act, 2023 (Division N of Public Law 117-328).",
+        "Summary for 2023",
+        "Military Construction and Family Housing",
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount* | Amount* | Appn Amount* | TOA Amount*"
+       ]
+      },
+      {
+       "rivi": "Norway                                                      119,000          119,000        119,000        119,000",
+       "otsikot": [
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2024",
+        "Military Construction and Family Housing",
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      },
+      {
+       "rivi": "Norway                                        119,000         119,000        119,000        119,000",
+       "otsikot": [
+        "Navy Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2024",
+        "Military Construction and Family Housing",
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      },
+      {
+       "rivi": "Norway                                                                                  8,200            8,200           8,200          8,200",
+       "otsikot": [
+        "*** Total By Location *** | 493,523 | 526,237 | 581,395 | 581,395",
+        "*FY 2023 and FY 2024 Overseas Operations Costs (OOC) numbers are a subset of the baseline submission.",
+        "Summary for 2023",
+        "Military Construction and Family Housing",
+        "Summary by State and Country",
+        "State-Country | Auth Amount* | Amount* | Appn Amount* | TOA Amount*"
+       ]
+      },
+      {
+       "rivi": "Norway                                                                                  8,200            8,200           8,200          8,200",
+       "otsikot": [
+        "State-Country | Auth Amount* | Amount* | Appn Amount* | TOA Amount*",
+        "*FY 2023 and FY 2024 Overseas Operations Costs (OOC) numbers are a subset of the baseline submission.",
+        "Summary for 2023",
+        "Military Construction and Family Housing",
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount* | Amount* | Appn Amount* | TOA Amount*"
+       ]
+      },
+      {
+       "rivi": "Norway                                                                                119,000         119,000          119,000        119,000",
+       "otsikot": [
+        "*** Total By Location *** | 297,072 | 304,358 | 304,358 | 304,358",
+        "*FY 2023 and FY 2024 Overseas Operations Costs (OOC) numbers are a subset of the baseline submission.",
+        "Summary for 2024",
+        "Military Construction and Family Housing",
+        "Summary by State and Country",
+        "State-Country | Auth Amount* | Amount* | Appn Amount* | TOA Amount*"
+       ]
+      },
+      {
+       "rivi": "Norway                                                                                119,000         119,000          119,000        119,000",
+       "otsikot": [
+        "State-Country | Auth Amount* | Amount* | Appn Amount* | TOA Amount*",
+        "*FY 2023 and FY 2024 Overseas Operations Costs (OOC) numbers are a subset of the baseline submission.",
+        "Summary for 2024",
+        "Military Construction and Family Housing",
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount* | Amount* | Appn Amount* | TOA Amount*"
+       ]
+      }
      ],
      "muut_maininnat_lkm": 8
     },
@@ -40,12 +120,72 @@
     },
     "Norway": {
      "yhteenvetorivit": [
-      "Norway                                                       9,700            8,200           8,200          8,200",
-      "Norway                                                       9,700            8,200           8,200          8,200",
-      "Norway                                                                                 119,000         119,000        119,000            119,000",
-      "Norway                                                                                 119,000         119,000        119,000            119,000",
-      "Norway                                                                                119,000         119,000        119,000         119,000",
-      "Norway                                                                                119,000         119,000        119,000         119,000"
+      {
+       "rivi": "Norway                                                       9,700            8,200           8,200          8,200",
+       "otsikot": [
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2023",
+        "Military Construction and Family Housing",
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      },
+      {
+       "rivi": "Norway                                                       9,700            8,200           8,200          8,200",
+       "otsikot": [
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2023",
+        "Military Construction and Family Housing",
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      },
+      {
+       "rivi": "Norway                                                                                 119,000         119,000        119,000            119,000",
+       "otsikot": [
+        "account is operating under the Further Additional Continuing Appropriations and Other Extensions Act, 2024 (Public Law 118-35). The amounts",
+        "included for FY 2024 reflect the annualized level provided by the continuing resolution.",
+        "Summary for 2024",
+        "Military Construction and Family Housing",
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount**"
+       ]
+      },
+      {
+       "rivi": "Norway                                                                                 119,000         119,000        119,000            119,000",
+       "otsikot": [
+        "account is operating under the Further Additional Continuing Appropriations and Other Extensions Act, 2024 (Public Law 118-35). The amounts",
+        "included for FY 2024 reflect the annualized level provided by the continuing resolution.",
+        "Summary for 2024",
+        "Military Construction and Family Housing",
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount**"
+       ]
+      },
+      {
+       "rivi": "Norway                                                                                119,000         119,000        119,000         119,000",
+       "otsikot": [
+        "*** Total By Location *** | 297,072 | 304,358 | 304,358 | 304,358",
+        "*FY 2024 and FY 2025 Overseas Operations Costs (OOC) numbers are a subset of the baseline submission.",
+        "Summary for 2024",
+        "Military Construction and Family Housing",
+        "Summary by State and Country",
+        "State-Country | Auth Amount* | Amount* | Appn Amount* | TOA Amount*"
+       ]
+      },
+      {
+       "rivi": "Norway                                                                                119,000         119,000        119,000         119,000",
+       "otsikot": [
+        "State-Country | Auth Amount* | Amount* | Appn Amount* | TOA Amount*",
+        "*FY 2024 and FY 2025 Overseas Operations Costs (OOC) numbers are a subset of the baseline submission.",
+        "Summary for 2024",
+        "Military Construction and Family Housing",
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount* | Amount* | Appn Amount* | TOA Amount*"
+       ]
+      }
      ],
      "muut_maininnat_lkm": 6
     },
@@ -55,10 +195,50 @@
     },
     "Denmark": {
      "yhteenvetorivit": [
-      "Denmark                                                     110,000         110,000         110,000        110,000",
-      "Denmark                                                      110,000         110,000         110,000        110,000",
-      "Denmark                                                                               110,000         110,000        110,000        110,000",
-      "Denmark                                                                               110,000         110,000        110,000        110,000"
+      {
+       "rivi": "Denmark                                                     110,000         110,000         110,000        110,000",
+       "otsikot": [
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2025",
+        "Military Construction and Family Housing",
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      },
+      {
+       "rivi": "Denmark                                                      110,000         110,000         110,000        110,000",
+       "otsikot": [
+        "Navy Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2025",
+        "Military Construction and Family Housing",
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      },
+      {
+       "rivi": "Denmark                                                                               110,000         110,000        110,000        110,000",
+       "otsikot": [
+        "*** Total By Location *** | 110,000 | 124,519 | 124,519 | 124,519",
+        "*FY 2024 and FY 2025 Overseas Operations Costs (OOC) numbers are a subset of the baseline submission.",
+        "Summary for 2025",
+        "Military Construction and Family Housing",
+        "Summary by State and Country",
+        "State-Country | Auth Amount* | Amount* | Appn Amount* | TOA Amount*"
+       ]
+      },
+      {
+       "rivi": "Denmark                                                                               110,000         110,000        110,000        110,000",
+       "otsikot": [
+        "State-Country | Auth Amount* | Amount* | Appn Amount* | TOA Amount*",
+        "*FY 2024 and FY 2025 Overseas Operations Costs (OOC) numbers are a subset of the baseline submission.",
+        "Summary for 2025",
+        "Military Construction and Family Housing",
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount* | Amount* | Appn Amount* | TOA Amount*"
+       ]
+      }
      ],
      "muut_maininnat_lkm": 4
     }
@@ -73,12 +253,72 @@
     },
     "Norway": {
      "yhteenvetorivit": [
-      "Norway                                                       167,000          119,000        119,000        119,000",
-      "Norway                                                       167,000         119,000        119,000        119,000",
-      "Norway                                                                 8,000          8,000          8,000",
-      "Norway                                                                         8,000          8,000          8,000",
-      "Norway                                                        72,000           72,000         72,000         72,000",
-      "Norway                                         72,000          72,000         72,000         72,000"
+      {
+       "rivi": "Norway                                                       167,000          119,000        119,000        119,000",
+       "otsikot": [
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2024",
+        "Military Construction and Family Housing",
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      },
+      {
+       "rivi": "Norway                                                       167,000         119,000        119,000        119,000",
+       "otsikot": [
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2024",
+        "Military Construction and Family Housing",
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      },
+      {
+       "rivi": "Norway                                                                 8,000          8,000          8,000",
+       "otsikot": [
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2025",
+        "Military Construction and Family Housing",
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      },
+      {
+       "rivi": "Norway                                                                         8,000          8,000          8,000",
+       "otsikot": [
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2025",
+        "Military Construction and Family Housing",
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      },
+      {
+       "rivi": "Norway                                                        72,000           72,000         72,000         72,000",
+       "otsikot": [
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2026",
+        "Military Construction and Family Housing",
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      },
+      {
+       "rivi": "Norway                                         72,000          72,000         72,000         72,000",
+       "otsikot": [
+        "Navy Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2026",
+        "Military Construction and Family Housing",
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      }
      ],
      "muut_maininnat_lkm": 6
     },
@@ -88,8 +328,28 @@
     },
     "Denmark": {
      "yhteenvetorivit": [
-      "Denmark                                              110,000         110,000        106,200        106,200",
-      "Denmark                                                      110,000         110,000        106,200        106,200"
+      {
+       "rivi": "Denmark                                              110,000         110,000        106,200        106,200",
+       "otsikot": [
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2025",
+        "Military Construction and Family Housing",
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      },
+      {
+       "rivi": "Denmark                                                      110,000         110,000        106,200        106,200",
+       "otsikot": [
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2025",
+        "Military Construction and Family Housing",
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      }
      ],
      "muut_maininnat_lkm": 2
     }
@@ -104,10 +364,50 @@
     },
     "Norway": {
      "yhteenvetorivit": [
-      "Norway                                                                 8,000          8,000          8,000",
-      "Norway                                                                          8,000          8,000          8,000",
-      "Norway                                         72,000          72,000         72,000         72,000",
-      "Norway                                                         72,000          72,000         72,000         72,000"
+      {
+       "rivi": "Norway                                                                 8,000          8,000          8,000",
+       "otsikot": [
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2025",
+        "Military Construction and Family Housing",
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      },
+      {
+       "rivi": "Norway                                                                          8,000          8,000          8,000",
+       "otsikot": [
+        "Navy Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2025",
+        "Military Construction and Family Housing",
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      },
+      {
+       "rivi": "Norway                                         72,000          72,000         72,000         72,000",
+       "otsikot": [
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2026",
+        "Military Construction and Family Housing",
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      },
+      {
+       "rivi": "Norway                                                         72,000          72,000         72,000         72,000",
+       "otsikot": [
+        "Navy Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2026",
+        "Military Construction and Family Housing",
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      }
      ],
      "muut_maininnat_lkm": 4
     },
@@ -117,8 +417,28 @@
     },
     "Denmark": {
      "yhteenvetorivit": [
-      "Denmark                                                       110,000         110,000        106,200        106,200",
-      "Denmark                                                       110,000         110,000        106,200        106,200"
+      {
+       "rivi": "Denmark                                                       110,000         110,000        106,200        106,200",
+       "otsikot": [
+        "Unspecified Locations | 35,438 | 1,529,897 | 1,529,897 | 1,530,897",
+        "*** Total By Location *** | 692,719 | 2,187,178 | 2,187,178 | 2,188,178",
+        "Summary for 2025",
+        "Military Construction and Family Housing",
+        "Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      },
+      {
+       "rivi": "Denmark                                                       110,000         110,000        106,200        106,200",
+       "otsikot": [
+        "Navy Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount",
+        "Summary for 2025",
+        "Military Construction and Family Housing",
+        "Air Force Summary by State and Country",
+        "State-Country | Auth Amount | Amount | Appn Amount | TOA Amount"
+       ]
+      }
      ],
      "muut_maininnat_lkm": 2
     }
