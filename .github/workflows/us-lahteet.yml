@@ -1,0 +1,32 @@
+name: us-lahteet
+
+# Ennakkokirjaus I: Yhdysvaltain julkiset budjetti- ja menolähteet, maatason vuosisummat.
+on:
+  workflow_dispatch:
+  push:
+    branches: [us-lahteet]
+    paths: [tools/us_lahteet.py, .github/workflows/us-lahteet.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  hae:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get install -y -qq poppler-utils >/dev/null
+      - run: python3 tools/us_lahteet.py
+      - name: Commit
+        if: always()
+        run: |
+          git config user.name  "ogas3-us-lahteet"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/us/
+          git commit -m "us-lahteet: lähtötaso (maatason summat)" || echo "ei muutoksia"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

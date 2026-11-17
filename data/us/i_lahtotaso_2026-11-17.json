@@ -1,0 +1,172 @@
+{
+ "haettu": "2026-11-17T18:49:06.946134+00:00",
+ "c1": {
+  "2024": {
+   "url": "https://comptroller.war.gov/Portals/45/Documents/defbudget/FY2024/FY2024_c1.pdf",
+   "maat": {
+    "Finland": {
+     "yhteenvetorivit": [],
+     "muut_maininnat_lkm": 0
+    },
+    "Norway": {
+     "yhteenvetorivit": [
+      "Norway                                                                                   9,700           8,200           8,200          8,200",
+      "Norway                                                                                   9,700           8,200           8,200          8,200",
+      "Norway                                                      119,000          119,000        119,000        119,000",
+      "Norway                                        119,000         119,000        119,000        119,000",
+      "Norway                                                                                  8,200            8,200           8,200          8,200",
+      "Norway                                                                                  8,200            8,200           8,200          8,200",
+      "Norway                                                                                119,000         119,000          119,000        119,000",
+      "Norway                                                                                119,000         119,000          119,000        119,000"
+     ],
+     "muut_maininnat_lkm": 8
+    },
+    "Sweden": {
+     "yhteenvetorivit": [],
+     "muut_maininnat_lkm": 0
+    },
+    "Denmark": {
+     "yhteenvetorivit": [],
+     "muut_maininnat_lkm": 0
+    }
+   }
+  },
+  "2025": {
+   "url": "https://comptroller.war.gov/Portals/45/Documents/defbudget/FY2025/FY2025_c1.pdf",
+   "maat": {
+    "Finland": {
+     "yhteenvetorivit": [],
+     "muut_maininnat_lkm": 0
+    },
+    "Norway": {
+     "yhteenvetorivit": [
+      "Norway                                                       9,700            8,200           8,200          8,200",
+      "Norway                                                       9,700            8,200           8,200          8,200",
+      "Norway                                                                                 119,000         119,000        119,000            119,000",
+      "Norway                                                                                 119,000         119,000        119,000            119,000",
+      "Norway                                                                                119,000         119,000        119,000         119,000",
+      "Norway                                                                                119,000         119,000        119,000         119,000"
+     ],
+     "muut_maininnat_lkm": 6
+    },
+    "Sweden": {
+     "yhteenvetorivit": [],
+     "muut_maininnat_lkm": 0
+    },
+    "Denmark": {
+     "yhteenvetorivit": [
+      "Denmark                                                     110,000         110,000         110,000        110,000",
+      "Denmark                                                      110,000         110,000         110,000        110,000",
+      "Denmark                                                                               110,000         110,000        110,000        110,000",
+      "Denmark                                                                               110,000         110,000        110,000        110,000"
+     ],
+     "muut_maininnat_lkm": 4
+    }
+   }
+  },
+  "2026": {
+   "url": "https://comptroller.war.gov/Portals/45/Documents/defbudget/FY2026/FY2026_c1.pdf",
+   "maat": {
+    "Finland": {
+     "yhteenvetorivit": [],
+     "muut_maininnat_lkm": 0
+    },
+    "Norway": {
+     "yhteenvetorivit": [
+      "Norway                                                       167,000          119,000        119,000        119,000",
+      "Norway                                                       167,000         119,000        119,000        119,000",
+      "Norway                                                                 8,000          8,000          8,000",
+      "Norway                                                                         8,000          8,000          8,000",
+      "Norway                                                        72,000           72,000         72,000         72,000",
+      "Norway                                         72,000          72,000         72,000         72,000"
+     ],
+     "muut_maininnat_lkm": 6
+    },
+    "Sweden": {
+     "yhteenvetorivit": [],
+     "muut_maininnat_lkm": 0
+    },
+    "Denmark": {
+     "yhteenvetorivit": [
+      "Denmark                                              110,000         110,000        106,200        106,200",
+      "Denmark                                                      110,000         110,000        106,200        106,200"
+     ],
+     "muut_maininnat_lkm": 2
+    }
+   }
+  },
+  "2027": {
+   "url": "https://comptroller.war.gov/Portals/45/Documents/defbudget/FY2027/FY2027_c1.pdf",
+   "maat": {
+    "Finland": {
+     "yhteenvetorivit": [],
+     "muut_maininnat_lkm": 0
+    },
+    "Norway": {
+     "yhteenvetorivit": [
+      "Norway                                                                 8,000          8,000          8,000",
+      "Norway                                                                          8,000          8,000          8,000",
+      "Norway                                         72,000          72,000         72,000         72,000",
+      "Norway                                                         72,000          72,000         72,000         72,000"
+     ],
+     "muut_maininnat_lkm": 4
+    },
+    "Sweden": {
+     "yhteenvetorivit": [],
+     "muut_maininnat_lkm": 0
+    },
+    "Denmark": {
+     "yhteenvetorivit": [
+      "Denmark                                                       110,000         110,000        106,200        106,200",
+      "Denmark                                                       110,000         110,000        106,200        106,200"
+     ],
+     "muut_maininnat_lkm": 2
+    }
+   }
+  }
+ },
+ "usaspending": {
+  "agency": "Department of Defense",
+  "Finland": {
+   "2019": 5232321.1899999995,
+   "2020": 2333200.79,
+   "2021": 4708511.9399999995,
+   "2022": 23216291.74,
+   "2023": 13871202.07,
+   "2024": 10764318.42,
+   "2025": 4060513.72,
+   "2026": 6905820.9
+  },
+  "Norway": {
+   "2019": 40186882.2,
+   "2020": 22230161.08,
+   "2021": 19238602.55,
+   "2022": 37303736.65,
+   "2023": 52284887.38,
+   "2024": 135950850.58,
+   "2025": 625729873.1,
+   "2026": 1035822607.97
+  },
+  "Sweden": {
+   "2019": 192465304.44,
+   "2020": 271245133.45,
+   "2021": 269928187.22,
+   "2022": 329766175.85999995,
+   "2023": 281902293.78,
+   "2024": 228632215.11999997,
+   "2025": 643257390.79,
+   "2026": 208308489.25
+  },
+  "Denmark": {
+   "2019": 8545956.04,
+   "2020": 15829433.19,
+   "2021": 5098693.72,
+   "2022": 16076042.51,
+   "2023": 8348909.52,
+   "2024": 19623025.25,
+   "2025": 58690366.45,
+   "2026": 1106353.9
+  }
+ },
+ "virheet": []
+}
