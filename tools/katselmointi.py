@@ -34,15 +34,19 @@ SYSTEM = ("Olet huolellinen ja kriittinen menetelmä- ja koodikatselmoija. "
 
 def kokoa_striimi(lines) -> dict:
     """SSE-rivit (bytes) → sama muoto kuin ei-striimattu vastaus."""
-    content, model, finish, usage = [], None, None, {}
+    content, model, finish, usage, muut = [], None, None, {}, []
     for raw in lines:
         line = raw.decode("utf-8", errors="replace").strip()
         if not line.startswith("data:"):
+            if line and not line.startswith(":"):
+                muut.append(line[:500])   # esim. virhe-event tai ei-SSE-vastaus
             continue
         data = line[5:].strip()
         if data == "[DONE]":
             break
         c = json.loads(data)
+        if c.get("error"):
+            muut.append(json.dumps(c["error"], ensure_ascii=False)[:500])
         model = c.get("model") or model
         if c.get("usage"):
             usage = c["usage"]
@@ -53,7 +57,9 @@ def kokoa_striimi(lines) -> dict:
             if ch.get("usage"):
                 usage = ch["usage"]
             finish = ch.get("finish_reason") or finish
-    return {"model": model, "usage": usage,
+    if muut:
+        print("striimin muut rivit:", *muut[:10], sep="\n  ")
+    return {"model": model, "usage": usage, "striimi_muut": muut[:10],
             "choices": [{"finish_reason": finish, "message": {"content": "".join(content)}}]}
 
 
