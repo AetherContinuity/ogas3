@@ -1,0 +1,248 @@
+TEHTÄVÄ: riippumaton katselmointi ennakkokirjauksen H ja laskennan vastaavuudesta
+
+Alla on ACI:n ennakkokirjaus H (rinnakkaislaskenta: datakeskustaso × hankevaihe, osittainen fiskaalinen vaikutus julkisyhteisöihin 2030), lisäys 1 (lähteet, hankeliite, parametrit; jäädytys 17.11.2026), tulos, laskentaskripti rivinumeroin ja tuloste. H laadittiin edellisen kirjauksen G katselmoinnin (sinun) jälkeen. Aritmetiikka on ajettu.
+
+Katselmoi vakavuusjärjestyksessä:
+1. Vastaavuus: toteuttaako scripts/ekasvu_h_laskenta.py H:n kohdat 1–10 ja lisäyksen 1? Poikkeamat rivinumeroin.
+2. Korjasiko H G:n katselmoinnissa löydetyt ongelmat (pistearvon lukitus, automaattinen korvaaminen, TyEL-rivi, alasektorit, hankekohtainen hyvitysraja)? Mitä jäi?
+3. Laskentahetkellä tehdyt valinnat: tuloksessa erillisarvion investointien hankintarakenne on merkitty [A, laskentahetkellä]; ajoituskerroin skaalaa myös työpaikat ja hyvityksen; Plugin teho johdettu hyvityksestä. Arvioi vaikutus ja suunta.
+4. Lähdetasojen käsittely: onko D-tasojen harmonisointi (riippumattomuus, attribuutio, VTT/FDCA:n poisjättö) johdonmukainen? Puuttuuko jotain, minkä voisi arvioida ilman verkkoa?
+5. Tulkinta: tukevatko tulokset väitteet "tulos määräytyy lähes kokonaan datakeskusten kulutuksesta" ja "P2X tuottaa pääarvolla alle 10 M€"? Mitä varauksia tarvitaan?
+6. Ehdotukset muistioon ja tulevaan työhön (merkitse tulevaksi työksi; älä ehdota H:n lukittujen sääntöjen muuttamista jälkikäteen).
+
+Sinulla ei ole verkkoa. Älä keksi lukuja tai lähteitä. Vastaa suomeksi, tiiviisti.
+
+==================== SEURANTA.md: ennakkokirjaus H, lisäys 1, tulos ====================
+## Energiaintensiivinen kasvu ja julkinen talous — ennakkokirjaus H, rinnakkaislaskenta hankkeen vaiheen mukaan (17.11.2026)
+
+G pysyy muuttumattomana historiallisena kirjauksena. H on uusi laskentakierros G:n toteutusselosteen kohdan 4 pohjalta. Luonnosta kommentoivat ChatGPT ja Marko; Markon ratkaisu: **rinnakkaislaskenta, vaihtoehdot mukaan**.
+
+**1. Kysymys ja nimitys.** Kuinka paljon energiaintensiivinen kasvu kasvattaa julkisyhteisöjen (S13) tuloja 2030 suhteessa VM:n perusuraan, kun hankkeet otetaan mukaan vain dokumentoidun vaiheensa mukaan? Tulos on **osittainen fiskaalinen vaikutus**, ei nettovaikutus: siitä puuttuvat sähkön hintavaikutus, syrjäytyminen ja verkkokustannukset. Matriisin solu yhdistää datakeskus- ja P2X-kulutuksen laskennallisesti; se ei väitä, että molemmat toteutuisivat ilman sähköjärjestelmän muita muutoksia.
+
+**2. Datakeskusten taso 2030 (rinnakkaiset vaihtoehdot, ei todennäköisyysjakauma).** Lähteet luokitellaan alkuperän mukaan; samaa lukua toistavat lähteet ovat yksi taso.
+- D0 3,8 TWh — TEM:n energiatase (VM:n verotuloarvion perusta), perusura.
+- D1 5–6 TWh — Datakeskusten kansallinen tiekartta (VN:n selvityshenkilö); toistettu HE 282/2026:ssa ja FDCA:n tiedotteessa 4/2026. Daily Finland ei ole itsenäinen lähde.
+- D2 11–18 TWh — Energiateollisuus (Leskelä, Taloustaito 2026: 10–15 % kulutuksesta). Attribuutio tarkistetaan lisäyksessä 1 (onko alkuperä Fingrid).
+- D3 17,5 TWh — SM-022:n ACI-skenaario (2,5 GW × 80 %).
+- D4 VTT/FDCA (julkistettu 28.10.2026): **otetaan mukaan vain, jos 2030-kulutusluku varmistetaan raportista lisäyksessä 1**. ChatGPT:n ilmoittamaa 13–23 TWh:ta (ja siinä Fingridille attribuoitua 9–18 TWh:ta) ei ole varmistettu. Lähteen luonne merkitään: toimialajärjestön tilaama.
+Rekisterin 4,1 GW rakenteilla ei muunneta kulutukseksi; se raportoidaan hankeputken mittarina.
+
+**3. Muut hankkeet vaiheen mukaan (kumulatiivisesti).**
+- P0: lopullinen investointipäätös tai rakenteilla. 17.11.2026 ei yhtään P2X-hanketta — nolla tarkoittaa rajauksen tulosta, ei hankkeiden puuttumista.
+- P1: + lupa/FEED, ilmoitettu käyttöönotto ≤ 2030 (nyt Arctic Sisu, Freija, VolagHy).
+- P2: + esiselvitys, ilmoitettu käyttöönotto ≤ 2030 (nyt ETFuels, Plug Power site 1+2).
+Ilman ilmoitettua käyttöönottovuotta tai käyttöönotto > 2030 (Koppö, Vetyalfa, Northern Green Fuels, Arctial, Sakatti): hankeputken seuranta, ei laskentaa. Ei automaattista korvaamista. Fingridin kehys (teollisuus + DC 2030 45–63 TWh; Fingrid Q3/2025: kokonaiskulutus 103–123 TWh) vain tarkistuksena.
+
+**4. Käyttöönottovuoden ajoitus (rinnakkain).** Tarkka käyttöönottokuukausi käytetään, jos tiedossa. Muutoin käyttöönotto 2030 lasketaan rinnakkain 0 %, 50 % ja 100 % vuosikulutuksesta; ≤ 2029 täydellä vuosikulutuksella.
+
+**5. Rinnakkaiset oletukset.** Kaikki yhdistelmät lasketaan ja raportoidaan:
+- nettouusi työ 0 / 50 / 100 %;
+- P2X-yhteisövero 0 / metallien jalostuksen taso 18,9 €/MWh, hyvitys vähennetään hankekohtaisesti enintään hankkeen verosta;
+- elektrolyysin käyttöaste 40 / 60 / 80 %.
+Muistion tiivistelmälauseessa käytetään keskiarviota (työ 50 %, P2X-yhteisövero 0, käyttöaste 60 %, ajoitus 50 %); kaikki muut yhdistelmät julkaistaan liitteenä.
+
+**6. Hankekohtainen liite (lukitaan lisäyksessä 1 ennen laskentaa).** Vaihe, ilmoitettu käyttöönottovuosi/-kuukausi, sähkönkulutus 2030, liityntä- ja tuotantoriippuvuudet, verohyvitys, ilmoitetut pysyvät työpaikat, lähde ja lähteen päivämäärä. **Jäädytyspäivä**: lisäyksen 1 päivämäärä; sen jälkeiset hanketiedot eivät muuta H:ta.
+
+**7. Alasektorit.** Valtio, kunnat, työeläkelaitokset (S13141, omana rivinä; kasvattavat myös eläkevastuuta, kuuluvat silti S13:n rahoitusasemaan ja siten vertailueroon), muut sosiaaliturvarahastot. Hyvinvointialueille ei jyvitetä tuloja (ei verotusoikeutta). Sähkövero ja huoltovarmuusmaksu valtiolle; yhteisövero verontilityslain 2026 jako-osuuksin; palkkojen verot ja maksut lisäyksessä 1 kirjattavin parametrein (Veronmaksajat/VM 2026).
+
+**8. Erillisarviot, ei summaan.** Energiavarastot kolmena eränä (loppukäyttö ei kasva; verkkosähkön häviöt, jos läpivirtaus saatavilla; verohyvitys ≤ 31 M€/v). Datakeskusten kiinteistövero (rakennusosan arvo/MW ja kunnan veroprosentti; jos lähdettä ei löydy, ei arviota). Rakennusvaihe kertaluonteisena (kotimainen osuus Tilastokeskuksen panos-tuotostaulukoista tai kirjattu oletusväli). Hankintaketju tyypin I kertoimilla lähimmälle toimialalle.
+
+**9. Vertailuero.** VM:n syksyn 2026 ennusteen 2030 nimellinen BKT, jos löytyy; muuten G:n johto merkittynä.
+
+**10. Järjestys.** (1) tämä kirjaus; (2) lisäys 1: hankeliite, parametrit, D2:n attribuutio ja D4:n varmistus, jäädytyspäivä; (3) laskenta ja tulos erikseen; (4) Kimin katselmointi ennen muistiota.
+
+### H — lisäys 1: lähteet, hankeliite ja parametrit (17.11.2026, ennen laskentaa). Jäädytyspäivä 17.11.2026.
+
+**Datakeskusten tasot (harmonisoitu):**
+- D0 3,8 TWh — TEM:n energiatase (VM:n perusura).
+- D0b ~4 TWh — Statnett, pohjoismainen datakeskusennuste (Argus 26.3.2026). Siirtoverkkoyhtiön oma malli; Fingrid-riippuvuutta ei tiedetä. Lisätty, koska se on ainoa löydetty TSO-tason datakeskuskohtainen luku.
+- D1 5 / 6 TWh — datakeskusten kansallinen tiekartta (HE 282/2026 toistaa; FDCA 4/2026 toistaa; Daily Finland ja Nordea eivät ole itsenäisiä tasoja). Molemmat päät lasketaan.
+- D2 11 / 18 TWh — Energiateollisuus (Leskelä, Taloustaito 2026, 10–15 % kulutuksesta). Alkuperä (ET:n oma vai Fingridin) ei selvinnyt; attribuutio ET. Molemmat päät lasketaan.
+- D3 17,5 TWh — SM-022 (ACI).
+- D4 VTT/FDCA — **ei mukana**: 2030-kulutuslukua ei varmistettu raportista jäädytyspäivään mennessä. Saatavilla oleva kapasiteettiluku (FDCA, Poikola: jopa 2 800 MW 2030) raportoidaan hankeputken mittarina.
+- ERAA 2025 / TYNDP: ei käytetä tasona; kansalliset kysyntäsyötteet ovat siirtoverkkoyhtiöiden (Suomessa Fingrid), eikä datakeskuserittelyä löytynyt. SvK KMA2025 käytetään vain Pohjoismaiden tasekontekstina, ei Suomen datakeskustasona.
+
+**Hankeliite (P-tasot):**
+
+| Hanke | Taso | Käyttöönotto (uusin lähde) | Kulutus 2030 (60 %) | Hyvitys M€ | Työpaikat | Lähde |
+|---|---|---|---|---|---|---|
+| Arctic Sisu, Kotka | P1 | 1. vaihe: 2028 (Cursor 6/2025) → mahdollisesti 2030 (Argus 8/2026); uusin lähde → 2030 | 1. vaihe = 1/3 × 56,1 kt H₂ × 55 MWh/t = 1,03 TWh [L/A: kolme samankokoista vaihetta] | 150,0 (1/3 kohdistuu 1. vaiheeseen [A]) | 100 [A] | Argus, Cursor |
+| Freija, Nokia | P1 | ensituotanto 2029 (FID-tavoite 2026) | VE1 160 MW → 0,84 TWh | 110,6 | 100 [A] | LVV 2.4.2026, h2-view |
+| VolagHy, Kuopio | P1 | käyttöönotto 2030 | 50 kt eSAF × 0,5 t H₂/t × 55 = 1,38 TWh [A] | 150,0 | 100 (ilmoitettu 100+) | Business Kuopio, chemXplore |
+| ETFuels, Ranua | P2 | COD 2030 | 300 MW → 1,58 TWh | 118,6 | 60 (ilmoitettu) | carbonstorage.io, Kaleva |
+| Plug Power site 1 + 2 | P2 | vuosikymmenen loppu (2023), FID-tavoite 2025/26 ei vahvistettu; → 2030 | sivustokohdistus tuntematon: teho johdetaan hyvityksestä: 2,55 M€/MW (5,6 mrd € / 2,2 GW), hyvitys = 20 % → site 1 87 MW, site 2 207 MW [L] → 1,55 TWh | 44,2 + 105,8 | 1 000 / 2,2 GW × 294 MW = 134 [L] | Plug Power 2023, Business Finland |
+
+Kaikilla P1–P2-hankkeilla käyttöönotto 2030 paitsi Freija (2029) → ajoitus 0/50/100 % koskee Arctic Sisua, VolagHya, ETFuelsia ja Plugia. Hankeputki ilman laskentaa: Koppö (200 MW), Vetyalfa (500–1 000 MW), Northern Green Fuels, Arctial (~7 TWh), Sakatti, Norsk e-Fuel (80 kt), Arctic Sisu vaiheet 2–3.
+
+**Datakeskusten työpaikat (rinnakkain):** 120 / TWh (Tuike Finland Oy, oma henkilöstö) ja 400 / TWh (Haminan kampus ml. urakoitsijat, Google/Yle) [kulutus 1 TWh A].
+
+**Palkkaparametrit 2026:** vuosipalkka 60 000 € [A]. Työeläkelaitokset: TyEL 24,4 % (työnantaja keskim. 17,10 %, työntekijä 7,30 %; ETK 2026). Muut sosiaaliturvarahastot: työttömyysvakuutus 1,23 % + 0,89 %; sairausvakuutus työnantaja 1,91 % + palkansaajan päivärahamaksu 0,88 % (Varma 2026). Valtio: valtion tulovero ja yle-vero 12 % palkasta [A]; kunnat: kunnallisvero 7,0 % palkasta [A] (keskimääräinen kunnallisvero-% 7,57, efektiivinen alempi vähennysten vuoksi). Kirkollisvero ja sairaanhoitomaksu jätetään pois [A].
+
+**Yhteisöveron jako 2026:** valtio 77,15 %, kunnat 22,85 % (laki 706/2024 muutettuna HE 59/2026 mukaisesti; 1.6.2026 voimaan tullut laki 394/2026).
+
+**Erillisarviot:** rakennusvaiheen kotimainen osuus ja hankintaketju Tilastokeskuksen panos-tuotostaulukoista (StatFin/pt: 14yp tuonnin käyttötaulukko, 14yt Leontiefin käänteismatriisi, 14yr työpanoskertoimet; 2021–2023). Datakeskusten kiinteistöverolle ei löytynyt lähdettä rakennusosan arvosta per MW → ei arviota (H kohta 8). Varastojen läpivirtausta ei löytynyt → häviöt kuvataan sanallisesti.
+
+**Vertailuero:** VM:n syksyn 2026 nimellistä 2030 BKT:ta ei löytynyt; käytetään G:n johtoa (≈ 334 mrd €, erotus 1,4 %-yks. ≈ 4,68 mrd €).
+
+### H — tulos (17.11.2026, laskettu lisäyksen 1 jälkeen, kirjausta ei muutettu)
+
+Laskenta `scripts/ekasvu_h_laskenta.py`, tuloste `tools/data/ekasvu/h_tulos_2026-11-17.txt`, solut JSON:na. Vertailuero ≈ 4 678 M€. **Osittainen fiskaalinen vaikutus**, ei nettovaikutus.
+
+Pääarvo (ajoitus 50 %, nettouusi työ 50 %, P2X-yhteisövero 0, käyttöaste 60 %, DC 120 tp/TWh), M€ ja osuus vertailuerosta:
+
+| | P0 (FID) | P1 (+lupa/FEED) | P2 (+esiselvitys) |
+|---|---|---|---|
+| D0 TEM 3,8 | 0 (0,0 %) | 6 (0,1 %) | 9 (0,2 %) |
+| D0b Statnett 4 | 5 (0,1 %) | 11 (0,2 %) | 14 (0,3 %) |
+| D1 tiekartta 5–6 | 32–59 (0,7–1,3 %) | 38–64 | 41–68 (0,9–1,4 %) |
+| D2 ET 11–18 | 192–378 (4,1–8,1 %) | 197–384 | 201–388 (4,3–8,3 %) |
+| D3 SM-022 17,5 | 365 (7,8 %) | 371 | 374 (8,0 %) |
+
+Kaikkien yhdistelmien välit (ajoitus 0/50/100, nettouusi 0/50/100, P2X-yhteisövero 0/yläraja, käyttöaste 40/60/80, DC-työpaikat 120/400 per TWh): esim. D0 × P2 1–112 M€; D3 × P2 342–612 M€; täysi matriisi tulosteessa.
+
+Havainnot:
+- Hankevaihe (P0→P2) muuttaa pääarvoa enintään 9 M€; datakeskustaso (D0→D2b) 378 M€. Tulos määräytyy lähes kokonaan datakeskusten kulutuksesta ja niiden luokan I sähköverosta.
+- P0 = 0: yhdelläkään P2X-hankkeella ei ole lopullista investointipäätöstä jäädytyspäivänä.
+- P2X 3,6 TWh (P2) tuottaa pääarvolla alle 10 M€; luokan II menetetty sähkövero samalta kulutukselta 79 M€ (ei vähennetty, raportoitu).
+- Alasektorit: lähes kaikki valtiolle (sähkövero). Esim. D2b × P2: valtio 360, kunnat 10, työeläkelaitokset 15, muut sosiaaliturvarahastot 3 M€.
+
+Erillisarviot (ei summaan):
+- Energiavarastot: verohyvitys ≤ 31 M€/v; häviöitä ei laskettu (läpivirtausta ei saatavilla).
+- Rakennusvaihe, investointikysynnän tuontiosuudet 2023 (Tilastokeskus 14yp/14ym): tietokoneet ja elektroniikka (26) 92 %, koneet (28) 79 %, sähkölaitteet (27) 66 %, tekniset palvelut (71) 26 %, metallituotteet (25) 9 %, rakentaminen (41–43) ≈ 0 %. Kotimainen osuus investoinnista hankintarakenteen mukaan [A, laskentahetkellä]: datakeskus ilman palvelimia ~65 %, palvelimet mukana ~35 %; P2X ~52 %.
+- Hankintaketju: Leontiefin käänteismatriisin sarakesummat 2022 (14yt): kemia (20) 1,37, metallien jalostus (24) 1,64, tietojenkäsittely (62–63) 1,46, rakentaminen 1,88. Euromääräistä arviota ei tehty, koska hankkeiden tuotosta ei tunneta.
+- Kiinteistövero: ei arviota (lähdettä ei löytynyt).
+
+
+==================== scripts/ekasvu_h_laskenta.py ====================
+   1  """Ennakkokirjaus H: osittainen fiskaalinen vaikutus julkisyhteisöihin 2030,
+   2  rinnakkaislaskenta (datakeskustaso D × hankevaihe P × ajoitus × oletukset).
+   3  Säännöt: SEURANTA.md, H ja lisäys 1 (jäädytys 17.11.2026). Vain vakiokirjasto.
+   4  [M] lähde, [L] laskettu, [A] oletus."""
+   5  import itertools, json
+   6  
+   7  H = 8760
+   8  H2 = 55.0                                   # MWh/t H2 [A] (G lisäys 2)
+   9  D0 = 3.8                                    # TWh, perusura
+  10  DC_TASOT = {"D0 TEM": 3.8, "D0b Statnett": 4.0, "D1a tiekartta": 5.0, "D1b tiekartta": 6.0,
+  11              "D2a ET": 11.0, "D2b ET": 18.0, "D3 SM-022": 17.5}
+  12  
+  13  # Hankeliite (lisäys 1). cod2030 = käyttöönotto 2030 -> ajoituskerroin t
+  14  def hankkeet(cf):
+  15      return [  # nimi, taso, TWh, hyvitys M€ (kohdistettu), työpaikat, cod2030
+  16          ("Freija",      "P1", 160 * H * cf / 1e6,            110.6,       100, False),
+  17          ("Arctic Sisu", "P1", 56.1e3 * H2 / 1e6 / 3,         150.0 / 3,   100, True),
+  18          ("VolagHy",     "P1", 50e3 * 0.5 * H2 / 1e6,         150.0,       100, True),
+  19          ("ETFuels",     "P2", 300 * H * cf / 1e6,            118.6,        60, True),
+  20          ("Plug site 1", "P2", 87 * H * cf / 1e6,              44.2,        40, True),
+  21          ("Plug site 2", "P2", 207 * H * cf / 1e6,            105.8,        94, True),
+  22      ]
+  23  TASOT = {"P0": [], "P1": ["P1"], "P2": ["P1", "P2"]}
+  24  
+  25  # Verot ja maksut [M]
+  26  SV_I, SV_II, HVM = 22.4, 0.5, 0.85          # €/MWh
+  27  YV_DC = 11.6e3 / (8760 * 0.8)               # €/MWh (SM-022 kululisämalli)
+  28  YV_P2X_YLA = 18.9                           # €/MWh (verot_304 ryhmä 24)
+  29  YV_VALTIO = 0.7715                          # jako 2026
+  30  PALKKA = 60e3                               # € [A]
+  31  PER_TP = {"valtio": 0.12 * PALKKA, "kunnat": 0.07 * PALKKA,
+  32            "tyoelake": 0.244 * PALKKA,
+  33            "muut_sosrahastot": (0.0123 + 0.0089 + 0.0191 + 0.0088) * PALKKA}
+  34  
+  35  def solu(dc_taso, p, t=0.5, nettouusi=0.5, yv_p2x=0.0, cf=0.6, dc_tp_per_twh=120):
+  36      dDC = dc_taso - D0
+  37      sek = {"valtio": 0.0, "kunnat": 0.0, "tyoelake": 0.0, "muut_sosrahastot": 0.0}
+  38      # datakeskukset
+  39      sek["valtio"] += dDC * (SV_I + HVM)
+  40      yv = dDC * YV_DC
+  41      sek["valtio"] += yv * YV_VALTIO; sek["kunnat"] += yv * (1 - YV_VALTIO)
+  42      tp = dDC * dc_tp_per_twh
+  43      # P2X
+  44      p2x_twh = 0.0; hyv_vah = 0.0
+  45      for nimi, taso, twh, hyv, tpp, cod30 in hankkeet(cf):
+  46          if taso not in TASOT[p]: continue
+  47          k = t if cod30 else 1.0
+  48          if k == 0: continue
+  49          e = twh * k
+  50          p2x_twh += e
+  51          sek["valtio"] += e * (SV_II + HVM)
+  52          brutto = e * yv_p2x
+  53          vah = min(brutto, 0.10 * hyv * k)       # hankekohtainen raja
+  54          hyv_vah += vah
+  55          netto = brutto - vah
+  56          sek["valtio"] += netto * YV_VALTIO; sek["kunnat"] += netto * (1 - YV_VALTIO)
+  57          tp += tpp * k
+  58      for s in sek:
+  59          if s in PER_TP: sek[s] += tp * nettouusi * PER_TP[s] / 1e6
+  60      return {"sek": sek, "summa": sum(sek.values()), "p2x_twh": p2x_twh, "dDC": dDC,
+  61              "tyopaikat": tp, "hyvitys_vahennys": hyv_vah,
+  62              "menetetty_II": p2x_twh * (SV_I - SV_II)}
+  63  
+  64  def bkt_2030():
+  65      b = 281.783e3
+  66      for g in (0.008, 0.017, 0.017, 0.015, 0.015): b *= (1 + g) * 1.02
+  67      return b
+  68  
+  69  if __name__ == '__main__':
+  70      ERO = 0.014 * bkt_2030()
+  71      print(f"Vertailuero ≈ {ERO:.0f} M€\n")
+  72      print("PÄÄARVO (t 50 %, nettouusi 50 %, P2X-yhteisövero 0, käyttöaste 60 %, DC 120 tp/TWh), M€ / % vertailuerosta")
+  73      print(f"{'':16}" + "".join(f"{p:>16}" for p in TASOT))
+  74      rivit = []
+  75      for dn, dv in DC_TASOT.items():
+  76          cells = [solu(dv, p) for p in TASOT]
+  77          print(f"{dn:16}" + "".join(f"{c['summa']:8.0f} {c['summa']/ERO:6.1%} " for c in cells))
+  78      print("\nVÄLIT (kaikki yhdistelmät: t 0/50/100, nettouusi 0/50/100, yv 0/yläraja, cf 40/60/80, DC tp 120/400)")
+  79      tulos = {}
+  80      for dn, dv in DC_TASOT.items():
+  81          rivi = []
+  82          for p in TASOT:
+  83              vals = [solu(dv, p, t, n, y, c, j)['summa'] for t, n, y, c, j in itertools.product(
+  84                  (0, 0.5, 1), (0, 0.5, 1), (0, YV_P2X_YLA), (0.4, 0.6, 0.8), (120, 400))]
+  85              pa = solu(dv, p)
+  86              tulos[f"{dn}|{p}"] = {"paa": pa['summa'], "min": min(vals), "max": max(vals), "sek": pa['sek'],
+  87                                    "p2x_twh": pa['p2x_twh'], "tyopaikat": pa['tyopaikat']}
+  88              rivi.append(f"{min(vals):5.0f}–{max(vals):<5.0f}")
+  89          print(f"{dn:16}" + "".join(f"{r:>16}" for r in rivi))
+  90      print("\nALASEKTORIT, pääarvo (M€): valtio / kunnat / työeläkelaitokset / muut sosiaaliturvarahastot")
+  91      for key in ("D0 TEM|P1", "D0 TEM|P2", "D1b tiekartta|P1", "D2b ET|P2", "D3 SM-022|P2"):
+  92          s = tulos[key]['sek']
+  93          print(f"  {key:20} {s['valtio']:6.1f} / {s['kunnat']:5.1f} / {s['tyoelake']:5.1f} / {s['muut_sosrahastot']:4.1f}")
+  94      for p in TASOT:
+  95          c = solu(3.8, p)
+  96          print(f"\n{p}: P2X {c['p2x_twh']:.2f} TWh, työpaikat {c['tyopaikat']:.0f}, hyvitysvähennys {c['hyvitys_vahennys']:.1f} M€, menetetty luokan II vero {c['menetetty_II']:.0f} M€", end="")
+  97      print()
+  98      json.dump({"vertailuero": ERO, "solut": tulos}, open("tools/data/ekasvu/h_tulos_2026-11-17.json", "w"), ensure_ascii=False, indent=1)
+
+==================== tools/data/ekasvu/h_tulos_2026-11-17.txt ====================
+Vertailuero ≈ 4678 M€
+
+PÄÄARVO (t 50 %, nettouusi 50 %, P2X-yhteisövero 0, käyttöaste 60 %, DC 120 tp/TWh), M€ / % vertailuerosta
+                              P0              P1              P2
+D0 TEM                 0   0.0%        6   0.1%        9   0.2% 
+D0b Statnett           5   0.1%       11   0.2%       14   0.3% 
+D1a tiekartta         32   0.7%       38   0.8%       41   0.9% 
+D1b tiekartta         59   1.3%       64   1.4%       68   1.4% 
+D2a ET               192   4.1%      197   4.2%      201   4.3% 
+D2b ET               378   8.1%      384   8.2%      388   8.3% 
+D3 SM-022            365   7.8%      371   7.9%      374   8.0% 
+
+VÄLIT (kaikki yhdistelmät: t 0/50/100, nettouusi 0/50/100, yv 0/yläraja, cf 40/60/80, DC tp 120/400)
+D0 TEM                   0–0             1–49            1–112  
+D0b Statnett             5–7             6–56            6–119  
+D1a tiekartta           30–44           31–93           31–156  
+D1b tiekartta           55–80           56–129          56–192  
+D2a ET                 179–263         180–312         180–375  
+D2b ET                 354–518         354–567         354–630  
+D3 SM-022              341–500         342–549         342–612  
+
+ALASEKTORIT, pääarvo (M€): valtio / kunnat / työeläkelaitokset / muut sosiaaliturvarahastot
+  D0 TEM|P1               3.5 /   0.4 /   1.5 /  0.3
+  D0 TEM|P2               5.9 /   0.6 /   2.2 /  0.4
+  D1b tiekartta|P1       58.4 /   1.8 /   3.4 /  0.7
+  D2b ET|P2             360.4 /   9.6 /  14.6 /  2.9
+  D3 SM-022|P2          347.9 /   9.3 /  14.2 /  2.9
+
+P0: P2X 0.00 TWh, työpaikat 0, hyvitysvähennys 0.0 M€, menetetty luokan II vero 0 M€
+P1: P2X 2.04 TWh, työpaikat 200, hyvitysvähennys 0.0 M€, menetetty luokan II vero 45 M€
+P2: P2X 3.60 TWh, työpaikat 297, hyvitysvähennys 0.0 M€, menetetty luokan II vero 79 M€
+
