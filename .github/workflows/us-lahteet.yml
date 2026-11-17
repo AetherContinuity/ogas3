@@ -3,6 +3,9 @@ name: us-lahteet
 # Ennakkokirjaus I: Yhdysvaltain julkiset budjetti- ja menolähteet, maatason vuosisummat.
 on:
   workflow_dispatch:
+  push:
+    branches: [us-lahteet]
+    paths: [tools/us_lahteet.py, .github/workflows/us-lahteet.yml]
 
 permissions:
   contents: write
