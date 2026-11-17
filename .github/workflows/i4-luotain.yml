@@ -1,0 +1,13 @@
+name: i4-luotain
+on:
+  workflow_dispatch:
+  push:
+    branches: [i4-luotain]
+    paths: [tools/i4_luotain.py, .github/workflows/i4-luotain.yml]
+jobs:
+  luotain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/i4_luotain.py
