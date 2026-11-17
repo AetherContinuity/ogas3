@@ -27,12 +27,25 @@ for fy in (2024, 2025, 2026, 2027):
         rec = {"url": url, "maat": {}}
         for maa in MAAT:
             yht, muut = [], 0
-            for i, l in enumerate(txt.splitlines()):
+            rivit = txt.splitlines()
+            for i, l in enumerate(rivit):
                 s = l.strip()
                 if not re.search(rf"\b{maa}\b", s):
                     continue
                 if re.fullmatch(rf"{maa}{num}", s):
-                    yht.append(s)
+                    # Poikkeama 1 kohta 3: taulukon otsikko luetaan, kohderivejä ei.
+                    otsikot, sivu = [], None
+                    for j in range(i - 1, max(i - 120, -1), -1):
+                        t = rivit[j].strip()
+                        if "\f" in rivit[j] and sivu is None:
+                            sivu = j
+                        if any(m in t for m in MAAT) or not t:
+                            continue
+                        if re.search(r"(Request|Authoriz|Approp|Budget|Enacted|Estimate|FY ?20\d\d|Summary|Country|Location|Military Construction|Total Obligational)", t):
+                            otsikot.append(re.sub(r"\s{2,}", " | ", t))
+                        if len(otsikot) >= 6:
+                            break
+                    yht.append({"rivi": s, "otsikot": otsikot[::-1]})
                 else:
                     muut += 1
             rec["maat"][maa] = {"yhteenvetorivit": yht, "muut_maininnat_lkm": muut}
