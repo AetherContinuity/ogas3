@@ -1,0 +1,1944 @@
+TEHTÄVÄ: loppukaneetti ennakkokirjaukselle I (DCA:n epäsymmetria ja Yhdysvaltain sitoutuminen Suomeen) ja sen kytkentä ACI:n DRD-sarjaan (Distributed Resilience Doctrine)
+
+Tausta: Lähtökohtana presidentti Stubbin FT-haastattelu 17.11.2026. ACI kirjasi ennakkokirjauksen I, neljä poikkeamaa ja lähtötason (alla, SEURANTA.md). Sopimusteksti (SopS 70/2024) on tarkistettu sanatarkasti; olennaiset artiklat alla englanniksi. Lähtötaso: Suomessa ei Yhdysvaltain rakennushankkeita FY2023–2027 (Norjassa ja Tanskassa on), läsnäoloon liittyvät DoD-sopimukset 0–1 M$/v, nimettyjä harjoituksia Yhdysvaltain osallistumisella 2/1/4 (2024/2025/2026, alaraja). Keskustelun tulkinta: Suomen sitoutuminen Yhdysvaltoihin on rakenteellista ja pitkäkestoista (DCA 2034 asti, F-35), Yhdysvaltain sitoutuminen Suomeen toiminnallista ja nopeasti peruttavaa (oikeuksia, ei velvoitteita; 29.1 määrärahaehto).
+
+Arvioi vakavuusjärjestyksessä, numeroituina löydöksinä, viitaten rivinumeroihin:
+1. Kestääkö tulkinta ("rakenteellinen vs toiminnallinen sitoutuminen") aineiston ja sopimustekstin? Mitä se ylittää?
+2. Onko ennakkokirjauksessa ja poikkeamissa 1–4 aukkoja tai sisäisiä ristiriitoja, jotka pitää korjata ennen kevään 2027 mittausta? Älä ehdota lukittujen sääntöjen muuttamista; ehdota korjaukset poikkeamina.
+3. DRD-kytkentä: mitä DRD-sarjan käsitteet (esim. STT, C2-CI, ATM, DAGRA, DRI, meta-arkkitehtuuri) sanovat ulkoisesta kumppanista riippuvan valtion resilienssistä? Onko I-seurannassa sokea piste DRD:n valossa (esim. johtamisjärjestelmien tai ylläpitoketjujen riippuvuus)? Ehdota korkeintaan kaksi julkisesta, maatason aineistosta mitattavaa lisäindikaattoria, jos ne ovat perusteltuja.
+4. Mitä tästä EI saa päätellä?
+
+Rajaukset: ei verkkoa; älä keksi lukuja tai lähteitä. Ei kohdennus- tai haavoittuvuusanalyysiä, ei sijainti- tai ajoitustietoja (kokoamisrajaus, ennakkokirjaus I kohta 5). Arvioi myös DRD-sarjaa vain siltä osin kuin se koskee tätä kysymystä. Suomeksi, tiiviisti.
+
+==================== SEURANTA.md: ENNAKKOKIRJAUS I, POIKKEAMAT 1–4, LÄHTÖTASO ====================
+   1  ## DCA:n epäsymmetria ja Yhdysvaltain sitoutuminen Suomeen — ennakkokirjaus I (17.11.2026)
+   2  
+   3  Kirjattu ennen indikaattoridatan hakua. Lähtökohta on Stubbin FT-haastattelu (17.11.2026: Euroopan Venäjä-yhteyksien ulkoistaminen Yhdysvalloille on "vastuutonta") ja Bildin raportti (13.11.2026) Venäjän vaatimuksesta Suomen Nato-erosta rauhanneuvotteluissa.
+   4  
+   5  **1. Sopimusperusta (tarkistettu sanatarkasti 17.11.2026).** SopS 70/2024, Finlex avoin data `akn/fi/act/treaty/2024/70/fin@/media/8114.pdf` (aci-policy-proxy, PR #10); PDF ja sarake-erotellut tekstit `tools/data/dca/`, sha256 `78647198…a427e8e3`. Kirjauksen kannalta olennaiset määräykset:
+   6  - 3.1 ja 4.1–4.2: Yhdysvalloilla on oikeuksia ("authorized unimpeded access", "may … preposition", "unencumbered right to remove … at any time"). Yksikään "U.S. forces shall" / "United States shall" -lause ei velvoita läsnäoloon tai alueiden käyttöön.
+   7  - 3.4 ja 3.6: Suomi antaa sovitut alueet käyttöön ilman vuokraa ja pyrkii pyydettäessä helpottamaan pääsyä muihin satamiin, lentokenttiin ja teihin ilman kustannuksia Yhdysvalloille.
+   8  - 29.1: "All obligations under this Agreement shall be subject to the availability of appropriated funds." 29.5–6: riidat ratkaistaan neuvotellen, ei tuomioistuimessa eikä kolmannella osapuolella.
+   9  - 30.3: alkuvaihe 10 vuotta, sen jälkeen irtisanominen vuoden ilmoitusajalla. 30.4: liitettä A (15 aluetta) voivat muuttaa osapuolet tai toimeenpanijat kirjallisesti.
+  10  - Rakenne on Yhdysvaltain mallisopimus (PuVL 7/2024, UaVM 5/2024): sama Norjan, Ruotsin ja Tanskan sopimuksissa.
+  11  
+  12  **2. Hypoteesi.** Sopimus sallii Yhdysvaltain sitoutumisen ohentamisen irtisanomatta, Suomi on sidottu vähintään 31.8.2034 asti. Jos Yhdysvallat käyttää tätä liikkumavaraa rauhanneuvottelujen aikana, sen pitäisi näkyä ensin Yhdysvaltain rahavirroissa (29.1) ja vasta sitten läsnäolossa. Hypoteesi ei väitä painostusta; se väittää, että ohentaminen olisi havaittavissa julkisesta datasta.
+  13  
+  14  **3. Vertailuasetelma.** Lähtötaso Suomessa on matala, joten absoluuttinen väheneminen ei ole testattavissa. Vertailu tehdään samalla mallisopimuksella toimiviin maihin: Norja, Ruotsi, Tanska. Kuvaileva, ei kausaalinen: vertailumaiden kehitystä ei voi kohdistaa neuvotteluihin.
+  15  
+  16  **4. Indikaattorit (vain vuositason kokonaissummat ja lukumäärät).**
+  17  - I1 Rakennushankkeet: C-1 (Construction Programs), maakohtainen summa, pyyntö ja hyväksytty, $K, FY2024→. Suomi, NO, SE, DK.
+  18  - I2 EDI: onko EDI budjetissa omana kokonaisuutenaan; maakohtainen summa, jos eritelty. Muuten vain Euroopan kokonaissumma.
+  19  - I3 Puolustusministeriön sopimusvelvoitteet, suorituspaikka maa (USAspending/FPDS), FY-summa, samat neljä maata.
+  20  - I4 Harjoitukset Suomessa Yhdysvaltain osallistumisella: kappalemäärä kalenterivuodessa Puolustusvoimien tiedotteista.
+  21  - I5 (konteksti, ei läsnäolo) DSCA:n asekauppailmoitukset Suomelle: lukumäärä ja $ — mittaa riippuvuutta, ei sitoutumista.
+  22  
+  23  **5. Rajaus: kokoamisen vaikutus.** Ei kerätä eikä julkaista aluekohtaisia tietoja: ei hankkeiden sijainteja, ennakkovarastoinnin paikkoja, harjoitusten paikkoja tai ajoituksia, ei yksittäisiä joukkojen liikkeitä. Jos lähde antaa tiedon vain aluekohtaisesti, se summataan maatasolle ennen tallennusta eikä alkuperäistä riviä tallenneta. Testattava kysymys ("kasvaako Yhdysvaltain sitoutuminen Suomeen suhteessa vertailumaihin") ei vaadi sijaintitietoa.
+  24  
+  25  **6. Lähtötaso ja mittausajat.** Lähtötaso FY2024–FY2026 (I1–I3, I5) ja 2024–2026 (I4). Mittaus vuosittain: seuraava, kun FY2028:n budjettipyyntö julkaistaan (kevät 2027) ja FY2027:n määrärahat on hyväksytty.
+  26  
+  27  **7. Tulkinta lukitaan etukäteen (mittapuu, ei kynnys).**
+  28  - Ohentamisen kanssa yhteensopiva: Suomen I1+I3 laskee tai pysyy, kun vertailumaiden keskiarvo kasvaa, kahtena peräkkäisenä FY:nä; tai I4 laskee lähtötason alle.
+  29  - Ohentamisen kanssa ristiriitainen: Suomen I1+I3 kasvaa vähintään vertailumaiden tahtia, ja I4 pysyy lähtötasolla tai kasvaa.
+  30  - Muut yhdistelmät raportoidaan sellaisinaan ilman tulkintaa.
+  31  - EDI:n poistuminen (I2) koskee koko Eurooppaa; se raportoidaan erikseen, ei Suomen ohentamisena.
+  32  
+  33  **8. Ei tehdä.** Ei väitetä painostusta eikä syy-yhteyttä neuvotteluihin. Ei mallinneta sotilaallista kykyä. Ei käytetä luokiteltua tai vuotanutta aineistoa.
+  34  
+  35  **9. Jo nähty ennen kirjausta (ilmoitetaan).** C-1 FY2027:n maayhteenvedot luettu osittain hakutyökalulla: Suomea ei mainittu FY2025–FY2027-yhteenvedoissa, Norjalla ilmavoimien rakennushankkeita (FY2025 8 000 $K, FY2026 72 000 $K, lukema epävarma). Bloomberg (2023): Suomeen kohdistuneen sopimustyön arvo kymmenkertaistui FY2021→FY2022. FY2027 alkoi väliaikaisella rahoituspäätöksellä (CRS). Nämä tarkistetaan kokonaan lähtötasomittauksessa.
+  36  
+  37  **10. Tekninen edellytys.** comptroller.war.gov ja api.usaspending.gov eivät ole työtilan sallittujen joukossa; haku proxyn kautta (uusi worker tai reitti), sama kertaluonteinen tallennus kuin muissa ACI-lähteissä.
+  38  
+  39  ### I — poikkeama 1 (17.11.2026, lähtötasohaun jälkeen, ennen I3:n osittelua ja ennen mitään tulkintaa)
+  40  
+  41  **Mitä on jo nähty.** Lähtötasohaku (ogas3 `us-lahteet`, ajo 44151879753, `data/us/i_lahtotaso_2026-11-17.json`): I1:n maayhteenvetorivit ja I3:n kokonaissummat FY2019–FY2026 neljälle maalle. Haku tehtiin GitHub Actionsilla, koska Cloudflare-proxy sai DoD:lta 403 ja USAspendingilta 525 (kohta 10 toteutui eri reittiä).
+  42  
+  43  **1. I3 ei mittaa läsnäoloa.** Suorituspaikka kertoo, missä maassa sopimus toteutetaan, ei Yhdysvaltain läsnäoloa. Kokonaissummaan sisältyvät Yhdysvaltain hankinnat maan puolustusteollisuudelta. I3 jaetaan USAspendingin tuote- ja palvelukoodin (PSC) ensimmäisen merkin mukaan:
+  44  - **I3a läsnäolo:** Y (rakentaminen), Z (kiinteistöjen huolto ja korjaus), X (tilojen vuokra), S (yhdyskuntapalvelut ja kiinteistönhoito), M (valtion tilojen käyttö).
+  45  - **I3b tavarat:** numeeriset PSC-koodit.
+  46  - **I3c muut palvelut:** muut kirjaimet (mm. J, R, V, A). Raportoidaan, ei tulkita.
+  47  Kohdan 7 tulkintasäännössä "I1+I3" korvataan "I1+I3a". I3b raportoidaan kontekstina kuten I5.
+  48  
+  49  **2. Viive.** DoD:n sopimustiedot julkaistaan USAspendingissa noin 90 päivän viiveellä. Tilivuosi luetaan valmiiksi vasta seuraavan kalenterivuoden tammikuun jälkeen; FY2026 merkitään lähtötasossa keskeneräiseksi ja haetaan uudelleen 2/2027.
+  50  
+  51  **3. I1:n sarakkeet ja kaksoislaskenta.** Sama maarivi toistuu C-1:ssä usean taulukon (määrärahatili, yhteenveto) alla. Sääntö: käytetään sitä saraketta, jonka taulukon otsikko on budjettipyyntö kyseiselle FY:lle (C-1:n otsikkorivi luetaan, kohderivejä ei); identtiset rivit samasta FY:stä lasketaan kerran. Jos otsikkoa ei voida yksiselitteisesti liittää riviin, raportoidaan rivit sellaisinaan ilman summaa.
+  52  
+  53  **4. Kokoamisrajaus ennallaan.** PSC-osittelu tehdään maatasolla; PSC-kohtaisia rivejä ei tallenneta, vain kolme summaa (I3a, I3b, I3c) maata ja FY:tä kohden.
+  54  
+  55  ### I — lähtötaso, osa 1: I1 ja I3 (17.11.2026)
+  56  
+  57  Aineisto: ogas3 `data/us/i_lahtotaso_2026-11-17.json` (ajot 44153127569 ja 44155030338). Vain maatason summat.
+  58  
+  59  **I1 (C-1, $K).** Jokainen C-1 sisältää "Summary for FY" -taulukot edelliselle, kuluvalle ja pyyntövuodelle sarakkeilla Auth Amount / Amount (pyyntö) / Appn Amount / TOA Amount. Sama maarivi esiintyy kokonaistaulukossa ja määrärahatilin taulukossa (Air Force tai Navy); lasketaan kerran (poikkeama 1, kohta 3). Arvo = Appn Amount uusimmasta C-1:stä, jossa kyseinen FY esiintyy.
+  60  
+  61  | FY | Suomi | Ruotsi | Norja | Tanska |
+  62  |---|---|---|---|---|
+  63  | 2023 | – | – | 8 200 | – |
+  64  | 2024 | – | – | 119 000 | – |
+  65  | 2025 | – | – | 8 000 | 106 200 |
+  66  | 2026 | – | – | 72 000 | – |
+  67  | 2027 (pyyntö) | – | – | – | – |
+  68  
+  69  Rajoite: "Unspecified Locations" -rivi (FY2025: 1,53 mrd $) ei kohdistu maahan; sitä ei jyvitetä.
+  70  
+  71  **I3 (USAspending, DoD-velvoitteet suorituspaikan mukaan, M$; I3a läsnäolo / I3b tavarat / I3c muut palvelut).** FY2026 keskeneräinen (poikkeama 1, kohta 2).
+  72  
+  73  | Maa | FY2022 | FY2023 | FY2024 | FY2025 | FY2026* |
+  74  |---|---|---|---|---|---|
+  75  | Suomi | 1,0 / 14,0 / 7,8 | 0,2 / 3,0 / 8,1 | 0,1 / 0,9 / 6,9 | 0,4 / 1,5 / 2,2 | 0,0 / 0,0 / 5,3 |
+  76  | Ruotsi | 1,8 / 319,8 / 4,6 | 1,1 / 268,9 / 11,0 | 0,1 / 195,6 / 31,6 | 0,5 / 591,6 / 50,3 | 0,0 / 58,0 / 149,8 |
+  77  | Norja | 5,4 / 3,8 / 27,8 | 9,5 / 22,9 / 19,5 | 3,9 / 108,6 / 23,2 | 13,5 / 589,0 / 22,7 | 8,2 / 1 006,1 / 21,3 |
+  78  | Tanska | 1,9 / 9,2 / 2,5 | 1,3 / 3,2 / 2,5 | 0,8 / 12,3 / 3,2 | 0,6 / 3,6 / 54,3 | 0,0 / 0,7 / 0,1 |
+  79  
+  80  Havainto ilman tulkintaa (kohta 7 vaatii kaksi peräkkäistä FY:tä mittausjakson ajalta): Suomella ja Ruotsilla ei ole Yhdysvaltain rakennushankkeita FY2023–FY2027; Norjalla ja Tanskalla on. I3a on kaikissa maissa pieni (≤ 13,5 M$/v), joten sen erottelukyky on heikko; läsnäolon kustannukset kulkevat pääosin henkilöstö- ja toimintamenoina, jotka eivät näy maakohtaisina sopimuksina.
+  81  
+  82  ### I — poikkeama 2 (17.11.2026, ennen I4:n laskentaa)
+  83  
+  84  Kohta 4 määritteli I4:n lähteeksi "Puolustusvoimien tiedotteet" ilman aineiston rajausta tai koodaussääntöä. Kiinnitetään ennen laskentaa:
+  85  - **Aineisto:** Puolustusvoimien ja puolustusministeriön tiedotteet puolustusvoimat.fi:ssä ja valtioneuvosto.fi:ssä, julkaistu 1.1.2024–31.12.2026, haettu koneellisesti (GitHub Actions). Uutismedia ei kuulu aineistoon.
+  86  - **Yksikkö:** harjoitus nimellä (esim. "Cold Response 26"); sama harjoitus useassa tiedotteessa lasketaan kerran, vuosi = harjoituksen alkamisvuosi.
+  87  - **Ehto:** tiedotteen tekstin mukaan (1) harjoitus tai sen osa toteutetaan Suomen alueella ja (2) Yhdysvaltain asevoimat osallistuu. Pelkkä Naton tai "liittolaisten" maininta ei riitä. Kansalliskaarti (esim. Virginian kansalliskaarti) lasketaan.
+  88  - **Lisäksi** raportoidaan erikseen tiedotteet, jotka koskevat Yhdysvaltain läsnäoloa ilman nimettyä harjoitusta; ne eivät kuulu I4:n lukuun.
+  89  - **Validiteettirajoite:** I4 mittaa tiedotettua harjoitustoimintaa, ei läsnäolon kestoa tai vahvuutta. Tiedotuskäytännön muutos näkyy I4:ssä kuin toiminnan muutos.
+  90  - **Kokoamisrajaus:** paikkoja ja päivämääriä ei tallenneta; vain harjoituksen nimi ja vuosi.
+  91  
+  92  ### I — poikkeama 3 (17.11.2026, ennen I4:n laskentaa)
+  93  
+  94  Poikkeama 2:n koneellinen haku ei onnistu: puolustusvoimat.fi, valtioneuvosto.fi ja defmin.fi torjuvat automaattisen haun (GitHub Actions 403; Cloudflare-bottitarkistus proxylle). Tarkistusta ei kierretä. I4 kootaan käsin verkkohaulla löytyvistä Puolustusvoimien ja puolustushallinnon tiedotteista sekä niitä sanatarkasti referoivista uutisista ("Puolustusvoimat kertoo tiedotteessa"). Koodaussääntö ja kokoamisrajaus ennallaan. Aineisto on epätäydellinen ja haun tuloksista riippuvainen: I4 on alaraja, ja vuosien välinen vertailu on suuntaa antava. Jo nähty ennen kirjausta: haun tulokset Cold Response 26, Karelian Sword 26, Rock Sisu / Sword 26 ja Protective Fence 26.
+  95  
+  96  ### I — lähtötaso, osa 2: I4 (17.11.2026, poikkeama 3:n mukaan, alaraja)
+  97  
+  98  Harjoitukset Suomen alueella, joihin Yhdysvaltain asevoimat osallistuu tiedotteen tai sitä referoivan uutisen mukaan (vain nimi ja vuosi):
+  99  - 2024: Northern Forest 24; ALTAH Pohjoinen 24 → **2**
+ 100  - 2025: Lively Sabre 25 → **1**
+ 101  - 2026: Cold Response 26; Rock Sisu (Sword 26); Karelian Sword 26 (Virginian kansalliskaarti); Saber Strike 26, Suomen osuus → **4**
+ 102  
+ 103  Ei laskettu (ehto ei täyty löydetyssä tekstissä): Nordic Response 24, Freezing Winds 25, Southern Griffin 25 ja Protective Fence 26 (Yhdysvaltain osallistumista ei mainittu); kolmenvälinen ilmavoimaharjoitus 2025 ja hävittäjien Lapin-harjoitus 5/2026 (nimi puuttuu löydetystä tekstistä). Läsnäolo ilman nimettyä harjoitusta, raportoidaan erikseen: Baltic Sentry -merijalkaväkiosasto (2/2025); merijalkaväen joukkueet ja kalustokoulutus (7/2025→).
+ 104  
+ 105  Aineisto on haun tuloksista riippuvainen alaraja; vuosien välinen ero on suuntaa antava. Seuraava mittaus kaikille indikaattoreille: FY2028:n budjettipyyntö (kevät 2027) ja I3:n FY2026 uudelleenhaku 2/2027.
+
+==================== DCA (SopS 70/2024), ARTIKLAT 1, 3, 4, 29, 30 (englanninkielinen todistusvoimainen teksti) ====================
+ARTICLE 1
+SCOPE AND PURPOSE
+1. In accordance with international law and
+with Finnish consent, this Agreement sets
+
+3
+
+/2024
+
+forth the framework for enhanced defense
+and security cooperation and partnership
+between Finland and the United States and
+supplements the terms and conditions set
+forth in the NATO SOFA that govern the
+presence of U.S. forces and their dependents
+in the territory of Finland and, in specific
+situations indicated herein, the presence and
+activities of U.S. contractors in the territory
+of Finland.
+2. All activities under this Agreement shall be
+conducted with full respect for the
+sovereignty, laws, and international legal
+obligations of Finland, including with regard
+to the stockpiling of certain types of weapons
+on the territory of Finland.
+
+ARTICLE 3
+ACCESS TO AND USE OF AGREED
+FACILITIES AND AREAS
+1. Consistent with Article 1, Paragraph 2 of
+this Agreement, and with consultation and
+consideration of the views of the Parties, U.S.
+forces, U.S. contractors, Finnish contractors,
+dependents, and others as mutually agreed
+are authorized unimpeded access to and use
+of Agreed Facilities and Areas for visits;
+training; exercises; maneuvers; transit;
+support and related activities; refueling of
+aircraft; bunkering of vessels; landing and
+recovery of aircraft; temporary maintenance
+of vehicles, vessels, and aircraft;
+accommodation
+of
+personnel;
+communications; staging and deploying of
+forces and materiel; pre-positioning of
+equipment, supplies, and materiel; security
+assistance and cooperation activities; joint
+and
+combined
+training
+activities;
+humanitarian and disaster relief activities;
+contingency operations; construction in
+support of mutually agreed activities; and
+such other purposes as the Parties or their
+Executive Agents may agree, including those
+undertaken in the framework of the North
+Atlantic Treaty.
+2. With full respect for portions designated
+by Finland or the Finnish Executive Agent
+
+6
+
+/2024
+
+for Finland’s exclusive use, the Parties shall
+have joint access to and use of Agreed
+Facilities and Areas except for any portions
+thereof specifically designated by the
+Executive Agents for the exclusive access to
+and use of U.S. forces.
+3. In furtherance of such activities and
+purposes, Finland authorizes U.S. forces to
+control entry to Agreed Facilities and Areas,
+or portions thereof, that have been provided
+for exclusive use by U.S. forces, and to
+coordinate entry with Finnish authorities at
+Agreed Facilities and Areas jointly used by
+U.S. forces and Finnish Defence Forces, for
+purposes of safety and security.
+The
+appropriate authorities of the Parties shall
+cooperate closely regarding operational and
+security concerns for access to Agreed
+Facilities and Areas, including by
+establishing mutually determined procedures
+as necessary.
+4. When requested, the Finnish Executive
+Agent shall make reasonable efforts to
+facilitate temporary access to and use of
+private land and facilities (including roads,
+ports, and airfields), and public land and
+facilities (including roads, ports, and
+airfields) that are not a part of an Agreed
+Facility and Area, including those owned or
+controlled by Finland or by local authorities,
+by U.S. forces, U.S. contractors, and Finnish
+contractors for use in support of U.S. forces.
+U.S. forces, U.S. contractors, or Finnish
+contractors shall not bear the cost of such
+facilitation.
+5. The Parties shall give due regard to
+operational and security concerns in the use
+of Agreed Facilities and Areas.
+The
+appropriate authorities of the Parties may
+establish procedures in this regard.
+6. Finland shall make available, without
+rental or similar costs to U.S. forces, all
+Agreed Facilities and Areas, including those
+jointly used by U.S. forces and Finnish
+Defence Forces.
+7. U.S. forces, U.S. contractors, and Finnish
+contractors may undertake construction
+
+7
+
+/2024
+
+activities on, and make alterations and
+improvements to, Agreed Facilities and
+Areas in furtherance of the activities and
+purposes set forth in Paragraph 1 of this
+Article. U.S. forces shall consult with the
+competent authorities of Finland on issues
+regarding such construction, alterations, and
+improvements based on the Parties’ shared
+intent that the technical requirements and
+construction standards of any such projects
+undertaken by or on behalf of U.S. forces
+should be consistent with the requirements
+and standards of the Parties. U.S. forces may
+carry out such construction, alterations, and
+improvements using its own equipment and
+personnel.
+8. U.S. forces shall be responsible for the
+construction and development costs for
+Agreed Facilities and Areas provided for the
+exclusive use of U.S. forces, and for the
+operations and maintenance costs thereof,
+unless otherwise provided for in a separate
+arrangement or international agreement
+between the Parties.
+9. The Parties shall be responsible on the
+basis of proportionate use for the
+construction and development costs and
+operations and maintenance costs of Agreed
+Facilities and Areas provided for joint use, or
+otherwise used jointly by U.S. forces and
+Finnish Defence Forces, unless otherwise
+provided for in a previous or subsequent
+arrangement or international agreement
+between the Parties.
+10. Funding of construction projects
+undertaken by U.S. forces shall be in
+accordance with U.S. laws and regulations.
+11. The Finnish Executive Agent shall
+facilitate the efforts of U.S. forces under this
+Article by obtaining the necessary Finland
+authorizations and permits for such
+construction, alterations, and improvements,
+performed by or on behalf of U.S. forces.
+Such authorizations and permits shall be
+issued without cost to U.S. forces, U.S.
+contractors, or Finnish contractors.
+
+8
+
+/2024
+
+12. The Parties shall cooperate on planning
+regarding the use and development at,
+around, and adjacent to Agreed Facilities and
+Areas to ensure the implementation of this
+Agreement over the long term.
+
+ARTICLE 4
+PREPOSITIONING OF DEFENSE
+EQUIPMENT, SUPPLIES, AND
+MATERIEL
+1. Consistent with Article 1, Paragraph 2 of
+this Agreement, and with consultation and
+consideration of the views of the Parties, U.S.
+forces may transport, preposition, and store
+defense equipment, supplies, and materiel
+(“prepositioned materiel”) at Agreed
+Facilities and Areas, and at other locations as
+mutually agreed. U.S. forces shall notify, in
+advance, the Finnish Defence Forces
+regarding the types, quantities, and delivery
+schedules of such prepositioned materiel that
+U.S. forces intend to transport or preposition
+in the territory of Finland, as well as
+regarding U.S. contractors and Finnish
+contractors who make such deliveries.
+2. The prepositioned materiel of U.S. forces
+and the facilities or portions thereof
+designated for storage of such prepositioned
+materiel shall be for the exclusive use of U.S.
+forces. U.S. forces shall have exclusive
+control over the access to, use of, and
+disposition of such prepositioned materiel
+and shall have the unencumbered right to
+remove such prepositioned materiel at any
+time from the territory of Finland.
+3. U.S. forces, U.S. contractors, and Finnish
+contractors shall have unimpeded access to
+and use of storage facilities for all matters
+related to the prepositioning and storage of
+prepositioned materiel, including delivery,
+management, inspection, use, maintenance,
+and removal of such prepositioned materiel,
+regardless of whether these storage facilities
+are Agreed Facilities and Areas. Aircraft,
+vehicles, and vessels operated by or for U.S.
+forces shall have access to aerial ports and
+seaports of Finland and other locations, as
+agreed, for the delivery to, storage and
+maintenance in, and removal from the
+
+9
+
+/2024
+
+territory of Finland
+prepositioned materiel.
+
+of
+
+U.S.
+
+forces’
+
+4. The Executive Agents and other
+appropriate authorities of the Parties shall
+cooperate closely concerning activities under
+this Article.
+
+ARTICLE 29
+IMPLEMENTATION AND DISPUTES
+1. All obligations under this Agreement shall
+be subject to the availability of appropriated
+funds authorized for these purposes.
+2. In furtherance of this Agreement, the
+appropriate authorities of the Parties under
+their respective laws may exchange
+information, including personal data, as
+necessary and appropriate. Any information
+exchanged in connection to activities under
+this Agreement, including personal data, is
+for the purpose of enhancing defense and
+security cooperation. The Parties shall
+protect the information received from the
+other Party in accordance with applicable
+international agreements between the Parties
+and their respective laws and regulations.
+3. As appropriate, the Parties or their
+Executive Agents may enter into
+implementing agreements or arrangements to
+carry out the provisions of this Agreement.
+4. The Executive Agents shall consult as
+necessary
+to
+ensure
+the
+proper
+implementation of this Agreement. The
+Executive Agents shall develop procedures
+for consultation between their respective
+staffs on all matters concerning the effective
+implementation of this Agreement.
+5. Disputes concerning interpretation and
+application of this Agreement shall be
+resolved at the lowest level possible and, as
+necessary, elevated to the Executive Agents
+for consideration and resolution. Those
+disputes that cannot be resolved by the
+Executive Agents shall be referred to the
+
+31
+
+/2024
+
+Parties for consultation and resolution, as
+appropriate.
+6. Disputes and other matters subject to
+consultation under this Agreement shall not
+be referred to any national court, or to any
+international court, tribunal, or similar body
+or to any other third party for settlement.
+
+ARTICLE 30
+ENTRY INTO FORCE, AMENDMENT,
+AND DURATION
+1. This Agreement shall enter into force on
+the first (1st) day of the second (2nd) month
+following the date of the later note by which
+the Parties notify each other through
+diplomatic channels of the fulfillment of their
+respective domestic procedures necessary for
+the entry into force of this Agreement.
+2. This Agreement may be amended by
+written agreement of the Parties.
+3. This Agreement shall have an initial term
+of ten (10) years. After the initial term, it
+shall continue in force, but may be terminated
+by either Party upon one (1) year’s written
+notice to the other Party through diplomatic
+channels.
+4. Annex A to this Agreement shall form an
+integral part of this Agreement and may be
+amended by written agreement of the Parties
+or their Executive Agents.
+IN WITNESS WHEREOF, the undersigned,
+being duly authorized by their respective
+Governments, have signed this Agreement.
+DONE at Washington this 18 day of
+December, 2023, in duplicate, in the Finnish
+and English languages, both texts being
+equally authentic.
+FOR THE GOVERNMENT OF THE
+REPUBLIC OF FINLAND:
+FOR THE GOVERNMENT OF THE
+UNITED STATES OF AMERICA:
+
+32
+
+ANNEX A
+
+/2024
+
+Agreed Facilities and Areas
+• Ivalo, Border Guard Base (military use
+facilities and areas)
+• Kuopio-Rissala, Karelia Air Command Air
+Base
+• Niinisalo Garrison and PohjankangasHämeenkangas Training Areas
+• Parkano Military Storage Area
+• Raasepori Garrison and Syndalen Training
+Area
+• Rovajärvi Training Area including Misi
+Military Storage Area
+• Rovaniemi, Lapland Air Command Air
+Base and Jaeger Brigade Garrison
+• Skinnarvik Military Storage Area
+• Tammela Military Storage Area
+•
+Tampere-Pirkkala,
+Satakunta
+Air
+Command Air Base
+• Tervola Military Storage Area
+• Jyväskylä-Tikkakoski, Air Force Academy
+Air Base
+• Upinniemi Navy Base and Garrison in
+Kirkkonummi including Russarö Island
+• Veitsiluoto Military Storage Area
+• Vekaranjärvi Garrison and Pahkajärvi
+Training Area
+
+33
+
+/2024
+
+34
+
+/2024
+
+35
+
+/2024
+
+36
+
+ISSN 1457-0661
+
+
+
+
+==================== DRD-SARJA: papers/wp-002-drd.html ====================
+ACI WP-002 — Distributed Resilience Doctrine 
+ Aether Continuity Institute 
+ Defence Studies · Working Paper Series 
+ WP-002 · February 2026 
+ Domain D-2 · Strategic Studies 
+ Version 1.0 
+ Published 
+ ACI Home 
+ ACI · WP-002 · 2026 
+ Working Paper No. 002 · Distributed Resilience Doctrine Series · Paper I of VI
+ Distributed Resilience Doctrine: A Strategic Framework for Small-State Defence in the Era of Long-Range Precision Strike
+ Why denial-based, system-centric defence offers a more coherent strategic posture than platform-centric models for resource-constrained nations facing existential threats
+ Aether Continuity Institute. (2026). Distributed Resilience Doctrine: A Strategic Framework for Small-State Defence in the Era of Long-Range Precision Strike. ACI Working Paper No. 002. Defence Studies Series.
+ Abstract
+ This paper examines the viability of a resilience-centric defence doctrine for small states facing existential threats from larger neighbours in the contemporary security environment. Using Finland as a primary case study, we argue that traditional platform-centric defence models — predicated on qualitative technological superiority — are becoming strategically untenable for resource-constrained nations in an era characterized by ubiquitous surveillance, long-range precision strike, and rapid targeting cycles. We propose an alternative framework: the Distributed Resilience Doctrine (DRD), which prioritizes system survivability, societal endurance, and deterrence by denial over concentrated strike capabilities. Through historical analysis, strategic theory, and operational assessment, we demonstrate that DRD offers a more cost-effective and strategically coherent approach to existential deterrence for small states in high-threat environments.
+ Keywords: deterrence theory · resilience · small-state security · defence doctrine · Finland · NATO · A2/AD
+ § 01 
+ Introduction
+ 1.1 The Strategic Problem
+ Small states facing security threats from vastly larger neighbours confront an enduring strategic dilemma: how to generate credible deterrence despite fundamental asymmetries in population, industrial capacity, and military resources. This challenge has intensified in the post-2014 security environment, characterized by the proliferation of long-range precision strike capabilities, the compression of decision-making timelines through advanced ISR integration, the expanded targeting of critical civilian infrastructure as a primary operational objective, and hybrid operations that blur traditional distinctions between peace and war.
+ For Finland — a nation of 5.6 million bordering a revanchist Russia with 144 million inhabitants and demonstrated willingness to use military force against neighbours — these trends pose existential questions about the sustainability of current defence planning assumptions.
+ 1.2 The Current Paradigm and Its Limitations
+ Contemporary Finnish defence planning, like that of many small NATO members, prioritizes investment in high-end platforms — particularly the €10 billion F-35A acquisition — as the cornerstone of national deterrence. This approach rests on three core assumptions: that qualitative superiority compensates for quantitative inferiority, that air superiority enables operational success across other domains, and that integration with NATO frameworks provides force multiplication and extended deterrence.
+ While these assumptions held considerable validity in the post-Cold War era of Western technological dominance, recent conflicts — particularly Russia's invasion of Ukraine (2022–present) — suggest they may be eroding. Platform attrition rates exceed Cold War models, fixed infrastructure shows vulnerability to long-range strike, and sustained high-intensity conflict rewards mass and regeneration over initial qualitative edge.
+ 1.3 Research Question and Argument
+ Does a resilience-centric defence doctrine offer a more strategically coherent framework for small-state deterrence than traditional platform-centric models in the contemporary threat environment?
+ We argue that for small states in high-threat environments, deterrence credibility increasingly derives from the adversary's inability to achieve rapid strategic decision rather than from the defender's capacity to impose unacceptable costs through offensive strikes. This necessitates a fundamental reorientation from platform-centric to system-centric defence planning — what we term the Distributed Resilience Doctrine (DRD).
+ § 02 
+ Theoretical Framework
+ 2.1 Deterrence Theory: From Punishment to Denial
+ Classical deterrence theory distinguishes between deterrence by punishment (threatening unacceptable costs) and deterrence by denial (convincing an adversary they cannot achieve their objectives). Small states typically cannot credibly threaten punishment against larger neighbours; thus, denial-based deterrence becomes paramount. Denial-based deterrence for small states requires not battlefield victory but the credible threat of protracted, costly conflict without rapid resolution.
+ 2.2 Strategic Asymmetry and Cost Imposition
+ Analysis of asymmetric conflicts demonstrates that materially weaker actors succeed by imposing strategic interaction effects — forcing stronger opponents into modes of conflict where their advantages diminish. For small-state defence, this implies avoiding decisive battles that leverage adversary mass, extending conflict duration beyond adversary political tolerance, and targeting adversary operational assumptions rather than forces directly.
+ 2.3 Resilience as Strategic Concept
+ Recent strategic literature increasingly emphasizes resilience — the capacity to absorb disruption and maintain essential functions — as central to national security. For small states, resilience operates at three interacting levels: military resilience (force survivability and regeneration under fire), societal resilience (critical infrastructure continuity despite disruption), and political resilience (sustained national will despite costs). These interact synergistically: societal resilience extends military endurance, which reinforces political resolve, which sustains societal cohesion.
+ 2.4 The Vulnerability-Resilience Trade-off
+ Traditional platform-centric models maximize capability but often increase vulnerability through concentration of value in few high-cost platforms, infrastructure dependencies, and cognitive focus on protecting scarce assets rather than achieving objectives. The DRD framework prioritizes distributed, redundant, recoverable systems over concentrated high-performance platforms, deliberately trading some offensive capability for enhanced survivability.
+ § 03 
+ Historical Precedents
+ 3.1 Finland 1939–1940: The Winter War
+ The Soviet-Finnish Winter War provides the foundational historical validation for resilience-based defence. The USSR possessed a 3:1 personnel advantage, 30:1 tank advantage, and 100:1 aircraft advantage. Conventional deterrence through capability matching was impossible. The Finnish approach — dispersed mobile infantry tactics avoiding decisive engagement, exploitation of terrain to negate Soviet advantages, and integrated civilian-military operations — imposed prohibitive costs on the attacker. The USSR achieved its territorial objectives but at the cost of 126,875 dead against 25,904 Finnish casualties, and critically failed to impose a puppet government or eliminate Finnish sovereignty.
+ The analytical significance is precise: Finnish success derived not from superior platforms but from making rapid Soviet victory impossible, thereby imposing costs disproportionate to Soviet gains.
+ 3.2 Switzerland 1940–1945: The Réduit Strategy
+ Swiss defence planning under General Guisan provides a second model of denial-based deterrence against overwhelming force. Surrounded by Axis powers from 1940 to 1943, Switzerland adopted withdrawal to an Alpine fortress, preparation for comprehensive infrastructure denial, and credible commitment to protracted resistance — explicitly accepting the loss of the economic heartland in exchange for the adversary's strategic failure. Germany never invaded despite operational capability; Wehrmacht planning documents cited anticipated costs and duration as deterrents.
+ 3.3 Synthesis: Common Patterns
+ Across successful small-state defence cases, consistent patterns emerge: acceptance of initial adversary gains rather than attempting to prevent all territorial intrusion; focus on adversary strategic failure rather than tactical victory; integration of civilian endurance with military operations as force multiplier; deliberate cost-benefit manipulation making conquest prohibitively expensive relative to value; and the use of protraction as a strategic weapon extending conflict beyond adversary political tolerance. These patterns form the empirical foundation for the Distributed Resilience Doctrine.
+ § 04 
+ The Contemporary Threat Environment
+ 4.1 Russian Military Doctrine and Practice
+ Russian operational art, refined through Syrian and Ukrainian campaigns, exhibits distinct characteristics relevant to Finnish defence planning. Targeting priorities follow a coherent logic: decapitation of leadership and command nodes, paralysis of energy infrastructure and logistics, demoralization through civilian infrastructure attacks, and air defence suppression for operational freedom. Tempo preferences favour rapid initial offensives to create faits accomplis before Western response, with maximalist objectives if resistance is weak and openness to settlement if resistance proves credible.
+ The critical finding from Ukraine 2022–present: initial assumptions of rapid political collapse proved incorrect. Infrastructure campaigns failed to break Ukrainian will. Protracted conflict forced Russia into unfavourable attrition. Ukrainian resilience — military and societal — created strategic failure despite Russian material advantages.
+ 4.2 The Precision Strike Dilemma
+ Modern long-range precision weapons fundamentally alter defensive calculations. Russia possesses Kalibr cruise missiles (2,500 km range), Iskander-M ballistic missiles (500 km range), Kinzhal hypersonic missiles (2,000 km range), and an extensive UAV inventory. All Finnish territory lies within range from Russian territory. Fixed high-value targets — airfields, headquarters, depots — are highly vulnerable. Warning time is compressed; sanctuary basing is impossible. Platform concentration creates targeting economy for the adversary.
+ This environment rewards target proliferation and dispersion over hardening and concentration. A system with 500 distributed targets imposes radically different planning requirements on an adversary than one with 10 concentrated high-value targets.
+ § 05 
+ The Distributed Resilience Doctrine: Conceptual Architecture
+ Core Principles
+ Principle I
+ Survivability over Capability
+ A 70% effective system that survives is superior to a 95% effective system destroyed in the first hours. Traditional procurement emphasizes platform performance; DRD emphasizes system survivability under attack.
+ Principle II
+ Denial-Based Deterrence
+ The adversary must calculate not "Can I win?" but "Can I win quickly enough, at acceptable cost, with sufficient certainty?" Success is measured not by battlefield victory but by adversary strategic frustration.
+ Principle III
+ Whole-of-Society Integration
+ National defence extends beyond military forces to encompass all elements of societal functionality that enable sustained resistance. Societal resilience is not supplementary — it is central to defence strategy.
+ Principle IV
+ Distributed Redundancy
+ No single point of failure should enable adversary strategic success. System architecture emphasizes multiple parallel capabilities over optimized single solutions.
+ 5.2 The Three Pillars
+ Pillar I
+ Multi-Layered Territorial Air Defence
+ In a denial-based strategy, preventing adversary air superiority is not necessary; complicating and degrading it suffices. Layered, geographically distributed air defence forces the adversary to allocate disproportionate resources to SEAD/DEAD, protects military and civilian infrastructure, and creates targeting complexity: hundreds of mobile launchers versus 4–5 fixed air bases. Implementation spans long-range fixed assets protecting strategic points, mobile medium SAMs with rapid relocation, man-portable short-range systems, and counter-UAS coverage at critical nodes.
+ Estimated resource allocation: €3–4 billion · vs. €10 billion for F-35 programme
+ Pillar II
+ Distributed Multi-Domain Land Effects
+ Conventional corps-level operations play into adversary mass advantages. Instead, small autonomous units with organic fires, dispersion preventing massed targeting, mobility avoiding positional warfare, and cross-domain integration. The organizational model treats small combined-arms teams at platoon/company level as the basic manoeuvre element. Mission command with minimal higher-echelon coordination: loss of higher HQ does not paralyze subordinate units. Resilience through autonomy. Operational attrition continues even if tactical engagements go to the adversary.
+ Estimated resource allocation: €2–3 billion in mobile, dispersed systems
+ Pillar III
+ Societal Resilience Infrastructure
+ Modern warfare targets societal cohesion as much as military forces. A society that continues functioning despite disruption extends military endurance exponentially. Implementation encompasses energy grid decentralization and islanding capability, satellite backup and distributed mesh communications, transportation infrastructure redundancy and rapid repair, maintained population shelter systems with medical surge capacity, and industrial mobilization stockpiles enabling rapid production switching.
+ Estimated resource allocation: €2 billion in critical infrastructure hardening
+ 5.3 The Role of Air Power in DRD
+ DRD does not eliminate air power but redefines its role and prioritization. The traditional model assumes air superiority enables joint operations, making the air force the decisive arm justifying maximum investment. The DRD model treats air power as one element in a distributed system, with investment proportional to contribution. Practical implications: quantitative reduction from 64 to 32–40 aircraft, cost savings of €5–6 billion over a 30-year lifecycle, and operational adjustment toward survivable dispersed basing focused on defensive counter-air and maritime strike. The strategic logic: ground-based systems provide greater survivability per euro.
+ § 06 
+ Strategic Analysis: DRD vs. Platform-Centric Model
+ 6.1 Adversary Decision Calculus
+ Under a platform-centric model, Russian planning offers a coherent rapid-victory sequence: destroy 4–5 major air bases to neutralize the air threat in hours; target 10–15 command and logistics nodes to degrade C2 in hours to days; strike energy and transport infrastructure to begin societal paralysis within days; then launch a ground offensive against a degraded, demoralized defence. Assessment: rapid victory is plausible, and invasion may be a rational gamble.
+ Under DRD, the same adversary planner faces a fundamentally different problem: strikes against dispersed targets require high sortie rates with uncertain battle damage assessment; hundreds of mobile air defence systems demand sustained SEAD with expected losses; no decisive battle is possible against dispersed ground forces; society continues functioning despite strikes; an international intervention window opens as conflict extends. Assessment: rapid victory is implausible — invasion is a high-risk, uncertain-return proposition.
+ 6.2 Cost-Benefit Comparison
+ Metric 
+ Platform-Centric 
+ DRD 
+ Assessment 
+ Acquisition cost (10y) €10–12B €7–9B 25–30% savings 
+ Lifecycle cost (30y) €25–30B €15–20B 35–40% savings 
+ Targets presented to adversary ~50 high-value ~500+ dispersed 10× complexity 
+ Single-point failures Air bases, major HQs None systemic Qualitative advantage 
+ Time to reconstitution Weeks–months Hours–days Operational advantage 
+ Societal endurance Weeks Months Strategic advantage 
+ Deterrent threshold "Can I destroy the air force?" "Can I occupy and hold?" Significantly higher bar 
+ 6.3 Alliance Integration
+ From NATO's perspective, the platform-centric approach offers "Finland has 64 F-35s" — impressive but transitory if lost early. The DRD approach offers "Finland can sustain resistance for months" — strategic depth for alliance response. DRD potentially delivers greater alliance value by ensuring Finland remains a viable theatre for allied operations rather than rapidly overrun territory requiring liberation.
+ § 07 
+ Operational Feasibility Assessment
+ All DRD components rely on mature, proven technologies. Air defence systems (NASAMS, Patriot, IRIS-T, CAMM, Stinger) have been in global service for decades. Land systems (HIMARS/M270, Javelin, NLAW) are extensively combat-proven, particularly in Ukraine from 2022. Commercial UAS platforms are readily available and low-cost. Resilience infrastructure relies on established engineering disciplines.
+ DRD emphasizes a smaller professional cadre with high autonomy, cross-domain competence, and decentralized decision-making. This aligns well with Finland's conscription system and its emphasis on motivated, trained reserves. Training shifts from platform-centric to system-centric at lower cost, enabling more personnel to reach higher proficiency. The required command culture — trust in decentralized execution — is already a Finnish military tradition. Wartime sustainability is enhanced: distributed systems use common ammunition types versus specialized F-35 requirements, and components can be sourced from multiple suppliers, reducing single-source dependency.
+ § 08 
+ Critiques and Limitations
+ 8.1 Principal Objections and Responses
+ Critique: DRD abandons offensive capability. Response: DRD does not abandon offensive capability but prioritizes sustainable offensive capability. Distributed land-based fires (HIMARS, coastal defence cruise missiles) provide strike options without concentration vulnerability. Ukraine demonstrates that dispersed ground-based fires can achieve strategic effects previously assumed to require air superiority.
+ Critique: DRD concedes air superiority. Response: Finland cannot realistically contest air superiority against the VKS regardless of platform choice — Russian aerospace forces possess 10× the aircraft inventory. The strategic question is whether modest air forces contribute more through attempting contested air superiority they cannot sustain, or through contributing to layered denial while resources flow to more survivable systems.
+ Critique: DRD lowers deterrent visibility. Response: Deterrence operates through adversary assessment of success probability, not showroom appeal. F-35s photograph impressively; distributed resilience does not. But Russian general staff planning focuses on operational analysis. DRD makes their operational problem demonstrably harder — which is what actually deters.
+ Critique: DRD is difficult to communicate politically. Acknowledgment: This is DRD's genuine political vulnerability. "We bought fewer fighters to invest in infrastructure resilience" is harder to communicate than "We have the Nordic region's most advanced fighter." This is a political marketing problem, not a strategic validity problem — but it is real and consequential.
+ 8.2 Genuine Strategic Limitations
+ DRD explicitly accepts that adversary ground forces will likely make initial territorial gains, trading space for time and adversary cost. It requires sustained societal will — if social cohesion breaks quickly, military resilience becomes irrelevant. And it assumes eventual allied intervention: pure DRD cannot deliver battlefield victory; it creates conditions where the adversary cannot achieve strategic decision before allied response. Each of these limitations is real, acknowledged, and must inform implementation.
+ § 09 
+ Policy Implications and Recommendations
+ 9.1 Strategic Recommendations
+ Adopt DRD as conceptual framework. Shift procurement priorities from platform optimization to system resilience. Reduce F-35 acquisition from 64 to 32–40 aircraft or an alternative 4.5-generation platform. Reallocate €5–6 billion to distributed air defence, mobile fires, and critical infrastructure. Measure capability by "time to strategic decision" rather than "number of advanced platforms."
+ Establish resilience as National Security Council priority. Elevate societal resilience to strategic priority equal with military capability. Create a dedicated funding stream for critical infrastructure redundancy. Implement cross-ministry coordination spanning Defence, Interior, Economic Affairs, and Transport. Conduct regular resilience exercises integrating civilian and military elements.
+ Revise operational doctrine. Update Finnish Defence Forces doctrinal publications to reflect distributed operations as primary mode, acceptance of initial territorial loss in exchange for sustained resistance, integration of civilian continuity with military operations, and time-based victory conditions over space-based ones.
+ 9.2 Procurement Priorities
+ High priority (Years 1–3): mobile medium SAM systems, long-range rocket artillery, counter-UAS systems, critical infrastructure hardening. Medium priority (Years 3–7): limited long-range air defence, loitering munitions and tactical UAS, distributed EW systems, transportation infrastructure redundancy. Lower priority (Years 7–10): moderate air combat capability (32–40 aircraft), naval modernization, advanced C4ISR compatible with distributed operations.
+ § 10 
+ Conclusions
+ This analysis demonstrates that platform-centric defence models face increasing vulnerability in an era of ubiquitous surveillance and long-range precision strike; that small states cannot achieve existential deterrence through qualitative superiority alone; that deterrence by denial — making rapid adversary victory implausible — offers a more credible strategy; and that DRD provides a conceptual framework aligning force structure with denial-based deterrence requirements. Historical precedent, contemporary conflict observation, and strategic analysis all support DRD's viability for the Finnish context. Resource allocation under DRD offers superior strategic return per euro compared to platform-centric alternatives.
+ The Distributed Resilience Doctrine framework is strategically superior in that it better aligns resources with achievable deterrent objectives; operationally feasible, relying on mature technologies and organizational models compatible with Finnish military culture; and economically efficient, offering higher strategic return per euro invested. It is politically challenging — difficult to communicate to public and policymakers — psychologically demanding in requiring acceptance of initial adversary gains, and alliance-dependent, unable to deliver victory alone but able to prevent defeat until allies intervene.
+ The question facing defence planners is not whether DRD is theoretically elegant, but whether the strategic situation demands the intellectual courage to embrace doctrine optimized for denial over doctrine optimized for prestige.
+ Core Finding
+ On Broader Applicability
+ While this analysis uses Finland as primary case study, the DRD framework has direct relevance for Baltic states (similar threat profile, more extreme resource constraints), Taiwan (island defence against a vastly larger neighbour), South Korea (resilience against North Korean strike capabilities), and Poland (frontline NATO state requiring credible denial capability). The common thread is states facing existential threats from larger neighbours in precision-strike environments.
+ The Fundamental Reorientation
+ For Finland specifically, adoption of DRD would represent not abandonment of defence but evolution toward a defence strategy optimized for the actual threat environment rather than inherited assumptions from earlier eras. Whether those assumptions should be revised is a question this paper has attempted to make unavoidable.
+ Distributed Resilience Doctrine Series · Further Reading
+ This paper establishes the strategic framework of the DRD series. Readers wishing to explore the analytical and operational dimensions in depth may consult the following companion papers, available in the ACI supplements archive.
+ WP 2026-02 
+ Strategic Termination Time as an Analytical Framework for Small-State Deterrence 
+ Read → 
+ WP 2026-03 
+ Command-and-Control Continuity Index: Operationalizing Cognitive Resilience 
+ Read → 
+ WP 2026-04 
+ Distributed Resilience as a Dynamic Denial System: The Adversary Tempo Model 
+ Read → 
+ WP 2026-05 
+ C2-CI Operationalization Toolkit: Measuring and Developing Command Continuity in Peacetime 
+ Read → 
+ WP 2026-06 
+ Theory Note: Nonlinear Dynamics and Phase Transitions in C2-CI Structure 
+ Read → 
+ WP 2026-07 
+ Dynamic Outcome Distributions Under Strategic Uncertainty — Monte Carlo Scenario Analysis 
+ Read → 
+ Version History
+ v1.0 · Feb 2026 Initial publication 
+ § 08 
+ Scope, Limits, and Falsification Conditions
+ This paper develops a doctrinal framework; it does not provide a quantitative comparison of centralised versus distributed architectures. The small-state focus reflects ACI's primary operational context — the framework's transferability to large-state contexts has not been evaluated. Command-and-control integration requirements and interoperability constraints with allied systems are outside the scope of this analysis.
+ Falsification conditions. The Distributed Resilience Doctrine's central claim — that distributed continuity architecture provides measurably superior endurance under compound stress compared to centralised equivalents — would be falsified by evidence that: (1) centralised systems with equivalent resource levels demonstrate equal or superior continuity outcomes under equivalent compound stress conditions, or (2) the coordination costs of distributed architecture under stress exceed the redundancy benefits it provides.
+ Aether Continuity Institute 
+ Defence Studies · Working Paper Series 
+ aethercontinuity.org
+ WP-002 · Version 1.0 
+ February 2026 
+ Domain D-2
+ DRD Series · Paper I of VI 
+ Strategic Studies Programme 
+ Published
+
+==================== DRD-SARJA: supplements/drd-02-stt.html ====================
+WP 2026-02 — Strategic Termination Time — Aether Continuity Institute 
+ Aether Continuity Institute
+ Defence Studies · Distributed Resilience Doctrine Series 
+ Working Paper · No. 2026-02 February 2026 Domain D-3 DRD Series · Paper II of VI
+ Published · Active
+ Publications 
+ WP 2026-02 · D-3 
+ Working Paper No. 2026-02 · Distributed Resilience Doctrine Series
+ Strategic Termination Time
+ An Analytical Framework for Small-State Deterrence
+ Aether Continuity Institute · Defence Studies Working Paper Series · No. 2026-02 · February 2026 Companion to WP 2026-01: Distributed Resilience Doctrine
+ Abstract
+ Deterrence by denial is widely recognized as the strategically appropriate posture for small states facing existential threats from larger neighbours. Yet the field lacks an operationalizable metric capable of systematically comparing denial-based force structure alternatives. This paper introduces Strategic Termination Time (STT) as an analytical construct bridging deterrence theory and force structure assessment. STT is defined as the time an adversary requires to achieve a politically decisive outcome at acceptable cost. We derive STT from established deterrence theory, identify its three primary components—Military Degradation Rate (MDR), Societal Continuity Index (SCI), and Command-and-Control Continuity Index (C2-CI)—and validate the framework against historical cases.
+ Keywords: deterrence theory · denial-based deterrence · small-state security · strategic termination time · system resilience · Finland · NATO
+ § 01 Introduction
+ Deterrence by denial—convincing an adversary that it cannot achieve its objectives rather than threatening unacceptable punishment—is the strategically appropriate posture for small states facing existential threats from larger neighbours. Yet the field lacks an operationalizable metric capable of systematically comparing denial-based force structure alternatives.
+ The dominant approach to force structure assessment remains platform-centric, measuring individual system performance rather than systemic resilience. A state may possess highly capable platforms and yet present an adversary with a straightforward path to rapid strategic decision if those platforms are concentrated, their supporting infrastructure is fixed and known, and their destruction would leave the defender unable to sustain resistance.
+ Can denial-based deterrence capability be assessed systematically through a time-based analytical construct, and what analytical value does such formalization provide over existing platform-centric approaches?
+ § 02 Strategic Termination Time: Definition
+ Conceptual Definition
+ Strategic Termination Time (STT) is an analytical construct defined as the estimated time an adversary requires to achieve a politically decisive outcome at acceptable cost. STT is an analytical construct, not a directly observable variable. An adversary's actual STT estimate is not available to the defender; it exists as an inference from observable force structure, doctrine, and historical behaviour.
+ STT Component Variables
+ Military Degradation Rate (MDR) — the rate at which a defender's military capability diminishes under adversary pressure. A distributed force structure reduces MDR by eliminating single-point-of-failure vulnerabilities.
+ Societal Continuity Index (SCI) — the ability of the defending society to maintain essential functions under adversary pressure. SCI extends military operational sustainability and denies the adversary rapid societal collapse as a strategic objective.
+ Command-and-Control Continuity Index (C2-CI) — the ability of the defender's C2 system to maintain effective decision-making authority under adversary disruption. C2-CI interacts with MDR: if C2 collapses early, tactical units lose coordination even if their organic capability remains intact.
+ Derivation from Deterrence Theory
+ Denial deterrence is credible when the defender can credibly threaten to keep conflict duration above the minimum of three thresholds: the Allied Intervention Window (AIW), the Adversary Political Tolerance Threshold (APTT), and the International Pressure Threshold (IPT). STT represents the defender's assessed capacity to remain viable until one of these thresholds is reached.
+ § 03 Component Interactions
+ The three STT components interact synergistically. Military resilience depends on societal continuity for logistics, energy, and personnel replacement. Societal continuity depends on military protection. Both depend on C2 continuity for coordination. This interdependence means investments that strengthen system-level interactions—distributed logistics, redundant communications, integrated civilian-military planning—may generate greater STT returns than investments in individual platform capability.
+ C2-CI functions as a force multiplier on the other components rather than an additive term. If C2 collapses, MDR and SCI cannot deliver their contributions to STT regardless of platform quality.
+ § 04 Historical Validation
+ The Soviet-Finnish Winter War, 1939–1940
+ The Winter War is the canonical case of small-state denial success under conditions of overwhelming material disadvantage. Soviet forces possessed approximately 3:1 superiority in personnel and 30:1 in armour. The Soviet strategic planning assumption was rapid termination—a campaign of weeks. Finnish force structure choices altered this calculus through all three STT components: reduced MDR through distribution rather than concentration, maintained SCI through societal cohesion and distributed logistics, and sustained C2-CI through small-unit autonomy and mission command culture.
+ The result was a conflict duration that exceeded Soviet political tolerance. Finland was losing the war militarily by March 1940 when the Moscow Peace Treaty was concluded, but the strategic objective—compelling Finnish capitulation without unacceptable cost—had proven unachievable within the adversary's political time constraint.
+ Swiss Deterrence, 1940–1945
+ General Guisan's Reduit strategy explicitly accepted adversary territorial gains in order to extend STT. Switzerland was not merely a military fortress; it was a functioning society with maintained governance and economic activity whose disruption would impose continued costs. German planning documents cited anticipated duration and cost as deterrent factors. A common critique of denial-based deterrence is that it is 'tested' only in failure—deterrence is invisible when it succeeds. The Swiss case provides evidence for STT's mechanism even in its non-kinetic form.
+ Ukraine, 2022–Present
+ Russian operational planning in February 2022 appeared to assume a very short STT—days to weeks before political resolution. This estimate proved incorrect across all three STT components: military capability degraded more slowly than anticipated (MDR), societal continuity exceeded adversary planning assumptions (SCI), and decision-making authority was maintained at tactical and operational levels despite leadership targeting (C2-CI). The consequence was that actual conflict duration exceeded adversary planning assumptions substantially.
+ § 05 Force Structure Implications
+ Reframing the Assessment Question
+ Platform-centric analysis asks: which platform has superior performance characteristics? STT analysis asks: which investment most increases the adversary's required decision time relative to cost? A high-performance platform concentrated at a known fixed location may score well on the first question and poorly on the second.
+ Component-Based Investment Assessment
+ MDR-Oriented Investments reduce MDR by prioritizing survivability over raw capability: distributed deployment, reduced radar/thermal signatures, hardened communications, logistic pre-positioning. The key question is whether the investment reduces single-point-of-failure vulnerability.
+ SCI-Oriented Investments raise SCI by reducing dependence on concentrated infrastructure: distributed energy generation, redundant communications networks, stockpiled essentials for sustained operations. The key question is whether the investment maintains essential societal functions under targeting.
+ C2-CI-Oriented Investments prioritize decision-making continuity: distributed command nodes, mission command training, pre-authorized action protocols. The key question is whether the investment reduces dependence on continuous higher-echelon communication.
+ Alliance Implications
+ An STT perspective suggests a measure of alliance value beyond platform metrics: theatre viability. A small state that can maintain resistance for an extended period before allied forces arrive provides substantially more alliance value than one that provides advanced platforms but collapses before those platforms can be effectively employed.
+ § 06 Conclusions
+ Strategic Termination Time addresses the analytical gap in denial-based deterrence by focusing analytical attention on the adversary's decision problem rather than the defender's inventory. The framework does not resolve all measurement challenges, but it provides a conceptually coherent alternative to platform-centric metrics that better captures the strategic logic of system resilience.
+ Historical validation through the Winter War and Swiss deterrence cases confirms that the temporal logic underlying STT maps coherently onto documented historical dynamics. The framework's primary contribution is not precision prediction but improved question-setting: it asks whether a proposed investment extends the adversary's required decision time, rather than whether it outperforms an adversary platform in direct comparison.
+ The measure of a small-state defence posture is not whether it can win battles against a materially superior adversary—it typically cannot. The measure is whether it can remain viable long enough for strategic dynamics to shift.
+ § 07 References
+ Arreguin-Toft, I. (2001). How the weak win wars: A theory of asymmetric conflict. International Security , 26(1), 93–128.
+ Biddle, S. (2004). Military power: Explaining victory and defeat in modern battle. Princeton University Press.
+ Mack, A. (1975). Why big nations lose small wars: The politics of asymmetric conflict. World Politics , 27(2), 175–200.
+ Mearsheimer, J.J. (1983). Conventional deterrence. Cornell University Press.
+ Morgan, P.M. (2003). Deterrence now. Cambridge University Press.
+ Snyder, G.H. (1961). Deterrence and defense: Toward a theory of national security. Princeton University Press.
+ Trotter, W.R. (1991). A frozen hell: The Russo-Finnish Winter War of 1939–40. Algonquin Books.
+ Distributed Resilience Doctrine Series · Further Reading
+ This paper is part of the DRD series. Companion papers available in the ACI supplements archive.
+ WP 2026-01 Distributed Resilience Doctrine: A Strategic Framework for Small-State Defence Read → 
+ WP 2026-03 Command-and-Control Continuity Index: Operationalizing Cognitive Resilience Read → 
+ WP 2026-04 Distributed Resilience as a Dynamic Denial System: The Adversary Tempo Model Read → 
+ WP 2026-05 C2-CI Operationalization Toolkit: Measuring and Developing Command Continuity in Peacetime Read → 
+ WP 2026-06 Theory Note: Nonlinear Dynamics and Phase Transitions in C2-CI Structure Read → 
+ Version History
+ v1.0 · Feb 2026 Initial publication 
+ Aether Continuity Institute Defence Studies · Working Paper Series aethercontinuity.org
+ WP 2026-02 · Version 1.0 February 2026 Domain D-3
+ DRD Series · Paper II of VI Strategic Studies Programme Published
+
+==================== DRD-SARJA: supplements/drd-03-c2ci.html ====================
+WP 2026-03 — Command-and-Control Continuity Index — Aether Continuity Institute 
+ Aether Continuity Institute
+ Defence Studies · Distributed Resilience Doctrine Series 
+ Working Paper · No. 2026-03 March 2026 Domain D-3 DRD Series · Paper III of VI
+ Published · Active
+ Publications 
+ WP 2026-03 · D-3 
+ Working Paper No. 2026-03 · Distributed Resilience Doctrine Series
+ Command-and-Control Continuity Index
+ Operationalizing Cognitive Resilience for Small-State Defence
+ Aether Continuity Institute · Defence Studies Working Paper Series · No. 2026-03 · March 2026 Third paper in the DRD series — companion to WP 2026-01 and WP 2026-02
+ Abstract
+ The Strategic Termination Time framework identifies Command-and-Control Continuity Index (C2-CI) as one of three primary determinants of denial-based deterrence credibility. C2-CI remains the least operationalized of the three STT components. This paper addresses that gap, decomposing C2-CI into three measurable sub-variables—Decision Lag (DL), Autonomy Quality (AQ), and Resynchronization Capacity (RC)—and proposing measurement approaches for each. We demonstrate that C2-CI functions as a force multiplier on the other STT components rather than an additive term, with direct implications for investment priority in DRD implementation.
+ Keywords: command and control · cognitive resilience · decision lag · mission command · small-state defence · distributed doctrine · C2 architecture
+ § 01 Introduction
+ The Strategic Termination Time framework identifies Command-and-Control Continuity Index (C2-CI) as one of three primary determinants of denial-based deterrence credibility. C2-CI is defined as the capacity of a defending state's decision-making system to maintain effective authority under adversary disruption. While the construct has clear theoretical validity, it remains the least operationalized of the three STT components.
+ The Distributed Resilience Doctrine differs from platform-centric models not primarily in what equipment it advocates but in the organizational logic it requires. Distributing air defence and land fires across hundreds of autonomous units creates targeting complexity for the adversary—but only if those units can make effective decisions without continuous higher-echelon coordination. Distributed hardware with centralized decision-making is not DRD; it is a distributed target set with a single cognitive point of failure.
+ C2-CI is the metric that captures whether this organizational transformation has occurred and to what degree it is sustained under adversarial pressure.
+ § 02 Theoretical Context
+ Command and Control in Military Theory
+ The theoretical literature on military command and control distinguishes between two organizing principles: mission command (Auftragstaktik) and detailed command (Befehlstaktik). The superiority of mission command in high-uncertainty, high-tempo environments is well established. For DRD, the relevant point is that distributed physical force structure presupposes a command culture capable of decentralized execution.
+ C2-CI as Force Multiplier
+ Working Paper No. 2026-02 treated MDR, SCI, and C2-CI as three additive STT components. Deeper examination suggests this understates C2-CI's role. High MDR requires that distributed units continue effective military activity under pressure—which requires effective autonomous decision-making. High SCI requires coordinated crisis management—which requires C2 continuity across civilian and military domains. C2-CI is better understood as a coefficient on the other components than as an additive term.
+ § 03 C2-CI Sub-Variables
+ Decision Lag (DL)
+ Decision Lag is defined as the ratio of decision time under communication disruption to decision time under normal operating conditions: DL = T_disrupted / T_normal . A DL of 1.0 indicates disruption has no effect on decision timing. A DL approaching infinity indicates operational paralysis.
+ DRD Threshold
+ DL < 2.5 — decision time under full communication disruption should not exceed 2.5× the normal-conditions baseline for operationally relevant decision categories.
+ Autonomy Quality (AQ)
+ Autonomy Quality is defined as the degree to which decisions made under communication disruption align with commander's intent and contribute to overall mission achievement. AQ-A (full alignment) represents ideal mission command execution. AQ-B (adequate) represents decisions that are strategically coherent and tactically appropriate. AQ-C (partial) represents decisions that are tactically rational but strategically incoherent—independent decisions that optimize local outcomes at the expense of overall operational effect.
+ DRD Threshold
+ Across all tactical units, mean AQ under full communication disruption should be at AQ-B or better. The proportion of units falling to AQ-D or AQ-E should not exceed 15%.
+ Resynchronization Capacity (RC)
+ Resynchronization Capacity is defined as the time and accuracy with which units restore shared situational awareness and operational coherence following a period of communication disruption. It has two components: RC_t (time to adequate shared picture) and RC_a (accuracy of restored picture).
+ DRD Threshold
+ RC_t < 4 hours — adequate shared picture restored within four hours of communication restoration for unit-level disruption. RC_a > 80% — restored situational picture accurate on at least 80% of specified operational parameters.
+ § 04 Measurement Framework
+ Exercise-Based Measurement Protocol
+ The proposed measurement protocol integrates C2-CI assessment into existing training cycles rather than requiring dedicated assessment events. The protocol has three phases. In the baseline phase, units conduct normal training with full communication; DL baseline, normal AQ patterns, and RC baselines are established. In the disruption phase, communication is degraded or severed according to a specified scenario; DL, AQ, and RC are measured against baselines. In the recovery phase, communication is restored and RC_t and RC_a are measured directly.
+ Simulation-Based Measurement
+ Agent-based simulation provides a complement to exercise-based measurement, enabling systematic exploration of C2 architecture alternatives and disruption scenarios that would be impractical or unsafe to test in the field. The relevant simulation architecture models units as agents with specified decision rules, information states, and communication channels.
+ § 05 Historical Application
+ The Winter War: C2-CI under Extreme Disruption
+ Finnish command performance during the Winter War exhibited high C2-CI across all three sub-variables in documented unit actions. Decision Lag was compressed by training in autonomous operation: Finnish units were expected and trained to continue mission execution without higher-echelon contact, and DL increased only modestly under Soviet communication disruption attempts.
+ Autonomy Quality was notably high in the motti operations that characterized the most successful Finnish defensive actions. Small Finnish units, isolated by Soviet penetrations, made effective tactical decisions—encircling Soviet formations—that were strategically coherent with the overall Finnish defensive objective of maximizing adversary cost while preserving Finnish operational capability.
+ Soviet C2-CI provides a contrasting illustration. Initial Soviet operations exhibited high DL at multiple echelons; the centralized Soviet command system required frequent higher-echelon authorization, and when communications failed, units often halted rather than acted independently. Autonomy Quality at the unit level was severely constrained by Soviet doctrine—when communications failed, units frequently chose inaction over autonomous decision-making.
+ § 06 Investment Implications
+ C2 Architecture Distribution
+ The number of independent command nodes capable of autonomous operation is a primary C2-CI determinant. Concentration of C2 capability at a small number of command posts replicates the platform-centric vulnerability that DRD addresses at the physical level. Distributing command authority requires redundant command infrastructure and cross-training across leadership echelons.
+ Training Culture Investment
+ AQ is a cultural as much as a technical variable. The organizational research literature is consistent that mission command capability requires sustained investment in decentralized decision-making culture, which cannot be purchased off the shelf and takes years to develop. This is the DRD investment with the longest lead time and the least substitutable alternative.
+ C2-CI investment should be treated as foundational rather than discretionary in the DRD force structure: sufficient C2-CI capability enables all other distributed investments to deliver their intended STT contribution; insufficient C2-CI undermines them regardless of platform quality.
+ § 07 References
+ Alberts, D.S., & Hayes, R.E. (2003). Power to the edge: Command and control in the information age. CCRP Publication Series.
+ Klein, G. (1998). Sources of power: How people make decisions. MIT Press.
+ van Creveld, M. (1985). Command in war. Harvard University Press.
+ Weick, K.E., & Sutcliffe, K.M. (2007). Managing the unexpected: Resilient performance in an age of uncertainty (2nd ed.). Jossey-Bass.
+ Distributed Resilience Doctrine Series · Further Reading
+ This paper is part of the DRD series. Companion papers available in the ACI supplements archive.
+ WP 2026-01 Distributed Resilience Doctrine: A Strategic Framework for Small-State Defence Read → 
+ WP 2026-02 Strategic Termination Time as an Analytical Framework for Small-State Deterrence Read → 
+ WP 2026-04 Distributed Resilience as a Dynamic Denial System: The Adversary Tempo Model Read → 
+ WP 2026-06 Theory Note: Nonlinear Dynamics and Phase Transitions in C2-CI Structure Read → 
+ Version History
+ v1.0 · Mar 2026 Initial publication 
+ Aether Continuity Institute Defence Studies · Working Paper Series aethercontinuity.org
+ WP 2026-03 · Version 1.0 March 2026 Domain D-3
+ DRD Series · Paper III of VI Strategic Studies Programme Published
+
+==================== DRD-SARJA: supplements/drd-04-atm.html ====================
+WP 2026-04 — Adversary Tempo Model — Aether Continuity Institute 
+ Aether Continuity Institute
+ Defence Studies · Distributed Resilience Doctrine Series 
+ Working Paper · No. 2026-04 March 2026 Domains D-3 · D-4 DRD Series · Paper IV of VI
+ Published · Active
+ Publications 
+ WP 2026-04 · D-3 · D-4 
+ Working Paper No. 2026-04 · Distributed Resilience Doctrine Series
+ Distributed Resilience as a Dynamic Denial System
+ The Adversary Tempo Model: Integrating STT and C2-CI into Scenario-Based Analysis
+ Aether Continuity Institute · Defence Studies Working Paper Series · No. 2026-04 · March 2026 Synthesis edition — based on working draft v0.3 by Marko Ruotsalainen (independent)
+ Abstract
+ The first three papers in this series established a strategic framework, an analytical metric, and an operationalized component variable. A gap remained: the framework treated denial capability as a static property of force structure rather than a dynamic property of the interaction between adversary operations and defender recovery. This paper addresses that gap by formalizing the Adversary Tempo Model (ATM). The central analytical insight is that denial succeeds or fails as a competition between two rates: the adversary's disruption tempo and the defender's recovery tempo. ATM derives the Decision Envelope: the set of adversary tempo profiles under which denial remains credible to a specified intervention horizon.
+ Keywords: adversary tempo · denial dynamics · Decision Envelope · recovery tempo · wargame design · distributed resilience · scenario analysis
+ § 01 Introduction
+ The first three papers in this series constructed a coherent analytical architecture for denial-based small-state defence. Working Paper No. 2026-01 established the Distributed Resilience Doctrine. Working Paper No. 2026-02 introduced Strategic Termination Time. Working Paper No. 2026-03 operationalized C2-CI. Each paper treated denial capability as a static property of force structure.
+ The dynamic dimension matters because modern precision strike campaigns are not one-time events. They are iterative: the adversary strikes, assesses, strikes again, adjusts. The defender absorbs, recovers, reconstitutes, adapts. This paper formalizes that dynamic through the Adversary Tempo Model (ATM), building on a working draft by Ruotsalainen (2026).
+ Denial-based deterrence succeeds or fails as a competition between two rates: the adversary's disruption tempo and the defender's recovery tempo. When defender recovery outpaces adversary disruption across enough critical nodes, STT is extended. When it does not, degradation compounds.
+ § 02 ATM Variable Set
+ Adversary Tempo Variables
+ AT Component Variables
+ Strike Density (SD) — rate of precision strike attempts per day against the defender's critical functions
+ EW Saturation (EWS) — intensity of electronic warfare and communications denial
+ ISR Cycle Time (ICT) — time from detection → targeting decision → action → battle damage assessment
+ Shock Intensity (SI) — first-72h psychological and governance shock effect
+ Sustainment Tempo (ST) — adversary's ability to keep pressure constant over weeks
+ Defender Response Variables
+ Defender Variables
+ Recovery Rate (RRT) — rate at which degraded functions are restored after a strike
+ Logistics Network Integrity (LNI) — capacity of the supply and sustainment network to maintain function under targeting
+ Essential Services Continuity (ECS) — continuity of power, communications, water, and governance under compound stress
+ Counter-ISR Integrity — capacity to deny or degrade adversary targeting intelligence
+ § 03 The ATM Core Structure
+ The Degradation-Recovery Competition
+ ATM models denial credibility as the outcome of a competition between adversary disruption tempo and defender recovery tempo over time. Each iteration: the adversary acts, generating degradation effects; the defender responds, attempting to restore function. Whether denial holds depends on whether the cumulative recovery rate exceeds the cumulative disruption rate across critical nodes before the intervention horizon.
+ Core ATM Relationship
+ Effective STT = Base STT × g(C2-CI, ECS, LNI, CounterISR) ÷ h(AT)
+ Where g(·) increases effective STT when continuity and deception are strong, and h(AT) compresses STT as adversary tempo rises. The relationship is multiplicative: high AT can overwhelm strong continuity; high continuity can absorb moderate AT indefinitely.
+ The Re-Synchronization Gap
+ A critical dynamic variable in ATM is the Re-Synchronization Gap (RSG): the time required for a degraded node to restore minimum viable function after a strike. RSG is determined by physical reconstitution time (repair/replacement), organizational reconstitution time (C2 restoration), and informational reconstitution time (situational awareness restoration). The ATM key hypothesis: denial becomes credible when the defender's re-synchronization tempo exceeds the adversary's disruption tempo across critical nodes.
+ The Decision Envelope
+ The Decision Envelope is ATM's primary analytical output: the set of adversary tempo profiles under which the defender's system state remains above viability thresholds through the alliance intervention horizon. AT profiles inside the Decision Envelope are scenarios in which denial holds. AT profiles outside it are scenarios in which strategic termination can be forced before allied response.
+ § 04 Scenario Classes
+ Class A: Rapid Decapitation Attempt (48–96 Hours)
+ High Shock Intensity and Strike Density in the initial 48–96 hours. The adversary seeks to collapse defending governance and decision-making capacity so rapidly that political will is exhausted before organized resistance can be established. C2-CI is the decisive variable in this class: denial succeeds if C2-CI remains above threshold through the initial 72-hour period.
+ Class B: Escalatory Precision Attrition (2–4 Weeks)
+ Moderate-to-high Strike Density with sustained ISR advantages. The adversary seeks cumulative degradation rather than rapid governance collapse. RRT and LNI are the decisive variables. If recovery tempo is high enough relative to Strike Density, the defender can restore degraded capacity between strikes, maintaining system state above viability thresholds.
+ Class C: Hybrid Pressure Campaign (Months)
+ Lower kinetic Strike Density but elevated non-kinetic pressure—information operations, economic pressure, political coercion, selective sabotage. Essential Services Continuity is the decisive variable. The alliance intervention horizon behaves differently in Class C: it may take diplomatic rather than military form, and its timing is less predictable.
+ § 05 C2-CI as Force Multiplier on Recovery Tempo
+ ATM provides the dynamic mechanism for C2-CI's force multiplier role. When C2-CI is high, recovery is fast: distributed units make effective autonomous decisions about repair prioritization, logistics routing, and capability reconstitution. When C2-CI is low, recovery is slow even if physical capability to recover exists—because the coordination required to mobilize that capability is unavailable.
+ Force Multiplier Formalization
+ R(RRT, LNI, C2-CI, S(t)) = C2-CI(t) × f(RRT, LNI, S(t))
+ If C2-CI falls to 0.5, recovery tempo is halved regardless of RRT or LNI. The Decision Envelope boundary is therefore a function of C2-CI, not a fixed threshold.
+ The Self-Reinforcing Dynamic
+ ATM reveals a self-reinforcing dynamic with strategic significance. High C2-CI enables rapid recovery; rapid recovery prevents C2-CI from declining further due to cumulative stress; sustained C2-CI maintains the Decision Envelope against continued adversary pressure. Below threshold, the dynamic reverses: low C2-CI slows recovery; slow recovery allows cumulative degradation; degradation further reduces C2-CI. This self-reinforcing cascade is the mechanism underlying the strategic importance of the C2-CI threshold identified in Working Paper No. 2026-06.
+ § 06 References
+ Ruotsalainen, M. (2026). Adversary Tempo Model (ATM): Integrating STT and C2-CI into scenario-based wargaming (Working draft v0.3, February 2026). Independent.
+ Alberts, D.S., & Hayes, R.E. (2003). Power to the edge: Command and control in the information age. CCRP Publication Series.
+ Lanchester, F.W. (1916). Aircraft in warfare: The dawn of the fourth arm. Constable.
+ van Creveld, M. (1985). Command in war. Harvard University Press.
+ Distributed Resilience Doctrine Series · Further Reading
+ This paper is part of the DRD series. Companion papers available in the ACI supplements archive.
+ WP 2026-01 Distributed Resilience Doctrine: A Strategic Framework for Small-State Defence Read → 
+ WP 2026-02 Strategic Termination Time as an Analytical Framework for Small-State Deterrence Read → 
+ WP 2026-03 Command-and-Control Continuity Index: Operationalizing Cognitive Resilience Read → 
+ WP 2026-05 C2-CI Operationalization Toolkit: Measuring and Developing Command Continuity in Peacetime Read → 
+ Version History
+ v1.0 · Mar 2026 Initial publication — synthesis edition 
+ Aether Continuity Institute Defence Studies · Working Paper Series aethercontinuity.org
+ WP 2026-04 · Version 1.0 March 2026 Domains D-3 · D-4
+ DRD Series · Paper IV of VI Strategic Studies Programme Published
+
+==================== DRD-SARJA: supplements/drd-05-toolkit.html ====================
+WP 2026-05 — C2-CI Operationalization Toolkit — Aether Continuity Institute 
+ Aether Continuity Institute
+ Defence Studies · Distributed Resilience Doctrine Series 
+ Working Paper · No. 2026-05 May 2026 Domain D-3 DRD Series · Paper V of VI
+ Published · Active
+ Publications 
+ WP 2026-05 · D-3 
+ Working Paper No. 2026-05 · Distributed Resilience Doctrine Series
+ C2-CI Operationalization Toolkit
+ Measuring, Reporting, and Developing Command-and-Control Continuity in Peacetime
+ Aether Continuity Institute · Defence Studies Working Paper Series · No. 2026-05 · May 2026 Fifth paper in the DRD series
+ Abstract
+ The preceding papers established that C2-CI is the most consequential single variable in denial-based deterrence, functioning as a coefficient on recovery tempo. C2-CI has remained, however, a theoretical construct—well-defined conceptually but not translatable into systematic measurement. This paper addresses that gap. We decompose C2-CI into four measurable sub-dimensions—Structural Redundancy (R), Autonomous Decision Quality (A), Decision Latency (D), and Synchronization Recovery (S)—and develop concrete measurement approaches for each, a four-level exercise protocol, and an investment prioritization framework.
+ Keywords: C2-CI measurement · command and control resilience · exercise protocol · investment prioritization · decision latency · autonomy quality · synchronization recovery
+ § 01 Introduction
+ Working Paper No. 2026-03 established C2-CI as the organizing construct for command and control resilience, decomposed into Decision Lag (DL), Autonomy Quality (AQ), and Resynchronization Capacity (RC). Working Paper No. 2026-04 demonstrated that C2-CI functions as a coefficient on recovery tempo. Both papers noted that C2-CI's practical value depends on whether it can be measured.
+ This toolkit is addressed to practitioners rather than theorists—it is written for operational planners, training staff, and defence investment decision-makers. It is explicitly not a measurement standard. The parameters proposed here are analytically grounded initial proposals that should be treated as hypotheses subject to revision as measurement programmes accumulate data.
+ A C2-CI construct that cannot be measured cannot be managed. The shift from theory to measurement is not a minor technical step—it is the condition for C2-CI to deliver its analytical value.
+ § 02 The Four C2-CI Sub-Dimensions
+ Structural Redundancy (R)
+ Structural Redundancy captures the degree to which C2 architecture provides independent pathways for command continuity. It is a structural property of the force architecture, determined by planning and investment decisions rather than training. Three indicators contribute: independent C2 nodes (number capable of exercising authority independently), communication path diversity (technically independent pathways available), and single point of failure index (fraction of critical C2 functions with no alternative).
+ DRD Target
+ No single disruption event should be capable of severing all command continuity pathways. Minimum: three independent C2 nodes, three technically independent communication pathways.
+ Autonomous Decision Quality (A)
+ Autonomous Decision Quality captures the degree to which units make decisions aligned with commander's intent when communications are severed. It is assessed through structured exercise observation during communication disruption phases, combining decision rate under disruption and decision alignment assessment. A is the most organizationally demanding sub-dimension to develop and the most challenging to measure.
+ Decision Latency (D)
+ Decision Latency captures the degree to which communication disruption extends the time required for decisions. It is the most directly measurable sub-dimension: sensor-to-decision time and decision-to-action time are measured in both normal and disruption conditions. The D coefficient: D = T_disrupted / T_normal. Target: D < 2.5.
+ Synchronization Recovery (S)
+ Synchronization Recovery captures the speed and accuracy with which units restore shared situational awareness following a communication blackout. Two indicators: S_t (time from communication restoration to agreed situational picture) and S_a (accuracy of restored picture vs. independent ground truth). Target: S_t < 4 hours, S_a > 80%.
+ § 03 Composite C2-CI Scoring
+ Composite Score Formula
+ C2-CI = 0.25 × R_norm + 0.30 × A_norm + 0.25 × D_norm + 0.20 × S_norm
+ Where each sub-dimension is normalized to [0,1] before combination. A weighting of 30% for A reflects its role as the most consequential variable in Class A scenarios (rapid decapitation), per the ATM analysis.
+ Score interpretation: 0.80–1.00 = High C2-CI (force multiplier fully effective); 0.60–0.79 = Adequate; 0.40–0.59 = Marginal (multiplier effect uncertain); below 0.40 = Critical gap.
+ § 04 Exercise Protocol
+ T1: Tabletop Exercise (2–4 hours)
+ The lowest-intensity C2-CI assessment event. Requires no field resources; conducted with unit leadership in a classroom setting. The exercise controller presents a communication disruption scenario; participants walk through their decision process without actual disruption. Output: R assessment from architecture review; qualitative A and D gap identification.
+ T2: Command Post Exercise (1–2 days)
+ Exercises command staff under simulated operational conditions including specified communication degradation. Physical deployment is not required. Output: D coefficient for command-level decisions; S_t and S_a for command resynchronization.
+ T3: Field Exercise with C2 Disruption (3–5 days)
+ The primary measurement event for A and D at the unit level. Runs in three phases: baseline (normal C2, minimum 8 hours), disruption (communication severed according to scenario), and recovery (communication restored and S measured directly). Output: A_norm with decision rate and alignment scores; D coefficient from field conditions.
+ T4: Integrated Disruption Exercise (1 week)
+ The full C2-CI assessment exercise, generating composite scores for participating units. Integrates T2 and T3 elements across multiple units simultaneously, enabling measurement of both unit-level and inter-unit coordination dimensions. Recommended frequency: annually for formation-level units.
+ § 05 Investment Prioritization
+ Investment options assessed against the four sub-dimensions, listed in priority order for a unit with an undeveloped C2-CI baseline:
+ C2 disruption exercise programme (T3/T4 protocol) — highest A and S return per unit of investment. Makes C2-CI development concrete and measurable.
+ Autonomous operation training programme — highest-impact A investment and longest lead time. Cultural development cannot be accelerated by procurement.
+ Communication path diversity — strong R and S improvement with medium procurement timelines.
+ Standardized decision protocols and pre-authorized actions — lower-cost D improvement that reduces decision latency without major procurement.
+ Distributed C2 node architecture — most consequential structural investment but most resource-intensive and slowest to implement.
+ § 06 References
+ Alberts, D.S., & Hayes, R.E. (2003). Power to the edge. CCRP Publication Series.
+ Klein, G. (1998). Sources of power: How people make decisions. MIT Press.
+ van Creveld, M. (1985). Command in war. Harvard University Press.
+ Weick, K.E., & Sutcliffe, K.M. (2007). Managing the unexpected (2nd ed.). Jossey-Bass.
+ Distributed Resilience Doctrine Series · Further Reading
+ This paper is part of the DRD series. Companion papers available in the ACI supplements archive.
+ WP 2026-01 Distributed Resilience Doctrine: A Strategic Framework for Small-State Defence Read → 
+ WP 2026-02 Strategic Termination Time as an Analytical Framework for Small-State Deterrence Read → 
+ WP 2026-03 Command-and-Control Continuity Index: Operationalizing Cognitive Resilience Read → 
+ WP 2026-04 Distributed Resilience as a Dynamic Denial System: The Adversary Tempo Model Read → 
+ WP 2026-06 Theory Note: Nonlinear Dynamics and Phase Transitions in C2-CI Structure Read → 
+ Version History
+ v1.0 · May 2026 Initial publication 
+ Aether Continuity Institute Defence Studies · Working Paper Series aethercontinuity.org
+ WP 2026-05 · Version 1.0 May 2026 Domain D-3
+ DRD Series · Paper V of VI Strategic Studies Programme Published
+
+==================== DRD-SARJA: supplements/drd-06-theory-en.html ====================
+WP 2026-06 — C2-CI Nonlinear Dynamics — Aether Continuity Institute 
+ Supplements 
+ DRD Series · WP 2026-06 
+ Aether Continuity Institute 
+ Distributed Resilience Doctrine · Paper VI of VII 
+ Date February 2026 
+ Number WP 2026-06 
+ Domain D-3 
+ Type Theory Note
+ Published · Active 
+ WP 2026-06 · Theory Note · Distributed Resilience Doctrine Series
+ Nonlinear Dynamics and Phase Transitions in C2-CI Structure
+ Why command-and-control continuity does not degrade linearly — a mathematical derivation
+ ACI Defence Studies Working Paper Series · No. 2026-06 · February 2026 · Theory Note — sixth paper in the DRD series
+ Abstract
+ This theory note establishes a mathematically rigorous foundation for a claim that has appeared in earlier papers as intuition: C2-CI does not degrade linearly as stress increases, but undergoes bifurcation — a phase transition — in which the system moves abruptly from a functional to a non-functional state. The paper derives a differential-equation-based state evolution model, defines the critical threshold condition AT_c = √(R/(1+α)), analyses the bifurcation as saddle-node type, and demonstrates that recovery requires substantially more resources than reaching the collapse threshold. The result has a direct design implication: preventive construction is asymmetrically more effective than reactive restoration.
+ Keywords: bifurcation theory · nonlinear dynamics · phase transition · C2-CI · distributed resilience · hysteresis · critical threshold
+ 01 
+ Introduction and Motivation
+ The preceding papers in this series constructed the C2-CI concept, identified its component hierarchy, addressed organisational resilience, and operationalised C2-CI measurement. Throughout these papers a recurring assumption has appeared: system degradation is not a linear process. This claim has been treated as narrative assertion rather than mathematical demonstration.
+ This theory note corrects that gap. The objective is threefold: to derive a dynamic state model in which C2-CI is the solution of a differential equation; to demonstrate that the model exhibits bifurcation when adversary tempo exceeds a critical value; and to analyse hysteresis — recovery from collapse requires more resources than preventing collapse.
+ Claim 1: C2 collapse can occur abruptly and unpredictably even from moderate stress, once it reaches a critical level. Claim 2: Preventive construction is asymmetrically more effective than reactive restoration.
+ 02 
+ Mathematical Framework
+ State Variables
+ State Variables
+ Φ(t) ∈ [0, 1] — normalised C2-CI state at time t 
+     (Φ = 1 = full operational capability, Φ = 0 = complete collapse) 
+ AT(t) ≥ 0 — adversary operational tempo at time t 
+ R(t) ≥ 0 — system resilience capacity at time t
+ Fundamental Dynamic Model
+ Differential Equation
+ dΦ/dt = f(Φ, AT, R) = R · G(Φ) − D(Φ, AT) 
+ G(Φ) = Φ(1 − Φ) — logistic growth function (recovery capacity) 
+ D(Φ, AT) = AT² · Φ · (1 + α(1 − Φ)) — degradation function 
+ Full state model: 
+ dΦ/dt = R · Φ(1 − Φ) − AT² · Φ · (1 + α(1 − Φ))
+ The parameter α captures the degree of coupling between system components. High α indicates that local failures propagate as chain reactions — consistent with centralised C2 architectures. Low α indicates modular independence — the design target of distributed architectures.
+ 03 
+ Equilibria and Bifurcation Analysis
+ Critical Threshold
+ Central Result
+ AT_c = √(R / (1 + α)) 
+ When AT < AT_c: the system has a functional equilibrium Φ* > 0 
+ When AT > AT_c: the only equilibrium is Φ* = 0 (collapse) 
+ Non-trivial equilibrium: Φ* = 1 − AT² / (R − α · AT²)
+ Bifurcation Type: Saddle-Node
+ The change in the number of equilibria at AT_c is a saddle-node bifurcation: the functional equilibrium and the unstable intermediate level collide and disappear simultaneously. The disappearance is abrupt — the system does not slide gradually toward zero. Instead, the functional equilibrium simply ceases to exist and the system jumps to the collapse point.
+ Near the threshold the system may appear stable even when it is already in the critical region. This phenomenon is known as critical slowing down : recovery time from perturbations increases significantly before the actual bifurcation — a measurable early warning signal.
+ The practical implication is severe: a C2 system under escalating adversary tempo will look functional right up to the moment it collapses. There is no gradual warning in system output — only in recovery time, which requires active monitoring to detect.
+ 04 
+ Hysteresis and Recovery Asymmetry
+ Mechanism
+ When the system has collapsed (AT > AT_c), simply reducing tempo back below AT_c is insufficient to restore functional equilibrium. The reason is that in the collapsed state (Φ ≈ 0) the growth function G(Φ) ≈ 0 — the system cannot self-recover.
+ Recovery Cost Asymmetry
+ ΔAT_collapse = tempo increase required to trigger collapse from baseline AT_0 
+ ΔR_recovery = additional resilience required to recover at the same tempo level 
+ The resilience increase required for recovery is always greater than 
+ the resilience decrease that led to collapse. 
+ Intuition: recovery requires not only restoring the same resilience but also 
+ externally driving system state above the unstable intermediate level.
+ This asymmetry is the mathematical basis for the DRD design principle that preventive investment dominates reactive restoration. A unit of resilience invested before collapse prevents collapse at lower cost than a unit invested after collapse restores function. The ratio is not marginal — it is structural and unbounded as the system approaches the collapsed attractor.
+ 05 
+ Stability Regions and Design Criteria
+ Three Dynamic Regimes
+ Regimes
+ Regime I — Stable operation (AT ≪ AT_c): 
+   Φ* high and stable. Perturbations decay naturally. 
+ Regime II — Vulnerable zone (AT ≈ AT_c): 
+   Φ* low but functional. Recovery slow. Critical slowing down present. 
+ Regime III — Collapse (AT > AT_c): 
+   No functional equilibrium. Recovery requires massive external intervention.
+ Three Design Criteria
+ Operational Design Criteria
+ Criterion 1 — Threshold margin maintenance: 
+   AT_max ≤ β · AT_c = β · √(R / (1 + α)) 
+   where β = safety margin (e.g. 0.75) 
+ Criterion 2 — Nonlinearity minimisation: 
+   Modular architecture reduces α, because local failure 
+   no longer propagates as chain reaction. 
+ Criterion 3 — Recovery capacity sizing: 
+   Reserve capacity must be sized for the recovery scenario, 
+   not only for normal operations.
+ 06 
+ Doctrinal Implications
+ Bifurcation Index as Operational Metric
+ Bifurcation Index
+ BI = AT / AT_c = AT · √((1 + α) / R) 
+ As BI → 1, the system approaches the critical threshold. 
+ When BI > 1, the system is in the collapse region. 
+ BI is a simple, computable indicator that connects 
+ WP 2026-05's measurement toolkit to the bifurcation analysis.
+ Distributed Architecture Raises the Critical Threshold
+ Distributed C2-CI architecture affects the threshold formula AT_c = √(R/(1+α)) through two simultaneous mechanisms: it raises effective resilience R, because capacity is distributed across multiple nodes (failure of a single node does not eliminate total capacity); and it reduces α, because modular structure prevents chain-reaction propagation. The combined effect is significant: a distributed system can sustain substantially higher adversary tempo before bifurcation.
+ This is the mathematical grounding for DRD's central design preference. Centralised architectures have high α and are vulnerable to cascade failure. Distributed architectures have low α and raise AT_c. The formula quantifies the advantage rather than asserting it.
+ The mathematical structure is now formalised. Raising the threshold and reducing the hysteresis effect are strategic priorities, not merely design options. The Bifurcation Index provides a single computable indicator for tracking proximity to collapse across operational timescales.
+ 07 
+ Connection to WP 2026-07 Monte Carlo Analysis
+ WP 2026-07 extends this framework with empirical probability distributions across three defence posture scenarios. The connection to the formal model is direct.
+ The standoff precision strike platform standoff precision munition suppression probability (Beta(α=2, β=8), E=0.20) represents the adversary tempo variable AT in scenario-specific terms. At low suppression probability, AT rises rapidly toward AT_c — and in the platform-centric scenario, where resilience R is concentrated in high-value targets and α is high (centralised C2 dependency), AT_c itself is low. The 42% rapid defeat probability in scenario A reflects a system operating in Regime III before the first week of conflict ends.
+ The DRD posture addresses both parameters simultaneously: it raises R through distributed capacity and reduces α through modular architecture. The result — AT_c increases materially — maps directly onto the 17% rapid defeat probability in scenario B versus 42% in scenario A. The Monte Carlo number is the empirical expression of the threshold formula.
+ The fiscal endurance variable (Normal(μ=4, σ=1.5) months) maps onto the hysteresis asymmetry: once C2 has been degraded past bifurcation, restoration costs exceed prevention costs by a structural margin. Platform-centric's 21% fiscal collapse probability reflects a system that cannot recover once its high-value interceptor stocks are attrited below the operational threshold — a direct instance of the G(Φ) ≈ 0 condition in the collapsed state.
+ § Extension 2026 
+ Three Formal Extensions from Adversarial Analysis
+ The following extensions were developed through adversarial modelling and diagram analysis
+ in May 2026. They extend the core dΦ/dt formulation, the C_crit threshold structure,
+ and the AT(t) input assumption, producing a more complete dynamical model.
+ Extension A — A-Layer Multiplicative Coherence
+ The original model treats the degradation pressure α and the resilience term R as
+ independent scalars. Adversarial analysis of the DAGRA architecture (DRD-08) identifies
+ A-layer coherence as a multiplicative factor, not an additive one: partial A-layer loss
+ does not reduce C2 effectiveness linearly but collapses G- and R-layer operational
+ capacity non-linearly, before the formal bifurcation threshold is crossed.
+ The corrected dynamic equation introduces A(t) ∈ [0, 1] as the A-layer coherence state:
+ dΦ/dt = −α · A(t) · Φ + R · (1 − Φ) − β · Φ² 
+ where A(t) = 1 represents full sensor fusion and datanet coherence, A(t) = 0 represents
+ complete A-layer collapse. The multiplicative coupling means that at A(t) = 0.5, the
+ effective degradation pressure is halved — but the system's ability to resist further
+ collapse is simultaneously degraded because G and R layers lose coordination capacity.
+ The bifurcation threshold AT_c must be recalculated as a function of A(t):
+ AT_c(A) = √(R · A(t) / (1 + α)) 
+ This formalises the DRD-08 finding that A-layer investment is not primarily about
+ platform count but about maintaining the coherence multiplier above the level where
+ G and R can function as coordinated rather than independent systems.
+ Extension B — C_crit Two-Component Decomposition
+ The original α parameter is a single scalar representing adversary tempo pressure.
+ Diagram analysis suggests α has two structurally distinct components with opposite signs:
+ C_crit = f(D, R_d, A_q, E_p) − g(K, N_d) 
+ where the threshold-raising function f captures:
+ D — Distribution of C2 nodes (geographic dispersal)
+ R_d — Redundancy of communication pathways
+ A_q — Autonomy quality of sub-units (DRD-03 AQ parameter)
+ E_p — EW protection of sensor and data links
+ and the threshold-lowering function g captures:
+ K — Node concentration (inverse of D; high K = few critical nodes)
+ N_d — Network dependency ratio (shared infrastructure creating
+ correlated failure modes)
+ This decomposition has a direct investment implication: reducing K (dispersing critical
+ nodes, eliminating single points of failure) operates on the subtractive term g and may
+ produce higher C_crit lift per euro than increasing R_d alone. The testable hypothesis is
+ whether marginal investment in K-reduction yields greater threshold displacement than
+ equivalent investment in redundancy R_d. DRD-08's sensitivity analysis suggests K-reduction
+ is the higher-leverage intervention at current Finnish infrastructure concentration levels.
+ Extension C — Pulsed AT(t) and Recovery Dynamics
+ The original model treats AT as a parameter — either a constant or monotonically
+ increasing pressure. The diagram analysis introduces a pulsed structure: three distinct
+ attack waves (T+0, T+6h, T+24h) targeting different DAGRA layers. This changes the
+ bifurcation analysis fundamentally.
+ If AT(t) is pulsed rather than sustained, the threshold crossing may be temporary:
+ the system can enter Phase III (fragmented) and return to Phase II (distributed coherent)
+ if resilience is sufficient and the pulse duration is shorter than the recovery timescale.
+ The existing hysteresis model does not accommodate this — it assumes that once AT_c is
+ exceeded, recovery requires a full state restoration.
+ The proposed recovery dynamics equation:
+ Φ(t + Δ) = Φ_collapse · exp(−γ · R_eff · Δ) + Φ_eq · (1 − exp(−γ · R_eff · Δ)) 
+ where:
+ γ = recovery rate constant (system-specific, calibrated from historical C2 restoration data)
+ R_eff = √(E · D) — the E×D multiplicative resilience index from DRD-08 Extension 1
+ Φ_collapse = CI immediately post-pulse
+ Φ_eq = equilibrium CI at current AT level
+ This formulation directly links DRD-06's hysteresis model to DRD-08's E×D infrastructure
+ decomposition. The recovery rate is governed by R_eff — meaning energy and data resilience
+ jointly determine not just whether the system survives a pulse, but how quickly it returns
+ to Phase II coherence after a temporary threshold crossing.
+ The critical design implication: under pulsed AT(t), the minimum R_eff required to
+ recover before the next pulse arrives sets a hard infrastructure investment floor independent
+ of the AT_c threshold calculation. If pulse interval is 6 hours and recovery with R_eff = 0.35
+ requires 14+ hours, no amount of AT_c-raising investment prevents cumulative coherence
+ degradation across pulse sequences.
+ Series 
+ DRD Working Paper Series
+ WP-02 
+ Distributed Resilience Doctrine: A Strategic Framework for Small-State Defence 
+ Read → 
+ WP 2026-02 
+ Strategic Termination Time as an Analytical Framework for Small-State Deterrence 
+ Read → 
+ WP 2026-03 
+ Command-and-Control Continuity Index: Operationalizing Cognitive Resilience 
+ Read → 
+ WP 2026-04 
+ Distributed Resilience as a Dynamic Denial System: The Adversary Tempo Model 
+ Read → 
+ WP 2026-05 
+ C2-CI Operationalization Toolkit: Measuring and Developing Command Continuity 
+ Read → 
+ WP 2026-07 
+ Dynamic Outcome Distributions Under Strategic Uncertainty — Monte Carlo Analysis 
+ Read → 
+ WP 2026-08 
+ DAGRA — Distributed Air-Ground Resilience Architecture · Infrastructure Sensitivity Analysis 
+ Read →
+
+==================== DRD-SARJA: supplements/drd-07-monte-carlo.html ====================
+WP 2026-07 — Monte Carlo Scenario Analysis — Aether Continuity Institute 
+ Supplements 
+ DRD Series · WP 2026-07 
+ Aether Continuity Institute 
+ Distributed Resilience Doctrine · Working Paper 07 
+ Date 2026-04-28 
+ Series DRD Supplement 
+ Continues WP-02 through WP-06 
+ Language English
+ Internal · Low Profile 
+ WP 2026-07 · Monte Carlo Scenario Analysis
+ Dynamic Outcome Distributions Under Strategic Uncertainty
+ Platform-centric versus DRD posture under variable US commitment and the adversaryn escalation
+ ACI DRD Series · WP 2026-07 · 2026-04-28 · Internal distribution only · Continues drd-06-theory
+ Abstract
+ This working paper extends the DRD analytical series with a dynamic Monte Carlo framework. Three small-state defence posture scenarios — platform-centric (64 5th-generation multirole aircraft, limited ground-based air defence), DRD-optimal (32–40 5th-generation multirole aircraft, distributed GBAD, infrastructure resilience), and current compromise (64 5th-generation multirole aircraft, partial GBAD, no systemic resilience) — are evaluated across 10,000 simulated conflict trajectories. The model incorporates five sequential phases: US commitment level, the adversaryn escalation mode, allied response, defender endurance, and terminal outcome. Sensitivity analysis demonstrates that platform-centric is critically dependent on high US commitment (p≈0.20), while DRD maintains acceptable outcome distributions even under low US commitment (p≈0.25). The fiscal constraint — 5th-generation multirole aircraft lifecycle commitment precluding full DRD transition — is identified as a path-dependency lock that cannot be undone within the current planning cycle. Compensatory measures within existing constraints are outlined.
+ Keywords: Monte Carlo simulation · deterrence by denial · DRD · platform-centric · fiscal constraint · escalation dynamics · standoff precision strike aircraft standoff precision munition · HGV · collective defence treaty obligation
+ 01 
+ Context and Motivation
+ The preceding papers in this series established the conceptual framework for Distributed Resilience Doctrine (WP-02), the Strategic Termination Time metric (WP-03), C2-CI formalisation (WP-04), operationalisation toolkit (WP-05), and the nonlinear dynamics of C2 degradation including bifurcation and hysteresis (WP-06). What has been absent is a quantitative outcome distribution across competing posture scenarios under realistic uncertainty.
+ Two developments make this analysis timely. First, the fiscal trajectory has hardened: the 5th-generation multirole aircraft programme represents a lifecycle commitment of approximately €25–30 billion, constraining the defence budget for decades in ways that were not fully priced into the original acquisition decision. Second, the threat environment has evolved: the adversary's standoff precision munition production reached approximately 12,000 units annually by late 2025, with monthly employment rates exceeding 180 per day in the Ukrainian theatre. The standoff precision strike aircraft's operational pattern — releasing FAB-500/1500 glide munitions from 70–100 km standoff, outside the engagement envelope of most ground-based air defence — represents a structural challenge for which platform-centric posture offers no direct response.
+ This paper does not advocate policy. It quantifies outcome distributions under specified assumptions, making the strategic trade-offs visible in probabilistic terms.
+ 02 
+ Model Architecture
+ 2.1 Five-Phase Sequential Structure
+ The simulation proceeds through five conditional phases. Each phase draws from specified probability distributions; outcomes of earlier phases condition the distributions of later phases.
+ Phase Structure
+ Phase 1: US commitment level (Φ_US) — determines the strategic board 
+ Phase 2: the adversaryn escalation mode — conditional on Φ_US 
+ Phase 3: allied response capability — conditional on Phase 1–2 
+ Phase 4: defender endurance (C2-CI trajectory from WP-06) — conditional on Phase 1–3 
+ Phase 5: Terminal outcome — joint function of all prior phases
+ 2.2 Variable Distributions
+ Variable Distribution Basis 
+ US commitment (high/conditional/low) Discrete: 0.20 / 0.55 / 0.25 Post-2025 NATO credibility assessment 
+ Drone intercept success Beta(α=6, β=4) → E=0.60 short-to-medium range GBAD systems saturation threshold 
+ HGV intercept success Beta(α=1, β=9) → E=0.10 hypersonic glide vehicle (HGV) vs Patriot/5th-generation multirole aircraft, highly uncertain 
+ standoff precision strike aircraft standoff precision munition suppression Beta(α=2, β=8) → E=0.20 Standoff range exceeds current GBAD envelope 
+ small-state fiscal endurance (months) Normal(μ=4, σ=1.5), clipped [0,12] Attrition of high-cost interceptors 
+ allied intervention lag (days) LogNormal(μ=2.5, σ=0.8) → median ≈12d Historical mobilisation rates 
+ the adversaryn political abandonment threshold Normal(μ=45, σ=20) days Cost-benefit inversion without rapid victory 
+ 2.3 Terminal Outcome Categories
+ Strategic success — sovereignty maintained, conflict terminated without territorial loss
+ Protracted attrition — no rapid outcome, allied intervention window opens (DRD objective)
+ Rapid strategic defeat — the adversaryn objectives achieved within 14 days
+ Fiscal collapse — economic attrition forces capitulation before military decision
+ 03 
+ Simulation Results — 10,000 Runs
+ Scenario A: Platform-Centric (64 5th-generation multirole aircraft, limited GBAD)
+ Outcome Probability Notes 
+ Strategic success 15% Requires high US commitment + the adversaryn error 
+ Protracted attrition 22% Partial deterrence, degraded C2 
+ Rapid strategic defeat (<14d) 42% Fields and C2 destroyed before 5th-generation multirole aircraft employment 
+ Fiscal collapse (pre-military) 21% Interceptor attrition in hybrid phase 
+ Scenario B: DRD-Optimal (32–40 5th-generation multirole aircraft, distributed GBAD, infrastructure resilience)
+ Outcome Probability Notes 
+ Strategic success 30% Resilient to variable US commitment 
+ Protracted attrition 48% Most likely outcome — NATO window opens 
+ Rapid strategic defeat (<14d) 17% Distributed assets reduce high-value target density 
+ Fiscal collapse 5% Resilience reduces interceptor burn rate 
+ Scenario C: Current Compromise (64 5th-generation multirole aircraft, partial GBAD, no systemic resilience)
+ Outcome Probability Notes 
+ Strategic success 20% Marginally better than A 
+ Protracted attrition 32% Incomplete deterrence 
+ Rapid strategic defeat (<14d) 38% C2 vulnerability not resolved 
+ Fiscal collapse 10% Better than A, worse than B 
+ The DRD posture shifts the modal outcome from rapid defeat (42% in platform-centric) to protracted attrition (48% in DRD). Protracted attrition is the operationally desirable outcome for a small state dependent on allied intervention — it is precisely the outcome that collective defence treaty commitment requires time to activate.
+ 04 
+ Sensitivity Analysis — US Commitment Level
+ The most consequential single variable is US commitment level. Platform-centric posture is structurally dependent on high US commitment (p≈0.20). DRD is robust across all commitment levels.
+ Platform-Centric (Scenario A)
+ US Commitment Favourable outcome probability Rapid defeat risk 
+ High (p=0.20) 52% 26% 
+ Conditional (p=0.55) 31% 44% 
+ Low (p=0.25) 24% 68% 
+ DRD-Optimal (Scenario B)
+ US Commitment Favourable outcome probability Rapid defeat risk 
+ High (p=0.20) 86% 8% 
+ Conditional (p=0.55) 79% 14% 
+ Low (p=0.25) 70% 25% 
+ DRD's robustness to US commitment variation is its most strategically significant property. In an era of documented NATO credibility stress — including public questioning of collective defence obligation by executive authority — a posture that performs adequately without US intervention represents a fundamentally different risk profile than one that collapses at low commitment levels.
+ 05 
+ Single-Variable Sensitivity — Critical Factors
+ Varying one factor at a time against the DRD baseline identifies which variables most significantly affect outcomes.
+ Sensitivity Rankings
+ 1. standoff precision strike aircraft standoff precision munition suppression probability (E=0.20 baseline) 
+ → Raise to 0.50: DRD defeat probability 24% → 12% 
+ → Drop to 0.05: DRD defeat probability 24% → 41% 
+ Single most decisive variable (consistent with WP-02 threat assessment) 
+ 2. small-state fiscal endurance (μ=4 months baseline) 
+ → Reduce to 2 months: platform-centric fiscal collapse 21% → 62% 
+ → DRD resilience: 5% → 19% (significantly lower sensitivity) 
+ 3. allied intervention lag (median 12 days baseline) 
+ → Extend to 30 days: DRD protracted attrition extends >60 days 
+ → Defeat probability: DRD 24% → 31% (manageable) 
+ → Platform-centric: 42% → 73% (catastrophic)
+ The standoff precision strike aircraft result is structurally important: it validates the central technical argument of WP-02. The platform-centric model has no direct answer to standoff standoff precision munition employment — 5th-generation multirole aircraft sorties require operating airspace that standoff precision munition raids do not. The solution space is long-range GBAD (150+ km engagement envelope) or forward-based dispersed fighters operating from road strips without centralised C2 dependency. Neither is currently fielded at adequate scale.
+ 06 
+ Fiscal Path-Dependency and Compensatory Measures
+ Full DRD transition is fiscally foreclosed. The 5th-generation multirole aircraft programme represents a sunk cost in the decision-theoretic sense: the acquisition is complete, and the lifecycle commitment is politically and contractually irreversible within the current planning cycle. Relitigating the acquisition decision is not analytically productive.
+ What remains is the identification of compensatory measures that improve outcome distributions within the existing fiscal envelope. Three categories are available.
+ First: 5th-generation multirole aircraft integration into NATO ISR chain. The platform's most significant underexploited capability is its sensor fusion and data-link architecture. Integrated into NATO's airborne early warning platform and ground-based sensor network, 5th-generation multirole aircraft can serve as a C2 node and targeting relay for ground-based systems it cannot directly engage. This requires investment in interoperability infrastructure rather than additional platforms.
+ Second: Dispersed basing and road strip capability. The most immediate DRD-compatible measure is pre-positioning fuel, ordnance, and maintenance capability at dispersed civilian airfield locations. This reduces the high-value target density at primary bases and extends the operational window before C2 degradation reaches bifurcation threshold (WP-06). Investment cost is modest relative to platform cost.
+ Third: Infrastructure resilience as force multiplier. Finnish energy infrastructure resilience — the subject of the parallel ACI SGFA analysis — directly affects C2-CI. Distributed energy nodes that can sustain C2 function independent of grid connectivity reduce the effectiveness of infrastructure-targeted strikes in the hybrid phase. This is the structural connection between the DRD series and the SGFA investment programme: resilient energy infrastructure is not civilian policy — it is defence-relevant C2 sustainment.
+ The connection between energy infrastructure resilience (SGFA programme) and military C2 continuity (DRD C2-CI framework) is not metaphorical. A distributed energy node that sustains command function through a grid disruption event directly shifts the C2-CI trajectory described in WP-06, reducing the probability of bifurcation under hybrid-phase stress.
+ 06b 
+ Empirical Reference: Fiscal Attrition Without Conflict
+ The fiscal endurance parameter (Normal μ=4, σ=1.5 months) is the least empirically grounded variable in the model. A historical reference case provides partial validation: the 2009–2018 debt crisis of a southern European eurozone member state demonstrates the mechanics of fiscal attrition under external pressure without military conflict.
+ The case trajectory follows the bifurcation pattern described in WP-06 with precision. The state did not collapse suddenly — it drifted toward the critical threshold over five years of slow deterioration before the abrupt phase transition: GDP contracted 25%, unemployment reached 25% of the labour force, and political cohesion fractured as emergency coalition governments alternated with radical opposition movements. The system exhibited classic critical slowing down — recovery time from fiscal perturbations lengthened progressively before the crisis peak — but this signal was not measured in operational time.
+ Three structural observations transfer directly to small-state defence analysis.
+ First, the external intervention that prevented full collapse — a central bank commitment to prevent eurozone dissolution — was a non-replicable event. The mechanism depended on a specific institutional mandate that does not extend to states under hybrid or kinetic pressure. A state facing simultaneous fiscal attrition and security stress cannot assume an equivalent intervention.
+ Second, defence expenditure did not protect against fiscal crisis. The case state maintained defence spending above 5% of GDP through the crisis period — among the highest in the alliance — while simultaneously being forced to cut defence budgets 8% between 2010 and 2015. High platform investment and fiscal fragility coexisted, then compounded.
+ Third, political cohesion fractured at approximately the four-month mark of acute crisis — consistent with the μ=4 model parameter. When hospital queues formed and food distribution points appeared, the political centre could not hold. Radical formations captured government within five years of crisis onset. This is WP-02's societal resilience pillar expressed as empirical outcome: it is not a soft value but a measurable strategic variable that degrades under fiscal stress independently of military threat.
+ The case state survived because an external actor intervened with a credible commitment that stabilised bond markets. The case state's own fiscal and military posture did not determine survival — the external actor did. A small state on a long land border with a peer-level adversary cannot assume the availability of an equivalent external actor at the moment of stress. This asymmetry is the core of the fiscal endurance problem that μ=4 months attempts to capture.
+ Projecting forward: defence expenditure rising to approximately 8.5 billion annually combined with debt service costs rising from 3.2 billion to an estimated 6.3 billion by 2030 produces a combined fixed obligation approaching 15 billion — a structural commitment that leaves declining room for the distributed resilience investments (energy node infrastructure, dispersed C2 capacity, infrastructure hardening) that DRD requires. The fiscal path-dependency identified earlier in this section is not hypothetical. It has a documented historical analogue in which the same dynamic — high platform investment, rising debt service, compressed resilience investment — produced exactly the outcome distribution that Scenario A projects.
+ 07 
+ Conclusions
+ The Monte Carlo analysis produces three findings that are robust across parameter variation.
+ First, platform-centric posture is critically fragile to US commitment variation. At low US commitment (p=0.25), rapid defeat probability reaches 68%. This is not a tail risk — it is the modal outcome under one of three plausible US posture scenarios. The platform-centric model was calibrated for a strategic environment that may not persist.
+ Second, DRD posture produces the protracted attrition outcome that small-state NATO strategy requires. At 48% probability across all US commitment scenarios, protracted attrition is the DRD modal outcome. This is the condition under which collective defence obligation activation has operational meaning — it provides the temporal window for allied intervention that rapid defeat forecloses.
+ Third, the standoff precision strike aircraft standoff precision munition problem is the single variable that most significantly degrades all scenarios. No current Finnish capability reliably suppresses standoff standoff precision munition employment. This represents the primary capability gap that compensatory investment should address — not additional strike platforms, but extended-range GBAD and dispersed C2 architecture.
+ the case state chose its strategy before the current threat environment was fully apparent and before the current US commitment uncertainty was measurable. The choice cannot be undone. What can be done is to maximise the DRD-compatible elements within the existing platform investment — dispersal, ISR integration, and infrastructure resilience — at the margin of the available fiscal envelope.
+ 08 
+ Institutional Validation
+ The analytical framework developed in this paper received independent institutional validation in April 2026, when the national supply security authority published a scenario document titled "Suomeen kohdistuva sotilaallinen voimankäyttö ja huoltovarmuus" (Military Use of Force against Finland and Supply Security). The document was prepared in cooperation with the defence forces, the cybersecurity centre, and the national regulatory authority, and released publicly for use by the entire business community after earlier restricted distribution to supply-security-critical companies.
+ Three passages in the institutional document directly validate the analytical premises of this paper. First: "Operational reliability takes precedence over efficiency. Instead of the cheapest option, preference is given to choices that are correctable and manageable domestically." This is the DRD posture argument stated as official policy — distributed, repairable, domestically controllable capacity is explicitly preferred over optimised but fragile centralised systems. Second: "Every disruption in infrastructure is felt at the front, and every success on the civilian side also strengthens military capability." This confirms the C2-CI linkage formalised in WP-06: civilian infrastructure resilience and military command continuity are not separable domains. Third: "Responsibility would shift increasingly to citizens, organisations, companies and local actors." This is the distributed resilience principle — the architectural preference for networked local nodes over centralised dependency — expressed as the anticipated operational reality under stress conditions.
+ The institutional document explicitly characterises military conflict as unlikely but serious if realised — consistent with the probability weights used in this paper's Phase 2 escalation distribution. Its publication does not change the quantitative parameters of the Monte Carlo model. It does, however, confirm that the threat structure, the infrastructure dependency, and the distributed resilience imperative that motivate this analysis are shared by the institutions responsible for national preparedness. The analysis in this paper was conducted independently and prior to the institutional document's public release. The convergence is substantive rather than coincidental: both derive from the same underlying structural conditions.
+ § Update 2026 
+ Three Extensions from Adversarial Debate
+ The following three analytical extensions were developed through structured adversarial modelling
+ in May 2026, stress-testing DRD-07's core results against a hybrid A/G/R allocation framework
+ (DAGRA: Distributed Air-Ground Resilience Architecture). They extend, rather than revise, the
+ original simulation findings.
+ Extension 1 — E×D Two-Dimensional Infrastructure Resilience
+ DRD-07's R-layer (infrastructure resilience) was treated as a single composite variable.
+ Adversarial modelling demonstrates that R must be decomposed into two independent dimensions:
+ E (Energy Resilience Index): 0 = grid fully dark, 1 = all critical nodes
+ islanded with backup power. λ E = 3.0 (medium fragility — a small number of HGV
+ strikes can black out large areas).
+ D (Data Resilience Index): 0 = all communications severed (EW + physical),
+ 1 = satellite links and fibre alternatives fully operational. λ D = 4.0 (high
+ fragility — EW and cable strikes degrade rapidly).
+ R-layer effective contribution scales as √(E · D) , not as their sum.
+ If either component reaches zero, total R-contribution collapses to zero regardless of investment
+ in the other. This multiplicative structure has a critical investment implication: a marginal euro
+ in the weaker of E or D yields higher deterrence return than any increase in the stronger component.
+ Sensitivity analysis shows R-investment marginal benefit is 5–15× that of A-layer
+ investment when R < 25% of budget, falling below 1× beyond R = 30–35%.
+ The optimal R-layer threshold is therefore 25–30% — not arbitrary, but derived from the E×D
+ multiplicative structure.
+ Critical operational threshold: Phase II C2 coherence (CI ≥ 0.6) requires both
+ E ≥ 0.5 and D ≥ 0.5 . Finland's estimated current state (E ≈ 0.3–0.4,
+ D ≈ 0.4–0.5) places the system in Phase III under moderate operational stress.
+ Extension 2 — C2 Phase Transition Diagram
+ DRD-06 established the bifurcation condition AT c = √(R/(1+α)). The phase
+ transition diagram extends this to a two-axis representation:
+ X-axis — Operational Stress (OS): composite of EW intensity, kinetic
+ strike rate against A-layer nodes, sensor network degradation. Scale 0–1.
+ Y-axis — C2 Cohesion Index (CI): 1.0 = fully coherent, 0.0 = collapsed.
+ Four operational phases:
+ Phase I (CI 0.8–1.0, OS < 0.3): Coherent C2 — centralised common
+ operating picture, linear decision chains.
+ Phase II (CI 0.6–0.8, OS 0.3–0.6): Distributed but coherent — ACE
+ fallback active, NATO ISR partially substituting national sensors. This is the target
+ operational state for modern NATO C2.
+ Phase III (CI 0.3–0.6, OS 0.6–0.8): Fragmented — common picture
+ desynchronised, decisions devolve to local cells. A-layer loses network value
+ non-linearly; R and G begin operating as independent systems.
+ Phase IV (CI < 0.3, OS > 0.8): C2 collapse — no unified command,
+ no shared situational awareness. F-35 operates as a local asset only; GBAD as point
+ defence; R-layer determines survival, not outcome.
+ Hysteresis: The transition I→II→III→IV is rapid once OS crosses OS c ≈ 0.6.
+ Recovery from Phase IV to Phase II requires OS to fall to ≈ 0.4 — not 0.6 — because
+ infrastructure, trust networks and dataflows do not restore automatically. Under balanced
+ allocation (40A/35G/25R), recovery time from Phase IV is 5–7 days; under A-dominant
+ allocation (60/20/10) it extends to 4+ weeks or becomes permanent.
+ NATO ISR contribution: alliance AWACS, AGS drones and F-35 datanet shift OS c 
+ upward by approximately +0.10–0.15 under high US commitment. Under low US commitment
+ (estimated p = 0.25 post-2025), this benefit disappears, restoring the case for maintaining
+ national A-layer minimum at 30–35%.
+ Extension 3 — Minimax Equilibrium and Nash-Optimal Budget Allocation
+ Game-theoretic analysis of the attacker-defender interaction yields a stable result.
+ Defining the adversary's strike vector α = (α A , α R , α G )
+ where α i ∈ [0,1] and Σα = 1, the adversary's dominant strategy is
+ A-layer priority (α A ≈ 0.5–0.7) across all defender allocations
+ tested. This is because A-layer fragility (λ A = 5.0) ensures maximum expected
+ damage per unit of strike capability regardless of defender posture.
+ Defender loss function under parallel strikes:
+ L = w A ·(1 − exp(−λ A ·α A )) + w R ·(1 − exp(−λ R ·α R )) + w G ·(1 − exp(−λ G ·α G )) 
+ with weights w A = 0.5, w R = 0.3, w G = 0.2.
+ Minimax analysis across allocation scenarios (S A -column, adversary's dominant strategy):
+ A-dominant (60/20/10): L = 0.82
+ Balanced (40/35/25): L = 0.52 
+ DRD-dominant (20/40/40): L = 0.63
+ The balanced allocation (40A/35G/25R) is the Nash equilibrium: it minimises maximum
+ adversary-achievable damage given the adversary's dominant strategy of A-layer strike priority.
+ This confirms DRD-07's Scenario B result through an independent game-theoretic path —
+ not as a heuristic but as a stable equilibrium.
+ Risk-adjusted optimum incorporating US commitment uncertainty:
+ 35A/40G/25R , which maintains A-layer above the critical threshold for
+ independent first-hour C2 coherence while increasing G-layer compensation for reduced
+ NATO ISR availability.
+ § Update 2026b 
+ Hypersonic Threat Taxonomy and DAGRA Layer Implications
+ Translating the preceding game-theoretic extensions to concrete adversary capabilities
+ in 2026 produces a three-tier threat taxonomy with asymmetric implications for the A/G/R
+ allocation framework.
+ System 
+ Speed 
+ Intercept probability 
+ DAGRA layer relevance 
+ Kh-47M2 Kinzhal 
+ Air-launched ballistic, MiG-31K / Tu-22M3 · range 2 000+ km · 480–500 kg warhead · operationally proven in Ukraine 
+ Mach 10 
+ Patriot / NASAMS: limited 
+ G-layer (GBAD) 
+ 3M22 Tsirkon 
+ Ship / submarine / ground-launched · range ≈ 1 000 km · tested in Ukraine in limited numbers 
+ Mach 8–9 
+ Extremely difficult 
+ G-layer partial 
+ Avangard 
+ HGV on ICBM (UR-100N / RS-28 Sarmat) · range 6 000+ km · nuclear warhead · altitude 80–90 km · Russia reports production constraints 
+ Mach 20+ 
+ Not interceptable 
+ R-layer only + NATO Article 5 
+ The Avangard Discontinuity
+ Avangard is not a quantitative extension of the Kinzhal / Tsirkon threat — it represents
+ a categorical discontinuity in the DAGRA framework. At Mach 20+ and 80–90 km altitude,
+ no current or near-term GBAD system provides meaningful intercept probability. This has a
+ direct structural implication: against Avangard, A-layer assets (F-35) and G-layer assets
+ (Patriot, NASAMS, IRIS-T) are operationally irrelevant as defensive instruments.
+ The decision logic for Avangard employment also differs categorically: as a nuclear-armed
+ strategic system, its use crosses a threshold governed by NATO's collective deterrence posture
+ rather than conventional force exchange ratios. Its threat value therefore operates primarily
+ through deterrence calculus, not through tactical engagement probability.
+ Against Avangard, two and only two responses are structurally coherent:
+ Deterrence: NATO nuclear umbrella and Article 5 — the alliance-level
+ response that raises the cost of Avangard employment beyond the adversary's acceptable
+ threshold.
+ R-layer survivability: If deterrence fails and a strike occurs, what
+ critical C2, energy and data infrastructure survives? This is precisely the E×D
+ decomposition from Extension 1 — the only investment that remains meaningful post-strike.
+ Implications for the 40A/35G/25R Allocation
+ The threat taxonomy reinforces the Nash-equilibrium allocation from Extension 3, but
+ sharpens the rationale for each layer:
+ A-layer (35–40%): Effective against the conventional threat spectrum —
+ not against Avangard. F-35's primary value against hypersonic threats is as a NATO ISR
+ node contributing to alliance-level deterrence signalling, not as an intercept platform.
+ G-layer (35–40%): Kinzhal is the primary design case for GBAD
+ investment. Patriot and NASAMS provide meaningful — if limited — intercept probability
+ at Mach 10. Tsirkon is at the edge of G-layer effectiveness. Against Avangard, G-layer
+ is irrelevant as an intercept mechanism but retains value as a conventional threat
+ suppressor that preserves C2 coherence in Phase I–II.
+ R-layer (25–30%): The only layer with structural relevance across
+ the full threat spectrum including Avangard. Energy islanding, data redundancy (E×D),
+ and distributed C2 are the sole meaningful investments against a nuclear HGV scenario.
+ The marginal deterrence value of R-layer investment — through demonstrating second-strike
+ survivability — is undervalued in conventional force planning frameworks.
+ Note on Avangard production: Russia has reported constraints on new system production,
+ suggesting limited inventory depth. This does not reduce the strategic threat — a small
+ number of Avangard strikes against Finnish C2 and energy infrastructure would be sufficient
+ to achieve the operational objective of rapid systemic collapse. Limited inventory reinforces
+ rather than diminishes the case for R-layer hardening.
+ Ref 
+ Series References
+ WP-02 · Distributed Resilience Doctrine — core framework · aethercontinuity.org/papers/ 
+ drd-02-stt · Strategic Termination Time · supplements/ 
+ drd-03-c2ci · Command-and-Control Continuity Index · supplements/ 
+ drd-04-atm · Adversary Tempo Model · supplements/ 
+ drd-05-toolkit · C2-CI Operationalisation Toolkit · supplements/ 
+ drd-06-theory · C2-CI Nonlinear Dynamics — bifurcation and hysteresis · supplements/ 
+ DRD-07 Update 2026 · Three extensions: E×D infrastructure decomposition,
+ C2 phase transition diagram, minimax budget equilibrium — developed through adversarial
+ modelling, May 2026.
+ SM-010 · SGFA Financing Instruments and Energy Clusters — infrastructure resilience as C2 sustainment · papers/
+
+==================== DRD-SARJA: supplements/drd-08-dagra.html ====================
+DRD-08 — DAGRA: Distributed Air-Ground Resilience Architecture | ACI 
+ Supplements 
+ DRD Series · WP 2026-08 
+ Aether Continuity Institute 
+ Distributed Resilience Doctrine · Working Paper 08 
+ Date 2026-05-26 
+ Series DRD Supplement 
+ Continues DRD-07 · Monte Carlo Extensions 
+ Language English
+ DAGRA: Distributed Air-Ground Resilience Architecture
+ Infrastructure Sensitivity Analysis · Budget Optimization · Hypersonic Threat Layer
+ Abstract. DRD-08 formalizes the DAGRA (Distributed Air-Ground Resilience
+ Architecture) three-layer model (A/G/R) developed through adversarial modelling in May 2026.
+ The central argument is that energy and data infrastructure haavoittuvuus constitutes a larger
+ structural risk than platform inventory. Against hypersonic threats (Kinzhal, Tsirkon, Avangard),
+ F-35 assets represent concentrated vulnerability — eggs in few baskets — while R-layer
+ investment is the only instrument retaining meaningful defensive value across the full threat
+ spectrum including nuclear HGV. Sensitivity analysis demonstrates R-layer marginal returns
+ 5–15× those of A-layer investment when R < 25% of budget. The Nash-equilibrium allocation
+ is 40A/35G/25R; risk-adjusted for US commitment uncertainty: 35A/40G/25R.
+ § 01 
+ DAGRA: Three-Layer Architecture
+ DAGRA structures defence investment into three functionally distinct layers, each with
+ different fragility profiles, adversary targeting logic, and diminishing-returns curves:
+ Layer Content Fragility λ Diminishing returns 
+ A — Air coherence 
+ F-35 fleet, NATO ISR integration, C2 core, sensor fusion, EW protection 
+ 5.0 (high) 
+ Rapid above 40% 
+ G — Ground denial 
+ GBAD (Patriot/NASAMS/IRIS-T), mobile radars, MANPADS, long-range fires, C-UAS 
+ 1.0 (low) 
+ Moderate 
+ R — Resilience 
+ Energy islanding, data redundancy, logistics continuity, C2 fallbacks, cyber 
+ 2.5–4.0 (E/D split) 
+ Very low below 30% 
+ The deterrence function is non-additive:
+ D = (A · G) + (R · (A + G)) − failure_thresholds 
+ This multiplicative structure means A without R is brittle, R without A lacks strategic
+ reach, and G without A cannot prioritise engagements. The three layers are complements,
+ not substitutes — except in catastrophic scenarios where A and G are eliminated and only
+ R determines post-strike survivability.
+ § 01b 
+ C2 Phase Transition Diagram v2.0
+ The diagram below synthesises DRD-06 (bifurcation and hysteresis), DRD-08 (E×D,
+ Black Start, M-component) and DRD-09 (DRI composite) into a single visualisation.
+ Three simulated trajectories show the difference between the 2026 baseline,
+ hardware-only hardening, and the DAGRA 2030 target architecture.
+ Käyrä A (punainen): Suomi 2026 baseline — romahtaa Faasiin IV T+24h mennessä ilman palautumista.
+ Käyrä B (oranssi katkoviiva): Rauta-optimoitu — hidastaa putoamista mutta jää Faasin III alarajalle.
+ Käyrä C (vihreä): DAGRA 2030 — joustaa Faasiin II, Black Start + NH90 palauttavat koherenssin viikoissa.
+ § 02 
+ The Infrastructure Vulnerability Argument
+ The central claim of DRD-08 is not that F-35 is a poor investment in isolation, but that
+ under the 2026 threat environment it represents concentrated vulnerability — eggs in few
+ baskets — while energy and data infrastructure represent a larger structural risk that
+ receives systematically less investment.
+ The concentration problem
+ Finland's F-35 fleet of 64 aircraft, even when dispersed under ACE doctrine across highway
+ strips and dispersal bases, remains a finite and enumerable set of high-value targets. Each
+ aircraft represents approximately 150–200 million euros in acquisition cost plus lifecycle
+ overhead. A coordinated first strike with 6–8 Kinzhal missiles against three primary airbases
+ — each capable of Mach 10 penetration at ranges exceeding 2 000 km — would destroy or
+ disable a significant fraction of the fleet before dispersal is complete.
+ Energy and data infrastructure presents the inverse problem: it is geographically distributed
+ but functionally centralised. Finland's grid has fewer than 20 critical transformer nodes whose
+ simultaneous destruction would black out the country. Fibre backbone routes follow a small
+ number of physical corridors. GPS dependency permeates military and civil systems alike.
+ Structural finding: F-35 concentration risk is mitigated by dispersal doctrine
+ (ACE) but cannot be eliminated. Infrastructure concentration risk is mitigated only by
+ islanding and redundancy investment — which currently receives approximately 10% of the
+ defence budget versus 60% for A-layer.
+ The E×D decomposition
+ R-layer effectiveness is not a single scalar but the product of two independent dimensions:
+ E (Energy Resilience Index): probability that critical nodes retain
+ power post-strike. λ E = 3.0. A small number of HGV strikes against transformer
+ stations can collapse grid over large areas.
+ D (Data Resilience Index): probability that C2 communications survive
+ EW and physical attack. λ D = 4.0. EW at Kinzhal/Tsirkon ranges degrades GPS,
+ radio and fibre simultaneously.
+ R-layer effective contribution: R_eff = √(E · D) 
+ If either E or D reaches zero, R-layer contribution collapses regardless of investment in
+ the other. A defence posture with excellent energy islanding but no data redundancy — or
+ vice versa — achieves near-zero R-layer effectiveness under combined EW + kinetic attack.
+ E D R_eff = √(E·D) C2 phase 
+ 0.8 0.8 0.80 Phase I–II (coherent) 
+ 0.6 0.6 0.60 Phase II (boundary) 
+ 0.5 0.5 0.50 Phase II–III transition 
+ 0.4 0.6 0.49 Phase III (fragmented) 
+ 0.3 0.3 0.30 Phase III–IV boundary 
+ 0.8 0.1 0.28 Phase IV despite strong energy 
+ The last row is critical: high energy resilience with low data resilience produces Phase IV
+ collapse. The weakest of E or D governs the system outcome. This has a direct investment
+ implication — the marginal euro should go to whichever of E or D is currently lower, not to
+ the one already higher.
+ § 02b 
+ Black Start Capability and Data Centre Concentration Risk
+ Black Start: the dynamic E-component
+ Energy resilience (E) has two sub-dimensions. Static E measures whether critical
+ nodes have power during an attack. Dynamic E measures how quickly power is restored
+ after a pulse — the recovery rate γ in DRD-06 Extension C. Black Start capability — automatic
+ inverter-based grid restoration in minutes rather than hours — governs γ directly.
+ Under pulsed AT(t) with 6-hour inter-pulse intervals, a γ implying 14-hour recovery time
+ means the system cannot return to Phase II coherence before the next pulse. Black Start is
+ therefore not supplementary hardening but a prerequisite for pulsed resilience. Without it,
+ microgrid investment raises static E while leaving dynamic E near zero. Estimated additional
+ cost: ~150–200M EUR above the core energy islanding programme.
+ Data centre concentration: a new K-term
+ Rapid data centre growth in southern Finland introduces a new node concentration risk
+ (the K-term in DRD-06 Extension B, C_crit = f(D,R_d,A_q,E_p) − g(K,N_d)). Data centres
+ concentrate grid load and fibre traffic in the area with Finland's highest existing
+ transformer density, creating three compounding effects:
+ Shared physical infrastructure: Military C2 nodes and commercial
+ data centres draw from the same transformer stations and fibre corridors. A strike
+ targeting data centre infrastructure simultaneously degrades military C2.
+ Increased N_d (network dependency): Smart-grid integration of
+ data centre power management creates correlated failure modes absent in simpler
+ architectures.
+ Huoltovarmuus degradation: Supply security experts have warned
+ the data centre boom draws grid capacity toward commercial optimisation at the
+ expense of resilience-critical uses.
+ Structural implication: Data centre concentration in southern Finland
+ raises K and N_d simultaneously, lowering C_crit without any change in adversary
+ capability. This is a self-inflicted reduction in the bifurcation threshold.
+ § 02c 
+ M-Component: Mobility Resilience
+ DRD-08's R-layer is extended by a third component identified in CN-014
+ (Distributed Helicopter Resilience, May 2026). The E×D multiplicative structure
+ captures static infrastructure continuity. The M-component captures dynamic,
+ mobile capability that maintains C2, logistics and human rescue even when fixed
+ infrastructure is damaged or destroyed.
+ The revised R-layer effective contribution:
+ R_eff = √(E · D) · f(M) 
+ where f(M) is a mobility resilience factor scaling between 0 and 1.
+ At M = 0 (no mobile capability), R_eff collapses regardless of E and D values —
+ static infrastructure without evacuation and logistics continuity cannot sustain
+ C2 under sustained operational stress. At M = 1 (fully integrated dual-use
+ rotary wing assets), R_eff reaches the full √(E·D) value.
+ Three M-layer functions
+ Mobile C2 node: NH90 as a flying command-and-control relay,
+ maintaining situational picture and communications when ground nodes are destroyed
+ or isolated. This directly sustains the D-component under EW and kinetic attack.
+ Logistics continuity: Forward fuel, ammunition, spare parts and
+ medical supply delivery when road and rail infrastructure is degraded. This extends
+ the operational timeline before static infrastructure failure forces Phase IV transition.
+ Human rescue and evacuation: Civilian evacuation, casualty
+ extraction, HEMS delivery to trauma facilities. Without this, societal endurance
+ (the R-layer floor identified in TN-010) degrades rapidly under sustained pressure.
+ Current Finnish state: M ≈ 0.2
+ Finland operates three separate helicopter organisations with no common operational
+ framework: Defence Forces (20 NH90 + 7 MD500, ~30 executive assistance tasks per year),
+ Border Guard (Super Puma, AB206), and FinnHEMS (EC135, H145, 8 bases, civilian HEMS).
+ The ~30 annual executive assistance tasks represent a small fraction of the NH90 fleet's
+ theoretical dual-use capacity. Eastern and northern Finland are underserved by the civilian
+ HEMS network — Rovaniemi is the northernmost base.
+ Norway's NAWSARH/SAR Queen model (16–18 AW101, six bases, Ministry of Justice ownership,
+ Air Force operation, Joint Rescue Coordination Centre command) achieves M ≈ 0.8 through
+ institutional integration rather than additional procurement. The same aircraft serves
+ both peacetime SAR and wartime military roles. ~1,000 SAR tasks per year versus Finland's
+ ~30 executive assistance tasks — same country size, same population.
+ Three investment steps to raise M
+ NH90 dual-role systematisation (10–20M EUR one-time):
+ define peacetime SAR/HEMS role and wartime military role; establish cross-ministry
+ steering group (Justice, Defence, Health); equip for HEMS/SAR configuration.
+ HEMS coverage expansion (5–10M EUR/year): position 2–3 NH90
+ on standby in eastern Finland and Lapland; train crews for paramedic tasks with
+ FinnHEMS; fund from central government, not welfare districts.
+ Reserve specialist model (0–5M EUR/year): target reservist
+ age-limit extension at helicopter operation specialists (aviation maintenance,
+ paramedics, logistics); corporate tax incentive for reserve training funding.
+ Total budget impact: 10–20M EUR one-time + 5–15M EUR/year. This is <2% of the
+ energy and data infrastructure investment (§03) and <0.1% of F-35 lifecycle cost.
+ The cost-to-strategic-benefit ratio is the highest in the R-layer investment portfolio.
+ Full analysis: CN-014 — Distributed Helicopter Resilience 
+ § 03 
+ Infrastructure Sensitivity Analysis
+ Marginal return on R-layer investment
+ Using the loss function L = Σ w_k · (1 − exp(−λ_k · α_k)) with weights
+ w A =0.5, w R =0.3, w G =0.2, sensitivity analysis compares
+ the effect of a marginal 100M EUR added to A-layer versus R-layer:
+ R baseline +100M to A (ΔL) +100M to R (ΔL) R/A benefit ratio 
+ R = 10% (E=D=0.2) −0.01 −0.15 15× 
+ R = 20% (E=D=0.4) −0.02 −0.10 5× 
+ R = 30% (E=D=0.55) −0.03 −0.06 2× 
+ R = 40% (E=D=0.7) −0.04 −0.03 0.75× (A now better) 
+ R-layer marginal returns exceed A-layer returns by 5–15× when R < 25% of budget.
+ Finland's current R allocation (~10%) places it in the 15× marginal return zone —
+ the highest possible infrastructure investment leverage point.
+ Critical operational thresholds
+ Phase II C2 coherence (CI ≥ 0.6) requires E ≥ 0.5 and D ≥ 0.5 simultaneously.
+ Estimated current Finnish state: E ≈ 0.3–0.4, D ≈ 0.4–0.5. This places the system
+ in Phase III under moderate operational stress — without any kinetic engagement.
+ Category Action Cost E/D target Phase effect 
+ Energy 
+ C2 node islanding: microgrid + 30-day fuel reserves 
+ ~500M EUR E: 0.35 → 0.55 
+ Phase III → II boundary 
+ Data 
+ Satellite terminals (Starlink/IRIS²), HF radio backup, fibre rerouting 
+ ~300M EUR D: 0.40 → 0.60 
+ Phase II sustained 
+ Physical hardening 
+ Underground cables, transformer dispersal, node duplication 
+ ~400M EUR E/D baseline +0.10 
+ Resilience floor 
+ Black Start 
+ Automatic inverter-based grid restoration for C2 nodes (dynamic E recovery rate γ) 
+ ~150–200M EUR γ: hours → minutes 
+ Pulsed resilience enabled 
+ Total 
+ All categories required — E×D multiplicative + Black Start dynamic recovery 
+ ~1.35–1.4B EUR 
+ E≈0.65, D≈0.65, γ fast 
+ Phase III → Phase II + pulse resilience 
+ ~15–20% of annual defence budget as one-time
+ investment. Transition from estimated current state (E≈0.35, D≈0.40) to Phase II threshold
+ (E≥0.50, D≥0.50). All three categories are required — the E×D multiplicative structure
+ means partial investment in only one dimension produces near-zero R-layer gain.
+ § 04 
+ Hypersonic Threat Layer and DAGRA Implications
+ System Speed Warhead Intercept DAGRA relevance 
+ Kh-47M2 Kinzhal MiG-31K / Tu-22M3 · range 2 000+ km · proven in Ukraine 
+ Mach 10 480–500 kg conventional 
+ Patriot: limited G-layer design case 
+ 3M22 Tsirkon Ship / submarine / ground · range ≈1 000 km · limited Ukraine deployment 
+ Mach 8–9 Conventional 
+ Extremely difficult G-layer marginal 
+ Avangard HGV ICBM-carried · range 6 000+ km · altitude 80–90 km · production constrained 
+ Mach 20+ Nuclear 
+ Not interceptable R-layer only + Article 5 
+ Against Avangard, A-layer and G-layer are operationally irrelevant as defensive instruments.
+ The only structurally coherent responses are NATO collective deterrence (Article 5) and
+ R-layer post-strike survivability. This is the strongest possible argument for R-layer
+ investment: it is the sole defensive layer with relevance across the full threat spectrum
+ from drone swarms through conventional hypersonics to nuclear HGV.
+ Note on production constraints: Russia has reported Avangard production limitations.
+ Small inventory does not reduce strategic threat — a handful of strikes against Finnish
+ C2 and energy nodes would achieve rapid systemic collapse. Limited inventory reinforces
+ rather than diminishes the R-hardening case.
+ § 05 
+ Budget Simulation: Current vs Optimal Allocation
+ Scenario A G R L (Venäjä strikes A) Risk profile 
+ Current (64 F-35) 
+ 60% 20% 10% 
+ 0.82 
+ High rapid-collapse risk 
+ Nash optimum 6.5B 
+ 40% 35% 25% 
+ 0.52 
+ Balanced, all scenarios 
+ Risk-adjusted (US uncertainty) 
+ 35% 40% 25% 
+ 0.55 
+ Robust to low US commitment 
+ Nash optimum 8.5B 
+ 40% 35% 25% 
+ 0.48 
+ High deterrence, R fully funded 
+ Path dependency note: the F-35 lifecycle commitment (~25–30B EUR over 30 years, with
+ ~730M EUR currency losses already accrued) constrains rapid reallocation. The realistic
+ transition path is 60/20/10 → 45/35/20 (near-term) → 40/35/25 (medium-term as F-35
+ early costs are absorbed). The critical constraint is that R must reach 20% before G
+ reaches 35% — the multiplicative E×D structure means an under-resourced R negates G
+ investment effectiveness in extended conflict.
+ § 06 
+ Investment Priority Sequence
+ Energy islanding of C2 critical nodes — highest marginal return
+ (15× vs A-layer), achieves E ≥ 0.5 threshold. ~500M EUR. Timeline: 3–5 years.
+ Data redundancy infrastructure — satellite terminals, HF radio,
+ fibre rerouting. Achieves D ≥ 0.5. ~300M EUR. Timeline: 2–4 years.
+ GBAD expansion — Kinzhal is the primary design case.
+ NASAMS/Patriot mobile units, C-UAS. ~800M EUR/yr additional. Ongoing.
+ F-35 dispersal infrastructure — ACE highway strips, hardened
+ dispersal points. Reduces A-layer concentration without reducing airframe count. ~300M EUR.
+ Further F-35 acquisition — lowest marginal return once R ≥ 25%
+ and G ≥ 35%. Lifecycle commitments already made; future acquisition decisions
+ should apply diminishing-returns test explicitly.
+ Core finding: Against the 2026 threat environment (Kinzhal + Tsirkon +
+ Avangard + drone swarms), energy and data infrastructure hardening produces higher
+ deterrence return per euro than additional airframe acquisition at current allocation ratios.
+ This is not an argument against F-35 — it is an argument for correcting systematic
+ R-layer underinvestment before the E×D multiplicative floor collapses C2 coherence
+ regardless of platform inventory.
+ § 06b 
+ ACI Implementation Pathways for R-Layer Investment
+ The R-layer investment priorities in §06 have concrete implementation pathways in the
+ ACI research programme — operationalised frameworks addressing the same structural gap
+ from the civilian energy system side.
+ DRD-08 requirement ACI pathway Ref 
+ Energy islanding (static E ≥ 0.5) 
+ SGFA CHP retrofit — distributed CHP at municipal nodes,
+ islanding-capable under pre-allocation PPA conditions 
+ SM-005 ·
+ SM-003 
+ Black Start (dynamic E, recovery rate γ) 
+ LDR-50 heat reactor (Steady Energy) — continuous thermal
+ output independent of grid state; with MESA forms Black-Start-capable cluster 
+ SM-008 
+ E×D multiplicative floor (E and D ≥ 0.5) 
+ MESA microgrid — Multi-Energy System Architecture integrating
+ CHP, storage and demand response into islanding-capable clusters 
+ SM-003 
+ R-layer economic floor (household buffer) 
+ LELF L2 buffer — household energy buffer depletion is the
+ civilian-side equivalent of R-layer collapse under sustained stress 
+ TN-010 
+ K-reduction (node dispersal, C_crit raising) 
+ SGFA for Fingrid — distributed reserve from CHP assets
+ reduces transformer concentration, raises C_crit = f(...) − g(K, N_d) 
+ SM-005 §2 
+ SGFA and MESA were developed as civilian energy resilience instruments. DRD-08's R-layer
+ requirements and the SGFA/MESA implementation pathways are converging solutions to the same
+ structural problem: Finland's critical infrastructure is optimised for efficiency under
+ stable conditions and fragile under simultaneous grid stress and adversarial pressure.
+ The investment case is identical from either direction.
+ Ref 
+ Series References
+ WP-02 · Distributed Resilience Doctrine — core framework · aethercontinuity.org/papers/ 
+ DRD-06 · C2-CI Nonlinear Dynamics — bifurcation and hysteresis · supplements/ 
+ DRD-07 · Monte Carlo Simulation + 2026 Extensions (E×D, phase transition, minimax, hypersonic taxonomy) · supplements/ 
+ TN-010 · LELF — Layered Economic Loss Function (infrastructure as defence layer) · supplements/ 
+ SM-010 · SGFA Financing Instruments — infrastructure resilience as C2 sustainment · papers/
+
+==================== DRD-SARJA: supplements/drd-09-dynamic-resilience-index.html ====================
+DRD-09 — Dynamic Resilience Index | ACI 
+ Supplements 
+ DRD Series · WP 2026-09 
+ Aether Continuity Institute 
+ Distributed Resilience Doctrine · Working Paper 09 
+ Date 2026-05-26 
+ Series DRD Supplement 
+ Continues DRD-08 · DAGRA 
+ Language English
+ Dynamic Resilience Index (DRI)
+ Integrating C2-CI · MRI · ORM · CDSI into a composite national resilience metric
+ Abstract. DRD-09 introduces the Dynamic Resilience Index (DRI) — a composite
+ metric integrating four previously separate indices: C2 Cohesion Index (C2-CI, DRD-03/06),
+ Mobility Resilience Index (MRI, DRD-08 §02c), Operational Readiness Multiplier (ORM, CN-014/015),
+ and Cross-Domain Synergy Index (CDSI, CN-015). DRI measures not static defence capacity but
+ dynamic capability — the system's ability to absorb, adapt and recover under operational stress.
+ The key structural finding: static resilience (E, D, platform inventory) is necessary but
+ insufficient. ORM and CDSI — the dynamic, operationally-derived components — determine whether
+ static capacity can be activated under pressure.
+ § 01 
+ Four Component Indices
+ Index Measures Range Source 
+ C2-CI 
+ Command-and-control cohesion under operational stress (Decision Lag, Autonomy Quality, Resynchronisation) 
+ 0–1 
+ DRD-03 · DRD-06 
+ MRI 
+ Mobility resilience: R_eff = √(E·D)·f(M) — energy, data and mobile capability 
+ 0–1 
+ DRD-08 §02–02c 
+ ORM 
+ Operational Readiness Multiplier: fraction of crew readiness derived from real operations vs. exercises 
+ ORM = real_tasks / (real_tasks + exercise_tasks) 
+ 0–1 
+ CN-014 · CN-015 
+ CDSI 
+ Cross-Domain Synergy Index: depth of operational integration between Defence Forces, Border Guard and FinnHEMS 
+ 0–1 
+ CN-015 · CN-016 
+ § 02 
+ DRI Composite Formula
+ DRI is a multiplicative composite — not additive. A system with high static capacity
+ (MRI) but low operational readiness (ORM ≈ 0) cannot activate that capacity under stress.
+ The indices multiply rather than compensate:
+ DRI = C2-CI · MRI · √(ORM · CDSI) 
+ The geometric mean of ORM and CDSI captures their joint effect: operational readiness
+ is only valuable if it is coordinated across domains (CDSI), and cross-domain coordination
+ only produces resilience if crews are genuinely trained through real operations (ORM).
+ Finnish baseline estimate (2026)
+ Component Estimated value Basis 
+ C2-CI ≈ 0.66 DRD-03 estimate; Decision Lag and RC as weaknesses 
+ MRI (R_eff) ≈ 0.24 E≈0.35, D≈0.40, M≈0.20 → √(0.35·0.40)·0.20 
+ ORM ≈ 0.38 ~30 real tasks / (~30 + ~50 exercises) 
+ CDSI ≈ 0.20 Ad hoc coordination only, no common protocol 
+ DRI 
+ ≈ 0.066 
+ 0.66 · 0.24 · √(0.38 · 0.20) = 0.066 
+ Norway reference (2026)
+ Component Estimated value 
+ C2-CI ≈ 0.80 (integrated command, high AQ) 
+ MRI ≈ 0.52 (E≈0.65, D≈0.65, M≈0.80) 
+ ORM ≈ 0.95 (~1000 real / ~1050 total) 
+ CDSI ≈ 0.90 (integrated NAWSARH model) 
+ DRI 
+ ≈ 0.37 — 5.6× Finland's baseline 
+ § 03 
+ Investment Sensitivity: Which Component Yields Highest DRI Gain?
+ Marginal DRI gain from +0.1 increase in each component (from Finnish baseline):
+ Component +0.1 New DRI ΔDR I Interpretation 
+ C2-CI: 0.66 → 0.76 0.076 +0.010 Moderate gain 
+ MRI: 0.24 → 0.34 0.094 +0.028 High gain (R-layer investment) 
+ ORM: 0.38 → 0.48 0.074 +0.008 Low-moderate alone… 
+ CDSI: 0.20 → 0.30 0.081 +0.015 …but ORM+CDSI together: 
+ ORM+CDSI: both +0.3 0.130 +0.064 Highest combined gain 
+ Key finding: ORM and CDSI are individually modest but jointly transformative
+ — because they multiply. Raising both by 0.3 (achievable through the CN-015 implementation
+ plan by 2028) produces a larger DRI gain than any single static infrastructure investment.
+ This is the "strategic flywheel": real operations build readiness, readiness enables
+ integration, integration enables more real operations.
+ § 04 
+ DRI Trajectory 2026–2030
+ Year C2-CI MRI ORM CDSI DRI 
+ 2026 (baseline) 0.66 0.24 0.38 0.20 0.066 
+ 2027 (ohjausryhmä + pilotti) 0.68 0.28 0.55 0.45 0.107 
+ 2028 (NH90-kaksoisrooli) 0.70 0.35 0.70 0.60 0.161 
+ 2029 (HEMS-laajennus) 0.72 0.44 0.82 0.75 0.231 
+ 2030 (täysi integraatio) 0.75 0.52 0.90 0.90 0.296 
+ Norway 2026 (reference) 0.80 0.52 0.95 0.90 0.370 
+ DRI approximately 4.5× increase from 0.066 to 0.296 through implementation of CN-015
+ without any new helicopter procurement. The gap with Norway narrows from 5.6× to 1.25×.
+ § 05 
+ Limitations and Calibration Notes
+ All component estimates are proxy-based. DRI v1.0 is a diagnostic framework,
+ not a precision instrument. Values should be treated as order-of-magnitude indicators.
+ C2-CI estimates draw on DRD-03's qualitative assessment; empirical calibration
+ requires structured droneincident and exercise data.
+ ORM calculation requires reliable logging of actual vs. exercise flight hours —
+ this data is not currently published in a form suitable for DRI calculation.
+ CDSI is the most subjective component; it will benefit from the CN-015 ohjausryhmä
+ process producing structured assessments of inter-agency coordination quality.
+ DRD-03 · C2-CI Index · supplements/ 
+ DRD-06 · C2-CI Nonlinear Dynamics · supplements/ 
+ DRD-08 · DAGRA — R-layer (E, D, M) · supplements/ 
+ CN-014 · Distributed Helicopter Resilience · papers/ 
+ CN-015 · Implementation Plan 2026–2030 (ORM/CDSI targets) · papers/ 
+ CN-016 · HEMS Coverage Analysis · papers/
+
+==================== DRD-SARJA: supplements/drd-meta-architecture-1.html ====================
+DRD Meta-Architecture v1.0 — Aether Continuity Institute 
+ ACI — Reference Document
+ ← Publications 
+ DRD Meta-Architecture · v1.0 · 2026
+ Distributed Resilience Doctrine
+ Strategic Denial as Time-Structured Resilience — A Canonical Overview
+ Core Premise
+ Denial-based defence is a time-structured competition. The small state's strategic objective is not rapid victory, but to prevent the adversary from achieving a political–strategic decision before time begins to work in the defender's favour.
+ This reframes the foundational question of defence planning — from "What capabilities do we have?" to "How long does the system remain decision-capable under adversary pressure?" 
+ I Strategy
+ Distributed Resilience Doctrine
+ DRD · WP 2026-01
+ Shifts the procurement logic from platform-centrism to system resilience: concentration → dispersion, rapid decision → sustained endurance. Whole-of-society integration as strategic variable.
+ How is rapid strategic defeat prevented?
+ ↓
+ II Metric
+ Strategic Termination Time
+ STT · WP 2026-02
+ A single common currency: the time required for an adversary to achieve a politically decisive outcome at acceptable cost. STT integrates military degradation, societal continuity, and command capability into one measurable variable — making strategy assessable.
+ How long until the adversary achieves decision?
+ ↓
+ III Critical mechanism
+ Command-and-Control Continuity Index
+ C2-CI · WP 2026-03
+ C2-CI is not one factor among many — it is a multiplier. If C2-CI collapses, Military Degradation Resistance fails to materialize and Societal Continuity fragments. Composed of Decision Lag, Autonomy Quality, and Resynchronization Capacity.
+ What fraction of decision-making capacity is retained under pressure?
+ ↓
+ IV Dynamic competition
+ Adversary Tempo Model
+ ATM · WP 2026-04
+ Denial is not static. It is a tempo competition: defender recovery rate vs. adversary disruption rate . If the defender resynchronizes faster than the adversary can impose durable effects, STT extends. If not, STT collapses. The Decision Envelope defines the tempo thresholds at which denial credibility holds.
+ At what adversary tempo does denial stop buying time?
+ ↓
+ V Measurement
+ C2-CI Operationalization Toolkit
+ Toolkit · WP 2026-05
+ DRD without measurement remains rhetoric. The Toolkit operationalizes C2-CI into four measurable sub-dimensions, providing exercise protocols and investment prioritization criteria for peacetime development.
+ How is C2-CI measured, reported, and improved?
+ ↓
+ VI Theoretical foundation
+ C2-CI Nonlinear Dynamics
+ Theory Note · WP 2026-06
+ C2 does not degrade linearly. It exhibits threshold behaviour: long periods of stability followed by abrupt phase transitions, with asymmetric recovery (hysteresis). This is demonstrated mathematically through bifurcation theory. Consequence: raising the threshold is far cheaper than recovering from collapse. 
+ Why does C2 fail suddenly — and why is prevention asymmetrically efficient?
+ Causal chain
+ Resilience ↑ Autonomy ↑ Redundancy ↑ 
+ → 
+ C2-CI ↑ 
+ → 
+ Tempo threshold (AT c ) ↑ 
+ → 
+ STT ↑ 
+ → 
+ Denial credible 
+ The architecture in one sentence
+ Resilience raises the tempo threshold, which extends the strategic time horizon, which makes rapid decision implausible for the adversary.
+ Paper
+ Component
+ Contribution to the framework
+ WP-01
+ DRD
+ Strategic direction — defines the objective and reorients procurement logic
+ WP-02
+ STT
+ Common currency — makes denial-based strategy measurable and comparable
+ WP-03
+ C2-CI
+ Multiplier — the single variable that amplifies or nullifies all other components
+ WP-04
+ ATM
+ Dynamics — transforms static capability into a time-competitive model
+ WP-05
+ Toolkit
+ Operationalization — bridges theory and peacetime institutional practice
+ WP-06
+ Theory Note
+ Mathematical foundation — proves C2 threshold behaviour and asymmetric recovery cost
+ This document is a canonical reference for the Distributed Resilience Doctrine research series. 
+ It may be reproduced as a prefatory section in any paper of the series without further attribution. 
+ Aether Continuity Institute · Strategic Studies Programme · 2026
+ Aether Continuity Institute · DRD Meta-Architecture v1.0 · 2026
