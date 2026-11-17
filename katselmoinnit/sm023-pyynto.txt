@@ -1,0 +1,292 @@
+TEHTÄVÄ: riippumaton katselmointi muistion SM-023 v0.2 ja sen laskentatuloksen vastaavuudesta
+
+Alla on ACI:n muistioluonnos SM-023 v0.2 ("Energiaintensiivinen kasvu ja julkinen talous"), ennakkokirjauksen H tuloste ja hanketaulukko. Katselmoit aiemmin kirjaukset G ja H; tämä on niistä kirjoitettu muistio. Muistio ei saa väittää enempää kuin laskenta ja lähteet kantavat.
+
+Katselmoi vakavuusjärjestyksessä:
+1. Vastaavuus: vastaavatko muistion luvut (tiivistelmä, §04-taulukko, alasektorit, §05–§08) H:n tulostetta? Luettele jokainen ristiriita tai pyöristysvirhe.
+2. Ylitulkinta: mitkä väitteet (erityisesti tiivistelmä ja §09:n kolme johtopäätöstä) ylittävät sen, mitä osittainen fiskaalinen vaikutus kantaa? Ehdota tarkempi muotoilu.
+3. §05:n täsmäytystaulukko (Ramboll 400 M€ vs muistio 179 / ~280 M€) ja 1,5 GW / 5–6 TWh -ristiriita: onko päättely pätevä? Onko bruttoluku johdettu oikein (pääoletuksilla ~26,6 M€/TWh)?
+4. Sisäinen johdonmukaisuus: ristiriidat osioiden välillä, [M]/[L]/[A]-merkinnät, puuttuvat varaukset, toistot.
+5. Rakenne ja luettavuus päättäjälle: mitä poistaisit, mikä on epäselvää.
+6. Mitä keskeistä puuttuu, minkä voi arvioida ilman verkkoa? Merkitse tulevaksi työksi; älä ehdota H:n lukittujen sääntöjen muuttamista.
+
+Sinulla ei ole verkkoa. Älä keksi lukuja tai lähteitä; jos et voi tarkistaa lähdeväitettä, sano se. Vastaa suomeksi, tiiviisti, löydökset numeroituna.
+
+==================== MUISTIO SM-023 v0.2 (tekstinä) ====================
+Synthesis Memo · SM-023 · Domain D-1 · D-3
+
+    StatusWorking Draft v0.2 — katselmoitavana
+    LanguageFI
+    DateMarraskuu 2026
+    Relates toSM-012, SM-016, SM-020, SM-022, WP-015
+    EnnakkokirjauksetSEURANTA.md: G ja H
+    Laskentaekasvu_h_laskenta.py, kaikki yhdistelmät
+
+  Energiaintensiivinen kasvu ja julkinen talous
+
+  Kuinka suuren osan julkisen talouden korjaustarpeesta datakeskukset, vety ja e-polttoaineet kattavat vuonna 2030
+
+  Muistio laskee, kuinka paljon energiaintensiivinen kasvu kasvattaa julkisyhteisöjen tuloja vuonna 2030 VM:n perusuraan verrattuna, ja suhteuttaa tuloksen alijäämän ja EU:n 3 %:n viitearvon eroon (noin 4,7 mrd €). Laskentasäännöt kirjattiin ennen laskentaa, ja tulos lasketaan rinnakkain datakeskusten kulutusarvion ja hankkeiden vaiheen mukaan. Tulos on osittainen: sähkön hintavaikutus, syrjäytyminen ja verkkokustannukset puuttuvat. Pääoletuksilla vaikutus on 0–2 % vertailuerosta, jos datakeskusten kulutus jää TEM:n, Statnettin tai kansallisen tiekartan tasolle (4–6 TWh), ja 4–8 %, jos se nousee Energiateollisuuden tai SM-022:n tasolle (11–18 TWh). Tulos riippuu lähes kokonaan datakeskusten kulutuksesta ja niiden luokan I sähköverosta. Yhdelläkään verohyvityksen saaneella vety- tai e-polttoainehankkeella ei ole lopullista investointipäätöstä, ja niiden yhteenlaskettu vaikutus jää pääoletuksilla alle 10 M€:n. Energiaintensiivinen kasvu ei ole julkisen talouden korjausmekanismi. Nykyiset sähkövero- ja investointituet kohdistuvat toimialoille, jotka tuottavat keskimäärin vähiten arvonlisää ja verotuloa sähkö-MWh:ta kohden; tukien lisäävyyttä ei ole osoitettu. Merkinnät: [M] mitattu tai lähteestä, [L] laskettu, [A] oletus.
+
+§ 01Kysymys, rajaus ja menetelmä
+
+Kysymys: kuinka paljon energiaintensiivinen kasvu — datakeskukset, vety ja e-polttoaineet, akkumateriaalit ja teollisuuden sähköistyminen — kasvattaa julkisyhteisöjen (S13: valtio, kunnat, työeläkelaitokset ja muut sosiaaliturvarahastot) tuloja vuonna 2030 VM:n perusuraan verrattuna?
+
+Vertailukohta on VM:n ennusteen vuoden 2030 alijäämän (4,4 % BKT:sta) ja EU:n 3 %:n viitearvon erotus, noin 1,4 %-yksikköä eli noin 4,7 mrd € [L]. Erotus on laskennallinen mittatikku, ei EU:n korjausvelvoite; sitova ohjaus on nettomenopolku.
+
+Tulos on osittainen fiskaalinen vaikutus. Mukana ovat sähkövero, huoltovarmuusmaksu, yhteisövero sekä palkkojen verot ja sosiaalivakuutusmaksut; vähennettynä puhtaan siirtymän verohyvitys. Pois jäävät sähkön hintavaikutus muille käyttäjille, työvoiman ja pääoman syrjäytyminen muilta toimialoilta, verkkokustannukset, kiinteistövero ja hankintaketju. Arvonlisävero ei ole yrityksen toiminnasta kertyvä tulo, koska yritys vähentää hankintojensa veron; työntekijöiden kulutuksen alv puuttuu laskennasta. Kyse ei siis ole nettovaikutuksesta.
+
+Menetelmä: laskentasäännöt kirjattiin julkisesti ennen laskentaa (ennakkokirjaukset G ja H, SEURANTA.md). Ensimmäinen kierros (G) täytti ennalta määrätyn kulutuskehyksen hankkeilla; riippumaton katselmointi osoitti, että se esitti ylärajaoletukset pääarvona ja korvasi toteutumattomat hankkeet automaattisesti. Toinen kierros (H) laskee rinnakkain kaksi ulottuvuutta eikä täytä kehystä. Tämä muistio perustuu H:hon; G raportoidaan liitteessä.
+
+§ 02Lähtötilanne marraskuussa 2026
+
+Julkinen talous. VM:n mukaan alijäämä on 4,4 % BKT:sta vielä vuonna 2030; kasvua jarruttavat puolustus- ja korkomenot [M].
+
+Sähkövero. Vuonna 2024 sähköveroa kertyi 910 M€, josta luokasta I 892 M€ ja luokasta II 18 M€ [M]. Luokan II vero on 0,5 €/MWh, luokan I 22,4 €/MWh. Teollisuuden ja kaivostoiminnan sähkönkäyttö oli 34,5 TWh (2022–2024) [M]; alemman veroluokan laskennallinen verotuki on noin 0,76 mrd € vuodessa [L]. Datakeskukset siirtyivät luokkaan I 1.7.2026 (VM: +47 M€ vuoden 2026 tasolla, 74 M€ 2029) ja kaivokset 1.1.2026 [M].
+
+Puhtaan siirtymän verohyvitys. Business Finland myönsi vuonna 2025 hyvityksen 40 hankkeelle, yhteensä 2 264 M€ [M]: uusiutuva energia ja e-polttoaineet 17 hanketta (1 544 M€), energiavarastot 18 (311 M€), akkumateriaalit ja raaka-aineet 5 (410 M€) [L]. Hyvitys vähennetään yhteisöverosta valmistumisvuodesta alkaen enintään 10 % vuodessa 20 vuoden ajan. Erillinen laki vuosina 2026–2027 myönnettävästä puhtaan teollisuuden investointien verohyvityksestä (EU:n CISAF-puitteet) oli lausunnolla touko–kesäkuussa 2026 [M]; sen hankkeet eivät ole tässä laskennassa.
+
+Kulutuksen kehys. Fingrid arvioi kokonaiskulutuksen 103–123 TWh:ksi vuonna 2030 ja teollisen kulutuksen (datakeskukset mukaan lukien) alle 40 TWh:sta 44–96 TWh:iin vuonna 2035 [M].
+
+Pohjoismainen tase. Svenska kraftnätin mukaan Pohjoismaiden ylijäämä supistuu noin 53 TWh:sta (2026) 29 TWh:iin (2030), Ruotsin 12 TWh:iin [M]. Suomen kulutuksen kasvu ei voi nojata Ruotsin ylijäämään.
+
+Liittymien sääntely. Sähkömarkkinalain etusijamenettely (TEM043:00/2026) ratkaisee, mitkä hankkeet liitetään ja millä joustoehdoilla. Muistio ei oleta lain sisältöä.
+
+§ 03Arvonlisä ja verot sähkö-MWh:ta kohden
+
+Ennen laskentaa tarkasteltiin, mitä nykyiset sähköintensiiviset toimialat tuottavat käyttämäänsä sähköä kohden (keskiarvo 2022–2024; Tilastokeskus, Verohallinto) [M]/[L]:
+
+ | Toimiala | Sähkö GWh | Arvonlisäys €/MWh | Palkat €/MWh | Yhteisövero €/MWh
+
+ | Metsäteollisuus (16–17) | 14 881 | 299 | 158 | 20
+
+ | Metallien jalostus (24) | 6 000 | 379 | 144 | 19
+
+ | Kemia (19–22) | 6 323 | 1 139 | 366 | 62
+
+ | Kone- ja metallituote | 1 937 | 6 759 | 4 136 | 249
+
+ | Elektroniikka (26–27) | 652 | 11 402 | 4 773 | 313
+
+ | Teollisuus ja kaivos yhteensä | 34 517 | 1 194 | 603 | 56
+
+Eniten sähköä käyttävät toimialat tuottavat vähiten arvonlisää ja palkkoja megawattituntia kohden. Uusi energiaintensiivinen kasvu muistuttaa taulukon ylimpiä rivejä. Datakeskuksen (Tuike Finland Oy, 2025: liikevaihto 574 M€, liikevoitto 30 M€, 120 henkeä [M]) palkat ovat 9–24 €/MWh, kun kulutukseksi oletetaan 0,5–1,3 TWh [A] — 6–17 kertaa vähemmän kuin metallien jalostuksessa.
+
+Taulukko on kuvaileva. Keskiarvo ei kerro, mitä yksi lisä-MWh tuottaisi toisella toimialalla, eikä sitä, että sähkö olisi muualla tuottavammassa käytössä. Se kertoo, mihin suuruusluokkaan sähköintensiivinen toiminta asettuu nykyisessä elinkeinorakenteessa.
+
+§ 04Tulos
+
+Rinnakkaislaskenta: rivit ovat julkaistuja arvioita datakeskusten kulutuksesta 2030, sarakkeet muiden hankkeiden vaiheita. P0 = lopullinen investointipäätös tai rakenteilla; P1 = lisäksi lupa- tai FEED-vaihe ja ilmoitettu käyttöönotto viimeistään 2030 (Arctic Sisu 1. vaihe, Freija, VolagHy); P2 = lisäksi esiselvitysvaihe (ETFuels, Plug Power). Hanketiedot jäädytettiin 17.11.2026.
+
+Pääoletukset: vuonna 2030 käyttöön otettavat hankkeet puolella vuosikulutuksella, puolet työpaikoista nettouusia, P2X-laitoksilla ei vielä verotettavaa voittoa, elektrolyysin käyttöaste 60 %, datakeskukset 120 työpaikkaa/TWh.
+
+ | Datakeskusten kulutus 2030 | P0 | P1 | P2
+
+ | TEM 3,8 TWh (VM:n perusura) | 0 M€ (0,0 %) | 6 M€ (0,1 %) | 9 M€ (0,2 %)
+
+ | Statnett ~4 TWh | 5 (0,1 %) | 11 (0,2 %) | 14 (0,3 %)
+
+ | Kansallinen tiekartta 5–6 TWh | 32–59 (0,7–1,3 %) | 38–64 | 41–68 (0,9–1,4 %)
+
+ | Energiateollisuus 11–18 TWh | 192–378 (4,1–8,1 %) | 197–384 | 201–388 (4,3–8,3 %)
+
+ | SM-022 17,5 TWh (ACI) | 365 (7,8 %) | 371 | 374 (8,0 %)
+
+Kaikki 2 268 oletusyhdistelmää on julkaistu. Esimerkiksi TEM × P2 vaihtelee 1–112 M€ ja SM-022 × P2 342–612 M€ sen mukaan, oletetaanko P2X-laitoksille yhteisöveroa, työpaikat nettouusiksi ja vuoden 2030 hankkeet täysiksi vuosiksi.
+
+Havainto
+Datakeskusten kulutustaso muuttaa tulosta 378 M€, hankevaihe enintään 9 M€. Kaksi viranomais- ja siirtoverkkotason arviota (TEM 3,8 ja Statnett ~4 TWh) päätyvät alimmalle tasolle; toimialan ja Energiateollisuuden arviot ovat 3–5-kertaisia. Ero itsessään on tulos: julkisen talouden suunnittelu ja investointikeskustelu käyttävät eri kulutusoletuksia.
+
+Alasektorit: lähes kaikki tulo menee valtiolle sähköveron kautta. Esimerkiksi Energiateollisuuden ylätasolla (18 TWh) × P2: valtio 360 M€, kunnat 10, työeläkelaitokset 15, muut sosiaaliturvarahastot 3 M€. Hyvinvointialueille ei jyvitetä tuloja, koska niillä ei ole verotusoikeutta. Työeläkemaksut kuuluvat S13:n rahoitusasemaan ja siten vertailueroon, mutta kasvattavat myös tulevia eläkevastuita.
+
+Tulkinnan rajat: väite, että datakeskukset ratkaisevat tuloksen, pätee kansallisen tiekartan tasosta ylöspäin. Alimmilla tasoilla tulos tulee pääosin P2X-hankkeista ja riippuu niiden oletuksista.
+
+§ 05Datakeskukset
+
+Sähkövero on laskettujen erien joukossa datakeskusten ainoa merkittävä julkinen tulo: 22,4 €/MWh energiaveroa valtiolle ja 0,85 €/MWh huoltovarmuusmaksua Huoltovarmuusrahastoon [M]. Luokassa II sama kulutus tuottaisi energiaveroa noin 2 % luokan I määrästä [L]. Perusuran taso on sisäisesti johdonmukainen: TEM:n energiataseen pohjalta datakeskusten verotuki olisi ollut 83 M€ vuonna 2030 [M], mikä luokkien erolla 21,9 €/MWh vastaa 3,8 TWh:a [L].
+
+Yhteisövero on pieni, koska suuret datakeskukset toimivat kululisämallilla: Tuike Finland Oy:n liikevoitto on noin 5 % liikevaihdosta [M]. Mallissa kulupohja on 1,16 M€/MW/v [A]: sähkö verkko- ja veromaksuineen noin 82 €/MWh × 7 008 MWh/MW sekä poistot 10 M€/MW 17 vuodessa [A]; 5 %:n kululisä ja 20 %:n verokanta antavat noin 11,6 k€/MW/v eli 1,7 €/MWh [L]. Kululisä 2–10 % muuttaa tulosta suhteessa; investoinnin koko vaikuttaa poistojen kautta.
+
+Työpaikat. Tuike Finland Oy:n palkkalistoilla on 120 henkeä; Haminan kampus työllistää urakoitsijat mukaan lukien noin 400 [M]. Tämä on rinnakkaisten oletusten 120/400 työpaikkaa per TWh peruste [A].
+
+Kantaverkko. 2,5 GW:n kuorma maksaisi kantaverkkomaksuja noin 84 M€ vuodessa (tasaiselle kuormalle 4,79 €/MWh) [L]. Fingridin 5,2 mrd €:n investointiohjelman annuiteetti (5 %, 40 v) on noin 303 M€ vuodessa, josta kulutuksen kasvun suhteessa datakeskuksille jyvitettäisiin noin 71 M€ [L]. Lukuja ei esitetä taseena: maksut kattavat myös käyttö-, häviö- ja reservikustannuksia sekä olemassa olevan verkon pääomaa, ja jyvitys on laskentasääntö, ei syy-seuraussuhde. Annuiteetti on omaisuuden laskennallinen vuosikustannus, ei Fingridin vuotuinen investointimeno.
+
+Täsmäytys toimialan arvioon. Toimialan ja ministeriöiden mahdollistama Rambollin markkinaselvitys (18.9.2025) arvioi tuotantovaiheen datakeskusten verotuloiksi 400 M€ vuodessa vuodesta 2030 ja työllisyydeksi 9 900 henkilötyövuotta suoraan ja välillisesti; kapasiteetti kasvaa 285 MW:sta 1,5 GW:iin [M]. Luvut eivät ole vertailukelpoisia tämän muistion kanssa:
+
+ | Arvio | Mitä mittaa | Tulos 2030
+
+ | Ramboll 2025 | kaikki verotulot, brutto; verolajeja ja perusuraa ei eritelty | 400 M€; 9 900 htv
+
+ | Tämä muistio, 1,5 GW × 80 % ≈ 10,5 TWh | lisäys VM:n perusuraan (3,8 TWh); sähkövero, HVM, yhteisövero, palkkojen verot ja maksut | 179 M€ [L]; noin 800 työpaikkaa
+
+ | Sama, brutto 10,5 TWh nollasta | samat erät ilman perusuran vähennystä | noin 280 M€ [L]
+
+Ero bruttolukujen välillä (noin 120 M€) mahtuu laskematta jääneisiin eriin: kiinteistövero, epäsuora työllisyys ja työntekijöiden kulutuksen verot. Ero perusuraan nähden on suurempi kuin ero menetelmissä: VM:n perusura sisältää jo 3,8 TWh. Lisäksi lähteet eivät ole keskenään johdonmukaisia: HE 282/2026 toistaa sekä 1,5 GW:n kapasiteetin että 5–6 TWh:n kulutuksen [M], mikä edellyttää noin 40 %:n käyttöastetta [L]. Täydellä kuormalla 1,5 GW on 13 TWh, siis lähempänä Energiateollisuuden kuin tiekartan tasoa. Täsmäytysrivit ovat havainnollistus, eivät ennakkokirjattuja yhdistelmiä.
+
+Rakennusvaiheen arvonlisävero. Investointien alv palautetaan yritykselle. Verohallinnon mukaan suurin yksittäisen datakeskuksen verotuotto on ollut 11 M€ ja suurin yksittäinen alv-palautus 240 M€ [M]. Palautus ei ole tappio valtiolle, koska vero on kertynyt myyjiltä, mutta se osoittaa, ettei rakennusvaihe tuota alv-tuloa.
+
+Kunnat. Kiinteistövero jää kokonaan kunnalle, mutta laitteet eivät ole kiinteistöveron alaisia, eikä rakennusosan arvolle per MW löytynyt lähdettä; arviota ei tehty. Mittakaavan antaa Hamina: Googlen noin viiden miljardin investoinneista huolimatta kaupunki on säästökuurilla ja kunnallisveroprosentti 9,40, selvästi yli keskiarvon [M].
+
+§ 06Vety, e-polttoaineet ja verohyvitys
+
+Vety- ja e-polttoainehankkeet maksavat sähköveroa luokan II mukaan. P2:n 3,6 TWh tuottaa pääoletuksilla alle 10 M€ vuodessa; sama kulutus luokan I verolla tuottaisi 79 M€ enemmän [L]. Ero on laskennallinen eikä menetys VM:n perusuraan nähden, mutta se kertoo tukirakenteen suuruusluokan.
+
+Hankekannan tila 17.11.2026 [M]:
+
+Yhdelläkään verohyvityksen saaneella P2X-hankkeella ei ole julkista lopullista investointipäätöstä.
+
+NordFuelin Haapaveden biojalostamo (hyvitys 125,9 M€) lopetettiin kesällä 2026 rahoituksen puutteeseen.
+
+Hyvitys ei ole laatusuodatin: Business Finlandin mukaan se ei ole harkinnanvarainen, vaan se myönnetään kaikille kriteerit täyttäville. Esimerkiksi Northern Green Fuels Oy (109,9 M€) ei kerro julkisesti sijaintia, tehoa, investoinnin kokoa eikä aikataulua.
+
+Lisäävyyttä ei ole osoitettu. ETLA:n mukaan korkea tukitaso ei sellaisenaan kerro ohjausvaikutuksesta, ja arviointia vaikeuttaa, ettei suurille tuensaajille löydy verrokkeja (Muistio 174) [M]. ETLA:n lausunnon mukaan on vaikea varmistua, olisiko investointi tehty ilman tukea, ja hyvitys vaikuttaa lähinnä kannattavuusrajalla oleviin hankkeisiin; osa edusta voi valua minimiveron täydennysveroon, ja 20 vuoden jakso alentaa tuen nykyarvoa (Ropponen 8.6.2026, jatkohyvityksen luonnoksesta) [M].
+
+Nimettyjen hankkeiden kulutus (noin 16 TWh täyttöjärjestyksessä sekä Plug Power noin 11,6 ja ETFuels noin 1,6 TWh) ylittää Fingridin vuoden 2030 kehyksen moninkertaisesti [L]. Hankelista kuvaa hakijoita, ei toteutuvaa kulutusta.
+
+Ajoitus. Rakennusvaiheen hyöty tulee nyt; verohyvitys vähentää yhteisöveroa käyttövaiheessa jopa 20 vuoden ajan. Valtio maksaa rakennusvaiheen piristyksen myöhemmin. Uusien laitosten nettoyhteisövero voi olla lähellä nollaa 10–20 vuotta.
+
+§ 07Sähkön hinta ja tuotanto ehtona
+
+Sähkön hintaa ei mallinneta. Datakeskusten tai P2X:n osuutta hinnasta ei voi erottaa havaitusta hinnasta, vaan ainoastaan vertailumallinnuksella, jossa kaikki muu pidetään samana. Hinta riippuu tuulesta, vesitilanteesta, siirtoyhteyksistä sekä Suomen ja Ruotsin kulutuksen kasvusta; Ruotsin ylijäämän supistuminen (§ 02) heikentää tuontipuskuria.
+
+Jokainen tämän muistion tulos edellyttää, että kulutuksen kasvu toteutuu ja että tuotanto kasvaa samaa tahtia. Jos kulutus kasvaa tuotantoa nopeammin, kustannus siirtyy muille sähkönkäyttäjille hinnan kautta, ja julkisen talouden tulo on silloin osittain muiden käyttäjien maksama. Etusijamenettely on tässä keskeinen ohjauskeino.
+
+§ 08Erillisarviot (ei summassa)
+
+Energiavarastot. Verohyvitykset vähentävät yhteisöveroa enintään 31 M€ vuodessa, jos kaikki 18 varastoa ovat käytössä ja voitollisia [L]. Varastot eivät lisää loppukulutusta; lataus- ja purkuhäviöt lisäävät verkosta otettavaa sähköä, mutta läpivirtausta ei ollut saatavilla.
+
+Rakennusvaihe. Investointikysynnän tuontiosuudet 2023 (Tilastokeskus) [M]: tietokoneet ja elektroniikka 92 %, koneet 79 %, sähkölaitteet 66 %, tekniset palvelut 26 %, rakentaminen noin 0 %. Hankintarakenteesta riippuen [A] datakeskusinvestoinnista jää kotimaahan noin 35 % (palvelimet mukana) tai 65 % (ilman), P2X-investoinnista noin 52 %. Rakennusvaihe on kertaluonteinen. VM arvioi Googlen 13 mrd €:n investoinnista (2027–2028) noin 20–30 % kohdistuvan suomalaiseen tuotantoon [M], mikä on samaa suuruusluokkaa kuin yllä oleva arvio palvelimet mukaan lukien.
+
+Hankintaketju. Tilastokeskuksen tuotoskertoimet 2022 [M]: kemia 1,37, metallien jalostus 1,64, tietojenkäsittely 1,46. Euromääräistä arviota ei tehty, koska hankkeiden tuotosta ei tunneta.
+
+§ 09Johtopäätökset
+
+Energiaintensiivinen kasvu ei korjaa julkista taloutta. Todennäköisimmillä kulutustasoilla (4–6 TWh) se kattaa vuonna 2030 alle 2 % vertailuerosta; korkeimmillakin arvioilla noin 8 %. Tulos on osittainen ja edellyttää, että tuotanto kasvaa kulutuksen tahdissa.
+
+Tuotto tulee sähköverosta, ei toiminnasta. Datakeskusten tulo on lähes kokonaan luokan I sähköveroa, ja se on poliittinen päätös. Vety- ja e-polttoainehankkeiden tuotto on pieni, ja niiden yhteisövero kuittautuu verohyvityksellä pitkälle tulevaisuuteen.
+
+Tuet kohdistuvat keskimäärin heikoimmin tuottaviin kohteisiin, eikä niiden lisäävyyttä tunneta. Teollisuuden alempi sähköveroluokka (~0,76 mrd €/v) ja puhtaan siirtymän verohyvitykset (2,3 mrd €) suuntaavat julkista rahaa toimialoille, jotka tuottavat keskimäärin vähiten arvonlisää ja palkkoja sähkö-MWh:ta kohden. Tämä ei yksin osoita, että tuki olisi kannattamaton: rajatuottoa ja sitä, mitä ilman tukea olisi tapahtunut, ei ole mitattu. Hyvitys ei erottele toteutuskelpoisia hankkeita.
+
+§ 10Mitä muistio ei kata ja mitä seurataan
+
+Nettovaikutus: hinta, syrjäytyminen, verkkokustannukset ja kiinteistövero vaativat erillisen ennakkokirjatun kierroksen. Avoimet kohdat on lueteltu H:n toteutusselosteessa (SEURANTA.md).
+
+Suomeen jäävä osuus: ulkomainen omistus ja voittojen kotiutuminen (SM-016 T→∞). Mittari: maksutaseen sijoitustulot ja toimialakohtainen kotimaisuusaste.
+
+Kotimaiset polttoaineet, vaihtotase ja verokohtelu: seuraava muistioaihe (SEURANTA.md, kirjattu 17.11.2026).
+
+Seurattavat: etusijamenettelyn hallituksen esitys; datakeskusrekisteri (HE 282/2026); P2X-hankkeiden investointipäätökset; VTT/FDCA-selvityksen kulutusluku; VM:n perusuran päivitys datakeskusten osalta.
+
+Liite AEnsimmäinen kierros (G) ja katselmoinnit
+
+G laski kehyksen täytöllä: kohtalainen skenaario 52 M€ (1,1 %) ja erinomainen 492 M€ (10,5 %). Katselmointi (Kimi K3.1 Pro) osoitti, että luvut olivat ylärajoja; keskiarviolla 6 M€ (0,1 %) ja 381 M€ (8,1 %). G on säilytetty muuttamattomana ja sen toteutusseloste kirjattu. H:n katselmointi löysi lukitsematta jääneitä laskentasääntöjä (hyvityksen vuosikäyttö, ajoituksen ulottaminen työpaikkoihin, datakeskusten työpaikkojen pääarvo), joista mikään ei muuta pääarvon suuruusluokkaa; ne on kirjattu toteutusselosteeseen. Versiossa 0.2 on lisäksi huomioitu ulkoinen luenta (ChatGPT): toimialan arvion täsmäytys, sähköveroväitteen rajaus laskettuihin eriin, hyvityskierrosten erottelu sekä kausaalisuus- ja lisäävyysvaraukset. Luennan esittämät luvut tarkistettiin lähteistä; kaksi ei vastannut lähdettä eikä niitä käytetty. Katselmoinnit ovat lausuntoja, eivät mittauksia; jokainen löydös tarkistettiin koodia vasten.
+
+Liite BKeskeiset oletukset
+
+ | Suure | Arvo | Tyyppi ja lähde
+
+ | Vertailuero 2030 | 1,4 %-yks. × BKT ≈ 4,7 mrd € | [M] VM 4,4 %; BKT johdettu [L]
+
+ | Sähkövero I / II, HVM | 22,4 / 0,5 / 0,85 €/MWh | [M]
+
+ | Vety | 55 MWh/t; eSAF 0,5 t H₂/t | [A]
+
+ | Elektrolyysin käyttöaste | 40 / 60 / 80 % | [A], rinnakkain
+
+ | P2X-yhteisövero | 0 / 18,9 €/MWh − hyvitys | [A]; yläraja metallien jalostus [M]
+
+ | Palkka, maksut | 60 000 €; TyEL 24,4 %; tvr 2,12 %; sv 2,79 %; valtio 12 %; kunta 7 % | [A] palkka ja verot; maksut [M] 2026
+
+ | Yhteisöveron jako 2026 | valtio 77,15 %, kunnat 22,85 % | [M]
+
+ | Datakeskusten työpaikat | 120 / 400 per TWh | [A] Tuike / Haminan kampus
+
+ | Nettouusi työ | 0 / 50 / 100 % | [A], rinnakkain
+
+Lähteet
+
+VM: Taloudellinen katsaus kevät, kesä ja syksy 2026; Tilastokeskus: kansantalouden tilinpito (15a9, 15ad), teollisuuden energiankäyttö (12bu), panos-tuotos (14yp, 14ym, 14yt, 2021–2023)
+
+Verohallinto: yhteisöjen verot toimialoittain (verot_304); Tilastokeskus: yritystuet (13zn)
+
+Eduskunta: HE 156/2025, VaVM 28/2025, HE 97/2025, HE 59/2026, HE 282/2026, HE 249/2026
+
+Business Finland: Tax credits for large clean transition investments awarded to 40 companies (päivitetty 25.2.2026); verohyvityksen ehdot 24.3.2025
+
+Fingrid: Sähkön tuotannon ja kulutuksen kehitysnäkymät Q3/2025; Kantaverkon kehittämissuunnitelma 2026–2035; kantaverkkopalvelumaksut 2026
+
+Svenska kraftnät: KMA2025 (maaliskuu 2026); Statnett via Argus Media 26.3.2026
+
+Datakeskusten kansallinen tiekartta (VN:n selvityshenkilö); Ramboll: datakeskusmarkkinaselvitys 18.9.2025 (Microsoft News -tiedote); FDCA tiedotteet 2026; Taloustaito/Leskelä 2026
+
+VM: HE 156/2025:n esittely talousvaliokunnalle (EDK-2025-AK-52802, TEM:n energiatase 83 M€); Verohallinto MTV Uutisissa 2026 (verotuotto 11 M€, alv-palautus 240 M€); VM/Huovari Kalevassa 9/2026 (Googlen kotimaisuusaste)
+
+ETLA: Kässi & Wang, Yritystuet vihreässä siirtymässä, Muistio 174 (9.2.2026); Ropponen, lausunto VN/23886/2025 (8.6.2026); VM: lausuntopyyntö puhtaan teollisuuden investointien verohyvityksestä 2026–2027 (8.5.2026)
+
+Hankkeet: YVA-aineistot (ymparisto.fi, LVV), yhtiöiden ja Business Kuopion, Kalevan, Ylen, Argusin, h2-view'n tiedot; hanketaulukko tools/data/ekasvu/hankkeet-2026-11-17.md
+
+Tuike Finland Oy: tilinpäätöstiedot 2025 (Asiakastieto); ETK ja Varma: sosiaalivakuutusmaksut 2026
+
+Ennakkokirjaukset G ja H sekä katselmoinnit: SEURANTA.md; AetherContinuity/ogas3 katselmoinnit/
+
+==================== H-TULOSTE (tools/data/ekasvu/h_tulos_2026-11-17.txt) ====================
+Vertailuero ≈ 4678 M€
+
+PÄÄARVO (t 50 %, nettouusi 50 %, P2X-yhteisövero 0, käyttöaste 60 %, DC 120 tp/TWh), M€ / % vertailuerosta
+                              P0              P1              P2
+D0 TEM                 0   0.0%        6   0.1%        9   0.2% 
+D0b Statnett           5   0.1%       11   0.2%       14   0.3% 
+D1a tiekartta         32   0.7%       38   0.8%       41   0.9% 
+D1b tiekartta         59   1.3%       64   1.4%       68   1.4% 
+D2a ET               192   4.1%      197   4.2%      201   4.3% 
+D2b ET               378   8.1%      384   8.2%      388   8.3% 
+D3 SM-022            365   7.8%      371   7.9%      374   8.0% 
+
+VÄLIT (kaikki yhdistelmät: t 0/50/100, nettouusi 0/50/100, yv 0/yläraja, cf 40/60/80, DC tp 120/400)
+D0 TEM                   0–0             1–49            1–112  
+D0b Statnett             5–7             6–56            6–119  
+D1a tiekartta           30–44           31–93           31–156  
+D1b tiekartta           55–80           56–129          56–192  
+D2a ET                 179–263         180–312         180–375  
+D2b ET                 354–518         354–567         354–630  
+D3 SM-022              341–500         342–549         342–612  
+
+ALASEKTORIT, pääarvo (M€): valtio / kunnat / työeläkelaitokset / muut sosiaaliturvarahastot
+  D0 TEM|P1               3.5 /   0.4 /   1.5 /  0.3
+  D0 TEM|P2               5.9 /   0.6 /   2.2 /  0.4
+  D1b tiekartta|P1       58.4 /   1.8 /   3.4 /  0.7
+  D2b ET|P2             360.4 /   9.6 /  14.6 /  2.9
+  D3 SM-022|P2          347.9 /   9.3 /  14.2 /  2.9
+
+P0: P2X 0.00 TWh, työpaikat 0, hyvitysvähennys 0.0 M€, menetetty luokan II vero 0 M€
+P1: P2X 2.04 TWh, työpaikat 200, hyvitysvähennys 0.0 M€, menetetty luokan II vero 45 M€
+P2: P2X 3.60 TWh, työpaikat 297, hyvitysvähennys 0.0 M€, menetetty luokan II vero 79 M€
+
+
+==================== HANKETAULUKKO (hankkeet-2026-11-17.md) ====================
+# Verohyvityksen saaneet energiaintensiiviset hankkeet: teho ja tila 17.11.2026
+
+Lähde hyvityksille: Business Finland, päivitetty 25.2.2026 (40 hanketta, 2 264 M€). Teho ja tila: lähteet rivikohtaisesti. Tila luokiteltu G-lisäyksen 1 järjestykseen: FID > rakenteilla > lupa/FEED > esiselvitys > lopetettu.
+
+| Hanke | Hyvitys M€ | Sähköteho / kulutus | Tila 11/2026 | Tavoitevuosi | Lähde |
+|---|---|---|---|---|---|
+| Koppö Energia, Kristiinankaupunki (e-metanoli) | 116,5 | 200 MW elektrolyysi | FEED (thyssenkrupp Uhde), EU Innovaatiorahasto ~85 M€ | – | PwC, portnews, Verkkouutiset |
+| VolagHy Kuopio SPV (eSAF) | 150,0 | ei julkaistu; 50 kt eSAF/v | YVA-ohjelma 2/2026, pre-FID | 2030 | Yle, Business Kuopio, chemXplore |
+| Norsk e-Fuel Rauma (eSAF) | 150,0 | ei julkaistu; 80 kt e-polttoaineita/v | pre-FID | – | MPP Build Clean Now, Aviation Week |
+| Arctic Sisu, Kotka (e-metaani) | 150,0 | ~56 kt H₂/v (≈ 3 TWh [L]) | FID tavoite 2026; käynnistys mahd. 2030 | 2028–2030 | Argus 8/2026, Cursor |
+| Blueberry Field H2X / Vetyalfa, Utajärvi | 150,0 | 500–1000 MW (YVA VE1/max) | YVA 3/2026; EU IF 224 M€ | – | Utajärvi, LVV-kuulutus, oulu.com |
+| ETFuels Finland, Ranua (e-metanoli) | 118,6 | 300 MW elektrolyysi | esiselvitys | COD 2030 | carbonstorage.io, Engine |
+| Plug Power Finland Site 1 + 2 | 150,0 | sivustot 1 GW (Kokkola), 1 GW (Kristiinankaupunki), 250 MW (Porvoo); mitkä kaksi = Site 1/2 ei tiedossa | FID tavoite oli 2025/26, ei vahvistettu | 2030 | Plug Power 2023 |
+| NordFuel Oy, Haapavesi | 125,9 | biojalostamo | **lopetettu kesällä 2026** (rahoitus) | – | Kaleva |
+| Freija Group, Nokia (e-metaani) | 110,6 | YVA-vaihtoehdot 160 / 320 / 480 MW elektrolyysi | YVA:n perusteltu päätelmä 2.4.2026; FID tavoite 2026 | ensituotanto 2029 | LVV perusteltu päätelmä, Engine, h2-view |
+| Northern Green Fuels Oy | 109,9 | ei julkaistu; verkkosivu: 3–5 biomassan kaasutus + vety -metanolilaitosta Suomeen, sijainteja ei nimetty. Yhteyshenkilöiden sähköpostit saatoenergia.fi → todennäköisesti SSE Suomen Säätöenergia (Nurmes, Paltamo) [tunnistus päätelty] | esiselvitys; SSE:n ilmoittama rakentamisen aloitus alkuvuonna 2025 ei toteutunut, Paltamon käynnistys oli ilmoitettu 2028 | – | northerngreenfuels.com, Bioenergy International 12/2023, Yle 2024 |
+| Arctial MidstreamCo, Kokkola (alumiini) | 150,0 | ~7 TWh/v | YVA-selostus 2026, investointipäätös tavoite kesä 2027 | – | metalswire, Yle, LVV |
+| AA Sakatti Mining, Sodankylä (Ni-Cu-PGM-kaivos) | 150,0 | ei julkaistu; maanalainen kaivos, 60–80 kt/v Cu-ekv. | lupavaihe; 350 pysyvää työpaikkaa; kaivokset sähköveroluokassa I vuodesta 2026 | tuotanto 2030-luvun alussa | Anglo American, Mining Weekly 2/2026 |
+| Muut 6 uusiutuva + 3 materiaalia | 274,4 | pieniä tai ei haettu | – | – | – |
+| Energiavarastot 18 kpl | 311,4 | ei nettokulutusta | – | – | – |
+
+Havainnot:
+- Yhdelläkään P2X-hankkeella ei ole julkista lopullista investointipäätöstä 17.11.2026 mennessä löydetyistä lähteistä.
+- Verohyvitys ei ole laatusuodatin: Business Finlandin mukaan se myönnetään kaikille kriteerit täyttäville (ei harkinnanvarainen). Hyvityslista kuvaa hakijoita, ei toteutuvia hankkeita.
+- NordFuel (125,9 M€) on lopetettu: myönnetty hyvitys ei toteudu fiskaalisena kustannuksena.
+- Tunnettujen tehojen yhteenlaskettu kulutus (Arctial 7 TWh + P2X noin 22–25 TWh 60 %:n käyttöasteella [A]) ylittää Fingridin S2-lisäyksen (+25 TWh) jo ilman datakeskuksia. Fingridin kehys on siis sitova raja, ei hankelistan summa.
