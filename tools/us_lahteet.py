@@ -52,6 +52,29 @@ try:
                             "place_of_performance_locations": [{"country": iso}]}}
         r = json.loads(get(API + "search/spending_over_time/", body))
         out["usaspending"][maa] = {str(x["time_period"]["fiscal_year"]): x.get("aggregated_amount") for x in r["results"]}
+    # Poikkeama 1 (SEURANTA.md, I): PSC-osittelu maatasolla; vain kolme summaa tallennetaan.
+    LASNA = set("YZXSM")
+    out["usaspending_psc"] = {"maaritelma": "I3a = PSC alkaa Y,Z,X,S,M; I3b = numeerinen; I3c = muut kirjaimet",
+                              "keskenerainen": ["2026"]}
+    for maa, iso in MAAT.items():
+        out["usaspending_psc"][maa] = {}
+        for fy in range(2019, 2027):
+            summa = {"I3a": 0.0, "I3b": 0.0, "I3c": 0.0}
+            page = 1
+            while True:
+                body = {"filters": {"time_period": [{"start_date": f"{fy-1}-10-01", "end_date": f"{fy}-09-30"}],
+                                    "agencies": [{"type": "awarding", "tier": "toptier", "name": dod}],
+                                    "place_of_performance_locations": [{"country": iso}]},
+                        "limit": 100, "page": page}
+                r = json.loads(get(API + "search/spending_by_category/psc/", body))
+                for x in r["results"]:
+                    c = (x.get("code") or "?")[:1]
+                    k = "I3b" if c.isdigit() else ("I3a" if c in LASNA else "I3c")
+                    summa[k] += x.get("amount") or 0.0
+                if not r.get("page_metadata", {}).get("hasNext"):
+                    break
+                page += 1
+            out["usaspending_psc"][maa][str(fy)] = {k: round(v, 2) for k, v in summa.items()}
 except Exception as e:
     out["virheet"].append(f"USAspending: {e!r}")
 
