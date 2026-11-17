@@ -8,7 +8,7 @@ import json, re, subprocess, sys, urllib.request, datetime
 
 MAAT = {"Finland": "FIN", "Norway": "NOR", "Sweden": "SWE", "Denmark": "DNK"}
 UA = {"User-Agent": "Mozilla/5.0 (ACI ogas3; public budget data)", "Accept": "*/*"}
-out = {"haettu": datetime.datetime.utcnow().isoformat() + "Z", "c1": {}, "usaspending": {}, "virheet": []}
+out = {"haettu": datetime.datetime.now(datetime.UTC).isoformat(), "c1": {}, "usaspending": {}, "virheet": []}
 
 def get(url, data=None):
     h = dict(UA)
@@ -55,6 +55,7 @@ try:
 except Exception as e:
     out["virheet"].append(f"USAspending: {e!r}")
 
+import os; os.makedirs("data/us", exist_ok=True)
 p = f"data/us/i_lahtotaso_{datetime.date.today().isoformat()}.json"
 json.dump(out, open(p, "w"), ensure_ascii=False, indent=1)
 print(json.dumps(out, ensure_ascii=False, indent=1)[:6000])
