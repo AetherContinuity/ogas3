@@ -85,6 +85,10 @@ luvan. Repo ja sen Actions-lokit ovat julkisia, joten:
 - Re-run ajaa vanhan commitin version; uusi ajo aina "Run workflow" -napista.
 - Katselmointi-workflow haaralla: commit-vaihe rebasoi ajohaaran päälle (ennen mainin päälle → push hylättiin, vastaus hävisi, ajo 43918481837).
 - Anthropic-avain ilman workspace-rajausta → HTTP 400 ennen mallia.
+- Katselmoinnin tyhjä vastaus (`finish_reason` null, 0 merkkiä; ajo 44168187768, pyyntö 165 000 merkkiä): `katselmointi.py` kirjaa striimin virhe-eventit ja muut rivit kenttään `striimi_muut` ja ajon lokiin. Lue ne ennen uudelleenajoa.
+- Dispatch toimii vain, jos workflow-tiedosto on mainissa; `ref=<haara>` ajaa haaran version:
+  `gh api -X POST repos/AetherContinuity/ogas3/actions/workflows/katselmointi.yml/dispatches -f ref=<haara> -f 'inputs[pyynto]=katselmoinnit/<nimi>-pyynto.txt' -f 'inputs[effort]=max' -f 'inputs[katto]=48000'`
+- Ulkoisten mallien (ChatGPT, Gemini, DeepSeek) luennat käsitellään kuten Kimin lausunnot: jokainen luku tarkistetaan lähteestä ennen käyttöä (keksittyjä lukuja on löytynyt), lukitun tulkinnan muutos poikkeamana.
 - Snapshotin lähdevirhe ei kaada kaappausta; katso `queries[].error`.
 
 ## Aikataulu
