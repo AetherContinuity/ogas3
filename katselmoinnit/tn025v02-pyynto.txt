@@ -1,0 +1,524 @@
+TEHTÄVÄ: riippumaton katselmointi ACI:n luonnoksesta TN-025 v0.2 "Satama: kotimainen kesto, hiilen kierto ja puuttuva keittäjä".
+
+Tausta: v0.1 katselmoitiin 23.11.2026 (sinä, Kimi K3.1 Pro). Sen e-metanolilaskelma vedettiin pois löydöstesi perusteella. v0.2 on kirjoitettu uudelleen Marko Ruotsalaisen ohjauksessa: ideat ja kannat (satama alustana, paikallinen sopivuus, kesto, valtion yhtiöiden tehtävä) ovat Markon; teksti, luvut ja lähdehaut Claude Opus 5.5:n. Siksi katselmoija on toinen malli.
+
+Sinulla ei ole verkkoa. Alla ovat luonnos rivitunnisteilla [T n], sekä otteet lähteistä: SvK NUP [N], SvK KMA2025 [K], ACI WEM [W], ACI SM-023/SM-008/WP-019 [S] ja ulkoisten lähteiden sisältö tiivistettynä. Älä arvaa: jos väite riippuu lähteestä, jota ei ole otteissa, sano se. Älä ehdota tapoja saada tulos näyttämään paremmalta tai huonommalta.
+
+ARVIOI vakavuusjärjestyksessä, numeroituina löydöksinä, viitaten rivitunnisteisiin:
+1. Lähdetuki: mitkä väitteet ylittävät otteensa tai ovat ilman alkuperämerkintää? Erityisesti § 01 (SE1 nettotuoja 2030, viiden vuoden ikkuna), § 02 havainto 2, § 06 (valtion yhtiöt, ulkomaiset mekanismit).
+2. § 03 mitoitus [A]: tarkista aritmetiikka (0,13 t CO2/MWh biometaania, 21 kt, 105 GWh e-metaania, ~30 MW elektrolyysi 73 %, ~120 GWh sähköä 45 %:lla, ~1 800 h 65 MW:lla, kokonaishyötysuhde 25–30 %). Mitä oletuksia puuttuu (varastointi, metaanin varastoinnin muoto, nesteytys, häviöt)?
+3. § 05: onko vertailukehikko (CHP:n säilyttäminen, satama, SMR-osuus, tuonti+akut) reilu ja täydellinen? Onko Saksan 244 000 €/MW/v oikein käytetty ulkoisena mittapuuna (de-rated MW, ensimmäinen kierros, uudet laitokset)?
+4. § 06 ehdotus (ostaja + omistaja + kunnallinen alusta + joustavat liittymät): tukevatko esitetyt esimerkit sitä? Mikä on vahvin vastaväite, jota § 07 ei käsittele?
+5. Havainnot 1–3 ja ydinväite: seuraavatko ne aineistosta?
+6. Mitä dataa § 05:n laskelma tarvitsee, jotta se voi erottaa mekanismiaukon ja kannattamattoman talouden (sama havainto, vastakkaiset ratkaisut)?
+
+Lopuksi: mitkä löydöksesi ovat varmoja (laskettavissa aineistosta) ja mitkä tulkintoja.
+
+=== LUONNOS TN-025 v0.2 ===
+
+[T 1] TN-025 — Satama: kotimainen kesto, hiilen kierto ja puuttuva keittäjä | ACI
+[T 2] Supplements
+[T 3] Research
+[T 4] LUONNOS v0.2 · 23.11.2026 · ei julkaistu · katselmoitava ennen julkaisua
+[T 5] (Kimi K3.1 Pro, ogas3/katselmoinnit) · v0.1:n katselmointi: ogas3/katselmoinnit/tn025-vastaus-2026-11-23.md
+[T 6] Aether Continuity Institute
+[T 7] Technical Note · TN-025
+[T 8] Satama
+[T 9] Kotimainen kesto, hiilen kierto ja puuttuva keittäjä ·
+[T 10] Kuopio tapauksena · Oulu, Varkaus, Tampere vertailuna
+[T 11] Päiväys 2026-11-23
+[T 12] Domain D-1 · D-2 · D-3 · D-4
+[T 13] Jatkaa TN-001 · TN-017 · TN-018 · WP-019 · SM-010 · SM-023
+[T 14] Tila Luonnos v0.2
+[T 15] Tiivistelmä. Suomen talven sähkönsaannin puskuri on ollut tuonti pohjoisesta.
+[T 16] Svenska kraftnätin oman markkina-analyysin mukaan Ruotsin SE1-alue muuttuu keskimäärin
+[T 17] nettotuojaksi vuoteen 2030 mennessä. Samaan aikaan maakuntakeskusten CHP-laitokset poistuvat:
+[T 18] Kuopiossa Haapaniemi 2:n noin 65 MWe katoaa vuonna 2035 ilman suunniteltua korvaajaa.
+[T 19] Markkina ja valtion tuet rakentavat Suomeen sähköä käyttäviä hankkeita, mutta lähes kaikki
+[T 20] ovat yhden yrityksen ja yhden vientituotteen hankkeita, eikä mikään niistä tuota talven kestoa.
+[T 21] TN-025 kuvaa sataman: paikallisen alustan, joka kokoaa kotimaiset virrat
+[T 22] (biogeeninen CO₂, biokaasu, hukkalämpö, halpa kesäsähkö) ja valitsee menetelmät paikallisen
+[T 23] sopivuuden mukaan. Satama ei tarvitse uutta instituutiota. Se tarvitsee ostajan, joka ostaa
+[T 24] kestoa eikä tehoa, ja omistajan, jolla on tehtävä. Molemmat ovat Suomessa jo olemassa.
+[T 25] Alkuperämerkinnät: [D] oma laskelma datasta · [L] ulkoinen lähde ·
+[T 26] [I] ACI:n sisäinen dokumentti · [A] oletus. Luku ilman merkintää on johdettu samassa
+[T 27] kappaleessa merkityistä luvuista. Satama on metafora: se tarkoittaa alustaa, joka ottaa
+[T 28] vastaan eri virtoja, ei satamalaituria.
+[T 29] § 01 — Ongelma: tuonnin marginaali kapenee
+[T 30] Pohjoinen reservi muuttuu kilpailijaksi. Svenska kraftnätin verkon
+[T 31] kehittämissuunnitelman mukaan vienti SE1:stä Suomeen jatkuu vuoteen 2029, mutta heikkenee
+[T 32] jyrkästi vuodesta 2028, ja Ruotsin nettovienti laskee 52 TWh:sta (2025) 16 TWh:iin (2029)
+[T 33] [L1]. Tuoreempi lyhyen aikavälin markkina-analyysi on jyrkempi: Pohjoismaiden keskimääräinen
+[T 34] ylijäämä supistuu 53 TWh:sta 29 TWh:iin vuosina 2026–2030, Ruotsin 34 TWh:sta 12 TWh:iin, ja
+[T 35] SE1:n ylijäämä 14 TWh:sta −1 TWh:iin, eli SE1 on vuonna 2030 keskimäärin nettotuoja [L2].
+[T 36] Syynä on Pohjois-Ruotsin teollinen sähköistyminen. Siirtokapasiteetin lisäys (Aurora Line)
+[T 37] ei auta, jos sen toisella puolella ei ole ylijäämää.
+[T 38] Nykytila. ACI:n Winter Endurance Monitor (2.11.2026) näytti Norjan ja
+[T 39] Ruotsin vesivarannot noin 12 TWh saman viikon mediaanin alapuolella; 11 vuoden jaksossa vain
+[T 40] yksi vuosi oli alempana [I WEM v2.16.4, § 01; luokkarajat asetettuja [A]]. Skenaariossa,
+[T 41] jossa datakeskuskuormaa tulee 1 500 MW lisää ja CHP-kapasiteetti vähenee 15 %, stressitilan
+[T 42] tuntiosuus nousee 46 %:sta 83 %:iin [I WEM § 06]. Otos on yhden viikon tila, ei trendi;
+[T 43] suunnan kertoo SvK.
+[T 44] Kuopio. Haapaniemi 2 (1982) poistuu noin vuonna 2035, ja sen noin 65 MWe
+[T 45] sähköteho katoaa riippumatta siitä, rakennetaanko lämmön korvaajaksi pienydinreaktori;
+[T 46] Haapaniemi 3 jatkaa [I SM-008, Kuopion kaupungin uusiutuvan energian katselmus]. Ainoa
+[T 47] julkistettu joustotoimi on sähkökattila, joka lisää kulutusta eikä tuota sähköä
+[T 48] [I WP-013]. Kuopion kaukolämmön talven energiamaksu on 71,52 €/MWh (alv 0 %) [L16].
+[T 49] Havainto 1. Kun SE1 on vuonna 2030 keskimäärin nettotuoja ja Haapaniemi 2
+[T 50] poistuu vuonna 2035, Kuopion talvisähkön aukolle on viiden vuoden ikkuna, jonka aikana
+[T 51] pohjoinen marginaali on jo SvK:n oman ennusteen mukaan kadonnut.
+[T 52] § 02 — Mitä markkina ja valtio jo rakentavat
+[T 53] | Hanke | Mitä | Tukea / rahoitusta
+[T 54] | VolagHy, Sorsasalo (Kuopio)
+[T 55] | 50 000 t/v synteettistä lentopolttoainetta; CO₂ Mondi Powerfluten kartonkitehtaan
+[T 56] savukaasuista; hukkalämpö Kuopion Energian kaukolämpöön [L5]
+[T 57] | Business Finlandin verohyvitys 150 M€; investointi noin 1 mrd €, rakennusaikana noin
+[T 58] 1 000, käytössä yli 100 työpaikkaa [L5]
+[T 59] | Nordic Ren-Gas
+[T 60] | e-metaanilaitokset kaasun siirtoverkon varrelle: Tampere, Lahti, Kotka, Kerava [L6]
+[T 61] | EIB:n rahoituskehys 680 M€; Tampereen rakentaminen alkamassa 2026 lopulla [L6]
+[T 62] | Puhtaan siirtymän verohyvitys
+[T 63] | 37 hanketta, investoinnit yhteensä noin 15 mrd € [L7]
+[T 64] | noin 2 mrd € verohyvitystä; lisäksi 312 M€ avustuksia kuudelle hankkeelle [L7];
+[T 65] jatko 2027–2028 valmisteilla, investointien alaraja 50 M€
+[T 66] | Energiatuki 2027
+[T 67] | suuret uuden energiateknologian demonstraatiot
+[T 68] | valtuuteen esitetty +50 M€ [L7]
+[T 69] Havainto 2. Rahaa on, ja hankkeita syntyy. Valintakriteerit suosivat
+[T 70] yhtä yritystä, yhtä tuotetta ja yli 50 M€:n investointia. Tuote viedään pois
+[T 71] (lentopolttoaine) tai syötetään valtakunnan kaasuverkkoon. Yksikään hanke ei ole
+[T 72] velvollinen tuottamaan alueellista talvikestoa, ja suuri joustamaton elektrolyysikuorma
+[T 73] voi syventää samaa aukkoa, jota se ei täytä.
+[T 74] Sama ilmiö on SE1:ssä: Stegran ja HYBRITin elektrolyysi- ja terästeollisuus on se kuorma,
+[T 75] joka syö Ruotsin vientimarginaalin [L1][I WP-015]. Ruotsissa sähkö kuitenkin jalostaa
+[T 76] kotimaista raaka-ainetta (Kiirunan malmi), ja valtion LKAB on arvoketjun keskellä.
+[T 77] Suomessa vastaava on Tornio, jossa sähkö jalostaa kotimaista kromimalmia.
+[T 78] § 03 — Satama: alusta, ei laitos
+[T 79] Satama ottaa vastaan virtoja ja valitsee menetelmät sen mukaan, mitä paikassa on.
+[T 80] Rakenteena se on TN-001:n neljän ominaisuuden solmu (säädettävä tuotanto, kemiallinen
+[T 81] varasto, lämpöankkuri, markkinarajapinta) ja TN-018:n alusta, johon moduulit liitetään
+[T 82] sopimuksina. Menetelmiä on monta — elektrolyysi, metanointi, metanolisynteesi, mädätys,
+[T 83] lämmön kausivarastointi — ja yksikään niistä ei ole oikea kaikkialla.
+[T 84] Kuopion virrat
+[T 85] | Virta | Määrä | Huomio
+[T 86] | Biokaasu, Gasum Kuopio (Heinälamminrinne) | 35 GWh/v kapasiteetti [L3]
+[T 87] | lietteet, biojäte, elintarviketeollisuuden sivuvirrat [L3]
+[T 88] | Biokaasu, Suomen Lantakaasu Kiuruvesi | noin 125 GWh/v nesteytettyä [L4]
+[T 89] | satelliittilaitokset Lapinlahti, Sonkajärvi, Nurmes kuljettavat biometaanin Kiuruvedelle [L4]
+[T 90] | CO₂ biokaasun jalostuksesta | noin 21 kt/v [A: 0,13 t/MWh biometaania]
+[T 91] | lähes puhdasta; tarkistettava laitosten omista tiedoista
+[T 92] | CO₂ Mondi, Sorsasalo | suuri | suunniteltu VolagHyn raaka-aineeksi [L5]
+[T 93] | CO₂ Haapaniemi 3 | — | varalähde, jos biokaasun virta ei riitä
+[T 94] | Halpa sähkö | 36 % varteista ≤ 20 €/MWh (11/2025–10/2026) [D]
+[T 95] | FI day-ahead, ENTSO-E; yksi vuosi
+[T 96] | Vesireitit | sisävedet
+[T 97] | biomassan proomukuljetus (CN-012); merivientiä ei ole
+[T 98] Mitoitus [A]. 21 kt CO₂:a riittää metanoituna noin 105 GWh:iin
+[T 99] e-metaania vuodessa, jolloin alueen biometaani kasvaa noin 65 %. Elektrolyysiä tarvitaan
+[T 100] noin 30 MW käyntiasteella 73 %. Biometaani ja e-metaani yhteensä varastoituna ja
+[T 101] moottoreissa noin 45 %:n hyötysuhteella poltettuna antaisivat noin 120 GWh sähköä, eli
+[T 102] noin 1 800 tuntia 65 MW:n teholla. Kokonaishyötysuhde sähköstä sähköksi on noin 25–30 %:
+[T 103] halpa kesäsähkö muuttuu kalliiksi talvisähköksi. Se on keston hinta.
+[T 104] Kaksi rajoitetta. (1) Sama kaasu ei voi mennä kahteen paikkaan:
+[T 105] biometaani on myyty raskaalle liikenteelle. Jokainen talven sähköksi varattu megawattitunti
+[T 106] on pois tankeista, ja tämä vaihtoehtoiskustannus on hinnoiteltava. (2) Kuopiosta ei ole
+[T 107] vesireittiä merelle, joten CO₂:n vienti pysyvään varastoon (vrt. § 06) olisi maitse pitkä ja
+[T 108] kallis. Vientivaihtoehto ei aseta CO₂:lle Kuopiossa lattiahintaa, mikä tekee paikallisesta
+[T 109] käytöstä suhteellisesti edullisemman kuin rannikolla.
+[T 110] Työnjako muiden kanssa
+[T 111] Lämpö. Pohjalämmön voi hoitaa pienydinreaktori (LDR-50: Steady Energyn
+[T 112] oma arvio 100 M€ ja seitsemän vuotta lupineen, 50 MW lämpöä [L8]) tai lämmön kausivarasto
+[T 113] (Vantaan Varanto: 90 GWh, valmis 2028, arvio 200 M€ [L15]). Kumpikaan ei tuota sähköä.
+[T 114] Satamaa ei siksi mitoiteta lämmölle.
+[T 115] Datakeskukset. Kajaanin malli (§ 06) osoittaa, että datakeskus
+[T 116] mahtuu satamaan, kun hukkalämpö ei ylitä paikallista lämpönielua tai sille on varasto, ja
+[T 117] liittymä joustaa talven huipputunteina.
+[T 118] VolagHy. Sorsasalon eSAF-laitos ei kilpaile sataman kanssa CO₂:sta.
+[T 119] Sen elektrolyysikuorma on kuitenkin Kuopion talven kannalta ratkaiseva: joustava liittymä
+[T 120] (SM-011, sähkömarkkinalain etusijamenettely) tekee siitä resilienssin osan, joustamaton
+[T 121] syventää aukkoa.
+[T 122] Vertailu: Oulu, Varkaus, Tampere
+[T 123] | Paikka | Erityispiirre
+[T 124] | Oulu | rannikolla: CO₂:n vienti meritse mahdollinen, mikä asettaa paikalliselle käytölle lattiahinnan; biovoimalaitos ja sähkökattilat; PtX-
+[T 125] investointipäätös viivästynyt [I WP-019 § 03]
+[T 126] | Varkaus | teollinen ankkuri (Stora Enso) ja klusteri, PtX puuttuu [I WP-019 § 03]
+[T 127] | Tampere | kaasuverkon varrella: e-metaani syötetään verkkoon ja myydään liikenteelle (Ren-Gas, Gasum) [L6]; markkina toimii, satamalta puuttuu kesto
+[T 128] § 04 — Mitä satama tuottaa ja miten se mitataan
+[T 129] | Tuotos | Mittari | Nykyinen vertailumeno
+[T 130] | Talven kesto | taattu MW talvella ja vuorokaudet ilman ulkoista syöttöä
+[T 131] | kapasiteettimekanismien hinnat (§ 05); turpeen huoltovarmuustuki 8 M€/v ja HVK:n
+[T 132] varmuusvarastointi 10 M€ [I WP-019 § 2.1, SM-010]
+[T 133] | Kotimaisen hiilen kierto | t CO₂/v hyödynnettynä | hiilenpoistohyvitykset (hankittava)
+[T 134] | Jousto | MW joustavaa kuormaa ja tuotantoa reservimarkkinoilla | Fingridin reservihinnat
+[T 135] | Osaaminen | koulutetut tekijät/v; hankkeen n+1 aika- ja kustannusetu | T&K- ja koulutusmenot
+[T 136] Kotimainen polttoaine ja hajautus eivät ole erillisiä tuotoksia: ne ovat keston sisältö.
+[T 137] Niitä ei lasketa erikseen, jottei sama hyöty tule kolmeen kertaan.
+[T 138] § 05 — Hinta: talvisähkön vaihtoehdot samalla mittarilla
+[T 139] v0.1:n esimerkkilaskelma (50 MW e-metanolisolmu) vedetään pois: se laski väärää
+[T 140] kohdetta, ja katselmointi löysi siitä virheitä (hintadatan aikakäsittely, FCR-D:n ja
+[T 141] CO₂-vähennyksen yhteensopimattomuus, väärä havainto muuttuvista kuluista). Löydökset on
+[T 142] tarkistettu ja kirjattu ogas3-repoon.
+[T 143] Laskentayksikkö on yksi satama ja mittari hinta per taattu MW talvella ja per vuorokausi
+[T 144] kestoa. Vaihtoehdot Kuopiolle:
+[T 145] | Vaihtoehto | Vahvuus | Heikkous | Tarvittava data
+[T 146] | Haapaniemen CHP:n säilyttäminen kapasiteettisopimuksella
+[T 147] | olemassa, kytketty, henkilöstö; hakekasa on kestoa ilman muunnoshäviöitä
+[T 148] | sulkeutuu taloudellisista syistä (sähkön arvo vain huipputunneilla)
+[T 149] | eliniän jatkon tai uudistuksen kustannus, polttoaine
+[T 150] | Satama (metanointi, varasto, moottorit)
+[T 151] | kotimaiset virrat, joustava kesäkuorma, viikkojen kesto
+[T 152] | kokonaishyötysuhde 25–30 %; biometaanin vaihtoehtoiskustannus
+[T 153] | komponenttien hinnat lähteistä
+[T 154] | Osuus sähkö-SMR:stä
+[T 155] | suuri vakaa teho
+[T 156] | mittakaava satoja MW; kustannushistoria arvaamaton; aikataulu yli 2035
+[T 157] | kustannushaarukka
+[T 158] | Tuonti ja akut
+[T 159] | ei paikallista investointia
+[T 160] | akku tunteja, ei viikkoja; tuonnin lähde ohenee (§ 01)
+[T 161] | hinnat
+[T 162] Ulkoinen mittapuu. Saksan kapasiteettihuutokaupan hintakatto on
+[T 163] 244 000 € megawatilta vuodessa [L9]. Kuopion noin 65 MW:n aukolle se olisi enintään noin
+[T 164] 16 M€ vuodessa. Vaihtoehto, joka tuottaa saman talvitehon alle tämän, on eurooppalaisessa
+[T 165] vertailussa kilpailukykyinen; vaihtoehto, joka tuottaa lisäksi viikkojen keston kotimaisella
+[T 166] polttoaineella, tuottaa enemmän kuin Saksan mekanismi ostaa.
+[T 167] Laskelma tehdään, kun komponenttien ja CHP:n kustannuksille on lähteelliset
+[T 168] luvut. Tämä versio ei esitä lukuja, joita ei ole.
+[T 169] § 06 — Keittäjä: ostaja ja omistaja, ei uusi organisaatio
+[T 170] Mitä muualla on tehty
+[T 171] Iso-Britannia ostaa pitkäkestoista varastointia lattia–katto-mallilla:
+[T 172] 16 hanketta, 7,6 GW, 8–22 tuntia [L10]. Ostaa tunteja.
+[T 173] Saksa ostaa ohjattavaa tehoa huutokaupalla: ensimmäisellä kierroksella
+[T 174] kaikki 5,16 GW kaasuvoimaloille, koko mekanismin arvio 15,6–35,2 mrd € [L9]. Ostaa
+[T 175] megawatteja, ja teknologianeutraali kriteeri valitsee halvimman tehon.
+[T 176] Ruotsi ostaa strategista reserviä, joka voi olla tuotantoa, varastoa
+[T 177] tai kysyntäjoustoa; Öresundsverketin sopimus lisää 448 MW [L11]. Ostaa olemassa olevan
+[T 178] laitoksen käytettävyyttä — lähin vastine Haapaniemen säilyttämiselle.
+[T 179] Tanska ja Norja kokoavat pienistä biokaasulaitoksista CO₂:n rekoilla
+[T 180] satamaterminaaliin ja varastoivat sen merenpohjaan (Greensand/Esbjerg, Northern Lights);
+[T 181] valtio on mukana osakkaana tai rahoittajana [L12].
+[T 182] Kajaani: valtion CSC:n LUMI-datakeskus entisessä paperikonehallissa;
+[T 183] hukkalämpö noin 20 % kaupungin kaukolämmöstä; kunnallinen Loiste kokoaa lämmön myös
+[T 184] yksityiseltä datakeskukselta ja tarjoaa jäähdytystä; koulutus osana ekosysteemiä [L14].
+[T 185] Mittakaavan raja näkyy samassa paikassa: datakeskusten ylijäämälämpö yli 200 MW vuonna
+[T 186] 2030, kun kaukolämmön myynti on noin 280 GWh vuodessa [L14].
+[T 187] Havainto 3. Missään näistä maista ratkaisu ei ole uusi instituutio vaan
+[T 188] olemassa olevan toimijan hankintamekanismi. Yksikään mekanismi ei kuitenkaan osta
+[T 189] yhdistelmää, jossa on kotimainen raaka-aine, hiilen kierto, viikkojen kesto ja paikallinen
+[T 190] osaaminen. Jos Suomen mekanismi määritellään tehona, satama häviää kaasuturbiinille;
+[T 191] jos kestona kotimaisella polttoaineella, se on kilpailukykyinen.
+[T 192] Ehdotus
+[T 193] Ostaja. Energiaviraston tehoreservin ja Fingridin hankintojen kriteerit
+[T 194] muutetaan ostamaan kestoa (vuorokausia talvella) eikä vain tehoa. Ruotsin strategisen
+[T 195] reservin resurssimääritelmä on valmis malli.
+[T 196] Omistaja. Suomessa on LKAB:n kaltaisia valtion toimijoita jo
+[T 197] arvoketjussa: Gasum ostaa Ren-Gasin e-metaanin [L6], Neova on ET Fuelsin kumppani
+[T 198] e-metanolihankkeessa [L13], Gasgrid liittää e-metaanilaitokset verkkoon [L6]. Ne toimivat
+[T 199] kaupallisina kumppaneina. Omistajaohjaukseen kirjataan alueellinen kesto ja kotimaisen
+[T 200] hiilen kierto. Keittäjä on olemassa; sille annetaan tehtävä.
+[T 201] Paikallinen alusta. Kunnallinen energiayhtiö kokoaa virrat kuten
+[T 202] Loiste Kajaanissa. SP-002, TN-018 ja WP-019 ovat tämän toteutusvaihtoehtoja.
+[T 203] Liittymäehdot. Suuret uudet kuormat liitetään joustavina (SM-011).
+[T 204] Tämä tekee VolagHyn kaltaisista hankkeista talven kannalta neutraaleja tai hyödyllisiä
+[T 205] ilman uutta organisaatiota.
+[T 206] § 07 — Vastaväitteet
+[T 207] CHP:n säilyttäminen on halvempi. Mahdollisesti. Silloin ostaja ostaa
+[T 208] CHP:n keston, ja satamaa tarvitaan vasta, kun hake tai laitoksen ikä tulee vastaan.
+[T 209] Tämä on hyväksyttävä tulos.
+[T 210] Uusi instituutio ei ole halvin korjaaja. Samaa mieltä; siksi § 06
+[T 211] ehdottaa olemassa olevien toimijoiden tehtävien ja kriteerien muuttamista.
+[T 212] Miksei datakeskuksia. Datakeskuksia kyllä, mutta mittakaava ja omistus
+[T 213] ratkaisevat. Sähköintensiivinen toiminta tuottaa vähiten arvonlisää megawattituntia kohden:
+[T 214] metallien jalostus noin 379 €/MWh arvonlisää ja 144 €/MWh palkkoja, hyperskaalan
+[T 215] datakeskus 9–24 €/MWh palkkoja; datakeskusten julkinen tulo on lähes kokonaan sähkövero
+[T 216] 22,4 €/MWh, yhteisövero noin 1,7 €/MWh kululisämallin takia [I SM-023 § 03, § 05].
+[T 217] Kajaanin malli on eri asia kuin hyperskaalan kululisämalli.
+[T 218] Osaaminen valuu muualle. Ehto: avoin julkaisu- ja koulutusvelvoite
+[T 219] alustan sopimuksiin. Ei estä valumaa, mutta tekee siitä mitattavan.
+[T 220] Kokonaishyötysuhde on huono. Pitää paikkansa. Vertailu ei ole
+[T 221] hyötysuhde vaan se, mitä kesto maksaa muilla tavoilla (§ 05).
+[T 222] Ydinväite. Ainekset ovat olemassa: biogeeninen CO₂, biokaasu, kaukolämpöverkot,
+[T 223] halpa kesäsähkö, valtion energiayhtiöt ja valtion rahaa. Valtio rahoittaa niistä yksittäisiä
+[T 224] vientihankkeita, mutta kukaan ei kokoa niitä talven kestoksi. Puuttuu ostaja, joka ostaa
+[T 225] kestoa, ja omistajan tehtävä, joka kirjaa sen.
+[T 226] ACI · TN-001 ·
+[T 227] TN-017 ·
+[T 228] TN-018 ·
+[T 229] WP-019 ·
+[T 230] SM-008 ·
+[T 231] SM-010 ·
+[T 232] SM-011 ·
+[T 233] SM-023 ·
+[T 234] WP-015 ·
+[T 235] WP-013 ·
+[T 236] WEM
+[T 237] [L1] Svenska kraftnät: Network development plan 2026–2035, s. 13 ·
+[T 238] tools/data
+[T 239] [L2] Svenska kraftnät: KMA 2025, Aktuella tendenser, kalvot 14–15 ·
+[T 240] tools/data
+[T 241] [L3] Gasum: Kuopion biokaasulaitos ·
+[T 242] gasum.com
+[T 243] [L4] Suomen Lantakaasu, Kiuruvesi ·
+[T 244] dairynews.today ·
+[T 245] valio.com
+[T 246] [L5] VolagHy, Sorsasalo: YVA-ohjelman yhteysviranomaisen lausunto ·
+[T 247] ymparisto.fi ·
+[T 248] Business Kuopio businesskuopio.fi ·
+[T 249] chemxplore.com ·
+[T 250] carbonstorage.io
+[T 251] [L6] Gasgrid ja Nordic Ren-Gas ·
+[T 252] gasgrid.fi ·
+[T 253] EIB-kehys modernpowersystems.com ·
+[T 254] Gasum (valtion omistama) lngprime.com · naturalgasworld.com
+[T 255] [L7] VM 15.1.2026 vm.fi ·
+[T 256] verkkouutiset.fi ·
+[T 257] Business Finland tilinpäätös 2025 businessfinland.fi ·
+[T 258] TEM TAE 2027 valtioneuvosto.fi
+[T 259] [L8] World Nuclear News: LDR-50 kustannus ja aikataulu ·
+[T 260] wnn.world-nuclear.org
+[T 261] [L9] Saksan kapasiteettihuutokauppa ·
+[T 262] balkangreenenergynews.com ·
+[T 263] mynewsdesk.com
+[T 264] [L10] Ofgem LDES window 1 ·
+[T 265] energy-storage.news
+[T 266] [L11] Ruotsin strateginen reservi ·
+[T 267] riksdagen.se ·
+[T 268] regeringen.se
+[T 269] [L12] Greensand marinelink.com ·
+[T 270] Northern Lights norlights.com
+[T 271] [L13] Argus: ET Fuels ja Neova ·
+[T 272] argusmedia.com
+[T 273] [L14] LUMI ja Loiste lumi-supercomputer.eu ·
+[T 274] lumi-supercomputer.eu ·
+[T 275] Borealis hpcwire.com ·
+[T 276] KAMK/Loiste kamk.fi ·
+[T 277] kamk.fi
+[T 278] [L15] Vantaan Energia, Varanto vantaanenergia.fi ·
+[T 279] newatlas.com
+[T 280] [L16] Kuopion Energia, kaukolämpöhinnasto 2026 ·
+[T 281] kuopionenergia.fi
+[T 282] [D] ENTSO-E Transparency Platform, A44 day-ahead FI, 1.11.2025–31.10.2026, aci-entsoe-proxyn kautta
+
+=== [N] SvK Network development plan 2026–2035, s. 13 (pdftotext) ===
+[N 1]                                                                         from the long-term market analysis, see section
+[N 2] by upgrading existing lines or building new lines and
+[N 3]                                                                         3.2, in grid planning.
+[N 4] substations. System reinforcements also include
+[N 5] components that stabilise the grid, such as voltage­-
+[N 6] regulating equipment.
+[N 7] 
+[N 8] 
+[N 9] 
+[N 10] 4. Svensk elproduktion och installerad effekt 2024 – en regional översikt – Energiföretagen Sverige
+[N 11] 
+[N 12] 5. Anslutning av havsbaserad vindkraft | Svenska kraftnät
+[N 13] 
+[N 14] 
+[N 15] 
+[N 16] 
+[N 17] Svenska kraftnät - Network development plan 2026–2035                                            Motives for network development   13
+[N 18] 
+[N 19]                                                          With the exception that the net flow between Finland
+[N 20] 2.4 Market integration                                   and SE3 will change direction in 2029, the east-west
+[N 21] Market integration aims to increase or maintain          flows will remain for the entire period, even if they
+[N 22] trading capacity domestically and between Sweden         will be lower in 2029. Sweden is estimated to remain
+[N 23] and its neighbouring countries. The measures enable      a net exporter of electricity, but electricity exports will
+[N 24] increased transfer from surplus areas to deficit         decrease from 52 TWh in 2025 to 16 TWh in 2029.
+[N 25] areas and are becoming increasingly important as
+[N 26] the proportion of weather-dependent electricity          There are also factors that may contribute to
+[N 27] generation increases. Market integration contributes     changes in flows through the Swedish transmission
+[N 28] to increased security of supply and more cost-effec-     grid in the longer term, including:
+[N 29] tive use of generation resources, resulting in smaller
+[N 30]                                                          • Increased consumption flexibility and energy
+[N 31] price differences.
+[N 32]                                                            storage can help improve resource adequacy in
+[N 33] Svenska kraftnät analyses the need for transmission        southern Sweden.
+[N 34] capacity using electricity market models based on        • Establishment of new electricity generation in
+[N 35] long-term scenarios for the Northern European              southern Sweden.
+[N 36] power system, see section 3.2. Studies carried out
+[N 37] in the international planning collaboration are also     • Significantly increased electricity consumption in
+[N 38] often an important part of the basis for decisions on      northern Sweden, also in the longer term, may
+[N 39] grid investments that lead to increased market inte-       lead to a need for increased capacity available
+[N 40] gration, see section 3.3.                                  for trading, primarily in intersections 1 and 4, but
+[N 41]                                                            also towards Finland and Norway.
+[N 42] In the coming years, changes that increase market
+[N 43] integration within Sweden and with neighbouring
+[N 44] countries will be put into operation. A new line
+[N 45] between SE1 and Finland was put into operation at
+[N 46] the end of 2025 and Svenska kraftnät will gradually
+[N 47] reinforce the transmission capacity between SE2
+[N 48] and SE3, see section 4.6.1.2.
+[N 49] 
+[N 50] Svenska kraftnät’s latest short-term market analysis6
+[N 51] (KMA) came to several conclusions on power flows.
+[N 52] The analysis is based on the data that was available
+[N 53] at the time, such as additional electricity consump-
+[N 54] tion, but that was in some cases subsequently
+[N 55] revised by the relevant actors. Svenska kraftnät has
+[N 56] received many applications to connect electri­city-
+[N 57] intensive industry in northern Sweden. Several of
+[N 58] these are planned to be commissioned during
+[N 59] the period 2025-2030, and we therefore expect the
+[N 60] north-south flows to decrease at every intersection
+
+=== [K] SvK KMA2025 Aktuella tendenser, kalvot 14–16 ===
+[K 1]                                                                                                                                                     Topologi förändring
+[K 2]                                                                                                                                                     Spänningshöjning
+[K 3]                                                                                            SE2SE3 +800 MW
+[K 4]       + tiotal nya ledningar
+[K 5] 
+[K 6]      Källa: Svk Planeringsnät 2025-2029 – rev. Maj2025
+[K 7]      Mer information om utvecklingen av transmissionsnät: Nätutvecklingsplan 2026-2035 – en plan för Sveriges samhällsbyggnad | Svenska kraftnät
+[K 8] 
+[K 9] 
+[K 10] 13   Svenska kraftnät
+[K 11] 
+[K 12]                Resultat och
+[K 13]                Analys
+[K 14] 
+[K 15] 14   Svenska kraftnät
+[K 16] 
+[K 17]      Elenergibalans
+[K 18]      Norden förblir nettoexportör
+[K 19]      •   Norden fortsätter att vara nettoexportör på
+[K 20]          årsbasis, men överskottet minskar från 53 till
+[K 21]          29 TWh mellan 2026 och 2030
+[K 22] 
+[K 23]           •    Vissa väderår uppstår dock ett underskott
+[K 24] 
+[K 25]      •   Den ökade elanvändningen för Norden möts till
+[K 26]          stor del av ny landbaserad vindkraft men även
+[K 27]          av solkraft.
+[K 28] 
+[K 29]           •    Andelen vind- och solkraft av den totala årliga
+[K 30]                elproduktionen ökar från 32 procent till 43
+[K 31]                procent på nordisk nivå under analysperioden.
+[K 32]                                                                  Produktion, elanvändning och energibalans (TWh) i Norden, 2026-2030.
+[K 33]                                                                  Siffrorna visar medelvärdet för netto balansen och klamrarna visar spannet för
+[K 34]                                                                  årsenergibalansen med hänsyn till de 35 väderår som använts.
+[K 35] 
+[K 36] 
+[K 37] 
+[K 38] 15   Svenska kraftnät
+[K 39] 
+[K 40]      Elenergibalans
+[K 41]      Sverige förblir nettoexportör
+[K 42]      •   Sverige har positiv balans under analysperioden.
+[K 43]          Medelöverskottet minskar från 34 TWh år 2026
+[K 44]          till 12 TWh år 2030.
+
+=== [W] ACI WEM v2.16.4, 2.11.2026, otteet ===
+[W 1] 
+[W 2]                                         Kuinka suuri fyysinen vajaus stressissä on?
+[W 3] 
+[W 4] 
+[W 5]              DURATION                   ██████████░░░                                                                                                            54 h metastable
+[W 6] 
+[W 7]                                         Kuinka kauan stressi jatkuu yhtäjaksoisesti?
+[W 8] 
+[W 9] 
+[W 10]              CORRECTION                 █████░░░░░░░░                                                                                                    59 % min normaali
+[W 11] 
+[W 12]                                         Paljonko korjauskykyä on jäljellä? (matalin hetki W72:ssa)
+[W 13] 
+[W 14] 
+[W 15]              SOURCE                     ████████████░                                                                                                   -12.0 TWh alakvartiili
+[W 16] 
+[W 17]                                         Riittääkö tuonnin lähde pitkään jaksoon? (NO+SE-altaat vs. saman viikon mediaani, 2026-W43, alempana 1/11 v)
+[W 18] 
+[W 19]              Ei uutta laskentaa: SP §02 · SP_depth §10 · T₁₆₈ §11 · RP_margin §14 · SOURCE aci-entsoe-proxy /balance (sama kuin HEM §01b; SOURCE-luokat ASETETTUJA [A], järjestys
+[W 20]              perusjaksossa 2015–, A72-data 1–2 vk viiveellä). FREQUENCY ei erottele: SP ≥ 50 % 14/20 tallennetussa otosikkunassa (2022–2026), joten sen BP-like ei yksin laukaise
+[W 21]              ristiriitahuomautusta (2026-10-15). DEPTH-kynnykset ovat ASETETTUJA [A]; SP:n ja T₁₆₈:n kynnykset ovat §06:n ja §11:n omia, ja CORRECTION-vyöhykkeet tulevat talven
+[W 22]              kalibroinnista (17 470 pistettä).
+[W 23]              HUOM aikaperspektiivi: FREQUENCY ja DEPTH ovat osuuksia W168-ikkunassa, DURATION on pisin yhtäjaksoinen jakso, ja CORRECTION on MATALIN HETKI
+[W 24]              W72:ssa — ei nykyhetken arvo. Yksi neljännestunti riittää painamaan sen nollaan. SOURCE on viikkotason varanto, ei teho: se kertoo mistä pitkä jakso katetaan, ei riittääkö tunti.
+[W 25] 
+[W 26]               yliarvioi.
+[W 27]               Toiseksi: tämä tapahtui syyskuussa, matalan kulutuksen aikaan — talvella sama FS-taso tarkoittaisi paljon suurempaa
+[W 28]               absoluuttista vajetta.
+[W 29]               Kolmanneksi: ekvivalenssi koskee vain FS:ää. DC-kuorma on litteä 24/7 eikä reagoi lämpötilaan; huoltoseisokki ei muuta
+[W 30]               kulutuspro ilia lainkaan. DP_t- ja SP-vaikutukset eroavat.
+[W 31] 
+[W 32] 
+[W 33] 
+[W 34] 
+[W 35] 14 of 32                                                                                                                                                                      2.11.2026 klo 8.25
+[W 36] 
+[W 37] Winter Endurance Monitor · ACI                                                                           https://aethercontinuity.org/tools/ACI-INSTRUMENT-v2.html
+[W 38] 
+[W 39] 
+[W 40]            EPP W168 — SKENAARIOVERTAILU (PROJEKTIO, EI LIVE-HAVAINTO LUKUUN OTTAMATTA "NYKYTILA"-KORTTIA)
+[W 41] 
+[W 42]            chpPct-parametrista: kaksi viimeistä riviä antavat identtisen FS 42,8 % vaikka CHP eroaa −30 % / −40 %. Syy ei ole virhe vaan
+[W 43]            määritelmä: FS = (ydin + vesi) / kulutus — CHP ei ole osoittajassa. Mitattu 10.9.2026: chpPct ei muuta FS:ää
+[W 44]            lainkaan, ja sen vaikutus WR:ään on 0,001 EPP:ssä. Ainoa todellinen kanava on SP, jota EI voi laskea keskiarvoista — se vaatii
+[W 45]            tuntisarjan.
+[W 46]            Parametria ei poisteta: SP-kanava on todellinen. Mutta taulukko antaa sille enemmän vaikutusvaltaa kuin FS-rivi näyttää.
+[W 47] 
+[W 48] 
+[W 49]                NYKYTILA — LIVE-HAVAINTO                                  PROJEKTIO: + DC-KUORMA                                     PROJEKTIO: + DC-KUORMA + CHP-
+[W 50] 
+[W 51] 
+[W 52]                0.514                                                     0.514
+[W 53]                                                                                                                                     MUUTOS
+[W 54] 
+[W 55] 
+[W 56]                ELEVATED                                                  ELEVATED                                                   0.514
+[W 57]                                                                                                                                     ELEVATED
+[W 58]                Live W168 · ei muutoksia                                  +0.0 pp vs nykytila
+[W 59]                                                                                                                                     +0.0 pp vs nykytila
+[W 60] 
+[W 61] 
+[W 62] 
+[W 63] 
+[W 64]            EPP v4 (kokeellinen, 2026-08-01): SP korvattu SP_depth:llä (Σmax(0,gap)/Σc — syvyysmitta laskurin sijaan). v3 pysyy kanonisena — backtest ja kaikki muu koodi lukee v3:a. v4
+[W 65]            on rinnakkainen vertailu.
+[W 66] 
+[W 67] 
+[W 68]                                                                                                                                                                         EPP (V3),
+[W 69]                                                 CHP         EPP                                                                      EPP                    Δ EPP
+[W 70]              SKENAARIO             DC MW                                  LUOKKA            FS            SP     SP_DEPTH                        DP_T                              DC
+[W 71]                                                    Δ       (V3)                                                                     (V4)                      (V3)
+[W 72]                                                                                                                                                                         C_EXP:SSÄ
+[W 73] 
+[W 74] 
+[W 75]                                                                                                                                                               +0.0         0.514 ·
+[W 76]              Nykytila                    0        0%     0.514        Elevated         42.1%         45.8%             8.2%       0.402          0.0%
+[W 77]                                                                                                                                                                  pp       Elevated
+[W 78] 
+[W 79] 
+[W 80]            Tulkinta. Nouseva preemio tarkoittaa että myyjä hinnoittelee kasvavaa hajontaa. Se on riippumaton vahvistus sille mitä §14 ja SvK:n
+[W 81]            ennuste sanovat — ja se kohdistuu juuri siihen ryhmään joka ei ole suojautunut pitkillä sopimuksilla.
+[W 82]            Ja osa pörssisähkösopimuksista seuraa jo varttihintoja: kotitalous kohtaa nyt saman 15 min resoluution kuin §14:n niukkuus. Aiemmin
+[W 83]            tuntikeskiarvo tasoitti piikin.
+[W 84] 
+[W 85] 
+[W 86]            NELJÄ VARAUSTA:
+[W 87]            1 · Tarjoushinta ei ole maksettu hinta. Energiaviraston oma huomautus: hinnat perustuvat "kullakin hetkellä yleisesti tarjolla
+[W 88]            oleviin tuotteisiin" eivätkä voimassa oleviin sopimuksiin. Eri data_class kuin Tilastokeskuksen toteumasarja.
+[W 89]            2 · Spot on ilman marginaalia. Todellinen pörssisähkösopimus on ~0,3–0,5 snt/kWh kalliimpi. Taso muuttuu, suunta ei.
+[W 90]            3 · Vertailupari on pörssisähkö. Toistaiseksi voimassa oleva ei ole suojaamaton vaihtoehto — se on passiivisen asiakkaan sopimus,
+[W 91]            jonka hintaa myyjä voi muuttaa ilmoituksella, ja se kantaa sekä riskin että asiakasinertian. historia ↗
+[W 92]            4 · 1.7.2022–1.7.2023 vertailukohta on epäluotettava. Energiaviraston alaviite: toistaiseksi voimassa olevien arvo perustuu
+
+=== [S] ACI-otteet ===
+[S SM-023] § 03 Arvonlisä ja verot sähkö-MWh:ta kohden Ennen laskentaa tarkasteltiin, mitä nykyiset sähköintensiiviset toimialat tuottavat käyttämäänsä sähköä kohden (keskiarvo 2022–2024; Tilastokeskus, Verohallinto) [M]/[L]: Toimiala Sähkö GWh Arvonlisäys €/MWh Palkat €/MWh Yhteisövero €/MWh Metsäteollisuus (16–17) 14 881 299 158 20 Metallien jalostus (24) 6 000 379 144 19 Kemia (19–22) 6 323 1 139 366 62 Kone- ja metallituote 1 937 6 759 4 136 249 Elektroniikka (26–27) 652 11 402 4 773 313 Teollisuus ja kaivos yhteensä 34 517 1 194 603 56 Eniten sähköä käyttävät toimialat tuottavat vähiten arvonlisää ja palkkoja megawattituntia kohden. Uusi energiaintensiivinen kasvu muistuttaa taulukon ylimpiä rivejä. Datakeskuksen (Tuike Finland Oy, 2025: liikevaihto 574 M€, liikevoitto 30 M€, 120 henkeä [M]) palkat ovat 9–24 €/MWh, kun kulutukseksi oletetaan 0,5–1,3 TWh [A] [L] — 6–17 kertaa vähemmän kuin metallien jalostuksessa. Taulukko on kuvaileva. Keskiarvo ei kerro, mitä yksi lisä-MWh tuottaisi toisella toimialalla, eikä sitä, että sähkö olisi muualla tuottavammassa käytössä. Se kertoo, mihin suuruusluokkaan sähköintensiivinen toiminta asettuu nykyisessä elinkeinorakenteessa. § 04 Tulos Rinnakkaislaskenta: rivit ovat julkaistuja arvioita datakeskusten kulutuksesta 2030, sarakkeet muiden hankkeiden vaiheita. P0 = lopullinen investointipäätös tai rakenteilla; P1 = lisäksi lupa- tai FEED-vaihe ja ilmoitettu käyttöönotto viimeistään 2030 (Arctic Sisu 1. vaihe, Freija, VolagHy); P2 = lisäksi esiselvitysvaihe (ETFuels, Plug Power). Hanketiedot jäädytettiin 17.11.2026. Pääoletukset [A]: vuonna 203 … § 05 Datakeskukset Sähkövero on laskettujen erien joukossa datakeskusten ainoa merkittävä julkinen tulo: 22,4 €/MWh energiaveroa valtiolle ja 0,85 €/MWh huoltovarmuusmaksua Huoltovarmuusrahastoon [M]. Luokassa II sama kulutus tuottaisi energiaveroa noin 2 % luokan I määrästä [L]. Perusuran taso on sisäisesti johdonmukainen: TEM:n energiataseen pohjalta datakeskusten verotuki olisi ollut 83 M€ vuonna 2030 [M], mikä luokkien erolla 21,9 €/MWh vastaa 3,8 TWh:a [L]. Yhteisövero on pieni, koska suuret datakeskukset toimivat kululisämallilla: Tuike Finland Oy:n liikevoitto on noin 5 % liikevaihdosta [M]. Mallissa kulupohja on 1,16 M€/MW/v [A]: sähkö verkko- ja veromaksuineen noin 82 €/MWh × 7 008 MWh/MW sekä poistot 10 M€/MW 17 vuodessa [A]; 5 %:n kululisä ja 20 %:n verokanta antavat noin 11,6 k€/MW/v eli 1,7 €/MWh [L]. Kululisä 2–10 % muuttaa tulosta suhteessa; investoinnin koko vaikuttaa poistojen kautta. Kululisämalli kuvaa konsernin sisäistä palvelukeskusta, ja havainto perustuu yhteen yhtiöön (Tuike). Kymmenen prosentin kululisällä yhteisövero olisi noin 3,3 €/MWh, alle kuudesosa energiaverosta [L]. Kaupallisen colocation-toiminnan katetta ei ole mallinnettu, eikä tämä luku rajaa sen verotettavaa tuloa. Työpaikat. Tuike Finland Oy:n palkkalistoilla on 120 henkeä; Haminan kampus työllistää urakoitsijat mukaan lukien noin 400 [M]. Tämä on rinnakkaisten oletusten 120/400 työpaikkaa per TWh peruste [A]. Kantaverkko. 2,5 GW:n kuorma [A] 80 %:n käyttöasteella [A] maksaisi kantaverkkomaksuja noin 84 M€ vuodessa (tasaiselle kuormalle 4,79 €/MWh) [L]; täydellä kuormalla noin 105 M€. 
+[S SM-008] Haapaniemi 2's electrical capacity — approximately 65 MWe per Kuopio's own renewable energy municipal review (combined Haapaniemi 2+3 site electrical capacity is approximately 90 MWe) — disappears from the system when the plant closes; Haapaniemi 3 remains operational and is not affected by the 2035 retirement. LDR-50 produces nothing that compensates for the lost unit. The electricity adequacy gap deepens by the full electrical capacity of every CHP unit replaced by a heat-only technology — whether that technology is LDR-50, a heat pump, or a biomass boiler without generation. As of June 2026, no public plan addresses this gap: Kuopio Energia's own materials, the Steady Energy pre-feasibili
+[S WP-019] The April 2026 budget framework committed €8M/year in production support and €10M for HVK strategic stockpiling. The domestic origin argument that supports peat support applies with equal structural logic to domestic biogas and e-methane — this is the policy implication WP-019 draws, not a defence of peat as a long-term solution. 2.2 Fingrid reserve market — revenue potential FCR-D reserve products provide a documented revenue stream for SGFA nodes. The 2026 annual market prices are: FCR-D up €3.50/MW,h and FCR-D down €6.00/MW,h. At 100% availability, FCR-D up yields approximately €30,600/MW/year in capacity compensation, before activation revenues. A 50 MW SGFA node could generate approximately €1.5M/year from FCR-D up capacity alone. The annual market procured 237 MW of FCR-D up and 163 MW FCR-D down in 2026, with FCR-N moved entirely to the hourly market — indicating that hourly market participation is increasingly the primary channel for smaller reserve providers. 2.3 Regional economic multiplier — existing research Vaasan Energiainstituutti and Ruralia-instituutti have calculated that energy self-sufficient Pietarsaari would add €14M/year to the regional economy, and Kaustinen €11M/year. These figures are the closest available empirical anchors for the regional multiplier component of this analysis. Their limitations are material: they are seutukunta-level calculations, not energy-sector-specific multipliers, and they reflect conditions at the time of calculation. They a … § 03 Five Finnish Development Pathways Five active Finnish development cases can be mapped against the SGFA architecture. None was designed as an SGFA node. Each arrived at partial SGFA functionality through independent decisions by local actors. The convergence is diagnostic evidence that the architecture is not hypothetical — it is being approached from multiple directions simultaneously. Location Model type Current status SGFA completeness Key gap Tampere / Lielahti Municipal operator with industrial PtX partner (Ren-Gas / Nordic Ren-Gas) Electric boiler (145 MW, 2×50 MW + existing 45 MW) + 2×10,000 m³ thermal storage operational Nov 2025. E-methane plant at Tarastenjärvi: 50 MW electrolyser (expandable 100 MW), legally valid environmental permit granted, TEM investment support €46M confirmed. Tammervoima biogenic CO₂ → Ren-Gas → e-methane. Gasum has contracted full offtake. Waste heat 180 GWh/year to district heating network. Commercial operation 2027, phase 2 doubling capacity 2028. Fossil fuel share reduced to ~3%. ~70% Reserve market integration not yet formalised — Fingrid shifting emphasis to hourly market. Biogeenic CO₂ regulation unresolved at EU level but has not stopped the project. Oulu / Laanila Municipal + industrial PtX partner (P2X Solutions) Biovoimalaitos 70 MW electric + 175 MW heat operational since 2020. Electric boilers 100 MW total (Laanila 40 MW + Toppila 60 MW). 100 MW electrolyser + CO₂ capture YVA initiated November 2024 — investment decision expe
+
+ULKOISET LÄHDEOTTEET (haettu 23.11.2026, Claude; tarkista vain sisäinen johdonmukaisuus, et voi avata lähteitä):
+[L3] Gasum: Kuopion biokaasulaitos, waste processing capacity 60,000 tonnes/year, gas production capacity 35 GWh/year; processes sludge from local wastewater treatment plants, biowaste and food industry side streams.
+[L4] Suomen Lantakaasu Kiuruvesi: liquefies about 125 GWh of biogas per year; 460,000 t manure/yr; satellites Lapinlahti, Sonkajärvi, Nurmes transport compressed biomethane to Kiuruvesi; JV of Valio and St1 Biokraft.
+[L5] VolagHy Sorsasalo: 50,000 t eSAF/yr; CO2 captured from Mondi Powerflute containerboard mill flue gases (YVA statement 17.4.2026); €150M tax credit from Business Finland (15.1.2026); ~€1bn investment, ~1000 construction jobs, 100+ permanent; Kuopion Energia to recover electrolysis heat for district heating.
+[L6] Gasgrid: Ren-Gas plans plants along Gasgrid transmission network in Lahti, Kotka, Kerava and Tampere. EIB framework increased to €680M; Tampere construction expected Q4 2026. Gasum (state-owned) offtake 160 GWh/yr from Tampere.
+[L7] VM 15.1.2026: tax credit granted to 37 projects ~€2bn, based on ~€15bn investment costs. BF 2025 grants €312M to six projects. TEM budget proposal 2027: +€50M energy aid authority for large new energy technology demonstrations.
+[L8] LDR-50: Steady Energy anticipates deployment within seven years incl. licensing at cost of EUR100 million; thermal output 50 MW.
+[L9] Germany: all 5.16 GW of inaugural capacity auction to gas-fired plants; measure would cost €15.6–35.2bn; first round price cap €244,000 per MW (de-rated).
+[L10] UK Ofgem LDES cap-and-floor window 1: 16 projects shortlisted, 7.6 GW, 8–22 hour durations.
+[L11] Sweden: SvK strategic agreement with Öresundsverket ~448 MW; new strategic reserve resources may be generation, storage or demand flexibility.
+[L12] Greensand: CO2 primarily from Danish biomethane plants, liquefied, trucked to Esbjerg terminal, shipped; INEOS with Harbour Energy and Nordsøfonden (state). Northern Lights: biogenic CO2 from wastewater biogas trucked to terminal; largely funded by Norwegian state.
+[L13] Argus: ET Fuels secured €118.6M tax credits from Business Finland for 100,000 t/yr e-methanol project developed with state-owned Neova.
+[L14] LUMI waste heat ~20% of Kajaani district heat; LUMI AI Factory in former ~200 m paper machine hall; Borealis Data Center and Loiste Lämpö agreement; Loiste DH sales 280 GWh; Kajaani data-centre surplus heat >200 MW in 2030 scenario (KAMK/Loiste).
+[L15] Varanto: 90 GWh, completion 2028, est. build cost €200M, TEM grant €19M.
+[L16] Kuopion Energia DH winter energy price 71.52 €/MWh (VAT 0%).
+[D] FI day-ahead 1.11.2025–31.10.2026, ENTSO-E: 35 036 quarter-hours after removing an extra day; 36.3 % ≤ 20 €/MWh; median 32.6; mean 54.9 €/MWh.
