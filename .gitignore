@@ -8,3 +8,6 @@ fetched_raw.json
 
 # Nord Pool UMM: vain sisäiseen käyttöön, ei repoon (CLAUDE.md)
 umm-paikallinen/
+
+# FRG/LCOM-mallin hintadata (tools/frg_hinnat.py), haetaan uudelleen
+data/fi_dayahead.json
