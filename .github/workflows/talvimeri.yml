@@ -1,0 +1,46 @@
+name: talvimeri
+
+# Talvimerenkulun odotusajat merialueittain (SM-024 § 09, ennakkokirjaus).
+# Ajetaan kuukauden 3. päivä joulu–kesäkuussa; talvi 2026–2027 = activeFrom 2026-10-01.
+# Tulos: data/talvimeri/<talvi>.json, VAIN koosteet (ks. tools/talvimeri.py, julkaisurajaus).
+# Raakadataa ei tallenneta lokeihin eikä artefakteihin; tulosteeseen menee vain SHA-256.
+
+on:
+  schedule:
+    - cron: "23 5 3 12,1,2,3,4,5,6 *"
+  workflow_dispatch:
+    inputs:
+      alku:
+        description: "activeFrom (YYYY-MM-DD)"
+        default: "2026-10-01"
+      tiedosto:
+        description: "data/talvimeri/<nimi>.json"
+        default: "2026-2027"
+
+permissions:
+  contents: write
+
+jobs:
+  kerays:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Kerää ja koosta
+        env:
+          ALKU: ${{ inputs.alku || '2026-10-01' }}
+          NIMI: ${{ inputs.tiedosto || '2026-2027' }}
+        run: |
+          mkdir -p data/talvimeri
+          python3 tools/talvimeri.py --from "$ALKU" --out "data/talvimeri/$NIMI.json"
+      - name: Commit
+        run: |
+          git config user.name  "ogas3-talvimeri"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/talvimeri/
+          git commit -m "talvimeri: koosteet $(date -u +%Y-%m-%d)" || { echo "ei muutoksia"; exit 0; }
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

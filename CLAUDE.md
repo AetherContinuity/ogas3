@@ -76,6 +76,16 @@ luvan. Repo ja sen Actions-lokit ovat julkisia, joten:
 - Siirtokeskeytykset ovat saatavilla myös ENTSO-E:stä; sen ehdot tarkistetaan erikseen,
   jos niitä halutaan julkaista.
 
+## Talvimerenkulku (Digitraffic) — vain koosteet
+
+Päätetty 26.11.2026. `tools/talvimeri.py` + workflow `talvimeri` keräävät jäänmurtaja-avustuksen
+odotukset (winter-navigation v2, WAIT) merialueittain SM-024 § 09:n ennakkokirjausta varten.
+Data on CC BY 4.0, mutta **julkaistaan vain koosteet** (merialue × kuukausi): ei alusten tai
+murtajien tunnisteita, sijainteja eikä yksittäisiä tapahtumia — ei commiteissa, lokeissa eikä
+artefakteissa. Kohdistussääntö on lukittu tiedoston docstringissä ennen talven 2026–2027 tulosta;
+muutos = poikkeamakirjaus. Työtilasta haku proxyn kautta (`aci-policy-proxy ?meri=`).
+Vertailutaso: `data/talvimeri/2025-2026.json` (rajapinnan historia alkaa 11/2025).
+
 ## Tunnetut ansat
 
 - `stance.py`:n jäsennin ottaa `{`…`}` ahneesti (poikkeama 2): Sonnet kirjoitti 6/62
