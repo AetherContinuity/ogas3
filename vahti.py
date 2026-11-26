@@ -80,6 +80,18 @@ WATCHES: list[dict] = [
                       "sotilaallisen liikkuvuuden"],
         "hankkeet": [],
     },
+    {
+        "id": "pohjoinen-solmu",
+        "lisatty": "2026-11-26",
+        "kuvaus": "SM-024 § 08–09: ilmestyykö sotilaallisen liikkuvuuden rahoitus julkisen "
+                  "talouden suunnitelmaan (Liikenne 12 -selonteko 12/2025: ei kehyksissä "
+                  "2026–2029), nouseeko Haaparannan yhteys tai yhdistetyt kuljetukset omaksi "
+                  "hankkeekseen, ja miten ratalain muutos (LVM057:00/2025) etenee.",
+        "lahde": "SM-024 § 08–09",
+        "hakusanat": ["Haaparanta", "Haaparannan", "yhdistetyt kuljetukset",
+                      "yhdistetyistä kuljetuksista", "julkisen talouden suunnitelma"],
+        "hankkeet": ["LVM057:00/2025"],
+    },
 ]
 
 Poster = Callable[[str, dict], dict]
