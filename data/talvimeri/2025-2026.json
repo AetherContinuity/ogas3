@@ -1,0 +1,116 @@
+{
+ "lahde": "Fintraffic / digitraffic.fi (CC BY 4.0): winter-navigation v2, port-call v1",
+ "haettu": "2026-11-26T18:50:33+00:00",
+ "activeFrom": "2025-10-01",
+ "raaka_sha256": "8dab708d57dbbc44b692b553a51f5bfa578972dbef4b20ebe410ebc471905e02",
+ "kauppa_aluksia": 477,
+ "odotuksia_yht": 744,
+ "rajaus": "vain koosteet; ei alustunnisteita, murtajia, sijainteja eikä yksittäisiä tapahtumia",
+ "rivit": [
+  {
+   "merialue": "Perämeri",
+   "kuukausi": "2026-01",
+   "odotuksia": 20,
+   "mediaani_h": 1.05,
+   "p90_h": 4.68
+  },
+  {
+   "merialue": "Perämeri",
+   "kuukausi": "2026-02",
+   "odotuksia": 265,
+   "mediaani_h": 1.58,
+   "p90_h": 5.17
+  },
+  {
+   "merialue": "Perämeri",
+   "kuukausi": "2026-03",
+   "odotuksia": 193,
+   "mediaani_h": 1.7,
+   "p90_h": 6.03
+  },
+  {
+   "merialue": "Perämeri",
+   "kuukausi": "2026-04",
+   "odotuksia": 17,
+   "mediaani_h": 1.08,
+   "p90_h": 3.75
+  },
+  {
+   "merialue": "Saaristomeri",
+   "kuukausi": "2026-02",
+   "odotuksia": 7,
+   "mediaani_h": 1.1,
+   "p90_h": null
+  },
+  {
+   "merialue": "Saaristomeri",
+   "kuukausi": "2026-03",
+   "odotuksia": 1,
+   "mediaani_h": 0.92,
+   "p90_h": null
+  },
+  {
+   "merialue": "Selkämeri",
+   "kuukausi": "2026-02",
+   "odotuksia": 14,
+   "mediaani_h": 0.92,
+   "p90_h": 4.17
+  },
+  {
+   "merialue": "Selkämeri",
+   "kuukausi": "2026-03",
+   "odotuksia": 7,
+   "mediaani_h": 3.73,
+   "p90_h": null
+  },
+  {
+   "merialue": "Suomenlahti",
+   "kuukausi": "2026-01",
+   "odotuksia": 2,
+   "mediaani_h": 3.27,
+   "p90_h": null
+  },
+  {
+   "merialue": "Suomenlahti",
+   "kuukausi": "2026-02",
+   "odotuksia": 43,
+   "mediaani_h": 1.25,
+   "p90_h": 8.13
+  },
+  {
+   "merialue": "Suomenlahti",
+   "kuukausi": "2026-03",
+   "odotuksia": 6,
+   "mediaani_h": 1.67,
+   "p90_h": null
+  },
+  {
+   "merialue": "kohdistamaton",
+   "kuukausi": "2026-01",
+   "odotuksia": 2,
+   "mediaani_h": 0.88,
+   "p90_h": null
+  },
+  {
+   "merialue": "kohdistamaton",
+   "kuukausi": "2026-02",
+   "odotuksia": 110,
+   "mediaani_h": 2.9,
+   "p90_h": 11.23
+  },
+  {
+   "merialue": "kohdistamaton",
+   "kuukausi": "2026-03",
+   "odotuksia": 54,
+   "mediaani_h": 2.76,
+   "p90_h": 6.67
+  },
+  {
+   "merialue": "kohdistamaton",
+   "kuukausi": "2026-04",
+   "odotuksia": 3,
+   "mediaani_h": 1.42,
+   "p90_h": null
+  }
+ ]
+}
