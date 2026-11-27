@@ -106,13 +106,18 @@ def _nb_hanta(havaittu: int, nulli: list[int]) -> float:
 
 def arvioi(sarjat: dict[str, list], saannot: dict[str, dict], max_viive: int = 8, kierroksia: int | None = None,
            min_siirto: int | None = None, alfa: float = 0.05, siemen: int = 1, p_menetelma: str = "tarkka",
-           parit: list[tuple[str, str]] | None = None) -> dict:
+           parit: list[tuple[str, str]] | None = None, askelia_paivassa: int | None = None,
+           min_paivia: int | None = None) -> dict:
     """Kaikki suunnatut parit A → B. Nollamalli: B:n tapahtumat kierretään siirrolla s, min_siirto ≤ s ≤ n − min_siirto
     (oletus 4·max_viive), A pysyy paikallaan. Oletuksena käydään läpi KAIKKI sallitut siirrot (tarkka, deterministinen
     permutaatiojakauma); kierroksia=K arpoo K siirtoa siemenellä. p = (1 + #{null ≥ havaittu}) / (1 + K).
     Testisuure per viive. BH-korjaus kaikkien parien ja viiveiden yli (tai annettujen `parit`-parien yli).
     p_menetelma="nb": p kiertojakaumaan sovitetusta negatiivisesta binomista (poikkeama 1, polttoainekoe 1:
     lyhyillä sarjoilla tarkan p:n resoluutio 1/(K+1) ei riitä BH:lle). Tarkka p raportoidaan aina rinnalla.
+    Monipäiväisyys (SYNAPSI-1 poikkeama 1): jos askelia_paivassa on annettu, jokaiselle ehdokkaalle lasketaan,
+    monelleko eri päivälle (indeksi // askelia_paivassa, sarjan alusta) sen yhteisesiintymät jakautuvat (A-tapahtuman
+    päivä). Jos min_paivia on annettu, ehdokas, jonka päiviä on vähemmän, siirretään listaan
+    "hylatyt_monipaivaisyys". Se ei ole ehdokas, mutta se raportoidaan.
     Huom: yksi A-tapahtuma voi osua viiveellä d useampaan B-tapahtumaan vain, jos B:llä on kaksi tapahtumaa samassa
     vartissa, mikä ei jaksotuksen jälkeen ole mahdollista; histogrammilaskenta on siksi sama kuin yhteiset()."""
     n = len(next(iter(sarjat.values())))
@@ -151,6 +156,15 @@ def arvioi(sarjat: dict[str, list], saannot: dict[str, dict], max_viive: int = 8
             raja = r
     hyv = set(jarj[:raja])
     ehdokkaat = [dict(testit[i], tila="ehdokas") for i in sorted(hyv, key=lambda i: testit[i]["p"]) if testit[i]["yhteisia"] > 0]
+    hylatyt = []
+    if askelia_paivassa:
+        for e in ehdokkaat:
+            bs = set(tap[e["b"]])
+            e["paivia"] = len({t // askelia_paivassa for t in tap[e["a"]] if t + e["viive"] in bs})
+        if min_paivia:
+            hylatyt = [dict(e, tila="hylatty_monipaivaisyys") for e in ehdokkaat if e["paivia"] < min_paivia]
+            ehdokkaat = [e for e in ehdokkaat if e["paivia"] >= min_paivia]
     return {"n_varttia": n, "tapahtumia": {k: len(v) for k, v in tap.items()}, "testeja": m, "alfa_bh": alfa,
             "kierroksia": kierroksia, "siemen": siemen, "kierrokset_riittavat": voima_ok,
-            "kierroksia_vahintaan": int(m / alfa) + 1, "p_menetelma": p_menetelma, "ehdokkaat": ehdokkaat}
+            "kierroksia_vahintaan": int(m / alfa) + 1, "p_menetelma": p_menetelma, "min_paivia": min_paivia, "ehdokkaat": ehdokkaat,
+            "hylatyt_monipaivaisyys": hylatyt}
