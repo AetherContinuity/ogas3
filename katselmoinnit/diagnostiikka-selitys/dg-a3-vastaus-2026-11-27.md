@@ -1,0 +1,166 @@
+# Katselmointi (LLM) — lausunto, ei mittaus
+
+```json
+{
+ "pyynto": "katselmoinnit/diagnostiikka-selitys/dg-a3-pyynto.txt",
+ "pyynto_sha256": "f88116b5c1632d90424f099f12f789be230c34364dfffbc2706d4d7679375d02",
+ "malli": "kimi-k3.1-pro",
+ "response_model": "kimi-k3.1-pro",
+ "effort": "max",
+ "aika": "2026-11-27T19:13:32+00:00",
+ "finish_reason": "stop",
+ "usage": {
+  "prompt_tokens": 4111,
+  "completion_tokens": 14228,
+  "total_tokens": 18339,
+  "completion_tokens_details": {
+   "reasoning_tokens": 12227
+  },
+  "prompt_tokens_details": {
+   "cache_write_tokens": 4096
+  }
+ },
+ "hinta_usd": 0.1505
+}
+```
+
+```json
+{
+  "esiintymat": [
+    {
+      "id": "DG-001:001",
+      "paperi": "DG-001",
+      "kohta": "§ Havainnot",
+      "lainaus": "Ankarana talvena urakoitsijat hoitavat ensin oman sopimuksensa kohteet.",
+      "merkinta": "ei_merkitty",
+      "tiedosto": "papers/dg-001-seudullinen-talvikunnossapito.html"
+    },
+    {
+      "id": "DG-001:002",
+      "paperi": "DG-001",
+      "kohta": "§ Kaksi vajetta",
+      "lainaus": "Sama kahden vajeen rakenne toistuu seudun kaikissa kunnissa.",
+      "merkinta": "ei_merkitty",
+      "tiedosto": "papers/dg-001-seudullinen-talvikunnossapito.html"
+    },
+    {
+      "id": "DG-001:003",
+      "paperi": "DG-001",
+      "kohta": "§ Kaksi vajetta",
+      "lainaus": "Tietovaje: kunnat eivät tiedä toistensa kalustosta eivätkä sen käyttöasteesta.",
+      "merkinta": "ei_merkitty",
+      "tiedosto": "papers/dg-001-seudullinen-talvikunnossapito.html"
+    },
+    {
+      "id": "DG-001:004",
+      "paperi": "DG-001",
+      "kohta": "§ Kaksi vajetta",
+      "lainaus": "Sopimusvaje: urakkasopimukset eivät salli kaluston siirtämistä urakka-alueen ulkopuolelle.",
+      "merkinta": "ei_merkitty",
+      "tiedosto": "papers/dg-001-seudullinen-talvikunnossapito.html"
+    },
+    {
+      "id": "DG-001:005",
+      "paperi": "DG-001",
+      "kohta": "§ Johtopäätökset",
+      "lainaus": "Ankarana talvena hälytysreittien aukipito riippuu siitä, minkä urakan kalusto sattuu olemaan lähimpänä.",
+      "merkinta": "ei_merkitty",
+      "tiedosto": "papers/dg-001-seudullinen-talvikunnossapito.html"
+    },
+    {
+      "id": "DG-001:006",
+      "paperi": "DG-001",
+      "kohta": "§ Johtopäätökset",
+      "lainaus": "reitit ylittävät urakka-alueiden rajoja",
+      "merkinta": "ei_merkitty",
+      "tiedosto": "papers/dg-001-seudullinen-talvikunnossapito.html"
+    },
+    {
+      "id": "DG-001:007",
+      "paperi": "DG-001",
+      "kohta": "§ Johtopäätökset",
+      "lainaus": "Kukin hoitaa oman osuutensa.",
+      "merkinta": "ei_merkitty",
+      "tiedosto": "papers/dg-001-seudullinen-talvikunnossapito.html"
+    },
+    {
+      "id": "DG-001:008",
+      "paperi": "DG-001",
+      "kohta": "§ Johtopäätökset",
+      "lainaus": "Yhteisen varakaluston arvo ei kuulu kenenkään tehtävään",
+      "merkinta": "ei_merkitty",
+      "tiedosto": "papers/dg-001-seudullinen-talvikunnossapito.html"
+    },
+    {
+      "id": "DG-001:009",
+      "paperi": "DG-001",
+      "kohta": "§ Johtopäätökset",
+      "lainaus": "se syntyy vasta, kun verkot tarkastellaan yhdessä.",
+      "merkinta": "ei_merkitty",
+      "tiedosto": "papers/dg-001-seudullinen-talvikunnossapito.html"
+    }
+  ],
+  "suhteet": [
+    {
+      "id": "S001",
+      "lahde": "DG-001:005",
+      "kohde": "DG-001:001",
+      "laji": "depends_on",
+      "perusta": "rekonstruoitu",
+      "perustelu": "Kohdan § Johtopäätökset virkkeen 'Tämä seuraa suoraan' perustelu toistaa tukena urakoitsijoiden oman työnsä etusijan. Päätelmän ja kohdan § Havainnot esiintymän yhdistäminen edellyttää välivaiheena tämän lyhyemmän muotoilun ja ankaraan talveen rajatun havainnon samastamista.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S002",
+      "lahde": "DG-001:005",
+      "kohde": "DG-001:006",
+      "laji": "depends_on",
+      "perusta": "eksplisiittinen",
+      "perustelu": "Kohdassa § Johtopäätökset päätelmää seuraa virke 'Tämä seuraa suoraan', joka nimeää tueksi reittien urakka-alueiden rajojen ylittämisen.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S003",
+      "lahde": "DG-001:003",
+      "kohde": "DG-001:002",
+      "laji": "qualifies",
+      "perusta": "eksplisiittinen",
+      "perustelu": "Kohdassa § Kaksi vajetta yleistä kahden vajeen rakennetta seuraava Tietovaje-virke täsmentää rakenteen ensimmäisen osan.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S004",
+      "lahde": "DG-001:004",
+      "kohde": "DG-001:002",
+      "laji": "qualifies",
+      "perusta": "eksplisiittinen",
+      "perustelu": "Kohdassa § Kaksi vajetta Tietovaje-virkettä seuraava Sopimusvaje-virke täsmentää kahden vajeen rakenteen toisen osan.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S005",
+      "lahde": "DG-001:008",
+      "kohde": "DG-001:007",
+      "laji": "depends_on",
+      "perusta": "rekonstruoitu",
+      "perustelu": "Kohdassa § Johtopäätökset päätelmää edeltää väite siitä, että kukin hoitaa oman osuutensa, ja päätelmän koska-lisäys rajaa arvon syntymään vasta verkkojen yhdistarkastelussa. Yhteys edellyttää kirjoittamatonta välivaihetta: erikseen hoidettavat osuudet eivät kata tätä yhteisestä tarkastelusta syntyvää arvoa.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S006",
+      "lahde": "DG-001:008",
+      "kohde": "DG-001:009",
+      "laji": "depends_on",
+      "perusta": "eksplisiittinen",
+      "perustelu": "Sama virke kohdassa § Johtopäätökset liittää perusteen päätelmään sanalla 'koska': varakaluston arvo syntyy vasta, kun verkot tarkastellaan yhdessä.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    }
+  ]
+}
+```

@@ -1,0 +1,164 @@
+TEHTÄVÄ: väiterekisterin täyttö, yksi paperi
+
+Tämä ei ole katselmointi. Tehtäväsi on poimia alla olevasta paperista väitteiden
+esiintymiä ja niiden välisiä suhteita ja palauttaa ne JSON-rekisterinä. Käytä vain tämän
+pyynnön tekstiä. Sinulla ei ole verkkoa eikä repoa, eikä niitä tarvita.
+
+Poiminta kuvaa, mihin paperien argumentit nojaavat. Se ei arvioi, ovatko väitteet tosia,
+lähteet luotettavia tai päätelmät päteviä. Heikkokin päätelmä kirjataan sellaisena kuin
+paperi sen esittää.
+
+AINEISTO
+Tiedosto ja sha256 (16 ensimmäistä merkkiä):
+  papers/dg-001-seudullinen-talvikunnossapito.html  550ceae942223ac9
+Tekstit on purettu HTML:stä koneellisesti (tools/vaiterekisteri_pyynto.py). Jokainen
+tekstirivi on sanatarkka ote tiedostosta. Rivit, jotka alkavat '## [kohta: ...]', ovat
+purkajan lisäämiä otsikkorivejä: ne kertovat kohdan tunnuksen, eivätkä ne ole lainattavaa
+tekstiä. Kohdan tunnus on paperin oma §-merkki, muuten otsikon numero, muuten otsikon teksti.
+
+REKISTERIN RAKENNE
+Palauta täsmälleen yksi ```json-koodilohko, jonka sisältö on yksi JSON-objekti:
+
+{
+  "esiintymat": [
+    {"id": "...", "paperi": "...", "kohta": "...", "lainaus": "...",
+     "merkinta": "...", "tiedosto": "..."}
+  ],
+  "suhteet": [
+    {"id": "...", "lahde": "...", "kohde": "...", "laji": "...", "perusta": "...",
+     "perustelu": "...", "kirjaaja": "kimi-k3.1-pro", "tila": "ehdotettu"}
+  ]
+}
+
+Kentät:
+- esiintyma.id: muoto <paperi>:<kolminumeroinen juokseva numero>, esim. muotoa XX-000:001.
+  Sallitut merkit: kirjaimet, numerot, _ . : -  (ensimmäinen merkki kirjain tai numero).
+- paperi: DG-001.
+- kohta: lähimmän edeltävän otsikkorivin kohdan tunnus sellaisenaan (hakasulkeiden sisältö
+  ilman sanaa "kohta:"), esim. muotoa "§ 00 / 0.0". Otsikkoa edeltävälle tekstille "alku".
+- lainaus: ks. ESIINTYMÄN RAJAUS.
+- merkinta: yksi arvoista M, L, A, —, ei_merkitty. Ks. TÄYTTÖPERIAATTEET 8.
+- tiedosto: aineistolistan polku sellaisenaan (esim. muotoa papers/<nimi>.html).
+- suhde.id: S001, S002, ...
+- lahde, kohde: esiintymien id:t.
+- laji: depends_on, same_claim, qualifies tai related. Muita lajeja ei ole.
+- perusta: eksplisiittinen tai rekonstruoitu. Pakollinen jokaisessa suhteessa. Ks. PERUSTA.
+- perustelu: ks. TÄYTTÖPERIAATTEET 4.
+- kirjaaja: aina "kimi-k3.1-pro". tila: aina "ehdotettu". Kenttää "tarkistaja" ei kirjata.
+- Kenttää "countertest" ei kirjata.
+
+SUHDELAJIEN MÄÄRITELMÄT (työkalun docstringistä sanatarkasti)
+  Yksikkö on väitteen ESIINTYMÄ: yksi rajattu väite yhdessä paperin kohdassa.
+  Sama väite eri papereissa on eri esiintymiä, jotka yhdistää `same_claim`-suhde.
+  Esiintymiä ei koskaan yhdistetä yhdeksi olioksi.
+  Suhteet ovat omia rivejään ja kantavat oman evidenssinsä.
+
+  laji:
+    depends_on  lahde nojaa kohteeseen argumentissaan (suunnattu)
+    same_claim  sama väite toisessa paikassa tai toisin sanoin (suuntaamaton)
+    qualifies   lahde rajaa tai tarkentaa kohdetta (suunnattu)
+    related     sama aihe, riippuvuutta ei osoitettu (suuntaamaton); ei koskaan riippuvuus
+
+Suunta: depends_on- ja qualifies-suhteessa "lahde" on se esiintymä, joka nojaa tai rajaa,
+ja "kohde" se, johon nojataan tai jota rajataan. Päätelmä nojaa havaintoon: lahde on
+päätelmä, kohde havainto.
+
+related ei ole riippuvuus. Älä käytä sitä riippuvuuden heikompana muotona: jos et voi
+osoittaa, että väite nojaa toiseen, älä kirjaa depends_on-suhdetta äläkä korvaa sitä
+related-suhteella.
+
+PERUSTA (työkalun docstringistä sanatarkasti)
+    eksplisiittinen  argumentti ilmaisee yhteyden yksiselitteisesti; suhdetta nimeävää
+                     sanaa ("riippuu", "koska") ei vaadita
+    rekonstruoitu    yhteys on pääteltävä erillisistä kohdista tai välivaiheista
+
+- eksplisiittinen: lukija, joka lukee kohdat, ei voi ymmärtää argumenttia toisin. Esimerkiksi
+  päätelmä esitetään välittömästi havainnon seurauksena, tai paperi viittaa toiseen paperiin
+  tai omaan kohtaansa väitteen tukena.
+- rekonstruoitu: yhteys on tekstissä, mutta sen näkeminen vaatii kahden tai useamman erillisen
+  kohdan yhdistämistä tai välivaiheen, jota paperi ei kirjoita auki. Perustelussa nimetään
+  kohdat ja välivaihe.
+- Rekonstruoitu ei ole arvaus. Jos yhteys nojaa siihen, että se olisi uskottava, tavanomainen
+  tai aiheen perusteella odotettava, eikä tekstistä löydy kohtia, joista sen voi johtaa, suhdetta
+  ei kirjata lainkaan.
+- Jos et osaa ratkaista, onko perusta eksplisiittinen vai rekonstruoitu, kirjaa rekonstruoitu.
+
+ARGUMENTTIKETJUT
+Poiminnan on katettava paperien väliset viittaukset JA kunkin paperin sisäiset argumenttiketjut:
+
+  aineistohavainto → välipäätelmä → johtopäätös
+
+- aineistohavainto: paperin esittämä havainto, luku, mittaus, lähteen tieto tai laskelman tulos.
+- välipäätelmä: havainnoista johdettu väite, johon jokin pidemmälle menevä väite nojaa.
+- johtopäätös: paperin suositus, löydös tai lopputulos.
+Ketjun linkit kirjataan suhteina saman paperin esiintymien välillä: tavallisesti depends_on
+(päätelmä nojaa havaintoon), qualifies (väite rajaa toista). Ketju voi olla lyhyempi tai
+pidempi kuin kolme porrasta, ja yksi päätelmä voi nojata useaan havaintoon. Ketju kirjataan
+vain niiltä osin kuin linkit voi osoittaa tekstistä (ks. PERUSTA). Katkennut ketju on
+sallittu: älä täydennä puuttuvaa linkkiä.
+
+ESIINTYMÄN RAJAUS
+- Esiintymä on yksi rajattu väite yhdessä paperin kohdassa. Väite on sisältö, joka voi olla
+  tosi tai epätosi. Otsikko, lähdeluettelon rivi tai pelkkä aiheen nimeäminen ei ole väite.
+- Yksi esiintymä = yksi väite. Jos virkkeessä on kaksi erillistä väitettä, ne ovat kaksi
+  esiintymää, ja kummankin lainaus rajataan omaan osaansa.
+- lainaus on sanatarkka, yhtenäinen ote yhdeltä aineiston tekstiriviltä: ei lyhennyksiä
+  (ei "..."), ei yhdistelyä eri kohdista, ei käännöstä, ei kirjoitusvirheiden korjausta.
+  Merkit kopioidaan sellaisinaan (myös –, —, ₂, ·, välilyönnit lukujen sisällä). Ote ei
+  ylitä riviä eikä sisällä otsikkoriviä. Valitse lyhin ote, joka sisältää väitteen kokonaan.
+  Lainaus tarkistetaan koneellisesti tiedostoa vasten; ei-sanatarkka lainaus hylätään.
+- Sama teksti kahdessa paperissa on kaksi esiintymää.
+
+TÄYTTÖPERIAATTEET
+1. Kattavuutta ei tavoitella yhteyksissä. Kaikkia väitteitä ei tarvitse yhdistää. Puuttuvia
+   yhteyksiä ei täytetä uskottavuuden perusteella. Suhteen jättäminen pois on sallittua ja
+   parempi kuin arvaus.
+2. Kirjaa esiintymä, kun se on vähintään yhden kirjaamasi suhteen pääte. Esiintymiä ilman
+   suhteita ei tarvita.
+3. Älä arvioi väitteiden pätevyyttä: et kirjaa, onko väite tosi, onko lähde riittävä tai
+   seuraako päätelmä havainnosta. Kirjaat, mihin argumentti nojaa.
+4. Jokaisella suhteella on perustelu (1–2 virkettä): mikä tekstissä osoittaa suhteen.
+   Rekonstruoidussa suhteessa perustelu nimeää kohdat ja välivaiheen, joista yhteys on
+   johdettu. Pelkkä aiheen, sanaston tai lukujen samankaltaisuus ei riitä depends_on- eikä
+   same_claim-suhteeseen. same_claim vaatii, että väite on sama, ei vain samasta asiasta.
+5. Suhteita kirjataan saman paperin sisällä (argumenttiketjut) ja paperien välillä.
+6. Jokaisessa suhteessa on kenttä perusta. Eksplisiittiset ja rekonstruoidut suhteet erotetaan
+   vain tällä kentällä; samaa paria ei kirjata kahdesti eri perustalla.
+7. Koneelliset ehdot, jotka rekisterin on täytettävä:
+   - id:t yksilöllisiä; jokainen lahde ja kohde on olemassa oleva esiintymä; ei suhdetta
+     esiintymästä itseensä;
+   - sama suhde (sama laji ja sama pari, suuntaamattomissa kummin päin tahansa) vain kerran;
+   - samalle esiintymäparille ei samanaikaisesti related ja depends_on/same_claim, eikä
+     samanaikaisesti same_claim ja depends_on;
+   - depends_on-suhteet eivät muodosta sykliä;
+   - perusta on jokaisessa suhteessa joko "eksplisiittinen" tai "rekonstruoitu".
+8. merkinta: kirjaa se merkintä ([M], [L], [A] tai [—]), jonka paperi itse liittää tähän
+   väitteeseen, ilman hakasulkeita. Jos paperi ei liitä väitteeseen merkintää, kirjaa
+   "ei_merkitty". "—" tarkoittaa vain paperin omaa merkintää [—]. Älä päättele merkintää
+   itse.
+9. Älä käytä tietoa näiden tekstien ulkopuolelta.
+
+VASTAUKSEN MUOTO
+Ensin ```json-lohko (koko rekisteri, validi JSON, ei kommentteja). Sen jälkeen saat
+halutessasi kirjoittaa enintään 15 riviä huomioita: epävarmuudet ja tapaukset, joissa
+jätit suhteen kirjaamatta. Älä toista rekisteriä huomioissa.
+
+AINEISTO ALKAA
+===== TIEDOSTO: papers/dg-001-seudullinen-talvikunnossapito.html =====
+## [kohta: alku] (otsikkoa edeltävä teksti)
+Seudullinen talvikunnossapito ja yhteinen varakalusto
+Muistio · DG-001 · Lounaskylän seutu
+## [kohta: § Rajaus] Rajaus
+Muistio tarkastelee seudun talvikunnossapidon järjestelyjä kuntien, maakunnan tienpitäjän ja pelastuslaitoksen välillä. Se ei arvioi yksittäisten urakoiden laatua eikä urakoitsijoiden suoriutumista.
+## [kohta: § Havainnot] Havainnot
+Kunnat kilpailuttavat katuverkon aurauksen kukin erikseen, ja urakat päättyvät eri aikoina. Maakunnan tienpitäjä vastaa pääteistä omalla urakallaan. Pelastuslaitos määrittelee hälytysreitit, mutta sillä ei ole omaa aurauskalustoa.
+Ankarana talvena urakoitsijat hoitavat ensin oman sopimuksensa kohteet. Hälytysreitti, joka kulkee kahden urakka-alueen rajalla, aurataan viimeisenä kummallakin alueella.
+## [kohta: § Kaksi vajetta] Kaksi vajetta
+Sama kahden vajeen rakenne toistuu seudun kaikissa kunnissa.
+Tietovaje: kunnat eivät tiedä toistensa kalustosta eivätkä sen käyttöasteesta.
+Sopimusvaje: urakkasopimukset eivät salli kaluston siirtämistä urakka-alueen ulkopuolelle.
+## [kohta: § Johtopäätökset] Johtopäätökset
+Ankarana talvena hälytysreittien aukipito riippuu siitä, minkä urakan kalusto sattuu olemaan lähimpänä. Tämä seuraa suoraan siitä, että reitit ylittävät urakka-alueiden rajoja ja urakoitsijat hoitavat ensin omat kohteensa.
+Miksi tätä ei ole arvioitu. Kunta arvioi katuverkkoa, maakunta päätieverkkoa ja pelastuslaitos hälytysreittejä. Kukin hoitaa oman osuutensa. Yhteisen varakaluston arvo ei kuulu kenenkään tehtävään, koska se syntyy vasta, kun verkot tarkastellaan yhdessä. Tämä ei ole hankintaehdotus.
+===== LOPPU: papers/dg-001-seudullinen-talvikunnossapito.html =====
+
