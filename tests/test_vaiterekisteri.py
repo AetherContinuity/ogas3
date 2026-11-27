@@ -123,3 +123,37 @@ def test_cli_tarkista(capsys):
     assert vr.main(["tarkista", str(FIX)]) == 0
     out = capsys.readouterr().out
     assert "KONE (0)" in out and "ei kerro sisällön oikeellisuudesta" in out
+
+# --- kovennus: täyttäjän rakenteelliset virheet eivät kaada validointia -------
+VAARAT_ARVOT = [None, 0, 1.5, True, [], ["x"], {}, {"a": 1}]
+
+def test_vaarat_tyypit_raportoidaan_eivat_kaada():
+    pohja = rek()
+    for ryhma, i in (("esiintymat", 0), ("esiintymat", 6), ("suhteet", 0), ("suhteet", 1)):
+        for k in list(pohja[ryhma][i].keys()) + ["tarkistaja", "tila", "tiedosto"]:
+            for arvo in VAARAT_ARVOT:
+                r = copy.deepcopy(pohja); r[ryhma][i][k] = arvo
+                vr.tarkista(r)  # ei poikkeusta
+    for k in ("condition", "evidence_required", "status", "note"):
+        for arvo in VAARAT_ARVOT:
+            r = copy.deepcopy(pohja); r["esiintymat"][6]["countertest"][k] = arvo
+            vr.tarkista(r)
+    for juuri in (None, [], "x", {"esiintymat": "x", "suhteet": []}, {"esiintymat": [1, "x"], "suhteet": [None]}):
+        assert not vr.tarkista(juuri).ok
+
+def test_numero_kentassa_on_kone_virhe():
+    r = rek(); r["suhteet"][0]["tarkistaja"] = 5
+    assert any("'tarkistaja' ei ole merkkijono" in x for x in virheet(r))
+    r = rek(); r["esiintymat"][6]["countertest"]["note"] = 42
+    assert any("'note' ei ole merkkijono" in x for x in virheet(r))
+    r = rek(); r["esiintymat"][0]["tiedosto"] = 7
+    assert any("'tiedosto' ei ole merkkijono" in x for x in virheet(r))
+    r = rek(); r["suhteet"][1]["lahde"] = ["P1-a"]
+    assert any("'lahde'" in x for x in virheet(r))
+
+def test_tiedostopolku_ei_saa_poistua_korpuksesta(tmp_path):
+    korpus = tmp_path / "korpus"; korpus.mkdir()
+    (tmp_path / "salainen.html").write_text("Siltaa ei rakenneta, koska kukaan ei omista sitä.", encoding="utf-8")
+    for polku in ("../salainen.html", str(tmp_path / "salainen.html"), "a/../../salainen.html"):
+        r = rek(); r["esiintymat"][0]["tiedosto"] = polku
+        assert any("korpuksen ulkopuolelle" in x for x in virheet(r, korpus)), polku

@@ -69,6 +69,30 @@ def normalisoi(teksti: str) -> str:
     return re.sub(r"\s+", " ", t).strip()
 
 
+def _valinnainen_str(d: dict, k: str, paikka: str, virheet: list[str]) -> str:
+    """Palauttaa kentän merkkijonona; muu tyyppi kirjataan KONE-virheeksi eikä kaada."""
+    x = d.get(k)
+    if x is None:
+        return ""
+    if not isinstance(x, str):
+        virheet.append(f"{paikka}: kenttä '{k}' ei ole merkkijono ({type(x).__name__})")
+        return ""
+    return x
+
+
+def _korpuksessa(korpus: Path, tied: str) -> Path | None:
+    """Polku korpuksen sisällä; absoluuttiset ja korpuksesta ulos johtavat polut hylätään."""
+    if Path(tied).is_absolute():
+        return None
+    juuri = korpus.resolve()
+    p = (juuri / tied).resolve()
+    try:
+        p.relative_to(juuri)
+    except ValueError:
+        return None
+    return p
+
+
 class Tulos:
     def __init__(self) -> None:
         self.kone: list[str] = []
@@ -107,7 +131,7 @@ def tarkista(rek: dict, korpus: Path | None = None) -> Tulos:
             if eid in ids:
                 r.kone.append(f"{paikka}: id '{eid}' toistuu")
             ids[eid] = e
-        if e.get("merkinta") not in MERKINNAT:
+        if not isinstance(e.get("merkinta"), str) or e.get("merkinta") not in MERKINNAT:
             r.kone.append(f"{paikka}: merkinta '{e.get('merkinta')}' ei ole {sorted(MERKINNAT)}")
         ct = e.get("countertest")
         if ct is not None:
@@ -115,27 +139,32 @@ def tarkista(rek: dict, korpus: Path | None = None) -> Tulos:
                 r.kone.append(f"{paikka}: countertest ei objekti")
             else:
                 st = ct.get("status")
-                if st not in CT_TILAT:
+                cond = _valinnainen_str(ct, "condition", paikka + ".countertest", r.kone)
+                evid = _valinnainen_str(ct, "evidence_required", paikka + ".countertest", r.kone)
+                note = _valinnainen_str(ct, "note", paikka + ".countertest", r.kone)
+                if not isinstance(st, str) or st not in CT_TILAT:
                     r.kone.append(f"{paikka}: countertest.status '{st}' ei ole {sorted(CT_TILAT)}")
                 if st in ("not_tested", "tested"):
-                    for k in ("condition", "evidence_required"):
-                        if not (ct.get(k) or "").strip():
+                    for k, v in (("condition", cond), ("evidence_required", evid)):
+                        if not v.strip():
                             r.kone.append(f"{paikka}: countertest.{k} vaaditaan, kun status = {st}")
-                if st == "tested" and not (ct.get("note") or "").strip():
+                if st == "tested" and not note.strip():
                     r.kone.append(f"{paikka}: countertest.note vaaditaan, kun status = tested")
-                if st != "tested" and (ct.get("note") or "").strip():
+                if st != "tested" and note.strip():
                     r.kone.append(f"{paikka}: countertest.note sallitaan vain, kun status = tested")
         elif e.get("merkinta") == "A":
             r.ihminen.append(f"{eid}: [A]-väite ilman countertestiä (sallittu; harkitse not_specified)")
         # lainauksen sanatarkkuus
-        lainaus = e.get("lainaus") or ""
-        tied = e.get("tiedosto")
+        lainaus = e.get("lainaus") if isinstance(e.get("lainaus"), str) else ""
+        tied = _valinnainen_str(e, "tiedosto", paikka, r.kone)
         if korpus is None or not tied:
             r.avoin.append(f"{eid}: lainausta ei tarkistettu lähdettä vasten"
                            + ("" if tied else " (tiedosto puuttuu)"))
         else:
-            p = (korpus / tied)
-            if not p.is_file():
+            p = _korpuksessa(korpus, tied)
+            if p is None:
+                r.kone.append(f"{eid}: tiedostopolku johtaa korpuksen ulkopuolelle: {tied}")
+            elif not p.is_file():
                 r.kone.append(f"{eid}: tiedostoa ei löydy: {tied}")
             elif normalisoi(lainaus) not in normalisoi(p.read_text(encoding="utf-8")):
                 r.kone.append(f"{eid}: lainaus ei löydy sanatarkasti tiedostosta {tied}")
@@ -155,7 +184,7 @@ def tarkista(rek: dict, korpus: Path | None = None) -> Tulos:
             if sid in sids:
                 r.kone.append(f"{paikka}: suhde-id '{sid}' toistuu")
             sids.add(sid)
-        if laji not in LAJIT:
+        if not isinstance(laji, str) or laji not in LAJIT:
             r.kone.append(f"{paikka}: laji '{laji}' ei ole {sorted(LAJIT)}")
         for nimi, x in (("lahde", a), ("kohde", b)):
             if isinstance(x, str) and x not in ids:
@@ -163,13 +192,19 @@ def tarkista(rek: dict, korpus: Path | None = None) -> Tulos:
         if a == b and a is not None:
             r.kone.append(f"{paikka}: suhde itseensä ({a})")
         tila = s.get("tila", "ehdotettu")
-        if tila not in SUHDE_TILAT:
+        tarkistaja = _valinnainen_str(s, "tarkistaja", paikka, r.kone)
+        kirjaaja = s.get("kirjaaja") if isinstance(s.get("kirjaaja"), str) else ""
+        if not isinstance(tila, str) or tila not in SUHDE_TILAT:
             r.kone.append(f"{paikka}: tila '{tila}' ei ole {sorted(SUHDE_TILAT)}")
-        if tila == "tarkistettu" and not (s.get("tarkistaja") or "").strip():
+        if tila == "tarkistettu" and not tarkistaja.strip():
             r.kone.append(f"{paikka}: tila 'tarkistettu' vaatii tarkistajan")
-        if tila == "tarkistettu" and (s.get("tarkistaja") or "").strip() == (s.get("kirjaaja") or "").strip():
+        elif tila == "tarkistettu" and tarkistaja.strip() == kirjaaja.strip():
             r.kone.append(f"{paikka}: tarkistaja ei voi olla sama kuin kirjaaja")
-        avain = (laji, *sorted((a or "", b or ""))) if laji in SUUNTAAMATTOMAT else (laji, a, b)
+        a = a if isinstance(a, str) else ""
+        b = b if isinstance(b, str) else ""
+        laji = laji if isinstance(laji, str) else ""
+        tila = tila if isinstance(tila, str) else ""
+        avain = (laji, *sorted((a, b))) if laji in SUUNTAAMATTOMAT else (laji, a, b)
         if avain in nahdyt:
             r.kone.append(f"{paikka}: sama suhde toistuu ({laji} {a}–{b})")
         nahdyt.add(avain)
@@ -182,8 +217,10 @@ def tarkista(rek: dict, korpus: Path | None = None) -> Tulos:
     # ristiriidat saman parin välillä
     pari = defaultdict(set)
     for s in su:
-        if isinstance(s, dict) and s.get("laji") in LAJIT and s.get("tila", "ehdotettu") != "hylatty":
-            pari[frozenset((s.get("lahde"), s.get("kohde")))].add(s.get("laji"))
+        if (isinstance(s, dict) and isinstance(s.get("laji"), str) and s.get("laji") in LAJIT
+                and s.get("tila", "ehdotettu") != "hylatty"
+                and isinstance(s.get("lahde"), str) and isinstance(s.get("kohde"), str)):
+            pari[frozenset((s["lahde"], s["kohde"]))].add(s["laji"])
     for p, lajit in pari.items():
         if "related" in lajit and lajit & {"depends_on", "same_claim"}:
             r.kone.append(f"pari {sorted(p)}: 'related' ja {sorted(lajit & {'depends_on','same_claim'})} samaan aikaan")
@@ -193,8 +230,9 @@ def tarkista(rek: dict, korpus: Path | None = None) -> Tulos:
     # depends_on-syklit
     g = defaultdict(list)
     for s in su:
-        if isinstance(s, dict) and s.get("laji") == "depends_on" and s.get("tila", "ehdotettu") != "hylatty":
-            g[s.get("lahde")].append(s.get("kohde"))
+        if (isinstance(s, dict) and s.get("laji") == "depends_on" and s.get("tila", "ehdotettu") != "hylatty"
+                and isinstance(s.get("lahde"), str) and isinstance(s.get("kohde"), str)):
+            g[s["lahde"]].append(s["kohde"])
     vari: dict[str, int] = {}
 
     def dfs(u: str, polku: list[str]) -> None:
