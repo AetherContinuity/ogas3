@@ -1,0 +1,29 @@
+{
+  "kuvaus": "Datavahdin olioluettelo: ACI:n käyttämät datasarjat ja lukitut tiedostot. Rajat ovat väljiä ja tarkoitettu ilmeisen virheen havaitsemiseen, eivät viritettyjä. Muutos tähän tiedostoon = PR.",
+  "fingrid": [
+    {"id": "FG-244", "ds": 244, "nimi": "ylössäätöhinta", "yksikko": "€/MWh", "resoluutio_min": 15, "max_viive_h": 3, "min": -1000, "max": 20000, "vaihtelee": false, "kaytto": ["WEM-L1"]},
+    {"id": "FG-373", "ds": 373, "nimi": "mFRR-ylössäätötarjoukset", "yksikko": "MW", "resoluutio_min": 15, "max_viive_h": 3, "min": 0, "max": 5000, "vaihtelee": true, "kaytto": ["WEM-L1", "WEM §14"]},
+    {"id": "FG-342", "ds": 342, "nimi": "aktivoitu mFRR", "yksikko": "MW", "resoluutio_min": 15, "max_viive_h": 3, "min": -4000, "max": 4000, "vaihtelee": false, "kaytto": ["WEM-L1"]},
+    {"id": "FG-124", "ds": 124, "nimi": "kulutus", "yksikko": "MW", "resoluutio_min": 15, "max_viive_h": 3, "min": 3000, "max": 16000, "vaihtelee": true, "kaytto": ["WEM"]},
+    {"id": "FG-75", "ds": 75, "nimi": "tuulivoima", "yksikko": "MW", "resoluutio_min": 15, "max_viive_h": 3, "min": 0, "max": 9600, "vaihtelee": true, "kaytto": ["WEM"]},
+    {"id": "FG-188", "ds": 188, "nimi": "ydinvoima", "yksikko": "MW", "resoluutio_min": 3, "max_viive_h": 2, "min": 0, "max": 4600, "vaihtelee": false, "kaytto": ["WEM"]},
+    {"id": "FG-191", "ds": 191, "nimi": "vesivoima", "yksikko": "MW", "resoluutio_min": 3, "max_viive_h": 2, "min": 0, "max": 3600, "vaihtelee": true, "kaytto": ["WEM"]},
+    {"id": "FG-201", "ds": 201, "nimi": "kaukolämpö-CHP", "yksikko": "MW", "resoluutio_min": 3, "max_viive_h": 2, "min": 0, "max": 5000, "vaihtelee": false, "kaytto": ["WEM"]},
+    {"id": "FG-202", "ds": 202, "nimi": "teollisuus-CHP", "yksikko": "MW", "resoluutio_min": 3, "max_viive_h": 2, "min": 0, "max": 3000, "vaihtelee": false, "kaytto": ["WEM"]}
+  ],
+  "rajapintatesti": {"id": "FG-RAJAPINTA", "ds": 244, "alku": "2026-09-01T00:00:00Z", "loppu": "2026-09-01T02:00:00Z", "odotetut": 8,
+    "kuvaus": "Mennyt ikkuna: tarkistaa, että proxy noudattaa start/end- ja size-parametreja (ansa: startTime/pageSize ohitettiin hiljaa)."},
+  "tiedostot": [
+    {"id": "TM-2025-2026", "polku": "data/talvimeri/2025-2026.json", "sha256_16": "4f76315a776dcddc", "lukittu": true,
+     "toisto": {"tyyppi": "talvimeri_rivi", "merialue": "Suomenlahti", "kuukausi": "2026-02", "odotuksia": 43}},
+    {"id": "WEM-L1-REK", "polku": "data/wem-lopputulos/rekisterointi.json", "sha256_16": "28be2b913a6ea800", "lukittu": true},
+    {"id": "WEM-L1-VERTAILU", "polku": "tests/fixtures/wem/rp-margin-talvi-2025-2026.json", "sha256_16": "72f10f2759c0f9ea", "lukittu": true,
+     "toisto": {"tyyppi": "wem_l1_vertailu"}},
+    {"id": "T1-SPEC", "polku": "data/vastatestit/t1.json", "sha256_16": "71d16937154ce09f", "lukittu": true}
+  ],
+  "keruut": [
+    {"id": "TM-2026-2027", "polku": "data/talvimeri/2026-2027.json", "kentta": "haettu", "max_ika_vrk": 35, "kaudella_kk": [12, 1, 2, 3, 4, 5, 6]},
+    {"id": "WEM-L1-DATA", "polku": "data/wem-lopputulos/2026-2027.json", "kentta": "haettu", "max_ika_vrk": 35, "kaudella_kk": [11, 12, 1, 2, 3, 4]}
+  ],
+  "ei_viela": ["Ristiintarkistus kahden lähteen välillä (esim. Fingrid DS 124 vs ENTSO-E toteutunut kuorma) puuttuu: ENTSO-E-proxyn kuormareittiä ei ole vielä tarkistettu."]
+}
