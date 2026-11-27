@@ -1,0 +1,114 @@
+"""Synapsimoottori v0: ehdokassynapsit sarjojen ajallisesta yhteisesiintymästä. Ei semantiikkaa, ei LLM:ää.
+
+Ketju: sarja → aktivaatiot (jaksot, ei yksittäiset vartit) → parin yhteisesiintymä viiveittäin →
+nollamalli kiertosiirrolla (säilyttää sarjan oman autokorrelaation) → BH-korjaus pareittain ja
+viiveittäin → ehdokkaat. Moottori ei koskaan aseta hyväksyntää; tila on aina "ehdokas", ja ihmisen
+päätös kirjataan erikseen.
+
+KÄYTTÖRAJA: moottoria ei ajeta talven 2026–2027 todelliseen aineistoon (data/sarjat/, data/wem-lopputulos/)
+ennen kuin aktivaatiosäännöt, viive, kierrokset, tunnettujen kytkösten lista ja arviointimittarit on
+ennakkokirjattu. Kehitys ja testit vain synteettisellä datalla.
+
+Synapsi ei tarkoita kausaalisuutta. Se on havaittu assosiaatio, jolla on havaintohistoria.
+
+AKTIVAATIOSÄÄNNÖT (parametrit lukitaan ennakkokirjauksessa ennen todellisen datan ajoa)
+  {"tyyppi": "poikkeama", "ikkuna": N, "z": Z, "suunta": "ylos"|"alas"|"molemmat"}
+      robusti z = (x − mediaani) / (1.4826·MAD) edeltävästä N vartista (ei nykyistä); |z| ≥ Z
+  {"tyyppi": "kynnys", "ehto": "<"|">"|"<="|">=", "raja": R}
+  {"tyyppi": "muutos", "askel": k, "raja": D}   |x_t − x_{t−k}| ≥ D
+Peräkkäiset aktiiviset vartit yhdistetään jaksoksi; jakson alku on tapahtuma.
+
+YHTEISESIINTYMÄ: A:n tapahtuma t ja B:n tapahtuma s, s − t = viive ∈ [0, max_viive] (suunnattu A → B).
+Yksi A-tapahtuma lasketaan kerran per viive.
+
+Käyttö (kirjasto): aktivaatiot(sarja, sääntö) · yhteiset(a, b, max_viive) · arvioi(sarjat, säännöt, ...)
+Vain vakiokirjasto.
+"""
+from __future__ import annotations
+
+import random
+import statistics
+from bisect import bisect_left
+
+
+def aktivaatiot(x: list[float | None], saanto: dict) -> list[int]:
+    """Palauttaa aktivaatiojaksojen alkuindeksit. None = puuttuva vartti (katkaisee jakson, ei aktivoidu)."""
+    n = len(x)
+    akt = [False] * n
+    t = saanto["tyyppi"]
+    for i in range(n):
+        v = x[i]
+        if v is None:
+            continue
+        if t == "kynnys":
+            r = saanto["raja"]
+            akt[i] = {"<": v < r, ">": v > r, "<=": v <= r, ">=": v >= r}[saanto["ehto"]]
+        elif t == "muutos":
+            j = i - saanto["askel"]
+            akt[i] = j >= 0 and x[j] is not None and abs(v - x[j]) >= saanto["raja"]
+        elif t == "poikkeama":
+            w = [y for y in x[max(0, i - saanto["ikkuna"]):i] if y is not None]
+            if len(w) < max(8, saanto["ikkuna"] // 2):
+                continue
+            med = statistics.median(w)
+            mad = statistics.median([abs(y - med) for y in w]) * 1.4826
+            if mad == 0:
+                continue
+            z = (v - med) / mad
+            s = saanto.get("suunta", "molemmat")
+            akt[i] = (z >= saanto["z"] if s == "ylos" else z <= -saanto["z"] if s == "alas" else abs(z) >= saanto["z"])
+        else:
+            raise ValueError(f"tuntematon sääntö {t}")
+    return [i for i in range(n) if akt[i] and (i == 0 or not akt[i - 1])]
+
+
+def yhteiset(a: list[int], b: list[int], max_viive: int) -> list[int]:
+    """Lukumäärä viiveittäin 0..max_viive: montako A-tapahtumaa, joita seuraa B-tapahtuma täsmälleen viiveellä."""
+    bs = set(b)
+    return [sum(1 for t in a if t + d in bs) for d in range(max_viive + 1)]
+
+
+def _kierra(b: list[int], n: int, siirto: int) -> list[int]:
+    return sorted((t + siirto) % n for t in b)
+
+
+def arvioi(sarjat: dict[str, list], saannot: dict[str, dict], max_viive: int = 8, kierroksia: int = 999,
+           min_siirto: int | None = None, alfa: float = 0.05, siemen: int = 1) -> dict:
+    """Kaikki suunnatut parit A → B. Nollamalli: B:n tapahtumat kierretään satunnaisella siirrolla
+    (|siirto| ≥ min_siirto, oletus 4·max_viive), A pidetään paikallaan. p = (1 + #{null ≥ havaittu}) / (1 + K).
+    Testisuure per viive. BH-korjaus kaikkien parien ja viiveiden yli."""
+    rnd = random.Random(siemen)
+    n = len(next(iter(sarjat.values())))
+    if any(len(v) != n for v in sarjat.values()):
+        raise ValueError("sarjojen pituudet eroavat")
+    ms = min_siirto if min_siirto is not None else 4 * max_viive
+    tap = {k: aktivaatiot(sarjat[k], saannot[k]) for k in sarjat}
+    testit = []
+    for a in sarjat:
+        for b in sarjat:
+            if a == b or not tap[a] or not tap[b]:
+                continue
+            hav = yhteiset(tap[a], tap[b], max_viive)
+            nulli = [[] for _ in range(max_viive + 1)]
+            for _ in range(kierroksia):
+                s = rnd.randrange(ms, n - ms) if n > 2 * ms else rnd.randrange(1, n)
+                for d, c in enumerate(yhteiset(tap[a], _kierra(tap[b], n, s), max_viive)):
+                    nulli[d].append(c)
+            for d in range(max_viive + 1):
+                p = (1 + sum(1 for c in nulli[d] if c >= hav[d])) / (1 + kierroksia)
+                testit.append({"a": a, "b": b, "viive": d, "yhteisia": hav[d], "odotettu": round(statistics.mean(nulli[d]), 3),
+                               "n_a": len(tap[a]), "n_b": len(tap[b]), "p": round(p, 5)})
+    m = len(testit)
+    # Kiertojen määrä rajaa pienimmän mahdollisen p:n (1/(K+1)). Jos se ei alita BH:n tiukinta rajaa
+    # alfa/m, mikään testi ei voi läpäistä: tulos olisi tyhjä riippumatta datasta. Raportoidaan.
+    voima_ok = m == 0 or 1 / (1 + kierroksia) <= alfa / m
+    jarj = sorted(range(m), key=lambda i: testit[i]["p"])
+    raja = 0
+    for r, i in enumerate(jarj, 1):
+        if testit[i]["p"] <= alfa * r / m:
+            raja = r
+    hyv = set(jarj[:raja])
+    ehdokkaat = [dict(testit[i], tila="ehdokas") for i in sorted(hyv, key=lambda i: testit[i]["p"]) if testit[i]["yhteisia"] > 0]
+    return {"n_varttia": n, "tapahtumia": {k: len(v) for k, v in tap.items()}, "testeja": m, "alfa_bh": alfa,
+            "kierroksia": kierroksia, "siemen": siemen, "kierrokset_riittavat": voima_ok,
+            "kierroksia_vahintaan": int(m / alfa) + 1, "ehdokkaat": ehdokkaat}

@@ -1,0 +1,32 @@
+name: sarjakeruu
+
+# Synapsikokeen aineisto: Fingrid DS 124/75/188/191/201/202 → data/sarjat/2026-2027.json (15 min).
+# Ei analyysia. Inkrementaalinen. Viikoittain marras–huhtikuussa.
+
+on:
+  schedule:
+    - cron: "53 3 * 11,12,1,2,3,4 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  keraa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Kerää
+        run: python3 tools/sarjakeruu.py --alku 2026-10-01 --loppu 2027-04-01 --out data/sarjat/2026-2027.json
+      - name: Commit
+        run: |
+          git config user.name  "ogas3-sarjakeruu"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/sarjat/2026-2027.json
+          git commit -m "sarjakeruu: $(date -u +%Y-%m-%d)" || { echo "ei muutoksia"; exit 0; }
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
