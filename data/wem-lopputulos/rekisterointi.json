@@ -1,0 +1,42 @@
+{
+  "id": "WEM-L1",
+  "kuvaus": "WEM:n fyysisten lopputulosten ennakkorekisteröinti ilman ennustetta. WEM edellyttää tätä ennen uuden yhdistelmäindeksin muodostamista (tools/ACI-INSTRUMENT-v2.html, EPP-jäädytys 30.9.2026).",
+  "kirjattu": "2026-11-27",
+  "ei_ennuste": "Rekisteröinti ei ole väite eikä ennuste. Se lukitsee lopputulosmuuttujat ja niiden laskennan. Siksi tiloja VAHVISTUU ja KUMOUTUU ei ole.",
+  "ikkuna": {"alku": "2026-10-01T00:00:00Z", "loppu": "2027-04-01T00:00:00Z", "resoluutio_min": 15, "odotetut_vartit": 17472},
+  "lahteet": {
+    "hinta": {"ds": 244, "kuvaus": "ylössäätöhinta €/MWh"},
+    "tarjottu_ylos": {"ds": 373, "kuvaus": "mFRR-ylössäätötarjoukset yhteensä MW (Fingrid: ei sisällä epäkäytettäviä tarjouksia)"},
+    "aktivoitu": {"ds": 342, "kuvaus": "aktivoitu mFRR MW, + ylös / − alas"}
+  },
+  "kaava": "RP_margin = (tarjottu_ylos − max(0, aktivoitu)) / tarjottu_ylos (sama kuin vertailutasossa)",
+  "kelpoisuus": {
+    "margin": "vartti kelpaa, jos DS 373 ja DS 342 ovat molemmat olemassa ja tarjottu_ylos > 0",
+    "hinta": "vartti kelpaa, jos DS 244 on olemassa",
+    "puuttuva": "puuttuva vartti ei ole nollahavainto; puuttuvat raportoidaan muuttujittain lukumääränä ja aikaväleinä"
+  },
+  "muuttujat": [
+    {"nimi": "margin_alle_20", "lahde": "margin", "ehto": "<", "raja": 0.20},
+    {"nimi": "margin_alle_5", "lahde": "margin", "ehto": "<", "raja": 0.05},
+    {"nimi": "margin_negatiivinen", "lahde": "margin", "ehto": "<", "raja": 0.0},
+    {"nimi": "hinta_vahintaan_500", "lahde": "hinta", "ehto": ">=", "raja": 500}
+  ],
+  "sisakkaisyys": "margin_negatiivinen ⊂ margin_alle_5 ⊂ margin_alle_20. Lukumääriä ei lasketa yhteen erillisinä tapahtumina.",
+  "vertailutaso": {
+    "tiedosto": "aethercontinuity.github.io/tools/data/rp-margin-talvi-2025-2026.json",
+    "commit": "61b34c2",
+    "sha256_12": "72f10f2759c0",
+    "_locked_at": "2026-09-16",
+    "talvi": "2025-10-01 – 2026-03-31",
+    "arvot": {"margin_alle_20": 16, "margin_alle_5": 6, "margin_negatiivinen": 0, "hinta_vahintaan_500": 77},
+    "kelpaavia_vartteja": 17470,
+    "huomio": "Arvot ovat lukittuja eikä niitä muuteta tulosten perusteella. tools/wem_lopputulos.py toistaa ne vertailutason raakadatasta (testi)."
+  },
+  "pois_rajattu": "WEM luettelee fyysisiksi lopputuloksiksi myös DS 336 ≠ 0 (pulatilanne) ja tehoreservin aktivoinnin. Ne eivät ole tässä rekisteröinnissä (päätös 27.11.2026). Lisäys tehdään vain uutena rekisteröintinä ennen kuin sen data on nähty.",
+  "ajoitus": "Ikkuna alkoi 1.10.2026, ja rekisteröinti on kirjattu 27.11.2026. Kirjaaja (Claude) ei ole hakenut ikkunan dataa. WEM:n live-sivu on voinut näyttää lokakuun ja marraskuun arvoja. Koska kohde ei ole ennuste, ajoitus voi vaikuttaa vain määritelmävalintoihin, ja ne on otettu sellaisinaan vertailutasosta.",
+  "tilat": {
+    "MITATTU": "aineisto kattaa ikkunan lopun (haettu ≥ ikkunan loppu) ja kaikki kolme lähdettä ovat mukana; puuttuvat vartit raportoidaan erikseen",
+    "HAVAINTO_PUUTTUU": "aineisto puuttuu, on rikki, lähde puuttuu kokonaan tai ikkuna on kesken; välihavainnot raportoidaan, mutta ne eivät ole tulos"
+  },
+  "maaritelmamuutokset": "Jos Fingrid muuttaa DS 244, 373 tai 342 määritelmää tai resoluutiota ikkunan aikana, muutos kirjataan poikkeamana, ja muutoksen jälkeiset vartit raportoidaan erikseen."
+}
