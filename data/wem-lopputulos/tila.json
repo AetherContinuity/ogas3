@@ -1,0 +1,48 @@
+{
+ "id": "WEM-L1",
+ "arvioitu": "2026-11-27",
+ "tila": "HAVAINTO_PUUTTUU",
+ "syyt": [
+  "ikkuna kesken (päättyy 2027-04-01); välihavainto ei ole tulos"
+ ],
+ "aineisto_haettu": "2026-11-27T20:35:31+00:00",
+ "raaka_sha256": "1df6c838d838d43119810fb165485d5154adf99d7fef83fd2188713ea98a497e",
+ "keruuvirheet": [],
+ "valihavainto": {
+  "odotetut_vartit": 17472,
+  "kelpaavat": {
+   "margin": 5552,
+   "hinta": 5551
+  },
+  "puuttuvat": {
+   "margin": {
+    "lkm": 11920,
+    "valit": [
+     [
+      "2026-11-27T20:00:00.000Z",
+      "2027-03-31T23:45:00.000Z"
+     ]
+    ]
+   },
+   "hinta": {
+    "lkm": 11921,
+    "valit": [
+     [
+      "2026-11-17T20:15:00.000Z",
+      "2026-11-17T20:15:00.000Z"
+     ],
+     [
+      "2026-11-27T20:00:00.000Z",
+      "2027-03-31T23:45:00.000Z"
+     ]
+    ]
+   }
+  },
+  "muuttujat": {
+   "margin_alle_20": 5,
+   "margin_alle_5": 2,
+   "margin_negatiivinen": 0,
+   "hinta_vahintaan_500": 37
+  }
+ }
+}
