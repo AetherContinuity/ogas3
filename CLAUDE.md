@@ -98,7 +98,15 @@ KONE-, IHMINEN- ja AVOIN-ehdot; KONE-läpäisy ei kerro sisällön oikeellisuude
 - **Vaihe 2, sokkotäyttö:** WP-020, CN-008, CN-030, SM-024 poimii toimija, joka ei ole nähnyt H1:tä
   (Kimi katselmointi-workflown kautta). Syöte, tuotos ja ihmisen korjaukset tallennetaan erikseen
   ja muuttumattomina. Claude-istunnot, jotka ovat nähneet H1:n, eivät täytä rekisteriä.
-- **Vaihe 3:** vertailu H1:een, tulos kirjataan sellaisenaan.
+- **Vaihe 2 tehty 27.11.2026:** pyyntö, vastaus ja `vaiterekisteri-taytto-kimi.json` (raakatulos, ei muuteta).
+  Pyynnön periaate 6 yhdisti "ei merkintää" ja "[—]" arvoksi "—"; skeemaan lisättiin `ei_merkitty`, ja
+  `tools/vaiterekisteri_merkinnat.py` siirtää merkinnät mekaanisesti lähdetekstistä erilliseen tiedostoon
+  (`…-kimi-merkinnat.json` + raportti). Siirto ei koske suhteisiin.
+- **Ihmisen tarkistus on kontaminoitunut:** Marko ja tämän vaiheen Claude-istunnot ovat nähneet H1:n.
+  Suhteiden korjaukset tehdään erilliseen tiedostoon tekijöineen ja perusteluineen, mutta ne eivät ole sokkoja.
+- **Vaihe 3, vertailujärjestys:** (1) ensisijainen: H1 vs Kimin raakatulos (merkintäsiirto sallittu, koska
+  mekaaninen eikä koske suhteita); (2) toissijainen, merkitään kontaminoituneeksi: H1 vs ihmisen korjaama
+  versio. Ero 1:n ja 2:n välillä mittaa tarkistajan siirtymää kohti H1:tä. Tulokset kirjataan sellaisinaan.
 
 ## Tunnetut ansat
 
