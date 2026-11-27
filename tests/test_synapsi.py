@@ -68,3 +68,31 @@ def test_histogrammi_vastaa_suoraa_laskentaa():
     for s in (0, 37, 250):
         bb = sy._kierra(b, n, s)
         assert sy.yhteiset(a, bb, 6) == [h[(d - s) % n] for d in range(7)]
+
+
+def test_monipaivaisyys_karsii_yhden_paivan_ryopsahdyksen():
+    r = random.Random(3); n = 96 * 60
+    A = [0.0] * n; B = [0.0] * n
+    for k in range(12):  # yksi päivä: 12 erillistä A-tapahtumaa, joita B seuraa viiveellä 2
+        A[96 * 30 + 6 * k] = 1.0; B[96 * 30 + 6 * k + 2] = 1.0
+    for t in r.sample(range(n), 15):
+        A[t] = 1.0
+    for t in r.sample(range(n), 15):
+        B[t] = 1.0
+    sa = {"tyyppi": "kynnys", "ehto": ">=", "raja": 1}
+    t0 = sy.arvioi({"A": A, "B": B}, {"A": sa, "B": sa}, max_viive=4, p_menetelma="nb", askelia_paivassa=96)
+    e = [x for x in t0["ehdokkaat"] if (x["a"], x["b"], x["viive"]) == ("A", "B", 2)]
+    assert e and e[0]["paivia"] <= 2
+    t1 = sy.arvioi({"A": A, "B": B}, {"A": sa, "B": sa}, max_viive=4, p_menetelma="nb", askelia_paivassa=96, min_paivia=3)
+    assert not any((x["a"], x["b"], x["viive"]) == ("A", "B", 2) for x in t1["ehdokkaat"])
+    assert any((x["a"], x["b"], x["viive"]) == ("A", "B", 2) for x in t1["hylatyt_monipaivaisyys"])
+
+
+def test_monipaivainen_yhteys_sailyy():
+    r = random.Random(4); n = 96 * 60
+    A = [0.0] * n; B = [0.0] * n
+    for p in r.sample(range(60), 10):
+        t = 96 * p + r.randrange(80); A[t] = 1.0; B[t + 2] = 1.0
+    sa = {"tyyppi": "kynnys", "ehto": ">=", "raja": 1}
+    t = sy.arvioi({"A": A, "B": B}, {"A": sa, "B": sa}, max_viive=4, p_menetelma="nb", askelia_paivassa=96, min_paivia=3)
+    assert any((x["a"], x["b"], x["viive"]) == ("A", "B", 2) and x["paivia"] >= 3 for x in t["ehdokkaat"])
