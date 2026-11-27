@@ -1,0 +1,171 @@
+{
+ "id": "SYNAPSI-1",
+ "kirjattu": "2026-11-28",
+ "aineisto": {
+  "ikkuna": [
+   "2026-10-01T00:00:00Z",
+   "2027-04-01T00:00:00Z"
+  ],
+  "resoluutio_min": 15,
+  "tiedostot": [
+   "data/sarjat/2026-2027.json (DS 124, 75, 188, 191, 201, 202, 371, 398, 399)",
+   "data/wem-lopputulos/2026-2027.json (DS 244, 373, 342)"
+  ],
+  "ajo_aikaisintaan": "2027-04-02",
+  "puuttuva_vartti": "None (ei aktivoidu, katkaisee jakson)"
+ },
+ "aktivaatiot": {
+  "DS244_hinta": {
+   "tyyppi": "kynnys",
+   "ehto": ">=",
+   "raja": 500
+  },
+  "DS373_tarjottu_ylos": {
+   "tyyppi": "poikkeama",
+   "ikkuna": 672,
+   "z": 4,
+   "suunta": "alas"
+  },
+  "DS342_aktivoitu": {
+   "tyyppi": "poikkeama",
+   "ikkuna": 672,
+   "z": 4,
+   "suunta": "ylos"
+  },
+  "DS124_kulutus": {
+   "tyyppi": "poikkeama",
+   "ikkuna": 672,
+   "z": 4,
+   "suunta": "ylos"
+  },
+  "DS75_tuuli": {
+   "tyyppi": "kynnys",
+   "ehto": "<",
+   "raja": 1000
+  },
+  "DS188_ydin": {
+   "tyyppi": "muutos",
+   "askel": 4,
+   "raja": 400
+  },
+  "DS191_vesi": {
+   "tyyppi": "poikkeama",
+   "ikkuna": 672,
+   "z": 4,
+   "suunta": "molemmat"
+  },
+  "DS201_kl_chp": {
+   "tyyppi": "poikkeama",
+   "ikkuna": 672,
+   "z": 4,
+   "suunta": "molemmat"
+  },
+  "DS202_teoll_chp": {
+   "tyyppi": "poikkeama",
+   "ikkuna": 672,
+   "z": 4,
+   "suunta": "molemmat"
+  },
+  "DS371_sahkokattilat": {
+   "tyyppi": "muutos",
+   "askel": 4,
+   "raja": 200
+  },
+  "DS398_akku_purku": {
+   "tyyppi": "poikkeama",
+   "ikkuna": 672,
+   "z": 4,
+   "suunta": "ylos"
+  },
+  "DS399_akku_lataus": {
+   "tyyppi": "poikkeama",
+   "ikkuna": 672,
+   "z": 4,
+   "suunta": "ylos"
+  }
+ },
+ "moottori": {
+  "funktio": "tools/synapsi.py arvioi",
+  "max_viive": 8,
+  "min_siirto": 32,
+  "p_menetelma": "nb",
+  "alfa_bh": 0.05,
+  "parit": "kaikki 132 suunnattua paria",
+  "testeja": 1188,
+  "peruste_nb": "Tarkan kierto-p:n pienin arvo 1/(17409) ≈ 5,7e-5 > BH-tiukin 0,05/1188 ≈ 4,2e-5; NB kalibroitu synteettisesti ja polttoainekokeessa 1."
+ },
+ "tunnetut": [
+  [
+   "DS75_tuuli",
+   "DS244_hinta"
+  ],
+  [
+   "DS75_tuuli",
+   "DS342_aktivoitu"
+  ],
+  [
+   "DS75_tuuli",
+   "DS373_tarjottu_ylos"
+  ],
+  [
+   "DS124_kulutus",
+   "DS244_hinta"
+  ],
+  [
+   "DS124_kulutus",
+   "DS342_aktivoitu"
+  ],
+  [
+   "DS188_ydin",
+   "DS342_aktivoitu"
+  ],
+  [
+   "DS188_ydin",
+   "DS244_hinta"
+  ],
+  [
+   "DS342_aktivoitu",
+   "DS244_hinta"
+  ],
+  [
+   "DS342_aktivoitu",
+   "DS373_tarjottu_ylos"
+  ],
+  [
+   "DS191_vesi",
+   "DS244_hinta"
+  ],
+  [
+   "DS201_kl_chp",
+   "DS124_kulutus"
+  ],
+  [
+   "DS244_hinta",
+   "DS371_sahkokattilat"
+  ],
+  [
+   "DS342_aktivoitu",
+   "DS371_sahkokattilat"
+  ],
+  [
+   "DS244_hinta",
+   "DS398_akku_purku"
+  ],
+  [
+   "DS342_aktivoitu",
+   "DS398_akku_purku"
+  ]
+ ],
+ "tunnetut_huom": "Pari on tunnettu kumpaan suuntaan tahansa ja millä tahansa viiveellä 0–8. Viiveen 0 pari näkyy moottorissa aina molempiin suuntiin.",
+ "puolijaksot": [
+  [
+   "2026-10-01T00:00:00Z",
+   "2027-01-01T00:00:00Z"
+  ],
+  [
+   "2027-01-01T00:00:00Z",
+   "2027-04-01T00:00:00Z"
+  ]
+ ],
+ "herkkyysajo": "Sama ajo ilman vuorokautta 27.11.2026 (UTC); raportoidaan rinnalla."
+}
