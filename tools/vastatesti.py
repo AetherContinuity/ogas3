@@ -10,8 +10,8 @@ TILAT (järjestys ratkaisee)
                       ole sallittu arvo. Puuttuva havainto ei ole koskaan vahvistus eikä kumoutuminen.
  2. AVOIN             arviointipäivä < tarkistuspaiva. Välihavainnot (kelpaavat kuukaudet, ylitykset)
                       raportoidaan, mutta tuomiota ei anneta.
- 3. RATKEAMATON       ulkoinen luokitus kuuluu ratkeamaton_jos-joukkoon, tai kelpaavia kuukausia
-                      (odotuksia >= min_odotuksia) ei ole.
+ 3. RATKEAMATON       kelpaavia kuukausia (odotuksia >= min_odotuksia) ei ole (ulkoista luokitusta
+                      ei silloin tarvita), tai ulkoinen luokitus kuuluu ratkeamaton_jos-joukkoon.
  4. VAHVISTUU         jokin kelpaava kuukausi: suure > raja jollekin ehdolle.
  5. KUMOUTUU          muuten.
 Raja on aito ylitys (>), kuten T1:ssä ("ylittää").
@@ -90,6 +90,12 @@ def arvioi(spec: dict, juuri: Path, pvm: date) -> dict:
     if haettu < date.fromisoformat(a["haettu_vahintaan"]):
         return puuttuu(f"aineisto haettu {haettu}, vaaditaan ≥ {a['haettu_vahintaan']} (kausi kesken tai keruu epäonnistui)")
 
+    # Kelpaavien kuukausien puute riittää yksin ratkeamattomuuteen (T1: "tai"), joten ulkoista
+    # luokitusta ei tarvita silloin. Lauha talvi on todennäköisin syy, ja se ratkeaa ilman käsisyötettä.
+    if not kelpaavat:
+        tulos["tila"] = "RATKEAMATON"
+        tulos["syyt"].append(f"ei kuukautta, jossa ≥ {a['min_odotuksia']} odotusta")
+        return tulos
     ratk = []
     for u in spec.get("ulkoiset", []):
         ud, virhe = _lue(juuri / u["tiedosto"])
@@ -101,10 +107,6 @@ def arvioi(spec: dict, juuri: Path, pvm: date) -> dict:
             ratk.append(f"{u['nimi']} = {arvo}")
     if ratk:
         tulos["tila"] = "RATKEAMATON"; tulos["syyt"] += ratk; return tulos
-    if not kelpaavat:
-        tulos["tila"] = "RATKEAMATON"
-        tulos["syyt"].append(f"ei kuukautta, jossa ≥ {a['min_odotuksia']} odotusta")
-        return tulos
     tulos["tila"] = "VAHVISTUU" if ylit else "KUMOUTUU"
     tulos["syyt"].append(f"{len(ylit)} ylitystä {len(kelpaavat)} kelpaavassa kuukaudessa")
     return tulos

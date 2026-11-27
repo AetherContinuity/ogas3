@@ -82,3 +82,8 @@ def test_negatiivikontrolli_vertailutaso(tmp_path):
     siirretty["activeFrom"] = "2026-10-01"; siirretty["haettu"] = "2027-06-03T05:30:00+00:00"
     t = aja(tmp_path, siirretty)
     assert t["tila"] == "KUMOUTUU" and t["kelpaavat_kuukaudet"] == ["2027-02"]
+
+
+def test_lauha_talvi_ratkeaa_ilman_luokitusta(tmp_path):
+    t = aja(tmp_path, aineisto([r("2027-02", 12, 0.8, 3.0)]), luokitus=None)
+    assert t["tila"] == "RATKEAMATON" and "ulkoiset" in t and t["ulkoiset"] == {}
