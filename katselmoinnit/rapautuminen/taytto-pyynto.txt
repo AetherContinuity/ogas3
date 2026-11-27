@@ -1,0 +1,910 @@
+TEHTÄVÄ: väiterekisterin täyttö (tutkimuskäyttö 1), kuusi paperia
+
+Tämä ei ole katselmointi. Tehtäväsi on poimia alla olevista kuudesta paperista väitteiden
+esiintymiä ja niiden välisiä suhteita ja palauttaa ne JSON-rekisterinä. Käytä vain tämän
+pyynnön tekstiä. Sinulla ei ole verkkoa eikä repoa, eikä niitä tarvita.
+
+Poiminta kuvaa, mihin paperien argumentit nojaavat. Se ei arvioi, ovatko väitteet tosia,
+lähteet luotettavia tai päätelmät päteviä. Heikkokin päätelmä kirjataan sellaisena kuin
+paperi sen esittää.
+
+AINEISTO
+Lähde: AetherContinuity/aethercontinuity.github.io, commit 1f3f4fb4f8b234a1aa0f71b795a82bebb32ec790
+(27.11.2026). Tiedostojen viimeisin muuttava commit ja sha256 (16 ensimmäistä merkkiä):
+  papers/sm-009-diagnostic-paradigm.html               1b8431886f2e7a94f31f8b560f5b4016b46463de  a61d20b4a7025687
+  papers/sm-007-convergence-finding.html               946bdb1a80b8eae1f534572c70d80072238d85fd  6e2732041c6a4e89
+  papers/cn-004-distributed-optimisation.html          7ce7d430c8b6612260ff659df8d2586f4042f4e6  aea8bad97015953e
+  papers/wp-013-two-scenarios-2030.html                c934af8972eca38a520fb1caf4b8d1f7f05b494c  59b92d973aaf1879
+  papers/wp-015-residualization-spot-markets.html      bd689c67db1187c62f32dec9228718ef87a271d5  0fb827818452d80f
+  papers/cn-007-miksi-jarkevaet-asiat-eivat-etene.html fa39e64decc80499ce3af17088f87a753b1f39fb  d563dae33b4155dd
+Tekstit on purettu HTML:stä koneellisesti (tools/vaiterekisteri_pyynto.py). Jokainen
+tekstirivi on sanatarkka ote tiedostosta. Rivit, jotka alkavat '## [kohta: ...]', ovat
+purkajan lisäämiä otsikkorivejä: ne kertovat kohdan tunnuksen, eivätkä ne ole lainattavaa
+tekstiä. Kohdan tunnus on paperin oma §-merkki, muuten otsikon numero, muuten otsikon teksti.
+
+REKISTERIN RAKENNE
+Palauta täsmälleen yksi ```json-koodilohko, jonka sisältö on yksi JSON-objekti:
+
+{
+  "esiintymat": [
+    {"id": "...", "paperi": "...", "kohta": "...", "lainaus": "...",
+     "merkinta": "...", "tiedosto": "..."}
+  ],
+  "suhteet": [
+    {"id": "...", "lahde": "...", "kohde": "...", "laji": "...", "perusta": "...",
+     "perustelu": "...", "kirjaaja": "kimi-k3.1-pro", "tila": "ehdotettu"}
+  ]
+}
+
+Kentät:
+- esiintyma.id: muoto <paperi>:<kolminumeroinen juokseva numero>, esim. muotoa XX-000:001.
+  Sallitut merkit: kirjaimet, numerot, _ . : -  (ensimmäinen merkki kirjain tai numero).
+- paperi: SM-009, SM-007, CN-004, WP-013, WP-015 tai CN-007.
+- kohta: lähimmän edeltävän otsikkorivin kohdan tunnus sellaisenaan (hakasulkeiden sisältö
+  ilman sanaa "kohta:"), esim. muotoa "§ 00 / 0.0". Otsikkoa edeltävälle tekstille "alku".
+- lainaus: ks. ESIINTYMÄN RAJAUS.
+- merkinta: yksi arvoista M, L, A, —, ei_merkitty. Ks. TÄYTTÖPERIAATTEET 8.
+- tiedosto: aineistolistan polku sellaisenaan (esim. muotoa papers/<nimi>.html).
+- suhde.id: S001, S002, ...
+- lahde, kohde: esiintymien id:t.
+- laji: depends_on, same_claim, qualifies tai related. Muita lajeja ei ole.
+- perusta: eksplisiittinen tai rekonstruoitu. Pakollinen jokaisessa suhteessa. Ks. PERUSTA.
+- perustelu: ks. TÄYTTÖPERIAATTEET 4.
+- kirjaaja: aina "kimi-k3.1-pro". tila: aina "ehdotettu". Kenttää "tarkistaja" ei kirjata.
+- Kenttää "countertest" ei kirjata.
+
+SUHDELAJIEN MÄÄRITELMÄT (työkalun docstringistä sanatarkasti)
+  Yksikkö on väitteen ESIINTYMÄ: yksi rajattu väite yhdessä paperin kohdassa.
+  Sama väite eri papereissa on eri esiintymiä, jotka yhdistää `same_claim`-suhde.
+  Esiintymiä ei koskaan yhdistetä yhdeksi olioksi.
+  Suhteet ovat omia rivejään ja kantavat oman evidenssinsä.
+
+  laji:
+    depends_on  lahde nojaa kohteeseen argumentissaan (suunnattu)
+    same_claim  sama väite toisessa paikassa tai toisin sanoin (suuntaamaton)
+    qualifies   lahde rajaa tai tarkentaa kohdetta (suunnattu)
+    related     sama aihe, riippuvuutta ei osoitettu (suuntaamaton); ei koskaan riippuvuus
+
+Suunta: depends_on- ja qualifies-suhteessa "lahde" on se esiintymä, joka nojaa tai rajaa,
+ja "kohde" se, johon nojataan tai jota rajataan. Päätelmä nojaa havaintoon: lahde on
+päätelmä, kohde havainto.
+
+related ei ole riippuvuus. Älä käytä sitä riippuvuuden heikompana muotona: jos et voi
+osoittaa, että väite nojaa toiseen, älä kirjaa depends_on-suhdetta äläkä korvaa sitä
+related-suhteella.
+
+PERUSTA (työkalun docstringistä sanatarkasti)
+    eksplisiittinen  argumentti ilmaisee yhteyden yksiselitteisesti; suhdetta nimeävää
+                     sanaa ("riippuu", "koska") ei vaadita
+    rekonstruoitu    yhteys on pääteltävä erillisistä kohdista tai välivaiheista
+
+- eksplisiittinen: lukija, joka lukee kohdat, ei voi ymmärtää argumenttia toisin. Esimerkiksi
+  päätelmä esitetään välittömästi havainnon seurauksena, tai paperi viittaa toiseen paperiin
+  tai omaan kohtaansa väitteen tukena.
+- rekonstruoitu: yhteys on tekstissä, mutta sen näkeminen vaatii kahden tai useamman erillisen
+  kohdan yhdistämistä tai välivaiheen, jota paperi ei kirjoita auki. Perustelussa nimetään
+  kohdat ja välivaihe.
+- Rekonstruoitu ei ole arvaus. Jos yhteys nojaa siihen, että se olisi uskottava, tavanomainen
+  tai aiheen perusteella odotettava, eikä tekstistä löydy kohtia, joista sen voi johtaa, suhdetta
+  ei kirjata lainkaan.
+- Jos et osaa ratkaista, onko perusta eksplisiittinen vai rekonstruoitu, kirjaa rekonstruoitu.
+
+ARGUMENTTIKETJUT
+Poiminnan on katettava paperien väliset viittaukset JA kunkin paperin sisäiset argumenttiketjut:
+
+  aineistohavainto → välipäätelmä → johtopäätös
+
+- aineistohavainto: paperin esittämä havainto, luku, mittaus, lähteen tieto tai laskelman tulos.
+- välipäätelmä: havainnoista johdettu väite, johon jokin pidemmälle menevä väite nojaa.
+- johtopäätös: paperin suositus, löydös tai lopputulos.
+Ketjun linkit kirjataan suhteina saman paperin esiintymien välillä: tavallisesti depends_on
+(päätelmä nojaa havaintoon), qualifies (väite rajaa toista). Ketju voi olla lyhyempi tai
+pidempi kuin kolme porrasta, ja yksi päätelmä voi nojata useaan havaintoon. Ketju kirjataan
+vain niiltä osin kuin linkit voi osoittaa tekstistä (ks. PERUSTA). Katkennut ketju on
+sallittu: älä täydennä puuttuvaa linkkiä.
+
+ESIINTYMÄN RAJAUS
+- Esiintymä on yksi rajattu väite yhdessä paperin kohdassa. Väite on sisältö, joka voi olla
+  tosi tai epätosi. Otsikko, lähdeluettelon rivi tai pelkkä aiheen nimeäminen ei ole väite.
+- Yksi esiintymä = yksi väite. Jos virkkeessä on kaksi erillistä väitettä, ne ovat kaksi
+  esiintymää, ja kummankin lainaus rajataan omaan osaansa.
+- lainaus on sanatarkka, yhtenäinen ote yhdeltä aineiston tekstiriviltä: ei lyhennyksiä
+  (ei "..."), ei yhdistelyä eri kohdista, ei käännöstä, ei kirjoitusvirheiden korjausta.
+  Merkit kopioidaan sellaisinaan (myös –, —, ₂, ·, välilyönnit lukujen sisällä). Ote ei
+  ylitä riviä eikä sisällä otsikkoriviä. Valitse lyhin ote, joka sisältää väitteen kokonaan.
+  Lainaus tarkistetaan koneellisesti tiedostoa vasten; ei-sanatarkka lainaus hylätään.
+- Sama teksti kahdessa paperissa on kaksi esiintymää.
+
+TÄYTTÖPERIAATTEET
+1. Kattavuutta ei tavoitella yhteyksissä. Kaikkia väitteitä ei tarvitse yhdistää. Puuttuvia
+   yhteyksiä ei täytetä uskottavuuden perusteella. Suhteen jättäminen pois on sallittua ja
+   parempi kuin arvaus.
+2. Kirjaa esiintymä, kun se on vähintään yhden kirjaamasi suhteen pääte. Esiintymiä ilman
+   suhteita ei tarvita.
+3. Älä arvioi väitteiden pätevyyttä: et kirjaa, onko väite tosi, onko lähde riittävä tai
+   seuraako päätelmä havainnosta. Kirjaat, mihin argumentti nojaa.
+4. Jokaisella suhteella on perustelu (1–2 virkettä): mikä tekstissä osoittaa suhteen.
+   Rekonstruoidussa suhteessa perustelu nimeää kohdat ja välivaiheen, joista yhteys on
+   johdettu. Pelkkä aiheen, sanaston tai lukujen samankaltaisuus ei riitä depends_on- eikä
+   same_claim-suhteeseen. same_claim vaatii, että väite on sama, ei vain samasta asiasta.
+5. Suhteita kirjataan saman paperin sisällä (argumenttiketjut) ja paperien välillä.
+6. Jokaisessa suhteessa on kenttä perusta. Eksplisiittiset ja rekonstruoidut suhteet erotetaan
+   vain tällä kentällä; samaa paria ei kirjata kahdesti eri perustalla.
+7. Koneelliset ehdot, jotka rekisterin on täytettävä:
+   - id:t yksilöllisiä; jokainen lahde ja kohde on olemassa oleva esiintymä; ei suhdetta
+     esiintymästä itseensä;
+   - sama suhde (sama laji ja sama pari, suuntaamattomissa kummin päin tahansa) vain kerran;
+   - samalle esiintymäparille ei samanaikaisesti related ja depends_on/same_claim, eikä
+     samanaikaisesti same_claim ja depends_on;
+   - depends_on-suhteet eivät muodosta sykliä;
+   - perusta on jokaisessa suhteessa joko "eksplisiittinen" tai "rekonstruoitu".
+8. merkinta: kirjaa se merkintä ([M], [L], [A] tai [—]), jonka paperi itse liittää tähän
+   väitteeseen, ilman hakasulkeita. Jos paperi ei liitä väitteeseen merkintää, kirjaa
+   "ei_merkitty". "—" tarkoittaa vain paperin omaa merkintää [—]. Älä päättele merkintää
+   itse.
+9. Älä käytä tietoa näiden tekstien ulkopuolelta.
+10. Paperin omat rajaukset ja sen esittämät vaihtoehtoiset tai kilpailevat selitykset ovat
+   väitteitä siinä missä muutkin, ja ne kirjataan samoilla säännöillä.
+
+VASTAUKSEN MUOTO
+Ensin ```json-lohko (koko rekisteri, validi JSON, ei kommentteja). Sen jälkeen saat
+halutessasi kirjoittaa enintään 15 riviä huomioita: epävarmuudet ja tapaukset, joissa
+jätit suhteen kirjaamatta. Älä toista rekisteriä huomioissa.
+
+AINEISTO ALKAA
+===== TIEDOSTO: papers/sm-009-diagnostic-paradigm.html =====
+## [kohta: alku] (otsikkoa edeltävä teksti)
+ACI · Synthesis Memo · SM-009 · All Domains
+Version 1.6 · August 2026
+Domain All domains
+Status Published
+Synthesises WP-001 through WP-018
+Audience Policy · Academic · Institutional
+Language EN
+The ACI Diagnostic Paradigm
+What Cannot Be Measured Cannot Be Governed — A Unified Framework for Institutional Blindspot Analysis
+This memo synthesises the intellectual arc of ACI's working paper series WP-001 through WP-018. The series began as an empirical study of energy system resilience and developed, through successive analytical iterations, into a general theory of institutional measurement failure. The paradigm can be stated in one sentence: when a system cannot measure a critical variable, it cannot sanction its deterioration, and therefore cannot correct it. This mechanism — measurement gap → sanction gap → correction gap — operates across sectors, scales, and institutional cultures. ACI has documented it in energy infrastructure (WP-001–WP-015, WP-017–WP-018), health data systems (WP-016), and financial market signalling (WP-017). The paradigm is not sector-specific. It is a structural property of complex governed systems in which the cost of measurement appears before the cost of its absence.
+## [kohta: § 01] The Origin: A Question About Time
+ACI's first working paper (WP-001, 2026) asked a precise empirical question: how long can a high-electrification power system sustain household and critical infrastructure loads under compound winter stress without external resupply? The answer — expressed as Duration Adequacy — was a function of three variables: installed capacity, consumption rate, and the temporal duration of the stress event.
+The question seems technical. Its implications are not. Duration adequacy is not primarily an engineering problem. It is a measurement problem. A system that does not measure its own temporal endurance cannot know when it is approaching its limit. And a system that does not know when it is approaching its limit cannot act in time to prevent the limit from being reached.
+This was the first statement of what would become ACI's central paradigm: the gap between what a system can measure and what it needs to measure to govern itself adequately.
+WP-001 foundational insight
+Critical systems fail not because they exhaust their physical capacity, but because they exhaust their decision capacity first. The decision to act requires measurement of the approaching limit — and if that measurement does not exist, the decision arrives too late or not at all.
+## [kohta: § 02] The Development: From Physics to Institutions
+## [kohta: § 02 / Phase I — Physical measurement (WP-001–WP-005)] Phase I — Physical measurement (WP-001–WP-005)
+The early papers established the empirical baseline: what can be measured about energy system resilience, and what cannot. Duration adequacy (WP-001), distributed resilience doctrine (WP-002), compound stress modelling (WP-005) — all share the same structure. They ask: what does the system know about itself, and is that sufficient for it to avoid failure?
+## [kohta: § 02 / Phase II — Institutional architecture (WP-003, WP-008–WP-011)] Phase II — Institutional architecture (WP-003, WP-008–WP-011)
+WP-003 introduced Institutional Termination Time — the maximum interval between signal recognition and corrective decision before the opportunity to correct is lost. This concept elevated the measurement problem from the physical to the institutional level. A physical system may have adequate duration; the institution governing it may not have adequate decision time. The two can diverge — and when they do, the institution fails even if the system has not yet physically failed.
+WP-008 extended this to allocation: why does capital flow to certain investments and not others? The answer was that allocation follows what is measured. If the measurement framework does not include long-horizon capacity integration, capital does not flow there — not because investors are irrational, but because the signal does not exist. WP-011 named the governance consequence: without a meta-coordinating function (System 4 in Beer's terminology), no actor in the system can correct the measurement gap from within.
+## [kohta: § 02 / Phase III — The intervention window (WP-012–WP-015)] Phase III — The intervention window (WP-012–WP-015)
+WP-013 introduced the two-scenario framework: one in which institutional action continues at historical tempo, one in which three identified corrections are implemented. The divergence between scenarios grows nonlinearly — which means the cost of delay is not linear but accelerating. WP-015 documented the mechanism producing the crisis: three simultaneous structural shifts — demand rigidification, supply buffer erosion, spot market residualisation — interacting to produce an elasticity collapse.
+## [kohta: § 02 / Phase IV — The general paradigm (WP-016–WP-018)] Phase IV — The general paradigm (WP-016–WP-018)
+WP-016 (HDCI), WP-017 (bond spreads), and WP-018 (IQS) established that the measurement gap is not sector-specific. The Finnish health system does not measure integration quality, only data volume and cost. Sovereign credit markets do not measure capacity investment quality, only fiscal flow. Energy investment pipelines are indistinguishable to bond pricing regardless of their systemic integration quality. In each case, the same structure: a variable that matters is not measured; because it is not measured, deterioration produces no sanction; because there is no sanction, correction does not occur.
+## [kohta: § 03] The Paradigm: Three Gaps
+The ACI Diagnostic Paradigm:
+Measurement gap → Sanction gap → Correction gap → Structural decay
+A critical variable is not measured.
+Because it is not measured, its deterioration produces no observable signal.
+Because there is no signal, no sanction is applied to the actor responsible for the variable.
+Because there is no sanction, no correction occurs.
+The variable continues to deteriorate until its absence produces a forcing event.
+The forcing event imposes the cost that measurement would have prevented — at a time when the cost of correction is higher and the window for correction is narrower.
+The paradigm has four structural properties that distinguish it from simple policy failure or political neglect:
+1. It is self-concealing. The absence of measurement produces no visible signal. A health system that does not measure integration failure generates no alarm — the alarm requires the measurement to exist. A bond market that does not price capacity deficits generates no spread widening — the signal requires the model to include the variable. The failure mode is invisible precisely because the instrument that would make it visible does not exist.
+2. It is self-reinforcing. Actors optimise for what is measured. When integration quality is not measured, actors optimise for installed volume — which is measured. When parliamentary decision latency is not priced by bond markets, politicians face no market discipline for D-suppression — which is priced. The measurement gap creates the incentive structure that produces the gap's consequences.
+3. It is cross-sectoral. The paradigm does not depend on the specific content of the unmeasured variable. Energy integration quality, health care coordination quality, long-horizon investment quality — all produce the same structural consequence when unmeasured. This cross-sectorality is not a coincidence; it reflects the common structure of governed complex systems in which measurement is institutionally produced and politically mediated.
+4. It has a temporal signature. The gap between measurement absence and forcing event varies by domain. In energy systems, compound stress accumulates over years. In health systems, integration failure accumulates across care episodes over months and years. In financial markets, capacity deficits accumulate until they manifest in GDP or fiscal aggregates — a 5–10 year horizon. The temporal signature determines how much advance warning measurement would provide — and therefore what the cost of measurement absence is.
+Core paradigm finding
+The cost of measurement is paid once, at the moment of instrument construction. The cost of measurement absence is paid repeatedly, in the form of suboptimal allocation, foregone correction, and eventual forcing events. The ratio of these costs grows nonlinearly with time — which is why measurement gaps that appear minor in stable periods become structurally critical during stress convergence.
+## [kohta: § 04] Three Instruments, One Paradigm
+The three measurement instruments developed across the WP series operationalise the paradigm in specific domains:
+Instrument Domain What it measures What existing metrics miss Sanction mechanism if deployed
+HDCI
+WP-016
+Health data systems
+Integration quality of care data → care coordination: IAI_conditioned + RKI_adjusted + RVI_anchored
+Data volume, cost per episode, queue length
+Funding_adjustment = α · ΔHDCI · morbidity_baseline — rewards integration improvement, penalises coordination failure
+Bond spread asymmetry
+WP-017
+Sovereign credit markets
+Detection of structural capacity investment deficit in sovereign pricing models
+Fiscal flow, current debt service capacity, short-term growth
+Identifies that no sanction mechanism currently exists — motivates search for instruments that could detect D-suppression earlier
+IQS
+WP-018
+Energy investment pipelines
+Systemic integration quality: D1 physical + D2 linkage + D3 policy anchor + D4 export potential
+Investment volume (MW), GDP contribution, fiscal balance
+Not yet operationalised — IQS pilot demonstrates the gap; sanction design is next phase
+The three instruments are structurally homologous. Each constructs a new observable quantity from existing data sources. Each makes visible a dimension of system quality that was previously unmeasured. Each creates the precondition for sanction — because sanction requires a measurable target, and the target did not previously exist.
+None of the three instruments is sufficient alone. HDCI without a sanction mechanism is a diagnostic without a remedy. Bond spread analysis without an alternative instrument is a negative result without a prescription. IQS without outcome validation is a pilot without proof. The paradigm requires all three components: measurement, sanction design, and correction pathway.
+## [kohta: § 05] The Intellectual Arc: What Changed
+The WP series began with a narrow empirical question about energy system temporal endurance. It arrived at a general theory of institutional measurement failure. This is not a coincidence — it is the predictable result of following an empirical anomaly rigorously.
+The anomaly was simple: Finnish energy system risk was visible in technical analyses but not in institutional responses. Duration adequacy was calculable but not calculated by institutions. Compound stress scenarios were modelable but not modelled in policy. The intervention window was identifiable but not acted upon. Why?
+The first answer was political: D-suppression, the three-stage filter through which risks fail to become decisions. But this is descriptive, not explanatory. D-suppression is the phenomenon; the paradigm asks what produces it structurally. The answer arrived through WP-017: D-suppression operates in part because the external sanction that would punish it — bond market pricing of capacity deficits — does not exist. Rating models do not price the unmeasured variable. Politicians face no external discipline for the gap they are not filling.
+WP-016 confirmed this from a different domain. Finland's health system does not measure integration quality. Welfare areas face no sanction for integration failure. The governance structure rewards what it measures — cost and volume — and is indifferent to what it does not measure — integration and coordination. The structural homology with the energy case is precise.
+WP-018 closed the circle: if bond spreads cannot distinguish between Finland's unintegrated wind capacity (IQS 4.1) and Denmark's integrated Ørsted system (IQS 8.6), then the financial market provides no signal to guide capital allocation toward integration quality. The market failure and the governance failure are the same failure, expressed in different institutional vocabularies.
+## [kohta: § 06] What the Paradigm Does Not Claim
+Precision requires stating what the paradigm does not claim, to prevent overextension.
+It does not claim that measurement solves the problem. Measurement is necessary but not sufficient. HDCI without a funding adjustment mechanism is a better diagnostic but not a better system. IQS without a policy anchor requirement is a more accurate map but not a changed landscape. The paradigm identifies measurement as the first condition for correction — not as correction itself.
+It does not claim that all policy failure is measurement failure. Political resistance, distributional conflict, institutional path dependence, and coordination failure all operate independently of measurement gaps. The paradigm identifies one structural mechanism; it does not claim to be the only mechanism.
+It does not claim that the instruments are ready for deployment. HDCI requires Findata licensing and empirical calibration. IQS requires inter-rater reliability and outcome validation. Bond spread analysis has produced a null finding, not an alternative instrument. The paradigm is an analytical framework; the instruments are in various stages of development.
+It does not claim universality across all complex systems. The paradigm has been documented in three domains across a small-state institutional context. Generalisation to other institutional cultures, scale levels, and governance architectures requires additional validation.
+## [kohta: § 07] Research Programme
+The paradigm generates a research programme with three active tracks:
+## [kohta: § 07 / Track A — Instrument completion] Track A — Instrument completion
+HDCI: Findata pilot (DT-006, Pohjois-Savo). IQS: inter-rater reliability, weight calibration, case expansion (Spain, Poland, Norway, Germany). Bond spread: term spread and CDS analysis, content analysis of rating statements (Salazar mechanism criterion A).
+## [kohta: § 07 / Track B — Sanction mechanism design] Track B — Sanction mechanism design
+HDCI: funding adjustment model (§07 WP-016) — requires legislative pathway through STM. IQS: policy integration obligation as condition of grid connection (DT-004 additionality argument). Bond spreads: the research question is inverted — not "do spreads detect D-suppression?" but "what instrument would detect it, and what governance change would make that detection actionable?"
+## [kohta: § 07 / Track C — Cross-domain generalisation] Track C — Cross-domain generalisation
+The paradigm has been documented in energy, health, and finance. Candidate next domains: education system integration quality (analogous to HDCI — data rich, integration unmeasured), labour market skill transition quality (analogous to IQS — investment in training occurs, systemic utilisation unmeasured), municipal financial resilience (analogous to bond spread analysis — fiscal metrics available, structural capacity unmeasured).
+Paradigm core statement
+The question "why doesn't the system correct the problem it can see?" has a structural answer: the system does not measure the variable whose deterioration defines the problem. Without measurement there is no signal. Without signal there is no sanction. Without sanction there is no correction. The intervention that breaks this chain is not political will — it is measurement instrument construction. Political will follows measurement when measurement creates the conditions for accountability.
+## [kohta: § 08] The Third Sector Blind Spot
+The three-gap paradigm applies with particular force to a domain that ACI's analysis has not yet addressed systematically: civil society organisations, foundations, and non-governmental organisations. These entities share a structural property that makes measurement failure not an accident but an architectural feature.
+In commercial organisations, ownership is concentrated and owners have direct financial incentives to monitor management. In state organisations, democratic accountability provides at least a formal monitoring mechanism. In third-sector organisations, ownership is diffuse or absent: members are geographically dispersed and rarely engage in governance; funders measure outputs (beneficiaries served, programmes delivered) not inputs relative to outcomes (administrative cost ratios, executive compensation relative to mission impact); the public measures nothing because the data is not required to be public.
+The result is a self-reinforcing structure. Governance bodies (boards, councils) are typically composed of individuals from the same professional network as the management they oversee. Transparency is voluntary, and voluntary transparency produces voluntary positive framing. Critical inquiry is discouraged by the implicit suggestion that questioning the organisation undermines its humanitarian or civic mission. The three gaps operate in sequence: administrative costs and executive compensation are not measured against mission impact (measurement gap); no external actor has standing to sanction underperformance or excess (sanction gap); the structure perpetuates itself across leadership generations (correction gap).
+This structure scales. Across civil society organisations, labour union administrations, foundations, regional public bodies, and political party organisations, the same architectural pattern repeats: diffuse or absent ownership, voluntary transparency, internal governance by co-opted boards, and mission framing that discourages scrutiny. The specific institution does not matter — the pattern is the diagnostic subject. Where ownership is concentrated, measurement failures are eventually detected and corrected by the owner's self-interest. Where ownership is absent, measurement failures persist until an external forcing event — a media investigation, a funding crisis, a legal challenge — creates temporary visibility. Then the gap re-closes.
+The diagnostic implication is that the measurement gap in third-sector governance is not a failure of individual actors but a structural property of organisations without residual claimants. Correcting it requires external mandatory disclosure — the equivalent of public company financial reporting requirements applied to organisations that receive public funding or tax benefits above a defined threshold. The instrument exists in other jurisdictions: in the United States, Form 990 requires all tax-exempt organisations to publicly disclose executive compensation, board composition, and financial ratios. No equivalent mandatory disclosure exists in Finland for third-sector organisations receiving public funding.
+Structural Observation — Catch-22
+The best place to conceal something is the place where no one looks. Third-sector governance is that place in Finnish institutional architecture. The paradigm — what is not measured is not sanctioned, what is not sanctioned is not corrected — operates most completely where ownership is most diffuse and transparency is most voluntary. Extending mandatory measurement to publicly-funded civil society organisations is the logical next application of the ACI diagnostic framework.
+The correction mechanism faces a structural Catch-22. Reform requires measurement. Measurement requires a mandate. A mandate requires political will. Political will requires public pressure. Public pressure requires data. Data requires measurement. The circle closes. The state depends on civil society organisations for welfare services, crisis response, and voluntary sector capacity — and therefore has no incentive to impose transparency requirements that might disrupt those relationships. Donors measure the feeling of contribution, not administrative cost ratios. Members rarely attend governance meetings. The actor with the standing to require disclosure is the same actor that benefits from the absence of disclosure requirements. This is not a coordination failure that better information would resolve. It is a structural property of the system.
+The structure also enables a particular career pattern in which individuals move between regulatory, political, and commercial roles in sequence — never present when the consequences of earlier decisions materialise, never absent when the decisions are made. No individual is ever wrong. No individual is ever responsible. The network absorbs accountability and redistributes it until it disappears. This is not corruption in the legal sense. It is the natural equilibrium of a system without residual claimants and without mandatory measurement.
+The systemic cost of this structure extends beyond the organisations themselves. When governance failures in civil society organisations become visible — through investigative journalism, legal proceedings, or financial crises — the damage is not confined to the institution. Public trust in charitable giving and voluntary sector participation depreciates broadly. A donor who discovers that administrative costs or executive compensation consumed a significant share of their contribution does not simply redirect their giving to a better-managed organisation. They reduce their giving overall. This is the inflation of goodwill: the social capital that civil society depends on is consumed by the governance failures of individual actors, but the cost is distributed across the entire sector. Those who most depend on third-sector services — people in crisis, in poverty, in isolation — bear the cost of a governance failure they had no part in creating and no mechanism to prevent. The measurement gap does not only conceal costs. It destroys the resource base that makes the mission possible.
+## [kohta: § 09] The Sanction Gap in Practice: Capacity Mechanism as Case Study
+The three-gap paradigm — measurement gap, sanction gap, correction gap — is sometimes presented as a theoretical construct. The Finnish capacity mechanism process provides a concrete, documented case of all three gaps operating in sequence over a multi-year period.
+The measurement gap is well established: Fingrid has published annual system adequacy reports since at least 2021 documenting structural capacity risks, particularly under cold, calm winter conditions. The risk has been identified, quantified, and publicly communicated. This is the measurement gap closing — or appearing to close.
+The sanction gap is where the process stalls. A proposal to reform the strategic reserve mechanism was made in 2021. The 2023 government programme listed capacity mechanism development as a target for study. In spring 2024, the responsible minister assessed that a government proposal would reach parliament "next year." In May 2026, no government proposal has been submitted. An electricity market law amendment entered into force on 1 January 2026 — it addressed grid development, not capacity mechanism. Three years of preparation have produced no legislative action.
+The correction gap follows structurally: without legislative action, the underlying structural risk — CHP phase-out, inflexible data centre load, SE1 transmission dependency — continues to accumulate. Fingrid's three-tier alert system represents a reactive response to the gap, not a structural correction. It manages symptoms; it does not address causes.
+A parallel case: the Mattila report on data centres (November 2025), commissioned by Prime Minister Orpo in June 2025, recommended that data centres be required to provide up to 20% demand flexibility during high-price hours. This recommendation has received no concrete follow-up. The report did not address ownership structures, transfer pricing, or the mechanisms by which data centre value is retained in Finland. Its commissioning satisfied the political requirement to have "addressed the issue" without requiring the political cost of implementation.
+The paradigm identifies the structural property that explains both cases. Inaction does not carry a political price. The responsible ministry (TEM) has political accountability but lacks the instruments to act unilaterally — capacity mechanism legislation requires parliamentary process, which requires Treasury assessment, which confronts VM's structural preference for avoiding open-ended commitments. The result is a system in which studies are completed, reports are published, warnings are issued, and no correction occurs — because the correction mechanism requires coordination across institutional boundaries that the system is not designed to cross.
+Empirical Observation
+Three years of documented capacity risk, three rounds of study and assessment, zero government proposals submitted to parliament. This is not policy failure in the conventional sense — it is the predicted output of a system with a structural sanction gap. No actor faces consequences for inaction. No actor has sufficient authority and instruments to act alone. The paradigm does not predict when correction will occur. It predicts that correction will not occur until either the sanction gap closes — through a forcing event that makes inaction politically costly — or the system's institutional design changes to assign clear ownership of the aggregate risk.
+## [kohta: § 10] The Sanction Gap in Practice: Business Subsidies as Second Case Study
+The capacity mechanism case study in §09 documents the measurement–sanction–correction gap in energy infrastructure policy. The Finnish business subsidy structure provides a second, independent empirical example of the same pattern operating simultaneously.
+In 2025, Finland distributed 1.4 billion euros in direct business subsidies. Of this, 70% went to the TKI (research, development and innovation), internationalisation and business activity category. Energy subsidies totalled 171 million euros. Environmental protection received 4 million euros. The ratio — 171 million to 4 million — is not a technical outcome. It is a political choice. No actor is required to justify this allocation against system-level environmental or resilience outcomes. No measurement instrument captures the aggregate effect of subsidy distribution on energy system resilience. No sanction follows from the imbalance.
+The concentration structure compounds this. In 2025, fewer than 14 companies received over half of all direct business subsidies. This is the same concentration risk documented in CN-009 for Denmark's Novo Nordisk and Ørsted dependence — located in a different sector, operating through a different mechanism, but producing the same measurement gap: high output quality from concentrated recipients, low diversification of the underlying support structure, no systematic monitoring of aggregate exposure.
+The parallel to the capacity mechanism case is structural, not incidental. In both cases: the data is public, the pattern is visible, no institution is responsible for the aggregate outcome, and no political cost attaches to continuation. The subsidy structure that existed in 2020 largely persists in 2025 because the three-gap mechanism — no measurement of aggregate effect, no sanction for imbalance, no correction mechanism short of crisis — operates identically across both domains.
+Empirical Observation — Business Subsidies
+Environmental protection received 4 million euros in business subsidies in 2025; energy policy objectives received 171 million. TKI and internationalisation received over 1 billion. This allocation is not evaluated against energy system resilience, digital sovereignty objectives, or security-of-supply criteria in any systematic government assessment. No actor owns the aggregate. No sanction follows from the structure. The diagnostic prediction: this allocation will not change until a forcing event makes the imbalance politically costly.
+## [kohta: § 11] A Paradigm Variant: The Disclosure Gap (August 2026)
+§§01–10 describe cases in which a critical variable is not measured at all. Data centre demand-flexibility capacity presents a structurally distinct variant: the variable is measured, under binding EU mandate — and is simultaneously sealed by law from the actors who would need it to act. This is not a measurement gap. It is a disclosure gap , and it produces the same downstream sequence — no signal, no sanction, no correction — through a different mechanism.
+Commission Delegated Regulation (EU) 2024/1364, implementing Article 12 of the recast Energy Efficiency Directive (2023/1791), requires all data centres with installed IT power demand of at least 500 kW — enterprise, colocation, and co-hosting alike — to report 24 performance indicators annually to a common European database: energy consumption, water consumption, waste heat, capacity utilisation, and whether the facility provides network services, among others. The 2025 reporting year fell due 15 May 2026. Sweden's implementing statute (Lag 2025:570, in force 1 July 2025) confirms the obligation precisely — and, in the same section, confirms the seal: "Uppgifter i EU-databasen omfattas av sekretess enligt 30 kap. 23 § Offentlighets- och sekretesslagen (2009:400)" — data in the EU database is subject to secrecy under Chapter 30, Section 23 of the Public Access to Information and Secrecy Act. Reported data is public only in aggregated form, at member-state and EU level. The individual, facility-level figures — precisely the granularity a capacity-mechanism or demand-flexibility policy would need — are collected and legally inaccessible to the institutions that would use them.
+This reframes the diagnostic question. It is not "why does no one measure data centre flexibility potential" — the measurement exists, mandated and funded by the same regulatory apparatus proposing to act on it. It is: why has a system that already collects the critical variable simultaneously legislated that variable out of decision-making reach. The paradigm's four structural properties (§03) apply with a sharper edge here: the gap is not an absence but an active legal construction, verifiable by a single question to a national energy authority and a single reading of a public-access statute — falsifiable in a way the general three-gap model, applied to less legally codified domains, is not.
+## [kohta: § 11 / Finland's version is the stronger case for "active legal construction," not a borrowed Swedish finding] Finland's version is the stronger case for "active legal construction," not a borrowed Swedish finding
+Finland's own implementation of EED Article 12(1), HE 170/2024 vp (Government proposal to amend the Energy Efficiency Act, Minister Kai Mykkänen, prepared by TEM with LVM, Energiavirasto, Motiva, and Datakeskusyhdistys; ~50 data centres initially estimated in scope), states the public disclosure floor directly and precisely: "datakeskusten... tulee asettaa yleisesti saataville tieto sijaintimaakunnastaan. Lisäksi lakiin lisätään säännökset Energiaviraston oikeudesta tiedon saantiin ja tarkastuksiin" — data centres must make publicly available information about their host province (maakunta) only; the Energy Authority separately receives full access and inspection rights. This is a materially different construction from Sweden's: Sweden's seal (§ above) operates through a general business-secrecy statute (OSL 30:23§) that covers data-centre reporting as one instance among many categories of commercially sensitive information it protects — the boundary is a side-effect of general secrecy law, not a data-centre-specific choice. Finland's boundary — province-level public disclosure, full regulator access, nothing in between — is written into the specific data-centre statute itself, as an affirmative legislative decision about exactly how much the public gets to see. The disclosure gap this section describes is, in the Finnish case, a deliberate design choice rather than an incidental byproduct of unrelated confidentiality law — the stronger and more precisely falsifiable instance of the paradigm variant, not a weaker echo of the Swedish one.
+## [kohta: § 11 / A second, distinct gap: the waste-heat obligation itself is a low bar by the regulated industry's own account] A second, distinct gap: the waste-heat obligation itself is a low bar by the regulated industry's own account
+A separate finding, adjacent to but distinct from the disclosure gap: the substantive obligation Finnish law places on data centres to utilise their waste heat is, by the account of Energiateollisuus (the Finnish energy industry association, in formal consultation responses on the energy efficiency law amendments to HE 85/2025, the later and distinct proposal from HE 170/2024 above — enacted as Energiatehokkuuslaki 1372/2025), easy to satisfy without meaningful action. Energiateollisuus's own submission states the requirement is markedly looser than for other industrial facilities, because a data centre can fulfil it by using only a very small share of its total waste heat purely internally — to heat itself — at which point no cost-benefit analysis is required at all. Energiavirasto's own official published description of the enacted obligation confirms the same mechanism independently, in its own words: a cost-benefit analysis demonstrating technical or economic infeasibility is required only "jos olemassa olevan datakeskuksen hukkalämpöä ei miltään osin hyödynnetä" — if the waste heat of an existing data centre is not utilised in any part at all . Any partial internal use, however small, satisfies the statute without triggering the test that would otherwise establish whether fuller, external utilisation is feasible. The regulator's own description and the regulated industry's critical account converge exactly, from two sources with no shared interest in agreeing. Energiateollisuus's own conclusion: the law does not require maximising waste-heat use even where doing so would be technically and economically feasible, and proposes tightening the exemption to apply only where a data centre's Energy Reuse Factor (ERF) exceeds 40%, specifically to ensure data centres are pushed toward broad waste-heat utilisation rather than minimal internal self-heating. This is not a disclosure gap — the obligation itself, and both the regulator's and industry's own accounts of its weakness, are public. It is the paradigm's sanction-gap component operating on a different variable: the requirement exists on paper, but is calibrated low enough that satisfying it carries no real behavioural consequence. A comparator already documented elsewhere in the ACI corpus (WP-018) sharpens the point: Germany's EnEfG mandates a binding minimum — 10% waste heat utilisation from July 2026, rising to 20% by 2028 — where Finland has no equivalent quantitative floor at all, only the internal-use exemption described above. Finland's own two large operational cases (Google Hamina, ~80% of local district heating demand; Microsoft Espoo, 350 MW thermal, heating ~100,000 homes) show voluntary utilisation can reach far beyond even Germany's mandated minimum — which makes the absence of any binding floor for the sector as a whole more conspicuous, not less: the law does not require what its best-performing regulated entities already demonstrate is achievable.
+Unverified, flagged as such: it is tempting to read this low bar as evidence of direct data-centre-industry influence over the specific exemption clause — Datakeskusyhdistys (the Finnish Data Centre Association) is confirmed, by name, as part of the expert group that prepared the earlier, separate disclosure-requirement law (HE 170/2024 vp, §11 above). For HE 85/2025 specifically — the proposal containing the waste-heat exemption — the only confirmation found is Energiateollisuus's own generic acknowledgement of "eri sidosryhmiä osallistaneesta valmistelusta" (preparation involving various stakeholder groups), which does not name which groups. No source found confirms Datakeskusyhdistys's specific participation in drafting this particular clause. The connection is plausible — an organised industry association was formally involved in adjacent legislative preparation on the same general subject, and the resulting exemption favours that same industry — but it is an inference, not a demonstrated fact, and is recorded here as exactly that rather than folded into the finding above as if verified.
+## [kohta: § 11 / Context, not evidence of causation: the scale asymmetry between regulated firms and the regulating state] Context, not evidence of causation: the scale asymmetry between regulated firms and the regulating state
+Whatever role any specific stakeholder played in drafting either statute, the resource asymmetry between the entities the disclosure and waste-heat obligations regulate and the state apparatus regulating them is verifiable and stark, independent of any claim about influence over a particular clause. Microsoft's revenue in a single reported quarter (2026) was $82.9 billion — approaching the entirety of Finland's 2026 state budget (~€55.5 billion) in one financial quarter of one company. Microsoft's own guidance for 2026 capital expenditure alone is $190 billion — more than three times Finland's full annual state budget. Across the four largest US cloud/AI infrastructure firms (Microsoft, Alphabet/Google, Amazon, Meta) combined, planned 2026 AI infrastructure spending is reported at $725 billion — on the order of twelve times Finland's annual state budget. This is not a new asymmetry: Alphabet's revenue already exceeded Finland's state budget by a factor of roughly 1.4 in 2016. The point this section draws from the comparison is not that resource scale proves influence over any specific legislative clause — it does not, and the inference above is marked unverified precisely because scale alone cannot substitute for a documented causal chain. The point is narrower and does not require proving causation: a regulatory apparatus operating at this scale disparity relative to the entities it regulates faces a structural capacity question — independent of intent on either side — about whether ongoing monitoring, enforcement, and iterative tightening of exemptions like the one above can realistically keep pace with the regulated firms' own capacity to adapt, litigate, or simply outlast the review cycle. That capacity question is itself a measurement-paradigm-relevant variable (§03's four structural properties), and is not currently tracked by any instrument in the ACI corpus.
+## [kohta: § 11 / The flexibility claim, tested against reported evidence] The flexibility claim, tested against reported evidence
+A separate, adjacent claim in public discussion — that data centres already provide meaningful grid flexibility, making further obligation unnecessary — does not survive contact with the same Nordic evidence base. Energiforsk report 2025:1089 ("Datacenter som flexibilitetskapacitet", Petersson, Stark & Gustafsson, RISE, February 2025), based on interviews with ten Swedish data centre owners, finds willingness but structurally limited and unevenly distributed capacity. Colocation data centres typically operate under strict contracts with their customers governing what they may and may not do with respect to flexibility services and energy-related measures — but this is not a uniform legal wall: some colocation operators defer entirely to customer preference, others act unilaterally and accept that dissatisfied customers may relocate. Cryptocurrency, rendering, and some HPC workloads are comparatively easier to flex; mainstream enterprise and hyperscale load faces a different constraint — the report finds compensation matters progressively less to larger operators, meaning the binding constraint for the largest facilities is economic incentive, not contractual restriction. Of the ten operators interviewed, 22% were actively using ancillary services at the time of interview and 44% had begun the onboarding process.
+The report supplies MW-scale figures directly relevant to the inventory this section otherwise treats as sealed (Table 3, sourced from Radar Ecosystem Specialist / Energimyndigheten 2023, reference year 2020): installed and average power by data-centre type in Sweden — enterprise 319 MW installed / 77 MW average (24% utilisation); hyperscale 99 MW / 70 MW (71%); colocation 225 MW / 122 MW (54%); crypto 200 MW / 180 MW (90%). From this base the report derives two flexibility-participation scenarios: excluding hyperscalers, with roughly 20% of average load assumed flexible with modest technical measures, yields 75 MW; including hyperscalers, at roughly 40% participation, yields 180 MW. A worked example makes the volume point concretely: one Sweden-region-1 data centre prequalified 21.7 MW on the FCR-D Up market — yet delivered only 23 MWh of actual activated energy across the whole of 2023. Prequalified capacity and delivered energy are different quantities, and the gap between them is the same gap this section identifies between marketing claims and reported outcomes.
+A further reason FCR-D specifically does not function as a scarcity-relevant signal, independent of activation frequency: the report documents that FCR-D compensation collapsed through 2024 as prequalified battery storage volume increased sharply, to roughly one-tenth of the 2023 monthly average by late 2024 — a straightforward oversupply effect in the ancillary-service market itself, not a data-centre-specific finding, but one that further weakens any argument that data centres are being paid a meaningful signal to provide FCR-D flexibility today. Separately, Svensk Näringsliv documents Vattenfall marketing backup-generator activation to data centres as a peak-shaving option — a commercial pitch, not a reported, realised capability; the same industry that receives the pitch does not publish data on whether or how often it is taken up. The distinction matters: "data centres have flexibility potential" (true, per interviews, and now quantified: 75–180 MW nationally under stated assumptions) and "data centres are already delivering flexibility at scale" (not supported by the same report's own activation and compensation data) are different claims, and public discussion routinely elides them.
+## [kohta: § 11 / No Nordic dispatchable-capacity obligation exists — and the reason is EU law, not policy inertia] No Nordic dispatchable-capacity obligation exists — and the reason is EU law, not policy inertia
+Sweden, like Finland, currently relies on conditional grid-connection agreements rather than a binding production or flexibility mandate for large new loads — a null finding, not an oversight. Swedish law (as implemented via Riksdagen's regulatory framework) requires that grid operators may not impose technical requirements or conditions that impede demand flexibility; that flexibility services must primarily be procured on market terms; and that non-market methods such as conditional connection agreements may be used only where market-based procurement is unavailable or fully exhausted — and even then, the method used to construct such conditions must be approved in advance by the regulator (Ei). This is the same EU non-discriminatory-access constraint that any Finnish legislative proposal modelled on conditional obligations — including elements of the Vestman initiative (§4.3, WP-018) — will need to clear. The disclosure gap and the dispatchable-obligation gap are therefore linked at the EU-law level, not merely by shared subject matter: both are constrained by the same non-discrimination architecture that governs how, and whether, a member state may condition grid access on flexibility or production commitments.
+Empirical Observation — Disclosure Gap
+Facility-level data centre energy, water, waste-heat and capacity-utilisation data is collected under binding EU mandate (Delegated Regulation 2024/1364) and simultaneously sealed under national secrecy law (Sweden: OSL 30:23§) from public and institutional access beyond aggregate form. The measurement gap the wider paradigm describes as an absence is, in this case, a presence rendered inert by statute — a variant with a sharper falsifiability profile than the general model. Separately, Nordic evidence (Energiforsk 2025:1089) does not support the claim that data centres already deliver material grid flexibility at scale: contractual SLA constraints on colocation load and the low energy volume of the ancillary services data centres do provide (principally FCR-D, minutes-scale activations) both limit realised flexibility well below what marketing communications and general "data centres can flex" claims suggest. No Nordic country currently imposes a binding dispatchable-capacity or flexibility obligation on large new loads — a null finding constrained by the same EU non-discriminatory grid-access framework that governs conditional connection agreements generally.
+Follow-up, resolved (August 2026): both open items above have now been checked. Energiforsk 2025:1089's MW-scale estimates are incorporated above. Svenska kraftnät submitted its own connection-process report on 30 April 2026 as instructed (government mandate, September 2025), covering production/consumption siting, long-term PPAs, connection incentives, and harmonised power requirements. Its most directly relevant finding: Svenska kraftnät is now preparing tools and routines to implement conditional connection agreements ( villkorade avtal ) as a mechanism for faster connection — the connecting party's counter-performance being an obligation to curtail offtake or feed-in when the grid risks overload. This is Sweden's own live move toward exactly the mechanism this section identifies as EU-law-constrained (market-based procurement first; non-market conditional agreements only where market procurement is unavailable or exhausted; method subject to regulator pre-approval). Stakeholder submissions to the same process explicitly requested faster large-customer connection and evaluation of conditional agreements for that purpose — confirming that the EU non-discrimination constraint identified above is a live, current design question in Sweden's own reform process, not a settled, historical matter. Finland's own autumn 2026 proposal (§4.3, WP-018) will need to navigate the identical constraint.
+References
+## [kohta: § ACI Publication Series] ACI Publication Series
+EU Commission Delegated Regulation (EU) 2024/1364 of 14 March 2024, implementing Article 12 of Directive (EU) 2023/1791 (EED) — data centre energy performance reporting, ≥500 kW threshold, 24 KPIs, European database.
+SE-L Lag (2025:570) om offentliggörande av information om datacenters energiprestanda; Offentlighets- och sekretesslag (2009:400) 30 kap. 23 § — Swedish implementation and secrecy provision, confirmed via Energimyndigheten.
+EF Petersson, J. et al. (2025). Datacenter som flexibilitetskapacitet. Energiforsk 2025:1089 (RISE) — Swedish data centre owner interviews on flexibility service participation and constraints.
+SN Svenskt Näringsliv (2026). Effekter av datacenterutbyggnaden för elsystemet. — Vattenfall backup-generation marketing to data centres; Swedish data centre consumption context (2.8–3.2 TWh, 2022).
+Radar Wallin, M., Werner, R. & Olofsson, S. (2020). Datacenter i Sverige 2020–2025. Radar Ecosystem Specialist, via Energimyndigheten (2023) — MW-scale installed/average power and utilisation by data-centre type, cited in Energiforsk 2025:1089 Table 3.
+SvK Svenska kraftnät (30 April 2026). Rapport: regeringsuppdrag att se över anslutningsprocessen till elsystemet och tillträdet till elmarknaden. svk.se — conditional connection agreements as a mechanism for faster large-customer connection; closest Nordic comparator to Finland's autumn 2026 proposal.
+HE170 Hallituksen esitys eduskunnalle laiksi energiatehokkuuslain muuttamisesta, HE 170/2024 vp (10.10.2024). valtioneuvosto.fi — province-level (maakunta) public disclosure floor and Energiaviraston full access/inspection rights, written directly into the specific statute.
+ET Energiateollisuus ry, lausunnot energiatehokkuuslain muutoksista, HE 85/2025 vp (2025). energia.fi — waste-heat obligation satisfiable via minimal internal self-heating without cost-benefit analysis; proposed ERF>40% exemption threshold tightening.
+EV Energiavirasto. Datakeskusten velvoitteet. energiavirasto.fi/datakeskukset — regulator's own description of the waste-heat exemption ("jos... hukkalämpöä ei miltään osin hyödynnetä"), independently confirming Energiateollisuus's account; Energiatehokkuuslaki 1372/2025 in force.
+Scale Salkunrakentaja (30 April 2026): Microsoft Q1 2026 revenue $82.9bn, 2026 capex guidance $190bn; four largest US cloud firms' combined 2026 AI infrastructure spending $725bn. Valtiovarainministeriö/Veronmaksajain Keskusliitto: Finland 2026 state budget ~€55.5bn. Yle (2017, historical anchor): Alphabet revenue vs. Finland state budget ratio ~1.4x in 2016.
+EnEfG Cross-reference, ACI corpus (WP-018, §4.3): Germany EnEfG mandates 10% waste-heat utilisation from July 2026, rising to 20% by 2028 — binding quantitative floor absent from Finnish law. Same section: Google Hamina (~80% local district heating), Microsoft Espoo (350 MW thermal, ~100,000 homes) as Finland's own operational upper bound.
+WP-001 Duration Adequacy and Continuity Risk — foundational temporal endurance framework
+WP-003 Institutional Termination Time and Temporal Decision Capacity — decision time as system variable
+WP-005 Compound Stress and Continuity Risk in Finland 2025–2035
+WP-008 Institutional Allocation and System Continuity — RQM-001 transnational allocation template
+WP-011 Institutional System-4 Architecture for Small-State Viability — meta-coordination function
+WP-013 Two Scenarios 2030: Institutional Delay as Structural Risk
+WP-015 Residual Market Failure and Elasticity Collapse
+WP-016 Health Data Continuity Index (HDCI) — integration measurement in health systems
+WP-017 Parliamentary Decision Latency and Market Signal Correlation — bond spread asymmetry
+WP-018 Integration Quality Score (IQS) — energy investment integration measurement
+CN-003 The Pool Method: Institutional Innovation Under Coordination Failure
+CN-005 High-D Stability Traps — Portugal, Soviet, Japan, Finland comparative framework
+SM-006 The 2028 Convergence Window — intervention window empirical baseline
+SM-008 LDR-50 and MESA: The Right Answer at the Wrong Time
+TN-001 Duration-Capable Local Energy Node
+Aether Continuity Institute · SM-009 · Version 1.6 · 2026-08-22
+Synthesis Memo · All Domains · Synthesises WP-001 through WP-018
+aethercontinuity.org · Open Working Draft
+===== LOPPU: papers/sm-009-diagnostic-paradigm.html =====
+
+===== TIEDOSTO: papers/sm-007-convergence-finding.html =====
+## [kohta: alku] (otsikkoa edeltävä teksti)
+Aether Continuity Institute · ACI · Synthesis Memo
+SM-007 — The Convergence Finding:
+One Structural Condition Across Independent Analytical Paths
+What the working papers, diagnostic assessments, decision tracks and concept notes identify in common — and what that identification means
+Version 0.3 · April 2026 ·
+Domain D-1 · D-3 · D-4 ·
+Status Open Working Draft Subject to revision
+Basis Full ACI corpus WP-001–016 · DA-001–007 · DT-001–004 · CN-001–003 · RQM-001
+Keywords convergence · structural condition · institutional coordination failure · H-4b · ITT · compound stress · multi-domain diagnostics
+Cite as: Aether Continuity Institute (ACI). (2026). The Convergence Finding: One Structural Condition Across Independent Analytical Paths. ACI Synthesis Memo No. 007, v0.3. Available at: https://aethercontinuity.org/papers/sm-007-convergence-finding.html
+## [kohta: § Purpose] Purpose
+This memo does not introduce new empirical findings. It makes explicit a structural observation that has been present throughout the ACI corpus since WP-001 but has not previously been stated as a unified claim. WP-004 documented that WP-001, WP-002, and WP-003 — developed independently, across distinct domains — converged on the same structural finding. WP-005 added a fourth domain. WP-016 added a fifth and drew the analogy explicitly within its own text. This memo extends the convergence observation across the full corpus, names what the convergence identifies, and explicitly marks what it does not yet explain.
+## [kohta: § §01 · The Convergence] §01 · The Convergence
+ACI's working papers address distinct analytical objects: energy system duration adequacy, small-state defence doctrine, institutional decision capacity, recovery capacity invariants, compound stress configurations, continuity computing, situational awareness persistence, infrastructure allocation, institutional learning conditions, municipal energy architecture, market residualisation, quantitative risk modelling, and health data integration. Their methodologies differ. Their evidence bases do not overlap.
+Each arrives, through its own analytical path, at the same structural observation:
+The failure is not a shortage of resources, information, or formal authority. It is the structural absence of a mechanism that converts future failure probability into present decision cost for any identifiable actor.
+This condition appears in different formulations across the corpus:
+Document Formulation
+WP-003 ITT: decision window closes before institutional action becomes causally effective
+WP-004 Recovery capacity on declining trajectory; direction more significant than current state
+WP-005 F-5: intervention window open and narrowing; CS-3: consequences mature faster than institutional decision cycles
+WP-008 Institutional allocation bias: individually rational, collectively consequential; no actor sees the aggregate
+WP-011 H-4b absent: no mechanism converting future failure probability into present institutional cost
+WP-012 εₜ ≈ 0.15: temporal fragility despite aggregate capacity adequacy
+WP-013 Risk window 2027–2030 and decision window 2031+ do not overlap
+WP-015 Drift regime → jump regime: elasticity collapse is structural, not gradual
+WP-016 Data existence ≠ data use; incentive structure actively penalises successful integration
+DA-001 5/5 early warning signals active; LR-Class B → C transition risk
+DA-003 BESS covers 0.094% of Black Period energy requirement
+DA-007 No existing instrument satisfies all three structural conditions simultaneously
+CN-003 Binding constraint: the structure that would make individual action collectively safe is absent
+SM-001 "Not a conspiracy, but a structural feature. Every institution sees its own sector. No one owns the complete picture."
+RQM-001 Same filter operating transnationally: Finland as instance of an OECD-level structural condition
+These are not the same statement. They are formulations — derived from different analytical frameworks, at different levels of abstraction, across physical, market, institutional, and transnational domains, and now also healthcare — that describe the same underlying structural condition. Caveat: all papers, including WP-016, are authored within the same institute applying the same underlying framework (H-4b, ITT). "Independent" here means independently developed domain analysis, not independent authorship or independent methodology invention — see Scope and Falsification below.
+WP-016 is the first paper in the corpus to draw the analogy explicitly within its own text: "The analogy to ACI's energy analysis is precise." This is the framework's author recognising the framework's own fit in a new domain — a within-programme observation, not an external or independent confirmation. It is included here as evidence that the pattern is legible enough to be named without prompting, not as evidence that it is real. It also adds an element not previously stated with equal clarity: the incentive structure does not merely fail to reward the right action — it actively penalises it. A welfare area that achieves integration and reduces future care episodes receives less future funding. In the energy domain, the equivalent is WP-008's allocation bias: investing in stability-providing infrastructure yields less political visibility than attracting consumption-binding investment.
+## [kohta: § §02 · What the Condition Is] §02 · What the Condition Is
+The structural condition the corpus identifies can be stated precisely:
+Each actor relevant to the compound failure is behaving rationally within its institutional mandate. The compound problem falls structurally between those mandates. No mechanism converts the future cost of inaction into a present cost for any identifiable actor.
+The condition has three components that must be present simultaneously.
+I — Structural gap between mandates. The compound problem is not located within any single institutional mandate. Fingrid governs grid stability, not industrial location policy. TEM governs investment attraction, not system endurance. THL produces registry data, Kela compensation data — no institution governs their intersection, where integration failure materialises.
+II — Rational inaction at the individual level. Each actor who could initiate a response faces a cost structure in which inaction is individually safe and action is individually costly. The structure of the game — not the character of the players — produces this equilibrium. CN-003 names it precisely: the binding constraint is the absence of a structure that makes individual action collectively safe.
+III — Institutional liability absent (H-4b). No formal mechanism — regulatory requirement, audit mandate, procurement standard — makes non-adoption of available corrections legally or administratively consequential before a forcing event. In some cases, as WP-016 documents, the existing incentive structure actively penalises correct action.
+## [kohta: § §03 · What This Means for the Corpus] §03 · What This Means for the Corpus
+WP-004 documented that three independent analytical paths converged without having been designed to do so. This memo documents that the convergence extends across the full corpus — in five distinct domains — and that the convergence was not constructed; it was discovered.
+The convergence does not prove that the structural condition is real. The most parsimonious alternative explanation is not a remote edge case: all of these papers are authored by the same institute, applying the same pre-built analytical framework (H-4b, ITT, εₜ) to different domains. A single framework applied repeatedly will tend to find the same shape it was built to find — this is the default expectation, not a high-threshold exception a critic must labour to demonstrate (see Scope and Falsification, item 1 and 3 below). What would distinguish genuine structural convergence from framework-artefact convergence is independent replication — different analysts, different frameworks, applied to the same domains — which has not yet been attempted. Until that replication exists, this finding should be read as internally consistent, not externally validated.
+At the level of basic intuition, a coordination failure in which no actor internalises future costs is a known phenomenon — common-pool problems, coordination failure, principal–agent chains, systemic risk without a risk owner. What is new here is not the discovery of the phenomenon but its operationalisation as measurable instruments: H-4b as a formal condition, εₜ as a computational metric, ITT as a temporal threshold, Monte Carlo as quantified cascade probability. The corpus does not merely name the problem — it measures it.
+## [kohta: § §04 · What This Memo Does Not Explain — Open Research Question] §04 · What This Memo Does Not Explain — Open Research Question
+This is SM-007's explicit boundary.
+Documenting convergence is not the same as explaining it. The memo demonstrates that the same structural condition appears in five domains. It does not explain why .
+RQM-001 provides a partial answer for the energy and infrastructure domains: the same transnational capital filter produces the same outcome across different countries without coordination. Three layers — capital architecture, risk-pricing standards, and policy diffusion — systematically exclude stability-providing infrastructure from investment portfolios across OECD systems. This explains why the energy and infrastructure domains converge. It does not explain healthcare, defence, or institutional decision theory.
+A complete explanatory model would require answers to two questions this memo leaves open:
+What common mechanism produces the same structural condition in independent domains?
+Where should the structural condition not appear — and why?
+Without negative cases and an explanatory model, the convergence remains a strong synthesis but not a closed theory. This is SM-007's correct epistemic status. A structural test that attempts to predict where convergence should not appear — and either succeeds or fails explicitly — is the natural next step.
+## [kohta: § §05 · ACI's Own Limit] §05 · ACI's Own Limit
+WP-013 Annex 2 names the diagnostic institution's structural constraint: ACI can identify and publish the convergence. It cannot fill the gap the convergence identifies. Filling the gap requires an actor willing to take ownership of a problem that currently has no institutional home.
+ACI faces its own version of what it diagnoses. The diagnosis is complete. The causal reach of a diagnostic institution ends at publication. Whether anyone acts on it is a question the framework can identify but not resolve — which is itself an instance of the structural condition this memo describes.
+This memo exists because naming the convergence is itself a diagnostic step. The convergence has been visible in the corpus since WP-004 and was recognised by the corpus itself in WP-016. Stating it as a unified claim does not resolve the structural condition — but it forecloses the option of engaging with the findings as if they were independent, disconnected analyses rather than a coherent diagnostic whole.
+## [kohta: § Scope and Falsification] Scope and Falsification
+SM-007 would require substantial revision if any of the following is demonstrated:
+The individual analytical findings share a common methodological bias that produces convergent results artefactually across the five domains.
+A mechanism exists that currently converts future failure probability into present institutional cost for relevant actors, and was not identified in the corpus.
+The convergent finding is specific to ACI's analytical programme rather than reflecting a structural property of the systems being diagnosed.
+Systematic examination of negative cases — domains where the structural condition should appear but does not — shows the convergence does not hold predictively.
+Aether Continuity Institute · aethercontinuity.org
+SM-007 · Version 0.3 · April 2026 · Domain D-1 · D-3 · D-4
+Synthesis Memo · Open Working Draft · Subject to revision
+ACI publications are released as open working drafts. Documents are iterative and may evolve as analytical understanding develops. Authority derives from analytical transparency rather than institutional mandate.
+NAVIGATION — Where to go from here
+The risk in detail:
+DA-001 — Finland Pre-Shortage Phase 2026–2032 ·
+WP-001 — Duration Adequacy ·
+TN-009 — Seven Concurrent Pressures
+Why decisions arrive too late:
+CN-007 — Kolmen vajeen malli ·
+WP-003 — Institutional Termination Time ·
+SM-013 — Social Contract Calibration
+The allocation cascade:
+CN-024 — PPA as Invisible Allocation ·
+SM-014 — Allocation Cascades ·
+SM-012 — Fiscal Sustainability
+What can be built:
+TN-001 — Local Energy Node ·
+TN-022 — CAPEX Model ·
+Phase Diagram Tool
+===== LOPPU: papers/sm-007-convergence-finding.html =====
+
+===== TIEDOSTO: papers/cn-004-distributed-optimisation.html =====
+## [kohta: alku] (otsikkoa edeltävä teksti)
+Aether Continuity Institute · Concept Note
+ACI Concept Note No. 004 · Domain D-3 · D-4
+Distributed Optimisation Without a Common Function:
+Structural Property or Correctable Fault?
+On the conditions under which democratic systems produce systemic degradation — and when they do not
+Version 0.3 · Date April 2026 · Domain D-3 · D-4
+Cross-references WP-003 (ITT) · WP-005 · SM-006 · SM-007 · CN-003 · DT-001 · DT-002
+Status Open Working Draft · Subject to Revision
+§ 01
+## [kohta: § The Question This Note Addresses] The Question This Note Addresses
+SM-007 identifies a structural condition that repeats across all ACI diagnostic domains: no actor owns the whole. Energy governance, institutional decision capacity, computing continuity, situational awareness — in each domain, the same finding emerges. The system has the required resources, knowledge, and formal authority. What it lacks is a common objective function that would allow these to be jointly optimised.
+This note asks a harder question than SM-007 poses. SM-007 documents the condition. CN-004 asks whether it is a correctable coordination fault or a structural property of democratic governance — and whether the distinction matters for what ACI's diagnostic work implies.
+The answer has direct consequences for how the DT-series decision tracks are interpreted. If the condition is a correctable fault, the DT-series documents viable intervention points. If it is a structural property, the DT-series documents the conditions under which degradation accelerates — and the intervention question becomes different in kind.
+§ 02
+## [kohta: § Two Interpretations of the Same Observation] Two Interpretations of the Same Observation
+The observation that "no actor owns the whole" supports two analytically distinct interpretations.
+Interpretation I — Coordination fault. Actors share a common underlying interest (system continuity, collective welfare, long-run stability) but fail to act on it because information is asymmetric, incentives are misaligned, or coordination structures are absent. The implication: correct the information asymmetry, realign the incentives, build the coordination structure. CN-003's pool method is an example of this class of solution — it does not change actors' interests, it changes the structure that prevents them from acting on interests they already share.
+Interpretation II — Structural property. Actors do not share a common underlying interest in any operationally meaningful sense. They face permanently conflicting time horizons, value hierarchies, and accountability structures. A democratic system cannot impose a single objective function without ceasing to be democratic — pluralism is the condition of legitimacy, not an obstacle to it. The implication: the absence of common optimisation is not a defect. It is the system's design. Degradation is not a failure mode to be corrected. It is an emergent property of the design under specific conditions.
+CN-003 implicitly adopted Interpretation I. This note argues that both are partially correct, and that the critical analytical question is not which interpretation is right but under what conditions each applies.
+§ 03
+## [kohta: § Three Theses] Three Theses
+Thesis A
+A democratic system cannot possess a single global optimisation function without breaking the pluralism that constitutes its legitimacy. This is not a failure of design. It is the design.
+Thesis B
+The absence of a common function produces a permanent network of local optimisations operating across different time horizons, value hierarchies, and accountability structures. This network is not chaotic — it is structured by institutions, markets, legal frameworks, and electoral cycles. But it does not converge on a system-level optimum. It converges on a series of local equilibria that are collectively sub-optimal at the system level.
+Thesis C — The Critical Thesis
+Systemic degradation begins not when local optimisation is present (it is always present) but when the accumulation rate of structural stress exceeds the system's correction rate. This is a threshold condition, not a continuous variable.
+Theses A and B describe a permanent condition. Thesis C identifies when that permanent condition becomes a crisis. The distinction matters because it implies that democratic systems are not inherently degrading — they are degrading under specific parameter conditions that can, in principle, be measured.
+§ 04
+## [kohta: § The Operational Parameter: A > R] The Operational Parameter: A > R
+WP-003 introduces Institutional Termination Time (ITT) as the point at which institutional response latency exceeds the remaining system adjustment horizon. CN-004 extends this concept to the political level by introducing a two-variable framework.
+Let A = accumulation rate of structural stress (per unit time)
+Let R = correction rate of institutional response (per unit time)
+Let D = detection delay (time between threshold crossing and political recognition)
+Stable regime: R ≥ A
+Degradation regime: A > R, D variable
+Latent degradation: A > R, D high — system appears stable
+Spiral regime: A >> R, D endogenous and growing, R declining — signal degradation loop
+The degradation regime is not a failure of democracy. It is democracy operating under parameter conditions where the design's structural properties — distributed authority, short electoral cycles, pluralist accountability — systematically produce slower correction rates than the problems it faces accumulate.
+The D variable is the analytically critical addition. A system can operate in the A > R regime for extended periods without political recognition — not because the degradation is not occurring, but because the mechanisms that would make it visible have not yet transmitted the signal. Threshold crossing precedes political recognition. The interval between them is D.
+D is not fixed. It is determined by the quality and accessibility of monitoring infrastructure, the incentives of actors to surface inconvenient information, and the institutional capacity to interpret signals that are available but not yet acted upon. A system with high D fails before it is known to be failing.
+This reframes the diagnostic function of data infrastructure. ENTSO-E's Transparency Platform is not merely an analytical resource. It is a D-reduction mechanism: it makes physically real stress accumulation politically visible before it produces a forcing event. The −3,300 MW adequacy gap documented in SM-006 was physically present in 2026 operational data. Its political recognition — if it occurs — will arrive later. D is the gap between those two moments. The size of D in Finnish energy governance is currently unmeasured but nonzero.
+The spiral regime introduces a third dynamic that makes it qualitatively distinct from simple degradation: D is endogenous. As A > R persists, the institutions responsible for monitoring and transmitting signals are themselves subject to resource constraints, mandate erosion, and legitimacy loss — the same dynamics that reduce R. This produces a signal degradation loop:
+A > R → system weakens
+↓
+monitoring infrastructure weakens
+↓
+D grows
+↓
+A > R remains unrecognised longer
+↓
+cumulative A increases further
+This is why systems in the spiral regime collapse apparently suddenly: D has grown large enough that political recognition arrives only after A has already exceeded the correctable threshold. The collapse is not sudden. The recognition is. The distinction between these two is precisely what D measures — and what independent monitoring infrastructure exists to reduce.
+Three observations follow that are not obvious from the coordination-fault interpretation:
+First, a system can appear stable for extended periods while operating in the A > R regime, because D is high. The problem is not invisible because it does not exist. It is invisible because the monitoring and transmission mechanisms that would make it politically actionable have not reduced D sufficiently.
+Second, the transition from stable to degradation regime is not produced by a single shock. It is produced by the crossing of a threshold that may occur gradually, without a discrete triggering event, and — critically — without political recognition at the moment it occurs. Threshold crossing precedes political recognition.
+Third, recovery from the spiral regime requires not merely policy correction but institutional capacity restoration and D reduction simultaneously. Standard policy interventions fail not because they are analytically wrong but because the institutional capacity to implement them has degraded, and the monitoring infrastructure that would reveal this has not produced actionable political signal.
+§ 05
+## [kohta: § Empirical Calibration: Four Finnish Cases] Empirical Calibration: Four Finnish Cases
+The A > R framework is operationally meaningful only if A and R can be estimated, even approximately, in specific cases. Four Finnish cases provide this calibration.
+Domain
+Accumulation (A)
+Correction (R)
+Regime
+Energy adequacy
+−3 300 MW gap growing; SE1 buffer shrinking 2027–2030 as Stegra/HYBRIT absorb 3–4 GW
+Capacity mechanism decision: 5–10 year implementation. CHP conversion: 2–4 years per node if initiated now
+A > R confirmed. SM-006 empirical validation. Gap is present; correction has not been initiated
+Infrastructure debt
+~€50 billion accumulated; growing faster than maintenance budgets allow
+Fiscal consolidation 8–11 billion required simultaneously; investment budgets compressed
+A > R probable. Constraint collision: correction budget and accumulation competing for same fiscal space
+Institutional oversight (VTV)
+Mandate erosion: audit volume reduced, tone softened during Yli-Viikari tenure 2016–2021
+Parliamentary intervention April 2021 — five years after initiation of misuse
+A > R confirmed, then corrected. Correction required an external forcing event (media exposure). Self-correction did not occur
+Demographic/welfare ratio
+Dependency ratio deteriorating continuously; healthcare and pension obligations growing
+Structural reforms require multi-decade implementation; electoral cycles 4 years
+A > R structural. Time horizon mismatch is constitutive, not incidental
+The VTV case is analytically the most instructive because it did not remain in the A > R regime indefinitely. It was corrected — but the correction required a forcing event external to the institutional system itself. The oversight body that should have self-corrected could not, because the mandate blindspot (discussed in §06) prevented internal correction. Parliamentary intervention became necessary — and the five-year lag between initiation and correction is a direct measurement of R in that domain.
+§ 06
+## [kohta: § The Mandate Blindspot: A Structural Feature of Oversight Design] The Mandate Blindspot: A Structural Feature of Oversight Design
+The VTV case introduces a concept that the coordination-fault interpretation cannot adequately explain: the mandate blindspot .
+VTV's institutional mandate is to audit the use of public funds. Its legitimacy derives from independence from the entities it audits. This independence is a design feature — an oversight body that is institutionally subordinate to its subjects cannot perform its function. But the same independence that enables oversight externally creates a gap internally: VTV's own conduct is not subject to VTV's oversight. The auditor of the state is not audited by the state's audit mechanism.
+This is not a design error. It is an inherent property of any hierarchical oversight architecture. Every oversight body has a domain it cannot observe from within. The question is not whether mandate blindspots exist — they always do — but whether the system is designed to compensate for them through external oversight, rotation of mandate, or other mechanisms.
+In the Finnish case, VTV's external oversight rested formally with the Parliamentary Chancellor's Office and substantively with the eduskunta's kansliatoimikunta. The oikeusasiamies issued a formal notice in December 2020 — four years after the misuse initiated. The eduskunta acted in April 2021. The total lag: five years.
+During those five years, the internal correction mechanism was structurally unavailable. The external correction mechanism required the accumulation of evidence sufficient to trigger parliamentary attention — a threshold that was crossed only after media exposure. The system corrected, but only after the mandate blindspot had been filled by journalism rather than by institutional design.
+The mandate blindspot is not an anomaly in the Finnish governance structure. It is a recurring feature of hierarchical oversight architectures. Every institution that oversees others has domains it cannot observe from within. This is the structural condition that makes external oversight, investigative journalism, and whistle-blower protections system-critical rather than supplementary.
+§ 07
+## [kohta: § When Local Optimisation Does Not Produce Degradation] When Local Optimisation Does Not Produce Degradation
+Thesis A establishes that distributed optimisation without a common function is a permanent condition of democratic governance. This does not imply that degradation is permanent or inevitable. The Finnish cases above include one partial correction (VTV) alongside three domains where A > R persists. This requires explanation.
+Distributed optimisation produces stable outcomes — or at least does not produce spiral degradation — under three conditions that can be specified independently of any common objective function.
+Condition 1: Time horizon alignment. When the consequences of local optimisation decisions fall within the same electoral or accountability cycle as the decisions themselves, actors face the costs of their choices before those costs are distributed to others. Short-horizon problems (municipal budgeting, annual procurement) tend to self-correct more readily than long-horizon problems (energy infrastructure, demographic transition) because the feedback loop closes within the decision-maker's tenure.
+Condition 2: Consequence visibility. When the downstream consequences of accumulating stress are observable before they become irreversible, political systems can mobilise correction. Energy price spikes are visible; infrastructure debt is not. The VTV correction was triggered by media visibility of conduct that was institutionally invisible. Consequence visibility is a precondition for democratic correction — not because voters or politicians are more rational with visible information, but because visible consequences create political costs for inaction that invisible consequences do not.
+Condition 3: Correction capacity intact. The spiral regime (A >> R with feedback) requires that A > R persists long enough to degrade the institutions responsible for correction. When correction institutions remain functional — as they did in the VTV case — correction is available even if delayed. When correction institutions themselves are subject to mandate blindspots, resource constraints, or legitimacy erosion, the corrective capacity degrades alongside the problem it should address.
+Finnish energy governance currently satisfies none of these three conditions cleanly. The consequences fall outside the electoral cycle (2027–2032 window versus 4-year terms). The consequences are partially invisible (adequacy margins are specialist knowledge, not public experience). And the correction institutions — Energiavirasto, TEM, Fingrid's regulatory relationship — have not initiated the mechanisms (DT-001 capacity mechanism, DT-002 CHP conversion programme) that the diagnostic record indicates are required.
+§ 08
+## [kohta: § What This Implies for ACI's Diagnostic Position] What This Implies for ACI's Diagnostic Position
+CN-004's framework has one implication that requires explicit statement, because it modifies the interpretation of the DT-series documents and of SM-006's empirical validation.
+The DT-series (DT-001 through DT-006) documents decision tracks — specific institutional decisions that, if taken, would shift the energy system's parameter conditions. DT-001 (capacity mechanism) and DT-002 (CHP phase-out management) are the most time-sensitive. SM-006 confirms empirically that the system is already operating at its adequacy boundary.
+CN-004's framework implies that the question is no longer whether the decisions are analytically justified — SM-006 settles this. The question is whether the A > R dynamic has already degraded the correction institutions to the point where the decisions, even if taken, cannot be implemented within the intervention window.
+This is a different diagnostic question from the one the DT-series was designed to answer. It is the question of whether the system is in the degradation regime or the spiral regime — whether correction is delayed or whether correction capacity itself is impaired.
+ACI does not currently have sufficient evidence to distinguish between these two regimes in Finnish energy governance. The evidence available — the absence of DT-001 and DT-002 initiation despite the SM-006 diagnostic — is consistent with both. It is consistent with a system that is slow but correctable; it is also consistent with a system whose correction institutions are themselves subject to the A > R dynamic through fiscal constraint, political cycle misalignment, and mandate blindspots in energy regulatory design.
+The diagnostic priority for the next iteration of DA-001 is to distinguish between these two regimes by tracking not only whether decisions are taken but whether the institutional capacity to implement them — regulatory staff, financing mechanisms, procurement processes — is being maintained or degraded.
+§ 09
+## [kohta: § What CN-004 Does Not Claim] What CN-004 Does Not Claim
+Three limitations are explicit.
+First, this note does not claim that democratic systems are structurally inferior to centralised alternatives. The structural property identified in Thesis A — the impossibility of a single global optimisation function — is also the property that prevents large-scale authoritarian errors. Distributed optimisation under A ≤ R produces resilient, self-correcting systems. The diagnostic concern is specific to conditions where A > R persists across multiple domains simultaneously — the compound stress condition that ACI's founding documents identify as the primary risk configuration for small states in the 2026–2032 period.
+Second, CN-004 does not propose a remedy. Identifying the threshold condition (A > R) and the structural features that produce it (time horizon misalignment, consequence invisibility, correction capacity degradation) is a diagnostic contribution, not a policy recommendation. CN-003's pool method addresses the coordination-fault interpretation. CN-004 establishes the structural-property interpretation. Both are required for a complete diagnostic picture. Neither is a prescription.
+Third, the A > R framework, while operationally meaningful, is not yet precisely measured in any of the four Finnish cases above. The calibration in §05 is qualitative. A rigorous quantitative version would require systematic measurement of accumulation rates (in domain-specific units) and correction rates (in implementation time and institutional capacity units) — a programme of empirical work beyond this note's scope.
+## [kohta: § What CN-004 Does Not Claim / CN-004 — Core Diagnostic Finding] CN-004 — Core Diagnostic Finding
+Democratic governance cannot possess a single global optimisation function without breaking the pluralism that constitutes its legitimacy. This is a structural property, not a correctable fault. However, this property does not imply inevitable degradation. Systemic degradation occurs when accumulation rate (A) exceeds correction rate (R) and persists long enough to degrade the correction institutions themselves. The diagnostic question for ACI's applied work is not whether local optimisation is present — it always is — but whether A > R has crossed from the degradation regime into the spiral regime, where correction capacity is itself subject to the same dynamic it is meant to address. In Finnish energy governance, this distinction is not yet empirically resolved. Resolving it is the diagnostic priority of the next DA-001 iteration.
+## [kohta: § What CN-004 Does Not Claim / Cross-references] Cross-references
+WP-003 Institutional Termination Time — foundational ITT concept
+WP-005 Compound Stress and System Continuity — Finland 2025–2035
+SM-006 The 2028 Convergence Window — empirical validation
+SM-007 The Convergence Finding — no common function across domains
+CN-003 The Pool Method — coordination-fault interpretation and structural solution
+DT-001 Capacity Mechanism — Finland
+DT-002 CHP Phase-out — Finland
+DA-001 Finland Pre-Shortage Phase 2026–2032
+Aether Continuity Institute · aethercontinuity.org
+Concept Note CN-004 · April 2026 · v0.1
+Domain D-3 · D-4 · Open Working Draft · Subject to Revision
+Version History
+v0.1 · Apr 2026 · Initial draft
+v0.2 · Apr 2026 · D (detection delay) added as third parameter; ENTSO-E as D-reduction mechanism; "threshold crossing precedes political recognition" formalised
+v0.3 · Apr 2026 · D endogeneity formalised; signal degradation loop added to spiral regime; collapse/recognition distinction clarified
+===== LOPPU: papers/cn-004-distributed-optimisation.html =====
+
+===== TIEDOSTO: papers/wp-013-two-scenarios-2030.html =====
+## [kohta: alku] (otsikkoa edeltävä teksti)
+Working Paper No. 013 · Domain D-1 · D-3 · D-4
+Open Working Draft · Subject to Revision
+Domain: D-1 · D-3 · D-4
+Status: Open Working Draft
+Version: 1.1 · April 2026
+Language: EN
+Two Scenarios 2030: Institutional Delay as Structural Risk
+Scenario A: nothing changes. Scenario B: three corrections initiated. The central finding is not technical — it is temporal.
+Abstract
+This paper constructs two scenarios for Finland's energy system and household conditions in 2030 — one in which institutional action continues at historical tempo, one in which three identified corrections are initiated in 2026–2027. The scenarios are not forecasts; they are diagnostic constructions whose purpose is to make visible what happens if the current trajectory continues, and what changes if specific corrections are made. The paper's central finding is that even if all three corrections are initiated immediately, their full effect will not be visible by 2030. Finnish energy policy's historical decision-to-implementation horizon is 3–8 years. Institutional delay is not an obstacle to be overcome — it is itself a structural risk that must be named and planned for.
+Cite as: Aether Continuity Institute (ACI). (2026). Two Scenarios 2030: Institutional Delay as Structural Risk. ACI Working Paper No. 013, v1.1. Available at: https://aethercontinuity.org
+Cross-references: WP-001 · WP-003 · WP-005 · DA-001 · DA-003 · SP-001 · CN-003 · DA-007
+## [kohta: § 01] Why scenarios
+ACI's diagnostic work identifies a weakness common to most warning analyses: they describe the problem but leave the decision-maker without a reference point for comparison. A warning without an alternative scenario is difficult to act on — it can be acknowledged, filed, and deferred.
+This paper addresses that gap directly. Two scenarios are constructed for the same point in time — 2030 — under two different institutional conditions. The comparison makes the cost of delay visible in concrete terms rather than abstract warnings.
+Two conditions govern the construction of both scenarios.
+First: institutional delay is treated as a structural constant, not a variable. Finland's historical energy policy decision horizon — from identified need to implemented change — is 3–8 years. OL3 (Olkiluoto Unit 3) required two decades from decision to operation. The Loviisa fuel supplier change took years despite being a familiar process. Electricity market law changes typically require 3–5 years from proposal to entry into force. This is not a criticism; it is a structural feature of a governance system designed for consensus, legal certainty, and democratic participation. The scenarios take it as given.
+Second: both scenarios use the same stress test. SP-001's calibrated P99 event: 72 hours of low-wind conditions, outdoor temperature −15°C, data centre load at full capacity. This is a rare but not exceptional winter configuration. It occurs with low frequency but non-negligible probability in any given year.
+## [kohta: § 02] Shared baseline: Finland 2026
+Both scenarios depart from the same observed conditions.
+Electricity consumption has grown from 83 TWh toward a projected 100–110 TWh as data centres and electrification of heating expand demand. Wind power now supplies over 50% of domestic production in annual terms but is fully weather-dependent. Hourly price volatility is among the highest in the EU. Dispatchable reserve has not grown proportionally to demand. Battery storage covers approximately 9.5 minutes of Black Period energy requirements.
+District heating prices have risen 32% since 2020. Electricity transmission fees are rising as infrastructure investment programmes are passed through to consumers. Energy poverty affects 7–15% of households by multi-indicator measures. For the lowest income quintile, necessity costs — housing, energy, food — already consume approximately 57% of net income.
+Sovereign debt interest payments are 3.5 billion euros and rising. Defence expenditure is 6.7 billion euros and committed to grow substantially. The budget deficit is 12 billion euros. Fiscal space is historically narrow.
+Kuopio Energy's SMR project is in pre-feasibility phase. No investment decision has been made, no plant supplier selected, no contingency plan published. Haapaniemi 2 approaches operational end-of-life in 2035. Fingrid reports adequacy in megawatts. Not in megawatt-hours. No institution owns the complete picture.
+v1.2 update — 17 June 2026: Regional press reports a named site (Sorsasalo, north of Kallansillat) and a paired industrial project: an eSAF synthetic aviation fuel plant (VolagHy, Sweden, ~€750M, 50,000 t/year, drawing CO₂ from Mondi Powerflute's flue gas) whose waste heat would feed an 11–13 km undersea pipe into the same district heating network the SMR would serve. The SMR concept is now specified as two 50 MWe (thermal, per Steady Energy's LDR-50 design) reactors, ~€200M, sited underground on 2–3 hectares. This is closer to a named project than the pre-feasibility status above, but remains pre-investment-decision: "suunnitellaan" (is being planned), not a confirmed FID. FC-3's condition (named supplier by 2027) is not yet met — Steady Energy has held the pre-feasibility agreement since December 2023, but no supplier selection or investment decision is confirmed as of this writing.
+Critically, no public plan addresses the electricity-side gap this update flags directly: Haapaniemi 2's own electrical capacity (~65 MWe per Kuopio's municipal renewable energy review; ~90 MWe for the combined Haapaniemi 2+3 site) disappears regardless of whether the SMR project proceeds, because the SMR is heat-only by design. The one confirmed flexibility measure is a 60 MWe electric boiler at Haapaniemi — demand-side load conversion, not generation replacement. This is the predicted outcome stated two paragraphs below materialising in the primary named case this paper has tracked since v1.0.
+v1.1 baseline update — 10 April 2026: Fingrid's grid planning director confirmed publicly that datacenter connection queries now total over 50,000 MW — exceeding three times Finland's current peak consumption of 15,000 MW. Realistic materialisation estimate: approximately 10% of queries, equating to ~5,000 MW of additional sustained load. This is the first official public quantification of the S5 load lock-in signal identified in DA-001. The "nothing changes" characterisation of Scenario A requires a partial correction: Fingrid's statement represents a reactive disclosure rather than a structural commitment, and does not constitute initiation of K1. The baseline is otherwise unchanged. See DA-001 v1.2 §03 and CN-003 §04 (T4 trigger) for diagnostic implications.
+## [kohta: § 03] Scenario A — Nothing changes (2030)
+Scenario A · Institutional tempo unchanged
+Scenario A describes the trajectory if institutional action continues at historical tempo. This is not a scenario of failure or negligence — it is the expected outcome of rational sectoral governance in the absence of coordinating intervention.
+## [kohta: § 03 / Energy system 2030] Energy system 2030
+Wind capacity has grown as planned. Annual production balance approaches self-sufficiency when measured at year-level aggregation — this is the figure most commonly reported. At hourly resolution, the University of Oulu (AIMS Energy 2025) finds Finland electricity-negative 61% of annual hours.
+Dispatchable reserve has not grown proportionally. Global supplier backlogs have extended delivery timelines; equipment ordered in 2026 is not fully operational by 2030. Kuopio Energy's SMR is, in the best case, in licensing review awaiting a parliamentary in-principle decision. Haapaniemi 2 approaches end-of-life. Electric boilers are the likely interim measure — adding thermal load to the electricity system precisely at winter peak.
+v1.3 update — May 2026: TEM's energy department director-general Riku Huttunen confirmed publicly that the ministry is preparing an investment support instrument explicitly for "säävarma tuotanto" (weather-resilient production) and CHP plants, with the model to be specified by autumn 2026 — not yet legislated, not yet costed, not yet scoped by eligibility. The same column states the ministry's own assessment directly: "vesivoima [ja] pumppuvoima" alone do not suffice and "vahvat kantaverkon ulkomaanyhteydetkin auttavat vain tiettyyn rajaan asti" (strong international interconnections help only up to a point) — an explicit confirmation, from inside the ministry selecting instruments, of the dispatchable-reserve shortfall this scenario describes. Whether the autumn instrument closes the gap in time for the 2030 window this paper tracks is, as of this writing, unknown.
+System endurance under SP-001's stress test: approximately 38 hours at current reserve extension rate. The 72-hour threshold has not been reached.
+## [kohta: § 03 / The stress event — January 2030] The stress event — January 2030
+An anticyclone settles over Scandinavia. Wind output falls below 10% of installed capacity. Outdoor temperature reaches −17°C for three consecutive days. Data centres draw at full capacity under contractual priority arrangements.
+Spot prices rise. In the first hours, 50–100 €/MWh. As reserves approach limits and import capacity saturates — the same anticyclone affects neighbouring systems — prices reach 200–500 €/MWh for a period of hours. Households on spot-indexed contracts face heating bills that are multiples of normal. Households on district heating face no immediate bill shock — their annual statement arrives months later.
+## [kohta: § 03 / Household conditions 2030] Household conditions 2030
+For the lowest income quintile, necessity costs consume 65–70% of net income. Fixed-price electricity contracts carry 15–18 cent/kWh risk premiums. District heating bills are 30–50% higher than 2025. Real wages are flat or marginally negative in real terms. No effective automatic protection mechanism exists for district heating captive customers.
+## [kohta: § 03 / Diagnostic state — Scenario A] Diagnostic state — Scenario A
+DA-001 trajectory: Concern moving toward Danger. Signals S1–S5 all active. The intervention window has narrowed substantially but has not closed. Political pressure is growing but institutional response follows the crisis rather than anticipating it.
+## [kohta: § 04] Scenario B — Three corrections initiated (2030)
+Scenario B · Three corrections initiated 2026–2027
+Scenario B describes the trajectory if three identified corrections are initiated in 2026–2027. They are not complete by 2030 — institutional delay is a constant, not a variable. But they have changed the system's trajectory and diagnostic state.
+Correction 1 · Diagnostic transparency
+What changes: Fingrid publishes, alongside conventional capacity figures, an endurance index — how long the system can sustain Black Period conditions at current reserve configuration. Updated quarterly. Independently validated by VTT or equivalent.
+What this does not change: Not a single megawatt of installed capacity. Not a single euro of investment.
+What changes as a result: The political frame shifts. When the headline figure changes from "Finland has sufficient electricity" to "Finland's system endurance under winter stress is 38 hours against a 72-hour target", the pressure to act has a specific, measurable reference point. Three gas turbine projects are under procurement — not yet operational, but the pipeline exists. System endurance has risen to approximately 52 hours through combined measures.
+Correction 2 · Demand flexibility contracts extended
+What changes: Fingrid's reserve market contract requirements include a duration tier for the next contracting cycle. Industrial demand flexibility commitments specify a graduated structure: 0–6 hours (rapid response), 6–24 hours (process ramp-down), 24–48 hours (minimum load). Longer commitment earns better pricing — resolving the commercial resistance point.
+What this does not change: Installed industrial capacity. The total megawatts available for demand response.
+What changes as a result: Usable duration of existing demand flexibility shifts from 4–6 hours to 36–48 hours. Under SP-001 parameters, this is equivalent to approximately 800 MW of effective additional reserve capacity in duration terms. The first 36 hours of the stress event are substantially more manageable.
+Correction 3 · Municipal contingency plan obligation
+What changes: The Energy Authority requires district heating operators in municipalities above 50,000 residents to publish a contingency plan for scenarios in which the primary production source is delayed or unavailable for more than 24 months. The plan must specify: a named alternative supply arrangement covering the equivalent of a 72-hour Black Period, a cost impact assessment for each scenario, and an annual update requirement submitted to the Energy Authority or to Luova (the national licensing and supervisory authority, which assumed AVI's functions on 1 January 2026).
+What this does not change: Production infrastructure. The underlying technology risk of SMR pre-commercialisation.
+What changes as a result: Kuopio Energy has publicly documented its Plan B. Residents know what happens if the SMR is delayed. Political pressure is targeted rather than diffuse. Luova has visibility across all major district heating operators nationally — the first time this systemic view has existed.
+## [kohta: § 04 / The stress event — January 2030, Scenario B] The stress event — January 2030, Scenario B
+Same anticyclone. Same temperature. Same data centre load. But the system's starting position is different.
+Endurance under the stress test: approximately 52 hours. Industrial demand flexibility is active for 36 hours. The critical window — when the system is most exposed — is compressed from 72 hours to approximately 20 hours at the tail.
+The price spike still occurs. The 72-hour event still exceeds the system's reserve duration. But the severity and duration of the most acute phase is substantially reduced. Social and economic costs are lower — not zero.
+## [kohta: § 04 / Household conditions 2030 — Scenario B] Household conditions 2030 — Scenario B
+Household energy costs are identical to Scenario A. The three corrections address system endurance and institutional transparency — not the distributional asymmetry. DA-007 identifies the instrument gap that Scenario B's corrections do not fill. District heating captive customers are not specifically protected by any of the three corrections.
+This is the critical asterisk in Scenario B: system-level resilience has improved. Household-level protection has not changed. These require different instruments.
+## [kohta: § 04 / Diagnostic state — Scenario B] Diagnostic state — Scenario B
+DA-001 trajectory: Concern — movement toward Danger has slowed. Signals S1 and S2 remain active; S3 has weakened as diagnostic transparency creates political accountability; S4 and S5 unchanged. The intervention window is wider than in Scenario A. The structural problem has not been solved — the conditions for solving it have been created.
+## [kohta: § 05] Scenario comparison
+Indicator
+Scenario A
+Scenario B
+System endurance (hours)
+~38
+~52
+P99 critical hours/year (est.)
+6.5
+~3–4
+Political awareness of endurance gap
+Low
+Moderate — indexed, public
+Household protection (district heating)
+Unchanged
+Unchanged *
+Contingency plans published
+Absent
+Mandatory — major operators
+Intervention window
+Narrow
+Wider
+Dispatchable capacity pipeline
+Slow
+Active — not yet operational
+* The asterisk is the central diagnostic gap: the three corrections improve system-level resilience but do not address household distributional exposure. Household-level protection requires DA-007's instrument conditions — a separate policy action not covered by these three corrections.
+## [kohta: § 06] Institutional delay as the primary finding
+Institutional delay is not a governance failure. It is a structural property of systems designed for democratic accountability, legal certainty, and consensus. It becomes a risk when the physical window for low-cost intervention closes faster than the institutional decision cycle allows.
+Finland's energy policy history is consistent on this point. The decision to build OL3 was made in 2002; the reactor reached commercial operation in 2023 — twenty-one years. The Loviisa fuel supplier change was a known process that took years. Haapaniemi 2's replacement requirement has been visible for years; no alternative is operationally confirmed.
+WP-003's Institutional Termination Time framework identifies the point at which institutional response latency exceeds the remaining system adjustment horizon. When that ratio reaches zero, governance loses causal influence over outcomes regardless of whether resources, authority, or analytical knowledge remain intact.
+Core finding
+If all three corrections are initiated in 2026, their full effect will not be visible by 2030. The value of initiating them now is not that they solve 2030 — it is that they create the preconditions for 2033 to be materially better than it would otherwise be. The system is slow. The argument for acting now is precisely that the system is slow.
+## [kohta: § 07] Falsification conditions
+FC-1 If dispatchable capacity — gas turbines, equivalent — is delivered to Finland at scale by 2029, Scenario A's endurance estimate is conservative and the comparison narrows.
+FC-2 If Sweden or Norway add substantial new winter production capacity accessible under BP-3 Nordic stress conditions, cross-border redundancy is better than WP-001 assumes.
+FC-3 If Kuopio Energy's SMR receives an investment decision and a named supplier by 2027, the Haapaniemi contingency risk is lower than this paper reflects.
+FC-4 If household behaviour adaptation — heat pumps, flexibility, relocation — is faster than historical patterns suggest, the passive household model understates resilience.
+FC-5 If a political party or movement obtains material electoral support on an explicit household energy cost platform, Scenario A's "nothing changes" assumption is wrong. The French Yellow Vest movement (2018) and the UK energy bill crisis (2022) demonstrate that political dynamics can produce system-level change in months rather than years. ACI's model does not capture this dynamic — it is an explicit limit of the diagnostic framework.
+## [kohta: § 08] What follows
+Three gaps remain unaddressed by this paper.
+The first is household-level protection. The comparison table's asterisk — that neither scenario changes household distributional exposure — is the central unresolved problem. DA-007 specifies the structural conditions for an effective instrument. The instrument itself has not been designed or proposed. That requires a political actor with ownership of the problem.
+The second is the behavioural model. Households in this paper are passive — they absorb costs but do not adapt. This is analytically tractable but probably wrong. People move, reduce consumption, change heating systems, vote differently. A dynamic model of household response would change both scenarios.
+The third is political agency. Who initiates the three corrections? Who calls Fingrid's leadership? Who writes the Energy Authority's guidance letter? Who schedules the cross-ministry coordination? WP-013 identifies what needs to happen. It does not identify who makes it happen. That is DA-008's question.
+"Initiating three corrections today does not rescue 2030. It builds the preconditions for 2033 to be materially different from what it would otherwise be. The system is slow. That is precisely why the argument for acting now is strongest."
+Annex 1 · Institutional map — three corrections and their owners
+## [kohta: § Version 1.1 · Updated for 1 January 2026 administrative reform] Version 1.1 · Updated for 1 January 2026 administrative reform
+Note: The Regional State Administrative Agencies (AVI) were dissolved on 1 January 2026. Their relevant functions transferred to the new National Licensing and Supervisory Authority (Luova). This map reflects the post-reform institutional landscape.
+Institution
+K1
+K2
+K3
+Role
+Fingrid Oyj
+●●●
+●●●
+·
+Owner K1 + K2
+Energy Authority
+●●
+●●
+●●●
+Owner K3; supporter K1+K2
+TEM (Ministry of Economic Affairs)
+●
+●
+●●
+Guidance authority — all three
+Luova (Nat. Licensing & Supervisory Authority)
+·
+·
+●●
+Alternative owner K3; national mandate
+Association of Finnish Local Authorities
+·
+·
+●
+Political influence on municipalities
+●●● owner · ●● supporter/alternative · ● influencer
+## [kohta: § Version 1.1 · Updated for 1 January 2026 administrative reform / Minimum path to initiate all three corrections] Minimum path to initiate all three corrections
+Step Action Timeline
+1
+Fingrid board or CEO decides to publish endurance index alongside conventional capacity reports
+3–6 months · K1 initiated
+2
+TEM issues guidance letter to Fingrid, Energy Authority, and Luova on endurance reporting, reserve contract duration requirements, and contingency plan obligations
+Concurrent · K1 confirmed, K2 and K3 mandated
+3
+Energy Authority issues interpretation on district heating operator reporting — contingency plan obligation added to annual reporting requirements, coordinated with Luova
+6–12 months · K3 initiated
+4
+Fingrid's next contracting cycle includes duration-tier requirement for demand flexibility — graduated structure (0–6h / 6–24h / 24–48h) with corresponding price differentiation
+12–18 months · K2 initiated
+Four actions. Three institutions. No new legislation required.
+Realistic timeline if initiated in 2026: K1 visible 2027 · K3 visible 2027–2028 · K2 visible 2028–2029.
+Full effect: 2028–2030.
+Annex 2 · ACI's own limit: the ITT of a diagnostic institution
+This paper identifies what needs to happen and names who must act. It does not — cannot — be the actor that makes it happen.
+ACI operates as a diagnostic institution: it identifies, names, and publishes. It does not advocate, lobby, or implement. This position has protected the analytical credibility of the work. It is also a structural limit that this paper must name explicitly.
+The three corrections described above are low-cost, technically straightforward, and address a documented gap. They have not happened because no institution owns the compound problem. ACI can document the gap. It cannot fill it. Filling the gap requires a political actor willing to take ownership of a problem that currently has no institutional home.
+An analysis that identifies the coordination gap but cannot produce the coordinator faces its own version of the ITT condition: the diagnostic is complete, the action window is open, and the causal link between diagnosis and action depends on a variable — political agency — that the diagnostic institution cannot supply.
+This annex is included not as an admission of failure but as an honest accounting of what a diagnostic institution can and cannot do. The value of the diagnosis does not depend on ACI being the one to act on it. It depends on someone acting on it.
+Aether Continuity Institute · aethercontinuity.org
+WP-013 · v1.1 · April 2026
+Domain D-1 · D-3 · D-4
+Open Working Draft · Subject to revision
+===== LOPPU: papers/wp-013-two-scenarios-2030.html =====
+
+===== TIEDOSTO: papers/wp-015-residualization-spot-markets.html =====
+## [kohta: alku] (otsikkoa edeltävä teksti)
+ACI · WP-015 · Working Paper · Domain D-1 / D-4 · Open Working Draft
+Version 1.0 · April 2026
+Domain D-1 Energy · D-4 Market
+Status Open Working Draft
+Basis WP-001 · WP-008 · TN-001
+Relates to TN-002
+Keywords elasticity collapse · PPA · residual market · CHP · hydro
+Residual Market Failure and Elasticity Collapse in the Nordic Power System
+Three Simultaneous Structural Shifts and Their Interaction in the 2027–2030 Window
+The Nordic power system is undergoing three simultaneous structural shifts: demand is rigidifying as data centres, hydrogen industry, and heat pumps add inflexible baseload; the thermally-correlated supply buffer is eroding as combined heat and power capacity is phased out and hydropower becomes stochastically unreliable; and the spot market is residualising as long-term power purchase agreements pre-allocate capacity before market clearing. This paper maps the interactions between these shifts and argues that their combination produces an elasticity collapse — not a gradual stress increase but a structural discontinuity in the system's capacity to redistribute load under compound stress. The empirical window for the first full-stack test is 2027–2030. The implications for EPP instrumentation are identified.
+This paper describes structural dynamics derivable from publicly available data and peer-reviewed research. It does not predict specific outages, price levels, or investment outcomes. Quantitative estimates are indicative and subject to the data limitations noted in §7. The phase transition map in §5 is conceptual: empirical calibration of trigger thresholds requires data not currently available in public sources.
+Note (30 Sep 2026): WEM’s EPP v3 has been frozen as a historical index and is no longer the instrument’s headline measure; current state is read from the five-question card (frequency, depth, duration, correction, import source). EPP values and thresholds in this document were computed with the earlier formula — before WEM 2.15.0 FirmShare also included Norwegian reservoir filling (hydro_RF), so they are not reproducible. WEM development history →
+## [kohta: § 01] System Definition: Three Simultaneous Structural Shifts
+The conventional frame for Nordic energy analysis treats supply and demand as separately evolving, with the spot market as the mechanism that balances them. This frame is becoming inadequate. Three structural shifts are now advancing simultaneously, and their interaction — not any single shift — is the analytical object of this paper.
+Shift I
+Demand Rigidification
+Data centres: rigid 24/7 baseload
+HYBRIT / PtX: semi-rigid industrial
+Heat pumps: thermally-coupled peak
+Electric boilers: price-responsive buffer
+Estimated 2030 addition: +3–10 GW
+Shift II
+Buffer Erosion
+CHP reduction: thermally-correlated supply disappears
+Hydropower: seasonal profile shifts, variability increases
+SE1 (North Sweden): transitions from reserve to competitor
+Direction: all three move simultaneously
+Shift III
+Market Residualisation
+PPA penetration increases: capacity locked before spot clearing
+Spot becomes residual balancing market, not price discovery
+Price signal weakens precisely when stress is highest
+Nordic PPA volume: −43% 2021→2024, then rising
+System-level observation
+The Nordic power system is transitioning from a state in which supply, demand, and market mechanism are independently adjustable to a state in which all three are simultaneously constrained. This is not a quantity problem — it is a structural problem of reduced systemic degrees of freedom.
+## [kohta: § 02] Demand Rigidification: Three Load Categories
+New demand entering the Finnish and Nordic system is not homogeneous. Its structural significance depends on its flexibility profile — how it responds to price signals, temperature, and system stress. Three categories are analytically distinct.
+Rigid baseload (data centres). Data centre demand is effectively constant across all hours, price levels, and weather conditions. Fingrid reports that over 50% of new consumption connection inquiries are related to data centres, with total query volume exceeding 37 GW against a current system peak of approximately 15–16 GW. The realistic 2030 addition is 1–3 GW of continuous load — but the pipeline is structurally larger than any prior demand category in Finnish energy history.
+Semi-rigid industrial baseload (hydrogen and steel). Hydrogen-based steelmaking (HYBRIT/SSAB, Stegra/Boden) and power-to-X processes require large continuous electricity inputs. SSAB's current production target requires approximately 15 TWh per year; full LKAB conversion requires up to 55 TWh per year. These processes have hydrogen storage that allows limited temporal shifting, but the annual energy volume is structurally fixed. This is not demand response — it is a new form of industrial baseload with constrained but non-zero flexibility. As of mid-2026 both anchor projects have slipped: Stegra closed a €1.4 bn rescue financing round in June 2026 with its project timeline explicitly "under review" (continuous operation now targeted for late 2026 at the earliest), and LKAB's HYBRIT demonstration plant at Gällivare faces permitting delay, with LKAB itself naming a postponed production start as a possible scenario. Several other European hydrogen-steel projects have been curtailed or cancelled. The SE1 industrial demand trajectory is therefore directionally clear but materially slower than earlier plans — which widens, rather than narrows, the uncertainty on when the 2027–2030 window's demand-side conditions are actually met. One characterisation caveat: the hydrogen storage built into these projects (e.g. HYBRIT's Svartöberget rock-cavern store) is designed to produce hydrogen when power is cheap and draw on stored hydrogen when the electricity system is strained — so at full scale this load is partly a system-stress buffer, not purely rigid. The dispatchability of that buffer at commercial scale is unknown (see §7, Q-2).
+Thermally-coupled demand (heat pumps and electric boilers). Heat pumps and electric boilers are the load category most directly relevant to WP-001's Black Period scenario. Their consumption is temperature-correlated: it peaks precisely when the system is already under maximum stress from cold weather. Fingrid reports over 3 GW of electric boiler capacity entering the system. Heat pump additions are estimated at 300–800 MW additional winter peak demand. Unlike data centres, these loads have theoretical price-response capability — but this capability depends on functioning spot market price signals, which is exactly what Shift III undermines.
+Category Est. 2030 (GW) Flexibility Temperature correlation
+Data centres 1–3 None None
+HYBRIT / PtX 1–5+ Low (hydrogen buffer) None
+Heat pumps 0.3–0.8 Moderate High (amplifies peaks)
+Electric boilers 1–3 High (price-responsive) High
+Total 3–10
+The critical structural observation is that the rigid and semi-rigid categories (data centres, HYBRIT) add load that cannot respond to stress signals, while the thermally-coupled categories (heat pumps, boilers) add load whose theoretical flexibility is contingent on functioning price signals — which Shift III is simultaneously degrading.
+## [kohta: § 03] Buffer Erosion: CHP, Hydropower, and SE1
+The supply-side structural change is the simultaneous weakening of three buffering mechanisms that historically provided the Nordic system with resilience under compound stress.
+Combined heat and power reduction. CHP is not merely a generation source — it is a thermally-correlated buffer. Its output is highest precisely when heating demand is highest, creating a natural covariance between supply and demand that stabilises the system during cold periods. EU ETS and Fit-for-55 policy frameworks are structurally reducing CHP capacity: ACI's backtest data shows the CHP share of Finnish production falling from approximately 36% (2022) to 25% (2024). When CHP is removed, the temporal alignment between peak demand and thermal supply disappears. The Firm Share metric (ECI) may remain nominally adequate while its timing properties deteriorate — a form of structural misrepresentation that requires explicit acknowledgement in instrumentation.
+Hydrological regime change. Finnish and Nordic hydropower faces a climate-driven regime shift that is already observable in SYKE monitoring data. The mechanism is not simple reduction in total water availability but a seasonal profile shift: warmer winters cause mid-winter snowmelt, reducing the spring inflow peak that traditionally fills reservoirs, and increasing summer drought probability through higher evapotranspiration. SYKE's 2025 report documents this explicitly: spring floods are decreasing, summer and early autumn low water levels are increasing, particularly in southern and central Finland. Jääskeläinen et al. (2018) modelled the 1939–1942 reference drought and found it would reduce Finnish hydropower generation by approximately 42%. Crucially, the same study found that the energy security impact increases dramatically when drought simultaneously affects Norway and Sweden — reducing import availability precisely when domestic generation is lowest. Nature Energy (2024) confirms the European dimension: low spring inflows can quadruple summer and winter energy drought risks through compounding dynamics.
+A further dimension concerns the correlation structure between Norwegian and Finnish hydrological conditions. The probabilistic FS framework (§9) cannot simply widen the distribution of hydro availability — it must account for the fact that climate change may alter the covariance between Nordic hydropower regions. If Fennoscandian droughts become more spatially synchronised under warming (a pattern consistent with large-scale atmospheric blocking events), then Norway's reservoir system loses its role as an independent buffer relative to Finnish conditions. This is not captured in treating each system's hydro availability as independently variable: the relevant risk is not variance in isolation but the joint distribution under compound stress conditions, where the correlation between Norwegian reservoir depletion and Finnish import need may approach one precisely when it most needs to be low.
+SE1 transition from reserve to competitor. Northern Sweden (SE1) has historically functioned as Finland's primary import reserve — a structurally surplus region whose excess hydropower was available during Finnish stress events. This role is changing. HYBRIT's Luleå facilities, Stegra's Boden plant, Northvolt's Skellefteå operations, and associated green hydrogen production are collectively adding thousands of megawatts of new industrial demand to SE1. This is no longer only a scenario inference: Svenska kraftnät's own Network Development Plan 2026–2035 (based on its KMA 2024 market analysis) projects that exports from SE1 to Finland, while continuing to 2029, weaken sharply from 2028, and that net imports from Finland to SE3 reverse to marginal SE3 net exports in 2029 as prices equalise. Sweden's total net electricity exports are projected to fall from 52 TWh (2025) to 16 TWh (2029). More consequentially for adequacy, Svenska kraftnät's resource-adequacy assessment states that, in the long-term scenarios, Sweden is wholly dependent on flexibility and on imports from neighbouring countries during periods of system stress — i.e. SE1's neighbour is planning to be a net importer in precisely the conditions under which Finland would call on it. The transmission asymmetry identified in Aalto (2024) — 1,500 MW from SE1 to Finland but only 1,100 MW in the reverse direction — means this transition has asymmetric consequences for Finnish energy security: reduced import capacity cannot be compensated by increased export capability. The direction is firm; the timing is conditional on the northern industrial build-out, which Svenska kraftnät itself reads as postponing (see §2).
+Buffer erosion — structural observation
+All three buffering mechanisms move in the same direction simultaneously. CHP removal eliminates thermally-correlated supply. Hydrological regime change makes hydropower stochastically unreliable in the seasons when it is most needed. SE1 industrialisation converts a structural import reserve into a competitive consumption region. None of these individually constitutes a crisis. Their simultaneity is the analytical object.
+A structural response to CHP erosion has been demonstrated at commercial scale in Sweden. Stockholm Exergi — the municipally owned energy company of Stockholm — made its final investment decision in March 2025 to add BECCS to its Värtaverket biomass-fired CHP plant, operational 2028, capturing 800,000 tonnes of biogenic CO₂ annually. The conversion preserves the CHP node's thermally-correlated supply function while adding carbon credit revenue that makes continued operation financially superior to closure. This is the architectural inverse of Finland's current trajectory: where Finland is losing CHP capacity without replacement, Sweden is converting CHP capacity rather than retiring it. The financing instruments — EU Innovation Fund, EIB, national reverse auction, voluntary carbon market — are available to Finnish municipal CHP operators. See SM-003 §4.1 and DT-002 §6.
+## [kohta: § 04] Spot Market Residualisation: Allocation Failure
+The Nordic spot market (Nord Pool) performs two functions: price discovery and capacity allocation. These functions depend on a sufficiently large fraction of total capacity being offered into the market at marginal cost. When a significant share of capacity is pre-committed through long-term contracts — PPAs, bilateral industrial agreements, intra-group transfers — the market operates on the residual volume only. It discovers the price of marginal capacity, not of the system.
+The evidence for increasing PPA penetration is mixed but directional. AFRY data shows the Nordic PPA market declined 43% from 2021 to 2024, reflecting post-crisis uncertainty. However, the industrial offtake agreements being signed by SSAB/Vattenfall, Stegra, and hyperscale data centre operators represent a qualitatively different form of capacity commitment — not corporate PPAs for renewable certificates but structural energy supply agreements that remove capacity from spot dispatch.
+The consequence is not simply higher average prices. The consequence is that the price signal becomes structurally unreliable as a stress indicator precisely when stress is highest. When cold, still weather creates peak demand and simultaneously reduces wind generation, the spot price should signal scarcity and activate demand response (flexible boilers, industrial curtailment). If the capacity that would normally respond to this signal is contractually committed to other users, the signal may activate nothing — or activate too late. It should be noted that SP growth has multiple potential causes: weather correlation patterns, transmission constraints, reserve market changes, and intraday market dynamics. PPA penetration is not a direct or sole explanation for SP growth — it is one structural factor that increases the conditional probability of residual market failure specifically under stress alignment conditions (peak demand coinciding with minimum buffer availability). The distinction matters for instrumentation: SP alone does not identify residualisation; residualisation would manifest as SP episodes that are structurally longer and less price-responsive than meteorological conditions alone would predict.
+This is TN-001's structural observation reformulated at the market level: the system is not short of physical capacity — it is short of dispatchable capacity. The distinction matters because the conventional policy response (build more capacity) does not address a residualisation problem. Residualisation requires either reversing PPA penetration (unlikely given industrial investment logic) or creating capacity mechanisms that ensure a minimum volume of dispatchable capacity regardless of contractual commitments.
+## [kohta: § 05] Interaction I — Peak Alignment: The Black Period Test
+The first interaction between the three shifts is straightforward in structure but extreme in consequence. Under compound winter stress conditions — cold weather, low wind, and constrained interconnection — all demand categories simultaneously peak while all supply buffers simultaneously weaken.
+Cold weather activates heat pump and electric boiler demand (thermally-coupled load). Low wind eliminates the variable generation that has grown substantially in recent years. Data centres and HYBRIT continue their constant draw regardless of system state. Hydropower may be at seasonal low if preceded by dry autumn. SE1 is occupied by industrial demand. The spot market attempts to allocate the residual — but if residualisation has advanced, the signal reaches only a small fraction of total system capacity.
+WP-001 defines the Black Period as a multi-day event requiring 168 hours of sustained adequacy — not a single-hour peak. The EPP framework's W168 window was designed precisely to capture this duration dimension. The interaction described here explains why the 2027–2030 window is the first empirical test of the full-stack hypothesis: it is the first period in which all three shifts are simultaneously active at meaningful scale.
+Interaction I — finding
+Peak demand, minimum supply buffering, and market allocation failure are now correlated events — they are driven by the same meteorological conditions. This correlation is the structural feature that distinguishes the 2027–2030 system from prior historical configurations. Previous stress events (2002–2003 drought, 2022 price crisis) involved one or two simultaneous stressors. The 2027–2030 configuration involves all three.
+## [kohta: § 06] Interaction II — Thermal Decoupling: Why ECI Is Insufficient
+The Endurance Compatibility Index measures the share of production from firm sources (nuclear plus hydropower). A high ECI indicates that production is not dominated by variable sources. This is a valid indicator — but it is insensitive to the temporal dimension that CHP removal introduces.
+CHP is thermally correlated: its output is highest when ambient temperature is lowest and heating demand is highest. It is not firm in the sense of being weather-independent, but it is firm in the sense of being reliably available precisely when the system most needs additional supply. When CHP is removed, ECI may remain stable (nuclear output is unchanged; hydropower is unchanged in expectation) while the system's ability to respond to peak demand deteriorates. The index correctly describes the average composition but incorrectly implies stability under stress.
+The relevant variable is not ECI itself but the covariance between firm supply availability and peak demand intensity. CHP provided positive covariance — higher when needed. Its removal reduces this covariance toward zero or makes it negative (if variable renewables, which have negative covariance with cold still weather, fill the gap). This is not captured in current EPP instrumentation and represents a structural limitation of the framework as currently specified.
+## [kohta: § 07] Interaction III — Elasticity Collapse: Drift to Jump
+The combined effect of the three shifts produces what this paper terms elasticity collapse: the system's capacity to redistribute load in response to stress signals falls abruptly rather than gradually as structural thresholds are crossed.
+In a drift regime, stress accumulates gradually and the system responds through marginal adjustments — price-induced demand reduction, import activation, reserve dispatch. Each incremental increase in stress produces a proportional response. This is the regime for which current EPP instrumentation was designed.
+In a jump regime, the response function becomes discontinuous. A small increase in stress — one additional cold day, one SE1 line constraint, one further PPA commitment — crosses a structural threshold and produces a disproportionate system response. The threshold is determined by the three-dimensional interaction of demand rigidity, supply buffer availability, and market depth. Below the threshold the system behaves normally. Above it, the normal redistribution mechanisms have been consumed and no equivalent replacement exists.
+Conceptual Phase Transition Map — Trigger Dimensions (qualitative; empirical calibration required)
+Axis I
+DC + PtX load (GW continuous) — as this increases, the fraction of demand that cannot respond to price signals grows. Threshold: unknown; plausible range 3–5 GW additional continuous load.
+Axis II
+Hydro reliability factor (dimensionless, 0–1) — as hydrological variability increases, the effective firm capacity of hydro decreases. Current value: approximately 0.85–0.90. Climate trajectory: declining.
+Axis III
+CHP residual capacity (GW) — as CHP is phased out, the thermally-correlated supply buffer disappears. Current trajectory: 36% of production in 2022 → 25% in 2024, continuing.
+Boundary
+The jump-regime boundary is the surface in this three-dimensional space at which elasticity collapse occurs. Its location is not empirically determined. This paper identifies its existence and the variables that define it. Calibration requires data not currently available in public sources (Q-1).
+Central finding
+The Nordic power system is transitioning from a drift regime — in which stress accumulates gradually and is absorbed through marginal adjustments — to the vicinity of a jump regime boundary, in which structural thresholds determine whether the system's redistribution capacity is available or exhausted. The 2027–2030 window is the first period in which the three trigger dimensions may simultaneously approach the boundary. EPP instrumentation designed for drift-regime behaviour will systematically underestimate stress in the jump-regime vicinity.
+## [kohta: § 08] Empirical Window: 2027–2030
+The argument of this paper is not that collapse is certain or imminent. It is that 2027–2030 constitutes the first window in which all three structural shifts are simultaneously active at system-relevant scale — and therefore the first empirical test of whether elasticity collapse is a realistic outcome or a theoretical artefact.
+The timing basis is as follows. Data centre capacity additions currently in Fingrid's connection queue are expected to begin materialising in 2026–2028. HYBRIT's demonstration plant in Gällivare is targeted for 2026; SSAB has committed to large-scale fossil-free steel from 2026 onward. SE1 industrial demand growth from these and other projects is projected to be significant by 2028. CHP capacity reduction is already underway and will continue through this period. Hydrological regime change is already observable in SYKE monitoring data and is not reversible on this timescale.
+The winter of 2028–2029 is the first instance where all variables are plausibly in the range that defines the jump-regime boundary. This does not make it the date of a predicted event — it makes it the date of the first full-stack structural test.
+## [kohta: § 09] Implications for EPP Instrumentation
+The EPP framework as currently specified (v3+T) measures demand pressure, firm share, wind risk, and stress persistence. These are appropriate variables for a drift regime. Three modifications are identified as necessary to extend the framework to the jump-regime vicinity.
+Probabilistic Firm Share. FS currently treats hydropower as a deterministic component. Under hydrological regime change, hydro availability is a distribution rather than a fixed value. FS should be extended to FS(p) — the firm share at a given probability level — with the distribution width as an explicit uncertainty indicator. This requires seasonal reservoir monitoring data, which is available from SYKE and Nord Pool but not currently integrated into EPP calculation.
+Distribution-aware Stress Persistence. SP currently measures the fraction of hours in which consumption exceeds production by more than 5%. This correctly captures mean stress level but is insensitive to the tail risk structure that elasticity collapse introduces. A distribution-aware SP would track not only the fraction of stress hours but their serial correlation — the probability of extended stress sequences (168h blocks). This is the direct instrument for detecting the transition from drift to jump behaviour.
+Market depth indicator. EPP does not currently include a variable for spot market depth or PPA penetration. The development of such an indicator faces a fundamental data problem: PPA contract details are not public. Proxy approaches using spot price volatility relative to consumption (DS 105 / DS 124) and the long-run trend in price–consumption correlation are identified as candidates for investigation, but are not yet operational. This is noted as a development requirement rather than a current capability.
+Hydrological change is the only dimension among those discussed in this paper that is currently measurable through public Finnish data sources (SYKE, vesi.fi). The remaining structural variables — PPA penetration, SE1 industrial demand, CHP covariance loss — require either new data sources or proxy development.
+## [kohta: § 10] Open Questions
+Q-1: Phase transition boundary calibration. The conceptual phase transition map in §7 identifies three trigger dimensions but does not specify the threshold values. Empirical calibration requires data on PPA penetration rates, SE1 industrial demand growth, and CHP covariance properties that are not currently available in public sources.
+Q-2: HYBRIT flexibility characterisation. The paper treats HYBRIT as semi-rigid industrial baseload. The actual flexibility of hydrogen storage as a demand-response mechanism at full commercial scale is not determined — HYBRIT's pilot results suggest 25–40% cost reduction from hydrogen buffering, but the system-level dispatchability at scale is unknown. This affects Axis I calibration in the phase transition map.
+Q-3: SE1 surplus erosion timeline. The transition of SE1 from structural surplus to competitive consumption depends on the pace of industrial electrification relative to renewable capacity additions. The Stegra financing crisis introduces uncertainty that may delay SE1 demand growth. The timeline remains open.
+Q-4: Capacity mechanism design. The analysis implies that residualisation cannot be addressed by supply additions alone — it requires mechanisms that ensure dispatchable capacity regardless of PPA commitments. Finland lacks a capacity mechanism. Fingrid has called for one. The design of such a mechanism and its interaction with the structural dynamics described here is not addressed in this paper.
+## [kohta: § 11] References
+WP-001 ACI. Duration Adequacy and the Black Period Hypothesis. aethercontinuity.org.
+WP-008 ACI. Institutional Allocation and Continuous Load Commitments. aethercontinuity.org.
+TN-001 ACI. Duration-Capable Local Energy Node: Structural Properties. aethercontinuity.org.
+R-01 Jääskeläinen et al. (2018). Energy security impacts of a severe drought on the future Finnish energy system. Journal of Environmental Management , 217, 542–554.
+R-02 Veijalainen et al. (2019). Severe Drought in Finland: Modeling Effects on Water Resources and Assessing Climate Change Impacts. Sustainability , 11(8), 2450.
+R-03 van der Meer et al. (2024). Temporally compounding energy droughts in European electricity systems with hydropower. Nature Energy .
+R-04 Aalto University (2024). Analysis of Severe Scarcity Situations in Finland's Low Carbon Electricity System Until 2030. Energies , 17(23), 5928.
+R-05 Larsen et al. (2025). Trends in hydroclimate extremes: how changes in winter affect water storage and baseflow. Hydrology and Earth System Sciences , 29, 4055–4080.
+R-06 SYKE (2025). Ilmastonmuutokseen sopeutuminen vesihuollossa. Suomen ympäristökeskuksen raportteja 28/2025.
+R-07 Fingrid (2026). Sähkön riittävyys — neuvottelukunnan katsaus. March 2026.
+R-08 AFRY Management Consulting (2025). Power Purchase Agreements and their use in the Nordics. Nordic Energy Research.
+R-09 SSAB/LKAB/Vattenfall (2021). HYBRIT: First hydrogen-reduced sponge iron. Press release.
+R-10 IEA (2022). Norway and Finland Climate Resilience Policy Indicators. International Energy Agency.
+Further reading — Fiction
+The Broken Furnace
+Pertti Vatanen and the Elasticity Collapse · Ten chapters, an epilogue, and an official response · North Savo, 2029–2032
+ACI Working Paper No. 015 · Residual Market Failure and Elasticity Collapse in the Nordic Power System
+Version 1.0 · April 2026 · Domain D-1 / D-4 · Open Working Draft · Subject to revision
+Version 1.1 · Jun 2026 · §2 and §3 updated: SE1 reserve-to-competitor claim anchored to Svenska kraftnät NUP 2026–2035 (KMA 2024) figures and resource-adequacy assessment; HYBRIT/Stegra status updated for 2026 delays; hydrogen-storage dual-role caveat added. No change to the elasticity-collapse thesis.
+Aether Continuity Institute · aethercontinuity.org
+This document describes structural dynamics derivable from publicly available data and peer-reviewed research. It does not advocate specific investments, policies, or operational decisions.
+Lisäviite — Nøland 2026
+Nøland, Jonas Kristiansen (2026):
+Tuulivoimakritiikki, Affärsvärlden-kolumni. NTNU energiatekniikan professori.
+Kannibalisaatioilmiö, arvottomuusuhka 2035, maantieteellinen keskittyminen
++ siirtokapasiteetin rajallisuus. BCG: tuottajat saavat puolet markkinahinnasta.
+Valtion tuki 210 M€/v 2025. Linjassa ACI:n elastisuuden romahdus -analyysin kanssa.
+Lisäviite — Leskelä / HS 29.5.2026
+Leskelä, Jukka (Energiateollisuus, toimitusjohtaja), Helsingin Sanomat 29.5.2026:
+"Kun sähkön kulutus kasvaa, se johtaa uusien tuulivoimainvestointien käynnistymiseen."
+"Säätövoiman riittävyys pakkastalvina on todellinen ongelma." [Sama artikkeli, ristiriitaiset lausumat.]
+Vastustaa datakeskuksille asetettavia erityisehtoja. Luottaa vapaaehtoisuuteen.
+Myöntää: Fingridillä ei ole mahdollisuutta asettaa liittymiä paremmuusjärjestykseen.
+— Lukijakommentti Geddala (HS 29.5.2026): "Ensi alkuun olisi läpinäkyvyyden vuoksi
+hyvä saada pöytään datakeskusten kanssa tehdyt sähkösopimukset. Kaikki verkon
+parantamisesta johtuvat kulut maksaa jokainen sähkönkäyttäjä yhteisesti."
+"Vahva epäilys on että Leskelä joutuu lähivuosina vastaamaan kiusallisiin
+kysymyksiin tässä jutussa antamistaan lausumista."
+Relevantti: SM-011 (liittymiskiintiö), SM-012 (siirtokustannusten sosialisointi),
+WP-015 (tuulivoiman kannibalisaatio vs. pakkastalven säätövaje).
+===== LOPPU: papers/wp-015-residualization-spot-markets.html =====
+
+===== TIEDOSTO: papers/cn-007-miksi-jarkevaet-asiat-eivat-etene.html =====
+## [kohta: alku] (otsikkoa edeltävä teksti)
+Aether Continuity Institute
+Concept Note · CN-007
+Päiväys 2026-05-01
+Kieli Suomi
+Viittaa SM-009 · SM-010 · WP-019
+CN-007 · Concept Note · Diagnostinen paradigma
+Miksi järkevät asiat eivät etene
+Kolmen vajeen malli selittää miksi teknisesti mahdolliset ja taloudellisesti kannattavat toimet jäävät tekemättä vuodesta toiseen.
+Teollisuusneuvos Tatu Pahkala totesi Talouselämässä (1.5.), että datakeskusoperaattoreiden pitäisi osallistua aktiivisemmin keskusteluun sähköjärjestelmän joustavuudesta. Hän on oikeassa. Mutta hän ei sanonut – eikä virkamiehenä voi sanoa – että työ- ja elinkeinoministeriöllä ei ole välineitä pakottaa tai edes kannustaa siihen. Ne ovat kaupallisia sopimuksia, joissa valtio ei ole mukana. Se on toivomista, ei politiikkaa.
+Tämä ei ole yksittäinen laiminlyönti. Fingrid on varoittanut sähköjärjestelmän kapasiteettivajeesta vuodesta 2021. Kapasiteettimekanismin uudistamista on selvitetty useaan kertaan. Mattilan selvitys datakeskusten joustosta (marraskuu 2025) teki konkreettisia suosituksia. Toukokuuhun 2026 mennessä hallituksen esitystä ei ole annettu, eivätkä Mattilan suositukset ole johtaneet toimiin.
+Kyse ei ole tiedon puutteesta — data on julkista, varoitukset on annettu, selvitykset on tehty. Kyse ei myöskään ole yksittäisten henkilöiden kyvyttömyydestä. Selitys on rakenteellinen.
+## [kohta: § Kolme estettä] Kolme estettä
+Ensimmäinen este on mittausvaje. Kriittistä muuttujaa ei mitata osana päätöksentekoa. Sähköjärjestelmän kestävyyttä pitkittyneessä pakkasjaksossa ei seurata budjettiprosessissa. Julkisen sektorin riippuvuutta yhdysvaltalaisista pilvipalveluista ei ole laskettu yhteen. Datakeskusten todellista arvonmuodostusta Suomessa ei tilastoida systemaattisesti. Kun mittari puuttuu, ongelma ei näy signaalina päätöksentekijöille. Se näkyy vasta kriisinä.
+Toinen este on sanktiovaje. Koska ongelmaa ei mitata, sen pahenemisesta ei seuraa sanktiota. Kapasiteettimekanismin viivästyminen ei vaikuta valtion lainanoton kustannuksiin. Yksittäinen kansanedustaja tai ministeri ei kärsi poliittista haittaa siitä, että hallituksen esitys viivästyy vuodella. Virkamies ei saa huomautusta. Viivyttely on yksittäiselle toimijalle rationaalista — siitä ei seuraa henkilökohtaista hintaa.
+Kolmas este on korjausvaje. Ilman mittaria ja sanktiota korjaus jää usein odottamaan pakottavaa tapahtumaa: sähkökatkoa, äkillistä hinnannousua, ulkomaisen pilvipalvelun katkeamista. Kriisin kautta syntyvä korjaus on aina kalliimpi kuin ennalta ehkäisevä toiminta.
+Esimerkki: kapasiteettimekanismin pitkä valmistelu
+Kapasiteettimekanismin uudistamista on valmisteltu vuodesta 2021. Hallitusohjelmassa 2023 se kirjattiin selvitystarpeena. Keväällä 2024 vastuuministeri arvioi esityksen menevän eduskuntaan "ensi vuonna." Toukokuussa 2026 esitystä ei ole annettu. Samaan aikaan sähköjärjestelmän rakenteelliset muutokset ovat syventyneet: CHP-tuotanto vähenee, datakeskusten jäykkä kuorma kasvaa, SE1-siirtoyhteys on yhä useammin ruuhkautunut. Nämä muutokset tunnetaan, mutta päätöksiä ei synny. Tämä ei ole salaliitto. Se on järjestelmän ennustettava tuotos, kun kukaan ei omista kokonaisvastuuta ja viivyttely on kullekin toimijalle erikseen rationaalista.
+## [kohta: § Mitä tästä seuraa] Mitä tästä seuraa
+Kolmen esteen malli ohjaa siihen, millaiset korjaukset voisivat toimia.
+Mittausvajetta voidaan korjata ottamalla käyttöön uusia indikaattoreita: sähköjärjestelmän vuosittainen kestävyysarvio, julkisen sektorin digiriippuvuuden mittari, datakeskusten arvonmuodostuksen tilastointi.
+Sanktiovajetta voidaan pienentää eduskunnan vuosittaisella raportointivelvoitteella. Kun toimimattomuus tulee näkyväksi, sillä on poliittinen hinta.
+Korjausvajetta voidaan hoitaa sitomalla rahoitus tai luvat ennalta määriteltyihin ehtoihin. Tanskan ennakkohyväksyntämalli (forhåndsgodkendelse) osoittaa, että tämä on mahdollista EU-oikeuden puitteissa.
+Johtopäätös
+Kukaan ei ole tällä hetkellä vastuussa siitä, että Helenin sähkökattilat, Microsoftin datakeskukset, Fingridin siirtorajoitteet ja TEM:n politiikka muodostaisivat toimivan kokonaisuuden. Politiikka ei rakennu toiveille. Se rakentuu instrumenteille, kannustimille ja vastuulle. Kun ongelma on nimetty, voidaan alkaa rakentaa ratkaisua.
+Datakeskusselvityshenkilö Veli-Matti Mattila totesi marraskuussa 2025, että sähkö ei Suomesta lopu. Hän oli todennäköisesti oikeassa — datakeskusten osalta, normaalioloissa. Hänelle ei annettu toimeksiantoa arvioida CHP:n alasajoa, SE1-siirtoyhteyden rakenteellistumista tai näiden kolmen muutoksen yhteisvaikutusta 2027–2030. Orpo tilasi datakeskusselvityksen, ei sähköjärjestelmäselvitystä. Mattila vastasi kysymykseen joka hänelle esitettiin. Kukaan ei esittänyt oikeaa kysymystä. Toimeksiantojen arkkitehtuuri takaa, että kokonaisuutta ei koskaan arvioida kokonaisuutena. Se on maan tapa.
+Laajempi analyysi: SM-009 — The ACI Diagnostic Paradigm · SM-010 — Financing Instruments and Energy Clusters · WP-019 — SGFA Retrofit Pathways
+NAVIGATION — STATE · CAUSE · ACTION
+STATE — What is happening:
+DA-001 — Finland Pre-Shortage 2026–2032 ·
+SM-006 — 2028 Convergence Window ·
+TN-009 — Seven Concurrent Pressures
+CAUSE — Why the system does not respond:
+CN-007 — Kolmen vajeen malli ·
+SM-007 — Convergence Finding ·
+WP-003 — Institutional Termination Time
+ACTION — What can be built:
+TN-001 — Local Energy Node ·
+TN-022 — CAPEX Model ·
+Phase Diagram Tool
+===== LOPPU: papers/cn-007-miksi-jarkevaet-asiat-eivat-etene.html =====
+
+AINEISTO PÄÄTTYY
