@@ -5,6 +5,7 @@ Lähteet (haetaan GitHub Actionsista; työtilan verkko ei salli):
   FRED DCOILBRENTEU (Brent, USD/bbl, päivittäinen; EIA) ja DEXUSEU (USD per EUR)
 Vaiheet:
   kartoita  tulostaa xlsx:n välilehdet ja otsikkorivit (rakenteen selvitys ennen jäsentimen lukitsemista)
+  poimi     Suomen Euro-super 95 ja diesel (verollinen ja veroton) → data/polttoaine/wob-fi.json
 Vain vakiokirjasto (xlsx = zip + XML).
 """
 from __future__ import annotations
@@ -15,6 +16,7 @@ import sys
 import urllib.request
 import xml.etree.ElementTree as ET
 import zipfile
+from pathlib import Path
 
 WOB = "https://energy.ec.europa.eu/document/download/906e60ca-8b6a-44e7-8589-652854d2fd3f_en?filename=Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx"
 FRED = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={}"
@@ -69,6 +71,31 @@ def main(argv=None) -> int:
             t = lataa(FRED.format(sid)).decode()
             rr = t.splitlines()
             print("===", sid, len(rr), "riviä:", rr[:3], rr[-2:])
+        return 0
+    if cmd == "poimi":
+        import json
+        from datetime import date, timedelta
+        b = lataa(WOB)
+        out = {"lahde": "EU Weekly Oil Bulletin, Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx (European Commission, DG ENER)",
+               "sha256": __import__("hashlib").sha256(b).hexdigest(), "maa": "FI", "yksikko": "EUR/1000 l", "sarjat": {}}
+        for nimi, rivit in xlsx_rivit(b):
+            if nimi not in ("Prices wo taxes", "Prices with taxes"):
+                continue
+            otsikot = rivit[0]
+            sarakkeet = {k: v for k, v in otsikot.items() if v and v.startswith("FI_price_") and v.endswith(("euro95", "diesel"))}
+            print(nimi, "sarakkeet", sarakkeet)
+            for col, otsikko in sarakkeet.items():
+                srj = {}
+                for r in rivit[3:]:
+                    try:
+                        d = (date(1899, 12, 30) + timedelta(days=int(float(r.get("A"))))).isoformat()
+                        srj[d] = round(float(r[col]), 2)
+                    except (TypeError, ValueError, KeyError):
+                        continue
+                out["sarjat"][otsikko] = dict(sorted(srj.items()))
+        print({k: (len(v), min(v), max(v)) for k, v in out["sarjat"].items()})
+        Path("data/polttoaine").mkdir(parents=True, exist_ok=True)
+        Path("data/polttoaine/wob-fi.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
         return 0
     raise SystemExit(f"tuntematon {cmd}")
 
