@@ -1,0 +1,25 @@
+{
+ "versio": "0.1",
+ "kuvaus": "Synteettinen testiaineisto. Keksityt paperit P-1, P-2, P-3. Ei liity korpukseen eikä H1:een.",
+ "esiintymat": [
+  {"id": "P1-a", "paperi": "P-1", "kohta": "§ 1", "lainaus": "Siltaa ei rakenneta, koska kukaan ei omista sitä.", "merkinta": "A", "tiedosto": "p1.html",
+   "countertest": {"condition": "Silta rakennetaan ilman omistajaa", "evidence_required": "Rakennuspäätös", "status": "not_tested"}},
+  {"id": "P1-b", "paperi": "P-1", "kohta": "§ 2", "lainaus": "Lautta lopetettiin 2010.", "merkinta": "M", "tiedosto": "p1.html"},
+  {"id": "P1-c", "paperi": "P-1", "kohta": "§ 3", "lainaus": "Nimetään sillalle omistaja.", "merkinta": "A", "tiedosto": "p1.html"},
+  {"id": "P2-a", "paperi": "P-2", "kohta": "tiivistelmä", "lainaus": "Pullonkaula on omistajuus.", "merkinta": "A", "tiedosto": "p2.html",
+   "countertest": {"condition": "", "evidence_required": "", "status": "not_specified"}},
+  {"id": "P2-b", "paperi": "P-2", "kohta": "§ 4", "lainaus": "Lautta lopetettiin vuonna 2010.", "merkinta": "M"},
+  {"id": "P2-c", "paperi": "P-2", "kohta": "§ 5", "lainaus": "Siltaa käyttäisi moni.", "merkinta": "A"},
+  {"id": "P3-a", "paperi": "P-3", "kohta": "§ 1", "lainaus": "Omistajuuden puute ei selitä kaikkea.", "merkinta": "A",
+   "countertest": {"condition": "Silta rakentuu omistajan nimeämisen jälkeen", "evidence_required": "Päätös ja aikajana", "status": "tested", "note": "Ei rakentunut 2 vuodessa; lähde X, 1.1.2026"}}
+ ],
+ "suhteet": [
+  {"id": "s1", "lahde": "P1-c", "kohde": "P1-a", "laji": "depends_on", "perustelu": "Suositus johdetaan diagnoosista", "kirjaaja": "testi", "tarkistaja": "ihminen", "tila": "tarkistettu"},
+  {"id": "s2", "lahde": "P1-a", "kohde": "P1-b", "laji": "depends_on", "perustelu": "Diagnoosin premissi", "kirjaaja": "testi"},
+  {"id": "s3", "lahde": "P2-a", "kohde": "P1-a", "laji": "same_claim", "perustelu": "Sama diagnoosi tiivistettynä", "kirjaaja": "testi"},
+  {"id": "s4", "lahde": "P2-b", "kohde": "P1-b", "laji": "same_claim", "perustelu": "Sama historiallinen väite", "kirjaaja": "testi"},
+  {"id": "s5", "lahde": "P2-c", "kohde": "P1-a", "laji": "related", "perustelu": "Kysyntää, ei riippuvuutta", "kirjaaja": "testi"},
+  {"id": "s6", "lahde": "P3-a", "kohde": "P2-a", "laji": "qualifies", "perustelu": "Rajaa diagnoosia", "kirjaaja": "testi"},
+  {"id": "s7", "lahde": "P2-c", "kohde": "P1-c", "laji": "depends_on", "perustelu": "Hylätty ehdotus", "kirjaaja": "testi", "tila": "hylatty"}
+ ]
+}

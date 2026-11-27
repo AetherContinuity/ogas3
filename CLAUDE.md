@@ -86,6 +86,20 @@ artefakteissa. Kohdistussääntö on lukittu tiedoston docstringissä ennen talv
 muutos = poikkeamakirjaus. Työtilasta haku proxyn kautta (`aci-policy-proxy ?meri=`).
 Vertailutaso: `data/talvimeri/2025-2026.json` (rajapinnan historia alkaa 11/2025).
 
+## Väiterekisteri — vaihe 1 (työkalu, ei sisältöä)
+
+Päätetty 27.11.2026. `tools/vaiterekisteri.py`: skeema, validointi ja kyselyt korpuksen väitteille.
+Määrittely ja hyväksymistesti H1 ovat sivuston repon `SEURANTA.md`:ssä. Yksikkö on väitteen
+esiintymä; `same_claim` yhdistää esiintymät eikä niitä koskaan sulauteta. Validointi erottaa
+KONE-, IHMINEN- ja AVOIN-ehdot; KONE-läpäisy ei kerro sisällön oikeellisuudesta.
+
+- **H1 on suljettu.** Sitä ei käytetä testinä, regressiona eikä täytön apuna ennen vaihetta 3.
+  Testit (`tests/test_vaiterekisteri.py`) käyttävät vain synteettistä aineistoa.
+- **Vaihe 2, sokkotäyttö:** WP-020, CN-008, CN-030, SM-024 poimii toimija, joka ei ole nähnyt H1:tä
+  (Kimi katselmointi-workflown kautta). Syöte, tuotos ja ihmisen korjaukset tallennetaan erikseen
+  ja muuttumattomina. Claude-istunnot, jotka ovat nähneet H1:n, eivät täytä rekisteriä.
+- **Vaihe 3:** vertailu H1:een, tulos kirjataan sellaisenaan.
+
 ## Tunnetut ansat
 
 - `stance.py`:n jäsennin ottaa `{`…`}` ahneesti (poikkeama 2): Sonnet kirjoitti 6/62
