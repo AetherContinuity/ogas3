@@ -1,0 +1,41 @@
+name: datavahti
+
+# Datasarjojen ja lukittujen tiedostojen terveystarkistus (tools/datavahti.py, data/datavahti/sarjat.json).
+# Päivittäin. Tila committautuu vain, kun jonkin kohteen tila muuttuu, ja muutoksesta avataan issue.
+# Ei korjaa mitään. Lokiin vain tilat ja lyhyet syyt.
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  tarkista:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Tarkista
+        run: python3 tools/datavahti.py | tee /tmp/datavahti.txt
+      - name: Muutokset → commit ja issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if ! grep -q '^MUUTOS ' /tmp/datavahti.txt; then
+            echo "ei tilamuutoksia"; git checkout -- data/datavahti/tila.json 2>/dev/null || true; exit 0
+          fi
+          { echo "Datavahti $(date -u +%Y-%m-%d): tilamuutoksia."; echo; echo '```'; grep '^MUUTOS ' /tmp/datavahti.txt; echo '```'; echo; echo "Koko tila: \`data/datavahti/tila.json\`. Vahti ei korjaa mitään; tarkista lähde."; } > /tmp/issue.md
+          gh issue create --title "datavahti: tilamuutos $(date -u +%Y-%m-%d)" --body-file /tmp/issue.md
+          git config user.name  "ogas3-datavahti"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/datavahti/tila.json
+          git commit -m "datavahti: tilamuutos $(date -u +%Y-%m-%d)"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
