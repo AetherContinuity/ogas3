@@ -68,7 +68,7 @@ def main(argv=None) -> int:
     a = ap.parse_args(argv)
     wob = json.loads(Path(a.wob).read_text(encoding="utf-8"))
     brent = {date.fromisoformat(r["Date"]): float(r["Price"]) for r in csv.DictReader(open(a.brent)) if r["Price"]}
-    fx = {date.fromisoformat(r["Date"]): float(r["Value"]) for r in csv.DictReader(open(a.fx)) if r["Country"] == "Euro" and r["Value"]}
+    fx = {date.fromisoformat(r["Date"]): float(r.get("Value", r.get("Exchange rate"))) for r in csv.DictReader(open(a.fx)) if r["Country"] == "Euro" and r.get("Value", r.get("Exchange rate"))}
     tulos = {}
     for nimi, (al, lo) in {"koko": (None, None), "2005-2015": (None, "2016-01-01"), "2016-2026": ("2016-01-01", None)}.items():
         paivat, sarjat, saannot = rakenna(wob, brent, fx, al, lo)
