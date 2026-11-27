@@ -81,12 +81,38 @@ def _erot(a: list[int], b: list[int], n: int) -> list[int]:
     return h
 
 
+def _nb_hanta(havaittu: int, nulli: list[int]) -> float:
+    """P(X ≥ havaittu), kun X ~ negatiivinen binomi, jonka keskiarvo ja varianssi sovitetaan kiertojakaumaan
+    (varianssi ≤ keskiarvo → Poisson). Käytetään, kun kiertoja on liian vähän tarkkaan p:hen (lyhyet sarjat)."""
+    import math
+    K = len(nulli)
+    mu = sum(nulli) / K
+    var = sum((c - mu) ** 2 for c in nulli) / max(1, K - 1)
+    if havaittu <= 0:
+        return 1.0
+    if mu <= 0:
+        return 1.0 / (1 + K)  # nollamallissa ei yhtään osumaa: tarkan menetelmän alaraja
+    if var <= mu * 1.0000001:
+        pmf = [math.exp(-mu)]
+        for k in range(1, havaittu):
+            pmf.append(pmf[-1] * mu / k)
+    else:
+        r = mu * mu / (var - mu); q = r / (r + mu)
+        pmf = [q ** r]
+        for k in range(1, havaittu):
+            pmf.append(pmf[-1] * (k - 1 + r) / k * (1 - q))
+    return max(0.0, min(1.0, 1.0 - sum(pmf)))
+
+
 def arvioi(sarjat: dict[str, list], saannot: dict[str, dict], max_viive: int = 8, kierroksia: int | None = None,
-           min_siirto: int | None = None, alfa: float = 0.05, siemen: int = 1) -> dict:
+           min_siirto: int | None = None, alfa: float = 0.05, siemen: int = 1, p_menetelma: str = "tarkka",
+           parit: list[tuple[str, str]] | None = None) -> dict:
     """Kaikki suunnatut parit A → B. Nollamalli: B:n tapahtumat kierretään siirrolla s, min_siirto ≤ s ≤ n − min_siirto
     (oletus 4·max_viive), A pysyy paikallaan. Oletuksena käydään läpi KAIKKI sallitut siirrot (tarkka, deterministinen
     permutaatiojakauma); kierroksia=K arpoo K siirtoa siemenellä. p = (1 + #{null ≥ havaittu}) / (1 + K).
-    Testisuure per viive. BH-korjaus kaikkien parien ja viiveiden yli.
+    Testisuure per viive. BH-korjaus kaikkien parien ja viiveiden yli (tai annettujen `parit`-parien yli).
+    p_menetelma="nb": p kiertojakaumaan sovitetusta negatiivisesta binomista (poikkeama 1, polttoainekoe 1:
+    lyhyillä sarjoilla tarkan p:n resoluutio 1/(K+1) ei riitä BH:lle). Tarkka p raportoidaan aina rinnalla.
     Huom: yksi A-tapahtuma voi osua viiveellä d useampaan B-tapahtumaan vain, jos B:llä on kaksi tapahtumaa samassa
     vartissa, mikä ei jaksotuksen jälkeen ole mahdollista; histogrammilaskenta on siksi sama kuin yhteiset()."""
     n = len(next(iter(sarjat.values())))
@@ -99,22 +125,25 @@ def arvioi(sarjat: dict[str, list], saannot: dict[str, dict], max_viive: int = 8
     K = len(siirrot)
     tap = {k: aktivaatiot(sarjat[k], saannot[k]) for k in sarjat}
     testit = []
-    for a in sarjat:
-        for b in sarjat:
-            if a == b or not tap[a] or not tap[b]:
+    kaikki = [(a, b) for a in sarjat for b in sarjat if a != b]
+    for a, b in (parit if parit is not None else kaikki):
+        if True:
+            if not tap[a] or not tap[b]:
                 continue
             h = _erot(tap[a], tap[b], n)
             for d in range(max_viive + 1):
                 hav = h[d]
                 nulli = [h[(d - s) % n] for s in siirrot]
-                p = (1 + sum(1 for c in nulli if c >= hav)) / (1 + K)
+                p_tarkka = (1 + sum(1 for c in nulli if c >= hav)) / (1 + K)
+                p = _nb_hanta(hav, nulli) if p_menetelma == "nb" else p_tarkka
                 testit.append({"a": a, "b": b, "viive": d, "yhteisia": hav, "odotettu": round(sum(nulli) / K, 3),
-                               "n_a": len(tap[a]), "n_b": len(tap[b]), "p": round(p, 6)})
+                               "n_a": len(tap[a]), "n_b": len(tap[b]), "p": p if p_menetelma == "nb" else round(p, 6),
+                               "p_tarkka": round(p_tarkka, 6)})
     kierroksia = K
     m = len(testit)
     # Kiertojen määrä rajaa pienimmän mahdollisen p:n (1/(K+1)). Jos se ei alita BH:n tiukinta rajaa
     # alfa/m, mikään testi ei voi läpäistä: tulos olisi tyhjä riippumatta datasta. Raportoidaan.
-    voima_ok = m == 0 or 1 / (1 + kierroksia) <= alfa / m
+    voima_ok = m == 0 or p_menetelma == "nb" or 1 / (1 + kierroksia) <= alfa / m
     jarj = sorted(range(m), key=lambda i: testit[i]["p"])
     raja = 0
     for r, i in enumerate(jarj, 1):
@@ -124,4 +153,4 @@ def arvioi(sarjat: dict[str, list], saannot: dict[str, dict], max_viive: int = 8
     ehdokkaat = [dict(testit[i], tila="ehdokas") for i in sorted(hyv, key=lambda i: testit[i]["p"]) if testit[i]["yhteisia"] > 0]
     return {"n_varttia": n, "tapahtumia": {k: len(v) for k, v in tap.items()}, "testeja": m, "alfa_bh": alfa,
             "kierroksia": kierroksia, "siemen": siemen, "kierrokset_riittavat": voima_ok,
-            "kierroksia_vahintaan": int(m / alfa) + 1, "ehdokkaat": ehdokkaat}
+            "kierroksia_vahintaan": int(m / alfa) + 1, "p_menetelma": p_menetelma, "ehdokkaat": ehdokkaat}
