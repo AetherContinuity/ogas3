@@ -36,11 +36,15 @@ jobs:
         run: |
           mkdir -p data/talvimeri
           python3 tools/talvimeri.py --from "$ALKU" --out "data/talvimeri/$NIMI.json"
+      - name: Vastatesti T1
+        if: always()
+        run: python3 tools/vastatesti.py data/vastatestit/t1.json --out data/vastatestit/t1-tila.json
       - name: Commit
+        if: always()
         run: |
           git config user.name  "ogas3-talvimeri"
           git config user.email "actions@users.noreply.github.com"
-          git add data/talvimeri/
+          git add data/talvimeri/ data/vastatestit/t1-tila.json
           git commit -m "talvimeri: koosteet $(date -u +%Y-%m-%d)" || { echo "ei muutoksia"; exit 0; }
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"

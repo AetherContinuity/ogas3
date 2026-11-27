@@ -1,0 +1,35 @@
+{
+  "id": "T1",
+  "kuvaus": "SM-024 ennakkokirjaus T1, Suomenlahden talvimerenkulku (kirjattu 26.11.2026). Koneellinen käännös tehty 27.11.2026 ennen talven 2026–2027 ensimmäistä koostetta.",
+  "lahdeteksti": "papers/sm-024-pohjoinen-solmu.html § 06 (sivuston repo)",
+  "vaite": "§ 05:n jaettu väylä näkyy Suomen tuonnin jäänmurtaja-avustuksen odotuksina.",
+  "tarkistuspaiva": "2027-06-30",
+  "aineisto": {
+    "tiedosto": "data/talvimeri/2026-2027.json",
+    "activeFrom": "2026-10-01",
+    "haettu_vahintaan": "2027-06-01",
+    "kuukaudet": ["2026-10", "2026-11", "2026-12", "2027-01", "2027-02", "2027-03", "2027-04", "2027-05"],
+    "suodatin": {"merialue": "Suomenlahti"},
+    "min_odotuksia": 30
+  },
+  "vahvistuu_jos_jokin": [
+    {"suure": "mediaani_h", "yli": 2.5},
+    {"suure": "p90_h", "yli": 12}
+  ],
+  "ulkoiset": [
+    {
+      "nimi": "jaatalvi_luokitus",
+      "lahde": "Ilmatieteen laitos, talven 2026–2027 jäätalven luokitus",
+      "tiedosto": "data/vastatestit/t1-ulkoiset.json",
+      "ratkeamaton_jos": ["ankara"],
+      "sallitut": ["lievä", "keskimääräinen", "ankara"]
+    }
+  ],
+  "tilat": {
+    "VAHVISTUU": "jokin kelpaava kuukausi ylittää jonkin rajan, eikä jäätalvi ole ankara",
+    "KUMOUTUU": "vähintään yksi kelpaava kuukausi, mikään ei ylitä, eikä jäätalvi ole ankara",
+    "RATKEAMATON": "ei yhtään kelpaavaa kuukautta, tai jäätalvi luokiteltu ankaraksi (T1:n oma ehto)",
+    "HAVAINTO_PUUTTUU": "aineisto puuttuu, on kelpaamaton tai vanhentunut, tai ulkoinen luokitus puuttuu; ei koskaan vahvistus",
+    "AVOIN": "ennen tarkistuspäivää; välihavainnot raportoidaan, tuomiota ei anneta"
+  }
+}
