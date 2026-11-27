@@ -9,3 +9,5 @@
 - istutettu yhteys viiveellä 1, 60 % tapahtumista kytketty: löytyi 20/20
 
 **Rajoite.** NB-sovitus on approksimaatio. Jos kiertojakauman häntä on raskaampi kuin NB:n, p on liian pieni. Tämä on tarkistettava ehdokkaittain: ehdokas, jonka `p_tarkka` on lähellä 1/(K+1), on havaittu kaikkien kiertojen yläpuolella. Ehdokas, jonka `p_tarkka` on selvästi suurempi, nojaa approksimaation häntään. Tämä raportoidaan.
+
+**Korjaus (28.11.2026, ajon jälkeen).** Testimäärä oli laskettu väärin: sarjoja on 8 (4 suuretta × 2 suuntaa), joten testejä on 8 × 7 × 5 = 280, ei 1 200. BH:n tiukin raja on siis 0,05 / 280 ≈ 0,00018. Sekin on pienempi kuin tarkan menetelmän pienin p (≈ 0,0009), joten poikkeaman peruste pätee edelleen. Kalibrointi tehtiin 16 sarjalla, eli ankarammin kuin varsinainen ajo.
