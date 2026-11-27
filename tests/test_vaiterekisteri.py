@@ -196,3 +196,28 @@ def test_siirto_ei_muuta_syotetta_eika_suhteita(tmp_path):
     assert e["P1-a"] == "A" and e["P1-b"] == "ei_merkitty"
     assert {m["id"] for m in muut if m.get("uusi")} == {"P1-b", "P1-c", "P2-a"}
     assert any(m["id"] == "P2-b" and m["uusi"] is None for m in muut)   # ei tiedostoa → raportoidaan
+
+# --- perusta ------------------------------------------------------------------
+def test_perusta_arvot():
+    r = rek(); r["suhteet"][1]["perusta"] = "rekonstruoitu"; r["suhteet"][0]["perusta"] = "eksplisiittinen"
+    t = vr.tarkista(r)
+    assert t.ok and any("s2: rekonstruoitu depends_on" in x for x in t.ihminen)
+    r = rek(); r["suhteet"][1]["perusta"] = "paatelty"
+    assert any("perusta 'paatelty'" in x for x in virheet(r))
+    r = rek(); r["suhteet"][1]["perusta"] = ""
+    assert any("perusta ''" in x for x in virheet(r))
+    r = rek(); r["suhteet"][1]["perusta"] = None
+    assert vr.tarkista(r).ok
+    r = rek(); r["suhteet"][1]["perusta"] = 3
+    assert any("'perusta' ei ole merkkijono" in x for x in virheet(r))
+
+def test_vain_eksplisiittiset_rajaa_kyselyt(tmp_path, capsys):
+    r = rek(); r["suhteet"][0]["perusta"] = "eksplisiittinen"; r["suhteet"][1]["perusta"] = "rekonstruoitu"
+    f = tmp_path / "r.json"; f.write_text(json.dumps(r), encoding="utf-8")
+    assert vr.main(["ylavirta", str(f), "P1-c"]) == 0
+    kaikki = capsys.readouterr().out
+    assert "P1-c → P1-a → P1-b" in kaikki
+    assert vr.main(["ylavirta", str(f), "P1-c", "--vain-eksplisiittiset"]) == 0
+    rajattu = capsys.readouterr().out
+    assert "P1-c → P1-a" in rajattu and "P1-b" not in rajattu
+    vr.EKSPLISIITTISET = False
