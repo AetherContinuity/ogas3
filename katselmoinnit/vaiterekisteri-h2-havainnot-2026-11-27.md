@@ -23,13 +23,20 @@ Tulkitsija on kontaminoitunut: sama Claude-istunto kirjoitti H1:n ja H2:n. Alla 
 | CN-030:n esiintymiä / sisäisiä suhteita | 4 / 0 | 9 / 4 |
 | related | – | 0 |
 
-Sisäiset ketjut lisääntyivät seitsenkertaisesti, joten muutos toimi siinä, mitä pyyntö pyysi. Ketjuiksi valikoitui kuitenkin lukuja sisältäviä havaintoja ja niiden johtopäätöksiä. CN-030:ssa niitä oli kaksi: luvun 4.1 Väyläviraston selvitys ja negatiivinen nettonykyarvo → luvun 10 "Tornion rajanylitys itsenäisenä virtana ei kanna", sekä luvun 8.3 läpäisyluvut → luvun 10 "Nykyinen läpäisy on lähellä nollaa". Molemmat on merkitty rekonstruoiduiksi, mikä on oikein: johtopäätös ja havainnot ovat eri luvuissa ilman viittausta.
+Sisäiset ketjut lisääntyivät seitsenkertaisesti, joten muutos toimi siinä, mitä pyyntö pyysi.
 
-Selittävät ja rakenteelliset väitteet jäivät pois molemmissa testeissä: H2:n T (miksi kokonaisuutta ei lasketa) ja H1:n F3-ketju (koordinaatio sitova rajoite, sen premissit). Kummassakaan ei ole lukua, johon ketju voisi kiinnittyä.
+**Korjaus 27.11.2026 (ensimmäinen versio oli liian vahva).** Ensimmäinen versio väitti, että ketjut valikoituivat numeerisiin havaintoihin ja selittävät väitteet jäivät pois. Kun kaikki 22 sisäistä suhdetta luettiin, väite ei pidä:
+- CN-008:ssa on selitysrakenne ilman lukuja: "Sama kolmen vajeen rakenne …" → mittausvaje, sanktiovaje ja korjausvaje (kolme eksplisiittistä depends_on-suhdetta).
+- Rajaushuomiot (WP-020, CN-008, SM-024) on ketjutettu qualifies-suhteilla, ja SM-024:n "ei avointa palvelua eikä jatkuvuutta" nojaa yhteysinventaarioon.
+- Numeerisia ketjuja on WP-020:ssa (CO₂-laskelma) ja CN-030:ssa (nettonykyarvo → "Tornio ei kanna"; läpäisyluvut → "läpäisy lähellä nollaa").
+
+Kuvaavampi erottelu: poimituksi tuli rakenne, jonka paperi esittää koottuna yhteen kohtaan (luettelo, laskelma, rajaushuomio tai viittaus). Puuttuu kaksi testikohdetta: T, vaikka sen premissi U1 on samassa kappaleessa, ja F3:n ylävirta, joka on hajallaan eri osioissa. F3 itse poimittiin (WP-020:008), mutta vain rajausten kohteena. Kohteita on kaksi, joten väitetyypistä ei voi yleistää.
+
+Kohdistusvirhe on suljettu pois: yksikään täytön v2 CN-030-esiintymä ei ala luvun 10 kohdasta "Miksi tätä ei ole laskettu", joten T ei ole kirjautunut väärään jänteeseen.
 
 ## Hypoteesit (ei testattu)
 
-1. Määritelmä "aineistohavainto: … luku, mittaus, lähteen tieto tai laskelman tulos" ohjaa poimijaa numeerisiin havaintoihin. Selitysväitteen premissi on usein toinen väite eikä luku.
+1. Määritelmä "aineistohavainto: … luku, mittaus, lähteen tieto tai laskelman tulos" voi ohjata poimijaa havaintoihin, jotka paperi esittää aineistona. T:n premissi U1 on toimijoiden työnjako, jota paperi ei esitä aineistona. (Korjauksen jälkeen heikompi kuin ensimmäisessä versiossa.)
 2. Esiintymiä on noin 9–10 paperia kohden molemmissa täytöissä. Ajo päättyi normaalisti (31 342 / 48 000 tokenia), joten katto ei rajannut. Periaate "kattavuutta ei tavoitella yhteyksissä" ja vaatimus, että esiintymä on jonkin suhteen pääte, voivat yhdessä rajata määrää.
 3. Related 0 johtunee pyynnön ohjeesta (H2 lisäys 1). Se ei vaikuttanut tähän tulokseen, koska molemmat testit päättyivät kattavuuteen ennen related-kohtia.
 
