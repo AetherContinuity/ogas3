@@ -204,6 +204,10 @@ def test_perusta_arvot():
     assert t.ok and any("s2: rekonstruoitu depends_on" in x for x in t.ihminen)
     r = rek(); r["suhteet"][1]["perusta"] = "paatelty"
     assert any("perusta 'paatelty'" in x for x in virheet(r))
+    r = rek(); r["suhteet"][1]["perusta"] = ""
+    assert any("perusta ''" in x for x in virheet(r))
+    r = rek(); r["suhteet"][1]["perusta"] = None
+    assert vr.tarkista(r).ok
     r = rek(); r["suhteet"][1]["perusta"] = 3
     assert any("'perusta' ei ole merkkijono" in x for x in virheet(r))
 

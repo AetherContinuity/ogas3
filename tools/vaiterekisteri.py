@@ -209,7 +209,7 @@ def tarkista(rek: dict, korpus: Path | None = None) -> Tulos:
         tila = s.get("tila", "ehdotettu")
         tarkistaja = _valinnainen_str(s, "tarkistaja", paikka, r.kone)
         perusta = _valinnainen_str(s, "perusta", paikka, r.kone)
-        if perusta and perusta not in PERUSTAT:
+        if "perusta" in s and s["perusta"] is not None and isinstance(s["perusta"], str) and perusta not in PERUSTAT:
             r.kone.append(f"{paikka}: perusta '{perusta}' ei ole {sorted(PERUSTAT)}")
         kirjaaja = s.get("kirjaaja") if isinstance(s.get("kirjaaja"), str) else ""
         if not isinstance(tila, str) or tila not in SUHDE_TILAT:
