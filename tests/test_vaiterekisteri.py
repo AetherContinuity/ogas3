@@ -157,3 +157,11 @@ def test_tiedostopolku_ei_saa_poistua_korpuksesta(tmp_path):
     for polku in ("../salainen.html", str(tmp_path / "salainen.html"), "a/../../salainen.html"):
         r = rek(); r["esiintymat"][0]["tiedosto"] = polku
         assert any("korpuksen ulkopuolelle" in x for x in virheet(r, korpus)), polku
+
+def test_kyselykomennot_validoivat_ensin(tmp_path, capsys):
+    r = rek(); r["suhteet"][2]["lahde"] = ["P2-a"]   # virheellinen same_claim-rivi
+    f = tmp_path / "rikki.json"; f.write_text(json.dumps(r), encoding="utf-8")
+    for komento in (["ryhmat", str(f)], ["alavirta", str(f), "P1-a"], ["ylavirta", str(f), "P1-c"],
+                    ["rajaukset", str(f), "P1-a"], ["liittyvat", str(f), "P1-a"]):
+        assert vr.main(komento) == 1, komento   # ei poikkeusta, hallittu virhe
+    assert "kone-ehtoja" in capsys.readouterr().err

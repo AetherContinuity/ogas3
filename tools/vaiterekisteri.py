@@ -370,16 +370,16 @@ def main(argv: list[str] | None = None) -> int:
         print("Kone-ehdot " + ("läpi" if t.ok else "EIVÄT läpi")
               + ". Kone-ehtojen läpäisy ei kerro sisällön oikeellisuudesta.")
         return 0 if t.ok else 1
+    t = tarkista(rek)
+    if not t.ok:
+        print("Rekisteri ei läpäise kone-ehtoja; aja ensin 'tarkista'.", file=sys.stderr)
+        return 1
     if a.komento == "ryhmat":
         for g in ryhmat(rek):
             print(" = ".join(g))
         return 0
     if not a.id:
         ap.error("id vaaditaan")
-    t = tarkista(rek)
-    if not t.ok:
-        print("Rekisteri ei läpäise kone-ehtoja; aja ensin 'tarkista'.", file=sys.stderr)
-        return 1
     fn = {"alavirta": alavirta, "ylavirta": ylavirta, "rajaukset": rajaukset, "liittyvat": liittyvat}[a.komento]
     for _, rivi in fn(rek, a.id):
         print(rivi)
