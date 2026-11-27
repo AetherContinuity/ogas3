@@ -1,0 +1,443 @@
+{
+  "esiintymat": [
+    {
+      "id": "WP-020:001",
+      "paperi": "WP-020",
+      "kohta": "alku",
+      "lainaus": "Two independent development pathways in the Gulf of Bothnia region are structurally complementary but operationally disconnected.",
+      "merkinta": "—",
+      "tiedosto": "papers/wp-020-perameri-logistics-energy-ecosystem.html"
+    },
+    {
+      "id": "WP-020:002",
+      "paperi": "WP-020",
+      "kohta": "§ 02 / 2.2",
+      "lainaus": "Annual saving at full operation: 40,000 kg/day × 365 days × 10 kg CO₂ = approximately 146,000 tonnes CO₂ per year.",
+      "merkinta": "—",
+      "tiedosto": "papers/wp-020-perameri-logistics-energy-ecosystem.html"
+    },
+    {
+      "id": "WP-020:003",
+      "paperi": "WP-020",
+      "kohta": "§ 06",
+      "lainaus": "The closed-loop model produces approximately 146,000 tonnes CO₂ savings per year (indicative)",
+      "merkinta": "—",
+      "tiedosto": "papers/wp-020-perameri-logistics-energy-ecosystem.html"
+    },
+    {
+      "id": "WP-020:004",
+      "paperi": "WP-020",
+      "kohta": "§ 02 / 2.3",
+      "lainaus": "The option value of domestic fuel production — the security-of-supply premium that market pricing systematically omits — is documented in WP-019 §8 at 90–120 million euros per TWh produced.",
+      "merkinta": "—",
+      "tiedosto": "papers/wp-020-perameri-logistics-energy-ecosystem.html"
+    },
+    {
+      "id": "WP-020:005",
+      "paperi": "WP-020",
+      "kohta": "§ 06",
+      "lainaus": "Neither pathway has stalled for technical or financial reasons.",
+      "merkinta": "—",
+      "tiedosto": "papers/wp-020-perameri-logistics-energy-ecosystem.html"
+    },
+    {
+      "id": "WP-020:006",
+      "paperi": "WP-020",
+      "kohta": "§ 06",
+      "lainaus": "For rail and land-bridge logistics in the north, the economic case has not been demonstrated",
+      "merkinta": "—",
+      "tiedosto": "papers/wp-020-perameri-logistics-energy-ecosystem.html"
+    },
+    {
+      "id": "WP-020:007",
+      "paperi": "WP-020",
+      "kohta": "§ 06",
+      "lainaus": "Whether the constraint is demand, coordination or both remains open",
+      "merkinta": "—",
+      "tiedosto": "papers/wp-020-perameri-logistics-energy-ecosystem.html"
+    },
+    {
+      "id": "WP-020:008",
+      "paperi": "WP-020",
+      "kohta": "§ 06",
+      "lainaus": "The RoRo route to Central Europe and the Laanila energy pathway are not tested by this evidence.",
+      "merkinta": "—",
+      "tiedosto": "papers/wp-020-perameri-logistics-energy-ecosystem.html"
+    },
+    {
+      "id": "WP-020:009",
+      "paperi": "WP-020",
+      "kohta": "§ 01 / 1.2",
+      "lainaus": "Svenska kraftnät's short-term market analysis (KMA2025, March 2026) projects the average annual surplus of bidding zone SE1 (Luleå) to fall from 14 TWh in 2026 to −1 TWh in 2030 (\"SE1 från nettoexport till nettoimport\")",
+      "merkinta": "—",
+      "tiedosto": "papers/wp-020-perameri-logistics-energy-ecosystem.html"
+    },
+    {
+      "id": "WP-020:010",
+      "paperi": "WP-020",
+      "kohta": "§ 01 / 1.2",
+      "lainaus": "Implication: if northern Swedish industry starts up as planned, it takes both the Malmbanan capacity and the SE1 surplus that currently flows across the northern border; if it does not, both remain available.",
+      "merkinta": "—",
+      "tiedosto": "papers/wp-020-perameri-logistics-energy-ecosystem.html"
+    },
+    {
+      "id": "CN-008:001",
+      "paperi": "CN-008",
+      "kohta": "alku",
+      "lainaus": "Perämeren alueella on käynnissä kaksi kehityspolkua, jotka tukevat toisiaan mutta etenevät erillään.",
+      "merkinta": "—",
+      "tiedosto": "papers/cn-008-perameri-logistiikka-energiaekosysteemi.html"
+    },
+    {
+      "id": "CN-008:002",
+      "paperi": "CN-008",
+      "kohta": "alku",
+      "lainaus": "Laskennallinen CO₂-säästö täydessä käytössä on noin 146 000 tonnia vuodessa.",
+      "merkinta": "—",
+      "tiedosto": "papers/cn-008-perameri-logistiikka-energiaekosysteemi.html"
+    },
+    {
+      "id": "CN-008:003",
+      "paperi": "CN-008",
+      "kohta": "alku",
+      "lainaus": "Option value kotimaiselle energiantuotannolle on 90–120 miljoonaa euroa per tuotettu terawattitunti — luku joka perustuu maaliskuun 2026 Hormuzin kriisin TTF-heilahdukseen.",
+      "merkinta": "—",
+      "tiedosto": "papers/cn-008-perameri-logistiikka-energiaekosysteemi.html"
+    },
+    {
+      "id": "CN-008:004",
+      "paperi": "CN-008",
+      "kohta": "alku",
+      "lainaus": "Suljettu kiertotalousmalli on teknisesti valmis ja taloudellisesti kannattava.",
+      "merkinta": "—",
+      "tiedosto": "papers/cn-008-perameri-logistiikka-energiaekosysteemi.html"
+    },
+    {
+      "id": "CN-008:005",
+      "paperi": "CN-008",
+      "kohta": "§ Miksi tämä ei etene",
+      "lainaus": "Rautatie- ja maasiltalogistiikan taloudellista perustetta ei ole osoitettu",
+      "merkinta": "—",
+      "tiedosto": "papers/cn-008-perameri-logistiikka-energiaekosysteemi.html"
+    },
+    {
+      "id": "CN-008:006",
+      "paperi": "CN-008",
+      "kohta": "§ Miksi tämä ei etene",
+      "lainaus": "Onko este kysyntä, koordinaatio vai molemmat, jää auki",
+      "merkinta": "—",
+      "tiedosto": "papers/cn-008-perameri-logistiikka-energiaekosysteemi.html"
+    },
+    {
+      "id": "CN-008:007",
+      "paperi": "CN-008",
+      "kohta": "§ Miksi tämä ei etene",
+      "lainaus": "Ro-ro-yhteyttä Keski-Eurooppaan ja Laanilan energiapolkua aineisto ei testaa.",
+      "merkinta": "—",
+      "tiedosto": "papers/cn-008-perameri-logistiikka-energiaekosysteemi.html"
+    },
+    {
+      "id": "CN-030:001",
+      "paperi": "CN-030",
+      "kohta": "§ 10",
+      "lainaus": "Tornion rajanylitys itsenäisenä virtana ei kanna vaihtuvatelistä kalustoa.",
+      "merkinta": "—",
+      "tiedosto": "papers/cn-030-variable-gauge-huckepack-network.html"
+    },
+    {
+      "id": "CN-030:002",
+      "paperi": "CN-030",
+      "kohta": "§ 8 / 8.6",
+      "lainaus": "Länsireitin läpäisykyvylle ei ole mittaria, tavoitetta eikä omistajaa.",
+      "merkinta": "—",
+      "tiedosto": "papers/cn-030-variable-gauge-huckepack-network.html"
+    },
+    {
+      "id": "CN-030:003",
+      "paperi": "CN-030",
+      "kohta": "§ 9",
+      "lainaus": "Valtio maksaa kapasiteetin olemassaolosta ja kutsuajasta, kaupallinen liikenne pitää kaluston käyttökunnossa ja henkilöstön harjaantuneena.",
+      "merkinta": "—",
+      "tiedosto": "papers/cn-030-variable-gauge-huckepack-network.html"
+    },
+    {
+      "id": "CN-030:004",
+      "paperi": "CN-030",
+      "kohta": "§ 8 / 8.3",
+      "lainaus": "Kulutuksella 33 l/100 km silta polttaisi noin 870 m³ dieseliä vuorokaudessa, eli noin 13 % maan normaalista dieselin myynnistä.",
+      "merkinta": "—",
+      "tiedosto": "papers/cn-030-variable-gauge-huckepack-network.html"
+    },
+    {
+      "id": "SM-024:001",
+      "paperi": "SM-024",
+      "kohta": "§ 01",
+      "lainaus": "Perämeren energia- ja logistiikkapolku tukevat toisiaan mutta etenevät erillään.",
+      "merkinta": "—",
+      "tiedosto": "papers/sm-024-pohjoinen-solmu.html"
+    },
+    {
+      "id": "SM-024:002",
+      "paperi": "SM-024",
+      "kohta": "§ 02",
+      "lainaus": "Rautatie- ja maasiltalogistiikan osalta taloudellista perustetta ei ole osoitettu",
+      "merkinta": "M",
+      "tiedosto": "papers/sm-024-pohjoinen-solmu.html"
+    },
+    {
+      "id": "SM-024:003",
+      "paperi": "SM-024",
+      "kohta": "§ 02",
+      "lainaus": "Se, onko este kysyntä vai koordinaatio, jää auki.",
+      "merkinta": "—",
+      "tiedosto": "papers/sm-024-pohjoinen-solmu.html"
+    },
+    {
+      "id": "SM-024:004",
+      "paperi": "SM-024",
+      "kohta": "§ 02",
+      "lainaus": "WP-020:n ro-ro-polkua Keski-Eurooppaan ja Laanilan energiapolkua tämä aineisto ei testaa.",
+      "merkinta": "—",
+      "tiedosto": "papers/sm-024-pohjoinen-solmu.html"
+    },
+    {
+      "id": "SM-024:005",
+      "paperi": "SM-024",
+      "kohta": "§ 01",
+      "lainaus": "Tornion rajanylitys itsenäisenä virtana ei kanna vaihtuvatelistä kalustoa",
+      "merkinta": "—",
+      "tiedosto": "papers/sm-024-pohjoinen-solmu.html"
+    },
+    {
+      "id": "SM-024:006",
+      "paperi": "SM-024",
+      "kohta": "§ 01",
+      "lainaus": "länsikäytävän läpäisykyvylle ei ole mittaria, tavoitetta eikä omistajaa (§ 8).",
+      "merkinta": "—",
+      "tiedosto": "papers/sm-024-pohjoinen-solmu.html"
+    },
+    {
+      "id": "SM-024:007",
+      "paperi": "SM-024",
+      "kohta": "§ 04",
+      "lainaus": "Valmiuden malli on CN-030:n § 9:n merikuljetussopimus: valtio maksaa kapasiteetin olemassaolosta ja kutsuajasta.",
+      "merkinta": "—",
+      "tiedosto": "papers/sm-024-pohjoinen-solmu.html"
+    },
+    {
+      "id": "SM-024:008",
+      "paperi": "SM-024",
+      "kohta": "§ 05",
+      "lainaus": "maantiesilta kuluttaisi noin 13 % maan dieselistä (CN-030) [L]",
+      "merkinta": "L",
+      "tiedosto": "papers/sm-024-pohjoinen-solmu.html"
+    },
+    {
+      "id": "SM-024:009",
+      "paperi": "SM-024",
+      "kohta": "§ 05",
+      "lainaus": "Elområde 1:n keskimääräinen ylijäämä pienenee 14 TWh:sta (2026) −1 TWh:iin (2030) Svenska kraftnätin KMA2025:n perusskenaariossa",
+      "merkinta": "M",
+      "tiedosto": "papers/sm-024-pohjoinen-solmu.html"
+    },
+    {
+      "id": "SM-024:010",
+      "paperi": "SM-024",
+      "kohta": "§ 05",
+      "lainaus": "Jos Pohjois-Ruotsin teollisuus käynnistyy, se vie Malmbananin kapasiteetin ja SE1:n ylijäämän; jos ei, kumpikin jää vapaaksi [A] .",
+      "merkinta": "A",
+      "tiedosto": "papers/sm-024-pohjoinen-solmu.html"
+    }
+  ],
+  "suhteet": [
+    {
+      "id": "S001",
+      "lahde": "WP-020:001",
+      "kohde": "CN-008:001",
+      "laji": "same_claim",
+      "perustelu": "WP-020 kuvaa kaksi kehityspolkua rakenteellisesti täydentäviksi mutta toiminnallisesti erillisiksi. CN-008 sanoo saman: polut tukevat toisiaan mutta etenevät erillään.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S002",
+      "lahde": "CN-008:001",
+      "kohde": "SM-024:001",
+      "laji": "same_claim",
+      "perustelu": "SM-024:n §01:n jakso WP-020 ja CN-008 tiivistää nimenomaan näiden paperien väitteen ja toistaa sekä polkujen keskinäisen tuen että niiden erillään etenemisen.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S003",
+      "lahde": "WP-020:003",
+      "kohde": "CN-008:002",
+      "laji": "same_claim",
+      "perustelu": "WP-020:n Finding 2 ja CN-008:n tiivistelmä antavat suljetun kiertotalousmallin täyden käytön vuotuisen CO₂-säästön olevan noin 146 000 tonnia.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S004",
+      "lahde": "WP-020:003",
+      "kohde": "WP-020:002",
+      "laji": "depends_on",
+      "perustelu": "Finding 2 käyttää samaa 146 000 tonnin vuosilukua kuin §2.2:n eksplisiittinen laskelma 40 000 kg/vrk × 365 × 10 kg CO₂. Yhteenveto nojaa siten tähän laskelmaan.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S005",
+      "lahde": "WP-020:004",
+      "kohde": "CN-008:003",
+      "laji": "same_claim",
+      "perustelu": "Molemmat määrittelevät saman suureen: kotimaisen energiantuotannon option valuen tuotettua terawattituntia kohden, arvona 90–120 miljoonaa euroa. CN-008:n Hormuz/TTF-perusta esitetään myös WP-020:n §2.3:n seuraavassa virkkeessä.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S006",
+      "lahde": "WP-020:006",
+      "kohde": "CN-008:005",
+      "laji": "same_claim",
+      "perustelu": "WP-020:n scope note ja CN-008:n rajaushuomio toteavat molemmat, ettei rautatie- ja maasiltalogistiikan taloudellista perustetta ole osoitettu.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S007",
+      "lahde": "CN-008:005",
+      "kohde": "SM-024:002",
+      "laji": "same_claim",
+      "perustelu": "SM-024 toistaa saman rajauksen rautatie- ja maasiltalogistiikalle ja perustelee sen samalla markkinatoimijan lopettamisella ja VR:n käynnistymättömällä palvelulla, jotka myös CN-008:n rajaushuomio mainitsee.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S008",
+      "lahde": "WP-020:006",
+      "kohde": "WP-020:005",
+      "laji": "qualifies",
+      "perustelu": "Scope note 2026-11-27 nimeää Finding 3:n erikseen ja rajaa sitä: rautatie- ja maasiltalogistiikan taloudellinen peruste on osoittamatta. Se tarkentaa väitettä, ettei kumpikaan polku ole pysähtynyt taloudellisista syistä.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S009",
+      "lahde": "CN-008:005",
+      "kohde": "CN-008:004",
+      "laji": "qualifies",
+      "perustelu": "CN-008:n rajaushuomio sanoo nimenomaisesti tiivistelmän 'taloudellisesti kannattava' -arvion koskevan kokonaismallia ja erottaa siitä rautatie- ja maasiltalogistiikan osoittamattoman perusteen.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S010",
+      "lahde": "SM-024:002",
+      "kohde": "WP-020:005",
+      "laji": "qualifies",
+      "perustelu": "SM-024:n §02:n kohdassa Mitä tämä tarkoittaa korpukselle viitataan suoraan WP-020:n Finding 3:een ja rajataan taloudellinen arvio rautatie- ja maasiltalogistiikan osalta. Ro-ro ja Laanila erikseen jätetään tämän näytön testaamattomiksi.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S011",
+      "lahde": "SM-024:002",
+      "kohde": "CN-008:004",
+      "laji": "qualifies",
+      "perustelu": "Sama SM-024:n kohta nimeää myös CN-008:n taloudellisesti kannattavaksi kuvaaman mallin ja rajaa taloudellisen perusteen rautatielogistiikan osalta osoittamattomaksi.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S012",
+      "lahde": "WP-020:007",
+      "kohde": "CN-008:006",
+      "laji": "same_claim",
+      "perustelu": "Molemmat rajaushuomiot pitävät avoimena, onko rautatie- ja maasiltalogistiikan este kysyntä, koordinaatio vai molemmat.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S013",
+      "lahde": "CN-008:006",
+      "kohde": "SM-024:003",
+      "laji": "same_claim",
+      "perustelu": "SM-024 esittää saman avoimen kysymyksen kysynnän ja koordinaation rooleista heti markkinatoimijan lopettamista ja VR:n palvelua koskevan arvionsa jälkeen.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S014",
+      "lahde": "WP-020:008",
+      "kohde": "CN-008:007",
+      "laji": "same_claim",
+      "perustelu": "Molemmat rajaushuomiot jättävät Nurminen/VR-näytön ulkopuolelle samat kaksi polkua: Keski-Euroopan ro-ro-yhteyden ja Laanilan energiapolun.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S015",
+      "lahde": "CN-008:007",
+      "kohde": "SM-024:004",
+      "laji": "same_claim",
+      "perustelu": "SM-024:n §02:n lopussa todetaan suoraan, ettei sen aineisto testaa WP-020:n ro-ro- eikä Laanila-polkua. Tämä on CN-008:n rajauksen sama sisältö.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S016",
+      "lahde": "CN-030:001",
+      "kohde": "SM-024:005",
+      "laji": "same_claim",
+      "perustelu": "SM-024:n CN-030-tiivistelmä viittaa §10:een ja toistaa sen johtopäätöksen: itsenäinen Tornion rajanylitys ei kanna vaihtuvatelistä kalustoa.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S017",
+      "lahde": "CN-030:002",
+      "kohde": "SM-024:006",
+      "laji": "same_claim",
+      "perustelu": "SM-024 osoittaa väitteen CN-030:n §8:aan. Molemmissa länsikäytävän tai länsireitin läpäisykyvyltä puuttuvat sama kolmikko: mittari, tavoite ja omistaja.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S018",
+      "lahde": "SM-024:007",
+      "kohde": "CN-030:003",
+      "laji": "depends_on",
+      "perustelu": "SM-024 nimeää valmiuden mallikseen nimenomaan CN-030:n §9:n merikuljetussopimuksen. CN-030 antaa mallin sisällön: valtio maksaa kapasiteetista ja kutsuajasta, kaupallinen liikenne ylläpitää käyttökuntoa ja osaamista.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S019",
+      "lahde": "SM-024:008",
+      "kohde": "CN-030:004",
+      "laji": "depends_on",
+      "perustelu": "SM-024 merkitsee 13 %:n luvun lasketuksi ja viittaa sulkujen sisällä CN-030:een. CN-030:n porras C -laskelma johtaa 870 m³:n vuorokausikulutuksesta noin 13 %:iin maan normaalista dieselin myynnistä.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S020",
+      "lahde": "WP-020:009",
+      "kohde": "SM-024:009",
+      "laji": "same_claim",
+      "perustelu": "Molemmat viittaavat Svenska kraftnätin KMA2025-analyysiin ja ennustavat SE1:n eli Elområde 1:n keskimääräisen ylijäämän muuttuvan 14 TWh:sta vuonna 2026 −1 TWh:iin vuonna 2030.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    },
+    {
+      "id": "S021",
+      "lahde": "WP-020:010",
+      "kohde": "SM-024:010",
+      "laji": "same_claim",
+      "perustelu": "Molemmat esittävät saman ehdollisen seurauksen: Pohjois-Ruotsin teollisuuden käynnistyminen sitoo Malmbananin kapasiteetin ja SE1:n ylijäämän, ja käynnistymättä jäädessä molemmat jäävät vapaaksi.",
+      "kirjaaja": "kimi-k3.1-pro",
+      "tila": "ehdotettu"
+    }
+  ]
+}
