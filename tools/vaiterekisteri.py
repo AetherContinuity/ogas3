@@ -19,7 +19,14 @@ TIETOMALLI
   Lisätty 27.11.2026: vaiheen 2 täyttöpyyntö yhdisti nämä kaksi arvoksi "—".
 
   suhteet[]:    id, lahde, kohde, laji, perustelu, kirjaaja,
-                tarkistaja (valinnainen), tila (ehdotettu|tarkistettu|hylatty)
+                tarkistaja (valinnainen), tila (ehdotettu|tarkistettu|hylatty),
+                perusta (valinnainen: eksplisiittinen|rekonstruoitu)
+
+  perusta (lisätty 27.11.2026):
+    eksplisiittinen  argumentti ilmaisee yhteyden yksiselitteisesti; suhdetta nimeävää
+                     sanaa ("riippuu", "koska") ei vaadita
+    rekonstruoitu    yhteys on pääteltävä erillisistä kohdista tai välivaiheista
+  Rekonstruoituja suhteita ei poisteta: ne näyttävät, mitä poimija joutui päättelemään.
 
   laji:
     depends_on  lahde nojaa kohteeseen argumentissaan (suunnattu)
@@ -46,6 +53,7 @@ Käyttö:
   python3 tools/vaiterekisteri.py ryhmat REK.json
   python3 tools/vaiterekisteri.py rajaukset REK.json ID
   python3 tools/vaiterekisteri.py liittyvat REK.json ID
+  (kyselyihin --vain-eksplisiittiset: rekonstruoidut ja perustaltaan merkitsemättömät suhteet pois)
 Vain vakiokirjasto.
 """
 from __future__ import annotations
@@ -63,6 +71,7 @@ SUUNTAAMATTOMAT = {"same_claim", "related"}
 MERKINNAT = {"M", "L", "A", "—", "ei_merkitty"}
 CT_TILAT = {"not_specified", "not_tested", "tested"}
 SUHDE_TILAT = {"ehdotettu", "tarkistettu", "hylatty"}
+PERUSTAT = {"eksplisiittinen", "rekonstruoitu"}
 ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.:\-]*$")
 
 
@@ -199,6 +208,9 @@ def tarkista(rek: dict, korpus: Path | None = None) -> Tulos:
             r.kone.append(f"{paikka}: suhde itseensä ({a})")
         tila = s.get("tila", "ehdotettu")
         tarkistaja = _valinnainen_str(s, "tarkistaja", paikka, r.kone)
+        perusta = _valinnainen_str(s, "perusta", paikka, r.kone)
+        if perusta and perusta not in PERUSTAT:
+            r.kone.append(f"{paikka}: perusta '{perusta}' ei ole {sorted(PERUSTAT)}")
         kirjaaja = s.get("kirjaaja") if isinstance(s.get("kirjaaja"), str) else ""
         if not isinstance(tila, str) or tila not in SUHDE_TILAT:
             r.kone.append(f"{paikka}: tila '{tila}' ei ole {sorted(SUHDE_TILAT)}")
@@ -219,6 +231,8 @@ def tarkista(rek: dict, korpus: Path | None = None) -> Tulos:
                 r.avoin.append(f"{sid}: {laji} {a} → {b} tarkistamatta")
             if laji in ("depends_on", "same_claim") and tila == "ehdotettu":
                 r.ihminen.append(f"{sid}: {laji} {a} → {b}: onko suhde osoitettu argumentista eikä samankaltaisuudesta?")
+            if laji == "depends_on" and perusta == "rekonstruoitu" and tila != "hylatty":
+                r.ihminen.append(f"{sid}: rekonstruoitu depends_on {a} → {b}: poimijan päättelemä, ei paperin ilmaisema")
 
     # ristiriidat saman parin välillä
     pari = defaultdict(set)
@@ -259,8 +273,12 @@ def tarkista(rek: dict, korpus: Path | None = None) -> Tulos:
 
 # --- kyselyt -------------------------------------------------------------
 
+EKSPLISIITTISET = False  # kyselyrajaus: True = vain perusta == "eksplisiittinen"
+
+
 def _aktiiviset(rek: dict, laji: str) -> list[dict]:
-    return [s for s in rek["suhteet"] if s["laji"] == laji and s.get("tila", "ehdotettu") != "hylatty"]
+    return [s for s in rek["suhteet"] if s["laji"] == laji and s.get("tila", "ehdotettu") != "hylatty"
+            and (not EKSPLISIITTISET or s.get("perusta") == "eksplisiittinen")]
 
 
 def ryhmat(rek: dict) -> list[list[str]]:
@@ -365,7 +383,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("rekisteri")
     ap.add_argument("id", nargs="?")
     ap.add_argument("--korpus")
+    ap.add_argument("--vain-eksplisiittiset", action="store_true",
+                    help="kyselyt käyttävät vain suhteita, joiden perusta on eksplisiittinen")
     a = ap.parse_args(argv)
+    global EKSPLISIITTISET
+    EKSPLISIITTISET = a.vain_eksplisiittiset
     rek = json.loads(Path(a.rekisteri).read_text(encoding="utf-8"))
     if a.komento == "tarkista":
         t = tarkista(rek, Path(a.korpus) if a.korpus else None)
