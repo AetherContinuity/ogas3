@@ -44,7 +44,7 @@ def test_istutettu_yhteys_loytyy_eika_vaaria():
     saannot = {"A": saanto, "B": saanto, "C": saanto, "D": {"tyyppi": "muutos", "askel": 1, "raja": 3.2}}
     vajaa = sy.arvioi(s, saannot, max_viive=6, kierroksia=499, siemen=3)
     assert vajaa["kierrokset_riittavat"] is False and vajaa["ehdokkaat"] == []  # tyhjä tulos ei ole löydös
-    t = sy.arvioi(s, saannot, max_viive=6, kierroksia=vajaa["kierroksia_vahintaan"] * 2, siemen=3)
+    t = sy.arvioi(s, saannot, max_viive=6, siemen=3)
     assert t["kierrokset_riittavat"]
     parit = {(e["a"], e["b"], e["viive"]) for e in t["ehdokkaat"]}
     assert ("A", "B", 3) in parit
@@ -57,5 +57,14 @@ def test_negatiivikontrolli_ilman_rakennetta():
     r = random.Random(11)
     s["B"] = s["B"][1500:] + s["B"][:1500]  # rikotaan istutettu ajoitus
     saanto = {"tyyppi": "kynnys", "ehto": ">", "raja": 5}
-    t = sy.arvioi({k: s[k] for k in "ABC"}, {k: saanto for k in "ABC"}, max_viive=6, kierroksia=1999, siemen=r.randrange(1000))
+    t = sy.arvioi({k: s[k] for k in "ABC"}, {k: saanto for k in "ABC"}, max_viive=6)
     assert t["kierrokset_riittavat"] and t["ehdokkaat"] == []
+
+
+def test_histogrammi_vastaa_suoraa_laskentaa():
+    r = random.Random(5); n = 500
+    a = sorted(r.sample(range(n), 30)); b = sorted(r.sample(range(n), 30))
+    h = sy._erot(a, b, n)
+    for s in (0, 37, 250):
+        bb = sy._kierra(b, n, s)
+        assert sy.yhteiset(a, bb, 6) == [h[(d - s) % n] for d in range(7)]

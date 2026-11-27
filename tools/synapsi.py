@@ -72,32 +72,45 @@ def _kierra(b: list[int], n: int, siirto: int) -> list[int]:
     return sorted((t + siirto) % n for t in b)
 
 
-def arvioi(sarjat: dict[str, list], saannot: dict[str, dict], max_viive: int = 8, kierroksia: int = 999,
+def _erot(a: list[int], b: list[int], n: int) -> list[int]:
+    """Histogrammi H[k] = #{(t, u): (u − t) mod n = k}. Kierrolla s viiveen d osumat = H[(d − s) mod n]."""
+    h = [0] * n
+    for t in a:
+        for u in b:
+            h[(u - t) % n] += 1
+    return h
+
+
+def arvioi(sarjat: dict[str, list], saannot: dict[str, dict], max_viive: int = 8, kierroksia: int | None = None,
            min_siirto: int | None = None, alfa: float = 0.05, siemen: int = 1) -> dict:
-    """Kaikki suunnatut parit A → B. Nollamalli: B:n tapahtumat kierretään satunnaisella siirrolla
-    (|siirto| ≥ min_siirto, oletus 4·max_viive), A pidetään paikallaan. p = (1 + #{null ≥ havaittu}) / (1 + K).
-    Testisuure per viive. BH-korjaus kaikkien parien ja viiveiden yli."""
-    rnd = random.Random(siemen)
+    """Kaikki suunnatut parit A → B. Nollamalli: B:n tapahtumat kierretään siirrolla s, min_siirto ≤ s ≤ n − min_siirto
+    (oletus 4·max_viive), A pysyy paikallaan. Oletuksena käydään läpi KAIKKI sallitut siirrot (tarkka, deterministinen
+    permutaatiojakauma); kierroksia=K arpoo K siirtoa siemenellä. p = (1 + #{null ≥ havaittu}) / (1 + K).
+    Testisuure per viive. BH-korjaus kaikkien parien ja viiveiden yli.
+    Huom: yksi A-tapahtuma voi osua viiveellä d useampaan B-tapahtumaan vain, jos B:llä on kaksi tapahtumaa samassa
+    vartissa, mikä ei jaksotuksen jälkeen ole mahdollista; histogrammilaskenta on siksi sama kuin yhteiset()."""
     n = len(next(iter(sarjat.values())))
     if any(len(v) != n for v in sarjat.values()):
         raise ValueError("sarjojen pituudet eroavat")
     ms = min_siirto if min_siirto is not None else 4 * max_viive
+    siirrot = list(range(ms, n - ms + 1))
+    if kierroksia is not None and kierroksia < len(siirrot):
+        siirrot = random.Random(siemen).sample(siirrot, kierroksia)
+    K = len(siirrot)
     tap = {k: aktivaatiot(sarjat[k], saannot[k]) for k in sarjat}
     testit = []
     for a in sarjat:
         for b in sarjat:
             if a == b or not tap[a] or not tap[b]:
                 continue
-            hav = yhteiset(tap[a], tap[b], max_viive)
-            nulli = [[] for _ in range(max_viive + 1)]
-            for _ in range(kierroksia):
-                s = rnd.randrange(ms, n - ms) if n > 2 * ms else rnd.randrange(1, n)
-                for d, c in enumerate(yhteiset(tap[a], _kierra(tap[b], n, s), max_viive)):
-                    nulli[d].append(c)
+            h = _erot(tap[a], tap[b], n)
             for d in range(max_viive + 1):
-                p = (1 + sum(1 for c in nulli[d] if c >= hav[d])) / (1 + kierroksia)
-                testit.append({"a": a, "b": b, "viive": d, "yhteisia": hav[d], "odotettu": round(statistics.mean(nulli[d]), 3),
-                               "n_a": len(tap[a]), "n_b": len(tap[b]), "p": round(p, 5)})
+                hav = h[d]
+                nulli = [h[(d - s) % n] for s in siirrot]
+                p = (1 + sum(1 for c in nulli if c >= hav)) / (1 + K)
+                testit.append({"a": a, "b": b, "viive": d, "yhteisia": hav, "odotettu": round(sum(nulli) / K, 3),
+                               "n_a": len(tap[a]), "n_b": len(tap[b]), "p": round(p, 6)})
+    kierroksia = K
     m = len(testit)
     # Kiertojen määrä rajaa pienimmän mahdollisen p:n (1/(K+1)). Jos se ei alita BH:n tiukinta rajaa
     # alfa/m, mikään testi ei voi läpäistä: tulos olisi tyhjä riippumatta datasta. Raportoidaan.
