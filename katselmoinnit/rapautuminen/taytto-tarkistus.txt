@@ -1,0 +1,268 @@
+# python3 tools/vaiterekisteri.py tarkista katselmoinnit/rapautuminen/taytto-kimi.json
+KONE (0)
+IHMINEN (49)
+  S001: depends_on SM-009:002 → WP-013:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S002: same_claim SM-009:003 → WP-015:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S004: depends_on SM-009:005 → SM-009:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S004: rekonstruoitu depends_on SM-009:005 → SM-009:001: poimijan päättelemä, ei paperin ilmaisema
+  S005: depends_on SM-009:008 → SM-009:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S006: depends_on SM-009:008 → SM-009:007: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S008: depends_on SM-009:009 → SM-009:010: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S009: same_claim SM-009:006 → CN-007:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S011: depends_on SM-007:003 → SM-007:004: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S013: depends_on SM-007:006 → WP-013:011: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S014: same_claim SM-007:007 → WP-015:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S015: depends_on CN-004:001 → SM-007:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S015: rekonstruoitu depends_on CN-004:001 → SM-007:001: poimijan päättelemä, ei paperin ilmaisema
+  S016: depends_on CN-004:002 → CN-004:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S018: depends_on CN-004:004 → CN-004:003: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S018: rekonstruoitu depends_on CN-004:004 → CN-004:003: poimijan päättelemä, ei paperin ilmaisema
+  S019: depends_on CN-004:006 → CN-004:005: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S020: depends_on CN-004:008 → CN-004:007: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S021: depends_on WP-013:002 → WP-013:003: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S022: depends_on WP-013:003 → WP-013:004: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S023: depends_on WP-013:009 → WP-013:002: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S024: depends_on WP-013:008 → WP-013:005: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S024: rekonstruoitu depends_on WP-013:008 → WP-013:005: poimijan päättelemä, ei paperin ilmaisema
+  S025: depends_on WP-013:008 → WP-013:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S025: rekonstruoitu depends_on WP-013:008 → WP-013:006: poimijan päättelemä, ei paperin ilmaisema
+  S026: depends_on WP-013:008 → WP-013:007: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S026: rekonstruoitu depends_on WP-013:008 → WP-013:007: poimijan päättelemä, ei paperin ilmaisema
+  S028: depends_on WP-015:006 → WP-015:003: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S029: depends_on WP-015:006 → WP-015:004: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S030: depends_on WP-015:006 → WP-015:005: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S031: depends_on WP-015:008 → WP-015:007: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S033: depends_on WP-015:001 → WP-015:002: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S033: rekonstruoitu depends_on WP-015:001 → WP-015:002: poimijan päättelemä, ei paperin ilmaisema
+  S034: depends_on WP-015:001 → WP-015:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S034: rekonstruoitu depends_on WP-015:001 → WP-015:006: poimijan päättelemä, ei paperin ilmaisema
+  S035: depends_on WP-015:001 → WP-015:008: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S035: rekonstruoitu depends_on WP-015:001 → WP-015:008: poimijan päättelemä, ei paperin ilmaisema
+  S036: depends_on WP-015:010 → WP-015:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S036: rekonstruoitu depends_on WP-015:010 → WP-015:001: poimijan päättelemä, ei paperin ilmaisema
+  S038: depends_on WP-015:012 → WP-015:010: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S040: depends_on CN-007:001 → CN-007:002: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S041: depends_on CN-007:003 → CN-007:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S042: depends_on CN-007:005 → CN-007:004: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S043: depends_on CN-007:007 → CN-007:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S044: depends_on CN-007:009 → CN-007:008: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S044: rekonstruoitu depends_on CN-007:009 → CN-007:008: poimijan päättelemä, ei paperin ilmaisema
+  S045: depends_on CN-007:010 → CN-007:009: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S046: depends_on CN-007:011 → CN-007:012: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S047: depends_on CN-007:013 → CN-007:014: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+AVOIN (110)
+  SM-009:001: lainausta ei tarkistettu lähdettä vasten
+  SM-009:002: lainausta ei tarkistettu lähdettä vasten
+  SM-009:003: lainausta ei tarkistettu lähdettä vasten
+  SM-009:004: lainausta ei tarkistettu lähdettä vasten
+  SM-009:005: lainausta ei tarkistettu lähdettä vasten
+  SM-009:006: lainausta ei tarkistettu lähdettä vasten
+  SM-009:007: lainausta ei tarkistettu lähdettä vasten
+  SM-009:008: lainausta ei tarkistettu lähdettä vasten
+  SM-009:009: lainausta ei tarkistettu lähdettä vasten
+  SM-009:010: lainausta ei tarkistettu lähdettä vasten
+  SM-007:001: lainausta ei tarkistettu lähdettä vasten
+  SM-007:002: lainausta ei tarkistettu lähdettä vasten
+  SM-007:003: lainausta ei tarkistettu lähdettä vasten
+  SM-007:004: lainausta ei tarkistettu lähdettä vasten
+  SM-007:005: lainausta ei tarkistettu lähdettä vasten
+  SM-007:006: lainausta ei tarkistettu lähdettä vasten
+  SM-007:007: lainausta ei tarkistettu lähdettä vasten
+  CN-004:001: lainausta ei tarkistettu lähdettä vasten
+  CN-004:002: lainausta ei tarkistettu lähdettä vasten
+  CN-004:003: lainausta ei tarkistettu lähdettä vasten
+  CN-004:004: lainausta ei tarkistettu lähdettä vasten
+  CN-004:005: lainausta ei tarkistettu lähdettä vasten
+  CN-004:006: lainausta ei tarkistettu lähdettä vasten
+  CN-004:007: lainausta ei tarkistettu lähdettä vasten
+  CN-004:008: lainausta ei tarkistettu lähdettä vasten
+  WP-013:001: lainausta ei tarkistettu lähdettä vasten
+  WP-013:002: lainausta ei tarkistettu lähdettä vasten
+  WP-013:003: lainausta ei tarkistettu lähdettä vasten
+  WP-013:004: lainausta ei tarkistettu lähdettä vasten
+  WP-013:005: lainausta ei tarkistettu lähdettä vasten
+  WP-013:006: lainausta ei tarkistettu lähdettä vasten
+  WP-013:007: lainausta ei tarkistettu lähdettä vasten
+  WP-013:008: lainausta ei tarkistettu lähdettä vasten
+  WP-013:009: lainausta ei tarkistettu lähdettä vasten
+  WP-013:010: lainausta ei tarkistettu lähdettä vasten
+  WP-013:011: lainausta ei tarkistettu lähdettä vasten
+  WP-015:001: lainausta ei tarkistettu lähdettä vasten
+  WP-015:002: lainausta ei tarkistettu lähdettä vasten
+  WP-015:003: lainausta ei tarkistettu lähdettä vasten
+  WP-015:004: lainausta ei tarkistettu lähdettä vasten
+  WP-015:005: lainausta ei tarkistettu lähdettä vasten
+  WP-015:006: lainausta ei tarkistettu lähdettä vasten
+  WP-015:007: lainausta ei tarkistettu lähdettä vasten
+  WP-015:008: lainausta ei tarkistettu lähdettä vasten
+  WP-015:009: lainausta ei tarkistettu lähdettä vasten
+  WP-015:010: lainausta ei tarkistettu lähdettä vasten
+  WP-015:011: lainausta ei tarkistettu lähdettä vasten
+  WP-015:012: lainausta ei tarkistettu lähdettä vasten
+  WP-015:013: lainausta ei tarkistettu lähdettä vasten
+  CN-007:001: lainausta ei tarkistettu lähdettä vasten
+  CN-007:002: lainausta ei tarkistettu lähdettä vasten
+  CN-007:003: lainausta ei tarkistettu lähdettä vasten
+  CN-007:004: lainausta ei tarkistettu lähdettä vasten
+  CN-007:005: lainausta ei tarkistettu lähdettä vasten
+  CN-007:006: lainausta ei tarkistettu lähdettä vasten
+  CN-007:007: lainausta ei tarkistettu lähdettä vasten
+  CN-007:008: lainausta ei tarkistettu lähdettä vasten
+  CN-007:009: lainausta ei tarkistettu lähdettä vasten
+  CN-007:010: lainausta ei tarkistettu lähdettä vasten
+  CN-007:011: lainausta ei tarkistettu lähdettä vasten
+  CN-007:012: lainausta ei tarkistettu lähdettä vasten
+  CN-007:013: lainausta ei tarkistettu lähdettä vasten
+  CN-007:014: lainausta ei tarkistettu lähdettä vasten
+  S001: depends_on SM-009:002 → WP-013:001 tarkistamatta
+  S002: same_claim SM-009:003 → WP-015:001 tarkistamatta
+  S003: qualifies SM-009:004 → SM-009:001 tarkistamatta
+  S004: depends_on SM-009:005 → SM-009:001 tarkistamatta
+  S005: depends_on SM-009:008 → SM-009:006 tarkistamatta
+  S006: depends_on SM-009:008 → SM-009:007 tarkistamatta
+  S007: qualifies SM-009:009 → SM-009:001 tarkistamatta
+  S008: depends_on SM-009:009 → SM-009:010 tarkistamatta
+  S009: same_claim SM-009:006 → CN-007:006 tarkistamatta
+  S010: qualifies SM-007:003 → SM-007:002 tarkistamatta
+  S011: depends_on SM-007:003 → SM-007:004 tarkistamatta
+  S012: qualifies SM-007:005 → SM-007:002 tarkistamatta
+  S013: depends_on SM-007:006 → WP-013:011 tarkistamatta
+  S014: same_claim SM-007:007 → WP-015:001 tarkistamatta
+  S015: depends_on CN-004:001 → SM-007:001 tarkistamatta
+  S016: depends_on CN-004:002 → CN-004:001 tarkistamatta
+  S017: qualifies CN-004:003 → CN-004:002 tarkistamatta
+  S018: depends_on CN-004:004 → CN-004:003 tarkistamatta
+  S019: depends_on CN-004:006 → CN-004:005 tarkistamatta
+  S020: depends_on CN-004:008 → CN-004:007 tarkistamatta
+  S021: depends_on WP-013:002 → WP-013:003 tarkistamatta
+  S022: depends_on WP-013:003 → WP-013:004 tarkistamatta
+  S023: depends_on WP-013:009 → WP-013:002 tarkistamatta
+  S024: depends_on WP-013:008 → WP-013:005 tarkistamatta
+  S025: depends_on WP-013:008 → WP-013:006 tarkistamatta
+  S026: depends_on WP-013:008 → WP-013:007 tarkistamatta
+  S027: qualifies WP-013:010 → WP-013:005 tarkistamatta
+  S028: depends_on WP-015:006 → WP-015:003 tarkistamatta
+  S029: depends_on WP-015:006 → WP-015:004 tarkistamatta
+  S030: depends_on WP-015:006 → WP-015:005 tarkistamatta
+  S031: depends_on WP-015:008 → WP-015:007 tarkistamatta
+  S032: qualifies WP-015:009 → WP-015:008 tarkistamatta
+  S033: depends_on WP-015:001 → WP-015:002 tarkistamatta
+  S034: depends_on WP-015:001 → WP-015:006 tarkistamatta
+  S035: depends_on WP-015:001 → WP-015:008 tarkistamatta
+  S036: depends_on WP-015:010 → WP-015:001 tarkistamatta
+  S037: qualifies WP-015:011 → WP-015:010 tarkistamatta
+  S038: depends_on WP-015:012 → WP-015:010 tarkistamatta
+  S039: qualifies WP-015:013 → WP-015:001 tarkistamatta
+  S040: depends_on CN-007:001 → CN-007:002 tarkistamatta
+  S041: depends_on CN-007:003 → CN-007:001 tarkistamatta
+  S042: depends_on CN-007:005 → CN-007:004 tarkistamatta
+  S043: depends_on CN-007:007 → CN-007:006 tarkistamatta
+  S044: depends_on CN-007:009 → CN-007:008 tarkistamatta
+  S045: depends_on CN-007:010 → CN-007:009 tarkistamatta
+  S046: depends_on CN-007:011 → CN-007:012 tarkistamatta
+  S047: depends_on CN-007:013 → CN-007:014 tarkistamatta
+Kone-ehdot läpi. Kone-ehtojen läpäisy ei kerro sisällön oikeellisuudesta.
+# exit 0
+
+# python3 tools/vaiterekisteri.py tarkista katselmoinnit/rapautuminen/taytto-kimi.json --korpus <aethercontinuity.github.io @ 1f3f4fb>
+KONE (0)
+IHMINEN (49)
+  S001: depends_on SM-009:002 → WP-013:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S002: same_claim SM-009:003 → WP-015:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S004: depends_on SM-009:005 → SM-009:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S004: rekonstruoitu depends_on SM-009:005 → SM-009:001: poimijan päättelemä, ei paperin ilmaisema
+  S005: depends_on SM-009:008 → SM-009:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S006: depends_on SM-009:008 → SM-009:007: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S008: depends_on SM-009:009 → SM-009:010: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S009: same_claim SM-009:006 → CN-007:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S011: depends_on SM-007:003 → SM-007:004: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S013: depends_on SM-007:006 → WP-013:011: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S014: same_claim SM-007:007 → WP-015:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S015: depends_on CN-004:001 → SM-007:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S015: rekonstruoitu depends_on CN-004:001 → SM-007:001: poimijan päättelemä, ei paperin ilmaisema
+  S016: depends_on CN-004:002 → CN-004:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S018: depends_on CN-004:004 → CN-004:003: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S018: rekonstruoitu depends_on CN-004:004 → CN-004:003: poimijan päättelemä, ei paperin ilmaisema
+  S019: depends_on CN-004:006 → CN-004:005: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S020: depends_on CN-004:008 → CN-004:007: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S021: depends_on WP-013:002 → WP-013:003: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S022: depends_on WP-013:003 → WP-013:004: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S023: depends_on WP-013:009 → WP-013:002: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S024: depends_on WP-013:008 → WP-013:005: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S024: rekonstruoitu depends_on WP-013:008 → WP-013:005: poimijan päättelemä, ei paperin ilmaisema
+  S025: depends_on WP-013:008 → WP-013:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S025: rekonstruoitu depends_on WP-013:008 → WP-013:006: poimijan päättelemä, ei paperin ilmaisema
+  S026: depends_on WP-013:008 → WP-013:007: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S026: rekonstruoitu depends_on WP-013:008 → WP-013:007: poimijan päättelemä, ei paperin ilmaisema
+  S028: depends_on WP-015:006 → WP-015:003: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S029: depends_on WP-015:006 → WP-015:004: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S030: depends_on WP-015:006 → WP-015:005: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S031: depends_on WP-015:008 → WP-015:007: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S033: depends_on WP-015:001 → WP-015:002: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S033: rekonstruoitu depends_on WP-015:001 → WP-015:002: poimijan päättelemä, ei paperin ilmaisema
+  S034: depends_on WP-015:001 → WP-015:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S034: rekonstruoitu depends_on WP-015:001 → WP-015:006: poimijan päättelemä, ei paperin ilmaisema
+  S035: depends_on WP-015:001 → WP-015:008: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S035: rekonstruoitu depends_on WP-015:001 → WP-015:008: poimijan päättelemä, ei paperin ilmaisema
+  S036: depends_on WP-015:010 → WP-015:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S036: rekonstruoitu depends_on WP-015:010 → WP-015:001: poimijan päättelemä, ei paperin ilmaisema
+  S038: depends_on WP-015:012 → WP-015:010: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S040: depends_on CN-007:001 → CN-007:002: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S041: depends_on CN-007:003 → CN-007:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S042: depends_on CN-007:005 → CN-007:004: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S043: depends_on CN-007:007 → CN-007:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S044: depends_on CN-007:009 → CN-007:008: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S044: rekonstruoitu depends_on CN-007:009 → CN-007:008: poimijan päättelemä, ei paperin ilmaisema
+  S045: depends_on CN-007:010 → CN-007:009: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S046: depends_on CN-007:011 → CN-007:012: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S047: depends_on CN-007:013 → CN-007:014: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+AVOIN (47)
+  S001: depends_on SM-009:002 → WP-013:001 tarkistamatta
+  S002: same_claim SM-009:003 → WP-015:001 tarkistamatta
+  S003: qualifies SM-009:004 → SM-009:001 tarkistamatta
+  S004: depends_on SM-009:005 → SM-009:001 tarkistamatta
+  S005: depends_on SM-009:008 → SM-009:006 tarkistamatta
+  S006: depends_on SM-009:008 → SM-009:007 tarkistamatta
+  S007: qualifies SM-009:009 → SM-009:001 tarkistamatta
+  S008: depends_on SM-009:009 → SM-009:010 tarkistamatta
+  S009: same_claim SM-009:006 → CN-007:006 tarkistamatta
+  S010: qualifies SM-007:003 → SM-007:002 tarkistamatta
+  S011: depends_on SM-007:003 → SM-007:004 tarkistamatta
+  S012: qualifies SM-007:005 → SM-007:002 tarkistamatta
+  S013: depends_on SM-007:006 → WP-013:011 tarkistamatta
+  S014: same_claim SM-007:007 → WP-015:001 tarkistamatta
+  S015: depends_on CN-004:001 → SM-007:001 tarkistamatta
+  S016: depends_on CN-004:002 → CN-004:001 tarkistamatta
+  S017: qualifies CN-004:003 → CN-004:002 tarkistamatta
+  S018: depends_on CN-004:004 → CN-004:003 tarkistamatta
+  S019: depends_on CN-004:006 → CN-004:005 tarkistamatta
+  S020: depends_on CN-004:008 → CN-004:007 tarkistamatta
+  S021: depends_on WP-013:002 → WP-013:003 tarkistamatta
+  S022: depends_on WP-013:003 → WP-013:004 tarkistamatta
+  S023: depends_on WP-013:009 → WP-013:002 tarkistamatta
+  S024: depends_on WP-013:008 → WP-013:005 tarkistamatta
+  S025: depends_on WP-013:008 → WP-013:006 tarkistamatta
+  S026: depends_on WP-013:008 → WP-013:007 tarkistamatta
+  S027: qualifies WP-013:010 → WP-013:005 tarkistamatta
+  S028: depends_on WP-015:006 → WP-015:003 tarkistamatta
+  S029: depends_on WP-015:006 → WP-015:004 tarkistamatta
+  S030: depends_on WP-015:006 → WP-015:005 tarkistamatta
+  S031: depends_on WP-015:008 → WP-015:007 tarkistamatta
+  S032: qualifies WP-015:009 → WP-015:008 tarkistamatta
+  S033: depends_on WP-015:001 → WP-015:002 tarkistamatta
+  S034: depends_on WP-015:001 → WP-015:006 tarkistamatta
+  S035: depends_on WP-015:001 → WP-015:008 tarkistamatta
+  S036: depends_on WP-015:010 → WP-015:001 tarkistamatta
+  S037: qualifies WP-015:011 → WP-015:010 tarkistamatta
+  S038: depends_on WP-015:012 → WP-015:010 tarkistamatta
+  S039: qualifies WP-015:013 → WP-015:001 tarkistamatta
+  S040: depends_on CN-007:001 → CN-007:002 tarkistamatta
+  S041: depends_on CN-007:003 → CN-007:001 tarkistamatta
+  S042: depends_on CN-007:005 → CN-007:004 tarkistamatta
+  S043: depends_on CN-007:007 → CN-007:006 tarkistamatta
+  S044: depends_on CN-007:009 → CN-007:008 tarkistamatta
+  S045: depends_on CN-007:010 → CN-007:009 tarkistamatta
+  S046: depends_on CN-007:011 → CN-007:012 tarkistamatta
+  S047: depends_on CN-007:013 → CN-007:014 tarkistamatta
+Kone-ehdot läpi. Kone-ehtojen läpäisy ei kerro sisällön oikeellisuudesta.
+# exit 0
