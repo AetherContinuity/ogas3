@@ -15,6 +15,8 @@ Hyväksymistestiä ei tehdä, eikä tulosjoukkoa lukita ennalta.
 | WP-015 | papers/wp-015-residualization-spot-markets.html | bd689c6 | 0fb827818452d80f | SM-009 viittaa: "the mechanism producing the crisis" (puskurien heikkeneminen) |
 | CN-007 | papers/cn-007-miksi-jarkevaet-asiat-eivat-etene.html | 1b84318 | d563dae33b4155dd | Ketjun suomenkielinen sovellus yhteen tapaukseen (kapasiteettimekanismi) |
 
+Korjaus 27.11.2026: CN-004:n, WP-013:n ja CN-007:n "viimeisin muutos" (1b84318) oli väärin. Rajaus tehtiin matalasta kloonista, jossa 1b84318 on historian juuri ja näyttää lisäävän kaikki tiedostot. Oikeat arvot ovat 7ce7d43, c934af8 ja fa39e64 (täyttöpyyntö, ogas3 #54). sha256-tunnisteet olivat oikein.
+
 Yhteensä noin 217 kt HTML:ää. Purettuna se on arviolta 140 000 merkkiä, noin 10 % enemmän kuin täytössä v2. Katto kannattaa harkita uudelleen, koska täyttö v2 käytti 31 342 / 48 000.
 
 **Valintamenetelmä.**
