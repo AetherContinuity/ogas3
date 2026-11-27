@@ -1,0 +1,179 @@
+Raakatuloksen tarkistus — tools/vaiterekisteri.py tarkista (koodi: main b83a39a)
+Raakatulos: katselmoinnit/vaiterekisteri-taytto-v2-kimi.json  sha256 8eb560d8e676874d8b02035310cee0293395b55dc4a676fd032c490eaa8d19b8
+Purku: vastauksen toinen ```json-lohko sellaisenaan + rivinvaihto (sama menetelmä tuottaa täytön 1 kimi.json:n tavu tavulta).
+Sisältöä ei korjattu.
+
+== 1. ilman korpusta, exit 0 ==
+KONE (0)
+IHMINEN (31)
+  SM-024:002: [A]-väite ilman countertestiä (sallittu; harkitse not_specified)
+  SM-024:007: [A]-väite ilman countertestiä (sallittu; harkitse not_specified)
+  S001: depends_on WP-020:003 → WP-020:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S002: depends_on WP-020:003 → WP-020:002: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S003: depends_on WP-020:004 → WP-020:003: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S003: rekonstruoitu depends_on WP-020:004 → WP-020:003: poimijan päättelemä, ei paperin ilmaisema
+  S004: depends_on WP-020:006 → WP-020:005: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S005: depends_on WP-020:006 → WP-020:007: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S008: depends_on CN-008:003 → CN-008:004: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S009: depends_on CN-008:003 → CN-008:005: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S010: depends_on CN-008:003 → CN-008:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S013: same_claim CN-008:002 → WP-020:003: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S014: same_claim CN-008:007 → WP-020:009: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S015: same_claim CN-008:008 → WP-020:010: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S016: depends_on CN-030:003 → CN-030:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S016: rekonstruoitu depends_on CN-030:003 → CN-030:001: poimijan päättelemä, ei paperin ilmaisema
+  S017: depends_on CN-030:003 → CN-030:002: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S017: rekonstruoitu depends_on CN-030:003 → CN-030:002: poimijan päättelemä, ei paperin ilmaisema
+  S018: depends_on CN-030:007 → CN-030:005: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S018: rekonstruoitu depends_on CN-030:007 → CN-030:005: poimijan päättelemä, ei paperin ilmaisema
+  S019: depends_on CN-030:007 → CN-030:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S019: rekonstruoitu depends_on CN-030:007 → CN-030:006: poimijan päättelemä, ei paperin ilmaisema
+  S020: depends_on SM-024:007 → SM-024:004: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S021: depends_on SM-024:007 → SM-024:005: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S022: depends_on SM-024:007 → SM-024:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S023: depends_on SM-024:001 → SM-024:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S026: same_claim SM-024:001 → CN-008:007: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S027: same_claim SM-024:003 → CN-008:008: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S030: same_claim SM-024:008 → CN-030:004: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S031: depends_on SM-024:009 → CN-030:008: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S032: depends_on SM-024:010 → CN-030:009: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+AVOIN (69)
+  WP-020:001: lainausta ei tarkistettu lähdettä vasten
+  WP-020:002: lainausta ei tarkistettu lähdettä vasten
+  WP-020:003: lainausta ei tarkistettu lähdettä vasten
+  WP-020:004: lainausta ei tarkistettu lähdettä vasten
+  WP-020:005: lainausta ei tarkistettu lähdettä vasten
+  WP-020:006: lainausta ei tarkistettu lähdettä vasten
+  WP-020:007: lainausta ei tarkistettu lähdettä vasten
+  WP-020:008: lainausta ei tarkistettu lähdettä vasten
+  WP-020:009: lainausta ei tarkistettu lähdettä vasten
+  WP-020:010: lainausta ei tarkistettu lähdettä vasten
+  CN-008:001: lainausta ei tarkistettu lähdettä vasten
+  CN-008:002: lainausta ei tarkistettu lähdettä vasten
+  CN-008:003: lainausta ei tarkistettu lähdettä vasten
+  CN-008:004: lainausta ei tarkistettu lähdettä vasten
+  CN-008:005: lainausta ei tarkistettu lähdettä vasten
+  CN-008:006: lainausta ei tarkistettu lähdettä vasten
+  CN-008:007: lainausta ei tarkistettu lähdettä vasten
+  CN-008:008: lainausta ei tarkistettu lähdettä vasten
+  CN-030:001: lainausta ei tarkistettu lähdettä vasten
+  CN-030:002: lainausta ei tarkistettu lähdettä vasten
+  CN-030:003: lainausta ei tarkistettu lähdettä vasten
+  CN-030:004: lainausta ei tarkistettu lähdettä vasten
+  CN-030:005: lainausta ei tarkistettu lähdettä vasten
+  CN-030:006: lainausta ei tarkistettu lähdettä vasten
+  CN-030:007: lainausta ei tarkistettu lähdettä vasten
+  CN-030:008: lainausta ei tarkistettu lähdettä vasten
+  CN-030:009: lainausta ei tarkistettu lähdettä vasten
+  SM-024:001: lainausta ei tarkistettu lähdettä vasten
+  SM-024:002: lainausta ei tarkistettu lähdettä vasten
+  SM-024:003: lainausta ei tarkistettu lähdettä vasten
+  SM-024:004: lainausta ei tarkistettu lähdettä vasten
+  SM-024:005: lainausta ei tarkistettu lähdettä vasten
+  SM-024:006: lainausta ei tarkistettu lähdettä vasten
+  SM-024:007: lainausta ei tarkistettu lähdettä vasten
+  SM-024:008: lainausta ei tarkistettu lähdettä vasten
+  SM-024:009: lainausta ei tarkistettu lähdettä vasten
+  SM-024:010: lainausta ei tarkistettu lähdettä vasten
+  S001: depends_on WP-020:003 → WP-020:001 tarkistamatta
+  S002: depends_on WP-020:003 → WP-020:002 tarkistamatta
+  S003: depends_on WP-020:004 → WP-020:003 tarkistamatta
+  S004: depends_on WP-020:006 → WP-020:005 tarkistamatta
+  S005: depends_on WP-020:006 → WP-020:007 tarkistamatta
+  S006: qualifies WP-020:009 → WP-020:008 tarkistamatta
+  S007: qualifies WP-020:010 → WP-020:009 tarkistamatta
+  S008: depends_on CN-008:003 → CN-008:004 tarkistamatta
+  S009: depends_on CN-008:003 → CN-008:005 tarkistamatta
+  S010: depends_on CN-008:003 → CN-008:006 tarkistamatta
+  S011: qualifies CN-008:007 → CN-008:001 tarkistamatta
+  S012: qualifies CN-008:008 → CN-008:007 tarkistamatta
+  S013: same_claim CN-008:002 → WP-020:003 tarkistamatta
+  S014: same_claim CN-008:007 → WP-020:009 tarkistamatta
+  S015: same_claim CN-008:008 → WP-020:010 tarkistamatta
+  S016: depends_on CN-030:003 → CN-030:001 tarkistamatta
+  S017: depends_on CN-030:003 → CN-030:002 tarkistamatta
+  S018: depends_on CN-030:007 → CN-030:005 tarkistamatta
+  S019: depends_on CN-030:007 → CN-030:006 tarkistamatta
+  S020: depends_on SM-024:007 → SM-024:004 tarkistamatta
+  S021: depends_on SM-024:007 → SM-024:005 tarkistamatta
+  S022: depends_on SM-024:007 → SM-024:006 tarkistamatta
+  S023: depends_on SM-024:001 → SM-024:006 tarkistamatta
+  S024: qualifies SM-024:002 → SM-024:001 tarkistamatta
+  S025: qualifies SM-024:003 → SM-024:001 tarkistamatta
+  S026: same_claim SM-024:001 → CN-008:007 tarkistamatta
+  S027: same_claim SM-024:003 → CN-008:008 tarkistamatta
+  S028: qualifies SM-024:001 → WP-020:008 tarkistamatta
+  S029: qualifies SM-024:001 → CN-008:001 tarkistamatta
+  S030: same_claim SM-024:008 → CN-030:004 tarkistamatta
+  S031: depends_on SM-024:009 → CN-030:008 tarkistamatta
+  S032: depends_on SM-024:010 → CN-030:009 tarkistamatta
+Kone-ehdot läpi. Kone-ehtojen läpäisy ei kerro sisällön oikeellisuudesta.
+
+== 2. --korpus = sivuston repo adb800b (vain neljä paperia, sha256 täsmää pyynnön kirjaukseen), exit 0 ==
+KONE (0)
+IHMINEN (31)
+  SM-024:002: [A]-väite ilman countertestiä (sallittu; harkitse not_specified)
+  SM-024:007: [A]-väite ilman countertestiä (sallittu; harkitse not_specified)
+  S001: depends_on WP-020:003 → WP-020:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S002: depends_on WP-020:003 → WP-020:002: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S003: depends_on WP-020:004 → WP-020:003: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S003: rekonstruoitu depends_on WP-020:004 → WP-020:003: poimijan päättelemä, ei paperin ilmaisema
+  S004: depends_on WP-020:006 → WP-020:005: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S005: depends_on WP-020:006 → WP-020:007: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S008: depends_on CN-008:003 → CN-008:004: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S009: depends_on CN-008:003 → CN-008:005: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S010: depends_on CN-008:003 → CN-008:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S013: same_claim CN-008:002 → WP-020:003: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S014: same_claim CN-008:007 → WP-020:009: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S015: same_claim CN-008:008 → WP-020:010: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S016: depends_on CN-030:003 → CN-030:001: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S016: rekonstruoitu depends_on CN-030:003 → CN-030:001: poimijan päättelemä, ei paperin ilmaisema
+  S017: depends_on CN-030:003 → CN-030:002: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S017: rekonstruoitu depends_on CN-030:003 → CN-030:002: poimijan päättelemä, ei paperin ilmaisema
+  S018: depends_on CN-030:007 → CN-030:005: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S018: rekonstruoitu depends_on CN-030:007 → CN-030:005: poimijan päättelemä, ei paperin ilmaisema
+  S019: depends_on CN-030:007 → CN-030:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S019: rekonstruoitu depends_on CN-030:007 → CN-030:006: poimijan päättelemä, ei paperin ilmaisema
+  S020: depends_on SM-024:007 → SM-024:004: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S021: depends_on SM-024:007 → SM-024:005: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S022: depends_on SM-024:007 → SM-024:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S023: depends_on SM-024:001 → SM-024:006: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S026: same_claim SM-024:001 → CN-008:007: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S027: same_claim SM-024:003 → CN-008:008: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S030: same_claim SM-024:008 → CN-030:004: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S031: depends_on SM-024:009 → CN-030:008: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+  S032: depends_on SM-024:010 → CN-030:009: onko suhde osoitettu argumentista eikä samankaltaisuudesta?
+AVOIN (32)
+  S001: depends_on WP-020:003 → WP-020:001 tarkistamatta
+  S002: depends_on WP-020:003 → WP-020:002 tarkistamatta
+  S003: depends_on WP-020:004 → WP-020:003 tarkistamatta
+  S004: depends_on WP-020:006 → WP-020:005 tarkistamatta
+  S005: depends_on WP-020:006 → WP-020:007 tarkistamatta
+  S006: qualifies WP-020:009 → WP-020:008 tarkistamatta
+  S007: qualifies WP-020:010 → WP-020:009 tarkistamatta
+  S008: depends_on CN-008:003 → CN-008:004 tarkistamatta
+  S009: depends_on CN-008:003 → CN-008:005 tarkistamatta
+  S010: depends_on CN-008:003 → CN-008:006 tarkistamatta
+  S011: qualifies CN-008:007 → CN-008:001 tarkistamatta
+  S012: qualifies CN-008:008 → CN-008:007 tarkistamatta
+  S013: same_claim CN-008:002 → WP-020:003 tarkistamatta
+  S014: same_claim CN-008:007 → WP-020:009 tarkistamatta
+  S015: same_claim CN-008:008 → WP-020:010 tarkistamatta
+  S016: depends_on CN-030:003 → CN-030:001 tarkistamatta
+  S017: depends_on CN-030:003 → CN-030:002 tarkistamatta
+  S018: depends_on CN-030:007 → CN-030:005 tarkistamatta
+  S019: depends_on CN-030:007 → CN-030:006 tarkistamatta
+  S020: depends_on SM-024:007 → SM-024:004 tarkistamatta
+  S021: depends_on SM-024:007 → SM-024:005 tarkistamatta
+  S022: depends_on SM-024:007 → SM-024:006 tarkistamatta
+  S023: depends_on SM-024:001 → SM-024:006 tarkistamatta
+  S024: qualifies SM-024:002 → SM-024:001 tarkistamatta
+  S025: qualifies SM-024:003 → SM-024:001 tarkistamatta
+  S026: same_claim SM-024:001 → CN-008:007 tarkistamatta
+  S027: same_claim SM-024:003 → CN-008:008 tarkistamatta
+  S028: qualifies SM-024:001 → WP-020:008 tarkistamatta
+  S029: qualifies SM-024:001 → CN-008:001 tarkistamatta
+  S030: same_claim SM-024:008 → CN-030:004 tarkistamatta
+  S031: depends_on SM-024:009 → CN-030:008 tarkistamatta
+  S032: depends_on SM-024:010 → CN-030:009 tarkistamatta
+Kone-ehdot läpi. Kone-ehtojen läpäisy ei kerro sisällön oikeellisuudesta.
