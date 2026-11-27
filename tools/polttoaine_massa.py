@@ -29,6 +29,8 @@ def sarjat_jaksolle(wob: dict, brent: dict, alku: str, loppu: str, ehdollinen: b
     b_alas = {i for i, v in enumerate(b) if v is not None and not aukko[i] and v <= -K_BRENT}
     out = {}
     for nimi, s in wob["sarjat"].items():
+        if nimi[:3] in ("EU_", "EUR"):  # ennakko-2: EU- ja EUR-keskiarvot pois
+            continue
         maa, tuote = nimi[:2], nimi.rsplit("_", 1)[1]
         m = muutos([s.get(p) for p in paivat])
         m = [None if aukko[i] else v for i, v in enumerate(m)]
