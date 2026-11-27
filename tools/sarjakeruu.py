@@ -1,7 +1,7 @@
 """Sarjakeruu: Fingrid-sarjat 15 min resoluutiolla synapsikokeen aineistoksi (ei analyysia).
 
 Kerää data/sarjat/<talvi>.json -tiedostoon sarjat, joita WEM-L1:n keruu ei tallenna.
-3 min sarjat keskiarvoistetaan 15 min varteiksi (vartti kelpaa, jos ≥ 3/5 pistettä on olemassa).
+1 ja 3 min sarjat keskiarvoistetaan 15 min varteiksi (vartti kelpaa, jos ≥ 60 % pisteistä on olemassa).
 Inkrementaalinen: jatkaa viimeisestä tallennetusta vartista (−24 h päällekkäisyys, jälkikäteen
 täydentyneet vartit päivittyvät). Data: Fingrid Open Data, CC BY 4.0.
 
@@ -22,7 +22,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from wem_lopputulos import hae, _iso, _aika  # noqa: E402
 
-SARJAT = {124: 15, 75: 15, 188: 3, 191: 3, 201: 3, 202: 3}  # ds: resoluutio min
+SARJAT = {124: 15, 75: 15, 188: 3, 191: 3, 201: 3, 202: 3,
+          371: 1,            # sähkökattiloiden kulutus (summa), 1 min, 3.12.2024 alkaen
+          398: 3, 399: 3}    # akkuvarastot: purku, lataus
+# ds: resoluutio min. Datakeskusten ja elektrolyysin kuormalle ei ole löydetty omaa Fingrid-sarjaa (27.11.2026).
 
 
 def vartti(t: datetime) -> datetime:
@@ -46,7 +49,7 @@ def keraa_ds(ds: int, res: int, alku: datetime, loppu: datetime, tauko: float) -
             virheet.append(f"DS {ds} {_iso(t)}–{_iso(u)}: {type(e).__name__}: {str(e)[:100]}")
         t = u
         time.sleep(tauko)
-    vaadittu = 1 if res == 15 else 3
+    vaadittu = max(1, -(-15 * 3 // (5 * res)))  # ≥ 60 % vartin pisteistä: 1 min → 9, 3 min → 3, 15 min → 1
     out = {_iso(k): round(sum(v) / len(v), 2) for k, v in kerat.items() if len(v) >= vaadittu}
     return out, virheet, raaka
 
