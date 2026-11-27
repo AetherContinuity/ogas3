@@ -1,0 +1,12 @@
+{
+ "id": "T1",
+ "arvioitu": "2026-11-27",
+ "tarkistuspaiva": "2027-06-30",
+ "tila": "HAVAINTO_PUUTTUU",
+ "syyt": [
+  "tiedosto puuttuu: data/talvimeri/2026-2027.json"
+ ],
+ "kelpaavat_kuukaudet": [],
+ "ylitykset": [],
+ "ulkoiset": {}
+}
