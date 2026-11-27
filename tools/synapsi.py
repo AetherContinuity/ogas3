@@ -107,7 +107,7 @@ def _nb_hanta(havaittu: int, nulli: list[int]) -> float:
 def arvioi(sarjat: dict[str, list], saannot: dict[str, dict], max_viive: int = 8, kierroksia: int | None = None,
            min_siirto: int | None = None, alfa: float = 0.05, siemen: int = 1, p_menetelma: str = "tarkka",
            parit: list[tuple[str, str]] | None = None, askelia_paivassa: int | None = None,
-           min_paivia: int | None = None) -> dict:
+           min_paivia: int | None = None, rajaus: set[tuple[str, str, int]] | None = None) -> dict:
     """Kaikki suunnatut parit A → B. Nollamalli: B:n tapahtumat kierretään siirrolla s, min_siirto ≤ s ≤ n − min_siirto
     (oletus 4·max_viive), A pysyy paikallaan. Oletuksena käydään läpi KAIKKI sallitut siirrot (tarkka, deterministinen
     permutaatiojakauma); kierroksia=K arpoo K siirtoa siemenellä. p = (1 + #{null ≥ havaittu}) / (1 + K).
@@ -118,6 +118,8 @@ def arvioi(sarjat: dict[str, list], saannot: dict[str, dict], max_viive: int = 8
     monelleko eri päivälle (indeksi // askelia_paivassa, sarjan alusta) sen yhteisesiintymät jakautuvat (A-tapahtuman
     päivä). Jos min_paivia on annettu, ehdokas, jonka päiviä on vähemmän, siirretään listaan
     "hylatyt_monipaivaisyys". Se ei ole ehdokas, mutta se raportoidaan.
+    rajaus: jos annettu, testataan vain nämä (a, b, viive) -kolmikot ja BH tehdään niiden yli (vahvistusjakso:
+    vain löytöjakson ehdokkaat).
     Huom: yksi A-tapahtuma voi osua viiveellä d useampaan B-tapahtumaan vain, jos B:llä on kaksi tapahtumaa samassa
     vartissa, mikä ei jaksotuksen jälkeen ole mahdollista; histogrammilaskenta on siksi sama kuin yhteiset()."""
     n = len(next(iter(sarjat.values())))
@@ -131,12 +133,16 @@ def arvioi(sarjat: dict[str, list], saannot: dict[str, dict], max_viive: int = 8
     tap = {k: aktivaatiot(sarjat[k], saannot[k]) for k in sarjat}
     testit = []
     kaikki = [(a, b) for a in sarjat for b in sarjat if a != b]
+    if rajaus is not None:
+        parit = sorted({(a, b) for a, b, _ in rajaus})
     for a, b in (parit if parit is not None else kaikki):
         if True:
             if not tap[a] or not tap[b]:
                 continue
             h = _erot(tap[a], tap[b], n)
             for d in range(max_viive + 1):
+                if rajaus is not None and (a, b, d) not in rajaus:
+                    continue
                 hav = h[d]
                 nulli = [h[(d - s) % n] for s in siirrot]
                 p_tarkka = (1 + sum(1 for c in nulli if c >= hav)) / (1 + K)
