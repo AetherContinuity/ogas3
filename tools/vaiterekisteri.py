@@ -10,8 +10,14 @@ TIETOMALLI
   Esiintymiä ei koskaan yhdistetä yhdeksi olioksi.
 - Suhteet ovat omia rivejään ja kantavat oman evidenssinsä.
 
-  esiintymat[]: id, paperi, kohta, lainaus, merkinta (M|L|A|—),
+  esiintymat[]: id, paperi, kohta, lainaus, merkinta (M|L|A|—|ei_merkitty),
                 tiedosto (valinnainen, polku korpuksen juuresta), countertest (valinnainen)
+  merkinta kuvaa paperin omaa merkintää väitteelle, ei rekisterin arviota:
+    M, L, A, —   paperi liittää väitteeseen merkinnän [M], [L], [A] tai [—]
+                 ([—] = paperin mukaan tarkistettu, ei löytynyt tai ei julkinen)
+    ei_merkitty  paperi ei liitä väitteeseen merkintää (esim. paperi ei käytä merkintöjä)
+  Lisätty 27.11.2026: vaiheen 2 täyttöpyyntö yhdisti nämä kaksi arvoksi "—".
+
   suhteet[]:    id, lahde, kohde, laji, perustelu, kirjaaja,
                 tarkistaja (valinnainen), tila (ehdotettu|tarkistettu|hylatty)
 
@@ -54,7 +60,7 @@ from pathlib import Path
 
 LAJIT = {"depends_on", "same_claim", "qualifies", "related"}
 SUUNTAAMATTOMAT = {"same_claim", "related"}
-MERKINNAT = {"M", "L", "A", "—"}
+MERKINNAT = {"M", "L", "A", "—", "ei_merkitty"}
 CT_TILAT = {"not_specified", "not_tested", "tested"}
 SUHDE_TILAT = {"ehdotettu", "tarkistettu", "hylatty"}
 ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.:\-]*$")

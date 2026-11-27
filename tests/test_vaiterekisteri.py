@@ -165,3 +165,34 @@ def test_kyselykomennot_validoivat_ensin(tmp_path, capsys):
                     ["rajaukset", str(f), "P1-a"], ["liittyvat", str(f), "P1-a"]):
         assert vr.main(komento) == 1, komento   # ei poikkeusta, hallittu virhe
     assert "kone-ehtoja" in capsys.readouterr().err
+
+# --- merkintäsiirto -----------------------------------------------------------
+spec2 = importlib.util.spec_from_file_location("vm", pathlib.Path(__file__).parents[1] / "tools" / "vaiterekisteri_merkinnat.py")
+vm = importlib.util.module_from_spec(spec2); spec2.loader.exec_module(vm)
+
+def test_ei_merkitty_on_sallittu():
+    r = rek(); r["esiintymat"][1]["merkinta"] = "ei_merkitty"
+    assert vr.tarkista(r).ok
+
+def test_paperin_merkinta():
+    t = vr.normalisoi("<p>Silta on kallis <code>[M]</code>. Lautta on halpa. Toinen <code>[A]</code>.</p>"
+                      "<p>Ei tietoa löytynyt <code>[—]</code>.</p><p>Lainaus päättyy merkintään [L].</p>")
+    assert vm.paperin_merkinta(t, "Silta on kallis")[0] == "M"
+    assert vm.paperin_merkinta(t, "Lautta on halpa")[0] == "ei_merkitty"   # virkeraja ennen [A]:ta
+    assert vm.paperin_merkinta(t, "Ei tietoa löytynyt")[0] == "—"
+    assert vm.paperin_merkinta(t, "Lainaus päättyy merkintään [L].")[0] == "L"
+    assert vm.paperin_merkinta(t, "Ei ole tekstissä")[0] is None
+
+def test_siirto_ei_muuta_syotetta_eika_suhteita(tmp_path):
+    (tmp_path / "p1.html").write_text("<p>Siltaa ei rakenneta, koska kukaan ei omista sitä <code>[A]</code>.</p>"
+                                      "<p>Lautta lopetettiin 2010.</p><p>Nimetään sillalle omistaja.</p>", encoding="utf-8")
+    (tmp_path / "p2.html").write_text("<p>Pullonkaula on omistajuus.</p>", encoding="utf-8")
+    r = rek(); r["esiintymat"][1]["merkinta"] = "—"; r["esiintymat"][0]["lainaus"] = "Siltaa ei rakenneta, koska kukaan ei omista sitä"
+    alkup = copy.deepcopy(r)
+    uusi, muut = vm.siirra(r, tmp_path)
+    assert r == alkup                                   # syöte koskematon
+    assert uusi["suhteet"] == alkup["suhteet"]          # suhteisiin ei kosketa
+    e = {x["id"]: x["merkinta"] for x in uusi["esiintymat"]}
+    assert e["P1-a"] == "A" and e["P1-b"] == "ei_merkitty"
+    assert {m["id"] for m in muut if m.get("uusi")} == {"P1-b", "P1-c", "P2-a"}
+    assert any(m["id"] == "P2-b" and m["uusi"] is None for m in muut)   # ei tiedostoa → raportoidaan
