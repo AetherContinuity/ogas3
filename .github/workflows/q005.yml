@@ -5,7 +5,9 @@ on:
   workflow_dispatch:
     inputs:
       h:
-        description: "Hypoteesi (H1 | H2 | H3 | H4)"
+        description: "Hypoteesi"
+        type: choice
+        options: [H1]
         default: "H1"
         required: true
 
@@ -25,10 +27,14 @@ jobs:
         env:
           H: ${{ inputs.h }}
         run: |
+          set -euo pipefail
           mkdir -p ennakkorekisteroinnit/palautuminen/tulokset
-          python3 ennakkorekisteroinnit/palautuminen/q005.py "$H" > "ennakkorekisteroinnit/palautuminen/tulokset/$H-$(date -u +%F).json"
+          tmp=$(mktemp)
+          OUT="ennakkorekisteroinnit/palautuminen/tulokset/$H-$(date -u +%F).json"
+          python3 ennakkorekisteroinnit/palautuminen/q005.py "$H" > "$tmp"
+          python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$tmp"
+          mv "$tmp" "$OUT"
       - name: Commit
-        if: always()
         run: |
           git config user.name  "ogas3-q005"
           git config user.email "actions@users.noreply.github.com"
