@@ -1,0 +1,13 @@
+name: q002-diag
+# H1-diagnostiikka: vain rakenne, ei arvoja. Haarakohtainen push-ajo.
+on:
+  push:
+    branches: [q002-diag]
+    paths: [tools/q002_diag.py, .github/workflows/q002-diag.yml]
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/q002_diag.py
