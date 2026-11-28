@@ -20,13 +20,17 @@ JAKSOT = {"loyto": ("2005-01-01", "2016-01-01"), "vahvistus": ("2016-01-01", "20
 K_FI, K_BRENT, MIN_AKT, VIIVE, MS = 3.0, 5.0, 20, 4, 16
 
 
-def sarjat_jaksolle(wob: dict, brent: dict, alku: str, loppu: str, ehdollinen: bool):
+def sarjat_jaksolle(wob: dict, brent: dict, alku: str, loppu: str, ehdollinen: bool, plasebo: int | None = None):
     paivat = sorted({p for s in wob["sarjat"].values() for p in s if alku <= p < loppu})
     dd = [date.fromisoformat(p) for p in paivat]
     aukko = [i > 0 and (dd[i] - dd[i - 1]).days > 13 for i in range(len(dd))]
     b = muutos([viikkokeskiarvo(brent, d) for d in dd])
     b_ylos = {i for i, v in enumerate(b) if v is not None and not aukko[i] and v >= K_BRENT}
     b_alas = {i for i, v in enumerate(b) if v is not None and not aukko[i] and v <= -K_BRENT}
+    if plasebo is not None:  # lisäanalyysi: yhtä monta satunnaista viikkoa Brent-viikkojen sijaan
+        import random
+        r = random.Random(plasebo)
+        b_ylos = set(r.sample(range(1, len(dd)), len(b_ylos))); b_alas = set(r.sample(range(1, len(dd)), len(b_alas)))
     out = {}
     for nimi, s in wob["sarjat"].items():
         if nimi[:3] in ("EU_", "EUR"):  # ennakko-2: EU- ja EUR-keskiarvot pois
@@ -69,7 +73,7 @@ def aja(wob, brent, ehdollinen: bool) -> dict:
     return {"sarjoja": len(mukana), "pareja": len(parit), "testeja_loyto": L["testeja"], "ehdokkaita_loyto": len(ehd),
             "testeja_vahvistus": V["testeja"], "sailyi": len(sail), "sailymisosuus": round(len(sail) / len(ehd), 3) if ehd else None,
             "loyto_kuvaus": kuvaa(ehd), "sailyneet_kuvaus": kuvaa(sail),
-            "sailyneet_maaparit_top": [[f"{x}-{y}", n] for (x, y), n in maaparit.most_common(25)],
+            "sailyneet_maaparit_top": [[f"{x}-{y}", n] for (x, y), n in sorted(maaparit.items(), key=lambda t: (-t[1], t[0]))[:25]],
             "sailyneet": sorted(sail), "ehdokkaat_loyto": sorted(ehd)}
 
 

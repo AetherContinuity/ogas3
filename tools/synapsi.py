@@ -172,5 +172,8 @@ def arvioi(sarjat: dict[str, list], saannot: dict[str, dict], max_viive: int = 8
             ehdokkaat = [e for e in ehdokkaat if e["paivia"] >= min_paivia]
     return {"n_varttia": n, "tapahtumia": {k: len(v) for k, v in tap.items()}, "testeja": m, "alfa_bh": alfa,
             "kierroksia": kierroksia, "siemen": siemen, "kierrokset_riittavat": voima_ok,
-            "kierroksia_vahintaan": int(m / alfa) + 1, "p_menetelma": p_menetelma, "min_paivia": min_paivia, "ehdokkaat": ehdokkaat,
+            "kierroksia_vahintaan": int(m / alfa) + 1, "p_menetelma": p_menetelma, "min_paivia": min_paivia,
+            "osuus_p_le_005": round(sum(1 for t in testit if t["p"] <= 0.05) / m, 4) if m else None,
+            "osuus_p_le_001": round(sum(1 for t in testit if t["p"] <= 0.01) / m, 4) if m else None,
+            "ehdokkaat": ehdokkaat,
             "hylatyt_monipaivaisyys": hylatyt}
