@@ -1,0 +1,450 @@
+{
+ "huom": "jälkikäteinen, ei ennakkokirjattu",
+ "sarjoja": 47,
+ "jaksot": {
+  "loyto": {
+   "raaka": {
+    "pearson_mediaani": 0.353,
+    "spearman_mediaani": 0.357,
+    "ryhman_sisainen_pearson_mediaani": 0.378,
+    "ryhma_vs_muut_pearson_mediaani": 0.309,
+    "klusterointi": {
+     "average_r0.3": {
+      "ryhmia": 4,
+      "paras_vastaavuus": [
+       0.467,
+       [
+        "AT",
+        "BE",
+        "BG",
+        "DE",
+        "DK",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GR",
+        "IT",
+        "LT",
+        "LU",
+        "NL",
+        "SE"
+       ]
+      ]
+     },
+     "average_r0.4": {
+      "ryhmia": 7,
+      "paras_vastaavuus": [
+       0.333,
+       [
+        "AT",
+        "BG",
+        "DE",
+        "DK",
+        "EE",
+        "ES",
+        "FR",
+        "GR",
+        "IT",
+        "LT",
+        "LU",
+        "NL",
+        "SE"
+       ]
+      ]
+     },
+     "average_r0.5": {
+      "ryhmia": 13,
+      "paras_vastaavuus": [
+       0.25,
+       [
+        "DK",
+        "NL",
+        "SE"
+       ]
+      ]
+     },
+     "complete_r0.3": {
+      "ryhmia": 9,
+      "paras_vastaavuus": [
+       0.5,
+       [
+        "DE",
+        "DK",
+        "LU",
+        "NL",
+        "SE"
+       ]
+      ]
+     },
+     "complete_r0.4": {
+      "ryhmia": 12,
+      "paras_vastaavuus": [
+       0.375,
+       [
+        "DE",
+        "DK",
+        "NL",
+        "SE"
+       ]
+      ]
+     },
+     "complete_r0.5": {
+      "ryhmia": 16,
+      "paras_vastaavuus": [
+       0.375,
+       [
+        "DK",
+        "LU",
+        "NL",
+        "SE"
+       ]
+      ]
+     }
+    }
+   },
+   "brent_residuaali": {
+    "pearson_mediaani": 0.152,
+    "spearman_mediaani": 0.157,
+    "ryhman_sisainen_pearson_mediaani": 0.162,
+    "ryhma_vs_muut_pearson_mediaani": 0.111,
+    "klusterointi": {
+     "average_r0.3": {
+      "ryhmia": 14,
+      "paras_vastaavuus": [
+       0.25,
+       [
+        "DK",
+        "NL",
+        "SE"
+       ]
+      ]
+     },
+     "average_r0.4": {
+      "ryhmia": 19,
+      "paras_vastaavuus": [
+       0.25,
+       [
+        "DK",
+        "NL",
+        "SE"
+       ]
+      ]
+     },
+     "average_r0.5": {
+      "ryhmia": 20,
+      "paras_vastaavuus": [
+       0.286,
+       [
+        "DK",
+        "SE"
+       ]
+      ]
+     },
+     "complete_r0.3": {
+      "ryhmia": 20,
+      "paras_vastaavuus": [
+       0.25,
+       [
+        "DK",
+        "NL",
+        "SE"
+       ]
+      ]
+     },
+     "complete_r0.4": {
+      "ryhmia": 20,
+      "paras_vastaavuus": [
+       0.25,
+       [
+        "DK",
+        "NL",
+        "SE"
+       ]
+      ]
+     },
+     "complete_r0.5": {
+      "ryhmia": 21,
+      "paras_vastaavuus": [
+       0.286,
+       [
+        "DK",
+        "SE"
+       ]
+      ]
+     }
+    }
+   }
+  },
+  "vahvistus": {
+   "raaka": {
+    "pearson_mediaani": 0.395,
+    "spearman_mediaani": 0.413,
+    "ryhman_sisainen_pearson_mediaani": 0.323,
+    "ryhma_vs_muut_pearson_mediaani": 0.334,
+    "klusterointi": {
+     "average_r0.3": {
+      "ryhmia": 2,
+      "paras_vastaavuus": [
+       0.24,
+       [
+        "AT",
+        "BE",
+        "BG",
+        "CY",
+        "CZ",
+        "DE",
+        "DK",
+        "EE",
+        "ES",
+        "FR",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LT",
+        "LU",
+        "LV",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SE",
+        "SI",
+        "SK"
+       ]
+      ]
+     },
+     "average_r0.4": {
+      "ryhmia": 6,
+      "paras_vastaavuus": [
+       0.263,
+       [
+        "AT",
+        "BE",
+        "CZ",
+        "DE",
+        "DK",
+        "ES",
+        "FR",
+        "GR",
+        "IT",
+        "LT",
+        "LU",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SE",
+        "SK"
+       ]
+      ]
+     },
+     "average_r0.5": {
+      "ryhmia": 11,
+      "paras_vastaavuus": [
+       0.167,
+       [
+        "AT",
+        "CZ",
+        "DE",
+        "DK",
+        "ES",
+        "FR",
+        "GR",
+        "IT",
+        "LT",
+        "LU",
+        "NL",
+        "PL",
+        "PT",
+        "RO"
+       ]
+      ]
+     },
+     "complete_r0.3": {
+      "ryhmia": 8,
+      "paras_vastaavuus": [
+       0.3,
+       [
+        "DK",
+        "GR",
+        "LU",
+        "NL",
+        "PT",
+        "SE"
+       ]
+      ]
+     },
+     "complete_r0.4": {
+      "ryhmia": 11,
+      "paras_vastaavuus": [
+       0.3,
+       [
+        "DK",
+        "GR",
+        "LU",
+        "NL",
+        "PT",
+        "SE"
+       ]
+      ]
+     },
+     "complete_r0.5": {
+      "ryhmia": 16,
+      "paras_vastaavuus": [
+       0.429,
+       [
+        "DK",
+        "LU",
+        "SE"
+       ]
+      ]
+     }
+    }
+   },
+   "brent_residuaali": {
+    "pearson_mediaani": 0.244,
+    "spearman_mediaani": 0.234,
+    "ryhman_sisainen_pearson_mediaani": 0.188,
+    "ryhma_vs_muut_pearson_mediaani": 0.187,
+    "klusterointi": {
+     "average_r0.3": {
+      "ryhmia": 9,
+      "paras_vastaavuus": [
+       0.286,
+       [
+        "DK",
+        "SE"
+       ]
+      ]
+     },
+     "average_r0.4": {
+      "ryhmia": 15,
+      "paras_vastaavuus": [
+       0.429,
+       [
+        "DK",
+        "LU",
+        "SE"
+       ]
+      ]
+     },
+     "average_r0.5": {
+      "ryhmia": 17,
+      "paras_vastaavuus": [
+       0.429,
+       [
+        "DK",
+        "LU",
+        "SE"
+       ]
+      ]
+     },
+     "complete_r0.3": {
+      "ryhmia": 15,
+      "paras_vastaavuus": [
+       0.286,
+       [
+        "DK",
+        "LU"
+       ]
+      ]
+     },
+     "complete_r0.4": {
+      "ryhmia": 18,
+      "paras_vastaavuus": [
+       0.286,
+       [
+        "DK",
+        "LU"
+       ]
+      ]
+     },
+     "complete_r0.5": {
+      "ryhmia": 19,
+      "paras_vastaavuus": [
+       0.286,
+       [
+        "DK",
+        "LU"
+       ]
+      ]
+     }
+    }
+   }
+  }
+ },
+ "V3_viiveelliset": [
+  {
+   "pari": "DK_diesel_ylos → HU_diesel_ylos",
+   "viive": 1,
+   "r_viive": 0.405,
+   "r_0": -0.065,
+   "sija_viiveella": "11/2162"
+  },
+  {
+   "pari": "DK_diesel_ylos → HU_euro95_ylos",
+   "viive": 1,
+   "r_viive": 0.316,
+   "r_0": -0.118,
+   "sija_viiveella": "41/2162"
+  },
+  {
+   "pari": "DK_diesel_ylos → LU_euro95_ylos",
+   "viive": 1,
+   "r_viive": 0.181,
+   "r_0": 0.099,
+   "sija_viiveella": "324/2162"
+  },
+  {
+   "pari": "DK_euro95_alas → EE_euro95_alas",
+   "viive": 1,
+   "r_viive": 0.276,
+   "r_0": 0.208,
+   "sija_viiveella": "84/2162"
+  },
+  {
+   "pari": "DK_euro95_alas → HU_euro95_alas",
+   "viive": 1,
+   "r_viive": 0.46,
+   "r_0": -0.099,
+   "sija_viiveella": "3/2162"
+  },
+  {
+   "pari": "DK_euro95_ylos → HU_euro95_ylos",
+   "viive": 1,
+   "r_viive": 0.46,
+   "r_0": -0.099,
+   "sija_viiveella": "3/2162"
+  },
+  {
+   "pari": "HU_euro95_ylos → SI_diesel_ylos",
+   "viive": 1,
+   "r_viive": 0.132,
+   "r_0": 0.101,
+   "sija_viiveella": "576/2162"
+  },
+  {
+   "pari": "HU_euro95_ylos → SI_euro95_ylos",
+   "viive": 1,
+   "r_viive": 0.288,
+   "r_0": 0.114,
+   "sija_viiveella": "65/2162"
+  },
+  {
+   "pari": "LU_euro95_alas → SI_euro95_alas",
+   "viive": 2,
+   "r_viive": 0.282,
+   "r_0": -0.022,
+   "sija_viiveella": "7/2162"
+  },
+  {
+   "pari": "SE_euro95_alas → HU_euro95_alas",
+   "viive": 1,
+   "r_viive": 0.409,
+   "r_0": 0.087,
+   "sija_viiveella": "9/2162"
+  }
+ ]
+}
