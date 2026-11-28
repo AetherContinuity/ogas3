@@ -1,0 +1,107 @@
+{
+ "H": "H2",
+ "ka_A": 2.996,
+ "ka_B": 2.264,
+ "ero_pp": -0.732,
+ "raja_pp": -1.0,
+ "tulos": "kumoutui",
+ "vuodet": {
+  "2005": {
+   "tuotannollinen_pct_bkt": 2.126,
+   "N0_pct_bkt": 5.305,
+   "N111_pct_bkt": 3.061,
+   "N114_pct_bkt": 0.118,
+   "N111_N112_pct_bkt": 4.467,
+   "N112_pct_bkt": 1.406,
+   "N113_pct_bkt": 0.159,
+   "N115_pct_bkt": 0.0,
+   "N116_pct_bkt": 0.0,
+   "N117_pct_bkt": 0.561
+  },
+  "2006": {
+   "tuotannollinen_pct_bkt": 1.969,
+   "N0_pct_bkt": 5.163,
+   "N111_pct_bkt": 3.171,
+   "N114_pct_bkt": 0.023,
+   "N111_N112_pct_bkt": 4.622,
+   "N112_pct_bkt": 1.451,
+   "N113_pct_bkt": 0.071,
+   "N115_pct_bkt": -0.003,
+   "N116_pct_bkt": 0.0,
+   "N117_pct_bkt": 0.45
+  },
+  "2007": {
+   "tuotannollinen_pct_bkt": 3.777,
+   "N0_pct_bkt": 6.841,
+   "N111_pct_bkt": 3.063,
+   "N114_pct_bkt": 0.0,
+   "N111_N112_pct_bkt": 5.554,
+   "N112_pct_bkt": 2.491,
+   "N113_pct_bkt": 0.737,
+   "N115_pct_bkt": -0.002,
+   "N116_pct_bkt": 0.0,
+   "N117_pct_bkt": 0.552
+  },
+  "2008": {
+   "tuotannollinen_pct_bkt": 4.111,
+   "N0_pct_bkt": 6.564,
+   "N111_pct_bkt": 2.375,
+   "N114_pct_bkt": 0.078,
+   "N111_N112_pct_bkt": 5.285,
+   "N112_pct_bkt": 2.91,
+   "N113_pct_bkt": 0.656,
+   "N115_pct_bkt": -0.001,
+   "N116_pct_bkt": 0.0,
+   "N117_pct_bkt": 0.546
+  },
+  "2022": {
+   "tuotannollinen_pct_bkt": 2.811,
+   "N0_pct_bkt": 5.084,
+   "N111_pct_bkt": 2.407,
+   "N114_pct_bkt": -0.134,
+   "N111_N112_pct_bkt": 3.996,
+   "N112_pct_bkt": 1.589,
+   "N113_pct_bkt": 0.873,
+   "N115_pct_bkt": -0.003,
+   "N116_pct_bkt": 0.0,
+   "N117_pct_bkt": 0.352
+  },
+  "2023": {
+   "tuotannollinen_pct_bkt": 2.212,
+   "N0_pct_bkt": 3.027,
+   "N111_pct_bkt": 1.02,
+   "N114_pct_bkt": -0.205,
+   "N111_N112_pct_bkt": 2.214,
+   "N112_pct_bkt": 1.195,
+   "N113_pct_bkt": 0.64,
+   "N115_pct_bkt": -0.001,
+   "N116_pct_bkt": 0.0,
+   "N117_pct_bkt": 0.379
+  },
+  "2024": {
+   "tuotannollinen_pct_bkt": 2.065,
+   "N0_pct_bkt": 1.467,
+   "N111_pct_bkt": -0.437,
+   "N114_pct_bkt": -0.161,
+   "N111_N112_pct_bkt": 0.579,
+   "N112_pct_bkt": 1.016,
+   "N113_pct_bkt": 0.443,
+   "N115_pct_bkt": 0.001,
+   "N116_pct_bkt": 0.0,
+   "N117_pct_bkt": 0.604
+  },
+  "2025": {
+   "tuotannollinen_pct_bkt": 1.969,
+   "N0_pct_bkt": 1.566,
+   "N111_pct_bkt": -0.429,
+   "N114_pct_bkt": 0.026,
+   "N111_N112_pct_bkt": 0.756,
+   "N112_pct_bkt": 1.185,
+   "N113_pct_bkt": 0.396,
+   "N115_pct_bkt": -0.0,
+   "N116_pct_bkt": 0.0,
+   "N117_pct_bkt": 0.389
+  }
+ },
+ "mitattu": "2026-11-28T10:49:07+00:00"
+}
