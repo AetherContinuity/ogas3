@@ -1,0 +1,39 @@
+{
+ "poikkeama": 2,
+ "kirjattu": "2026-11-28",
+ "korrelaatio": {
+  "muunnos": "ensimmainen_differenssi_15min",
+  "menetelmat": [
+   "pearson",
+   "spearman"
+  ],
+  "viiveet": [
+   0,
+   8
+  ],
+  "parit": "132 suunnattua",
+  "rakenne_raja": 0.1,
+  "rakenne_raja_toissijainen": 0.2,
+  "klusterointi": {
+   "linkage": "average",
+   "etaisyys": "1-|r0|",
+   "katkaisut": [
+    0.1,
+    0.2
+   ]
+  }
+ },
+ "lisalöytö": [
+  "BH+monipaivaisyys",
+  "molemmat puolijaksot (viive ±1)",
+  "tarkistaja hyväksyy",
+  "ei tunnetuissa",
+  "|r|<0.1 kaikilla viiveillä 0–8 molempiin suuntiin, Pearson ja Spearman"
+ ],
+ "viive_ehdokas": {
+  "ehto": "kohdat 1–4 + korrelaatiorakenteessa + |d − argmax_r| ≥ 2",
+  "tarkistus": "yhteisesiintymät(d) > yhteisesiintymät(d−2) ja (d+2) kummallakin puolijaksolla"
+ },
+ "ryhmavaitteet": "raportoidaan aina aktivaatiomäärien rinnalla",
+ "tulossaanto": "0 lisälöytöä → lisäarvoa ei osoitettu"
+}
