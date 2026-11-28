@@ -3,11 +3,11 @@ name: q002-diag
 on:
   push:
     branches: [q002-diag]
-    paths: [tools/q002_diag.py, .github/workflows/q002-diag.yml]
+    paths: [tools/q002_diag.py, tools/q003_diag.py, .github/workflows/q002-diag.yml]
 jobs:
   diag:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - run: python3 tools/q002_diag.py
+      - run: python3 tools/q003_diag.py
