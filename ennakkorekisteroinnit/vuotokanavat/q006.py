@@ -76,8 +76,10 @@ def _saumaliput(sauma):
     return liput, any(x is not None and abs(x) > SAUMA_RAJA_PCT for x in liput.values())
 
 
-def tila(ok):
-    return {True: "tuettu", False: "kumoutui", None: "aineisto puutteellinen"}[ok]
+def tila(ok, saumallinen=False):
+    """Saumallinen tulos ei ole koskaan pelkkä 'tuettu' tai 'kumoutui'."""
+    perus = {True: "tuettu", False: "kumoutui", None: "aineisto puutteellinen"}[ok]
+    return perus + " (saumallinen)" if saumallinen and ok is not None else perus
 
 
 def c1():
@@ -100,7 +102,7 @@ def h1():
     liput, katkos = _saumaliput(sauma)
     return {"H": "H1", "C1": {y: None if x is None else round(x, 4) for y, x in c.items()},
             "stu_henkilosto": s, "muutos_pct": None if m is None else round(m, 2), "raja_pct": H1_RAJA_PCT,
-            "tulos": tila(None if m is None else m >= H1_RAJA_PCT),
+            "tulos": tila(None if m is None else m >= H1_RAJA_PCT, katkos),
             "sauma_stu_2019_2020": "ei päällekkäistä vuotta; ei testattavissa", "sauma_ulkoy_2021_pct": liput,
             "sauma_merkitty": katkos}
 
@@ -114,7 +116,7 @@ def h2():
     return {"H": "H2", "C2_henkiloston_osuus": c2,
             "C2_liikevaihdon_osuus": {y: (u[y] or {}).get("liikevaihdon_osuus") for y in u},
             "ero_pp": None if ero is None else round(ero, 2), "raja_pp": H2_RAJA_PP,
-            "tulos": tila(None if ero is None else ero >= H2_RAJA_PP),
+            "tulos": tila(None if ero is None else ero >= H2_RAJA_PP, katkos),
             "kuvaileva_2008_2024_pp": None if c2.get("2008") is None or b is None else round(b - c2["2008"], 2),
             "sauma_ulkoy_2021_pct": liput, "sauma_merkitty": katkos}
 
@@ -125,7 +127,9 @@ def h3():
     c2 = r2["C2_henkiloston_osuus"]
     k1 = None if not c1a or c1b is None else (c1b / c1a - 1) * 100
     k2 = None if not c2.get(ALKU) or c2.get(LOPPU) is None else (c2[LOPPU] / c2[ALKU] - 1) * 100
-    return {"H": "H3", "kuvaileva": True, "C1_suht_muutos_pct": k1 and round(k1, 2), "C2_suht_muutos_pct": k2 and round(k2, 2),
+    return {"H": "H3", "kuvaileva": True,
+            "tulkinta": "järjestys eri nimittäjiin perustuvista suhteellisista muutoksista; ei kerro, kumpi kanava on suurempi",
+            "saumallinen": bool(r1["sauma_merkitty"] or r2["sauma_merkitty"]), "C1_suht_muutos_pct": k1 and round(k1, 2), "C2_suht_muutos_pct": k2 and round(k2, 2),
             "nopeampi": None if k1 is None or k2 is None else ("tuotanto ulos (C1)" if k1 > k2 else "omistus sisään (C2)")}
 
 
