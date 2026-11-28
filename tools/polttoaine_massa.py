@@ -68,7 +68,7 @@ def aja(wob, brent, ehdollinen: bool) -> dict:
         for a, b, d in joukko:
             c["viive0" if d == 0 else "viive>=1"] += 1
             c["sama_maa" if a[:2] == b[:2] else "eri_maa"] += 1
-        return dict(c)
+        return dict(sorted(c.items()))
     maaparit = Counter(tuple(sorted((a[:2], b[:2]))) for a, b, _ in sail if a[:2] != b[:2])
     return {"sarjoja": len(mukana), "pareja": len(parit), "testeja_loyto": L["testeja"], "ehdokkaita_loyto": len(ehd),
             "testeja_vahvistus": V["testeja"], "sailyi": len(sail), "sailymisosuus": round(len(sail) / len(ehd), 3) if ehd else None,

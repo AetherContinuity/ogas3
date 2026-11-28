@@ -8,16 +8,16 @@
   "sailyi": 1291,
   "sailymisosuus": 0.588,
   "loyto_kuvaus": {
-   "viive>=1": 718,
    "eri_maa": 2107,
+   "sama_maa": 89,
    "viive0": 1478,
-   "sama_maa": 89
+   "viive>=1": 718
   },
   "sailyneet_kuvaus": {
-   "viive0": 1048,
    "eri_maa": 1211,
-   "viive>=1": 243,
-   "sama_maa": 80
+   "sama_maa": 80,
+   "viive0": 1048,
+   "viive>=1": 243
   },
   "sailyneet_maaparit_top": [
    [
@@ -33,15 +33,7 @@
     16
    ],
    [
-    "NL-SE",
-    16
-   ],
-   [
-    "LU-SE",
-    16
-   ],
-   [
-    "DK-SE",
+    "DE-LU",
     16
    ],
    [
@@ -49,15 +41,23 @@
     16
    ],
    [
-    "DE-LU",
+    "DK-SE",
     16
    ],
    [
-    "DK-NL",
+    "LU-SE",
+    16
+   ],
+   [
+    "NL-SE",
+    16
+   ],
+   [
+    "AT-DE",
     14
    ],
    [
-    "FR-LU",
+    "AT-DK",
     14
    ],
    [
@@ -69,15 +69,15 @@
     14
    ],
    [
+    "DK-NL",
+    14
+   ],
+   [
     "FR-LT",
     14
    ],
    [
-    "AT-DE",
-    14
-   ],
-   [
-    "AT-DK",
+    "FR-LU",
     14
    ],
    [
@@ -85,27 +85,19 @@
     13
    ],
    [
-    "LU-SI",
-    13
-   ],
-   [
     "FR-IT",
     13
    ],
    [
+    "LU-SI",
+    13
+   ],
+   [
+    "AT-EE",
+    12
+   ],
+   [
     "AT-LT",
-    12
-   ],
-   [
-    "LT-PL",
-    12
-   ],
-   [
-    "IT-LT",
-    12
-   ],
-   [
-    "LU-NL",
     12
    ],
    [
@@ -113,7 +105,15 @@
     12
    ],
    [
-    "AT-EE",
+    "IT-LT",
+    12
+   ],
+   [
+    "LT-PL",
+    12
+   ],
+   [
+    "LU-NL",
     12
    ],
    [
@@ -17570,24 +17570,24 @@
   "sailyi": 190,
   "sailymisosuus": 0.588,
   "loyto_kuvaus": {
-   "viive0": 292,
-   "sama_maa": 34,
    "eri_maa": 289,
+   "sama_maa": 34,
+   "viive0": 292,
    "viive>=1": 31
   },
   "sailyneet_kuvaus": {
-   "viive0": 180,
    "eri_maa": 156,
    "sama_maa": 34,
+   "viive0": 180,
    "viive>=1": 10
   },
   "sailyneet_maaparit_top": [
    [
-    "LU-SE",
+    "DK-SE",
     14
    ],
    [
-    "DK-SE",
+    "LU-SE",
     14
    ],
    [
@@ -17595,24 +17595,52 @@
     13
    ],
    [
-    "DE-LU",
-    8
-   ],
-   [
     "BE-EE",
     8
    ],
    [
-    "DE-DK",
-    6
+    "DE-LU",
+    8
    ],
    [
     "BE-LU",
     6
    ],
    [
+    "DE-DK",
+    6
+   ],
+   [
     "DE-SE",
     6
+   ],
+   [
+    "BE-HU",
+    4
+   ],
+   [
+    "BE-SE",
+    4
+   ],
+   [
+    "DK-FI",
+    4
+   ],
+   [
+    "DK-HU",
+    4
+   ],
+   [
+    "DK-NL",
+    4
+   ],
+   [
+    "EE-LU",
+    4
+   ],
+   [
+    "FI-NL",
+    4
    ],
    [
     "FR-LV",
@@ -17623,35 +17651,7 @@
     4
    ],
    [
-    "BE-HU",
-    4
-   ],
-   [
-    "DK-HU",
-    4
-   ],
-   [
-    "BE-SE",
-    4
-   ],
-   [
-    "EE-LU",
-    4
-   ],
-   [
-    "DK-NL",
-    4
-   ],
-   [
     "NL-SE",
-    4
-   ],
-   [
-    "FI-NL",
-    4
-   ],
-   [
-    "DK-FI",
     4
    ],
    [
@@ -17659,27 +17659,27 @@
     3
    ],
    [
+    "BE-DE",
+    2
+   ],
+   [
+    "DE-EE",
+    2
+   ],
+   [
+    "DE-NL",
+    2
+   ],
+   [
+    "DK-FR",
+    2
+   ],
+   [
     "EE-FI",
     2
    ],
    [
     "EE-FR",
-    2
-   ],
-   [
-    "FI-FR",
-    2
-   ],
-   [
-    "LU-LV",
-    2
-   ],
-   [
-    "FR-HU",
-    2
-   ],
-   [
-    "DE-EE",
     2
    ]
   ],
