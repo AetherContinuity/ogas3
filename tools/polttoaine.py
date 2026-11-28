@@ -97,6 +97,31 @@ def main(argv=None) -> int:
         Path("data/polttoaine").mkdir(parents=True, exist_ok=True)
         Path("data/polttoaine/wob-fi.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
         return 0
+    if cmd == "poimi-kaikki":
+        import json
+        from datetime import date, timedelta
+        b = lataa(WOB)
+        out = {"lahde": "EU Weekly Oil Bulletin, Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx (European Commission, DG ENER)",
+               "sha256": __import__("hashlib").sha256(b).hexdigest(), "valilehti": "Prices wo taxes", "yksikko": "1000 l", "sarjat": {}}
+        for nimi, rivit in xlsx_rivit(b):
+            if nimi != "Prices wo taxes":
+                continue
+            ots = rivit[0]
+            cols = {k: v for k, v in ots.items() if v and re.fullmatch(r"[A-Z]{2}_price_wo_tax_(euro95|diesel)", v)}
+            for col, o in cols.items():
+                srj = {}
+                for r in rivit[3:]:
+                    try:
+                        d = (date(1899, 12, 30) + timedelta(days=int(float(r.get("A"))))).isoformat()
+                        srj[d] = round(float(r[col]), 2)
+                    except (TypeError, ValueError, KeyError):
+                        continue
+                if srj:
+                    out["sarjat"][o] = dict(sorted(srj.items()))
+        print(len(out["sarjat"]), "sarjaa")
+        Path("data/polttoaine").mkdir(parents=True, exist_ok=True)
+        Path("data/polttoaine/wob-kaikki.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+        return 0
     raise SystemExit(f"tuntematon {cmd}")
 
 

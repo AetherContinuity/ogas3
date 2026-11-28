@@ -1,0 +1,73 @@
+{
+ "L3_havaintorajat": {
+  "loyto": [
+   "2005-01-03",
+   "2015-12-14"
+  ],
+  "vahvistus": [
+   "2016-01-04",
+   "2026-11-23"
+  ]
+ },
+ "L1_samat_sarjat": {
+  "ehdoton": {
+   "sarjoja": 40,
+   "pareja": 810,
+   "ehdokkaita": 498,
+   "sailyi": 270,
+   "sailymisosuus": 0.542,
+   "tapahtumia_loyto": 2416
+  },
+  "suodatettu": {
+   "sarjoja": 40,
+   "pareja": 810,
+   "ehdokkaita": 323,
+   "sailyi": 190,
+   "sailymisosuus": 0.588,
+   "tapahtumia_loyto": 1661
+  },
+  "plasebo": [
+   {
+    "siemen": 0,
+    "ehdokkaita": 569,
+    "tapahtumia_loyto": 2041
+   },
+   {
+    "siemen": 1,
+    "ehdokkaita": 526,
+    "tapahtumia_loyto": 2102
+   },
+   {
+    "siemen": 2,
+    "ehdokkaita": 516,
+    "tapahtumia_loyto": 2017
+   },
+   {
+    "siemen": 3,
+    "ehdokkaita": 553,
+    "tapahtumia_loyto": 2042
+   },
+   {
+    "siemen": 4,
+    "ehdokkaita": 487,
+    "tapahtumia_loyto": 1999
+   }
+  ]
+ },
+ "L2_kalibrointi_nolla": [
+  {
+   "asetelma": "A=2005-2015,B=2016-2026",
+   "testeja": 17840,
+   "bh_ehdokkaita": 0,
+   "osuus_p_le_005": 0.0234,
+   "osuus_p_le_001": 0.0026
+  },
+  {
+   "asetelma": "A=2016-2026,B=2005-2015",
+   "testeja": 17840,
+   "bh_ehdokkaita": 0,
+   "osuus_p_le_005": 0.0298,
+   "osuus_p_le_001": 0.0044
+  }
+ ]
+}
