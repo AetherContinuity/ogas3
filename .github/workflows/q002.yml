@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       h:
-        description: "Hypoteesi (H1 | H2 | H3 | H4)"
+        description: "Hypoteesi (H1 | H2 | H3 | H4 | H1p1 = H1 poikkeama 1)"
         default: "H1"
         required: true
 
@@ -26,7 +26,11 @@ jobs:
           H: ${{ inputs.h }}
         run: |
           mkdir -p ennakkorekisteroinnit/nkt/tulokset
-          python3 ennakkorekisteroinnit/nkt/q002.py "$H" > "ennakkorekisteroinnit/nkt/tulokset/$H-$(date -u +%F).json"
+          if [ "$H" = "H1p1" ]; then
+            python3 ennakkorekisteroinnit/nkt/q002_poikkeama_1.py H1 > "ennakkorekisteroinnit/nkt/tulokset/H1-poikkeama_1-$(date -u +%F).json"
+          else
+            python3 ennakkorekisteroinnit/nkt/q002.py "$H" > "ennakkorekisteroinnit/nkt/tulokset/$H-$(date -u +%F).json"
+          fi
       - name: Commit
         if: always()
         run: |
