@@ -18,8 +18,7 @@ def get(t, **p):
         print("   ", k, type(ix).__name__, list(ix)[:30])
     if "error" in d: print("   error:", d["error"])
 M = ["FI", "SE", "DK", "NO"]; Y = [str(y) for y in range(2008, 2026)]
-get("nama_10_gdp", geo=M, na_item=["B1GQ", "P51C"], unit="CP_MNAC", time=Y)
-for u in ("CLV20_MNAC", "CLV15_MNAC"):
-    get("nama_10_gdp", geo=M, na_item="B1GQ", unit=u, time=Y)
-get("nama_10_pe", geo=M, na_item="POP_NC", unit="THS_PER", time=Y)
-get("nama_10_gdp", geo=M, na_item="P51C", unit="CP_MNAC", time=Y)
+get("nasa_10_nf_tr", geo=M, na_item="P51C", sector="S1", unit="CP_MNAC", time=Y)
+get("nasa_10_nf_tr", geo=M, na_item="P51C", sector="S1", unit="CP_MNAC", direct="PAID", time=Y)
+get("nasa_10_nf_tr", geo=M, na_item=["B1GQ", "B1NQ"], sector="S1", unit="CP_MNAC", time=Y)
+get("nama_10_nfa_st", geo=M, unit="CP_MNAC", time=Y)
