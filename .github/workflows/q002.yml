@@ -5,7 +5,9 @@ on:
   workflow_dispatch:
     inputs:
       h:
-        description: "Hypoteesi (H1 | H2 | H3 | H4 | H1p1 = H1 poikkeama 1)"
+        description: "Hypoteesi"
+        type: choice
+        options: [H1, H2, H3, H4, H1p1]
         default: "H1"
         required: true
 
@@ -25,14 +27,14 @@ jobs:
         env:
           H: ${{ inputs.h }}
         run: |
+          set -euo pipefail
           mkdir -p ennakkorekisteroinnit/nkt/tulokset
-          if [ "$H" = "H1p1" ]; then
-            python3 ennakkorekisteroinnit/nkt/q002_poikkeama_1.py H1 > "ennakkorekisteroinnit/nkt/tulokset/H1-poikkeama_1-$(date -u +%F).json"
-          else
-            python3 ennakkorekisteroinnit/nkt/q002.py "$H" > "ennakkorekisteroinnit/nkt/tulokset/$H-$(date -u +%F).json"
-          fi
+          tmp=$(mktemp)
+          if [ "$H" = "H1p1" ]; then OUT="ennakkorekisteroinnit/nkt/tulokset/H1-poikkeama_1-$(date -u +%F).json"; else OUT="ennakkorekisteroinnit/nkt/tulokset/$H-$(date -u +%F).json"; fi
+          if [ "$H" = "H1p1" ]; then python3 ennakkorekisteroinnit/nkt/q002_poikkeama_1.py H1 > "$tmp"; else python3 ennakkorekisteroinnit/nkt/q002.py "$H" > "$tmp"; fi
+          python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$tmp"
+          mv "$tmp" "$OUT"
       - name: Commit
-        if: always()
         run: |
           git config user.name  "ogas3-q002"
           git config user.email "actions@users.noreply.github.com"
